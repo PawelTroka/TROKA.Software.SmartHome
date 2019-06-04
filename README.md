@@ -34,6 +34,10 @@ Home automation configuration, scripts and state of affairs
 |BTicino Classe 300X13E (video intercom)|:x:|:x:|:x:|:heavy_check_mark:|
 |Miele Fridge-Freezer|:heavy_check_mark:<sup>3</sup>|:x:|:x:|:heavy_check_mark:|
 |Siemens Cooktop|:warning:<sup>4</sup>|:x:|:x:|:heavy_check_mark:|
+|LG Washer-Dryer|:x:|:x:|:x:|:heavy_check_mark:|
+|Wyze Cams|:x:|:x:|:heavy_check_mark:|:heavy_check_mark:|
+|D-Link flood sensors|:x:|:x:|:x:|:heavy_check_mark:|
+|D-Link flood sensors|:x:|:x:|:x:|:heavy_check_mark:|
 |Whirlpool W11 Oven|:x:|:x:|:x:|:x:<sup>5</sup>|
 |Whirlpool W11 Microwave|:x:|:x:|:x:|:x:<sup>5</sup>|
 
