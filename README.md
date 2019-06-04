@@ -35,7 +35,7 @@ Home automation configuration, scripts and state of affairs
 |BTicino Classe 300X13E (video intercom)|:x:|:x:|:x:|:heavy_check_mark:|
 |Miele Fridge-Freezer|:heavy_check_mark:<sup>3</sup>|:x:|:x:|:heavy_check_mark:|
 |Siemens Cooktop|:warning:<sup>4</sup>|:x:|:x:|:heavy_check_mark:|
-|LG Washer-Dryer|:x:|:x:|:x:|:heavy_check_mark:|
+|LG Washer-Dryer|:x:<sup>10</sup>|:x:|:x:|:heavy_check_mark:|
 |Wyze Cams|:x:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 |Aotec Multisensors 6|:warning:<sup>9</sup>|:x:|:x:|:x:|
 |Fibaro door sensors|:heavy_check_mark:|:x:|:x:|:x:|
@@ -56,7 +56,7 @@ Home automation configuration, scripts and state of affairs
 
 <sup>3</sup> Via custom component https://github.com/docbobo/home-assistant-miele
 
-<sup>4</sup> API does not support Cooktop yet (https://developer.home-connect.com/docs/cooktop/supported_programs_and_options). Only very basic functionality is exposed.
+<sup>4</sup> API does not support Cooktop yet (https://developer.home-connect.com/docs/cooktop/supported_programs_and_options). Only very basic functionality is exposed via custom component https://github.com/DavidMStraub/homeassistant-homeconnect.
 
 <sup>5</sup> Mobile app (https://play.google.com/store/apps/details?id=com.adbglobal.whirlpool&hl=en) doesn't work correctly, impossible to add new appliances. Problem reported to Whirlpool.
 
@@ -68,3 +68,6 @@ Home automation configuration, scripts and state of affairs
 <sup>8</sup> Swipe left/right and up/down doesn't work.
 
 <sup>9</sup> Works really slow and often does not trigger motion correctly. Vibration alarms not implemented.
+
+
+<sup>10</sup> Should be possible via custom component and some tinkering. See https://community.home-assistant.io/t/in-development-lg-smartthinq-component/40157/249
