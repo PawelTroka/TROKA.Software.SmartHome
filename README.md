@@ -2,6 +2,21 @@
 Home automation configuration, scripts and state of affairs
 
 
+## Goals for this project
+
+1. Integrate everything. Automate everything.
+2. Get the best possible devices for each device category
+3. ZWave+ 700 series over Wi-Fi and Zigbee
+4. Local processing over Cloud
+5. Multiple ways to control stuff
+    - Automated control (e.g. on movement, on open door)
+    - Voice control
+    - Physical switches and buttons
+    - Wall-mounted tablets/phones with dashboards
+    - Remotes
+    - Dedicated apps
+
+
 ## Devices/systems integration state matrix
 
 | Devices\Systems 	| Home Assistant 	| Amazon Alexa 	| Google Home 	| App 	|
