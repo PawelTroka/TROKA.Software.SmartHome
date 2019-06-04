@@ -26,6 +26,7 @@ Home automation configuration, scripts and state of affairs
 | Sonos Multi-room audio|:heavy_check_mark:|:warning:<sup>6</sup>|:warning:<sup>6</sup>|:heavy_check_mark:|
 | Living room TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 | Bedroom TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
+| A/V Receiver|:warning:<sup>7</sup>|:x:|:x:|:heavy_check_mark:|
 | XBOX ONE X|:x:|:heavy_check_mark:|:x:|:x:|
 | Netatmo Weather Station|:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
 | Nest Protect|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
@@ -36,7 +37,9 @@ Home automation configuration, scripts and state of affairs
 |Siemens Cooktop|:warning:<sup>4</sup>|:x:|:x:|:heavy_check_mark:|
 |LG Washer-Dryer|:x:|:x:|:x:|:heavy_check_mark:|
 |Wyze Cams|:x:|:x:|:heavy_check_mark:|:heavy_check_mark:|
-|D-Link flood sensors|:x:|:x:|:x:|:heavy_check_mark:|
+|Aotec Multisensors 6|:warning:<sup>9</sup>|:x:|:x:|:x:|
+|Fibaro door sensors|:heavy_check_mark:|:x:|:x:|:x:|
+|Aotec WallMotes|:warning:<sup>8</sup>|:x:|:x:|:x:|
 |D-Link flood sensors|:x:|:x:|:x:|:heavy_check_mark:|
 |Whirlpool W11 Oven|:x:|:x:|:x:|:x:<sup>5</sup>|
 |Whirlpool W11 Microwave|:x:|:x:|:x:|:x:<sup>5</sup>|
@@ -59,3 +62,9 @@ Home automation configuration, scripts and state of affairs
 
 
 <sup>6</sup> Doesn't work with all the functionality - e.g. playback from Tidal is region-locked, grouping is limited.
+
+<sup>7</sup> Zones do not work. Turning off doesn't work. Better implementation is coming soon with https://github.com/home-assistant/home-assistant/pull/24260
+
+<sup>8</sup> Swipe left/right and up/down doesn't work.
+
+<sup>9</sup> Works really slow and often does not trigger motion correctly. Vibration alarms not implemented.
