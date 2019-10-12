@@ -22,7 +22,7 @@ Home automation configuration, scripts and state of affairs
 | Devices\Systems 	| Home Assistant 	| Amazon Alexa 	| Google Home 	| App 	|
 |-----------------	|----------------	|--------------	|-------------	|--------------	|
 | LIFX Lights     	|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
-| MiLight Lights   	|:heavy_check_mark:|:heavy_check_mark:<sup>1</sup>|:x:|:heavy_check_mark:|
+| MiLight Lights   	|:heavy_check_mark:|:heavy_check_mark:<sup>1</sup>|:heavy_check_mark:<sup>1</sup>|:heavy_check_mark:|
 | Sonos Multi-room audio|:heavy_check_mark:|:warning:<sup>6</sup>|:warning:<sup>6</sup>|:heavy_check_mark:|
 | Living room TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 | Bedroom TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
