@@ -27,7 +27,7 @@ Home automation configuration, scripts and state of affairs
 | Living room TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 | Bedroom TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 | A/V Receiver|:warning:<sup>7</sup>|:warning:<sup>13</sup>|:warning:<sup>14</sup>|:heavy_check_mark:|
-| XBOX ONE X|:x:|:heavy_check_mark:|:x:|:x:|
+| XBOX ONE X|:x:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 | Netatmo Weather Station|:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
 | Nest Protect|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
 |Tado radiator thermostats|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
