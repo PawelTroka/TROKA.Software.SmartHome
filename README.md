@@ -26,7 +26,7 @@ Home automation configuration, scripts and state of affairs
 | Sonos Multi-room audio|:heavy_check_mark:|:warning:<sup>6</sup>|:warning:<sup>6</sup>|:heavy_check_mark:|
 | Living room TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 | Bedroom TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
-| A/V Receiver|:warning:<sup>7</sup>|:x:|:x:|:heavy_check_mark:|
+| A/V Receiver|:warning:<sup>7</sup>|:warning:<sup>13</sup>|:warning:<sup>14</sup>|:heavy_check_mark:|
 | XBOX ONE X|:x:|:heavy_check_mark:|:x:|:x:|
 | Netatmo Weather Station|:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
 | Nest Protect|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
@@ -36,7 +36,7 @@ Home automation configuration, scripts and state of affairs
 |Miele Fridge-Freezer|:heavy_check_mark:<sup>3</sup>|:x:|:x:|:heavy_check_mark:|
 |Siemens Cooktop|:warning:<sup>4</sup>|:x:|:x:|:heavy_check_mark:|
 |LG Washer-Dryer|:x:<sup>10</sup>|:x:|:x:|:heavy_check_mark:|
-|Wyze Cams|:heavy_check_mark:<sup>11</sup>|::warning:<sup>12</sup>:|:heavy_check_mark:|:heavy_check_mark:|
+|Wyze Cams|:heavy_check_mark:<sup>11</sup>|:warning:<sup>12</sup>|:heavy_check_mark:|:heavy_check_mark:|
 |Aotec Multisensors 6|:warning:<sup>9</sup>|:x:|:x:|:x:|
 |Fibaro door sensors|:heavy_check_mark:|:x:|:x:|:x:|
 |Aotec WallMotes|:warning:<sup>8</sup>|:x:|:x:|:x:|
@@ -77,3 +77,9 @@ Home automation configuration, scripts and state of affairs
 
 
 <sup>12</sup> Only `show camera` is supported
+
+
+<sup>13</sup> Only very limited subset of functionality is supported. See http://rn.dmglobal.com/usheos/HeosCP118.png and https://denon.custhelp.com/app/answers/detail/a_id/5930
+
+
+<sup>14</sup> Extremely limited subset of functionality is supported, more is coming soon. See https://www.denon.co.uk/uk/googleassistant
