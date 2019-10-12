@@ -42,7 +42,7 @@ Home automation configuration, scripts and state of affairs
 |Aotec WallMotes|:warning:<sup>8</sup>|:x:|:x:|:x:|
 |D-Link flood sensors|:x:|:x:|:x:|:heavy_check_mark:|
 |Whirlpool W11 Oven|:x:|:x:|:x:|:x:<sup>5</sup>|
-|Whirlpool W11 Microwave|:x:|:x:|:x:|:x:<sup>5</sup>|
+|Whirlpool W11 Microwave|:x:|:x:|:x:|:heavy_check_mark:|
 
 
 
