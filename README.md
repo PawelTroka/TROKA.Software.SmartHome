@@ -32,7 +32,7 @@ Home automation configuration, scripts and state of affairs
 | Nest Protect|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
 |Tado radiator thermostats|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 |WarmUp 4iE Underfloor heating|:x:<sup>2</sup>|:heavy_check_mark:|:x:|:heavy_check_mark:|
-|BTicino Classe 300X13E (video intercom)|:x:|:x:|:x:|:heavy_check_mark:|
+|BTicino Classe 300X13E (video intercom)|:x:<sup>16</sup>|:x:|:x:|:heavy_check_mark:|
 |Miele Fridge-Freezer|:heavy_check_mark:<sup>3</sup>|:x:|:x:|:heavy_check_mark:|
 |Siemens Cooktop|:warning:<sup>4</sup>|:x:|:x:|:heavy_check_mark:|
 |LG Washer-Dryer|:x:<sup>10</sup>|:x:|:x:|:heavy_check_mark:|
@@ -86,3 +86,5 @@ Home automation configuration, scripts and state of affairs
 
 
 <sup>15</sup> Currently not supported. Should be possible to develop a component for it (https://community.home-assistant.io/t/d-link-water-sensor-dch-s160/40397), or simply use IFTTT and webhooks (https://www.reddit.com/r/homeassistant/comments/cv9y1m/dlink_water_sensor/).
+
+<sup>16</sup> Currently not supported but there seems to be some motion in the development community: https://community.home-assistant.io/t/bticino-door-entry-for-classe300x13e/116517 and API is open: https://portal.developer.legrand.com/docs/services/classe-300x13e-v2
