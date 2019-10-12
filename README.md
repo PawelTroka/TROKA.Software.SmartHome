@@ -40,7 +40,7 @@ Home automation configuration, scripts and state of affairs
 |Aotec Multisensors 6|:warning:<sup>9</sup>|:x:|:x:|:x:|
 |Fibaro door sensors|:heavy_check_mark:|:x:|:x:|:x:|
 |Aotec WallMotes|:warning:<sup>8</sup>|:x:|:x:|:x:|
-|D-Link flood sensors|:x:|:x:|:x:|:heavy_check_mark:|
+|D-Link flood sensors|:x:<sup>15</sup>|:x:|:x:|:heavy_check_mark:|
 |Whirlpool W11 Oven|:x:|:x:|:x:|:x:<sup>5</sup>|
 |Whirlpool W11 Microwave|:x:|:x:|:x:|:heavy_check_mark:|
 
@@ -83,3 +83,6 @@ Home automation configuration, scripts and state of affairs
 
 
 <sup>14</sup> Extremely limited subset of functionality is supported, more is coming soon. See https://www.denon.co.uk/uk/googleassistant
+
+
+<sup>15</sup> Currently not supported. Should be possible to develop a component for it (https://community.home-assistant.io/t/d-link-water-sensor-dch-s160/40397), or simply use IFTTT and webhooks (https://www.reddit.com/r/homeassistant/comments/cv9y1m/dlink_water_sensor/).
