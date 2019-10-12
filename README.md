@@ -36,7 +36,7 @@ Home automation configuration, scripts and state of affairs
 |Miele Fridge-Freezer|:heavy_check_mark:<sup>3</sup>|:x:|:x:|:heavy_check_mark:|
 |Siemens Cooktop|:warning:<sup>4</sup>|:x:|:x:|:heavy_check_mark:|
 |LG Washer-Dryer|:x:<sup>10</sup>|:x:|:x:|:heavy_check_mark:|
-|Wyze Cams|:x:|:x:|:heavy_check_mark:|:heavy_check_mark:|
+|Wyze Cams|:heavy_check_mark:<sup>11</sup>|::warning:<sup>12</sup>:|:heavy_check_mark:|:heavy_check_mark:|
 |Aotec Multisensors 6|:warning:<sup>9</sup>|:x:|:x:|:x:|
 |Fibaro door sensors|:heavy_check_mark:|:x:|:x:|:x:|
 |Aotec WallMotes|:warning:<sup>8</sup>|:x:|:x:|:x:|
@@ -71,3 +71,9 @@ Home automation configuration, scripts and state of affairs
 
 
 <sup>10</sup> Should be possible via custom component and some tinkering. See https://community.home-assistant.io/t/in-development-lg-smartthinq-component/40157/249
+
+
+<sup>11</sup> Through alternative RTSP firmware (https://support.wyzecam.com/hc/en-us/articles/360026245231-Wyze-Cam-RTSP)
+
+
+<sup>12</sup> Only `show camera` is supported
