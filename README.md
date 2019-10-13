@@ -44,7 +44,7 @@ Home automation configuration, scripts and state of affairs
 |D-Link flood sensors|:x:<sup>15</sup>|:x:|:x:|:heavy_check_mark:|
 |Whirlpool W11 Oven|:x:|:x:|:x:|:x:<sup>5</sup>|
 |Whirlpool W11 Microwave|:x:|:x:|:x:|:heavy_check_mark:|
-
+|Eight Sleep|:heavy_check_mark:|:x:<sup>17</sup>|:x:|:heavy_check_mark:|
 
 
 
@@ -90,4 +90,4 @@ Home automation configuration, scripts and state of affairs
 
 <sup>16</sup> Currently not supported but there seems to be some motion in the development community: https://community.home-assistant.io/t/bticino-door-entry-for-classe300x13e/116517 and API is open: https://portal.developer.legrand.com/docs/services/classe-300x13e-v2
 
-<sup>17</sup> Is integrated but doesn't work for some reason, error message is: `nVidia Shield TV is having trouble`.
+<sup>17</sup> Is integrated but doesn't work for some reason
