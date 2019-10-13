@@ -35,7 +35,7 @@ Home automation configuration, scripts and state of affairs
 |BTicino Classe 300X13E (video intercom)|:x:<sup>16</sup>|:x:|:x:|:heavy_check_mark:|
 |Miele Fridge-Freezer|:heavy_check_mark:<sup>3</sup>|:x:|:x:|:heavy_check_mark:|
 |Siemens Cooktop|:warning:<sup>4</sup>|:x:|:x:|:heavy_check_mark:|
-|LG Washer-Dryer|:x:<sup>10</sup>|:x:|:x:|:heavy_check_mark:|
+|LG Washer-Dryer|:x:<sup>10</sup>|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 |Wyze Cams|:heavy_check_mark:<sup>11</sup>|:warning:<sup>12</sup>|:heavy_check_mark:|:heavy_check_mark:|
 |Aotec Multisensors 6|:warning:<sup>9</sup>|:x:|:x:|:x:|
 |Fibaro door sensors|:heavy_check_mark:|:x:|:x:|:x:|
