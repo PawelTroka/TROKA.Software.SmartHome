@@ -27,6 +27,7 @@ Home automation configuration, scripts and state of affairs
 | Living room TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 | Bedroom TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 | A/V Receiver|:warning:<sup>7</sup>|:warning:<sup>13</sup>|:warning:<sup>14</sup>|:heavy_check_mark:|
+| nVidia Shield|:heavy_check_mark:|:x:<sup>17</sup>|:heavy_check_mark:|:x:|
 | XBOX ONE X|:x:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 | Netatmo Weather Station|:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
 | Nest Protect|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
@@ -88,3 +89,5 @@ Home automation configuration, scripts and state of affairs
 <sup>15</sup> Currently not supported. Should be possible to develop a component for it (https://community.home-assistant.io/t/d-link-water-sensor-dch-s160/40397), or simply use IFTTT and webhooks (https://www.reddit.com/r/homeassistant/comments/cv9y1m/dlink_water_sensor/).
 
 <sup>16</sup> Currently not supported but there seems to be some motion in the development community: https://community.home-assistant.io/t/bticino-door-entry-for-classe300x13e/116517 and API is open: https://portal.developer.legrand.com/docs/services/classe-300x13e-v2
+
+<sup>17</sup> Is integrated but doesn't work for some reason, error message is: `nVidia Shield TV is having trouble`.
