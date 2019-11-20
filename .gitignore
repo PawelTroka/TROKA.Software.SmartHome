@@ -1,2 +1,4 @@
 *.env
 secrets.yaml
+wideq_state.json
+known_devices.yaml
