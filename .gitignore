@@ -4,3 +4,6 @@ wideq_state.json
 known_devices.yaml
 tts/
 __pycache__/
+.august.conf
+.homeconnect-token-cache
+.miele-token-cache
