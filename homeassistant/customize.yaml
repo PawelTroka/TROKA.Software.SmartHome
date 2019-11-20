@@ -1,0 +1,6 @@
+binary_sensor.bathroom_multisensor_motion:
+  device_class: motion
+binary_sensor.hallway_multisensor_motion:
+  device_class: motion
+binary_sensor.toilet_multisensor_motion:
+  device_class: motion
