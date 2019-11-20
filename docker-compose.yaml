@@ -1,0 +1,517 @@
+#Reference: https://www.smarthomebeginner.com/docker-home-media-server-2018-basic
+#           https://www.smarthomebeginner.com/traefik-reverse-proxy-tutorial-for-docker/
+#           https://www.smarthomebeginner.com/google-oauth-with-traefik-docker/
+#           https://github.com/htpcBeginner/docker-traefik_v1
+
+
+version: "3.6"
+services:
+
+######### FRONTENDS ##########
+
+ #Portainer - WebUI for Containers
+  portainer:
+    image: portainer/portainer
+    hostname: portainer
+    container_name: portainer
+    restart: always
+    command: -H unix:///var/run/docker.sock
+    ports:
+      - "${PORTAINER_PORT}:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${HOMESERVERDIR}/portainer/data:/data
+      - ${HOMESERVERDIR}/shared:/shared
+    environment:
+      - TZ=${TZ}
+    networks:
+      - traefik_proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=portainer"
+      - "traefik.frontend.rule=Host:portainer.${DOMAINNAME}"
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefixStrip: /portainer"
+      - "traefik.port=9000"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=portainer.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+      - "traefik.frontend.headers.frameDeny=true"
+
+# Organizer - Unified HTPC/Home Server Web Interface
+  organizr:
+    container_name: organizr
+    hostname: organizr
+    restart: always
+    image: lsiocommunity/organizr
+    volumes:
+      - ${HOMESERVERDIR}/organizr:/config
+      - ${HOMESERVERDIR}/shared:/shared
+    ports:
+      - "${ORGANIZER_PORT}:80"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+
+# WebUI for MariaDB
+  phpmyadmin:
+    hostname: phpmyadmin
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    links:
+      - mariadb:db
+    ports:
+      - ${PHPMYADMIN_PORT}:80
+    environment:
+      - PMA_HOST=${DB_HOST}
+      - PMA_PORT=${DB_PORT}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+
+######### DOCKER RELATED ##########
+
+# Watchtower - Automatic Update of Containers/Apps
+  watchtower:
+    container_name: watchtower
+    hostname: watchtower
+    restart: always
+    image: v2tec/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --schedule "0 0 4 * * *" --cleanup
+
+######### SMART HOME APPS ##########
+
+ # Home Assistant - Smart Home Hub
+  homeassistant:
+    container_name: homeassistant
+    hostname: hass
+    restart: always
+    network_mode: host
+    image: homeassistant/home-assistant
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+    volumes:
+      - ${HOMESERVERDIR}/homeassistant:/config
+  #    - ${HOMESERVERDIR}/hassio-addons-duckdns/ssl/:/ssl/
+      - /etc/localtime:/etc/localtime:ro
+      - ${HOMESERVERDIR}/shared:/shared
+    #ports:
+    #  - "${HOME_ASSISTANT_PORT}:8123"
+    privileged: true
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    #networks:
+    #  - host
+    #  - traefik_proxy
+    #  - default
+    #labels:
+    #  - "traefik.enable=true"
+    #  - "traefik.backend=homeassistant"
+    #  - "traefik.frontend.rule=Host:smarthome.${DOMAINNAME}"
+    #  - "traefik.port=8123"
+    #  - "traefik.docker.network=traefik_proxy"
+    #  - "traefik.frontend.headers.SSLRedirect=true"
+    #  - "traefik.frontend.headers.STSSeconds=315360000"
+    #  - "traefik.frontend.headers.browserXSSFilter=true"
+    #  - "traefik.frontend.headers.contentTypeNosniff=true"
+    #  - "traefik.frontend.headers.forceSTSHeader=true"
+    #  - "traefik.frontend.headers.SSLHost=smarthome.${DOMAINNAME}"
+    #  - "traefik.frontend.headers.STSIncludeSubdomains=true"
+    #  - "traefik.frontend.headers.STSPreload=true"
+    #  - "traefik.frontend.headers.frameDeny=true"
+
+
+  #hassio-addons-duckdns:
+  #  container_name: hassio-addons-duckdns
+  #  hostname: hassio-addons-duckdns
+  #  image: homeassistant/amd64-addon-duckdns
+  #  volumes:
+  #    - ${HOMESERVERDIR}/hassio-addons-duckdns/options.json:/data/options.json
+  #    - ${HOMESERVERDIR}/hassio-addons-duckdns/ssl/:/ssl/
+  #    - /etc/localtime:/etc/localtime:ro
+  #    - ${HOMESERVERDIR}/shared:/shared
+  #  network_mode: host
+  #  environment:
+  #    - PUID=${PUID}
+  #    - PGID=${PGID}
+  #    - TZ=${TZ}
+    
+
+
+######### DOWNLOADERS ##########
+
+# Transmission with VPN – Bittorrent Downloader
+  transmission-vpn:
+    container_name: transmission-vpn
+    hostname: transmission
+    image: haugene/transmission-openvpn
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    restart: always
+    ports:
+    - "${TRANSMISSION_PORT}:9091"
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CACHEDIR}/transmission-vpn:/data
+      - ${HOMESERVERDIR}/shared:/shared
+      - ${CACHEDIR}/Downloads:/data/watch
+      - ${STORAGEDIR}/Downloads/completed:/downloads/completed
+      - ${CACHEDIR}/Downloads/incomplete:/downloads/incomplete
+    environment:
+      - OPENVPN_PROVIDER=NORDVPN
+      - OPENVPN_USERNAME=${NORDVPN_USERNAME}
+      - OPENVPN_PASSWORD=${NORDVPN_PASSWORD}
+      - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
+      #- NORDVPN_PROTOCOL=tcp
+      #- NORDVPN_CATEGORY=P2P
+      #- ENABLE_UFW=false
+      - LOCAL_NETWORK=192.168.1.0/24,10.10.10.0/24
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - TRANSMISSION_RPC_AUTHENTICATION_REQUIRED=true
+      - TRANSMISSION_RPC_HOST_WHITELIST="127.0.0.1,192.168.*.*,10.10.10.*"
+      - TRANSMISSION_RPC_PASSWORD=${TRANSMISSION_RPC_PASSWORD}
+      - TRANSMISSION_RPC_USERNAME=${TRANSMISSION_RPC_USERNAME}
+      - TRANSMISSION_UMASK=002
+      - TRANSMISSION_RATIO_LIMIT=0.01
+      - TRANSMISSION_RATIO_LIMIT_ENABLED=true
+      - TRANSMISSION_ALT_SPEED_DOWN=2000
+      - TRANSMISSION_ALT_SPEED_ENABLED=false
+      - TRANSMISSION_ALT_SPEED_UP=15
+      - TRANSMISSION_SPEED_LIMIT_DOWN=6000
+      - TRANSMISSION_SPEED_LIMIT_DOWN_ENABLED=false
+      - TRANSMISSION_SPEED_LIMIT_UP=30
+      - TRANSMISSION_SPEED_LIMIT_UP_ENABLED=false
+      - TRANSMISSION_INCOMPLETE_DIR=/downloads/incomplete
+      - TRANSMISSION_INCOMPLETE_DIR_ENABLED=true
+      - TRANSMISSION_WATCH_DIR=/downloads
+      - TRANSMISSION_WATCH_DIR_ENABLED=true
+      - TRANSMISSION_DOWNLOAD_DIR=/downloads/completed
+      - TRANSMISSION_ENCRYPTION=2
+      - TRANSMISSION_DHT_ENABLED=false
+      - TRANSMISSION_LPD_ENABLED=false
+      - TRANSMISSION_PEX_ENABLED=false
+      - TRANSMISSION_UTP_ENABLED=false
+
+
+######### PERSONAL VIDEO RECORDERS ##########
+
+# Radarr – Movie Download and Management
+  radarr:
+    image: "linuxserver/radarr"
+    hostname: radarr
+    container_name: "radarr"
+    volumes:
+      - ${HOMESERVERDIR}/radarr:/config
+      - ${STORAGEDIR}/Downloads/completed:/downloads
+      - ${STORAGEDIR}/movies:/movies
+      - "/etc/localtime:/etc/localtime:ro"
+      - ${HOMESERVERDIR}/shared:/shared
+    ports:
+      - "${RADARR_PORT}:7878"
+    restart: always
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+
+
+# Sonarr – TV Show Download and Management
+  sonarr:
+    image: "linuxserver/sonarr"
+    hostname: sonarr
+    container_name: "sonarr"
+    volumes:
+      - ${HOMESERVERDIR}/sonarr:/config
+      - ${STORAGEDIR}/Downloads/completed:/downloads
+      - ${STORAGEDIR}/tvshows:/tv
+      - "/etc/localtime:/etc/localtime:ro"
+      - ${HOMESERVERDIR}/shared:/shared
+    ports:
+        - "${SONARR_PORT}:8989"
+    restart: always
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+
+#LIDARR - Music Download and Management
+  lidarr:
+    image: "linuxserver/lidarr"
+    hostname: lidarr
+    container_name: "lidarr"
+    volumes:
+      - ${HOMESERVERDIR}/lidarr:/config
+      - ${STORAGEDIR}/Downloads/completed:/downloads
+      - ${STORAGEDIR}/music:/music
+      - "/etc/localtime:/etc/localtime:ro"
+      - ${HOMESERVERDIR}/shared:/shared
+    ports:
+      - "${LIDARR_PORT}:8686"
+    restart: always
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      
+
+######### MEDIA SERVER APPS ##########
+
+# Plex Media Server
+  plexms:
+    container_name: plexms
+    hostname: plexms
+    restart: always
+    image: plexinc/pms-docker
+    volumes:
+      - ${HOMESERVERDIR}/plexms:/config
+      - ${CACHEDIR}/Downloads/plex_tmp:/transcode
+      - /media/media:/media
+      - ${HOMESERVERDIR}/shared:/shared
+    ports:
+      - "${PLEX_PORT}:32400/tcp"
+      - "3005:3005/tcp"
+      - "8324:8324/tcp"
+      - "32469:32469/tcp"
+      - "1900:1900/udp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "${PLEX_WEB_TOOLS_PORT}:32414/udp"
+    environment:
+      - TZ=${TZ}
+      - HOSTNAME="Docker Plex"
+      - PLEX_CLAIM="${PLEX_CLAIM}"
+      - PLEX_UID=${PUID}
+      - PLEX_GID=${PGID}
+      - ADVERTISE_IP="http://${SERVER_IP}:${PLEX_PORT}/"
+
+# Tautulli (aka PlexPy) – Monitoring Plex Usage
+  tautulli:
+    container_name: tautulli
+    hostname: tautulli
+    restart: always
+    image: linuxserver/tautulli
+    volumes:
+      - ${HOMESERVERDIR}/tautulli/config:/config
+      - ${HOMESERVERDIR}/tautulli/logs:/logs:ro
+      - ${HOMESERVERDIR}/shared:/shared
+    ports:
+      - "${TAUTULLI_PORT}:8181"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}  
+
+# Ombi – Accept Requests for your Media Server
+  ombi:
+    container_name: ombi
+    hostname: ombi
+    restart: always
+    image: linuxserver/ombi
+    volumes:
+      - ${HOMESERVERDIR}/ombi:/config
+      - ${HOMESERVERDIR}/shared:/shared
+    ports:
+      - "${OMBI_PORT}:3579"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+
+
+# Jackett – Torrent Proxy
+  jackett:
+    image: "linuxserver/jackett"
+    hostname: jackett
+    container_name: "jackett"
+    volumes:
+      - ${HOMESERVERDIR}/jackett:/config
+      - ${CACHEDIR}/Downloads/completed:/downloads
+      - "/etc/localtime:/etc/localtime:ro"
+      - ${HOMESERVERDIR}/shared:/shared
+    ports:
+      - "${JACKETT_PORT}:9117"
+    restart: always
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+
+######### UTILITIES ##########
+
+# PiHole - network wide DNS-level ads blocking
+  pihole:
+    container_name: pihole
+    domainname: ${DOMAINNAME}
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "8053:80/tcp"
+      #- "443:443/tcp"
+    environment:
+      TZ: ${TZ}
+      WEBPASSWORD: ${PIHOLE_WEBPASSWORD}
+      #DNSSEC: 'true'
+      #CONDITIONAL_FORWARDING: 'true'
+      #CONDITIONAL_FORWARDING_IP: '192.168.1.1'
+      #CONDITIONAL_FORWARDING_DOMAIN: 'localdomain'
+      ServerIP: ${SERVER_IP}
+      PROXY_LOCATION: pihole
+      VIRTUAL_HOST: pihole.${DOMAINNAME}
+      VIRTUAL_PORT: 80
+    # Volumes store your data between container upgrades
+    volumes:
+      - ${HOMESERVERDIR}/pihole/etc-pihole/:/etc/pihole/
+      - ${HOMESERVERDIR}/pihole/etc-dnsmasq.d/:/etc/dnsmasq.d/
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    # Recommended but not required (DHCP needs NET_ADMIN)
+    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+    #cap_add:
+      #- NET_ADMIN
+    #network_mode: host
+    restart: unless-stopped
+    labels:
+       # required when using --docker.exposedbydefault=false
+       - "traefik.enable=true"
+       # https://www.techjunktrunk.com/docker/2017/11/03/traefik-default-server-catch-all/
+       - "traefik.frontend.rule=HostRegexp:pihole.${DOMAINNAME},{catchall:.*}"
+       - "traefik.frontend.priority=1"
+       - "traefik.backend=pihole"
+       - "traefik.port=80"
+
+
+# MariaDB – Database Server for your Apps
+  mariadb:
+    image: "linuxserver/mariadb"
+    container_name: "mariadb"
+    hostname: ${DB_HOST}
+    volumes:
+        - ${HOMESERVERDIR}/mariadb:/config
+    ports:
+      - target: ${DB_PORT}
+        published: ${DB_PORT}
+        protocol: tcp
+        mode: host
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+
+# NextCloud – Your Own Cloud Storage
+  nextcloud:
+    container_name: nextcloud
+    hostname: nextcloud
+    restart: always
+    image: linuxserver/nextcloud
+    volumes:
+      - ${HOMESERVERDIR}/nextcloud:/config
+      - ${STORAGEDIR}/shared_data:/data
+      - ${HOMESERVERDIR}/shared:/shared
+    ports:
+      - "${NEXTCLOUD_PORT}:443"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+
+
+  blog-troka-software:
+    image: 'bitnami/nginx:1.16'
+    volumes:
+      - ${HOMESERVERDIR}/blog.troka.software:/app
+      - ${HOMESERVERDIR}/shared:/shared
+    ports:
+      - '${BLOG_TROKA_SOFTWARE_PORT}:8080'
+    networks:
+      - traefik_proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=blog-troka-software"
+      - "traefik.frontend.rule=Host:${DOMAINNAME}"  
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefixStrip: /portainer"
+      - "traefik.port=8080"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+      - "traefik.frontend.headers.frameDeny=true"
+
+
+  traefik:
+    hostname: traefik
+    image: traefik:v1.7.16
+    container_name: traefik
+    restart: always
+    domainname: ${DOMAINNAME}
+    networks:
+      - default
+      - traefik_proxy
+    ports:
+      - "80:80"
+      - "443:443"
+      - "${TRAEFIK_PORT}:8080"
+    dns:
+      - ${SERVER_IP}
+      - ${ROUTER_IP}
+    environment:
+      - CF_API_EMAIL=${CLOUDFLARE_EMAIL}
+      - CF_API_KEY=${CLOUDFLARE_API_KEY}
+      - DUCKDNS_TOKEN=${DUCKDNS_TOKEN}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=traefik"
+      - "traefik.frontend.rule=Host:traefik.${DOMAINNAME}"
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefixStrip: /traefik"
+      - "traefik.port=8080"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=traefik.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+      - "traefik.frontend.headers.frameDeny=true"
+      - "traefik.frontend.auth.basic.users=${HTTP_USERNAME}:${HTTP_PASSWORD}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${HOMESERVERDIR}/traefik/traefik.toml:/etc/traefik/traefik.toml
+      - ${HOMESERVERDIR}/traefik/rules.toml:/etc/traefik/rules.toml
+      - ${HOMESERVERDIR}/traefik/acme/acme.json:/etc/traefik/acme/acme.json
+      - ${HOMESERVERDIR}/shared:/shared
+
+
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  default:
+    driver: bridge
