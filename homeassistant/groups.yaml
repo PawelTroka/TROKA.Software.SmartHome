@@ -1,0 +1,24 @@
+all_climate:
+  entities:
+    - climate.bathroom
+    - climate.bedroom
+    - climate.office
+    - climate.kitchen
+    - climate.living_room
+all_persons:
+  name: 'Residents'
+  entities:
+    - person.pawel
+    - person.athena
+all_tvs:
+  entities:
+    - media_player.living_room_tv_2
+    - media_player.bedroom_tv_2
+all_sonos:
+  entities:
+    - media_player.living_room
+    - media_player.bathroom
+    - media_player.bedroom
+    - media_player.office
+    - media_player.kitchen
+    - media_player.toilet
