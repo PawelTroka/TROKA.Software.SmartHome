@@ -1,0 +1,12 @@
+{
+    "data": {
+        "camera.front_door_cam": {
+            "preload_stream": true
+        },
+        "camera.living_room_cam": {
+            "preload_stream": false
+        }
+    },
+    "key": "camera",
+    "version": 1
+}
