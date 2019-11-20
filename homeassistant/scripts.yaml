@@ -1,0 +1,236 @@
+# general
+
+turn_off_everything:
+  sequence:
+    - service: light.turn_off
+      entity_id: group.all_lights
+    - service: climate.turn_off
+      data:
+        entity_id: group.all_climate
+    - service: media_player.media_pause
+      entity_id: group.all_sonos
+    - service: media_player.turn_off
+      entity_id: media_player.bedroom_tv_2
+    - service: media_player.turn_off
+      entity_id: media_player.living_room_tv_2
+    - service: media_player.turn_off
+      entity_id: media_player.denon_avc_x6500h
+
+turn_on_necessary_things:
+  sequence:
+    - service: climate.turn_on
+      data:
+        entity_id: group.all_climate
+
+announce_everywhere:
+  sequence:
+  - service: script.sonos_say
+    data_template:
+      sonos_entity: group.all_sonos
+      volume: 0.3
+      message: '{{message}}'
+      delay: '00:00:05'
+
+sonos_say:
+  alias: "Sonos TTS script"
+  sequence:
+   - service: sonos.snapshot
+     data_template:
+       entity_id: "{{ sonos_entity }}"
+   - service: sonos.unjoin
+     data_template:
+       entity_id: "{{ sonos_entity }}"
+   - service: media_player.volume_set
+     data_template:
+       entity_id: "{{ sonos_entity }}"
+       volume_level: "{{ volume }}"
+   - service: tts.google_say
+     data_template:
+       entity_id: "{{ sonos_entity }}"
+       message: "{{ message }}"
+   - delay: "{{ delay }}"
+   - service: sonos.restore
+     data_template:
+       entity_id: "{{ sonos_entity }}"
+
+# Bathroom lights defaults
+
+set_bathroom_lights_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.bathroom_lights
+    data:
+      brightness_pct: 100
+      kelvin: 9000
+  - service: light.turn_on
+    entity_id: light.bathroom_strip
+    data:
+      brightness: 255
+      #hs_color: [180,71.429]
+      rgb_color: [72,255,255]
+      #xy_color: [0.167,0.341]
+
+
+# Toilet lights defaults
+
+set_toilet_lights_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.toilet_lights
+    data:
+      brightness_pct: 100
+      kelvin: 8000
+  - service: script.turn_on
+    entity_id: script.set_toilet_strip_to_default
+
+set_toilet_strip_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.toilet_strip
+    data:
+      brightness: 255
+      #hs_color: [180,85.714]
+      rgb_color: [36,255,255]
+      #xy_color: [0.156,0.342]
+
+
+# Hallway lights default
+
+set_hallway_lights_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.hallway_lights
+    data:
+      brightness_pct: 50
+      kelvin: 8000
+  - service: script.turn_on
+    entity_id: script.set_hallway_strip_to_default
+
+set_hallway_strip_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.hallway_strip
+    data:
+      brightness: 199
+      #hs_color: [270,28.571]
+      rgb_color: [218,182,255]
+      #xy_color: [0.307,0.245]
+
+
+# Living room lights defaults
+
+set_living_room_lights_to_default:
+  sequence:
+  - service: script.turn_on
+    entity_id: script.set_living_room_relax_area_lights_to_default
+  - service: script.turn_on
+    entity_id: script.set_living_room_dining_area_lights_to_default
+
+set_living_room_relax_area_lights_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.living_room_relax_area_lights
+    data:
+      brightness_pct: 50
+      kelvin: 9000#6000
+
+set_living_room_dining_area_lights_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.living_room_dining_area_lights
+    data:
+      brightness_pct: 50
+      kelvin: 9000#6000
+
+
+# Kitchen lights defaults
+
+set_kitchen_lights_to_default:
+  sequence:
+  - service: script.turn_on
+    entity_id: script.set_kitchen_countertop_lights_to_default
+  - service: script.turn_on
+    entity_id: script.set_kitchen_island_lights_to_default
+#  - service: script.turn_on
+#    entity_id: script.set_kitchen_cabinet_strip_to_default
+  - service: script.turn_on
+    entity_id: script.set_kitchen_island_strip_to_default
+
+set_kitchen_countertop_lights_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.kitchen_countertop_lights
+    data:
+      brightness_pct: 100
+      kelvin: 5500
+
+set_kitchen_island_lights_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.kitchen_island_lights
+    data:
+      brightness_pct: 50
+      kelvin: 6500
+
+set_kitchen_cabinet_strip_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.toilet_strip
+    data:
+      brightness: 168
+      color_temp: 115
+
+set_kitchen_island_strip_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.toilet_strip
+    data:
+      brightness: 126
+      color_temp: 111
+
+
+# Office lights defaults
+
+set_office_lights_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.office_lights
+    data:
+      brightness_pct: 66
+      kelvin: 9000
+
+
+# Bedroom lights defaults
+set_bedroom_downlights_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.bedroom_downlights
+    data:
+      brightness_pct: 50
+      kelvin: 9000
+
+set_bedroom_lights_to_default:
+  sequence:
+  - service: script.turn_on
+    entity_id: script.set_bedroom_downlights_to_default
+  - service: script.turn_on
+    entity_id: script.set_bedroom_cabinet_strip_to_default
+  - service: script.turn_on
+    entity_id: script.set_bedroom_strip_to_default
+
+set_bedroom_cabinet_strip_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.bedroom_cabinet_strip
+    data:
+      brightness_pct: 50
+      kelvin: 9000
+
+set_bedroom_strip_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.bedroom_strip
+    data:
+      brightness_pct: 75
+      kelvin: 9000
+
