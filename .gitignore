@@ -1,5 +1,6 @@
 *.env
 secrets.yaml
+ip_bans.yaml
 wideq_state.json
 known_devices.yaml
 tts/
