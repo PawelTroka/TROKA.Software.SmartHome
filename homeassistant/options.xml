@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To be effective, this file should be placed in the user data folder specified in the Options::Create method -->
+<Options xmlns='http://code.google.com/p/open-zwave/'>
+  <Option name="logging" value="true" />
+  <Option name="Associate" value="true" />
+  <Option name="NotifyTransactions" value="false" />
+  <Option name="DriverMaxAttempts" value="5" />
+  <Option name="SaveConfiguration" value="true" />
+  <!-- <Option name="RetryTimeout" value="40000" /> -->
+  <!-- If you are using any Security Devices, you MUST set a network Key -->
+  <!-- <Option name="NetworkKey" value="XXX, XYZ, ZZZ, ..." /> -->
+
+  <!-- Some Devices have a big UserCode Table, that can mean startup times
+  when refreshing Session Variables is very long (Especialy on Security
+  Devices) This option will make the UserCode CC stop on the first
+  "available" usercode slot rather than retrieve every one -->
+  <Option name="RefreshAllUserCodes" value="false" />
+  <Option name="ThreadTerminateTimeout" value="5000" />
+</Options>
