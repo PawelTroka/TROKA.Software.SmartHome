@@ -3,3 +3,5 @@ home-assistant.log
 
 pyozw.sqlite
 OZW_Log.txt
+
+.shopping_list.json
