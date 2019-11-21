@@ -508,6 +508,44 @@ services:
       - ${HOMESERVERDIR}/shared:/shared
 
 
+  unifi-controller:
+    container_name: unifi-controller
+    image: jacobalberty/unifi
+    restart: always
+    volumes:
+      - '${HOMESERVERDIR}/unifi:/unifi'
+    ports:
+      - "3478:3478/udp" # STUN
+      - "6789:6789/tcp" # Speed test
+      - "8182:8080/tcp" # Device/ controller communication
+      - "8443:8443/tcp" # Controller GUI/API as seen in a web browser
+      - "8880:8880/tcp" # HTTP portal redirection
+      - "8843:8843/tcp" # HTTPS portal redirection
+      - "10001:10001/udp" # AP discovery
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+    networks:
+      - traefik_proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=unifi-controller"
+      - "traefik.frontend.rule=Host:unifi.${DOMAINNAME}"
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefixStrip: /unifi"
+      - "traefik.port=8443"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.protocol=https"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=unifi.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+      - "traefik.frontend.headers.frameDeny=true"
+
 
 networks:
   traefik_proxy:
