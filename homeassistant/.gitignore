@@ -1,10 +1,21 @@
+secrets.yaml
+ip_bans.yaml
+known_devices.yaml
+wideq_state.json
+
 home-assistant_v2.db
 home-assistant.log
 
 pyozw.sqlite
 OZW_Log.txt
 
+tts/
+
 .shopping_list.json
+
+.august.conf
+.homeconnect-token-cache
+.miele-token-cache
 
 bravia.conf
 harmony_harmony_hub.conf
