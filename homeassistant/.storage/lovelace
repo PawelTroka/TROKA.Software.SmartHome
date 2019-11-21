@@ -1,0 +1,1289 @@
+{
+    "data": {
+        "config": {
+            "resources": [
+                {
+                    "type": "module",
+                    "url": "/local/mini-media-player-bundle.js?v=1.1.3"
+                }
+            ],
+            "title": "TROKA.Software.SmartHome",
+            "views": [
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "light.living_room_lights",
+                                "light.kitchen_lights",
+                                "light.hallway_lights",
+                                "light.bathroom_lights",
+                                "light.toilet_lights",
+                                "light.bedroom_lights",
+                                "light.office_lights"
+                            ],
+                            "title": "Lights",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "climate.living_room",
+                                "climate.bathroom",
+                                "climate.kitchen",
+                                "climate.bedroom",
+                                "climate.office"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Heating",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "person.pawel",
+                                "person.athena"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Residents",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "media_player.denon_avc_x6500h"
+                                },
+                                {
+                                    "entity": "media_player.bedroom_tv_2"
+                                },
+                                {
+                                    "entity": "media_player.living_room_tv_2"
+                                },
+                                {
+                                    "entity": "media_player.shield_2"
+                                },
+                                {
+                                    "entity": "media_player.living_room"
+                                },
+                                {
+                                    "entity": "media_player.kitchen"
+                                },
+                                {
+                                    "entity": "media_player.bathroom"
+                                },
+                                {
+                                    "entity": "media_player.toilet"
+                                },
+                                {
+                                    "entity": "media_player.bedroom"
+                                },
+                                {
+                                    "entity": "media_player.office"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Media",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.netatmo_indoor_temperature",
+                                "sensor.netatmo_indoor_humidity",
+                                "sensor.netatmo_indoor_pressure",
+                                "sensor.netatmo_indoor_co2",
+                                "sensor.netatmo_indoor_noise"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Indoor climate",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.netatmo_outdoor_temperature",
+                                "sensor.netatmo_outdoor_humidity",
+                                "sensor.netatmo_outdoor_rain_gauge_rain",
+                                "sensor.netatmo_outdoor_anemometer_strength",
+                                "sensor.netatmo_outdoor_anemometer_angle"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Outdoor climate",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "lock.front_door",
+                            "hold_action": {
+                                "action": "more-info"
+                            },
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "type": "entity-button"
+                        }
+                    ],
+                    "path": "default_view",
+                    "title": "Home"
+                },
+                {
+                    "cards": [
+                        {
+                            "entity": "climate.living_room",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entity": "media_player.denon_avc_x6500h",
+                            "hide": {
+                                "sound_mode": false
+                            },
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entity": "media_player.denon_avr",
+                            "hide": {
+                                "sound_mode": false
+                            },
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entity": "media_player.living_room_tv_2",
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entity": "media_player.living_room",
+                            "hide": {
+                                "shuffle": false
+                            },
+                            "speaker_group": {
+                                "entities": [
+                                    {
+                                        "entity_id": "media_player.living_room",
+                                        "name": "Sonos Living Room"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bathroom",
+                                        "name": "Sonos Bathroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.toilet",
+                                        "name": "Sonos Toilet"
+                                    },
+                                    {
+                                        "entity_id": "media_player.kitchen",
+                                        "name": "Sonos Kitchen"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bedroom",
+                                        "name": "Sonos Bedroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.office",
+                                        "name": "Sonos Office"
+                                    }
+                                ],
+                                "platform": "sonos",
+                                "show_group_count": true
+                            },
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.living_room_lights"
+                                },
+                                {
+                                    "entity": "light.living_room_relax_area_lights"
+                                },
+                                {
+                                    "entity": "light.living_room_dining_area_lights"
+                                },
+                                {
+                                    "entity": "light.living_room_downlight_1"
+                                },
+                                {
+                                    "entity": "light.living_room_downlight_2"
+                                },
+                                {
+                                    "entity": "light.living_room_downlight_3"
+                                },
+                                {
+                                    "entity": "light.living_room_downlight_4"
+                                },
+                                {
+                                    "entity": "light.living_room_downlight_5"
+                                },
+                                {
+                                    "entity": "light.living_room_downlight_6"
+                                },
+                                {
+                                    "entity": "light.living_room_downlight_7"
+                                },
+                                {
+                                    "entity": "light.living_room_downlight_8"
+                                }
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "sensor.living_room_humidity",
+                            "type": "sensor"
+                        },
+                        {
+                            "entity": "media_player.living_room_speaker",
+                            "type": "media-control"
+                        },
+                        {
+                            "entities": [
+                                "remote.harmony_hub"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Remote",
+                            "type": "entities"
+                        },
+                        {
+                            "camera_image": "camera.living_room_cam",
+                            "camera_view": "live",
+                            "entities": [
+                                "camera.living_room_cam"
+                            ],
+                            "title": "Living room cam",
+                            "type": "picture-glance"
+                        }
+                    ],
+                    "path": "living_room",
+                    "title": "Living room"
+                },
+                {
+                    "cards": [
+                        {
+                            "entity": "climate.kitchen",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entity": "media_player.kitchen",
+                            "hide": {
+                                "shuffle": false
+                            },
+                            "speaker_group": {
+                                "entities": [
+                                    {
+                                        "entity_id": "media_player.kitchen",
+                                        "name": "Sonos Kitchen"
+                                    },
+                                    {
+                                        "entity_id": "media_player.living_room",
+                                        "name": "Sonos Living Room"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bathroom",
+                                        "name": "Sonos Bathroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.toilet",
+                                        "name": "Sonos Toilet"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bedroom",
+                                        "name": "Sonos Bedroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.office",
+                                        "name": "Sonos Office"
+                                    }
+                                ],
+                                "platform": "sonos",
+                                "show_group_count": true
+                            },
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entities": [
+                                "light.kitchen_lights",
+                                "light.kitchen_countertop_lights",
+                                "light.kitchen_island_lights",
+                                "light.kitchen_island_light_1",
+                                "light.kitchen_island_downlight_2",
+                                "light.kitchen_island_strip",
+                                "light.kitchen_light_1",
+                                "light.kitchen_light_2",
+                                "light.kitchen_light_3",
+                                "light.kitchen_light_4",
+                                "light.kitchen_cabinet_strip"
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.fridge_freezer_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.fridge_freezer_info"
+                                },
+                                {
+                                    "entity": "binary_sensor.fridge_freezer_failure"
+                                },
+                                {
+                                    "entity": "miele.fridge_freezer"
+                                },
+                                {
+                                    "entity": "sensor.fridge_freezer_elapsed_time"
+                                },
+                                {
+                                    "entity": "sensor.fridge_freezer_remaining_time"
+                                },
+                                {
+                                    "entity": "sensor.fridge_freezer_start_time"
+                                },
+                                {
+                                    "entity": "sensor.fridge_freezer_status"
+                                },
+                                {
+                                    "entity": "sensor.fridge_freezer_target_temperature_0"
+                                },
+                                {
+                                    "entity": "sensor.fridge_freezer_target_temperature_1"
+                                },
+                                {
+                                    "entity": "sensor.fridge_freezer_temperature_0"
+                                },
+                                {
+                                    "entity": "sensor.fridge_freezer_temperature_1"
+                                },
+                                {
+                                    "entity": "sensor.fridge_freezer_temperature_2"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Fridge-freezer",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.cooktop"
+                                },
+                                {
+                                    "entity": "switch.cooktop_program_powerlevelmode"
+                                },
+                                {
+                                    "entity": "sensor.cooktop_program_progress"
+                                },
+                                {
+                                    "entity": "sensor.cooktop_remaining_program_time"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Cooktop",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.kitchen_nest_protect_co_status"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_nest_protect_smoke_status"
+                                },
+                                {
+                                    "entity": "binary_sensor.kitchen_flood_sensor"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_humidity"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_temperature"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Sensors",
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "kitchen",
+                    "title": "Kitchen"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "light.hallway_lights",
+                                "light.hallway_downlight_1",
+                                "light.hallway_downlight_2",
+                                "light.hallway_downlight_3",
+                                "light.hallway_downlight_4",
+                                "light.hallway_downlight_5",
+                                "light.hallway_strip"
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "remote.harmony_hub"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Remote",
+                            "type": "entities"
+                        },
+                        {
+                            "camera_image": "camera.front_door_cam",
+                            "camera_view": "live",
+                            "entities": [
+                                "camera.front_door_cam"
+                            ],
+                            "title": "Front door cam",
+                            "type": "picture-glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.hallway_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.hallway_multisensor_motion"
+                                },
+                                {
+                                    "entity": "sensor.hallway_door_opening_sensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.hallway_multisensor_luminance"
+                                },
+                                {
+                                    "entity": "sensor.hallway_multisensor_relative_humidity"
+                                },
+                                {
+                                    "entity": "sensor.hallway_multisensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.hallway_multisensor_ultraviolet"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "lock.front_door",
+                            "hold_action": {
+                                "action": "more-info"
+                            },
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "type": "entity-button"
+                        },
+                        {
+                            "entity": "switch.central_tablet_plug",
+                            "hold_action": {
+                                "action": "more-info"
+                            },
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "type": "entity-button"
+                        }
+                    ],
+                    "path": "hallway",
+                    "title": "Hallway"
+                },
+                {
+                    "cards": [
+                        {
+                            "entity": "climate.bathroom",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entity": "media_player.bathroom",
+                            "hide": {
+                                "shuffle": false
+                            },
+                            "speaker_group": {
+                                "entities": [
+                                    {
+                                        "entity_id": "media_player.bathroom",
+                                        "name": "Sonos Bathroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.toilet",
+                                        "name": "Sonos Toilet"
+                                    },
+                                    {
+                                        "entity_id": "media_player.living_room",
+                                        "name": "Sonos Living Room"
+                                    },
+                                    {
+                                        "entity_id": "media_player.kitchen",
+                                        "name": "Sonos Kitchen"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bedroom",
+                                        "name": "Sonos Bedroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.office",
+                                        "name": "Sonos Office"
+                                    }
+                                ],
+                                "platform": "sonos",
+                                "show_group_count": true
+                            },
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entities": [
+                                "light.bathroom_lights",
+                                "light.bathroom_light_1",
+                                "light.bathroom_light_2",
+                                "light.bathroom_light_3",
+                                "light.bathroom_light_4",
+                                "light.bathroom_light_5",
+                                "light.bathroom_light_6",
+                                "light.bathroom_mirror_light_1",
+                                "light.bathroom_mirror_light_2",
+                                "light.bathroom_strip"
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.bathroom_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.bathroom_multisensor_motion"
+                                },
+                                {
+                                    "entity": "binary_sensor.bathroom_flood_sensor"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_door_opening_sensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_multisensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_flood_sensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_multisensor_relative_humidity"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_humidity"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_multisensor_luminance"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_multisensor_ultraviolet"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "sensor.bathroom_multisensor_burglar",
+                            "name": "Bathroom motion",
+                            "type": "sensor"
+                        }
+                    ],
+                    "path": "bathroom",
+                    "title": "Bathroom"
+                },
+                {
+                    "cards": [
+                        {
+                            "entity": "media_player.toilet",
+                            "hide": {
+                                "shuffle": false
+                            },
+                            "speaker_group": {
+                                "entities": [
+                                    {
+                                        "entity_id": "media_player.toilet",
+                                        "name": "Sonos Toilet"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bathroom",
+                                        "name": "Sonos Bathroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.office",
+                                        "name": "Sonos Office"
+                                    },
+                                    {
+                                        "entity_id": "media_player.living_room",
+                                        "name": "Sonos Living Room"
+                                    },
+                                    {
+                                        "entity_id": "media_player.kitchen",
+                                        "name": "Sonos Kitchen"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bedroom",
+                                        "name": "Sonos Bedroom"
+                                    }
+                                ],
+                                "platform": "sonos",
+                                "show_group_count": true
+                            },
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entities": [
+                                "light.toilet_lights",
+                                "light.toilet_light",
+                                "light.toilet_strip"
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.toilet_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.toilet_multisensor_motion"
+                                },
+                                {
+                                    "entity": "binary_sensor.toilet_flood_sensor"
+                                },
+                                {
+                                    "entity": "sensor.toilet_door_opening_sensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.toilet_multisensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.toilet_flood_sensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.toilet_multisensor_relative_humidity"
+                                },
+                                {
+                                    "entity": "sensor.toilet_multisensor_luminance"
+                                },
+                                {
+                                    "entity": "sensor.toilet_multisensor_ultraviolet"
+                                }
+                            ],
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "toilet",
+                    "title": "Toilet"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "light.bedroom_lights",
+                                "light.bedroom_downlight_1",
+                                "light.bedroom_downlight_2",
+                                "light.bedroom_downlight_3",
+                                "light.bedroom_downlight_4",
+                                "light.bedroom_strip",
+                                "light.bedroom_cabinet_strip"
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "climate.bedroom",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entity": "media_player.bedroom_tv_2",
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entity": "media_player.bedroom",
+                            "hide": {
+                                "shuffle": false
+                            },
+                            "speaker_group": {
+                                "entities": [
+                                    {
+                                        "entity_id": "media_player.bedroom",
+                                        "name": "Sonos Bedroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.living_room",
+                                        "name": "Sonos Living Room"
+                                    },
+                                    {
+                                        "entity_id": "media_player.kitchen",
+                                        "name": "Sonos Kitchen"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bathroom",
+                                        "name": "Sonos Bathroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.toilet",
+                                        "name": "Sonos Toilet"
+                                    },
+                                    {
+                                        "entity_id": "media_player.office",
+                                        "name": "Sonos Office"
+                                    }
+                                ],
+                                "platform": "sonos",
+                                "show_group_count": true
+                            },
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.bedroom_door"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_temperature"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_max_temp"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_min_temp"
+                                },
+                                {
+                                    "entity": "sensor.eight_room_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_door_opening_sensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_humidity"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_humidity"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_co2"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_nest_protect_co_status"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_nest_protect_smoke_status"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Sensors",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.eight_left_bed_presence"
+                                },
+                                {
+                                    "entity": "sensor.eight_left_bed_state"
+                                },
+                                {
+                                    "entity": "sensor.eight_left_bed_temperature"
+                                },
+                                {
+                                    "entity": "sensor.eight_left_previous_sleep_session"
+                                },
+                                {
+                                    "entity": "sensor.eight_left_sleep_session"
+                                },
+                                {
+                                    "entity": "sensor.eight_left_sleep_stage"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Pawel's bed",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.eight_right_bed_presence"
+                                },
+                                {
+                                    "entity": "sensor.eight_right_bed_state"
+                                },
+                                {
+                                    "entity": "sensor.eight_right_bed_temperature"
+                                },
+                                {
+                                    "entity": "sensor.eight_right_previous_sleep_session"
+                                },
+                                {
+                                    "entity": "sensor.eight_right_sleep_session"
+                                },
+                                {
+                                    "entity": "sensor.eight_right_sleep_stage"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Athena's bed",
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "bedroom",
+                    "title": "Bedroom"
+                },
+                {
+                    "cards": [
+                        {
+                            "entity": "climate.office",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entity": "media_player.office",
+                            "hide": {
+                                "shuffle": false
+                            },
+                            "speaker_group": {
+                                "entities": [
+                                    {
+                                        "entity_id": "media_player.office",
+                                        "name": "Sonos Office"
+                                    },
+                                    {
+                                        "entity_id": "media_player.toilet",
+                                        "name": "Sonos Toilet"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bathroom",
+                                        "name": "Sonos Bathroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.living_room",
+                                        "name": "Sonos Living Room"
+                                    },
+                                    {
+                                        "entity_id": "media_player.kitchen",
+                                        "name": "Sonos Kitchen"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bedroom",
+                                        "name": "Sonos Bedroom"
+                                    }
+                                ],
+                                "platform": "sonos",
+                                "show_group_count": true
+                            },
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entities": [
+                                "light.office_lights",
+                                "light.office_light_1",
+                                "light.office_light_2",
+                                "light.office_light_3",
+                                "light.office_light_4",
+                                "light.office_light_5"
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.office_door"
+                                },
+                                {
+                                    "entity": "sensor.office_door_opening_sensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.office_temperature"
+                                },
+                                {
+                                    "entity": "sensor.office_humidity"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.ups_temperature"
+                                },
+                                {
+                                    "entity": "sensor.ups_remaining_backup_time"
+                                },
+                                {
+                                    "entity": "sensor.ups_line_outage_time"
+                                },
+                                {
+                                    "entity": "sensor.ups_battery_capacity"
+                                },
+                                {
+                                    "entity": "sensor.ups_battery_voltage"
+                                },
+                                {
+                                    "entity": "sensor.ups_input_voltage"
+                                },
+                                {
+                                    "entity": "sensor.ups_input_frequency"
+                                },
+                                {
+                                    "entity": "sensor.ups_ouput_voltage"
+                                },
+                                {
+                                    "entity": "sensor.ups_output_frequency"
+                                },
+                                {
+                                    "entity": "sensor.ups_load"
+                                },
+                                {
+                                    "entity": "sensor.ups_load_percentage"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.transmission_down_speed"
+                                },
+                                {
+                                    "entity": "sensor.transmission_up_speed"
+                                },
+                                {
+                                    "entity": "sensor.transmission_status"
+                                },
+                                {
+                                    "entity": "sensor.transmission_started_torrents"
+                                },
+                                {
+                                    "entity": "sensor.transmission_active_torrents"
+                                },
+                                {
+                                    "entity": "sensor.transmission_total_torrents"
+                                },
+                                {
+                                    "entity": "sensor.transmission_completed_torrents"
+                                },
+                                {
+                                    "entity": "sensor.transmission_paused_torrents"
+                                },
+                                {
+                                    "entity": "switch.transmission_switch"
+                                },
+                                {
+                                    "entity": "switch.transmission_turtle_mode"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.sonarr_upcoming"
+                                },
+                                {
+                                    "entity": "sensor.radarr_movies"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.speedtest_download"
+                                },
+                                {
+                                    "entity": "sensor.speedtest_upload"
+                                },
+                                {
+                                    "entity": "sensor.speedtest_ping"
+                                }
+                            ],
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "office",
+                    "title": "Office"
+                },
+                {
+                    "cards": [
+                        {
+                            "entity": "weather.openweathermap",
+                            "type": "weather-forecast"
+                        },
+                        {
+                            "entity": "sensor.netatmo_outdoor_temperature",
+                            "type": "sensor"
+                        },
+                        {
+                            "entity": "sensor.netatmo_outdoor_humidity",
+                            "type": "sensor"
+                        },
+                        {
+                            "entity": "sensor.netatmo_outdoor_rain_gauge_sum_rain_1",
+                            "type": "sensor"
+                        },
+                        {
+                            "entity": "sensor.netatmo_outdoor_rain_gauge_rain",
+                            "type": "sensor"
+                        },
+                        {
+                            "entity": "sensor.netatmo_outdoor_rain_gauge_sum_rain_24",
+                            "type": "sensor"
+                        },
+                        {
+                            "entity": "sensor.netatmo_outdoor_anemometer_strength",
+                            "type": "sensor"
+                        },
+                        {
+                            "entity": "sensor.netatmo_outdoor_anemometer_gust_strength",
+                            "type": "sensor"
+                        },
+                        {
+                            "entity": "sensor.netatmo_outdoor_anemometer_angle",
+                            "type": "sensor"
+                        },
+                        {
+                            "entity": "sensor.netatmo_outdoor_anemometer_gust_angle",
+                            "type": "sensor"
+                        },
+                        {
+                            "entity": "sensor.waqi_gdansk_wrzeszcz_gdansk_poland",
+                            "type": "sensor"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sun.sun"
+                                }
+                            ],
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "outdoor",
+                    "title": "Outdoor"
+                },
+                {
+                    "badges": [
+                        "sensor.yr_symbol",
+                        "sensor.bitcoin",
+                        "sensor.whois",
+                        "sensor.kitchen_nest_protect_battery_health",
+                        "sensor.fast_com_download",
+                        "sensor.speedtest_upload",
+                        "sensor.speedtest_download",
+                        "sensor.speedtest_ping",
+                        "sensor.bathroom_power",
+                        "sensor.bathroom_link",
+                        "sensor.troka_software_smarthome_eta",
+                        "sensor.bathroom_heating",
+                        "sensor.living_room_speaker_alarm",
+                        "sensor.bathroom_tado_mode",
+                        "sensor.netatmo_indoor_wifi",
+                        "sensor.living_room_speaker_timer",
+                        "sensor.bathroom_overlay",
+                        "sensor.bedroom_nest_protect_color_status",
+                        "sensor.kitchen_nest_protect_color_status",
+                        "sensor.office_temperature",
+                        "sensor.bedroom_nest_protect_battery_health",
+                        "sensor.office_power",
+                        "sensor.netatmo_bedroom_radio",
+                        "sensor.office_link",
+                        "sensor.netatmo_bedroom_battery",
+                        "sensor.office_heating",
+                        "sensor.netatmo_outdoor_radio",
+                        "sensor.office_tado_mode",
+                        "sensor.netatmo_outdoor_battery",
+                        "sensor.office_overlay",
+                        "sensor.netatmo_bedroom_battery_percent",
+                        "sensor.living_room_temperature",
+                        "sensor.bedroom_temperature",
+                        "sensor.netatmo_outdoor_battery_percent",
+                        "sensor.living_room_power",
+                        "sensor.bedroom_power",
+                        "sensor.living_room_link",
+                        "sensor.bedroom_link",
+                        "sensor.living_room_heating",
+                        "sensor.bedroom_heating",
+                        "sensor.living_room_tado_mode",
+                        "sensor.bedroom_tado_mode",
+                        "sensor.living_room_overlay",
+                        "sensor.bedroom_overlay",
+                        "sensor.troka_software_apartment_tado_bridge_status",
+                        "sensor.kitchen_temperature",
+                        "sensor.kitchen_power",
+                        "sensor.kitchen_link",
+                        "sensor.kitchen_heating",
+                        "sensor.kitchen_tado_mode",
+                        "sensor.kitchen_overlay",
+                        "sensor.bathroom_temperature",
+                        "sensor.aeotec_zw100_multisensor_6_alarm_type",
+                        "sensor.aeotec_zw100_multisensor_6_alarm_level",
+                        "sensor.aeotec_zw100_multisensor_6_sourcenodeid",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_alarm_type",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_alarm_level_2",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_sourcenodeid",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_heat",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_access_control",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_burglar",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_power_management",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_alarm_type_2",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_alarm_level",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_sourcenodeid_2",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_heat_2",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_access_control_2",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_burglar_2",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_power_management_2",
+                        "sensor.aeotec_zw100_multisensor_6_alarm_type_2",
+                        "sensor.aeotec_zw100_multisensor_6_alarm_level_2",
+                        "sensor.aeotec_zw100_multisensor_6_sourcenodeid_2",
+                        "sensor.aeotec_zw130_wallmote_quad_alarm_type",
+                        "sensor.aeotec_zw130_wallmote_quad_alarm_level",
+                        "sensor.aeotec_zw130_wallmote_quad_sourcenodeid",
+                        "sensor.aeotec_zw130_wallmote_quad_power_management",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_alarm_type_3",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_alarm_level_3",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_sourcenodeid_3",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_heat_3",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_access_control_3",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_burglar_3",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_power_management_3",
+                        "sensor.aeotec_zw130_wallmote_quad_alarm_type_2",
+                        "sensor.aeotec_zw130_wallmote_quad_alarm_level_2",
+                        "sensor.aeotec_zw130_wallmote_quad_sourcenodeid_2",
+                        "sensor.aeotec_zw130_wallmote_quad_power_management_2",
+                        "sensor.aeotec_zw100_multisensor_6_alarm_type_3",
+                        "sensor.aeotec_zw100_multisensor_6_alarm_level_3",
+                        "sensor.aeotec_zw100_multisensor_6_sourcenodeid_3",
+                        "sensor.aeotec_zw130_wallmote_quad_alarm_type_3",
+                        "sensor.aeotec_zw130_wallmote_quad_alarm_level_3",
+                        "sensor.aeotec_zw130_wallmote_quad_sourcenodeid_3",
+                        "sensor.aeotec_zw130_wallmote_quad_power_management_3",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_alarm_type_4",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_alarm_level_4",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_sourcenodeid_4",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_heat_4",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_access_control_4",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_burglar_4",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_power_management_4",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_alarm_type_5",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_alarm_level_5",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_sourcenodeid_5",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_heat_5",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_access_control_5",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_burglar_5",
+                        "sensor.fibaro_system_fgdw002_door_opening_sensor_2_power_management_5",
+                        "sun.sun"
+                    ],
+                    "cards": [
+                        {
+                            "entities": [
+                                "automation.turn_on_bedroom_tv_on_wallmote_button_2_click",
+                                "automation.turn_off_bedroom_tv_on_wallmote_button_2_hold",
+                                "automation.turn_bedroom_lights_on_door_open",
+                                "automation.turn_office_lights_on_door_open",
+                                "automation.turn_hallway_lights_on_door_open",
+                                "automation.turn_bathroom_lights_on_door_open",
+                                "automation.turn_off_bathroom_lights_on_door_close_if_there_is_no_motion_inside",
+                                "automation.turn_toilet_lights_on_door_open",
+                                "automation.turn_off_toilet_lights_on_door_close_if_there_is_no_motion_inside",
+                                "automation.turn_toilet_light_to_100_on_motion",
+                                "automation.turn_off_everything_when_everybody_leaves_home",
+                                "automation.turn_off_toilet_light_when_motion_stops",
+                                "automation.turn_on_bathroom_lights_on_wallmote_button_1_click",
+                                "automation.turn_bathroom_lights_to_100_on_motion",
+                                "automation.turn_off_bathroom_lights_on_wallmote_button_1_hold",
+                                "automation.turn_off_bathroom_lights_when_motion_stops_unless_humidity_is_high",
+                                "automation.turn_on_hallway_lights_on_wallmote_button_2_click",
+                                "automation.turn_off_bathroom_lights_when_humidity_gets_lower_than_70_percent_unless_there_is_motion",
+                                "automation.turn_off_hallway_lights_on_wallmote_button_2_hold",
+                                "automation.turn_on_living_room_lights_on_wallmote_button_3_click",
+                                "automation.turn_off_living_room_lights_on_wallmote_button_3_hold",
+                                "automation.turn_on_kitchen_lights_on_wallmote_button_4_click",
+                                "automation.turn_off_kitchen_lights_on_wallmote_button_4_hold",
+                                "automation.turn_on_office_lights_on_wallmote_button_1_click",
+                                "automation.turn_off_office_lights_on_wallmote_button_1_hold",
+                                "automation.turn_on_toilet_lights_on_wallmote_button_2_click",
+                                "automation.turn_off_toilet_lights_on_wallmote_button_2_hold",
+                                "automation.turn_on_hallway_lights_on_wallmote_button_3_click",
+                                "automation.turn_off_hallway_lights_on_wallmote_button_3_hold",
+                                "automation.turn_on_toilet_strip_on_wallmote_button_4_click",
+                                "automation.turn_off_toilet_strip_on_wallmote_button_4_hold",
+                                "automation.turn_on_bedroom_lights_on_wallmote_button_1_click",
+                                "automation.turn_off_bedroom_lights_on_wallmote_button_1_hold"
+                            ],
+                            "title": "Automation",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "switch.aeotec_zw130_wallmote_quad_switch_5",
+                                "switch.aeotec_zw130_wallmote_quad_switch",
+                                "switch.aeotec_zw130_wallmote_quad_switch_2",
+                                "switch.aeotec_zw130_wallmote_quad_switch_3",
+                                "switch.aeotec_zw130_wallmote_quad_switch_4",
+                                "switch.aeotec_zw130_wallmote_quad_switch_10",
+                                "switch.aeotec_zw130_wallmote_quad_switch_6",
+                                "switch.aeotec_zw130_wallmote_quad_switch_7",
+                                "switch.aeotec_zw130_wallmote_quad_switch_8",
+                                "switch.aeotec_zw130_wallmote_quad_switch_9",
+                                "switch.aeotec_zw130_wallmote_quad_switch_15",
+                                "switch.aeotec_zw130_wallmote_quad_switch_11",
+                                "switch.aeotec_zw130_wallmote_quad_switch_12",
+                                "switch.aeotec_zw130_wallmote_quad_switch_13",
+                                "switch.aeotec_zw130_wallmote_quad_switch_14"
+                            ],
+                            "title": "Switch",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "zwave.aeotec_zw090_z_stick_gen5_eu",
+                                "zwave.aeotec_zw100_multisensor_6",
+                                "zwave.fibaro_system_fgdw002_door_opening_sensor_2",
+                                "zwave.fibaro_system_fgdw002_door_opening_sensor_2_2",
+                                "zwave.aeotec_zw100_multisensor_6_2",
+                                "zwave.aeotec_zw130_wallmote_quad",
+                                "zwave.fibaro_system_fgdw002_door_opening_sensor_2_3",
+                                "zwave.aeotec_zw130_wallmote_quad_2",
+                                "zwave.aeotec_zw100_multisensor_6_3",
+                                "zwave.aeotec_zw130_wallmote_quad_3",
+                                "zwave.fibaro_system_fgdw002_door_opening_sensor_2_4",
+                                "zwave.fibaro_system_fgdw002_door_opening_sensor_2_5"
+                            ],
+                            "title": "Z-Wave",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "person.alex_wronski"
+                                },
+                                {
+                                    "entity": "person.filip_malinowski"
+                                },
+                                {
+                                    "entity": "person.karol_szymczak"
+                                },
+                                {
+                                    "entity": "person.slawomir_kasprowicz"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Guests",
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "advanced",
+                    "title": "Advanced"
+                }
+            ]
+        }
+    },
+    "key": "lovelace",
+    "version": 1
+}
