@@ -15,3 +15,4 @@ harmony_harmony_hub.conf
 /.storage/core.device_registry
 /.storage/core.entity_registry
 /.storage/core.restore_state
+/.storage/frontend.user_data_*
