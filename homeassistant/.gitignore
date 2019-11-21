@@ -20,6 +20,8 @@ tts/
 bravia.conf
 harmony_harmony_hub.conf
 
+/core
+
 /.storage/auth
 /.storage/auth_provider.homeassistant
 /.storage/core.config_entries
