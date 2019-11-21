@@ -14,3 +14,4 @@ harmony_harmony_hub.conf
 /.storage/core.area_registry
 /.storage/core.device_registry
 /.storage/core.entity_registry
+/.storage/core.restore_state
