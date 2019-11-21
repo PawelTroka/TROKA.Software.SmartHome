@@ -8,4 +8,3 @@ __pycache__/
 .august.conf
 .homeconnect-token-cache
 .miele-token-cache
-*.db
