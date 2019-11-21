@@ -10,3 +10,4 @@ bravia.conf
 harmony_harmony_hub.conf
 
 /.storage/auth_provider.homeassistant
+/.storage/core.config_entries
