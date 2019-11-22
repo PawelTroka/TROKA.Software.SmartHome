@@ -17,3 +17,7 @@ __pycache__/
 /mariadb
 /nextcloud
 /unifi
+/pihole/etc-dnsmasq.d
+/pihole/etc-pihole/**
+!/pihole/etc-pihole/adlists.list
+!/pihole/etc-pihole/whitelist.txt
