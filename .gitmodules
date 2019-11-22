@@ -4,6 +4,3 @@
 [submodule "homeassistant/custom_components/smartthinq"]
 	path = homeassistant/custom_components/smartthinq
 	url = https://github.com/sampsyo/hass-smartthinq.git
-[submodule "homeassistant/custom_components/homeconnect"]
-	path = homeassistant/custom_components/homeconnect
-	url = https://github.com/DavidMStraub/homeconnect.git
