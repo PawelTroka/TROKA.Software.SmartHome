@@ -25,6 +25,7 @@ harmony_harmony_hub.conf
 /.storage/auth
 /.storage/auth_provider.homeassistant
 /.storage/cloud
+/.storage/unifi_data
 /.storage/core.config_entries
 /.storage/core.area_registry
 /.storage/core.device_registry
