@@ -190,6 +190,7 @@ tado:
 glances:
   - host: localhost
 
+
 fastdotcom:
   scan_interval:
       minutes: 30
@@ -422,6 +423,15 @@ binary_sensor:
 
 
 sensor:
+  - platform: hddtemp
+    name: /dev/sdc
+    port: 11233
+  - platform: hddtemp
+    name: /dev/sdd
+    port: 11234
+  - platform: hddtemp
+    name: /dev/sde
+    port: 11235
   - platform: snmp
     name: 'UPS temperature'
     host: 10.10.10.90
