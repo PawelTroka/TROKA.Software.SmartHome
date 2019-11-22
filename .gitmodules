@@ -4,3 +4,6 @@
 [submodule "homeassistant/custom_components/hass-smartthinq"]
 	path = homeassistant/custom_components/hass-smartthinq
 	url = https://github.com/sampsyo/hass-smartthinq.git
+[submodule "homeassistant/custom_components/miele"]
+	path = homeassistant/custom_components/miele
+	url = https://github.com/docbobo/home-assistant-miele.git
