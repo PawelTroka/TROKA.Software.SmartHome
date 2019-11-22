@@ -1,3 +1,6 @@
 [submodule "homeassistant/custom_components/wideq"]
 	path = homeassistant/custom_components/wideq
 	url = https://github.com/sampsyo/wideq.git
+[submodule "homeassistant/custom_components/hass-smartthinq"]
+	path = homeassistant/custom_components/hass-smartthinq
+	url = https://github.com/sampsyo/hass-smartthinq.git
