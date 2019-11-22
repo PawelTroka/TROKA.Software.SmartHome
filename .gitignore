@@ -1,5 +1,6 @@
 *.env
 __pycache__/
+/shared/.htpasswd
 /traefik/traefik.toml
 /traefik/rules.toml
 /traefik/acme
