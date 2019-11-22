@@ -7,3 +7,6 @@
 [submodule "homeassistant/custom_components/miele"]
 	path = homeassistant/custom_components/miele
 	url = https://github.com/docbobo/home-assistant-miele.git
+[submodule "homeassistant/custom_components/homeconnect"]
+	path = homeassistant/custom_components/homeconnect
+	url = https://github.com/DavidMStraub/homeconnect.git
