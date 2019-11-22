@@ -1,4 +1,5 @@
 *.env
+*.pyc
 __pycache__/
 /shared/.htpasswd
 /traefik/traefik.toml
