@@ -1024,6 +1024,15 @@
                                 },
                                 {
                                     "entity": "sensor.glances_cpu_temp"
+                                },
+                                {
+                                    "entity": "sensor.dev_sdc_dev_sdc"
+                                },
+                                {
+                                    "entity": "sensor.dev_sdd_dev_sdd"
+                                },
+                                {
+                                    "entity": "sensor.dev_sde_dev_sde"
                                 }
                             ],
                             "type": "entities"
