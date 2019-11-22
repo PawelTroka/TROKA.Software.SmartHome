@@ -1004,6 +1004,29 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.glances_cpu_used"
+                                },
+                                {
+                                    "entity": "sensor.glances_ram_used_percent"
+                                },
+                                {
+                                    "entity": "sensor.glances_disk_used_percent"
+                                },
+                                {
+                                    "entity": "sensor.glances_swap_used_percent"
+                                },
+                                {
+                                    "entity": "sensor.glances_containers_active"
+                                },
+                                {
+                                    "entity": "sensor.glances_cpu_temp"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "path": "office",

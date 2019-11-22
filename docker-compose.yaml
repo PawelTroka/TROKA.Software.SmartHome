@@ -546,6 +546,18 @@ services:
       - "traefik.frontend.headers.STSPreload=true"
       - "traefik.frontend.headers.frameDeny=true"
 
+  monitoring:
+    image: nicolargo/glances
+    restart: always
+    pid: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+    ports:
+      - "61208:61208" 
+      - "61209:61209"
+    environment:
+      - "GLANCES_OPT=-w"
+
 
 networks:
   traefik_proxy:

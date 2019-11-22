@@ -186,6 +186,10 @@ tado:
   username: !secret tado_username
   password: !secret tado_password
 
+
+glances:
+  - host: localhost
+
 fastdotcom:
   scan_interval:
       minutes: 30
