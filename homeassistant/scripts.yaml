@@ -5,8 +5,7 @@ turn_off_everything:
     - service: light.turn_off
       entity_id: group.all_lights
     - service: climate.turn_off
-      data:
-        entity_id: group.all_climate
+      entity_id: group.all_climate
     - service: media_player.media_pause
       entity_id: group.all_sonos
     - service: media_player.turn_off
@@ -19,8 +18,7 @@ turn_off_everything:
 turn_on_necessary_things:
   sequence:
     - service: climate.turn_on
-      data:
-        entity_id: group.all_climate
+      entity_id: group.all_climate
 
 announce_everywhere:
   sequence:
