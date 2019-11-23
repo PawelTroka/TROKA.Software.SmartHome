@@ -213,3 +213,9 @@ gfwsl.geforce.com
 ipv6.msftncsi.com
 letsencrypt.org
 img1.wsimg.com
+mobile-ap.spotify.com
+apresolve.spotify.com
+upgrade.scdn.co
+market.spotify.com
+spclient-wg.spotify.com
+audio-ake.spotify.com.edgesuite.net
