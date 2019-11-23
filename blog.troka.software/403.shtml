@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Błąd 403 - Dostęp zabroniony</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="refresh" content="10;url=http://www.joi.pl" />
+<style type="text/css">
+<!--
+body {
+	background:url(http://default.joi.pl/images/joi-bg.png) repeat-x;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+	color:#333;
+	margin:0;
+	padding:0;
+}
+
+#JoiError {
+	width:710px;
+	margin:100px auto 0 auto;
+}
+
+#ErrorHeader img {
+	width:710px;
+	height:133px;
+}
+
+#ErrorBG {
+	background:url(http://default.joi.pl/images/bg.png) repeat-y;
+}
+
+#ContentHeader {
+	background:url(http://default.joi.pl/images/shadow.png) no-repeat;
+	min-height:160px;
+	padding:0 20px;
+}
+
+#ContentHeader h1 {
+	margin:0;
+	padding:10px 0 0 0;
+	position: relative;
+}
+
+.firstlayer {
+	color: #04AFEC;
+	font-style:40px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	z-index: 1;
+}
+.secondlayer {
+	color: #ccc;
+	font-style:40px;
+	position: absolute;
+	top: 21px;
+	left: 21px;
+	z-index: 0;
+} 
+
+#Content {
+	margin:60px 0 -5px 0;
+	text-align:center;
+}
+
+#ErrorFooter img {
+	width:710px;
+	height:20px;
+}
+
+#RedirInfo {
+	font-size:10px;
+	color:#999;
+	text-align:center;
+	margin-top:10px;
+}
+
+a {color:#999;text-decoration:none;}
+a:hover {text-decoration:underline;color:#04AFEC;}
+.valid {background:#D5FFCE;border:1px #9ADF8F solid;}
+.error {background:#FFCECE;border:1px #DF8F8F solid;}
+.status {background:#FFFBCC;border:1px #E6DB55 solid;}
+.error, .valid, .status{color:#000;text-align:center;padding:8px 6px 8px 36px;margin:0 20px 5px 20px;position:relative;}
+-->
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset='utf-8'></script>
+<script src="http://www.joi.pl/templates/scripts/joi.corner.js" type="text/javascript" charset='utf-8'></script>
+<script type="text/javascript">	
+	$(document).ready(function($){	
+		$(".valid, .error, .status").corner("6px");
+	});
+</script>
+</head>
+<body>
+
+<div id="JoiError">
+	<div id="ErrorHeader">
+		<img src="http://default.joi.pl/images/logo.png" alt="" />
+	</div>
+	<div id="ErrorBG">
+		<div id="ContentHeader">
+			<h1>
+				<span class="firstlayer">Błąd 403!</span>
+				<span class="secondlayer">Błąd 403!</span>
+			</h1>
+			<div id="Content">
+				<div class="error">Żądanie zasobu, który jest niedostępny z powodów bezpieczeństwa.</div>
+			</div>
+		</div>
+	</div>
+	<div id="ErrorFooter">
+		<img src="http://default.joi.pl/images/footer.png" alt="" />
+	</div>
+</div>
+<div id="RedirInfo">
+	Za chwilę zostaniesz przekierowany na stronę główną usługodawcy <a href="http://www.joi.pl" title="Hosting JOI.pl">JOI.pl</a>
+</div>
+
+</body>
+</html>
