@@ -842,6 +842,21 @@
                                 },
                                 {
                                     "entity": "sensor.withings_pulse_wave_velocity_pawel"
+                                },
+                                {
+                                    "entity": "sensor.withings_body_temperature_c_pawel"
+                                },
+                                {
+                                    "entity": "sensor.withings_skin_temperature_c_pawel"
+                                },
+                                {
+                                    "entity": "sensor.withings_temperature_c_pawel"
+                                },
+                                {
+                                    "entity": "sensor.withings_systolic_blood_pressure_mmhg_pawel"
+                                },
+                                {
+                                    "entity": "sensor.withings_diastolic_blood_pressure_mmhg_pawel"
                                 }
                             ],
                             "type": "entities"
