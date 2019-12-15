@@ -42,8 +42,8 @@ Home automation configuration, scripts and state of affairs
 |Fibaro door sensors|:heavy_check_mark:|:x:|:x:|:x:|
 |Aotec WallMotes|:warning:<sup>8</sup>|:x:|:x:|:x:|
 |D-Link flood sensors|:x:<sup>15</sup>|:x:|:x:|:heavy_check_mark:|
-|Whirlpool W11 Oven|:x:|:x:|:x:|:x:<sup>5</sup>|
-|Whirlpool W11 Microwave|:x:|:x:|:x:|:heavy_check_mark:|
+|Whirlpool W11 Oven|:x:|:x:|:x:|:heavy_check_mark:<sup>5</sup>|
+|Whirlpool W11 Microwave|:x:|:x:|:x:|:heavy_check_mark:<sup>5</sup>|
 |Eight Sleep|:heavy_check_mark:|:x:<sup>17</sup>|:x:|:heavy_check_mark:|
 
 
@@ -59,7 +59,7 @@ Home automation configuration, scripts and state of affairs
 
 <sup>4</sup> API does not support Cooktop yet (https://developer.home-connect.com/docs/cooktop/supported_programs_and_options). Only very basic functionality is exposed via custom component https://github.com/DavidMStraub/homeassistant-homeconnect.
 
-<sup>5</sup> Mobile app (https://play.google.com/store/apps/details?id=com.adbglobal.whirlpool&hl=en) doesn't work correctly, impossible to add new appliances. Problem reported to Whirlpool.
+<sup>5</sup> Mobile app (https://play.google.com/store/apps/details?id=com.adbglobal.whirlpool&hl=en) sucks hard but at least it finally shows connected appliances correctly.
 
 
 <sup>6</sup> Doesn't work with all the functionality - e.g. playback from Tidal is region-locked, grouping is limited.
