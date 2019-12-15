@@ -291,3 +291,4 @@ c.amazon-adsystem.com
 countess.twitch.tv
 pubsub-edge.twitch.tv
 cdn-gl.imrworldwide.com
+l.facebook.com
