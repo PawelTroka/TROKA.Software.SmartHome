@@ -72,6 +72,26 @@ transmission:
   username: !secret transmission_username
   password: !secret transmission_password
 
+climate:
+  - platform: warmup_cc
+    name: Bathroom floor
+    username: !secret warmup_username
+    password: !secret warmup_password
+    location: My home
+    room: Bathroom floor
+  - platform: warmup_cc
+    name: Toilet floor
+    username: !secret warmup_username
+    password: !secret warmup_password
+    location: My home
+    room: Toilet floor
+  - platform: warmup_cc
+    name: Kitchen floor
+    username: !secret warmup_username
+    password: !secret warmup_password
+    location: My home
+    room: Kitchen floor
+
 august:
   login_method: email
   username: !secret august_username
