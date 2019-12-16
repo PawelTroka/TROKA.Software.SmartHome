@@ -423,6 +423,8 @@ binary_sensor:
 
 
 sensor:
+  - platform: airthings
+    mac: C4:64:E3:ED:18:38 # replace with MAC of your Airthings Wave+
   - platform: hddtemp
     name: /dev/sdc
     port: 11233
