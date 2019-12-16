@@ -370,6 +370,12 @@
                                 },
                                 {
                                     "entity": "sensor.cooktop_remaining_program_time"
+                                },
+                                {
+                                    "entity": "sensor.cooktop_duration"
+                                },
+                                {
+                                    "entity": "sensor.cooktop_elapsed_program_time"
                                 }
                             ],
                             "show_header_toggle": false,
