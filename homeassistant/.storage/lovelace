@@ -483,6 +483,32 @@
                                 "action": "toggle"
                             },
                             "type": "entity-button"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.airthings_co2"
+                                },
+                                {
+                                    "entity": "sensor.airthings_humidity"
+                                },
+                                {
+                                    "entity": "sensor.airthings_long_term_radon"
+                                },
+                                {
+                                    "entity": "sensor.airthings_pressure"
+                                },
+                                {
+                                    "entity": "sensor.airthings_short_term_radon"
+                                },
+                                {
+                                    "entity": "sensor.airthings_temperature"
+                                },
+                                {
+                                    "entity": "sensor.airthings_voc"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "path": "hallway",
