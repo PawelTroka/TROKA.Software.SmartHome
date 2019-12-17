@@ -1,3 +1,45 @@
+# Flic
+- alias: Toggle lights in the bathroom when bathroom flic is pressed once
+  trigger:
+    platform: event
+    event_type: flic_click
+    event_data:
+      button_name: bathroom_flic
+      click_type: single
+  action:
+    service: light.toggle
+    entity_id: light.bathroom_lights
+- alias: Toggle lights in the office when office flic is pressed once
+  trigger:
+    platform: event
+    event_type: flic_click
+    event_data:
+      button_name: office_flic
+      click_type: single
+  action:
+    service: light.toggle
+    entity_id: light.office_lights
+- alias: Toggle lights in the living room dining area when kitchen flic is pressed once
+  trigger:
+    platform: event
+    event_type: flic_click
+    event_data:
+      button_name: kitchen_flic
+      click_type: single
+  action:
+    service: light.toggle
+    entity_id: light.living_room_dining_area_lights
+- alias: Toggle lights in the living room relax area when hallway flic is pressed once
+  trigger:
+    platform: event
+    event_type: flic_click
+    event_data:
+      button_name: hallway_flic
+      click_type: single
+  action:
+    service: light.toggle
+    entity_id: light.living_room_relax_area_lights
+
 # General
 
 - alias: 'Turn off everything when everybody leaves home'
