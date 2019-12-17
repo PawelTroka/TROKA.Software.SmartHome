@@ -150,7 +150,6 @@ secure.surveymonkey.com
 services.sonarr.tv
 sharepoint.com
 skyhook.sonarr.tv
-spclient.wg.spotify.com
 ssl.p.jwpcdn.com
 staging.plex.tv
 status.plex.tv
@@ -217,8 +216,6 @@ mobile-ap.spotify.com
 apresolve.spotify.com
 upgrade.scdn.co
 market.spotify.com
-spclient-wg.spotify.com
-audio-ake.spotify.com.edgesuite.net
 upload.facebook.com
 creative.ak.fbcdn.net
 external-lhr0-1.xx.fbcdn.net
