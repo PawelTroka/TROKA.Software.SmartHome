@@ -1,5 +1,22 @@
 # general
 
+set_all_lights_to_default:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.set_bathroom_lights_to_default
+    - service: script.turn_on
+      entity_id: script.set_toilet_lights_to_default
+    - service: script.turn_on
+      entity_id: script.set_hallway_lights_to_default
+    - service: script.turn_on
+      entity_id: script.set_living_room_lights_to_default
+    - service: script.turn_on
+      entity_id: script.set_kitchen_lights_to_default
+    - service: script.turn_on
+      entity_id: script.set_office_lights_to_default
+    - service: script.turn_on
+      entity_id: script.set_bedroom_lights_to_default
+
 turn_off_everything:
   sequence:
     - service: light.turn_off
@@ -146,7 +163,7 @@ set_living_room_relax_area_lights_to_default:
     entity_id: light.living_room_relax_area_lights
     data:
       brightness_pct: 50
-      kelvin: 9000#6000
+      kelvin: 9000 #6000
 
 set_living_room_dining_area_lights_to_default:
   sequence:
@@ -154,7 +171,7 @@ set_living_room_dining_area_lights_to_default:
     entity_id: light.living_room_dining_area_lights
     data:
       brightness_pct: 50
-      kelvin: 9000#6000
+      kelvin: 9000 #6000
 
 
 # Kitchen lights defaults
