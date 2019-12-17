@@ -4,7 +4,7 @@
     platform: event
     event_type: flic_click
     event_data:
-      button_name: bathroom_flic
+      button_name: flic_80e4da72f681 #bathroom_flic
       click_type: single
   action:
     service: light.toggle
@@ -14,7 +14,7 @@
     platform: event
     event_type: flic_click
     event_data:
-      button_name: office_flic
+      button_name: flic_80e4da735099 #office_flic
       click_type: single
   action:
     service: light.toggle
@@ -24,7 +24,7 @@
     platform: event
     event_type: flic_click
     event_data:
-      button_name: kitchen_flic
+      button_name: flic_80e4da74589d #kitchen_flic
       click_type: single
   action:
     service: light.toggle
@@ -34,7 +34,7 @@
     platform: event
     event_type: flic_click
     event_data:
-      button_name: hallway_flic
+      button_name: flic_80e4da734100 #hallway_flic
       click_type: single
   action:
     service: light.toggle
