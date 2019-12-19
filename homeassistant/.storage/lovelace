@@ -1100,6 +1100,38 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.brother_mfc_j6930dw_b_w_counter"
+                                },
+                                {
+                                    "entity": "sensor.brother_mfc_j6930dw_color_counter"
+                                },
+                                {
+                                    "entity": "sensor.brother_mfc_j6930dw_cyan_ink_remaining"
+                                },
+                                {
+                                    "entity": "sensor.brother_mfc_j6930dw_magenta_ink_remaining"
+                                },
+                                {
+                                    "entity": "sensor.brother_mfc_j6930dw_yellow_ink_remaining"
+                                },
+                                {
+                                    "entity": "sensor.brother_mfc_j6930dw_black_ink_remaining"
+                                },
+                                {
+                                    "entity": "sensor.brother_mfc_j6930dw_page_counter"
+                                },
+                                {
+                                    "entity": "sensor.brother_mfc_j6930dw_status"
+                                },
+                                {
+                                    "entity": "sensor.brother_mfc_j6930dw_uptime"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "path": "office",
