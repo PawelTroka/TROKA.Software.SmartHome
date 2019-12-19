@@ -1,3 +1,32 @@
+# media
+
+set_denon_receiver_to_sonos_input:
+  sequence:
+    - service: media_player.turn_on
+      entity_id: media_player.denon_avc_x6500h
+    - service: media_player.turn_on
+      entity_id: media_player.denon_avc_x6500h_2
+    - service: media_player.select_source
+      entity_id: media_player.denon_avc_x6500h
+      data:
+        source: Sonos
+    - service: media_player.select_source
+      entity_id: media_player.denon_avc_x6500h_2
+      data:
+        source: Sonos
+    - service: media_player.media_play
+      entity_id: media_player.denon_avc_x6500h
+    - service: media_player.media_play
+      entity_id: media_player.denon_avc_x6500h_2
+
+turn_off_denon_receiver:
+  sequence:
+    - service: media_player.turn_off
+      entity_id: media_player.denon_avc_x6500h
+    - service: media_player.turn_off
+      entity_id: media_player.denon_avc_x6500h_2
+
+
 # general
 
 set_all_lights_to_default:
@@ -31,6 +60,8 @@ turn_off_everything:
       entity_id: media_player.living_room_tv_2
     - service: media_player.turn_off
       entity_id: media_player.denon_avc_x6500h
+    - service: media_player.turn_off
+      entity_id: media_player.denon_avc_x6500h_2
 
 turn_on_necessary_things:
   sequence:
