@@ -448,14 +448,17 @@ sensor:
   - platform: airthings
     mac: C4:64:E3:ED:18:38 # replace with MAC of your Airthings Wave+
   - platform: hddtemp
-    name: /dev/sdc
-    port: 11233
-  - platform: hddtemp
     name: /dev/sdd
     port: 11234
   - platform: hddtemp
     name: /dev/sde
     port: 11235
+  - platform: hddtemp
+    name: /dev/sdf
+    port: 11236
+  - platform: hddtemp
+    name: /dev/sdg
+    port: 11237
   - platform: snmp
     name: 'UPS temperature'
     host: 10.10.10.90
