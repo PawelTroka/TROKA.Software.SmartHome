@@ -1,0 +1,26 @@
+{
+  "config": {
+    "title": "Imprimante Brother",
+    "step": {
+      "user": {
+        "title": "Imprimante Brother",
+        "description": "Intégration de l'imprimante Brother à home-assistant. Si vous avez des problèmes avec la configuration rendez-vous ici : https://github.com/bieniu/ha-brother",
+        "data": {
+          "name": "Nom de l'entité",
+          "host": "Nom d'hôte ou adresse IP",
+          "type": "Type d'imprimante"
+        }
+      }
+    },
+    "error": {
+      "name_exists": "Le nom existe déjà.",
+      "wrong_host": "Hôte ou adresse ip invalide.",
+      "connection_error": "Erreur de connexion.",
+      "snmp_error": "Le serveur SNMP est éteind ou l'imprimante n'est pas supportée."
+    },
+    "abort": {
+      "device_exists": "L'imprimante est déjà existante.",
+      "unsupported_model": "Ce modèle d'imprimante n'est pas supporté."
+    }
+  }
+}

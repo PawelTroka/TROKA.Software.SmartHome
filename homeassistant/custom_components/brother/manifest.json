@@ -1,0 +1,10 @@
+{
+  "domain": "brother",
+  "name": "Brother Printer",
+  "documentation": "https://github.com/bieniu/ha-brother",
+  "dependencies": [],
+  "codeowners": ["@bieniu"],
+  "homeassistant": "0.98.0",
+  "requirements": ["pysnmp==4.4.12", "brother==0.1.4"],
+  "config_flow": true
+}
