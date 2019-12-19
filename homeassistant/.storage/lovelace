@@ -48,7 +48,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "media_player.denon_avc_x6500h"
+                                    "entity": "media_player.denon_avc_x6500h_2"
                                 },
                                 {
                                     "entity": "media_player.bedroom_tv_2"
@@ -129,7 +129,7 @@
                             "type": "thermostat"
                         },
                         {
-                            "entity": "media_player.denon_avc_x6500h",
+                            "entity": "media_player.denon_avc_x6500h_2",
                             "hide": {
                                 "sound_mode": false
                             },
