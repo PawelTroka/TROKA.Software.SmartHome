@@ -92,6 +92,13 @@ climate:
     location: My home
     room: Kitchen floor
 
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
+
+switch:
+  - platform: ring
+
 august:
   login_method: email
   username: !secret august_username
@@ -151,6 +158,7 @@ life360:
     include: [Special someones]
 
 camera:
+  - platform: ring
   - platform: ffmpeg
     name: front_door_cam
     input: -rtsp_transport udp -i rtsp://hallwaycam:e8fwsh8ah3@10.10.10.49/live
@@ -270,6 +278,7 @@ zwave:
 
 
 light:
+  - platform: ring
   - platform: limitlessled
     bridges:
       - host: 10.10.10.61
@@ -394,6 +403,7 @@ weather:
 
 # Sensors
 binary_sensor:
+  - platform: ring
   - platform: flic
     host: 10.10.10.55
   - platform: template
@@ -445,6 +455,7 @@ binary_sensor:
 
 
 sensor:
+  - platform: ring
   - platform: airthings
     mac: C4:64:E3:ED:18:38 # replace with MAC of your Airthings Wave+
   - platform: hddtemp
