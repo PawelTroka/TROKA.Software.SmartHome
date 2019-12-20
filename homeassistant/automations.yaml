@@ -857,6 +857,35 @@
     entity_id: light.hallway_lights
 
 
+# kitchen multisensor
+
+- alias: Turn on kitchen lights on motion when dark
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen_multisensor_burglar
+    from: '0'
+    to: '8'
+  condition:
+      condition: or  # 'when dark' condition: either after sunset or before sunrise - equivalent to a state condition on `sun.sun` of `below_horizon`
+      conditions:
+        - condition: sun
+          after: sunset
+        - condition: sun
+          before: sunrise
+  action:
+    service: light.turn_on
+    entity_id: light.kitchen_lights
+
+- alias: Turn off kitchen lights when motion stops
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen_multisensor_burglar
+    from: '8'
+    to: '0'
+  action:
+    service: light.turn_off
+    entity_id: light.kitchen_lights
+
 
 # Toilet multisensor
 
