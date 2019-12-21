@@ -107,6 +107,15 @@
                             "type": "entities"
                         },
                         {
+                            "camera_image": "camera.front_door",
+                            "entities": [
+                                "binary_sensor.ring_front_door_motion",
+                                "binary_sensor.ring_front_door_ding"
+                            ],
+                            "title": "Doorbell cam",
+                            "type": "picture-glance"
+                        },
+                        {
                             "entity": "lock.front_door",
                             "hold_action": {
                                 "action": "more-info"
@@ -526,6 +535,41 @@
                                     "entity": "sensor.airthings_voc"
                                 }
                             ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [],
+                            "type": "entities"
+                        },
+                        {
+                            "camera_image": "camera.front_door",
+                            "entities": [
+                                "binary_sensor.ring_front_door_motion",
+                                "binary_sensor.ring_front_door_ding"
+                            ],
+                            "title": "Doorbell cam",
+                            "type": "picture-glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.ring_front_door_ding"
+                                },
+                                {
+                                    "entity": "binary_sensor.ring_front_door_motion"
+                                },
+                                {
+                                    "entity": "sensor.ring_front_door_last_activity"
+                                },
+                                {
+                                    "entity": "sensor.ring_front_door_last_ding"
+                                },
+                                {
+                                    "entity": "sensor.ring_front_door_last_motion"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Doorbell",
                             "type": "entities"
                         }
                     ],

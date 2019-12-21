@@ -1,5 +1,8 @@
 {
     "data": {
+        "camera.front_door": {
+            "preload_stream": true
+        },
         "camera.front_door_cam": {
             "preload_stream": true
         },
