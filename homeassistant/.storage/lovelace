@@ -733,9 +733,18 @@
                         },
                         {
                             "entities": [
-                                "light.toilet_lights",
-                                "light.toilet_light",
-                                "light.toilet_strip"
+                                {
+                                    "entity": "light.toilet_lights"
+                                },
+                                {
+                                    "entity": "light.toilet_light"
+                                },
+                                {
+                                    "entity": "light.lifx_d0_73_d5_40_6d_ca"
+                                },
+                                {
+                                    "entity": "light.toilet_strip"
+                                }
                             ],
                             "title": "Light",
                             "type": "entities"
