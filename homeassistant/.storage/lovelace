@@ -255,6 +255,15 @@
                             ],
                             "title": "Living room cam",
                             "type": "picture-glance"
+                        },
+                        {
+                            "camera_image": "camera.front_door_cam",
+                            "camera_view": "live",
+                            "entities": [
+                                "camera.front_door_cam"
+                            ],
+                            "title": "Living room relax area cam",
+                            "type": "picture-glance"
                         }
                     ],
                     "path": "living_room",
