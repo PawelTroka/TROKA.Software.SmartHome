@@ -385,6 +385,9 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "binary_sensor.kitchen_multisensor_motion"
+                                },
+                                {
                                     "entity": "sensor.kitchen_nest_protect_co_status"
                                 },
                                 {
@@ -394,10 +397,19 @@
                                     "entity": "binary_sensor.kitchen_flood_sensor"
                                 },
                                 {
+                                    "entity": "sensor.kitchen_multisensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_multisensor_relative_humidity"
+                                },
+                                {
                                     "entity": "sensor.kitchen_humidity"
                                 },
                                 {
-                                    "entity": "sensor.kitchen_temperature"
+                                    "entity": "sensor.kitchen_multisensor_luminance"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_multisensor_ultraviolet"
                                 }
                             ],
                             "show_header_toggle": false,
