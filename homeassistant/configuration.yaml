@@ -384,6 +384,7 @@ light:
     name: Toilet lights
     entities:
       - light.toilet_light
+      - light.lifx_d0_73_d5_40_6d_ca
       - light.toilet_strip
   - platform: group
     name: Office lights
