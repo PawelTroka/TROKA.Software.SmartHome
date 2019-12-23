@@ -106,6 +106,7 @@ services:
     #  - "${HOME_ASSISTANT_PORT}:8123"
     privileged: true
     environment:
+      - SURVEILLANCEDIR=${SURVEILLANCEDIR}
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
