@@ -159,8 +159,12 @@ life360:
 
 camera:
   - platform: ring
+  - platform: generic
+    name: hallway_entrance_cam
+    still_image_url: "http://10.10.10.101/cgi-bin/api.cgi?cmd=Snap&amp;channel=0&amp;rs=wuuPhkmUCeI9WG7C&amp;user=admin&amp;password=admin123"
+    stream_source: "rtsp://admin:admin123@10.10.10.101:554/h264Preview_01_main"
   - platform: ffmpeg
-    name: front_door_cam
+    name: living_room_relax_area_cam
     input: -rtsp_transport udp -i rtsp://hallwaycam:e8fwsh8ah3@10.10.10.49/live
   - platform: ffmpeg
     name: living_room_cam
