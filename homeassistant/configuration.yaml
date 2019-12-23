@@ -51,6 +51,11 @@ logbook:
       - binary_sensor.hallway_multisensor_motion
 
 
+# downloader for surveillance purposes
+downloader:
+  download_dir: !env_var SURVEILLANCEDIR
+
+
 discovery:
 
 tplink:
