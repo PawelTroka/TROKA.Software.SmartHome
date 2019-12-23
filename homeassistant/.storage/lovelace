@@ -257,10 +257,10 @@
                             "type": "picture-glance"
                         },
                         {
-                            "camera_image": "camera.front_door_cam",
+                            "camera_image": "camera.living_room_relax_area_cam",
                             "camera_view": "live",
                             "entities": [
-                                "camera.front_door_cam"
+                                "camera.living_room_relax_area_cam"
                             ],
                             "title": "Living room relax area cam",
                             "type": "picture-glance"
@@ -462,12 +462,10 @@
                             "type": "entities"
                         },
                         {
-                            "camera_image": "camera.front_door_cam",
+                            "camera_image": "camera.hallway_entrance_cam",
                             "camera_view": "live",
-                            "entities": [
-                                "camera.front_door_cam"
-                            ],
-                            "title": "Front door cam",
+                            "entities": [],
+                            "title": "Hallway entrance",
                             "type": "picture-glance"
                         },
                         {
