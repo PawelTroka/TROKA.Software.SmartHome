@@ -1,6 +1,6 @@
 # surveillance automations
 
-- alias: Download ring front door video on motion or ding
+- alias: Download ring front door video on motion or ding after 90 seconds
   trigger:
     - platform: state
       entity_id: binary_sensor.ring_front_door_motion
@@ -9,6 +9,7 @@
       entity_id: binary_sensor.ring_front_door_ding
       to: 'on'
   action:
+    - delay: '00:01:30' # Delay is needed for video URL to be generated
     - service: downloader.download_file
       data_template:
         url: "{{ state_attr('camera.front_door', 'video_url') }}"
