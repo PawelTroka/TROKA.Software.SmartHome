@@ -12,3 +12,5 @@ binary_sensor.flic_80e4da72f681:
   friendly_name: bathroom_flic
 binary_sensor.flic_80e4da74589d:
   friendly_name: kitchen_flic
+binary_sensor.kitchen_multisensor_motion:
+  device_class: motion
