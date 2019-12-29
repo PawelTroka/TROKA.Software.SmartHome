@@ -279,12 +279,16 @@ services:
   plexms:
     container_name: plexms
     hostname: plexms
-    restart: always
-    image: plexinc/pms-docker
+    restart: unless-stopped
+    image: plexinc/pms-docker:public
     volumes:
       - ${HOMESERVERDIR}/plexms:/config
       - ${CACHEDIR}/Downloads/plex_tmp:/transcode
-      - /media/media:/media
+      - ${STORAGEDIR}/movies:/media/movies
+      - ${STORAGEDIR}/tvshows:/media/tvshows
+      - ${STORAGEDIR}/music:/media/music
+      - ${STORAGEDIR}/XXX:/media/XXX
+      - ${STORAGEDIR}/private:/media/private
       - ${HOMESERVERDIR}/shared:/shared
     ports:
       - "${PLEX_PORT}:32400/tcp"
