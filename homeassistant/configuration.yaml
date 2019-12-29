@@ -53,7 +53,7 @@ logbook:
 
 # downloader for surveillance purposes
 downloader:
-  download_dir: !env_var SURVEILLANCEDIR
+  download_dir: /downloads/surveillance
 
 
 discovery:

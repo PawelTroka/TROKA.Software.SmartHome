@@ -100,13 +100,13 @@ services:
     volumes:
       - ${HOMESERVERDIR}/homeassistant:/config
   #    - ${HOMESERVERDIR}/hassio-addons-duckdns/ssl/:/ssl/
+      - ${SURVEILLANCEDIR}:/downloads/surveillance
       - /etc/localtime:/etc/localtime:ro
       - ${HOMESERVERDIR}/shared:/shared
     #ports:
     #  - "${HOME_ASSISTANT_PORT}:8123"
     privileged: true
     environment:
-      - SURVEILLANCEDIR=${SURVEILLANCEDIR}
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
