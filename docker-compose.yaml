@@ -236,7 +236,7 @@ services:
 
 # Sonarr – TV Show Download and Management
   sonarr:
-    image: "linuxserver/sonarr"
+    image: "linuxserver/sonarr:preview"
     hostname: sonarr
     container_name: "sonarr"
     volumes:
@@ -303,7 +303,7 @@ services:
     environment:
       - TZ=${TZ}
       - HOSTNAME="Docker Plex"
-      - PLEX_CLAIM="${PLEX_CLAIM}"
+      - PLEX_CLAIM=${PLEX_CLAIM}
       - PLEX_UID=${PUID}
       - PLEX_GID=${PGID}
       - ADVERTISE_IP="http://${SERVER_IP}:${PLEX_PORT}/"
