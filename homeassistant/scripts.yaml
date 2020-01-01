@@ -19,14 +19,6 @@ set_denon_receiver_to_sonos_input:
     - service: media_player.media_play
       entity_id: media_player.denon_avc_x6500h_2
 
-turn_off_denon_receiver:
-  sequence:
-    - service: media_player.turn_off
-      entity_id: media_player.denon_avc_x6500h
-    - service: media_player.turn_off
-      entity_id: media_player.denon_avc_x6500h_2
-
-
 # general
 
 set_all_lights_to_default:
@@ -52,12 +44,38 @@ turn_off_everything:
       entity_id: group.all_lights
     - service: climate.turn_off
       entity_id: group.all_climate
-    - service: media_player.media_pause
-      entity_id: group.all_sonos
+    - service: script.turn_on
+      entity_id: script.turn_off_media_everywhere
+
+turn_off_media_everywhere:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.turn_off_music_everywhere
+    - service: script.turn_on
+      entity_id: script.turn_off_tvs_everywhere
+
+turn_off_tvs_everywhere:
+  sequence:
     - service: media_player.turn_off
       entity_id: media_player.bedroom_tv_2
     - service: media_player.turn_off
       entity_id: media_player.living_room_tv_2
+    - service: media_player.turn_off
+      entity_id: media_player.bedroom_tv
+    - service: media_player.turn_off
+      entity_id: media_player.living_room_tv
+
+turn_off_music_everywhere:
+  sequence:
+    - service: media_player.media_pause
+      entity_id: group.all_sonos
+    - service: light.turn_off
+      entity_id: group.all_sonos
+    - service: script.turn_on
+      entity_id: script.turn_off_denon_receiver
+
+turn_off_denon_receiver:
+  sequence:
     - service: media_player.turn_off
       entity_id: media_player.denon_avc_x6500h
     - service: media_player.turn_off

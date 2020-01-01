@@ -19,6 +19,18 @@
         filename: "doorbell_cam-{{ now().strftime('%Y%m%d-%H%M%S') }}.mp4"
 
 
+- alias: Turn off media everywhere on ring front door motion or ding
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.ring_front_door_motion
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.ring_front_door_ding
+      to: 'on'
+  action:
+      service: script.turn_on
+      entity_id: script.turn_off_media_everywhere
+
 # Media automations
 
 - alias: Turn on DENON receiver and set it to Sonos input on Living room Sonos connect playing
