@@ -283,7 +283,7 @@ services:
     image: plexinc/pms-docker:public
     volumes:
       - ${HOMESERVERDIR}/plexms:/config
-      - ${CACHEDIR}/Downloads/plex_tmp:/transcode
+      - ${CACHEDIR}/Downloads/plex_tmp/_plex_disable_transcode_dir_:/transcode
       - ${STORAGEDIR}/movies:/media/movies
       - ${STORAGEDIR}/tvshows:/media/tvshows
       - ${STORAGEDIR}/music:/media/music
