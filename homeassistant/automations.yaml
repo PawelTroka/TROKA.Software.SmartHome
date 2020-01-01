@@ -11,7 +11,7 @@
     - platform: template
       value_template: "{{ is_state_attr('sensor.ring_front_door_last_activity', 'recording_status', 'ready') }}"
   action:
-    - delay: '00:00:15' # Delay to make sure video URL is correctly updated
+    - delay: '00:00:30' # Delay to make sure video URL is correctly updated
     - service: downloader.download_file
       data_template:
         url: "{{ state_attr('camera.front_door', 'video_url') }}"
