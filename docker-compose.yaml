@@ -216,7 +216,7 @@ services:
 
 # Radarr – Movie Download and Management
   radarr:
-    image: "linuxserver/radarr"
+    image: "linuxserver/radarr:preview"
     hostname: radarr
     container_name: "radarr"
     volumes:
