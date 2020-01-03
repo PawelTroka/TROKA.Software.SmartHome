@@ -43,7 +43,8 @@ services:
       - "traefik.frontend.headers.SSLHost=${DOMAINNAME}"
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
-      - "traefik.frontend.headers.frameDeny=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 ############################# FRONTENDS
 
@@ -127,14 +128,17 @@ services:
       - "traefik.frontend.headers.SSLHost=portainer.${DOMAINNAME}"
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
-      - "traefik.frontend.headers.frameDeny=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # Organizer - Unified HTPC/Home Server Web Interface
   organizr:
+    image: lsiocommunity/organizr
     container_name: organizr
     hostname: organizr
     restart: always
-    image: lsiocommunity/organizr
+    networks:
+      - traefik_proxy
     volumes:
       - ${HOMESERVERDIR}/organizr:/config
       - ${HOMESERVERDIR}/shared:/shared
@@ -144,16 +148,33 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=organizr"
+      - "traefik.frontend.rule=Host:organizr.${DOMAINNAME}"  
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefixStrip: /organizr"
+      - "traefik.port=80"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=organizr.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 ############################# SMART HOME
 
  # Home Assistant - Smart Home Hub
   homeassistant:
+    image: homeassistant/home-assistant
     container_name: homeassistant
     hostname: hass
     restart: always
     network_mode: host
-    image: homeassistant/home-assistant
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
     volumes:
@@ -239,11 +260,30 @@ services:
       - ${HOMESERVERDIR}/nextcloud:/config
       - ${STORAGEDIR}/shared_data:/data
       - ${HOMESERVERDIR}/shared:/shared
+    networks:
+      - traefik_proxy
     ports:
       - "${NEXTCLOUD_PORT}:443"
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+    labels:
+      - "traefik.enable=false"
+      - "traefik.backend=nextcloud"
+      - "traefik.frontend.rule=Host:cloud.${DOMAINNAME}"
+      - "traefik.port=443"
+      - "traefik.protocol=https"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=cloud.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 ############################# DOWNLOADING
 
@@ -254,6 +294,8 @@ services:
     container_name: transmission-vpn
     hostname: transmission
     restart: unless-stopped
+    networks:
+      - traefik_proxy
     ports:
     - "${TRANSMISSION_PORT}:9091"
     cap_add:
@@ -309,6 +351,23 @@ services:
       - TRANSMISSION_LPD_ENABLED=false
       - TRANSMISSION_PEX_ENABLED=true
       - TRANSMISSION_UTP_ENABLED=false
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=transmission-vpn"
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefix: /transmission"
+      - "traefik.frontend.rule=Host:downloader.${DOMAINNAME}"
+      - "traefik.port=9091"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=downloader.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # Jackett – Torrent Proxy
   jackett:
@@ -337,6 +396,8 @@ services:
     container_name: "lidarr"
     hostname: lidarr
     restart: unless-stopped
+    networks:
+      - traefik_proxy
     ports:
       - "${LIDARR_PORT}:8686"
     volumes:
@@ -349,6 +410,23 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=lidarr"
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefix: /radarr"
+      - "traefik.frontend.rule=Host:lidarr.${DOMAINNAME}"
+      - "traefik.port=8686"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=lidarr.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # Radarr - Movie management
 # Set url_base in radarr settings if using PathPrefix
@@ -369,7 +447,23 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=radarr"
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefix: /radarr"
+      - "traefik.frontend.rule=Host:radarr.${DOMAINNAME}"
+      - "traefik.port=7878"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=radarr.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # Sonarr - TV Shows management
 # Set url_base in sonarr settings if using PathPrefix
@@ -378,6 +472,8 @@ services:
     container_name: "sonarr"
     hostname: sonarr
     restart: unless-stopped
+    networks:
+      - traefik_proxy
     ports:
         - "${SONARR_PORT}:8989"
     volumes:
@@ -390,6 +486,23 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}      
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=sonarr"
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefix: /sonarr"
+      - "traefik.frontend.rule=Host:sonarr.${DOMAINNAME}"
+      - "traefik.port=8989"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=sonarr.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 ############################# MEDIA
 
@@ -399,6 +512,8 @@ services:
     container_name: plexms
     hostname: plexms
     restart: unless-stopped
+    networks:
+      - traefik_proxy
     ports:
       - "${PLEX_PORT}:32400/tcp"
       - "3005:3005/tcp"
@@ -424,7 +539,24 @@ services:
       - PLEX_CLAIM=${PLEX_CLAIM}
       - PLEX_UID=${PUID}
       - PLEX_GID=${PGID}
-      - ADVERTISE_IP="http://${SERVER_IP}:${PLEX_PORT}/"
+      - ADVERTISE_IP="https://${SERVER_IP}:${PLEX_PORT}/"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=plexms"
+      - "traefik.frontend.rule=Host:plex.${DOMAINNAME}"
+      - "traefik.port=32400"
+      - "traefik.protocol=https"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=plex.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # Tautulli - Previously PlexPy. Plex statistics and monitoring
 # Set HTTP Root in Tautulli settings if using PathPrefix
@@ -499,7 +631,8 @@ services:
       - "traefik.frontend.headers.SSLHost=unifi.${DOMAINNAME}"
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
-      - "traefik.frontend.headers.frameDeny=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # PiHole - network wide DNS-level ads blocking
   pihole:
@@ -553,6 +686,8 @@ services:
     restart: unless-stopped
     restart: unless-stopped
     pid: host
+    networks:
+      - traefik_proxy
     ports:
       - "61208:61208" 
       - "61209:61209"
@@ -560,6 +695,24 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock 
     environment:
       - "GLANCES_OPT=-w"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=glances"
+      - "traefik.frontend.rule=Host:glances.${DOMAINNAME}"
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefixStrip: /glances"
+      - "traefik.port=61208"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=glances.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
+      - "traefik.frontend.auth.basic.users=${GLANCES_HTTP_USERNAME}:${GLANCES_HTTP_PASSWORD}"
 
 # Watchtower - Automatic Update of Containers/Apps
   watchtower:
