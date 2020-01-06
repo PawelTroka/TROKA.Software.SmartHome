@@ -26,11 +26,30 @@
                         },
                         {
                             "entities": [
-                                "climate.living_room",
-                                "climate.bathroom",
-                                "climate.kitchen",
-                                "climate.bedroom",
-                                "climate.office"
+                                {
+                                    "entity": "climate.living_room"
+                                },
+                                {
+                                    "entity": "climate.bathroom"
+                                },
+                                {
+                                    "entity": "climate.kitchen"
+                                },
+                                {
+                                    "entity": "climate.bedroom"
+                                },
+                                {
+                                    "entity": "climate.office"
+                                },
+                                {
+                                    "entity": "climate.bathroom_floor"
+                                },
+                                {
+                                    "entity": "climate.kitchen_floor"
+                                },
+                                {
+                                    "entity": "climate.toilet_floor"
+                                }
                             ],
                             "show_header_toggle": false,
                             "title": "Heating",
@@ -273,6 +292,7 @@
                     "cards": [
                         {
                             "entity": "climate.kitchen",
+                            "name": "Kitchen",
                             "type": "thermostat"
                         },
                         {
@@ -328,6 +348,11 @@
                             ],
                             "title": "Light",
                             "type": "entities"
+                        },
+                        {
+                            "entity": "climate.kitchen_floor",
+                            "theme": "default",
+                            "type": "thermostat"
                         },
                         {
                             "entities": [
@@ -682,6 +707,10 @@
                             "type": "entities"
                         },
                         {
+                            "entity": "climate.bathroom_floor",
+                            "type": "thermostat"
+                        },
+                        {
                             "entity": "sensor.bathroom_multisensor_burglar",
                             "name": "Bathroom motion",
                             "type": "sensor"
@@ -746,6 +775,10 @@
                             ],
                             "title": "Light",
                             "type": "entities"
+                        },
+                        {
+                            "entity": "climate.toilet_floor",
+                            "type": "thermostat"
                         },
                         {
                             "entities": [
