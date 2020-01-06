@@ -260,7 +260,12 @@
                         },
                         {
                             "entities": [
-                                "remote.harmony_hub"
+                                {
+                                    "entity": "remote.harmony_hub"
+                                },
+                                {
+                                    "entity": "sensor.harmony_hub_activity"
+                                }
                             ],
                             "show_header_toggle": false,
                             "title": "Remote",
@@ -479,14 +484,6 @@
                             "type": "entities"
                         },
                         {
-                            "entities": [
-                                "remote.harmony_hub"
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Remote",
-                            "type": "entities"
-                        },
-                        {
                             "camera_image": "camera.hallway_entrance_cam",
                             "camera_view": "live",
                             "entities": [],
@@ -532,18 +529,6 @@
                             "type": "entity-button"
                         },
                         {
-                            "entity": "switch.central_tablet_plug",
-                            "hold_action": {
-                                "action": "more-info"
-                            },
-                            "show_icon": true,
-                            "show_name": true,
-                            "tap_action": {
-                                "action": "toggle"
-                            },
-                            "type": "entity-button"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "sensor.airthings_co2"
@@ -567,10 +552,6 @@
                                     "entity": "sensor.airthings_voc"
                                 }
                             ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [],
                             "type": "entities"
                         },
                         {
