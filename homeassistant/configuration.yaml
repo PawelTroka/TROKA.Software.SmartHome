@@ -465,6 +465,11 @@ binary_sensor:
 
 
 sensor:
+  - platform: template
+    sensors:
+      harmony_hub_activity:
+        value_template: '{{ state_attr("remote.harmony_hub", "current_activity") }}'
+        friendly_name: 'Harmony Hub activity'
   - platform: ring
   - platform: airthings
     mac: C4:64:E3:ED:18:38 # replace with MAC of your Airthings Wave+
