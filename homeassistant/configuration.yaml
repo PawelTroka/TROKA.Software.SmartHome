@@ -450,6 +450,10 @@ binary_sensor:
 
 
 sensor:
+  - platform: xbox_live
+    api_key: !secret xbox_live_api_key
+    xuid:
+      - !secret xbox_live_profile_id
   - platform: template
     sensors:
       harmony_hub_activity:
