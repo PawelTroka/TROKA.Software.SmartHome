@@ -17,6 +17,8 @@ all_tvs:
   entities:
     - media_player.living_room_tv_2
     - media_player.bedroom_tv_2
+    - media_player.living_room_tv
+    - media_player.bedroom_tv
 all_sonos:
   entities:
     - media_player.living_room
