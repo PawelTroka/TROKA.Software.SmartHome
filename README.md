@@ -32,7 +32,7 @@ Home automation configuration, scripts and state of affairs
 | Netatmo Weather Station|:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
 | Nest Protect|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
 |Tado radiator thermostats|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
-|WarmUp 4iE Underfloor heating|:x:<sup>2</sup>|:heavy_check_mark:|:x:|:heavy_check_mark:|
+|WarmUp 4iE Underfloor heating|:heavy_check_mark:<sup>2</sup>|:heavy_check_mark:|:x:|:heavy_check_mark:|
 |BTicino Classe 300X13E (video intercom)|:x:<sup>16</sup>|:x:|:x:|:heavy_check_mark:|
 |Miele Fridge-Freezer|:heavy_check_mark:<sup>3</sup>|:x:|:x:|:heavy_check_mark:|
 |Siemens Cooktop|:warning:<sup>4</sup>|:x:|:x:|:heavy_check_mark:|
@@ -52,7 +52,7 @@ Home automation configuration, scripts and state of affairs
 <sup>1</sup> Exposed via Home Assistant Addon, requires open ports in network configuration
 
 
-<sup>2</sup> Is coming soon via https://github.com/home-assistant/home-assistant/pull/21144
+<sup>2</sup> Via custom component https://github.com/ha-warmup/warmup
 
 
 <sup>3</sup> Via custom component https://github.com/docbobo/home-assistant-miele
