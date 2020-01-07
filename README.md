@@ -57,7 +57,7 @@ Home automation configuration, scripts and state of affairs
 
 <sup>3</sup> Via custom component https://github.com/docbobo/home-assistant-miele
 
-<sup>4</sup> API does not support Cooktop yet (https://developer.home-connect.com/docs/cooktop/supported_programs_and_options). Only very basic functionality is exposed via custom component https://github.com/DavidMStraub/homeassistant-homeconnect.
+<sup>4</sup> API does not support Cooktop yet (https://developer.home-connect.com/docs/cooktop/supported_programs_and_options). Only very basic functionality is exposed via custom component https://github.com/DavidMStraub/homeassistant-homeconnect. Is coming to official Home Assistant soon via PR https://github.com/home-assistant/home-assistant/pull/29214.
 
 <sup>5</sup> Mobile app (https://play.google.com/store/apps/details?id=com.adbglobal.whirlpool&hl=en) sucks hard but at least it finally shows connected appliances correctly.
 
