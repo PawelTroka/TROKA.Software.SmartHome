@@ -88,6 +88,12 @@ turn_on_necessary_things:
 turn_on_heating_everywhere:
   sequence:
     - service: climate.turn_on
+      entity_id: climate.bathroom_floor
+    - service: climate.turn_on
+      entity_id: climate.kitchen_floor
+    - service: climate.turn_on
+      entity_id: climate.toilet_floor
+    - service: climate.turn_on
       entity_id: climate.living_room
     - delay: '00:00:01'
     - service: climate.turn_on

@@ -5,6 +5,9 @@ all_climate:
     - climate.office
     - climate.kitchen
     - climate.living_room
+    - climate.bathroom_floor
+    - climate.kitchen_floor
+    - climate.toilet_floor
 all_persons:
   name: 'Residents'
   entities:
