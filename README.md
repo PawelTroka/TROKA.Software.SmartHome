@@ -26,7 +26,7 @@ Home automation configuration, scripts and state of affairs
 | Sonos Multi-room audio|:heavy_check_mark:|:warning:<sup>6</sup>|:warning:<sup>6</sup>|:heavy_check_mark:|
 | Living room TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 | Bedroom TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
-| A/V Receiver|:warning:<sup>7</sup>|:warning:<sup>13</sup>|:warning:<sup>14</sup>|:heavy_check_mark:|
+| A/V Receiver|:heavy_check_mark:<sup>7</sup>|:warning:<sup>13</sup>|:warning:<sup>14</sup>|:heavy_check_mark:|
 | nVidia Shield|:heavy_check_mark:|:x:<sup>17</sup>|:heavy_check_mark:|:x:|
 | XBOX ONE X|:x:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 | Netatmo Weather Station|:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
@@ -64,7 +64,7 @@ Home automation configuration, scripts and state of affairs
 
 <sup>6</sup> Doesn't work with all the functionality - e.g. playback from Tidal is region-locked, grouping is limited.
 
-<sup>7</sup> Zones do not work. Turning off doesn't work. Better implementation is coming soon with https://github.com/home-assistant/home-assistant/pull/24260
+<sup>7</sup> Zones and avanced features like sound modes do not work because DENON AVR Home Assistant component is not working (https://community.home-assistant.io/t/denonavr-with-avr-x6300/14744 https://github.com/scarface-4711/denonavr/issues/32). Is also integrated through HEOS component but it seems to have less capabilities. Scripts are in place to call both entities, so basic functionality works pretty well.
 
 <sup>8</sup> Swipe left/right and up/down doesn't work.
 
