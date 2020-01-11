@@ -79,6 +79,9 @@
                                     "entity": "media_player.shield_2"
                                 },
                                 {
+                                    "entity": "media_player.plex_shield_android_tv"
+                                },
+                                {
                                     "entity": "media_player.living_room"
                                 },
                                 {
@@ -172,6 +175,10 @@
                         },
                         {
                             "entity": "media_player.living_room_tv_2",
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entity": "media_player.plex_shield_android_tv",
                             "type": "custom:mini-media-player"
                         },
                         {
@@ -1123,6 +1130,9 @@
                         },
                         {
                             "entities": [
+                                {
+                                    "entity": "sensor.plex_plexms"
+                                },
                                 {
                                     "entity": "sensor.sonarr_upcoming"
                                 },
