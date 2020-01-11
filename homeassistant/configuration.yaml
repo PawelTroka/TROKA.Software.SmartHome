@@ -546,10 +546,27 @@ sensor:
     api_key: !secret radarr_api_key
     host: 10.10.10.94
     port: 8411
+    monitored_conditions:
+      - movies
+      - upcoming
+      - commands
+      - diskspace
+      - status
+    days: 7
+    unit: TB
   - platform: sonarr
     api_key: !secret sonarr_api_key
     host: 10.10.10.94
     port: 8412
+    monitored_conditions:
+      - series
+      - upcoming
+      - wanted
+      - queue
+      - commands
+      - diskspace
+    days: 7
+    unit: TB
   - platform: time_date
     display_options:
       - 'time'
