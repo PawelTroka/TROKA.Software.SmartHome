@@ -249,6 +249,28 @@
     entity_id: script.turn_off_everything
 
 
+- alias: 'Turn off office heating when Pawel leaves home' # office is used exclusively by Pawel
+  trigger:
+    - platform: state
+      entity_id: person.pawel
+      to: 'not_home'
+      for:
+        minutes: 1
+  action:
+    service: climate.turn_off
+    entity_id: climate.office
+
+- alias: 'Turn on office heating when Pawel arrives home' # office is used exclusively by Pawel
+  trigger:
+    - platform: state
+      entity_id: person.pawel
+      to: 'home'
+      for:
+        minutes: 1
+  action:
+    service: climate.turn_on
+    entity_id: climate.office
+
 - alias: 'Turn on necessary things when anyone comes back home'
   trigger:
     - platform: state
