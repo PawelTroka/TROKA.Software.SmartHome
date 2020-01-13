@@ -1134,10 +1134,37 @@
                                     "entity": "sensor.plex_plexms"
                                 },
                                 {
+                                    "entity": "sensor.radarr_upcoming"
+                                },
+                                {
                                     "entity": "sensor.sonarr_upcoming"
                                 },
                                 {
                                     "entity": "sensor.radarr_movies"
+                                },
+                                {
+                                    "entity": "sensor.sonarr_series"
+                                },
+                                {
+                                    "entity": "sensor.sonarr_queue"
+                                },
+                                {
+                                    "entity": "sensor.sonarr_wanted"
+                                },
+                                {
+                                    "entity": "sensor.radarr_status"
+                                },
+                                {
+                                    "entity": "sensor.radarr_disk_space"
+                                },
+                                {
+                                    "entity": "sensor.sonarr_disk_space"
+                                },
+                                {
+                                    "entity": "sensor.radarr_commands"
+                                },
+                                {
+                                    "entity": "sensor.sonarr_commands"
                                 }
                             ],
                             "type": "entities"
