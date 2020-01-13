@@ -211,7 +211,7 @@ services:
     #  - "traefik.frontend.headers.frameDeny=true"
 
   zoneminder:
-    image: quantumobject/docker-zoneminder #zoneminderhq/zoneminder:latest-ubuntu18.04
+    image: zoneminderhq/zoneminder:latest-ubuntu18.04
     container_name: zoneminder
     hostname: zoneminder
     restart: unless-stopped
@@ -223,19 +223,18 @@ services:
     shm_size: 512M
     volumes:
       - ${SURVEILLANCEDIR}/zoneminder:/data
-      - ${HOMESERVERDIR}/shared:/shared
+      - ${HOMESERVERDIR}/zoneminder/events:/var/cache/zoneminder/events
+      - ${HOMESERVERDIR}/zoneminder/images:/var/cache/zoneminder/images
       - ${HOMESERVERDIR}/zoneminder/backups:/var/backups
-      - ${HOMESERVERDIR}/zoneminder/zoneminder:/var/cache/zoneminder
+      - ${HOMESERVERDIR}/zoneminder/mysql:/var/lib/mysql
+      - ${HOMESERVERDIR}/zoneminder/logs:/var/log/zoneminder
       - ${HOMESERVERDIR}/zoneminder/config:/config
+      - ${HOMESERVERDIR}/shared:/shared
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
       - PHP_TZ=${TZ}
-      - ZM_DB_HOST=${DB_HOST}
-      - ZM_DB_PORT=${DB_PORT}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_ROOT=${USER}
 
 ############################# DATABASE
 
