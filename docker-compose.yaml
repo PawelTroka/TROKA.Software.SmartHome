@@ -223,8 +223,8 @@ services:
     shm_size: 512M
     volumes:
       - ${SURVEILLANCEDIR}/zoneminder:/data
-      - ${HOMESERVERDIR}/zoneminder/events:/var/cache/zoneminder/events
-      - ${HOMESERVERDIR}/zoneminder/images:/var/cache/zoneminder/images
+      - ${SURVEILLANCEDIR}/zoneminder/events:/var/cache/zoneminder/events
+      - ${SURVEILLANCEDIR}/zoneminder/images:/var/cache/zoneminder/images
       - ${HOMESERVERDIR}/zoneminder/backups:/var/backups
       - ${HOMESERVERDIR}/zoneminder/mysql:/var/lib/mysql
       - ${HOMESERVERDIR}/zoneminder/logs:/var/log/zoneminder
