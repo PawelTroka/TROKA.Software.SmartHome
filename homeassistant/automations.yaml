@@ -242,8 +242,6 @@
     - platform: state
       entity_id: group.all_persons
       to: 'not_home'
-      for:
-        minutes: 1
   action:
     service: script.turn_on
     entity_id: script.turn_off_everything
@@ -254,8 +252,6 @@
     - platform: state
       entity_id: person.pawel
       to: 'not_home'
-      for:
-        minutes: 1
   action:
     service: climate.turn_off
     entity_id: climate.office
@@ -265,8 +261,6 @@
     - platform: state
       entity_id: person.pawel
       to: 'home'
-      for:
-        minutes: 1
   action:
     service: climate.turn_on
     entity_id: climate.office
@@ -276,8 +270,6 @@
     - platform: state
       entity_id: group.all_persons
       to: 'home'
-      for:
-        minutes: 1
   action:
     service: script.turn_on
     entity_id: script.turn_on_necessary_things
