@@ -81,12 +81,12 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.eight_left_bed_presence
-      from: 'on'
+      to: 'on'
       for:
         minutes: 1
     - platform: state
       entity_id: binary_sensor.eight_right_bed_presence
-      from: 'on'
+      to: 'on'
       for:
         minutes: 1
   condition:
