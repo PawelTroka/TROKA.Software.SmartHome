@@ -234,7 +234,7 @@ services:
       - VIDEO_SEGMENT_TIME=900
       - VIDEO_FORMAT=mp4
     volumes:
-      - .:${SURVEILLANCEDIR}
+      - ${SURVEILLANCEDIR}:/usr/data/recordings
 
   nvr-living_room_cam:
     image: hpaolini/tiny-nvr
@@ -249,7 +249,7 @@ services:
       - VIDEO_SEGMENT_TIME=900
       - VIDEO_FORMAT=mp4
     volumes:
-      - .:${SURVEILLANCEDIR}
+      - ${SURVEILLANCEDIR}:/usr/data/recordings
 
   nvr-living_room_relax_area_cam:
     image: hpaolini/tiny-nvr
@@ -264,7 +264,7 @@ services:
       - VIDEO_SEGMENT_TIME=900
       - VIDEO_FORMAT=mp4
     volumes:
-      - .:${SURVEILLANCEDIR}
+      - ${SURVEILLANCEDIR}:/usr/data/recordings
 
 ############################# DATABASE
 
