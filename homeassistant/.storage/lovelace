@@ -129,10 +129,10 @@
                             "type": "entities"
                         },
                         {
-                            "camera_image": "camera.front_door",
+                            "camera_image": "camera.front_door_2",
                             "entities": [
-                                "binary_sensor.ring_front_door_motion",
-                                "binary_sensor.ring_front_door_ding"
+                                "binary_sensor.front_door_motion",
+                                "binary_sensor.front_door_ding"
                             ],
                             "title": "Doorbell cam",
                             "type": "picture-glance"
@@ -558,10 +558,10 @@
                             "type": "entities"
                         },
                         {
-                            "camera_image": "camera.front_door",
+                            "camera_image": "camera.front_door_2",
                             "entities": [
-                                "binary_sensor.ring_front_door_motion",
-                                "binary_sensor.ring_front_door_ding"
+                                "binary_sensor.front_door_motion",
+                                "binary_sensor.front_door_ding"
                             ],
                             "title": "Doorbell cam",
                             "type": "picture-glance"
@@ -569,19 +569,19 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "binary_sensor.ring_front_door_ding"
+                                    "entity": "binary_sensor.front_door_ding"
                                 },
                                 {
-                                    "entity": "binary_sensor.ring_front_door_motion"
+                                    "entity": "binary_sensor.front_door_motion"
                                 },
                                 {
-                                    "entity": "sensor.ring_front_door_last_activity"
+                                    "entity": "sensor.front_door_last_activity"
                                 },
                                 {
-                                    "entity": "sensor.ring_front_door_last_ding"
+                                    "entity": "sensor.front_door_last_ding"
                                 },
                                 {
-                                    "entity": "sensor.ring_front_door_last_motion"
+                                    "entity": "sensor.front_door_last_motion"
                                 }
                             ],
                             "show_header_toggle": false,
