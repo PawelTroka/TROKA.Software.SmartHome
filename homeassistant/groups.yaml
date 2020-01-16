@@ -1,3 +1,13 @@
+all_lights:
+  entities:
+    - light.toilet_lights
+    - light.living_room_lights
+    - light.office_lights
+    - light.hallway_lights
+    - light.bathroom_lights
+    - light.kitchen_lights
+    - light.bedroom_lights
+
 all_lights_except_bedroom:
   entities:
     - light.toilet_lights
