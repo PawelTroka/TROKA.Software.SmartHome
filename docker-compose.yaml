@@ -14,6 +14,7 @@ x-common-variables: &common-variables
   LIVING_ROOM_CAM_COMMAND: -rtsp_transport udp -i rtsp://${LIVING_ROOM_CAM_USER}:${LIVING_ROOM_CAM_PASSWORD}@10.10.10.51/live
   LIVING_ROOM_RELAX_AREA_CAM_STREAM_URL: rtsp://${LIVING_ROOM_RELAX_AREA_CAM_USER}:${LIVING_ROOM_RELAX_AREA_CAM_PASSWORD}@10.10.10.49/live
   LIVING_ROOM_RELAX_AREA_CAM_COMMAND: -rtsp_transport udp -i rtsp://${LIVING_ROOM_RELAX_AREA_CAM_USER}:${LIVING_ROOM_RELAX_AREA_CAM_PASSWORD}@10.10.10.49/live
+  MARIA_DB_URL: mysql://${USER}:${MYSQL_ROOT_PASSWORD}@localhost:${DB_PORT}/home_assistant?charset=utf8
   PUID: ${PUID}
   PGID: ${PGID}
   TZ: ${TZ}
@@ -196,6 +197,7 @@ services:
       - ${SURVEILLANCEDIR}:/downloads/surveillance
       - /etc/localtime:/etc/localtime:ro
       - ${HOMESERVERDIR}/shared:/shared
+      - ${HOMESERVERDIR}/mariadb/mysqld:/run/mysqld # unix socket volume share for blazing fast MySQL communication on local network (https://stackoverflow.com/questions/58029324/2002-cant-connect-to-local-mysql-server-through-socket-run-mysqld-mysqld-so)
     #ports:
     #  - "${HOME_ASSISTANT_PORT}:8123"
     privileged: true
@@ -302,6 +304,7 @@ services:
     hostname: ${DB_HOST}
     volumes:
         - ${HOMESERVERDIR}/mariadb:/config
+        - ${HOMESERVERDIR}/mariadb/mysqld:/var/run/mysqld # unix socket volume share for blazing fast MySQL communication on local network
     ports:
       - target: ${DB_PORT}
         published: ${DB_PORT}
