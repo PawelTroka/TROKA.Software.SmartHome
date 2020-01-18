@@ -178,6 +178,10 @@
                             "type": "custom:mini-media-player"
                         },
                         {
+                            "entity": "media_player.shield_2",
+                            "type": "custom:mini-media-player"
+                        },
+                        {
                             "entity": "media_player.plex_shield_android_tv",
                             "type": "custom:mini-media-player"
                         },
