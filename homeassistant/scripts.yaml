@@ -6,6 +6,16 @@ set_denon_receiver_to_sonos_input:
       entity_id: media_player.denon_avc_x6500h
     - service: media_player.turn_on
       entity_id: media_player.denon_avc_x6500h_2
+    - delay: '00:00:01' # turning on DENON is slow, let's give it some time
+    - service: media_player.select_source
+      entity_id: media_player.denon_avc_x6500h
+      data:
+        source: Sonos
+    - service: media_player.select_source
+      entity_id: media_player.denon_avc_x6500h_2
+      data:
+        source: Sonos
+    - delay: '00:00:03' # turning on DENON is slow, let's give it some time
     - service: media_player.select_source
       entity_id: media_player.denon_avc_x6500h
       data:
