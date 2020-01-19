@@ -642,6 +642,7 @@ air_quality:
 tts:
   - platform: google_translate
     service_name: google_say
+    base_url: http://10.10.10.94:8123
 
 group: !include groups.yaml
 automation: !include automations.yaml
