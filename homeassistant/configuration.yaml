@@ -448,7 +448,19 @@ binary_sensor:
   - platform: flic
     host: 10.10.10.55
   - platform: template
-    sensors: 
+    sensors:
+      toilet_sonos_is_master:
+        value_template: "{{ 'media_player.toilet' == state_attr('media_player.toilet', 'sonos_group')[0] }}"
+      bathroom_sonos_is_master:
+        value_template: "{{ 'media_player.bathroom' == state_attr('media_player.bathroom', 'sonos_group')[0] }}"
+      living_room_sonos_is_master:
+        value_template: "{{ 'media_player.living_room' == state_attr('media_player.living_room', 'sonos_group')[0] }}"
+      kitchen_sonos_is_master:
+        value_template: "{{ 'media_player.kitchen' == state_attr('media_player.kitchen', 'sonos_group')[0] }}"
+      office_sonos_is_master:
+        value_template: "{{ 'media_player.office' == state_attr('media_player.office', 'sonos_group')[0] }}"
+      bedroom_sonos_is_master:
+        value_template: "{{ 'media_player.bedroom' == state_attr('media_player.bedroom', 'sonos_group')[0] }}"
       hallway_door:
         device_class: door
         friendly_name: Hallway door
