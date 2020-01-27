@@ -223,50 +223,12 @@ services:
     #  - "traefik.frontend.headers.STSPreload=true"
     #  - "traefik.frontend.headers.frameDeny=true"
 
-  motioneye:
-    image: ccrisan/motioneye:master-amd64  # Change to ccrisan/motioneye:master-armhf for ARM chips (Pi etc.)
-    ports:
-      - "8081:8081"
-      - "8765:8765"
-    volumes:
-      - ${HOMESERVERDIR}/motioneye/etc:/etc/motioneye
-      - ${HOMESERVERDIR}/motioneye/var_lib:/var/lib/motioneye
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-
-  kerberos-machinery:
-    image: kerberos/machinery
-    ports:
-      - "8889:8889" 
-    volumes:
-      - ${HOMESERVERDIR}/kerberos/config:/etc/opt/kerberosio/config
-      - ${HOMESERVERDIR}/kerberos/logs:/etc/opt/kerberosio/logs
-      - ${SURVEILLANCEDIR}/kerberos-capture:/etc/opt/kerberosio/capture
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-
-  kerberos-web:
-    image: kerberos/web
-    ports:
-      - "8787:80"
-    volumes:
-      - ${HOMESERVERDIR}/kerberos/config:/etc/opt/kerberosio/config
-      - ${HOMESERVERDIR}/kerberos/logs:/etc/opt/kerberosio/logs
-      - ${SURVEILLANCEDIR}/kerberos-capture:/etc/opt/kerberosio/capture
-    environment:
-      - KERBEROSIO_SECURE_SSL=false
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-
   shinobi:
     image: shinobisystems/shinobi:latest-ubuntu
     ports:
       - "8899:8080"
+    networks:
+      - traefik_proxy
     volumes:
       - /dev/shm/shinobiStreams:/dev/shm/streams
       - $HOMESERVERDIR/shinobi/Config:/config
@@ -278,6 +240,23 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=nvr"
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefix: /nvr"
+      - "traefik.frontend.rule=Host:nvr.${DOMAINNAME}"
+      - "traefik.port=8080"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=nvr.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 ############################# DATABASE
 
