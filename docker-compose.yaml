@@ -234,6 +234,7 @@ services:
       - $HOMESERVERDIR/shinobi/Config:/config
       - $HOMESERVERDIR/shinobi/CustomAutoLoad:/customAutoLoad
       - $HOMESERVERDIR/shinobi/Database:/var/lib/mysql
+      #- $HOMESERVERDIR/shinobi/super.json:/opt/shinobi/super.json  # better use /config/super.json
       - ${SURVEILLANCEDIR}/shinobi-videos:/opt/shinobi/videos
     environment:
       - APP_BRANCH=dev
