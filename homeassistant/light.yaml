@@ -1,0 +1,116 @@
+  - platform: ring
+  - platform: limitlessled
+    bridges:
+      - host: 10.10.10.61
+        groups:
+        - number: 1
+          type: rgbw
+          name: Bathroom Strip
+        - number: 2
+          type: rgbw
+          name: Toilet Strip
+        - number: 3
+          type: rgbw
+          name: Hallway Strip
+        - number: 4
+          type: rgbw
+          name: Bedroom Strip
+  - platform: group
+    name: Kitchen lights
+    entities:
+      - light.kitchen_island_downlight_2
+      - light.kitchen_island_light_1
+      - light.kitchen_island_strip
+      - light.kitchen_light_1
+      - light.kitchen_light_2
+      - light.kitchen_light_3
+      - light.kitchen_light_4
+  - platform: group
+    name: Kitchen countertop lights
+    entities:
+      - light.kitchen_light_1
+      - light.kitchen_light_2
+      - light.kitchen_light_3
+      - light.kitchen_light_4
+  - platform: group
+    name: Kitchen island lights
+    entities:
+      - light.kitchen_island_downlight_2
+      - light.kitchen_island_light_1
+
+  - platform: group
+    name: Living room lights
+    entities:
+      - light.living_room_downlight_1
+      - light.living_room_downlight_2
+      - light.living_room_downlight_3
+      - light.living_room_downlight_4
+      - light.living_room_downlight_5
+      - light.living_room_downlight_6
+      - light.living_room_downlight_7
+      - light.living_room_downlight_8
+  - platform: group
+    name: Living room relax area lights
+    entities:
+      - light.living_room_downlight_1
+      - light.living_room_downlight_2
+      - light.living_room_downlight_3
+      - light.living_room_downlight_4
+  - platform: group
+    name: Living room dining area lights
+    entities:
+      - light.living_room_downlight_5
+      - light.living_room_downlight_6
+      - light.living_room_downlight_7
+      - light.living_room_downlight_8
+  - platform: group
+    name: Hallway lights
+    entities:
+      - light.hallway_downlight_1
+      - light.hallway_downlight_2
+      - light.hallway_downlight_3
+      - light.hallway_downlight_4
+      - light.hallway_downlight_5
+      - light.hallway_strip
+  - platform: group
+    name: Bedroom lights
+    entities:
+      - light.bedroom_downlight_1
+      - light.bedroom_downlight_2
+      - light.bedroom_downlight_3
+      - light.bedroom_downlight_4
+      - light.bedroom_cabinet_strip
+      - light.bedroom_strip
+  - platform: group
+    name: Bedroom downlights
+    entities:
+      - light.bedroom_downlight_1
+      - light.bedroom_downlight_2
+      - light.bedroom_downlight_3
+      - light.bedroom_downlight_4
+  - platform: group
+    name: Bathroom lights
+    entities:
+      - light.bathroom_light_1
+      - light.bathroom_light_2
+      - light.bathroom_light_3
+      - light.bathroom_light_4
+      - light.bathroom_light_5
+      - light.bathroom_light_6
+      - light.bathroom_strip
+      - light.bathroom_mirror_light_1
+      - light.bathroom_mirror_light_2
+  - platform: group
+    name: Toilet lights
+    entities:
+      - light.toilet_light
+      - light.lifx_d0_73_d5_40_6d_ca
+      - light.toilet_strip
+  - platform: group
+    name: Office lights
+    entities:
+      - light.office_light_1
+      - light.office_light_2
+      - light.office_light_3
+      - light.office_light_4
+      - light.office_light_5

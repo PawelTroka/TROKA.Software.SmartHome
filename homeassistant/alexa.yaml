@@ -1,0 +1,10 @@
+smart_home:
+  #endpoint: https://api.amazonalexa.com/v3/events
+  #client_id: !secret alexa_client_id
+  #client_secret: !secret alexa_client_secret
+  filter:
+    include_entities:
+      - light.bathroom_strip
+      - light.toilet_strip
+      - light.hallway_strip
+      - light.bedroom_strip

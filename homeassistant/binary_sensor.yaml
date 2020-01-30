@@ -1,0 +1,61 @@
+- platform: ring
+- platform: flic
+  host: 10.10.10.55
+- platform: template
+  sensors:
+    toilet_sonos_is_master:
+      value_template: "{{ 'media_player.toilet' == state_attr('media_player.toilet', 'sonos_group')[0] }}"
+    bathroom_sonos_is_master:
+      value_template: "{{ 'media_player.bathroom' == state_attr('media_player.bathroom', 'sonos_group')[0] }}"
+    living_room_sonos_is_master:
+      value_template: "{{ 'media_player.living_room' == state_attr('media_player.living_room', 'sonos_group')[0] }}"
+    kitchen_sonos_is_master:
+      value_template: "{{ 'media_player.kitchen' == state_attr('media_player.kitchen', 'sonos_group')[0] }}"
+    office_sonos_is_master:
+      value_template: "{{ 'media_player.office' == state_attr('media_player.office', 'sonos_group')[0] }}"
+    bedroom_sonos_is_master:
+      value_template: "{{ 'media_player.bedroom' == state_attr('media_player.bedroom', 'sonos_group')[0] }}"
+    hallway_door:
+      device_class: door
+      friendly_name: Hallway door
+      value_template: " {{ is_state('sensor.hallway_door_opening_sensor_access_control', '22') if states('sensor.hallway_door_opening_sensor_access_control') in ['22','23'] else states('binary_sensor.hallway_door') == 'on' }} "
+    bathroom_door:
+      device_class: door
+      friendly_name: Bathroom door
+      value_template: " {{ is_state('sensor.bathroom_door_opening_sensor_access_control', '22') if states('sensor.bathroom_door_opening_sensor_access_control') in ['22','23'] else states('binary_sensor.bathroom_door') == 'on' }} "
+    toilet_door:
+      device_class: door
+      friendly_name: Toilet door
+      value_template: " {{ is_state('sensor.toilet_door_opening_sensor_access_control', '22') if states('sensor.toilet_door_opening_sensor_access_control') in ['22','23'] else states('binary_sensor.toilet_door') == 'on' }} "
+    bedroom_door:
+      device_class: door
+      friendly_name: Bedroom door
+      value_template: " {{ is_state('sensor.bedroom_door_opening_sensor_access_control', '22') if states('sensor.bedroom_door_opening_sensor_access_control') in ['22','23'] else states('binary_sensor.bedroom_door') == 'on' }} "
+    office_door:
+      device_class: door
+      friendly_name: Office door
+      value_template: " {{ is_state('sensor.office_door_opening_sensor_access_control', '22') if states('sensor.office_door_opening_sensor_access_control') in ['22','23'] else states('binary_sensor.office_door') == 'on' }} "
+    bathroom_flood_sensor:
+      device_class: moisture
+      friendly_name: 'Bathroom flood sensor'
+      value_template: >-
+        {{ states("sensor.bathroom_flood_sensor_flood") | int > 0
+            and states("sensor.bathroom_flood_sensor_flood") | int < 254
+            or states("sensor.bathroom_flood_sensor_alarm_type") | int > 0
+            or states("sensor.bathroom_flood_sensor_alarm_level") | int == 2 }}
+    toilet_flood_sensor:
+      device_class: moisture
+      friendly_name: 'Toilet flood sensor'
+      value_template: >-
+        {{ states("sensor.toilet_flood_sensor_flood") | int > 0
+            and states("sensor.toilet_flood_sensor_flood") | int < 254
+            or states("sensor.toilet_flood_sensor_alarm_type") | int > 0
+            or states("sensor.toilet_flood_sensor_alarm_level") | int == 2 }}
+    kitchen_flood_sensor:
+      device_class: moisture
+      friendly_name: 'Kitchen flood sensor'
+      value_template: >-
+        {{ states("sensor.kitchen_flood_sensor_flood") | int > 0
+            and states("sensor.kitchen_flood_sensor_flood") | int < 254
+            or states("sensor.kitchen_flood_sensor_alarm_type") | int > 0
+            or states("sensor.kitchen_flood_sensor_alarm_level") | int == 2 }}

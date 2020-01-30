@@ -1,0 +1,11 @@
+- platform: ring
+- platform: generic
+  name: hallway_entrance_cam
+  still_image_url: !env_var FRONT_DOOR_CAM_IMAGE_URL
+  stream_source: !env_var FRONT_DOOR_CAM_STREAM_URL
+- platform: ffmpeg
+  name: living_room_relax_area_cam
+  input: !env_var LIVING_ROOM_RELAX_AREA_CAM_COMMAND
+- platform: ffmpeg
+  name: living_room_cam
+  input: !env_var LIVING_ROOM_CAM_COMMAND

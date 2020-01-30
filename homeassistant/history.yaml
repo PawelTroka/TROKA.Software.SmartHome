@@ -1,0 +1,22 @@
+include:
+  domains:
+    - air_quality
+    - automation
+    - binary_sensor
+    - camera
+    - climate
+    #- device_tracker
+    - group
+    - light
+    - lock
+    - media_player
+    - miele
+    #- persistent_notification
+    - person
+    - script
+    - sensor
+    #- sun
+    - switch
+    #- weather
+    - zone
+    - zwave

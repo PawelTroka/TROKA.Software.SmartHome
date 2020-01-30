@@ -1,0 +1,3 @@
+- platform: warmup
+  username: !secret warmup_username
+  password: !secret warmup_password

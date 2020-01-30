@@ -1,0 +1,135 @@
+- platform: xbox_live
+  api_key: !secret xbox_live_api_key
+  xuid:
+    - !secret xbox_live_profile_id
+- platform: template
+  sensors:
+    harmony_hub_activity:
+      value_template: '{{ state_attr("remote.harmony_hub", "current_activity") }}'
+      friendly_name: 'Harmony Hub activity'
+- platform: ring
+- platform: airthings
+  mac: C4:64:E3:ED:18:38 # replace with MAC of your Airthings Wave+
+- platform: hddtemp
+  name: /dev/sdd
+  port: 11234
+- platform: hddtemp
+  name: /dev/sde
+  port: 11235
+- platform: hddtemp
+  name: /dev/sdf
+  port: 11236
+- platform: hddtemp
+  name: /dev/sdg
+  port: 11237
+- platform: snmp
+  name: 'UPS temperature'
+  host: 10.10.10.90
+  baseoid: iso.3.6.1.2.1.33.1.2.7.0
+  value_template: '{{value | float}}'
+  unit_of_measurement: '°C'
+- platform: snmp
+  name: 'UPS input voltage'
+  host: 10.10.10.90
+  baseoid: iso.3.6.1.2.1.33.1.5.3.1.2.1 #iso.3.6.1.2.1.33.1.3.3.1.3.1
+  value_template: '{{value | float}}'
+  unit_of_measurement: 'V'
+- platform: snmp
+  name: 'UPS input frequency'
+  host: 10.10.10.90
+  baseoid: iso.3.6.1.2.1.33.1.5.1.0 #iso.3.6.1.2.1.33.1.3.3.1.2.1
+  value_template: '{{((value | int) / 10) | float}}'
+  unit_of_measurement: 'Hz'
+- platform: snmp
+  name: 'UPS ouput voltage'
+  host: 10.10.10.90
+  baseoid: iso.3.6.1.2.1.33.1.4.4.1.2.1
+  value_template: '{{value | float}}'
+  unit_of_measurement: 'V'
+- platform: snmp
+  name: 'UPS output frequency'
+  host: 10.10.10.90
+  baseoid: iso.3.6.1.2.1.33.1.4.2.0
+  value_template: '{{((value | int) / 10) | float}}'
+  unit_of_measurement: 'Hz'
+- platform: snmp
+  name: 'UPS load'
+  host: 10.10.10.90
+  baseoid: iso.3.6.1.2.1.33.1.4.4.1.4.1
+  unit_of_measurement: 'W'
+  value_template: '{{value | float}}'
+- platform: snmp
+  name: 'UPS load percentage'
+  host: 10.10.10.90
+  baseoid: iso.3.6.1.2.1.33.1.4.4.1.5.1
+  unit_of_measurement: '%'
+  value_template: '{{value | float}}'
+- platform: snmp
+  name: 'UPS battery voltage'
+  host: 10.10.10.90
+  baseoid: iso.3.6.1.2.1.33.1.2.5.0
+  value_template: '{{((value | int) / 10) | float}}'
+  unit_of_measurement: 'V'
+- platform: snmp
+  name: 'UPS line outage time'
+  host: 10.10.10.90
+  baseoid: iso.3.6.1.2.1.33.1.2.2.0
+  unit_of_measurement: 'seconds'
+  value_template: '{{value | float}}'
+- platform: snmp
+  name: 'UPS remaining backup time'
+  host: 10.10.10.90
+  baseoid: iso.3.6.1.2.1.33.1.2.3.0
+  unit_of_measurement: 'minutes'
+  value_template: '{{value | float}}'
+- platform: snmp
+  name: 'UPS battery capacity'
+  host: 10.10.10.90
+  baseoid: iso.3.6.1.2.1.33.1.2.4.0
+  unit_of_measurement: '%'
+  value_template: '{{value | float}}'
+- platform: radarr
+  api_key: !secret radarr_api_key
+  host: 10.10.10.94
+  port: 8411
+  monitored_conditions:
+    - movies
+    - upcoming
+    - commands
+    - diskspace
+    - status
+  days: 7
+  unit: TB
+- platform: sonarr
+  api_key: !secret sonarr_api_key
+  host: 10.10.10.94
+  port: 8412
+  monitored_conditions:
+    - series
+    - upcoming
+    - wanted
+    - queue
+    - commands
+    - diskspace
+  days: 7
+  unit: TB
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'date_time'
+    - 'date_time_iso'
+    - 'time_date'
+    - 'time_utc'
+    - 'beat'
+# Weather prediction
+- platform: yr
+- platform: coinmarketcap
+- platform: waqi
+  token: !secret waqi_token
+  locations:
+    - gdansk
+- platform: whois
+  domain: fizyka.dk
+- platform: whois
+  domain: troka.software

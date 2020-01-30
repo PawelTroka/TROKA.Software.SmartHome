@@ -1,0 +1,12 @@
+  project_id: !secret google_assistant_project_id
+  #api_key: !secret google_assistant_api_key
+  expose_by_default: false
+  entity_config:
+    light.bathroom_strip:
+      expose: true
+    light.toilet_strip:
+      expose: true
+    light.hallway_strip:
+      expose: true
+    light.bedroom_strip:
+      expose: true
