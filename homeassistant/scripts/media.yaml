@@ -1,0 +1,78 @@
+# media
+
+set_denon_receiver_to_sonos_input:
+  sequence:
+    - service: media_player.turn_on
+      entity_id: media_player.denon_avc_x6500h
+    - service: media_player.turn_on
+      entity_id: media_player.denon_avc_x6500h_2
+    - delay: '00:00:01' # turning on DENON is slow, let's give it some time
+    - service: media_player.select_source
+      entity_id: media_player.denon_avc_x6500h
+      data:
+        source: Sonos
+    - service: media_player.select_source
+      entity_id: media_player.denon_avc_x6500h_2
+      data:
+        source: Sonos
+    - delay: '00:00:03' # turning on DENON is slow, let's give it some time
+    - service: media_player.select_source
+      entity_id: media_player.denon_avc_x6500h
+      data:
+        source: Sonos
+    - service: media_player.select_source
+      entity_id: media_player.denon_avc_x6500h_2
+      data:
+        source: Sonos
+    - service: media_player.media_play
+      entity_id: media_player.denon_avc_x6500h
+    - service: media_player.media_play
+      entity_id: media_player.denon_avc_x6500h_2
+
+
+turn_off_media_everywhere:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.turn_off_music_everywhere
+    - service: script.turn_on
+      entity_id: script.turn_off_tvs_everywhere
+
+turn_off_media_everywhere_except_bedroom:
+  sequence:
+    - service: media_player.media_pause
+      entity_id: group.all_sonos_except_bedroom
+    - service: light.turn_off
+      entity_id: group.all_sonos_except_bedroom
+    - service: script.turn_on
+      entity_id: script.turn_off_denon_receiver
+    - service: media_player.turn_off
+      entity_id: media_player.living_room_tv_2
+    - service: media_player.turn_off
+      entity_id: media_player.living_room_tv
+
+turn_off_tvs_everywhere:
+  sequence:
+    - service: media_player.turn_off
+      entity_id: media_player.bedroom_tv_2
+    - service: media_player.turn_off
+      entity_id: media_player.living_room_tv_2
+    - service: media_player.turn_off
+      entity_id: media_player.bedroom_tv
+    - service: media_player.turn_off
+      entity_id: media_player.living_room_tv
+
+turn_off_music_everywhere:
+  sequence:
+    - service: media_player.media_pause
+      entity_id: group.all_sonos
+    - service: light.turn_off
+      entity_id: group.all_sonos
+    - service: script.turn_on
+      entity_id: script.turn_off_denon_receiver
+
+turn_off_denon_receiver:
+  sequence:
+    - service: media_player.turn_off
+      entity_id: media_player.denon_avc_x6500h
+    - service: media_player.turn_off
+      entity_id: media_player.denon_avc_x6500h_2

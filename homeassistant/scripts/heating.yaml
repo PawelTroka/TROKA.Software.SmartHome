@@ -1,0 +1,22 @@
+turn_on_heating_everywhere:
+  sequence:
+    - service: climate.turn_on
+      entity_id: climate.bathroom_floor
+    - service: climate.turn_on
+      entity_id: climate.kitchen_floor
+    - service: climate.turn_on
+      entity_id: climate.toilet_floor
+    - service: climate.turn_on
+      entity_id: climate.living_room
+    - delay: '00:00:01'
+    - service: climate.turn_on
+      entity_id: climate.office
+    - delay: '00:00:02'
+    - service: climate.turn_on
+      entity_id: climate.bathroom
+    - delay: '00:00:03'
+    - service: climate.turn_on
+      entity_id: climate.kitchen
+    # it is desired to keep Bedroom cool, so it's commented out for now
+    #- service: climate.turn_on
+    #  entity_id: climate.bedroom

@@ -1,0 +1,33 @@
+announce_everywhere:
+  sequence:
+  - service: script.sonos_say
+    data_template:
+      sonos_entity: group.all_sonos
+      volume: 0.3
+      message: '{{message}}'
+
+sonos_say:
+  alias: "Sonos TTS script"
+  sequence:
+    - service: sonos.snapshot
+      data_template:
+        entity_id: "{{ sonos_entity|default('group.all_sonos') }}"
+    - service: sonos.unjoin
+      data_template:
+        entity_id: "{{ sonos_entity|default('group.all_sonos') }}"
+    - service: media_player.volume_set
+      data_template:
+        entity_id: "{{ sonos_entity|default('group.all_sonos') }}"
+        volume_level: "{{ volume|default(0.5) }}"
+    - service: tts.google_say
+      data_template:
+        entity_id: "{{ sonos_entity|default('group.all_sonos') }}"
+        message: "{{ message }}"
+    - delay: "{{ delay|default('00:00:01') }}"
+    - wait_template: "{{ is_state(sonos_entity|default('group.all_sonos'), 'playing') }}"
+      timeout: '00:00:03'
+    - wait_template: "{{ not is_state(sonos_entity|default('group.all_sonos'), 'playing') }}"
+      timeout: '00:01:00'        
+    - service: sonos.restore
+      data_template:
+        entity_id: "{{ sonos_entity|default('group.all_sonos') }}"
