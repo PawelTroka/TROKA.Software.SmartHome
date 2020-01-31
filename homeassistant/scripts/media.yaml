@@ -52,23 +52,44 @@ turn_off_media_everywhere_except_bedroom:
 
 turn_off_tvs_everywhere:
   sequence:
-    - service: media_player.turn_off
-      entity_id: media_player.bedroom_tv_2
-    - service: media_player.turn_off
-      entity_id: media_player.living_room_tv_2
-    - service: media_player.turn_off
-      entity_id: media_player.bedroom_tv
-    - service: media_player.turn_off
-      entity_id: media_player.living_room_tv
+    - service: script.turn_on
+      entity_id: script.turn_off_living_room_tv
+    - service: script.turn_on
+      entity_id: script.turn_off_bedroom_tv
 
 turn_off_music_everywhere:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.turn_off_sonos_everywhere
+    - service: script.turn_on
+      entity_id: script.turn_off_denon_receiver
+
+turn_off_sonos_everywhere:
   sequence:
     - service: media_player.media_pause
       entity_id: group.all_sonos
     - service: light.turn_off
       entity_id: group.all_sonos
-    - service: script.turn_on
-      entity_id: script.turn_off_denon_receiver
+
+turn_off_bedroom_tv:
+  sequence:
+    - service: media_player.turn_off
+      entity_id: media_player.bedroom_tv_2
+    - service: media_player.turn_off
+      entity_id: media_player.bedroom_tv
+
+turn_off_living_room_tv:
+  sequence:
+    - service: media_player.turn_off
+      entity_id: media_player.living_room_tv_2
+    - service: media_player.turn_off
+      entity_id: media_player.living_room_tv
+    - service: media_player.turn_off
+      entity_id: media_player.shield_2
+    - service: media_player.turn_off
+      entity_id: media_player.shield
+    - service: media_player.turn_off
+      entity_id: media_player.plex_shield_android_tv
 
 turn_off_denon_receiver:
   sequence:
