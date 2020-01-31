@@ -1,0 +1,133 @@
+# bed time automations
+
+- alias: Turn off everything when everyone is asleep
+  trigger:
+    - platform: state
+      entity_id: sensor.eight_left_sleep_stage
+      from: 'awake'
+    - platform: state
+      entity_id: sensor.eight_right_sleep_stage
+      from: 'awake'
+  condition:
+    condition: or
+    conditions:
+      - condition: and # all residents are at home so all need to fall asleep
+        conditions:
+          - condition: template
+            value_template: '{{ state("sensor.eight_left_sleep_stage") != "awake" }}'
+          - condition: template
+            value_template: '{{ state("sensor.eight_right_sleep_stage") != "awake" }}'
+          - condition: state
+            entity_id: binary_sensor.eight_left_bed_presence
+            state: 'on'
+          - condition: state
+            entity_id: binary_sensor.eight_right_bed_presence
+            state: 'on'
+          - condition: state
+            entity_id: person.pawel
+            state: 'home'
+          - condition: state
+            entity_id: person.athena
+            state: 'home'
+      - condition: and  # some residents are at home so only they need to fall asleep
+        conditions:
+          - condition: or
+            conditions:
+            - condition: state
+              entity_id: binary_sensor.eight_left_bed_presence
+              state: 'on'
+            - condition: state
+              entity_id: binary_sensor.eight_right_bed_presence
+              state: 'on'
+          - condition: or # at least one person is not home
+            conditions:
+            - condition: state
+              entity_id: person.pawel
+              state: 'not_home'
+            - condition: state
+              entity_id: person.athena
+              state: 'not_home'
+          - condition: state # at least 1 person is at home
+            entity_id: group.all_persons
+            state: 'home'
+  action:
+      service: script.turn_on
+      entity_id: script.turn_off_everything
+
+
+- alias: Turn on necessary things when someone wakes up
+  trigger:
+    - platform: state
+      entity_id: sensor.eight_left_sleep_stage
+      to: 'awake'
+    - platform: state
+      entity_id: sensor.eight_right_sleep_stage
+      to: 'awake'
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: person.pawel
+        state: 'home'
+      - condition: state
+        entity_id: person.athena
+        state: 'home'
+  action:
+      service: script.turn_on
+      entity_id: script.turn_on_necessary_things
+
+
+- alias: Turn off media and lights elsewhere when everyone is in bed
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.eight_left_bed_presence
+      to: 'on'
+      for:
+        minutes: 1
+    - platform: state
+      entity_id: binary_sensor.eight_right_bed_presence
+      to: 'on'
+      for:
+        minutes: 1
+  condition:
+  condition:
+    condition: or
+    conditions:
+      - condition: and # all residents are at home so all need to be in bed
+        conditions:
+          - condition: state
+            entity_id: binary_sensor.eight_left_bed_presence
+            state: 'on'
+          - condition: state
+            entity_id: binary_sensor.eight_right_bed_presence
+            state: 'on'
+          - condition: state
+            entity_id: person.pawel
+            state: 'home'
+          - condition: state
+            entity_id: person.athena
+            state: 'home'
+      - condition: and  # some residents are at home so only they need to be in bed
+        conditions:
+          - condition: or
+            conditions:
+            - condition: state
+              entity_id: binary_sensor.eight_left_bed_presence
+              state: 'on'
+            - condition: state
+              entity_id: binary_sensor.eight_right_bed_presence
+              state: 'on'
+          - condition: or # at least one person is not home
+            conditions:
+            - condition: state
+              entity_id: person.pawel
+              state: 'not_home'
+            - condition: state
+              entity_id: person.athena
+              state: 'not_home'
+          - condition: state # at least 1 person is at home
+            entity_id: group.all_persons
+            state: 'home'
+  action:
+      service: script.turn_on
+      entity_id: script.turn_off_media_and_lights_everywhere_except_bedroom

@@ -1,0 +1,59 @@
+# General
+
+- alias: 'Turn off everything when everybody leaves home'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'not_home'
+  action:
+    service: script.turn_on
+    entity_id: script.turn_off_everything
+
+
+- alias: 'Turn off office heating when Pawel leaves home' # office is used exclusively by Pawel
+  trigger:
+    - platform: state
+      entity_id: person.pawel
+      to: 'not_home'
+  action:
+    service: climate.turn_off
+    entity_id: climate.office
+
+- alias: 'Turn on office heating when Pawel arrives home' # office is used exclusively by Pawel
+  trigger:
+    - platform: state
+      entity_id: person.pawel
+      to: 'home'
+  action:
+    service: climate.turn_on
+    entity_id: climate.office
+
+- alias: 'Turn on necessary things when anyone comes back home'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'home'
+  action:
+    service: script.turn_on
+    entity_id: script.turn_on_necessary_things
+
+
+- alias: 'Say welcome Pawel when Pawel is back home'
+  trigger:
+    - platform: state
+      entity_id: person.pawel
+      to: 'home'
+  action:
+    service: script.announce_everywhere
+    data:
+      message: 'Welcome back Pawel!'
+
+- alias: 'Say welcome Athena when Athena is back home'
+  trigger:
+    - platform: state
+      entity_id: person.athena
+      to: 'home'
+  action:
+    service: script.announce_everywhere
+    data:
+      message: 'Welcome back Athena!'

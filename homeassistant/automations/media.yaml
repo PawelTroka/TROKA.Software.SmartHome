@@ -1,0 +1,26 @@
+# Media automations
+
+- alias: Turn on DENON receiver and set it to Sonos input on Living room Sonos connect playing
+  trigger:
+    - platform: state
+      entity_id: media_player.living_room
+      to: 'playing'
+  action:
+      service: script.turn_on
+      entity_id: script.set_denon_receiver_to_sonos_input
+
+- alias: Turn off DENON receiver if its set to Sonos input on Living room Sonos connect stop playing
+  trigger:
+    - platform: state
+      entity_id: media_player.living_room
+      from: 'playing'
+  condition:
+    condition: or
+    conditions:
+      - condition: template
+        value_template: '{{ state_attr("media_player.denon_avc_x6500h", "source") == "Sonos" }}'
+      - condition: template
+        value_template: '{{ state_attr("media_player.denon_avc_x6500h_2", "source") == "Sonos" }}'
+  action:
+      service: script.turn_on
+      entity_id: script.turn_off_denon_receiver

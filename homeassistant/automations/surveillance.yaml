@@ -1,0 +1,32 @@
+# surveillance automations
+
+- alias: Download ring front door video on recording from last activity ready
+  trigger:
+#    - platform: state
+#      entity_id: binary_sensor.front_door_motion
+#      to: 'on'
+#    - platform: state
+#      entity_id: binary_sensor.front_door_ding
+#      to: 'on'
+    - platform: template
+      value_template: "{{ is_state_attr('sensor.front_door_last_activity', 'recording_status', 'ready') }}"
+  action:
+    - delay: '00:00:30' # Delay to make sure video URL is correctly updated
+    - service: downloader.download_file
+      data_template:
+        url: "{{ state_attr('camera.front_door_2', 'video_url') }}"
+        subdir: "doorbell_cam"
+        filename: "doorbell_cam-{{ now().strftime('%Y%m%d-%H%M%S') }}.mp4"
+
+
+- alias: Turn off media everywhere on ring front door motion or ding
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door_motion
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.front_door_ding
+      to: 'on'
+  action:
+      service: script.turn_on
+      entity_id: script.turn_off_media_everywhere

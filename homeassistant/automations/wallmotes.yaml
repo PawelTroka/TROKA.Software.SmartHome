@@ -1,0 +1,547 @@
+# Bathroom Wallmote
+
+- alias: Toggle bathroom lights on wallmote button 1 click
+  trigger:
+  - event_data:
+      entity_id: zwave.bathroom_wallmote
+      scene_data: 0
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.bathroom_lights
+
+- alias: Set bathroom lights to default on wallmote button 1 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.bathroom_wallmote
+      scene_data: 2
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_bathroom_lights_to_default
+
+- alias: Toggle hallway lights on wallmote button 2 click
+  trigger:
+  - event_data:
+      entity_id: zwave.bathroom_wallmote
+      scene_data: 0
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.hallway_lights
+
+- alias: Set hallway lights to default on wallmote button 2 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.bathroom_wallmote
+      scene_data: 2
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_hallway_lights_to_default
+
+
+- alias: Toggle living room lights on wallmote button 3 click
+  trigger:
+  - event_data:
+      entity_id: zwave.bathroom_wallmote
+      scene_data: 0
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.living_room_lights
+
+- alias: Set living room lights to default on wallmote button 3 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.bathroom_wallmote
+      scene_data: 2
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_living_room_lights_to_default
+
+
+- alias: Toggle kitchen lights on wallmote button 4 click
+  trigger:
+  - event_data:
+      entity_id: zwave.bathroom_wallmote
+      scene_data: 0
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.kitchen_lights
+
+- alias: Set kitchen lights to default on wallmote button 4 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.bathroom_wallmote
+      scene_data: 2
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_kitchen_lights_to_default
+
+
+# Toilet Wallmote
+
+- alias: Toggle office lights on wallmote button 1 click
+  trigger:
+  - event_data:
+      entity_id: zwave.toilet_wallmote
+      scene_data: 0
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.office_lights
+
+- alias: Set office lights to default on wallmote button 1 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.toilet_wallmote
+      scene_data: 2
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_office_lights_to_default
+
+- alias: Toggle toilet lights on wallmote button 2 click
+  trigger:
+  - event_data:
+      entity_id: zwave.toilet_wallmote
+      scene_data: 0
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.toilet_lights
+
+- alias: Set toilet lights to default on wallmote button 2 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.toilet_wallmote
+      scene_data: 2
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_toilet_lights_to_default
+
+
+- alias: Toggle hallway lights on wallmote button 3 click
+  trigger:
+  - event_data:
+      entity_id: zwave.toilet_wallmote
+      scene_data: 0
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.hallway_lights
+
+- alias: Set hallway lights to default on wallmote button 3 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.toilet_wallmote
+      scene_data: 2
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_hallway_lights_to_default
+
+
+- alias: Toggle toilet strip on wallmote button 4 click
+  trigger:
+  - event_data:
+      entity_id: zwave.toilet_wallmote
+      scene_data: 0
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.toilet_strip
+
+- alias: Set toilet strip to default on wallmote button 4 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.toilet_wallmote
+      scene_data: 2
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_toilet_strip_to_default
+
+
+# Bedroom Wallmote
+
+- alias: Toggle bedroom downlights on wallmote button 1 click
+  trigger:
+  - event_data:
+      entity_id: zwave.bedroom_wallmote
+      scene_data: 0
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.bedroom_downlights
+
+- alias: Set bedroom downlights to default on wallmote button 1 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.bedroom_wallmote
+      scene_data: 2
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_bedroom_downlights_to_default
+
+
+- alias: Toggle bedroom strip on wallmote button 2 click
+  trigger:
+  - event_data:
+      entity_id: zwave.bedroom_wallmote
+      scene_data: 0
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.bedroom_strip
+
+- alias: Set bedroom strip to default on wallmote button 2 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.bedroom_wallmote
+      scene_data: 2
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_bedroom_strip_to_default
+
+
+- alias: Toggle bedroom cabinet strip on wallmote button 3 click
+  trigger:
+  - event_data:
+      entity_id: zwave.bedroom_wallmote
+      scene_data: 0
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.bedroom_cabinet_strip
+
+- alias: Set bedroom cabinet strip to default on wallmote button 3 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.bedroom_wallmote
+      scene_data: 2
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_bedroom_cabinet_strip_to_default
+
+
+- alias: Toggle bedroom TV on wallmote button 4 click
+  trigger:
+  - event_data:
+      entity_id: zwave.bedroom_wallmote
+      scene_data: 0
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: media_player.toggle
+    entity_id: media_player.bedroom_tv_2
+
+- alias: Turn off bedroom TV on wallmote button 4 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.bedroom_wallmote
+      scene_data: 2
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: media_player.turn_off
+    entity_id: media_player.bedroom_tv_2
+
+
+# Kitchen Wallmote
+
+- alias: Toggle kitchen countertop lights on wallmote button 1 click
+  trigger:
+  - event_data:
+      entity_id: zwave.kitchen_wallmote
+      scene_data: 0
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.kitchen_countertop_lights
+
+- alias: Set kitchen countertop lights to default on wallmote button 1 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.kitchen_wallmote
+      scene_data: 2
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_kitchen_countertop_lights_to_default
+
+- alias: Toggle kitchen island lights on wallmote button 2 click
+  trigger:
+  - event_data:
+      entity_id: zwave.kitchen_wallmote
+      scene_data: 0
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.kitchen_island_lights
+
+- alias: Set kitchen island lights to default on wallmote button 2 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.kitchen_wallmote
+      scene_data: 2
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_kitchen_island_lights_to_default
+
+
+- alias: Toggle kitchen cabinet strip on wallmote button 3 click
+  trigger:
+  - event_data:
+      entity_id: zwave.kitchen_wallmote
+      scene_data: 0
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.kitchen_cabinet_strip
+
+- alias: Set kitchen cabinet strip to default on wallmote button 3 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.kitchen_wallmote
+      scene_data: 2
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_kitchen_cabinet_strip_to_default
+
+
+- alias: Toggle kitchen island strip on wallmote button 4 click
+  trigger:
+  - event_data:
+      entity_id: zwave.kitchen_wallmote
+      scene_data: 0
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.kitchen_island_strip
+
+- alias: Set kitchen island strip to default on wallmote button 4 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.kitchen_wallmote
+      scene_data: 2
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_kitchen_island_strip_to_default
+
+
+# Hallway Wallmote
+
+- alias: Toggle hallway lights on hallway wallmote button 1 click
+  trigger:
+  - event_data:
+      entity_id: zwave.hallway_wallmote
+      scene_data: 0
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.hallway_lights
+
+- alias: Set hallway lights to default on hallway wallmote button 1 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.hallway_wallmote
+      scene_data: 2
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_hallway_lights_to_default
+
+- alias: Toggle hallway strip on hallway wallmote button 2 click
+  trigger:
+  - event_data:
+      entity_id: zwave.hallway_wallmote
+      scene_data: 0
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.hallway_strip
+
+- alias: Set hallway strip to default on hallway wallmote button 2 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.hallway_wallmote
+      scene_data: 2
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_hallway_strip_to_default
+
+
+- alias: Turn off all lights on hallway wallmote button 3 click
+  trigger:
+  - event_data:
+      entity_id: zwave.hallway_wallmote
+      scene_data: 0
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.turn_off
+    entity_id: group.all_lights
+
+- alias: Turn off all devices on hallway wallmote button 3 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.hallway_wallmote
+      scene_data: 2
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.turn_off_everything
+
+
+
+
+
+
+# Living room Wallmote
+
+- alias: Toggle living room relax area lights on living room wallmote button 1 click
+  trigger:
+  - event_data:
+      entity_id: zwave.living_room_wallmote
+      scene_data: 0
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.living_room_relax_area_lights
+
+- alias: Set living room relax area lights lights to default on living room wallmote button 1 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.living_room_wallmote
+      scene_data: 2
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_living_room_relax_area_lights_to_default
+
+- alias: Toggle living room dining area lights on living room wallmote button 2 click
+  trigger:
+  - event_data:
+      entity_id: zwave.living_room_wallmote
+      scene_data: 0
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: light.toggle
+    entity_id: light.living_room_dining_area_lights
+
+- alias: Set living room dining area lights lights to default on living room wallmote button 2 hold
+  trigger:
+  - event_data:
+      entity_id: zwave.living_room_wallmote
+      scene_data: 2
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.set_living_room_dining_area_lights_to_default
+
+
+- alias: Toggle living room TV on living room wallmote button 3 click
+  trigger:
+  - event_data:
+      entity_id: zwave.living_room_wallmote
+      scene_data: 0
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  action:
+    service: media_player.toggle
+    entity_id: media_player.living_room_tv_2
