@@ -1,0 +1,35 @@
+# Bathroom flood sensor
+
+- alias: Raise an alarm on bathroom flood
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bathroom_flood_sensor
+    to: 'on'
+  action:
+    - service: script.raise_flood_alarm
+      data:
+        room: "Bathroom"
+
+# Toilet flood sensor
+
+- alias: Raise an alarm on toilet flood
+  trigger:
+    platform: state
+    entity_id: binary_sensor.toilet_flood_sensor
+    to: 'on'
+  action:
+    - service: script.raise_flood_alarm
+      data:
+        room: "Toilet"
+
+# Kitchen flood sensor
+
+- alias: Raise an alarm on kitchen flood
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_flood_sensor
+    to: 'on'
+  action:
+    - service: script.raise_flood_alarm
+      data:
+        room: "Kitchen"

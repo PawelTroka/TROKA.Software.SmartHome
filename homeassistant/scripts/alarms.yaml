@@ -1,0 +1,17 @@
+raise_flood_alarm:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.flash_all_lights
+    - service: script.announce_everywhere
+      data_template:
+        message: "Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!!"
+    - service: script.turn_on
+      entity_id: script.flash_all_lights
+    - service: script.announce_everywhere
+      data_template:
+        message: "Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!!"
+    - service: script.turn_on
+      entity_id: script.flash_all_lights
+    - service: script.announce_everywhere
+      data_template:
+        message: "Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!!"
