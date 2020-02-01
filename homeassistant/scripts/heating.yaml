@@ -1,4 +1,4 @@
-turn_on_heating_everywhere:
+turn_on_heating_everywhere_except_bedroom_and_office:
   sequence:
     - service: climate.turn_on
       entity_id: climate.bathroom_floor
@@ -9,8 +9,8 @@ turn_on_heating_everywhere:
     - service: climate.turn_on
       entity_id: climate.living_room
     - delay: '00:00:01'
-    - service: climate.turn_on
-      entity_id: climate.office
+    #- service: climate.turn_on
+    #  entity_id: climate.office # office is used exclusively by Pawel
     - delay: '00:00:02'
     - service: climate.turn_on
       entity_id: climate.bathroom

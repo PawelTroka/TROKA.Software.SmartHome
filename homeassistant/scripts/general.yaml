@@ -25,5 +25,6 @@ turn_off_lights_and_tv_in_bedroom:
 
 turn_on_necessary_things:
   sequence:
-  - service: script.turn_on_heating_everywhere
+    - service: script.turn_on
+      entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
 
