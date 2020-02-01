@@ -51,6 +51,11 @@ transmission:
   password: !secret transmission_password
 
 ### Cloud integrations:
+tuya:
+  username: !secret tuya_username
+  password: !secret tuya_password
+  country_code: 48
+  platform: smart_life
 ring:
   username: !secret ring_username
   password: !secret ring_password
