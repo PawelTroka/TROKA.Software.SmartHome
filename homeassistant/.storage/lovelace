@@ -34,15 +34,15 @@
             "resources": [
                 {
                     "type": "module",
-                    "url": "/local/mini-media-player-bundle.js?v=1.5.2"
-                },
-                {
-                    "type": "module",
-                    "url": "/local/custom-header.js?v=1.2.1"
-                },
-                {
-                    "type": "module",
                     "url": "/community_plugin/lovelace-auto-entities/auto-entities.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/custom-header/custom-header.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/mini-media-player/mini-media-player-bundle.js"
                 }
             ],
             "title": "TROKA.Software.SmartHome",
