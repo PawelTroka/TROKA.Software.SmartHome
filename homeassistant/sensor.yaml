@@ -1,3 +1,7 @@
+- platform: unifigateway
+  host: localhost
+  username: !secret unifi_username
+  password: !secret unifi_password
 - platform: xbox_live
   api_key: !secret xbox_live_api_key
   xuid:
