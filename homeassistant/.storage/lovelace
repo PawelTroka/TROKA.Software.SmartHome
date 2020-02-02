@@ -39,6 +39,10 @@
                 {
                     "type": "module",
                     "url": "/local/custom-header.js?v=1.2.1"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/lovelace-auto-entities/auto-entities.js"
                 }
             ],
             "title": "TROKA.Software.SmartHome",
