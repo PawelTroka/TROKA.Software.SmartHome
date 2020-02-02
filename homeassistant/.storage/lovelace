@@ -2010,6 +2010,32 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.unifi_gateway_alerts"
+                                },
+                                {
+                                    "entity": "sensor.unifi_gateway_firmware_upgradable"
+                                },
+                                {
+                                    "entity": "sensor.unifi_gateway_www"
+                                },
+                                {
+                                    "entity": "sensor.unifi_gateway_vpn"
+                                },
+                                {
+                                    "entity": "sensor.unifi_gateway_wan"
+                                },
+                                {
+                                    "entity": "sensor.unifi_gateway_lan"
+                                },
+                                {
+                                    "entity": "sensor.unifi_gateway_wlan"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "path": "office",
