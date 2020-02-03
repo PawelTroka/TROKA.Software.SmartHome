@@ -75,3 +75,8 @@ all_sonos_except_bedroom:
     - media_player.office
     - media_player.kitchen
     - media_player.toilet
+
+all_echos:
+  entities:
+    - media_player.living_room_echo
+    - media_player.hallway_echo
