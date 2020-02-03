@@ -1,0 +1,10 @@
+alexa_notify:
+  sequence:
+    - service: notify.alexa_media
+      data_template:
+        target: "{{ entity_id|default('media_player.living_room_echo') }}"
+        message: "{{ message }}"
+        title: "{{ title }}"
+        data:
+          type: push
+          method: all

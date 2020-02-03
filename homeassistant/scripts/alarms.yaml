@@ -7,6 +7,10 @@ raise_flood_alarm:
         message: "Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!!"
     - service: script.turn_on
       entity_id: script.flash_all_lights
+    - service: script.alexa_notify
+      data_template:
+        title: "Flood alarm!"
+        message: "Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!!"
     - service: script.announce_everywhere
       data_template:
         message: "Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!! Flood in {{room}}!!!"
