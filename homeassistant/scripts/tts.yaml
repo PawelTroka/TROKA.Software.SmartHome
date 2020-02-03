@@ -9,7 +9,20 @@ announce_everywhere:
     data_template:
       entity_id: media_player.living_room_speaker
       message: "{{ message }}"
+  - service: script.alexa_say
+    data_template:
+      entity_id: group.all_echos
+      message: "{{ message }}"
 
+alexa_say:
+  sequence:
+    - service: notify.alexa_media
+      data_template:
+        target: "{{ entity_id|default('group.all_echos') }}"
+        message: "{{ message }}"
+        data:
+          type: tts
+          method: all
 
 sonos_say:
   alias: "Sonos TTS script"
