@@ -59,7 +59,7 @@ Home automation configuration, scripts and state of affairs
 
 <sup>4</sup> API does not support Cooktop yet (https://developer.home-connect.com/docs/cooktop/supported_programs_and_options). Only very basic functionality is exposed via custom component https://github.com/DavidMStraub/homeassistant-homeconnect. Is coming to official Home Assistant soon via PR https://github.com/home-assistant/home-assistant/pull/29214.
 
-<sup>5</sup> Mobile app (https://play.google.com/store/apps/details?id=com.adbglobal.whirlpool&hl=en) sucks hard but at least it finally shows connected appliances correctly.
+<sup>5</sup> Mobile app (https://play.google.com/store/apps/details?id=com.adbglobal.whirlpool&hl=en) sucks hard but at least it finally shows connected appliances correctly. Some discussions about integrating `6th Sense Live` platform into Home Asssitant (possibly by reverse engineering) have already started (https://community.home-assistant.io/t/whirlpool-wifi-airconditioner/136237).
 
 
 <sup>6</sup> Doesn't work with all the functionality - e.g. playback from Tidal is region-locked, grouping is limited.
