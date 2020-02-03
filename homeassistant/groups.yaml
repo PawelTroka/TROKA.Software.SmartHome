@@ -80,3 +80,13 @@ all_echos:
   entities:
     - media_player.living_room_echo
     - media_player.hallway_echo
+
+all_alexa:
+  entities:
+    - media_player.living_room_echo
+    - media_player.hallway_echo
+    - media_player.bathroom_sonos
+    - media_player.toilet_sonos
+    - media_player.kitchen_sonos
+    - media_player.bedroom_sonos
+    - media_player.office_sonos
