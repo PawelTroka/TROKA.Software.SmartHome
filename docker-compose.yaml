@@ -607,6 +607,50 @@ services:
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
       - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
+# Jellyfin - Media Server
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    hostname: jellyfin
+    restart: unless-stopped
+    networks:
+      - traefik_proxy
+    ports:
+      - "8096:8096"
+      - "8920:8920"
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+      UMASK_SET: 022
+    volumes:
+      - ${HOMESERVERDIR}/jellyfin:/config
+      - /dev/shm:/ram_transcode
+      - ${STORAGEDIR}/movies:/media/movies
+      - ${STORAGEDIR}/tvshows:/media/tvshows
+      - ${STORAGEDIR}/music:/media/music
+      - ${STORAGEDIR}/XXX:/media/XXX
+      - ${STORAGEDIR}/private:/media/private
+      - ${HOMESERVERDIR}/shared:/shared
+#      - /media:/nas:ro # Run in ro mode while upgrading JF
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=jellyfin"
+      - "traefik.frontend.rule=Host:jellyfin.${DOMAINNAME}"
+      - "traefik.port=8096"
+      - "traefik.protocol=https"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=jellyfin.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
+
 # Tautulli - Previously PlexPy. Plex statistics and monitoring
 # Set HTTP Root in Tautulli settings if using PathPrefix
   tautulli:
