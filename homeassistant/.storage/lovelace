@@ -43,6 +43,10 @@
                 {
                     "type": "module",
                     "url": "/community_plugin/mini-media-player/mini-media-player-bundle.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/lovelace-multiple-entity-row/multiple-entity-row.js"
                 }
             ],
             "title": "TROKA.Software.SmartHome",
@@ -1454,6 +1458,33 @@
                         {
                             "entity": "climate.bathroom_floor",
                             "type": "thermostat"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.lg_washer_3badfff0_81a5_11e9_9f27_203dbdebdc5a",
+                                    "info": {
+                                        "attribute": "state",
+                                        "name": false
+                                    },
+                                    "name": "LG Washer",
+                                    "name_state": "state",
+                                    "primary": {
+                                        "attribute": "initial_time",
+                                        "name": "initial time"
+                                    },
+                                    "secondary": {
+                                        "attribute": "remaining_time",
+                                        "name": "remaining time"
+                                    },
+                                    "tertiary": {
+                                        "attribute": "error",
+                                        "name": "status"
+                                    },
+                                    "type": "custom:multiple-entity-row"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "path": "bathroom",
