@@ -2,10 +2,12 @@
 
 - alias: Turn on hallway lights on motion when dark
   trigger:
-    platform: state
-    entity_id: sensor.hallway_multisensor_burglar
-    from: '0'
-    to: '8'
+    - platform: state
+      entity_id: binary_sensor.hallway_multisensor_motion
+      to: 'on'
+    - platform: state
+      entity_id: sensor.hallway_multisensor_burglar
+      to: '8'
   condition:
       condition: or  # 'when dark' condition: either after sunset or before sunrise - equivalent to a state condition on `sun.sun` of `below_horizon`
       conditions:
@@ -19,10 +21,12 @@
 
 - alias: Turn off hallway lights when motion stops
   trigger:
-    platform: state
-    entity_id: sensor.hallway_multisensor_burglar
-    from: '8'
-    to: '0'
+    - platform: state
+      entity_id: binary_sensor.hallway_multisensor_motion
+      to: 'off'
+    - platform: state
+      entity_id: sensor.hallway_multisensor_burglar
+      to: '0'
   action:
     service: light.turn_off
     entity_id: light.hallway_lights
@@ -32,10 +36,12 @@
 
 - alias: Turn on kitchen lights on motion when dark
   trigger:
-    platform: state
-    entity_id: sensor.kitchen_multisensor_burglar
-    from: '0'
-    to: '8'
+    - platform: state
+      entity_id: binary_sensor.kitchen_multisensor_motion
+      to: 'on'
+    - platform: state
+      entity_id: sensor.kitchen_multisensor_burglar
+      to: '8'
   condition:
       condition: or  # 'when dark' condition: either after sunset or before sunrise - equivalent to a state condition on `sun.sun` of `below_horizon`
       conditions:
@@ -49,10 +55,12 @@
 
 - alias: Turn off kitchen lights when motion stops
   trigger:
-    platform: state
-    entity_id: sensor.kitchen_multisensor_burglar
-    from: '8'
-    to: '0'
+    - platform: state
+      entity_id: binary_sensor.kitchen_multisensor_motion
+      to: 'off'
+    - platform: state
+      entity_id: sensor.kitchen_multisensor_burglar
+      to: '0'
   action:
     service: light.turn_off
     entity_id: light.kitchen_lights
@@ -62,20 +70,24 @@
 
 - alias: Turn on toilet lights on motion
   trigger:
-    platform: state
-    entity_id: sensor.toilet_multisensor_burglar
-    from: '0'
-    to: '8'
+    - platform: state
+      entity_id: binary_sensor.toilet_multisensor_motion
+      to: 'on'
+    - platform: state
+      entity_id: sensor.toilet_multisensor_burglar
+      to: '8'
   action:
     service: light.turn_on
     entity_id: light.toilet_lights
 
 - alias: Turn off toilet lights when motion stops
   trigger:
-    platform: state
-    entity_id: sensor.toilet_multisensor_burglar
-    from: '8'
-    to: '0'
+    - platform: state
+      entity_id: binary_sensor.toilet_multisensor_motion
+      to: 'off'
+    - platform: state
+      entity_id: sensor.toilet_multisensor_burglar
+      to: '0'
   action:
     service: light.turn_off
     entity_id: light.toilet_lights
@@ -85,10 +97,12 @@
 
 - alias: Turn on bathroom lights on motion
   trigger:
-    platform: state
-    entity_id: sensor.bathroom_multisensor_burglar
-    from: '0'
-    to: '8'
+    - platform: state
+      entity_id: binary_sensor.bathroom_multisensor_motion
+      to: 'on'
+    - platform: state
+      entity_id: sensor.bathroom_multisensor_burglar
+      to: '8'
   action:
     service: light.turn_on
     entity_id: light.bathroom_lights
@@ -96,10 +110,12 @@
 
 - alias: Turn off bathroom lights when motion stops unless humidity is high
   trigger:
-    platform: state
-    entity_id: sensor.bathroom_multisensor_burglar
-    from: '8'
-    to: '0'
+    - platform: state
+      entity_id: binary_sensor.bathroom_multisensor_motion
+      to: 'off'
+    - platform: state
+      entity_id: sensor.bathroom_multisensor_burglar
+      to: '0'
   condition:
     - condition: numeric_state
       entity_id: 'sensor.bathroom_multisensor_relative_humidity'
@@ -115,9 +131,14 @@
     entity_id: sensor.bathroom_multisensor_relative_humidity
     below: 65
   condition:
-    - condition: state
-      entity_id: 'sensor.bathroom_multisensor_burglar'
-      state: '0'
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: 'binary_sensor.bathroom_multisensor_motion'
+        state: 'off'
+      - condition: state
+        entity_id: 'sensor.bathroom_multisensor_burglar'
+        state: '0'
   action:
     service: light.turn_off
     entity_id: light.bathroom_lights
