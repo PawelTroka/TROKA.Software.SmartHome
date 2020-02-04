@@ -2205,6 +2205,35 @@
                                 ]
                             },
                             "type": "custom:auto-entities"
+                        },
+                        {
+                            "card": {
+                                "title": "Temperatures warning",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "name": "*temp*",
+                                        "state": "> 40"
+                                    },
+                                    {
+                                        "entity_id": "*temp*",
+                                        "state": "> 40"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "temperature": "> 40"
+                                        }
+                                    },
+                                    {
+                                        "attributes": {
+                                            "temp": "> 40"
+                                        }
+                                    }
+                                ]
+                            },
+                            "type": "custom:auto-entities"
                         }
                     ],
                     "panel": false,
