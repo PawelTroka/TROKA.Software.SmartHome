@@ -2129,6 +2129,87 @@
                     ],
                     "path": "outdoor",
                     "title": "Outdoor"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "card": {
+                                "show_header_toggle": false,
+                                "title": "Motion events",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "attributes": {
+                                            "device_class": "motion"
+                                        },
+                                        "domain": "binary_sensor"
+                                    }
+                                ]
+                            },
+                            "sort": {
+                                "count": 5,
+                                "method": "last_changed"
+                            },
+                            "type": "custom:auto-entities"
+                        },
+                        {
+                            "card": {
+                                "show_header_toggle": true,
+                                "title": "Lights on",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "domain": "light",
+                                        "options": {
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            }
+                                        },
+                                        "state": "on"
+                                    }
+                                ]
+                            },
+                            "show_empty": false,
+                            "type": "custom:auto-entities"
+                        },
+                        {
+                            "card": {
+                                "title": "Battery warning",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "name": "*battery*",
+                                        "state": "< 40"
+                                    },
+                                    {
+                                        "entity_id": "*battery*",
+                                        "state": "< 40"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "battery": "< 40"
+                                        }
+                                    },
+                                    {
+                                        "attributes": {
+                                            "battery_level": "< 40"
+                                        }
+                                    }
+                                ]
+                            },
+                            "type": "custom:auto-entities"
+                        }
+                    ],
+                    "panel": false,
+                    "path": "advanced",
+                    "title": "Advanced"
                 }
             ]
         }
