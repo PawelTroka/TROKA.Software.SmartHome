@@ -112,10 +112,19 @@
     entity_id: sensor.bathroom_door_opening_sensor_access_control
     from: '22'
     to: '23'
+    for:
+      seconds: 10
   condition:
+    - condition: state
+      entity_id: 'binary_sensor.bathroom_multisensor_motion'
+      state: 'off'
+      for:
+        seconds: 10
     - condition: state
       entity_id: 'sensor.bathroom_multisensor_burglar'
       state: '0'
+      for:
+        seconds: 10
   action:
     service: light.turn_off
     entity_id: light.bathroom_lights
@@ -153,10 +162,19 @@
     entity_id: sensor.toilet_door_opening_sensor_access_control
     from: '22'
     to: '23'
+    for:
+      seconds: 10
   condition:
+    - condition: state
+      entity_id: 'binary_sensor.toilet_multisensor_motion'
+      state: 'off'
+      for:
+        seconds: 10
     - condition: state
       entity_id: 'sensor.toilet_multisensor_burglar'
       state: '0'
+      for:
+        seconds: 10
   action:
     service: light.turn_off
     entity_id: light.toilet_lights
