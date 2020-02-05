@@ -25,6 +25,7 @@
       - light.kitchen_light_2
       - light.kitchen_light_3
       - light.kitchen_light_4
+      - light.kitchen_cabinet_strip
   - platform: group
     name: Kitchen countertop lights
     entities:
