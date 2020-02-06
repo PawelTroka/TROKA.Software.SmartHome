@@ -106,7 +106,7 @@
     data:
       message: 'Motion in bathroom!'
 
-- alias: Turn off bathroom lights on door close if there is no motion inside
+- alias: Turn off bathroom lights on door close if there is no motion inside and shower not in use
   trigger:
     platform: state
     entity_id: sensor.bathroom_door_opening_sensor_access_control
@@ -125,6 +125,9 @@
       state: '0'
       for:
         seconds: 10
+    - condition: state
+      entity_id: binary_sensor.shower_in_use
+      state: 'off'
   action:
     service: light.turn_off
     entity_id: light.bathroom_lights
