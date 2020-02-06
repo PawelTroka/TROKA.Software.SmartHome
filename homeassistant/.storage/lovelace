@@ -1485,6 +1485,23 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.bathroom_mirror_switch_demister"
+                                },
+                                {
+                                    "entity": "switch.bathroom_mirror_switch_lights"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_mirror_switch_power"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_mirror_switch_energy"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "path": "bathroom",
