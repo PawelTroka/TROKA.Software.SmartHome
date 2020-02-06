@@ -81,10 +81,8 @@ tado:
   username: !secret tado_username
   password: !secret tado_password
 netatmo:
-  api_key: !secret netatmo_api_key
-  secret_key: !secret netatmo_secret_key
-  username: !secret netatmo_username
-  password: !secret netatmo_password
+  client_id: !secret netatmo_client_id
+  client_secret: !secret netatmo_client_secret
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
