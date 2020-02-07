@@ -143,3 +143,25 @@
   action:
     service: light.turn_off
     entity_id: light.bathroom_lights
+
+
+- alias: Turn on bathroom mirror demister when shower is in use
+  trigger:
+    platform: state
+    entity_id: 'binary_sensor.shower_in_use'
+    from: 'off'
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.bathroom_mirror_switch_demister
+
+
+- alias: Turn off bathroom mirror demister when shower is over
+  trigger:
+    platform: state
+    entity_id: 'binary_sensor.shower_in_use'
+    from: 'on'
+    to: 'off'
+  action:
+    service: switch.turn_off
+    entity_id: switch.bathroom_mirror_switch_demister
