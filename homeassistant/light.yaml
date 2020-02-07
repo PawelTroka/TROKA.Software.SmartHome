@@ -102,6 +102,11 @@
       - light.bathroom_mirror_light_1
       - light.bathroom_mirror_light_2
   - platform: group
+    name: Bathroom mirror lights
+    entities:
+      - light.bathroom_mirror_light_1
+      - light.bathroom_mirror_light_2
+  - platform: group
     name: Toilet lights
     entities:
       - light.toilet_light

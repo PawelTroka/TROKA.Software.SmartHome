@@ -1,0 +1,20 @@
+- alias: Turn off bathroom mirror lights on bathroom mirror switch lights switch off
+  trigger:
+    platform: state
+    entity_id: switch.bathroom_mirror_switch_lights
+    from: 'on'
+    to: 'off'
+  action:
+    service: light.turn_off
+    entity_id: light.bathroom_mirror_lights
+
+
+- alias: Turn on bathroom mirror lights on bathroom mirror switch lights switch on
+  trigger:
+    platform: state
+    entity_id: switch.bathroom_mirror_switch_lights
+    from: 'off'
+    to: 'on'
+  action:
+    service: light.turn_on
+    entity_id: light.bathroom_mirror_lights
