@@ -2168,7 +2168,8 @@
                             },
                             "sort": {
                                 "count": 5,
-                                "method": "last_changed"
+                                "method": "last_changed",
+                                "numeric": true
                             },
                             "type": "custom:auto-entities"
                         },
@@ -2196,6 +2197,7 @@
                         },
                         {
                             "card": {
+                                "show_header_toggle": false,
                                 "title": "Battery warning",
                                 "type": "entities"
                             },
@@ -2225,6 +2227,7 @@
                         },
                         {
                             "card": {
+                                "show_header_toggle": false,
                                 "title": "Temperatures warning",
                                 "type": "entities"
                             },
@@ -2250,6 +2253,36 @@
                                     }
                                 ]
                             },
+                            "type": "custom:auto-entities"
+                        },
+                        {
+                            "card": {
+                                "title": "Automations",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "domain": "automation"
+                                    }
+                                ]
+                            },
+                            "type": "custom:auto-entities"
+                        },
+                        {
+                            "card": {
+                                "show_header_toggle": false,
+                                "title": "Unavailable",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "state": "unavailable"
+                                    }
+                                ]
+                            },
+                            "show_empty": false,
                             "type": "custom:auto-entities"
                         }
                     ],
