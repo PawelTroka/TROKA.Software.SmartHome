@@ -150,6 +150,19 @@
                                         "power_state": false
                                     },
                                     "icon": "mdi:plex",
+                                    "name": "Living room Plex",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.living_room_kodi",
+                                    "group": true,
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power": true,
+                                        "power_state": false,
+                                        "volume": true
+                                    },
+                                    "icon": "mdi:kodi",
                                     "type": "custom:mini-media-player"
                                 }
                             ],
