@@ -9,3 +9,20 @@
   #show_all_sources: true
   #zones:
   #  - zone: Zone2
+- platform: kodi
+  name: Living room Kodi
+  host: 10.10.10.87
+  port: 8779
+  tcp_port: 9090
+  username: !secret kodi_username
+  password: !secret kodi_password
+  enable_websocket: true
+  turn_on_action:
+    - service: wake_on_lan.send_magic_packet
+      data:
+        mac: !secret shield_mac_address
+  turn_off_action:
+    service: kodi.call_method
+    data:
+      entity_id: media_player.living_room_kodi
+      method: System.Shutdown

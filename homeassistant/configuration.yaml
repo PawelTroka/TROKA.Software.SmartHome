@@ -32,6 +32,8 @@ http:
   #ssl_certificate: /ssl/fullchain.pem
   #ssl_key: /ssl/privkey.pem
 
+wake_on_lan:
+
 # downloader for surveillance purposes
 downloader:
   download_dir: /downloads/surveillance
@@ -94,6 +96,7 @@ alexa: !include alexa.yaml
 google_assistant: !include google_assistant.yaml
 
 ### include section:
+notify: !include notify.yaml
 climate: !include climate.yaml
 speedtestdotnet: !include speedtestdotnet.yaml
 switch: !include switch.yaml

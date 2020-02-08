@@ -1,0 +1,8 @@
+
+- alias: Update Kodi library early in the morning
+  trigger:
+    platform: time
+    at: "07:32:00"
+  action:
+    service: script.turn_on
+    entity_id: script.living_room_kodi_update_library

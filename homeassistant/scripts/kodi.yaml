@@ -1,0 +1,10 @@
+living_room_kodi_update_library:
+  sequence:
+    - service: kodi.call_method
+      data:
+        entity_id: media_player.living_room_kodi
+        method: VideoLibrary.Scan
+    - service: kodi.call_method
+      data:
+        entity_id: media_player.living_room_kodi
+        method: AudioLibrary.Scan

@@ -1,0 +1,6 @@
+- platform: kodi
+  name: Notify Living room Kodi
+  host: 10.10.10.87
+  port: 8779
+  username: !secret kodi_username
+  password: !secret kodi_password
