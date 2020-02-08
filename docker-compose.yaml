@@ -8,8 +8,10 @@ version: "3.7"
 ########################### ENV VARIABLES
 
 x-common-variables: &common-variables
-  FRONT_DOOR_CAM_IMAGE_URL: http://10.10.10.101/cgi-bin/api.cgi?cmd=Snap&amp;channel=0&amp;rs=wuuPhkmUCeI9WG7C&amp;user=${FRONT_DOOR_CAM_USER}&amp;password=${FRONT_DOOR_CAM_PASSWORD}
-  FRONT_DOOR_CAM_STREAM_URL: rtsp://${FRONT_DOOR_CAM_USER}:${FRONT_DOOR_CAM_PASSWORD}@10.10.10.101:554/h264Preview_01_main
+  FRONT_DOOR_CAM_IMAGE_URL: http://10.10.10.104/cgi-bin/api.cgi?cmd=Snap&amp;channel=0&amp;rs=wuuPhkmUCeI9WG7C&amp;user=${FRONT_DOOR_CAM_USER}&amp;password=${FRONT_DOOR_CAM_PASSWORD}
+  FRONT_DOOR_CAM_STREAM_URL: rtsp://${FRONT_DOOR_CAM_USER}:${FRONT_DOOR_CAM_PASSWORD}@10.10.10.104:554/h264Preview_01_main
+  OUTDOOR_LEFT_CAM_IMAGE_URL: http://10.10.10.101/cgi-bin/api.cgi?cmd=Snap&amp;channel=0&amp;rs=wuuPhkmUCeI9WG7C&amp;user=${OUTDOOR_LEFT_CAM_USER}&amp;password=${OUTDOOR_LEFT_CAM_PASSWORD}
+  OUTDOOR_LEFT_CAM_STREAM_URL: rtsp://${OUTDOOR_LEFT_CAM_USER}:${OUTDOOR_LEFT_CAM_PASSWORD}@10.10.10.101:554/h264Preview_01_main
   LIVING_ROOM_CAM_STREAM_URL: rtsp://${LIVING_ROOM_CAM_USER}:${LIVING_ROOM_CAM_PASSWORD}@10.10.10.51/live
   LIVING_ROOM_CAM_COMMAND: -rtsp_transport udp -i rtsp://${LIVING_ROOM_CAM_USER}:${LIVING_ROOM_CAM_PASSWORD}@10.10.10.51/live
   LIVING_ROOM_RELAX_AREA_CAM_STREAM_URL: rtsp://${LIVING_ROOM_RELAX_AREA_CAM_USER}:${LIVING_ROOM_RELAX_AREA_CAM_PASSWORD}@10.10.10.49/live
