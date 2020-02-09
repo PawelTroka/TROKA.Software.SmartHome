@@ -1,7 +1,17 @@
 - platform: plex_recently_added
+  name: Plex recently added Movies
   token: !secret plex_token
   host: localhost
   port: !env_var PLEX_PORT
+  section_types:
+  - movie
+- platform: plex_recently_added
+  name: Plex recently added TV
+  token: !secret plex_token
+  host: localhost
+  port: !env_var PLEX_PORT
+  section_types:
+  - show
 - platform: kodi_recently_added
   host: 10.10.10.87
   port: 8779
