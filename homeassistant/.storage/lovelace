@@ -51,6 +51,10 @@
                 {
                     "type": "module",
                     "url": "/community_plugin/harmony-card/harmony-card.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/community_plugin/upcoming-media-card/upcoming-media-card.js"
                 }
             ],
             "title": "TROKA.Software.SmartHome",
