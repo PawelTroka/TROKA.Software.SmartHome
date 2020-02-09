@@ -970,6 +970,10 @@
                             "type": "custom:mini-media-player"
                         },
                         {
+                            "entity": "media_player.living_room_kodi",
+                            "type": "media-control"
+                        },
+                        {
                             "entity": "media_player.shield_2",
                             "type": "custom:mini-media-player"
                         },
@@ -1087,6 +1091,44 @@
                             ],
                             "title": "Living room relax area cam",
                             "type": "picture-glance"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "sensor.radarr_upcoming_media",
+                                    "image_style": "fanart",
+                                    "max": 3,
+                                    "title": "Upcoming movies",
+                                    "type": "custom:upcoming-media-card"
+                                },
+                                {
+                                    "entity": "sensor.sonarr_upcoming_media",
+                                    "image_style": "fanart",
+                                    "max": 3,
+                                    "title": "Upcoming TV",
+                                    "type": "custom:upcoming-media-card"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "sensor.kodi_recently_added_movies",
+                                    "image_style": "fanart",
+                                    "max": 3,
+                                    "title": "Recently added movies",
+                                    "type": "custom:upcoming-media-card"
+                                },
+                                {
+                                    "entity": "sensor.kodi_recently_added_tv",
+                                    "image_style": "fanart",
+                                    "max": 3,
+                                    "title": "Recently added TV",
+                                    "type": "custom:upcoming-media-card"
+                                }
+                            ],
+                            "type": "vertical-stack"
                         }
                     ],
                     "path": "living_room",
@@ -2112,28 +2154,6 @@
                                 },
                                 {
                                     "entity": "sensor.unifi_gateway_wlan"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.radarr_upcoming_media",
-                                    "image_style": "fanart",
-                                    "title": "Upcoming movies",
-                                    "type": "custom:upcoming-media-card"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.sonarr_upcoming_media",
-                                    "image_style": "fanart",
-                                    "title": "Upcoming TV",
-                                    "type": "custom:upcoming-media-card"
                                 }
                             ],
                             "type": "entities"
