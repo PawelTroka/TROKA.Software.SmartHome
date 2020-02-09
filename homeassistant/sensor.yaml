@@ -1,3 +1,13 @@
+- platform: plex_recently_added
+  token: !env_var PLEX_CLAIM
+  host: localhost
+  port: !env_var PLEX_PORT
+- platform: kodi_recently_added
+  host: 10.10.10.87
+  port: 8779
+  tcp_port: 9090
+  username: !secret kodi_username
+  password: !secret kodi_password
 - platform: unifigateway
   host: localhost
   username: !secret unifi_username
@@ -104,6 +114,12 @@
     - status
   days: 7
   unit: TB
+- platform: radarr_upcoming_media
+  api_key: !secret radarr_api_key
+  host: 10.10.10.94
+  port: 8411
+  days: 120
+  theaters: false
 - platform: sonarr
   api_key: !secret sonarr_api_key
   host: 10.10.10.94
@@ -117,6 +133,11 @@
     - diskspace
   days: 7
   unit: TB
+- platform: sonarr_upcoming_media
+  api_key: !secret sonarr_api_key
+  host: 10.10.10.94
+  port: 8412
+  days: 60
 - platform: time_date
   display_options:
     - 'time'
