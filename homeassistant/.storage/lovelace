@@ -930,6 +930,16 @@
                                 "action": "toggle"
                             },
                             "type": "entity-button"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.radarr_upcoming_media",
+                                    "image_style": "fanart",
+                                    "type": "custom:upcoming-media-card"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "path": "default_view",
@@ -2102,6 +2112,28 @@
                                 },
                                 {
                                     "entity": "sensor.unifi_gateway_wlan"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.radarr_upcoming_media",
+                                    "image_style": "fanart",
+                                    "title": "Upcoming movies",
+                                    "type": "custom:upcoming-media-card"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.sonarr_upcoming_media",
+                                    "image_style": "fanart",
+                                    "title": "Upcoming TV",
+                                    "type": "custom:upcoming-media-card"
                                 }
                             ],
                             "type": "entities"
