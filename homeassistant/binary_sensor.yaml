@@ -1,3 +1,14 @@
+- platform: burze_dzis_net
+  api_key: !secret burze_dzis_net_api_key
+  warnings:
+    - frost_warning
+    - heat_warning
+    - wind_warning
+    - precipitation_warning
+    - storm_warning
+    - tornado_warning
+  storms_nearby:
+    radius: 30
 - platform: ring
 - platform: flic
   host: 10.10.10.55
