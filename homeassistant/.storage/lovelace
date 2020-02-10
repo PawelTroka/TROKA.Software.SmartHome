@@ -952,71 +952,17 @@
                             "type": "thermostat"
                         },
                         {
-                            "entity": "media_player.denon_avc_x6500h_2",
-                            "hide": {
-                                "sound_mode": false
-                            },
-                            "type": "custom:mini-media-player"
-                        },
-                        {
-                            "entity": "media_player.denon_avr",
-                            "hide": {
-                                "sound_mode": false
-                            },
-                            "type": "custom:mini-media-player"
-                        },
-                        {
-                            "entity": "media_player.living_room_tv_2",
-                            "type": "custom:mini-media-player"
-                        },
-                        {
-                            "entity": "media_player.living_room_kodi",
-                            "type": "media-control"
-                        },
-                        {
-                            "entity": "media_player.shield_2",
-                            "type": "custom:mini-media-player"
-                        },
-                        {
-                            "entity": "media_player.plex_shield_android_tv",
-                            "type": "custom:mini-media-player"
-                        },
-                        {
-                            "entity": "media_player.living_room",
-                            "hide": {
-                                "shuffle": false
-                            },
-                            "speaker_group": {
-                                "entities": [
-                                    {
-                                        "entity_id": "media_player.living_room",
-                                        "name": "Sonos Living Room"
-                                    },
-                                    {
-                                        "entity_id": "media_player.bathroom",
-                                        "name": "Sonos Bathroom"
-                                    },
-                                    {
-                                        "entity_id": "media_player.toilet",
-                                        "name": "Sonos Toilet"
-                                    },
-                                    {
-                                        "entity_id": "media_player.kitchen",
-                                        "name": "Sonos Kitchen"
-                                    },
-                                    {
-                                        "entity_id": "media_player.bedroom",
-                                        "name": "Sonos Bedroom"
-                                    },
-                                    {
-                                        "entity_id": "media_player.office",
-                                        "name": "Sonos Office"
-                                    }
-                                ],
-                                "platform": "sonos",
-                                "show_group_count": true
-                            },
-                            "type": "custom:mini-media-player"
+                            "entities": [
+                                {
+                                    "entity": "remote.harmony_hub"
+                                },
+                                {
+                                    "entity": "sensor.harmony_hub_activity"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Remote",
+                            "type": "entities"
                         },
                         {
                             "entities": [
@@ -1058,39 +1004,164 @@
                             "type": "entities"
                         },
                         {
-                            "entity": "sensor.living_room_humidity",
-                            "type": "sensor"
-                        },
-                        {
                             "entities": [
                                 {
-                                    "entity": "remote.harmony_hub"
+                                    "entity": "media_player.living_room_tv",
+                                    "group": true,
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
+                                    "icon": "mdi:television-box",
+                                    "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "sensor.harmony_hub_activity"
+                                    "entity": "media_player.living_room_tv_2",
+                                    "group": true,
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
+                                    "icon": "mdi:television",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.shield_2",
+                                    "group": true,
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
+                                    "icon": "mdi:shield",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.living_room_kodi",
+                                    "group": true,
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
+                                    "icon": "mdi:kodi",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.plex_shield_android_tv",
+                                    "group": true,
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
+                                    "icon": "mdi:plex",
+                                    "type": "custom:mini-media-player"
                                 }
                             ],
                             "show_header_toggle": false,
-                            "title": "Remote",
+                            "title": "TV",
                             "type": "entities"
                         },
                         {
-                            "camera_image": "camera.living_room_cam",
-                            "camera_view": "live",
-                            "entities": [
-                                "camera.living_room_cam"
-                            ],
-                            "title": "Living room cam",
-                            "type": "picture-glance"
+                            "entity": "media_player.living_room",
+                            "hide": {
+                                "artwork_border": false,
+                                "icon_state": false,
+                                "power": true,
+                                "power_state": false,
+                                "runtime": false,
+                                "shuffle": false,
+                                "sound_mode": false,
+                                "volume": true
+                            },
+                            "speaker_group": {
+                                "entities": [
+                                    {
+                                        "entity_id": "media_player.living_room",
+                                        "name": "Sonos Living Room"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bathroom",
+                                        "name": "Sonos Bathroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.toilet",
+                                        "name": "Sonos Toilet"
+                                    },
+                                    {
+                                        "entity_id": "media_player.kitchen",
+                                        "name": "Sonos Kitchen"
+                                    },
+                                    {
+                                        "entity_id": "media_player.bedroom",
+                                        "name": "Sonos Bedroom"
+                                    },
+                                    {
+                                        "entity_id": "media_player.office",
+                                        "name": "Sonos Office"
+                                    }
+                                ],
+                                "platform": "sonos",
+                                "show_group_count": true
+                            },
+                            "type": "custom:mini-media-player"
                         },
                         {
-                            "camera_image": "camera.living_room_relax_area_cam",
-                            "camera_view": "live",
                             "entities": [
-                                "camera.living_room_relax_area_cam"
+                                {
+                                    "entity": "media_player.denon_avc_x6500h",
+                                    "group": true,
+                                    "hide": {
+                                        "artwork_border": false,
+                                        "icon_state": false,
+                                        "power_state": false,
+                                        "runtime": false,
+                                        "sound_mode": false
+                                    },
+                                    "icon": "mdi:amplifier",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.denon_avc_x6500h_2",
+                                    "group": true,
+                                    "hide": {
+                                        "artwork_border": false,
+                                        "icon_state": false,
+                                        "power_state": false,
+                                        "runtime": false,
+                                        "sound_mode": false
+                                    },
+                                    "icon": "mdi:amplifier",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.denon_avc_x6500h_3",
+                                    "group": true,
+                                    "hide": {
+                                        "artwork_border": false,
+                                        "icon_state": false,
+                                        "power_state": false,
+                                        "runtime": false,
+                                        "sound_mode": false
+                                    },
+                                    "icon": "mdi:amplifier",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.denon_avr",
+                                    "group": true,
+                                    "hide": {
+                                        "artwork_border": false,
+                                        "icon_state": false,
+                                        "power_state": false,
+                                        "runtime": false,
+                                        "sound_mode": false
+                                    },
+                                    "icon": "mdi:amplifier",
+                                    "type": "custom:mini-media-player"
+                                }
                             ],
-                            "title": "Living room relax area cam",
-                            "type": "picture-glance"
+                            "show_header_toggle": false,
+                            "title": "DENON AVC",
+                            "type": "entities"
                         },
                         {
                             "cards": [
@@ -1129,6 +1200,28 @@
                                 }
                             ],
                             "type": "vertical-stack"
+                        },
+                        {
+                            "camera_image": "camera.living_room_relax_area_cam",
+                            "camera_view": "live",
+                            "entities": [
+                                "camera.living_room_relax_area_cam"
+                            ],
+                            "title": "Living room relax area cam",
+                            "type": "picture-glance"
+                        },
+                        {
+                            "camera_image": "camera.living_room_cam",
+                            "camera_view": "live",
+                            "entities": [
+                                "camera.living_room_cam"
+                            ],
+                            "title": "Living room cam",
+                            "type": "picture-glance"
+                        },
+                        {
+                            "entity": "sensor.living_room_humidity",
+                            "type": "sensor"
                         }
                     ],
                     "path": "living_room",
