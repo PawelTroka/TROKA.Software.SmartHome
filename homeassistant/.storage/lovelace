@@ -2215,6 +2215,60 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "air_quality.airly"
+                                },
+                                {
+                                    "entity": "sensor.airly_humidity"
+                                },
+                                {
+                                    "entity": "sensor.airly_pm1"
+                                },
+                                {
+                                    "entity": "sensor.airly_pressure"
+                                },
+                                {
+                                    "entity": "sensor.airly_temperature"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "air_quality.gios"
+                                }
+                            ],
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.burze_dzis_net_frost_warning"
+                                },
+                                {
+                                    "entity": "binary_sensor.burze_dzis_net_heat_warning"
+                                },
+                                {
+                                    "entity": "binary_sensor.burze_dzis_net_precipitation_warning"
+                                },
+                                {
+                                    "entity": "binary_sensor.burze_dzis_net_storm_warning"
+                                },
+                                {
+                                    "entity": "binary_sensor.burze_dzis_net_storms_nearby"
+                                },
+                                {
+                                    "entity": "binary_sensor.burze_dzis_net_tornado_warning"
+                                },
+                                {
+                                    "entity": "binary_sensor.burze_dzis_net_wind_warning"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "path": "outdoor",
