@@ -38,10 +38,6 @@
                 },
                 {
                     "type": "module",
-                    "url": "/community_plugin/custom-header/custom-header.js"
-                },
-                {
-                    "type": "module",
                     "url": "/community_plugin/mini-media-player/mini-media-player-bundle.js"
                 },
                 {
