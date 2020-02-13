@@ -96,6 +96,7 @@ alexa: !include alexa.yaml
 google_assistant: !include google_assistant.yaml
 
 ### include section:
+zone: !include zone.yaml
 notify: !include notify.yaml
 climate: !include climate.yaml
 speedtestdotnet: !include speedtestdotnet.yaml

@@ -1,0 +1,19 @@
+- name: PhD
+  latitude: !secret phd_latitude
+  longitude: !secret phd_longitude
+  icon: mdi:school
+
+- name: Gym
+  latitude: !secret gym_latitude
+  longitude: !secret gym_longitude
+  icon: mdi:dumbbell
+
+- name: Work
+  latitude: !secret work_latitude
+  longitude: !secret work_longitude
+  icon: mdi:briefcase
+
+- name: "Athena's work"
+  latitude: !secret athenas_work_latitude
+  longitude: !secret athenas_work_longitude
+  icon: mdi:teach
