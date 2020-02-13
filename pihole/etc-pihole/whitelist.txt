@@ -290,3 +290,4 @@ pubsub-edge.twitch.tv
 cdn-gl.imrworldwide.com
 l.facebook.com
 wyborcza.pl
+www.rtvmax.pl
