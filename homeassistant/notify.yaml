@@ -4,3 +4,53 @@
   port: 8779
   username: !secret kodi_username
   password: !secret kodi_password
+
+- name: residents
+  platform: group
+  services:
+    - service: mobile_app_sm_n975f # Pawel
+    - service: mobile_app_samsung_galaxy_s8 # Athena
+
+- name: all_android
+  platform: group
+  services:
+    - service: mobile_app_sm_n975f # Pawel
+    - service: mobile_app_samsung_galaxy_s8 # Athena
+    - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
+    - service: mobile_app_sm_n910c # Smart Phone
+
+- name: everything_without_voice
+  platform: group
+  services:
+    - service: mobile_app_sm_n975f # Pawel
+    - service: mobile_app_samsung_galaxy_s8 # Athena
+    - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
+    - service: mobile_app_sm_n910c # Smart Phone
+    - service: notify_living_room_kodi
+    - service: alexa_media
+      data:
+        target: media_player.living_room_echo
+        data:
+          type: push
+          method: all
+
+- name: everything
+  platform: group
+  services:
+    - service: mobile_app_sm_n975f # Pawel
+    - service: mobile_app_samsung_galaxy_s8 # Athena
+    - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
+    - service: mobile_app_sm_n910c # Smart Phone
+    - service: notify_living_room_kodi
+    - service: alexa_media
+      data:
+        target: media_player.living_room_echo
+        data:
+          type: push
+          method: all
+    - service: alexa_media
+      data:
+        target: group.all_alexa
+        data:
+          type: tts
+          method: all
