@@ -1,0 +1,21 @@
+
+- alias: Central Tablet battery charge on when low battery
+  trigger:
+  - below: '60'
+    entity_id: sensor.archos_101_oxygen_4g_battery_level
+    platform: numeric_state
+  action:
+  - data:
+      entity_id: switch.central_tablet_plug
+    service: switch.turn_on
+
+
+- alias: Central Tablet battery charge off when battery full
+  trigger:
+  - above: '99'
+    entity_id: sensor.archos_101_oxygen_4g_battery_level
+    platform: numeric_state
+  action:
+  - data:
+      entity_id: switch.central_tablet_plug
+    service: switch.turn_off
