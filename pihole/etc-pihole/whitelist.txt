@@ -291,3 +291,4 @@ cdn-gl.imrworldwide.com
 l.facebook.com
 wyborcza.pl
 www.rtvmax.pl
+go.microsoft.com
