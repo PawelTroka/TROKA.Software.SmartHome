@@ -1,3 +1,42 @@
 - platform: warmup
   username: !secret warmup_username
   password: !secret warmup_password
+
+- platform: gree
+  name: Living room AC
+  host: 10.10.10.105
+  port: 7000
+  mac: 'f4:91:1e:b7:b1:4f'
+  target_temp_step: 1
+  lights: input_boolean.living_room_ac_lights
+  xfan: input_boolean.living_room_ac_xfan
+  health: input_boolean.living_room_ac_health
+  sleep: input_boolean.living_room_ac_sleep
+  powersave: input_boolean.living_room_ac_powersave
+  eightdegheat: input_boolean.living_room_ac_8_degree_heating
+
+- platform: gree
+  name: Office AC
+  host: 10.10.10.106
+  port: 7000
+  mac: 'f4:91:1e:b7:be:cf'
+  target_temp_step: 1
+  lights: input_boolean.office_ac_lights
+  xfan: input_boolean.office_ac_xfan
+  health: input_boolean.office_ac_health
+  sleep: input_boolean.office_ac_sleep
+  powersave: input_boolean.office_ac_powersave
+  eightdegheat: input_boolean.office_ac_8_degree_heating
+
+- platform: gree
+  name: Bedroom AC
+  host: 10.10.10.108
+  port: 7000
+  mac: 'f4:91:1e:8e:c8:21'
+  target_temp_step: 1
+  lights: input_boolean.bedroom_ac_lights
+  xfan: input_boolean.bedroom_ac_xfan
+  health: input_boolean.bedroom_ac_health
+  sleep: input_boolean.bedroom_ac_sleep
+  powersave: input_boolean.bedroom_ac_powersave
+  eightdegheat: input_boolean.bedroom_ac_8_degree_heating
