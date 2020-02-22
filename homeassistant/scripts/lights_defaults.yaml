@@ -45,6 +45,8 @@ set_toilet_lights_to_default:
       kelvin: 8000
   - service: script.turn_on
     entity_id: script.set_toilet_strip_to_default
+  - service: script.turn_on
+    entity_id: script.set_toilet_mirror_light_to_default
 
 set_toilet_strip_to_default:
   sequence:
@@ -56,6 +58,15 @@ set_toilet_strip_to_default:
       rgb_color: [36,255,255]
       #xy_color: [0.156,0.342]
 
+set_toilet_mirror_light_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.toilet_mirror_light
+    data:
+      brightness: 255
+      #hs_color: [180,85.714]
+      rgb_color: [36,255,255]
+      #xy_color: [0.156,0.342]
 
 # Hallway lights default
 
@@ -68,11 +79,23 @@ set_hallway_lights_to_default:
       kelvin: 8000
   - service: script.turn_on
     entity_id: script.set_hallway_strip_to_default
+  - service: script.turn_on
+    entity_id: script.set_hallway_cabinet_strip_to_default
 
 set_hallway_strip_to_default:
   sequence:
   - service: light.turn_on
     entity_id: light.hallway_strip
+    data:
+      brightness: 199
+      #hs_color: [270,28.571]
+      rgb_color: [218,182,255]
+      #xy_color: [0.307,0.245]
+
+set_hallway_cabinet_strip_to_default:
+  sequence:
+  - service: light.turn_on
+    entity_id: light.hallway_cabinet_strip
     data:
       brightness: 199
       #hs_color: [270,28.571]
@@ -114,8 +137,8 @@ set_kitchen_lights_to_default:
     entity_id: script.set_kitchen_countertop_lights_to_default
   - service: script.turn_on
     entity_id: script.set_kitchen_island_lights_to_default
-#  - service: script.turn_on
-#    entity_id: script.set_kitchen_cabinet_strip_to_default
+  - service: script.turn_on
+    entity_id: script.set_kitchen_cabinet_strip_to_default
   - service: script.turn_on
     entity_id: script.set_kitchen_island_strip_to_default
 
@@ -138,7 +161,7 @@ set_kitchen_island_lights_to_default:
 set_kitchen_cabinet_strip_to_default:
   sequence:
   - service: light.turn_on
-    entity_id: light.toilet_strip
+    entity_id: light.kitchen_cabinet_strip
     data:
       brightness: 168
       color_temp: 115
@@ -146,7 +169,7 @@ set_kitchen_cabinet_strip_to_default:
 set_kitchen_island_strip_to_default:
   sequence:
   - service: light.turn_on
-    entity_id: light.toilet_strip
+    entity_id: light.kitchen_island_strip
     data:
       brightness: 126
       color_temp: 111
