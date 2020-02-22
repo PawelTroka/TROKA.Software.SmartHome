@@ -429,7 +429,7 @@
     service: script.turn_on
     entity_id: script.set_hallway_lights_to_default
 
-- alias: Toggle hallway strip on hallway wallmote button 2 click
+- alias: Toggle hallway cabinet strip on hallway wallmote button 2 click
   trigger:
   - event_data:
       entity_id: zwave.hallway_wallmote
@@ -439,9 +439,9 @@
     platform: event
   action:
     service: light.toggle
-    entity_id: light.hallway_strip
+    entity_id: light.hallway_cabinet_strip
 
-- alias: Set hallway strip to default on hallway wallmote button 2 hold
+- alias: Set hallway cabinet strip to default on hallway wallmote button 2 hold
   trigger:
   - event_data:
       entity_id: zwave.hallway_wallmote
@@ -451,7 +451,7 @@
     platform: event
   action:
     service: script.turn_on
-    entity_id: script.set_hallway_strip_to_default
+    entity_id: script.set_hallway_cabinet_strip_to_default
 
 
 - alias: Turn off all lights on hallway wallmote button 3 click
