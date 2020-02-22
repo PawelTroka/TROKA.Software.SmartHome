@@ -8,6 +8,7 @@
   port: 7000
   mac: 'f4:91:1e:b7:b1:4f'
   target_temp_step: 1
+  temp_sensor: sensor.living_room_temperature
   lights: input_boolean.living_room_ac_lights
   xfan: input_boolean.living_room_ac_xfan
   health: input_boolean.living_room_ac_health
@@ -21,6 +22,7 @@
   port: 7000
   mac: 'f4:91:1e:b7:be:cf'
   target_temp_step: 1
+  temp_sensor: sensor.office_temperature
   lights: input_boolean.office_ac_lights
   xfan: input_boolean.office_ac_xfan
   health: input_boolean.office_ac_health
@@ -34,6 +36,7 @@
   port: 7000
   mac: 'f4:91:1e:8e:c8:21'
   target_temp_step: 1
+  temp_sensor: sensor.netatmo_bedroom_temperature
   lights: input_boolean.bedroom_ac_lights
   xfan: input_boolean.bedroom_ac_xfan
   health: input_boolean.bedroom_ac_health
