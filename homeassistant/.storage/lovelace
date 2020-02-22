@@ -884,14 +884,18 @@
                         },
                         {
                             "entities": [
-                                "sensor.netatmo_indoor_temperature",
-                                "sensor.netatmo_indoor_humidity",
-                                "sensor.netatmo_indoor_pressure",
-                                "sensor.netatmo_indoor_co2",
-                                "sensor.netatmo_indoor_noise"
+                                {
+                                    "entity": "climate.living_room_ac"
+                                },
+                                {
+                                    "entity": "climate.office_ac"
+                                },
+                                {
+                                    "entity": "climate.bedroom_ac"
+                                }
                             ],
                             "show_header_toggle": false,
-                            "title": "Indoor climate",
+                            "title": "Cooling",
                             "type": "entities"
                         },
                         {
@@ -907,13 +911,16 @@
                             "type": "entities"
                         },
                         {
-                            "camera_image": "camera.front_door_2",
                             "entities": [
-                                "binary_sensor.front_door_motion",
-                                "binary_sensor.front_door_ding"
+                                "sensor.netatmo_indoor_temperature",
+                                "sensor.netatmo_indoor_humidity",
+                                "sensor.netatmo_indoor_pressure",
+                                "sensor.netatmo_indoor_co2",
+                                "sensor.netatmo_indoor_noise"
                             ],
-                            "title": "Doorbell cam",
-                            "type": "picture-glance"
+                            "show_header_toggle": false,
+                            "title": "Indoor climate",
+                            "type": "entities"
                         },
                         {
                             "entity": "lock.front_door",
@@ -926,16 +933,6 @@
                                 "action": "toggle"
                             },
                             "type": "entity-button"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.radarr_upcoming_media",
-                                    "image_style": "fanart",
-                                    "type": "custom:upcoming-media-card"
-                                }
-                            ],
-                            "type": "entities"
                         }
                     ],
                     "path": "default_view",
@@ -945,20 +942,8 @@
                     "cards": [
                         {
                             "entity": "climate.living_room",
+                            "name": "Living room heater",
                             "type": "thermostat"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "remote.harmony_hub"
-                                },
-                                {
-                                    "entity": "sensor.harmony_hub_activity"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Remote",
-                            "type": "entities"
                         },
                         {
                             "entities": [
@@ -997,6 +982,23 @@
                                 }
                             ],
                             "title": "Light",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "climate.living_room_ac",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "remote.harmony_hub"
+                                },
+                                {
+                                    "entity": "sensor.harmony_hub_activity"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Remote",
                             "type": "entities"
                         },
                         {
@@ -1770,6 +1772,11 @@
                 {
                     "cards": [
                         {
+                            "entity": "climate.bedroom",
+                            "name": "Bedroom heater",
+                            "type": "thermostat"
+                        },
+                        {
                             "entities": [
                                 "light.bedroom_lights",
                                 "light.bedroom_downlight_1",
@@ -1783,8 +1790,48 @@
                             "type": "entities"
                         },
                         {
-                            "entity": "climate.bedroom",
+                            "entity": "climate.bedroom_ac",
                             "type": "thermostat"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.bedroom_door"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_temperature"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_max_temp"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_min_temp"
+                                },
+                                {
+                                    "entity": "sensor.eight_room_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_door_opening_sensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_humidity"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_humidity"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_co2"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_nest_protect_co_status"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_nest_protect_smoke_status"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Sensors",
+                            "type": "entities"
                         },
                         {
                             "entity": "media_player.bedroom_tv_2",
@@ -1830,41 +1877,33 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "binary_sensor.bedroom_door"
+                                    "entity": "sensor.withings_weight_kg_pawel"
                                 },
                                 {
-                                    "entity": "sensor.netatmo_bedroom_temperature"
+                                    "entity": "sensor.withings_fat_ratio_pct_pawel"
                                 },
                                 {
-                                    "entity": "sensor.netatmo_bedroom_max_temp"
+                                    "entity": "sensor.withings_heart_pulse_bpm_pawel"
                                 },
                                 {
-                                    "entity": "sensor.netatmo_bedroom_min_temp"
+                                    "entity": "sensor.withings_pulse_wave_velocity_pawel"
                                 },
                                 {
-                                    "entity": "sensor.eight_room_temperature"
+                                    "entity": "sensor.withings_body_temperature_c_pawel"
                                 },
                                 {
-                                    "entity": "sensor.bedroom_door_opening_sensor_temperature"
+                                    "entity": "sensor.withings_skin_temperature_c_pawel"
                                 },
                                 {
-                                    "entity": "sensor.netatmo_bedroom_humidity"
+                                    "entity": "sensor.withings_temperature_c_pawel"
                                 },
                                 {
-                                    "entity": "sensor.bedroom_humidity"
+                                    "entity": "sensor.withings_systolic_blood_pressure_mmhg_pawel"
                                 },
                                 {
-                                    "entity": "sensor.netatmo_bedroom_co2"
-                                },
-                                {
-                                    "entity": "sensor.bedroom_nest_protect_co_status"
-                                },
-                                {
-                                    "entity": "sensor.bedroom_nest_protect_smoke_status"
+                                    "entity": "sensor.withings_diastolic_blood_pressure_mmhg_pawel"
                                 }
                             ],
-                            "show_header_toggle": false,
-                            "title": "Sensors",
                             "type": "entities"
                         },
                         {
@@ -1916,38 +1955,6 @@
                             "show_header_toggle": false,
                             "title": "Athena's bed",
                             "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.withings_weight_kg_pawel"
-                                },
-                                {
-                                    "entity": "sensor.withings_fat_ratio_pct_pawel"
-                                },
-                                {
-                                    "entity": "sensor.withings_heart_pulse_bpm_pawel"
-                                },
-                                {
-                                    "entity": "sensor.withings_pulse_wave_velocity_pawel"
-                                },
-                                {
-                                    "entity": "sensor.withings_body_temperature_c_pawel"
-                                },
-                                {
-                                    "entity": "sensor.withings_skin_temperature_c_pawel"
-                                },
-                                {
-                                    "entity": "sensor.withings_temperature_c_pawel"
-                                },
-                                {
-                                    "entity": "sensor.withings_systolic_blood_pressure_mmhg_pawel"
-                                },
-                                {
-                                    "entity": "sensor.withings_diastolic_blood_pressure_mmhg_pawel"
-                                }
-                            ],
-                            "type": "entities"
                         }
                     ],
                     "path": "bedroom",
@@ -1957,7 +1964,24 @@
                     "cards": [
                         {
                             "entity": "climate.office",
+                            "name": "Office heater",
                             "type": "thermostat"
+                        },
+                        {
+                            "entity": "climate.office_ac",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entities": [
+                                "light.office_lights",
+                                "light.office_light_1",
+                                "light.office_light_2",
+                                "light.office_light_3",
+                                "light.office_light_4",
+                                "light.office_light_5"
+                            ],
+                            "title": "Light",
+                            "type": "entities"
                         },
                         {
                             "entity": "media_player.office",
@@ -1995,18 +2019,6 @@
                                 "show_group_count": true
                             },
                             "type": "custom:mini-media-player"
-                        },
-                        {
-                            "entities": [
-                                "light.office_lights",
-                                "light.office_light_1",
-                                "light.office_light_2",
-                                "light.office_light_3",
-                                "light.office_light_4",
-                                "light.office_light_5"
-                            ],
-                            "title": "Light",
-                            "type": "entities"
                         },
                         {
                             "entities": [
