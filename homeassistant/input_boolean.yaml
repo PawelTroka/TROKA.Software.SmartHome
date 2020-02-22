@@ -1,0 +1,54 @@
+living_room_ac_lights:
+  initial: true
+  icon: mdi:lightbulb-on-outline
+living_room_ac_xfan:
+  initial: off
+  icon: mdi:fan
+living_room_ac_health:
+  initial: true
+  icon: mdi:pine-tree
+living_room_ac_sleep:
+  initial: off
+  icon: mdi:power-sleep
+living_room_ac_powersave:
+  initial: on
+  icon: mdi:currency-usd
+living_room_ac_8_degree_heating:
+  initial: off
+  icon: mdi:numeric-8-circle-outline
+office_ac_lights:
+  initial: true
+  icon: mdi:lightbulb-on-outline
+office_ac_xfan:
+  initial: off
+  icon: mdi:fan
+office_ac_health:
+  initial: true
+  icon: mdi:pine-tree
+office_ac_sleep:
+  initial: off
+  icon: mdi:power-sleep
+office_ac_powersave:
+  initial: on
+  icon: mdi:currency-usd
+office_ac_8_degree_heating:
+  initial: off
+  icon: mdi:numeric-8-circle-outline
+bedroom_ac_lights:
+  initial: true
+  icon: mdi:lightbulb-on-outline
+bedroom_ac_xfan:
+  initial: off
+  icon: mdi:fan
+bedroom_ac_health:
+  initial: true
+  icon: mdi:pine-tree
+bedroom_ac_sleep:
+  initial: on
+  icon: mdi:power-sleep
+bedroom_ac_powersave:
+  initial: on
+  icon: mdi:currency-usd
+bedroom_ac_8_degree_heating:
+  initial: off
+  icon: mdi:numeric-8-circle-outline
