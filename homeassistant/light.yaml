@@ -72,6 +72,7 @@
       - light.hallway_downlight_3
       - light.hallway_downlight_4
       - light.hallway_downlight_5
+      - light.hallway_cabinet_strip
       - light.hallway_strip
   - platform: group
     name: Bedroom lights
@@ -110,7 +111,7 @@
     name: Toilet lights
     entities:
       - light.toilet_light
-      - light.lifx_d0_73_d5_40_6d_ca
+      - light.toilet_mirror_light
       - light.toilet_strip
   - platform: group
     name: Office lights

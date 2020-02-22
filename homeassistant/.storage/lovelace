@@ -1408,6 +1408,7 @@
                                 "light.hallway_downlight_3",
                                 "light.hallway_downlight_4",
                                 "light.hallway_downlight_5",
+                                "light.hallway_cabinet_strip",
                                 "light.hallway_strip"
                             ],
                             "title": "Light",
@@ -1717,7 +1718,7 @@
                                     "entity": "light.toilet_light"
                                 },
                                 {
-                                    "entity": "light.lifx_d0_73_d5_40_6d_ca"
+                                    "entity": "light.toilet_mirror_light"
                                 },
                                 {
                                     "entity": "light.toilet_strip"
