@@ -35,6 +35,15 @@
 - platform: airthings
   mac: C4:64:E3:ED:18:38 # replace with MAC of your Airthings Wave+
 - platform: hddtemp
+  name: /dev/sda
+  port: 11231
+- platform: hddtemp
+  name: /dev/sdb
+  port: 11232
+- platform: hddtemp
+  name: /dev/sdc
+  port: 11233
+- platform: hddtemp
   name: /dev/sdd
   port: 11234
 - platform: hddtemp
