@@ -2176,16 +2176,16 @@
                                     "entity": "sensor.glances_ram_used_percent"
                                 },
                                 {
-                                    "entity": "sensor.glances_disk_used_percent"
+                                    "entity": "sensor.glances_etc_hosts_used_percent"
+                                },
+                                {
+                                    "entity": "sensor.glances_etc_resolv_conf_used_percent"
                                 },
                                 {
                                     "entity": "sensor.glances_swap_used_percent"
                                 },
                                 {
                                     "entity": "sensor.glances_containers_active"
-                                },
-                                {
-                                    "entity": "sensor.glances_cpu_temp"
                                 },
                                 {
                                     "entity": "sensor.dev_sda_dev_sda"
@@ -2201,6 +2201,39 @@
                                 },
                                 {
                                     "entity": "sensor.dev_sdg_dev_sdg"
+                                },
+                                {
+                                    "entity": "sensor.glances_cputin_temp"
+                                },
+                                {
+                                    "entity": "sensor.glances_systin_temp"
+                                },
+                                {
+                                    "entity": "sensor.glances_radeon_1_temp"
+                                },
+                                {
+                                    "entity": "sensor.glances_smbusmaster_0_temp"
+                                },
+                                {
+                                    "entity": "sensor.glances_pch_cpu_temp_temp"
+                                },
+                                {
+                                    "entity": "sensor.glances_pch_chip_temp_temp"
+                                },
+                                {
+                                    "entity": "sensor.glances_pch_chip_cpu_max_temp_temp"
+                                },
+                                {
+                                    "entity": "sensor.glances_auxtin0_temp"
+                                },
+                                {
+                                    "entity": "sensor.glances_auxtin1_temp"
+                                },
+                                {
+                                    "entity": "sensor.glances_auxtin2_temp"
+                                },
+                                {
+                                    "entity": "sensor.glances_auxtin3_temp"
                                 }
                             ],
                             "type": "entities"
