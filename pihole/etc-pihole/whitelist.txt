@@ -292,3 +292,6 @@ l.facebook.com
 wyborcza.pl
 www.rtvmax.pl
 go.microsoft.com
+www.g2a.com
+lifehacker.com
+1drv.ms
