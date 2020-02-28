@@ -1218,8 +1218,11 @@
                             "type": "picture-glance"
                         },
                         {
+                            "detail": 2,
                             "entity": "sensor.living_room_humidity",
-                            "type": "sensor"
+                            "graph": "line",
+                            "type": "sensor",
+                            "unit": "%"
                         }
                     ],
                     "path": "living_room",
@@ -2115,9 +2118,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.plex_plexms"
-                                },
-                                {
                                     "entity": "sensor.radarr_upcoming"
                                 },
                                 {
@@ -2188,10 +2188,13 @@
                                     "entity": "sensor.glances_cpu_temp"
                                 },
                                 {
-                                    "entity": "sensor.dev_sdd_dev_sdd"
+                                    "entity": "sensor.dev_sda_dev_sda"
                                 },
                                 {
-                                    "entity": "sensor.dev_sde_dev_sde"
+                                    "entity": "sensor.dev_sdb_dev_sdb"
+                                },
+                                {
+                                    "entity": "sensor.dev_sdc_dev_sdc"
                                 },
                                 {
                                     "entity": "sensor.dev_sdf_dev_sdf"
@@ -2205,31 +2208,31 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.brother_mfc_j6930dw_b_w_counter"
+                                    "entity": "sensor.mfc_j6930dw_b_w_counter"
                                 },
                                 {
-                                    "entity": "sensor.brother_mfc_j6930dw_color_counter"
+                                    "entity": "sensor.mfc_j6930dw_color_counter"
                                 },
                                 {
-                                    "entity": "sensor.brother_mfc_j6930dw_cyan_ink_remaining"
+                                    "entity": "sensor.mfc_j6930dw_cyan_ink_remaining"
                                 },
                                 {
-                                    "entity": "sensor.brother_mfc_j6930dw_magenta_ink_remaining"
+                                    "entity": "sensor.mfc_j6930dw_magenta_ink_remaining"
                                 },
                                 {
-                                    "entity": "sensor.brother_mfc_j6930dw_yellow_ink_remaining"
+                                    "entity": "sensor.mfc_j6930dw_yellow_ink_remaining"
                                 },
                                 {
-                                    "entity": "sensor.brother_mfc_j6930dw_black_ink_remaining"
+                                    "entity": "sensor.mfc_j6930dw_black_ink_remaining"
                                 },
                                 {
-                                    "entity": "sensor.brother_mfc_j6930dw_page_counter"
+                                    "entity": "sensor.mfc_j6930dw_page_counter"
                                 },
                                 {
-                                    "entity": "sensor.brother_mfc_j6930dw_status"
+                                    "entity": "sensor.mfc_j6930dw_status"
                                 },
                                 {
-                                    "entity": "sensor.brother_mfc_j6930dw_uptime"
+                                    "entity": "sensor.mfc_j6930dw_uptime"
                                 }
                             ],
                             "type": "entities"
