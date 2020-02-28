@@ -1,5 +1,8 @@
 - platform: bluetooth_tracker
   consider_home: 300
+  new_device_defaults:
+    track_new_devices: false
+  track_new_devices: false
 - platform: tado
   username: !secret tado_username
   password: !secret tado_password
