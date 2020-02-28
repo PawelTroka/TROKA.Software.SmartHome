@@ -1,6 +1,5 @@
 secrets.yaml
 ip_bans.yaml
-known_devices.yaml
 wideq_state.json
 
 home-assistant_v2.db
