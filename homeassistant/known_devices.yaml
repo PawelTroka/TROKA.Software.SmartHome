@@ -134,3 +134,11 @@ redmi_5:
   name: Redmi
   picture:
   track: true
+
+pawel_s_smartphone:
+  hide_if_away: false
+  icon:
+  mac: '860594'
+  name: Pawel's smartphone
+  picture:
+  track: false
