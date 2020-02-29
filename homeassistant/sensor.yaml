@@ -33,7 +33,7 @@
       friendly_name: 'Harmony Hub activity'
 - platform: ring
 - platform: airthings_wave
-  scan_interval: 120
+  scan_interval: 600
   mac: C4:64:E3:ED:18:38 # replace with MAC of your Airthings Wave+
 - platform: hddtemp
   name: /dev/sda
