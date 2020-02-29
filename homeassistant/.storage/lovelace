@@ -1470,22 +1470,22 @@
                                     "entity": "sensor.airthings_co2"
                                 },
                                 {
+                                    "entity": "sensor.airthings_voc"
+                                },
+                                {
+                                    "entity": "sensor.airthings_radon_1day_avg"
+                                },
+                                {
+                                    "entity": "sensor.airthings_radon_longterm_avg"
+                                },
+                                {
+                                    "entity": "sensor.airthings_rel_atm_pressure"
+                                },
+                                {
                                     "entity": "sensor.airthings_humidity"
                                 },
                                 {
-                                    "entity": "sensor.airthings_long_term_radon"
-                                },
-                                {
-                                    "entity": "sensor.airthings_pressure"
-                                },
-                                {
-                                    "entity": "sensor.airthings_short_term_radon"
-                                },
-                                {
                                     "entity": "sensor.airthings_temperature"
-                                },
-                                {
-                                    "entity": "sensor.airthings_voc"
                                 }
                             ],
                             "type": "entities"
