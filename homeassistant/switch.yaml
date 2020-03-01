@@ -1,1 +1,103 @@
 - platform: ring
+- platform: template
+  switches:
+    living_room_cam_email:
+      value_template: "{{ is_state_attr('camera.living_room_cam', 'email_enabled', true) }}"
+      turn_on:
+        service: camera.enable_email
+        data:
+          entity_id: camera.living_room_cam
+      turn_off:
+        service: camera.disable_email
+        data:
+          entity_id: camera.living_room_cam
+      icon_template: >-
+        {% if is_state_attr('camera.living_room_cam', 'email_enabled', true) %}
+          mdi:email
+        {% else %}
+          mdi:email-outline
+        {% endif %}
+          
+    living_room_cam_ftp:
+      value_template: "{{ is_state_attr('camera.living_room_cam', 'ftp_enabled', true) }}"
+      turn_on:
+        service: camera.enable_ftp
+        data:
+          entity_id: camera.living_room_cam
+      turn_off:
+        service: camera.disable_ftp
+        data:
+          entity_id: camera.living_room_cam
+      icon_template: >-
+        {% if is_state_attr('camera.living_room_cam', 'ftp_enabled', true) %}
+          mdi:filmstrip
+        {% else %}
+          mdi:filmstrip-off
+        {% endif %}
+        
+    living_room_cam_ir_lights:
+      value_template: "{{ is_state_attr('camera.living_room_cam', 'ir_lights_enabled', true) }}"
+      turn_on:
+        service: camera.enable_ir_lights
+        data:
+          entity_id: camera.living_room_cam
+      turn_off:
+        service: camera.disable_ir_lights
+        data:
+          entity_id: camera.living_room_cam
+      icon_template: >-
+        {% if is_state_attr('camera.living_room_cam', 'ir_lights_enabled', true) %}
+          mdi:flashlight
+        {% else %}
+          mdi:flashlight-off
+        {% endif %}
+    hallway_entrance_cam_email:
+      value_template: "{{ is_state_attr('camera.hallway_entrance_cam', 'email_enabled', true) }}"
+      turn_on:
+        service: camera.enable_email
+        data:
+          entity_id: camera.hallway_entrance_cam
+      turn_off:
+        service: camera.disable_email
+        data:
+          entity_id: camera.hallway_entrance_cam
+      icon_template: >-
+        {% if is_state_attr('camera.hallway_entrance_cam', 'email_enabled', true) %}
+          mdi:email
+        {% else %}
+          mdi:email-outline
+        {% endif %}
+          
+    hallway_entrance_cam_ftp:
+      value_template: "{{ is_state_attr('camera.hallway_entrance_cam', 'ftp_enabled', true) }}"
+      turn_on:
+        service: camera.enable_ftp
+        data:
+          entity_id: camera.hallway_entrance_cam
+      turn_off:
+        service: camera.disable_ftp
+        data:
+          entity_id: camera.hallway_entrance_cam
+      icon_template: >-
+        {% if is_state_attr('camera.hallway_entrance_cam', 'ftp_enabled', true) %}
+          mdi:filmstrip
+        {% else %}
+          mdi:filmstrip-off
+        {% endif %}
+        
+    hallway_entrance_cam_ir_lights:
+      value_template: "{{ is_state_attr('camera.hallway_entrance_cam', 'ir_lights_enabled', true) }}"
+      turn_on:
+        service: camera.enable_ir_lights
+        data:
+          entity_id: camera.hallway_entrance_cam
+      turn_off:
+        service: camera.disable_ir_lights
+        data:
+          entity_id: camera.hallway_entrance_cam
+      icon_template: >-
+        {% if is_state_attr('camera.hallway_entrance_cam', 'ir_lights_enabled', true) %}
+          mdi:flashlight
+        {% else %}
+          mdi:flashlight-off
+        {% endif %}
