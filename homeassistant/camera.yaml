@@ -12,3 +12,6 @@
 - platform: ffmpeg
   name: living_room_relax_area_cam
   input: !env_var LIVING_ROOM_RELAX_AREA_CAM_COMMAND
+- platform: ffmpeg
+  name: office_cam
+  input: !env_var OFFICE_CAM_COMMAND
