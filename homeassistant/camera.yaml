@@ -2,13 +2,13 @@
 - platform: reolink_dev
   name: hallway_entrance_cam
   host: 10.10.10.104
-  username: !env_var FRONT_DOOR_CAM_USER
-  password: !env_var FRONT_DOOR_CAM_PASSWORD
+  username: !secret FRONT_DOOR_CAM_USER
+  password: !secret FRONT_DOOR_CAM_PASSWORD
 - platform: reolink_dev
   name: living_room_cam
   host: 10.10.10.109
-  username: !env_var LIVING_ROOM_CAM_USER
-  password: !env_var LIVING_ROOM_CAM_PASSWORD
+  username: !secret LIVING_ROOM_CAM_USER
+  password: !secret LIVING_ROOM_CAM_PASSWORD
 - platform: ffmpeg
   name: living_room_relax_area_cam
   input: !env_var LIVING_ROOM_RELAX_AREA_CAM_COMMAND
