@@ -1201,18 +1201,17 @@
                         },
                         {
                             "camera_image": "camera.living_room_relax_area_cam",
-                            "camera_view": "live",
-                            "entities": [
-                                "camera.living_room_relax_area_cam"
-                            ],
-                            "title": "Living room relax area cam",
+                            "entities": [],
+                            "title": "Living room relax area",
                             "type": "picture-glance"
                         },
                         {
                             "camera_image": "camera.living_room_cam",
-                            "camera_view": "live",
                             "entities": [
-                                "camera.living_room_cam"
+                                "switch.living_room_cam_ir_lights",
+                                "switch.living_room_cam_email",
+                                "switch.living_room_cam_ftp",
+                                "binary_sensor.living_room_cam_motion"
                             ],
                             "title": "Living room cam",
                             "type": "picture-glance"
@@ -1421,8 +1420,12 @@
                         },
                         {
                             "camera_image": "camera.hallway_entrance_cam",
-                            "camera_view": "live",
-                            "entities": [],
+                            "entities": [
+                                "switch.hallway_entrance_cam_ir_lights",
+                                "switch.hallway_entrance_cam_email",
+                                "switch.hallway_entrance_cam_ftp",
+                                "binary_sensor.hallway_entrance_cam_motion"
+                            ],
                             "title": "Hallway entrance",
                             "type": "picture-glance"
                         },
