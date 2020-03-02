@@ -113,18 +113,18 @@
     from: '22'
     to: '23'
     for:
-      seconds: 10
+      seconds: 90
   condition:
     - condition: state
       entity_id: 'binary_sensor.bathroom_multisensor_motion'
       state: 'off'
       for:
-        seconds: 10
+        seconds: 90
     - condition: state
       entity_id: 'sensor.bathroom_multisensor_burglar'
       state: '0'
       for:
-        seconds: 10
+        seconds: 90
     - condition: state
       entity_id: binary_sensor.shower_in_use
       state: 'off'
