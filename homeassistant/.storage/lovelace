@@ -2298,6 +2298,13 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "aspect_ratio": "0%",
+                            "camera_image": "camera.office_cam",
+                            "entities": [],
+                            "title": "Office",
+                            "type": "picture-glance"
                         }
                     ],
                     "path": "office",

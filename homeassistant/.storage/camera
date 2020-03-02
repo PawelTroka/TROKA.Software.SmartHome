@@ -14,6 +14,9 @@
         },
         "camera.living_room_relax_area_cam": {
             "preload_stream": true
+        },
+        "camera.office_cam": {
+            "preload_stream": true
         }
     },
     "key": "camera",
