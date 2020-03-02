@@ -4,6 +4,15 @@
 - platform: braviatv
   host: 10.10.10.53
   name: Bedroom TV
+- platform: androidtv
+  host: 10.10.10.87
+  name: SHIELD android TV
+- platform: androidtv
+  host: 10.10.10.8
+  name: Living room android TV
+- platform: androidtv
+  host: 10.10.10.53
+  name: Bedroom android TV
 - platform: denon
   host: 10.10.10.70
   #show_all_sources: true
