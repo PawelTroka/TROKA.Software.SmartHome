@@ -1,7 +1,7 @@
 usb_path: /dev/ttyACM0
 #device_config: !include zwave_device_config.yaml
 network_key: !secret zwave_network_key
-polling_interval: 30000
+polling_interval: 10000
 device_config:
   binary_sensor.bathroom_multisensor_motion:
     polling_intensity: 1
