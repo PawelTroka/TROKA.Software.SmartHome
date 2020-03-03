@@ -2417,6 +2417,33 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.worldwide_confirmed"
+                                },
+                                {
+                                    "entity": "sensor.worldwide_current"
+                                },
+                                {
+                                    "entity": "sensor.worldwide_deaths"
+                                },
+                                {
+                                    "entity": "sensor.worldwide_recovered"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Coronavirus",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.gdacs_54_388351_18_598553"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "path": "outdoor",
