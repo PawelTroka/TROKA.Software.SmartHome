@@ -2180,6 +2180,8 @@
                                     "entity": "sensor.speedtest_ping"
                                 }
                             ],
+                            "hours_to_show": 3,
+                            "refresh_interval": 0,
                             "type": "history-graph"
                         },
                         {
@@ -2389,7 +2391,7 @@
                                                 "yellow": 50
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         },
                                         {
                                             "entity": "sensor.glances_systin_temp",
@@ -2399,7 +2401,7 @@
                                                 "yellow": 50
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         }
                                     ],
                                     "type": "horizontal-stack"
@@ -2414,7 +2416,7 @@
                                                 "yellow": 50
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         },
                                         {
                                             "entity": "sensor.glances_smbusmaster_0_temp",
@@ -2424,7 +2426,7 @@
                                                 "yellow": 50
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         }
                                     ],
                                     "type": "horizontal-stack"
@@ -2439,7 +2441,7 @@
                                                 "yellow": 50
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         },
                                         {
                                             "entity": "sensor.glances_pch_chip_temp_temp",
@@ -2449,7 +2451,7 @@
                                                 "yellow": 50
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         }
                                     ],
                                     "type": "horizontal-stack"
@@ -2464,7 +2466,7 @@
                                                 "yellow": 50
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         },
                                         {
                                             "entity": "sensor.glances_auxtin0_temp",
@@ -2474,7 +2476,7 @@
                                                 "yellow": 50
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         }
                                     ],
                                     "type": "horizontal-stack"
@@ -2489,7 +2491,7 @@
                                                 "yellow": 50
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         },
                                         {
                                             "entity": "sensor.glances_auxtin2_temp",
@@ -2499,7 +2501,7 @@
                                                 "yellow": 50
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         }
                                     ],
                                     "type": "horizontal-stack"
@@ -2514,7 +2516,7 @@
                                                 "yellow": 50
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         },
                                         {
                                             "entity": "sensor.dev_sda_dev_sda",
@@ -2524,7 +2526,7 @@
                                                 "yellow": 48
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         }
                                     ],
                                     "type": "horizontal-stack"
@@ -2539,7 +2541,7 @@
                                                 "yellow": 48
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         },
                                         {
                                             "entity": "sensor.dev_sdc_dev_sdc",
@@ -2549,7 +2551,7 @@
                                                 "yellow": 48
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         }
                                     ],
                                     "type": "horizontal-stack"
@@ -2564,7 +2566,7 @@
                                                 "yellow": 48
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
                                         },
                                         {
                                             "entity": "sensor.dev_sdg_dev_sdg",
@@ -2574,7 +2576,32 @@
                                                 "yellow": 48
                                             },
                                             "type": "gauge",
-                                            "unit": "C"
+                                            "unit": "\u00b0C"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.dev_sdh_dev_sdh",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 55,
+                                                "yellow": 48
+                                            },
+                                            "type": "gauge",
+                                            "unit": "\u00b0C"
+                                        },
+                                        {
+                                            "entity": "sensor.dev_sdi_dev_sdi",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 55,
+                                                "yellow": 48
+                                            },
+                                            "type": "gauge",
+                                            "unit": "\u00b0C"
                                         }
                                     ],
                                     "type": "horizontal-stack"
