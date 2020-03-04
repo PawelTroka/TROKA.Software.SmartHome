@@ -56,6 +56,12 @@
 - platform: hddtemp
   name: /dev/sdg
   port: 11237
+- platform: hddtemp
+  name: /dev/sdh
+  port: 11238
+- platform: hddtemp
+  name: /dev/sdi
+  port: 11239
 - platform: snmp
   name: 'UPS temperature'
   host: 10.10.10.90
