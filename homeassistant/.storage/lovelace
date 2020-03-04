@@ -88,6 +88,9 @@
                                     "entity": "climate.office"
                                 },
                                 {
+                                    "type": "divider"
+                                },
+                                {
                                     "entity": "climate.bathroom_floor"
                                 },
                                 {
@@ -1276,13 +1279,22 @@
                                 "light.kitchen_lights",
                                 "light.kitchen_countertop_lights",
                                 "light.kitchen_island_lights",
+                                {
+                                    "type": "divider"
+                                },
                                 "light.kitchen_island_light_1",
                                 "light.kitchen_island_downlight_2",
                                 "light.kitchen_island_strip",
+                                {
+                                    "type": "divider"
+                                },
                                 "light.kitchen_light_1",
                                 "light.kitchen_light_2",
                                 "light.kitchen_light_3",
                                 "light.kitchen_light_4",
+                                {
+                                    "type": "divider"
+                                },
                                 "light.kitchen_cabinet_strip"
                             ],
                             "title": "Light",
@@ -2168,7 +2180,7 @@
                                     "entity": "sensor.speedtest_ping"
                                 }
                             ],
-                            "type": "entities"
+                            "type": "history-graph"
                         },
                         {
                             "entities": [
@@ -2305,6 +2317,270 @@
                             "entities": [],
                             "title": "Office",
                             "type": "picture-glance"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.glances_cpu_used",
+                                            "name": "CPU usage",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 85,
+                                                "yellow": 45
+                                            },
+                                            "type": "gauge",
+                                            "unit": "%"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_ram_used_percent",
+                                            "name": "RAM usage",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 85,
+                                                "yellow": 45
+                                            },
+                                            "type": "gauge",
+                                            "unit": "%"
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.glances_etc_hosts_used_percent",
+                                            "name": "OS drive usage",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 85,
+                                                "yellow": 45
+                                            },
+                                            "type": "gauge",
+                                            "unit": "%"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_swap_used_percent",
+                                            "name": "Swap usage",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 85,
+                                                "yellow": 45
+                                            },
+                                            "type": "gauge",
+                                            "unit": "%"
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.glances_cputin_temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 70,
+                                                "yellow": 50
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_systin_temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 70,
+                                                "yellow": 50
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.glances_radeon_1_temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 70,
+                                                "yellow": 50
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_smbusmaster_0_temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 70,
+                                                "yellow": 50
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.glances_pch_cpu_temp_temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 70,
+                                                "yellow": 50
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_pch_chip_temp_temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 70,
+                                                "yellow": 50
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.glances_pch_chip_cpu_max_temp_temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 70,
+                                                "yellow": 50
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_auxtin0_temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 70,
+                                                "yellow": 50
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.glances_auxtin1_temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 70,
+                                                "yellow": 50
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_auxtin2_temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 70,
+                                                "yellow": 50
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.glances_auxtin3_temp",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 70,
+                                                "yellow": 50
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        },
+                                        {
+                                            "entity": "sensor.dev_sda_dev_sda",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 55,
+                                                "yellow": 48
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.dev_sdb_dev_sdb",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 55,
+                                                "yellow": 48
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        },
+                                        {
+                                            "entity": "sensor.dev_sdc_dev_sdc",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 55,
+                                                "yellow": 48
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.dev_sdf_dev_sdf",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 55,
+                                                "yellow": 48
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        },
+                                        {
+                                            "entity": "sensor.dev_sdg_dev_sdg",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 55,
+                                                "yellow": 48
+                                            },
+                                            "type": "gauge",
+                                            "unit": "C"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
                         }
                     ],
                     "path": "office",
