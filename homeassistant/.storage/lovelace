@@ -1448,6 +1448,9 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "binary_sensor.front_door_open"
+                                },
+                                {
                                     "entity": "binary_sensor.hallway_door"
                                 },
                                 {
