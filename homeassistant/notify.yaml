@@ -48,9 +48,10 @@
         data:
           type: push
           method: all
+    - service: sonos_say
     - service: alexa_media
       data:
-        target: group.all_alexa
+        target: group.all_echos
         data:
           type: tts
           method: all

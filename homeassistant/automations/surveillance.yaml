@@ -30,3 +30,15 @@
   action:
       service: script.turn_on
       entity_id: script.turn_off_media_everywhere
+
+
+- alias: Inform everyone on ring front door ding
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door_ding
+      to: 'on'
+  action:
+      service: notify.everything
+      data:
+        message: "Someone is at your front door! Front door ding has been pressed, you may have guests!"
+        title: "Someone's at your front door!"

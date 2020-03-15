@@ -40,7 +40,7 @@ sonos_say:
     - service: tts.google_say
       data_template:
         entity_id: "{{ sonos_entity|default('group.all_sonos_except_living_room') }}"
-        message: "{{ message }}"
+        message: "{{ title }} {{ message }}"
     - delay: "{{ delay|default('00:00:01') }}"
     - wait_template: "{{ is_state(sonos_entity|default('group.all_sonos_except_living_room'), 'playing') }}"
       timeout: '00:00:03'
