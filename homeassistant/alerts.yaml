@@ -1,0 +1,83 @@
+front_door_left_open:
+  name: "Error: Front door left open"
+  message: Front door has been left open
+  done_message: Front door is finally closed
+  entity_id: binary_sensor.hallway_door
+  state: 'on'
+  repeat: 2
+  can_acknowledge: true
+  skip_first: true
+  notifiers:
+    - everything
+
+front_door_left_unlocked:
+  name: "Error: Front door left unlocked"
+  message: Front door has been left unlocked.
+  done_message: Front door is finally locked
+  entity_id: lock.front_door
+  state: 'on'
+  repeat: 2
+  can_acknowledge: true
+  skip_first: true
+  notifiers:
+    - everything
+
+flood_in_kitchen:
+  name: "Error: Flood in kitchen"
+  message:  "Flood in kitchen!!! There is a flood in kitchen. Flood in kitchen!!!"
+  done_message: There is no longer flood in kitchen.
+  entity_id: binary_sensor.kitchen_flood_sensor
+  state: 'on'
+  repeat: 1
+  can_acknowledge: false
+  skip_first: false
+  notifiers:
+    - everything
+
+flood_in_bathroom:
+  name: "Error: Flood in bathroom"
+  message:  "Flood in bathroom!!! There is a flood in bathroom. Flood in bathroom!!!"
+  done_message: There is no longer flood in bathroom.
+  entity_id: binary_sensor.bathroom_flood_sensor
+  state: 'on'
+  repeat: 1
+  can_acknowledge: false
+  skip_first: false
+  notifiers:
+    - everything
+
+flood_in_toilet:
+  name: "Error: Flood in toilet"
+  message:  "Flood in toilet!!! There is a flood in toilet. Flood in toilet!!!"
+  done_message: There is no longer flood in toilet.
+  entity_id: binary_sensor.toilet_flood_sensor
+  state: 'on'
+  repeat: 1
+  can_acknowledge: false
+  skip_first: false
+  notifiers:
+    - everything
+
+power_outage:
+  name: "Error: power outage!"
+  message:  "Power outage just happenned {{ states('sensor.ups_line_outage_time') | multiply(0.016666666666667) | float(1) }} minutes ago!"
+  done_message: Power outage just ended
+  entity_id: sensor.ups_line_outage_time
+  state: '> 0'
+  repeat: 5
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - everything
+
+ups_low_power:
+  name: "Error: low UPS remaining power!"
+  message:  "UPS remaining power is very low. In {{ states('sensor.ups_remaining_backup_time') }} minutes home server and the network infrastructure will go down"
+  done_message: There is no longer flood in toilet.
+  entity_id: sensor.ups_remaining_backup_time
+  state: '< 10'
+  repeat: 2
+  can_acknowledge: false
+  skip_first: false
+  notifiers:
+    - everything
