@@ -295,3 +295,9 @@ go.microsoft.com
 www.g2a.com
 lifehacker.com
 1drv.ms
+photos.googleapis.com
+kfcdostawa.pl
+onesignal.com
+api.spotify.com
+accounts.spotify.com
+drive.google.com
