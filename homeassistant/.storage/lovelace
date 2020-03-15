@@ -1209,8 +1209,10 @@
                             "type": "picture-glance"
                         },
                         {
+                            "aspect_ratio": "0%",
                             "camera_image": "camera.living_room_cam",
                             "entities": [
+                                "switch.living_room_reolink_rlc_420",
                                 "switch.living_room_cam_ir_lights",
                                 "switch.living_room_cam_email",
                                 "switch.living_room_cam_ftp",
@@ -1431,8 +1433,10 @@
                             "type": "entities"
                         },
                         {
+                            "aspect_ratio": "0%",
                             "camera_image": "camera.hallway_entrance_cam",
                             "entities": [
+                                "switch.hallway_reolink_rlc_420",
                                 "switch.hallway_entrance_cam_ir_lights",
                                 "switch.hallway_entrance_cam_email",
                                 "switch.hallway_entrance_cam_ftp",
