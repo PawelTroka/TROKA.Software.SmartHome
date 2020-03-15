@@ -11,12 +11,13 @@
     - service: mobile_app_sm_n975f # Pawel
     - service: mobile_app_samsung_galaxy_s8 # Athena
 
-- name: all_android
+- name: all_mobile
   platform: group
   services:
     - service: mobile_app_sm_n975f # Pawel
     - service: mobile_app_samsung_galaxy_s8 # Athena
     - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
+    - service: mobile_app_ipad # Smart Tablet iPad
     - service: mobile_app_sm_n910c # Smart Phone
 
 - name: everything_without_voice
@@ -25,6 +26,7 @@
     - service: mobile_app_sm_n975f # Pawel
     - service: mobile_app_samsung_galaxy_s8 # Athena
     - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
+    - service: mobile_app_ipad # Smart Tablet iPad
     - service: mobile_app_sm_n910c # Smart Phone
     - service: notify_living_room_kodi
     - service: alexa_media
@@ -40,18 +42,18 @@
     - service: mobile_app_sm_n975f # Pawel
     - service: mobile_app_samsung_galaxy_s8 # Athena
     - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
+    - service: mobile_app_ipad # Smart Tablet iPad
     - service: mobile_app_sm_n910c # Smart Phone
     - service: notify_living_room_kodi
+    - service: alexa_media
+      data:
+        target: group.all_alexa
+        data:
+          type: tts
+          method: all
     - service: alexa_media
       data:
         target: media_player.living_room_echo
         data:
           type: push
-          method: all
-    - service: sonos_say
-    - service: alexa_media
-      data:
-        target: group.all_echos
-        data:
-          type: tts
           method: all
