@@ -182,6 +182,49 @@ services:
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
       - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
+
+############################# GAMING
+
+  minecraft:
+    image: itzg/minecraft-bedrock-server
+    container_name: minecraft
+    hostname: minecraft
+    restart: always
+    networks:
+      - traefik_proxy
+    ports:
+      - 19132:19132/udp
+    volumes:
+      - ${HOMESERVERDIR}/minecraft:/data
+    environment:
+      - LEVEL_NAME=CosmicFriendsV3
+      - SERVER_NAME=TROKA.Software.Minecraft
+      - SERVER_PORT=19132
+      - EULA=TRUE
+      - GAMEMODE=survival
+      - DIFFICULTY=easy
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=minecraft"
+      - "traefik.frontend.rule=Host:minecraft.${DOMAINNAME}"  
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefixStrip: /minecraft"
+      - "traefik.port=19132"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=minecraft.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
+
+
 ############################# SMART HOME
 
  # Home Assistant - Smart Home Hub
