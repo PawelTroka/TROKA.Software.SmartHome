@@ -67,7 +67,7 @@ services:
 # Traefik - Reverse Proxy
 # Create traefik.toml and rules dir and acme dir before running container.
   traefik:
-    image: traefik:v1.7.16
+    image: traefik:v1.7.24
     container_name: traefik
     hostname: traefik
     restart: unless-stopped
