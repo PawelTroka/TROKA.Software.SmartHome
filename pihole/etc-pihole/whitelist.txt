@@ -301,3 +301,5 @@ onesignal.com
 api.spotify.com
 accounts.spotify.com
 drive.google.com
+www.opensubtitles.org
+static.opensubtitles.org
