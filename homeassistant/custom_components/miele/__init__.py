@@ -20,10 +20,6 @@ import homeassistant.helpers.config_validation as cv
 
 from .miele_at_home import MieleClient, MieleOAuth
 
-REQUIREMENTS = ['requests_oauthlib']
-
-DEPENDENCIES = ['http']
-
 _LOGGER = logging.getLogger(__name__)
 
 DEVICES = []
@@ -290,6 +286,6 @@ class MieleDevice(Entity):
 
     async def async_update(self):        
         if not self.unique_id in self._hass.data[DOMAIN][DATA_DEVICES]:
-            _LOGGER.error('Miele device not found: {}'.format(self.unique_id))
+            _LOGGER.debug('Miele device not found: {}'.format(self.unique_id))
         else:
             self._home_device = self._hass.data[DOMAIN][DATA_DEVICES][self.unique_id]
