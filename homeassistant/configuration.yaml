@@ -97,6 +97,7 @@ google_assistant: !include google_assistant.yaml
 
 ### include section:
 alert: !include alerts.yaml
+sonos: !include sonos.yaml
 input_boolean: !include input_boolean.yaml
 zone: !include zone.yaml
 notify: !include notify.yaml
