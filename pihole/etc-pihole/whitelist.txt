@@ -303,3 +303,4 @@ accounts.spotify.com
 drive.google.com
 www.opensubtitles.org
 static.opensubtitles.org
+mobile.pipe.aria.microsoft.com
