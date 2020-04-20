@@ -31,6 +31,12 @@
                 "options_css": "color: white;",
                 "voice_hide": true
             },
+            "resources": [
+                {
+                    "type": "module",
+                    "url": "/community_plugin/harmony-card/harmony-card.js"
+                }
+            ],
             "title": "TROKA.Software.SmartHome",
             "views": [
                 {
@@ -970,17 +976,24 @@
                             "type": "thermostat"
                         },
                         {
-                            "entities": [
+                            "activities": [
                                 {
-                                    "entity": "remote.harmony_hub"
+                                    "device": "NVIDIA Game Console",
+                                    "name": "SHIELD TV"
                                 },
                                 {
-                                    "entity": "sensor.harmony_hub_activity"
+                                    "device": "Microsoft Game Console",
+                                    "name": "Play a Game"
+                                },
+                                {
+                                    "device": "Sonos",
+                                    "name": "Listen To Sonos"
                                 }
                             ],
-                            "show_header_toggle": false,
-                            "title": "Remote",
-                            "type": "entities"
+                            "entity": "remote.harmony_hub",
+                            "scale": 1,
+                            "type": "custom:harmony-card",
+                            "volume_entity": "media_player.denon_avc_x6500h_3"
                         },
                         {
                             "entities": [
