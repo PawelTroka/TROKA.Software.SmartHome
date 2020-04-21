@@ -268,6 +268,39 @@ services:
     #  - "traefik.frontend.headers.STSPreload=true"
     #  - "traefik.frontend.headers.frameDeny=true"
 
+  openxbox:
+    image: openxbox/hassio-amd64-xboxone
+    container_name: openxbox
+    hostname: openxbox
+    restart: always
+    ports:
+      - "5557:5557"
+    networks:
+      - traefik_proxy
+    volumes:
+      - ${HOMESERVERDIR}/openxbox:/config
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    labels:
+      - "traefik.enable=false"
+      - "traefik.backend=openxbox"
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefix: /openxbox"
+      - "traefik.frontend.rule=Host:openxbox.${DOMAINNAME}"
+      - "traefik.port=5557"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=openxbox.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
+
   shinobi:
     image: shinobisystems/shinobi:latest-ubuntu
     ports:
@@ -867,7 +900,6 @@ services:
     image: nicolargo/glances
     hostname: glances
     container_name: glances
-    restart: unless-stopped
     restart: unless-stopped
     pid: host
     networks:
