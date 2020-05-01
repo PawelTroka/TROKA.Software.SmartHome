@@ -2198,9 +2198,6 @@
                                     "entity": "sensor.sonarr_series"
                                 },
                                 {
-                                    "entity": "sensor.sonarr_queue"
-                                },
-                                {
                                     "entity": "sensor.sonarr_wanted"
                                 },
                                 {
