@@ -52,12 +52,12 @@ downloader:
 tplink:
 glances:
   - host: localhost
-transmission:
-  host: localhost
-  port: 8412
-  name: Transmission
-  username: !secret transmission_username
-  password: !secret transmission_password
+#transmission:
+#  host: localhost
+#  port: 8412
+#  name: Transmission
+#  username: !secret transmission_username
+# password: !secret transmission_password
 
 ### Cloud integrations:
 #tuya:
