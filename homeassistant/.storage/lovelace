@@ -110,7 +110,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.living_room_tv_2",
+                                    "entity": "media_player.living_room_tv",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
@@ -150,6 +150,16 @@
                                         "volume": true
                                     },
                                     "icon": "mdi:kodi",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.xbox_one_x",
+                                    "group": true,
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
+                                    "icon": "mdi:xbox",
                                     "type": "custom:mini-media-player"
                                 }
                             ],
@@ -1045,6 +1055,16 @@
                                         "power_state": false
                                     },
                                     "icon": "mdi:plex",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.xbox_one_x",
+                                    "group": true,
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
+                                    "icon": "mdi:xbox",
                                     "type": "custom:mini-media-player"
                                 }
                             ],
