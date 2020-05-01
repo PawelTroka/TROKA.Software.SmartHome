@@ -1643,25 +1643,60 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.lg_washer_3badfff0_81a5_11e9_9f27_203dbdebdc5a",
-                                    "info": {
-                                        "attribute": "state",
+                                    "entities": [
+                                        {
+                                            "attribute": "initial_time",
+                                            "name": "initial time"
+                                        },
+                                        {
+                                            "attribute": "remain_time",
+                                            "name": "remaining time"
+                                        },
+                                        {
+                                            "attribute": "watertemp_option_state",
+                                            "name": "temperature"
+                                        },
+                                        {
+                                            "attribute": "spin_option_state",
+                                            "name": "spin"
+                                        }
+                                    ],
+                                    "entity": "sensor.washer",
+                                    "name": "LG Washer",
+                                    "secondary_info": {
+                                        "attribute": "run_state",
                                         "name": false
                                     },
-                                    "name": "LG Washer",
-                                    "name_state": "state",
-                                    "primary": {
-                                        "attribute": "initial_time",
-                                        "name": "initial time"
+                                    "show_state": false,
+                                    "state_header": "state",
+                                    "type": "custom:multiple-entity-row"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "attribute": "pre_state",
+                                            "name": "previous"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.washer_wash_completed",
+                                            "name": "Completed"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.washer_error_state",
+                                            "name": "Error"
+                                        },
+                                        {
+                                            "attribute": "error_message",
+                                            "name": "status"
+                                        }
+                                    ],
+                                    "entity": "sensor.washer",
+                                    "name": null,
+                                    "secondary_info": {
+                                        "attribute": "current_course",
+                                        "name": false
                                     },
-                                    "secondary": {
-                                        "attribute": "remaining_time",
-                                        "name": "remaining time"
-                                    },
-                                    "tertiary": {
-                                        "attribute": "error",
-                                        "name": "status"
-                                    },
+                                    "state_header": "state",
                                     "type": "custom:multiple-entity-row"
                                 }
                             ],
