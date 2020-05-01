@@ -214,3 +214,5 @@
     - gdansk
 - platform: whois
   domain: fizyka.dk
+- platform: whois
+  domain: troka.software
