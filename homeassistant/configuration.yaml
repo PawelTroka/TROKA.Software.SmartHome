@@ -78,10 +78,6 @@ miele:
 homeconnect:
   client_id: !secret homeconnect_client_id
   client_secret: !secret homeconnect_client_secret
-smartthinq:
-  token: !secret smartthinq_token
-  region: US
-  language: en-US
 eight_sleep:
   username: !secret eight_sleep_username
   password: !secret eight_sleep_password
