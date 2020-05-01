@@ -9,8 +9,8 @@
     - tornado_warning
   storms_nearby:
     radius: 30
-#- platform: flic
-#  host: 10.10.10.55
+- platform: flic
+  host: 10.10.10.55
 - platform: template
   sensors:
     living_room_cam_motion:
