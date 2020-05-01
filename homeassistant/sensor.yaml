@@ -64,7 +64,6 @@
     harmony_hub_activity:
       value_template: '{{ state_attr("remote.harmony_hub", "current_activity") }}'
       friendly_name: 'Harmony Hub activity'
-- platform: ring
 - platform: airthings_wave
   scan_interval: 600
   mac: C4:64:E3:ED:18:38 # replace with MAC of your Airthings Wave+
@@ -179,24 +178,24 @@
   port: 8411
   days: 120
   theaters: false
-- platform: sonarr
-  api_key: !secret sonarr_api_key
-  host: 10.10.10.94
-  port: 8412
-  monitored_conditions:
-    - series
-    - upcoming
-    - wanted
-    - queue
-    - commands
-    - diskspace
-  days: 60
-  unit: TB
-- platform: sonarr_upcoming_media
-  api_key: !secret sonarr_api_key
-  host: 10.10.10.94
-  port: 8412
-  days: 60
+#- platform: sonarr
+#  api_key: !secret sonarr_api_key
+#  host: 10.10.10.94
+#  port: 8412
+#  monitored_conditions:
+#    - series
+#    - upcoming
+#    - wanted
+#    - queue
+#    - commands
+#    - diskspace
+#  days: 60
+#  unit: TB
+#- platform: sonarr_upcoming_media
+#  api_key: !secret sonarr_api_key
+#  host: 10.10.10.94
+#  port: 8412
+ # days: 60
 - platform: time_date
   display_options:
     - 'time'
