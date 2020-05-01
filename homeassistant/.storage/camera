@@ -10,7 +10,7 @@
             "preload_stream": false
         },
         "camera.living_room_cam": {
-            "preload_stream": true
+            "preload_stream": false
         },
         "camera.living_room_relax_area_cam": {
             "preload_stream": true
