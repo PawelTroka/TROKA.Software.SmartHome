@@ -954,6 +954,9 @@
                                     "entity": "light.living_room_dining_area_lights"
                                 },
                                 {
+                                    "type": "divider"
+                                },
+                                {
                                     "entity": "light.living_room_downlight_1"
                                 },
                                 {
