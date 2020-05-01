@@ -42,9 +42,6 @@ downloader:
 tplink:
 glances:
   - host: localhost
-remote:
-  - platform: harmony
-    name: Harmony Hub
 transmission:
   host: localhost
   port: 8412
