@@ -110,7 +110,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.living_room_tv",
+                                    "entity": "media_player.living_room_tv_2",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
@@ -1908,8 +1908,41 @@
                             "type": "entities"
                         },
                         {
-                            "entity": "media_player.bedroom_tv_2",
-                            "type": "custom:mini-media-player"
+                            "entities": [
+                                {
+                                    "entity": "media_player.bedroom_tv",
+                                    "group": true,
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
+                                    "icon": "mdi:television-box",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.bedroom_tv_2",
+                                    "group": true,
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
+                                    "icon": "mdi:television",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.bedroom_android_tv",
+                                    "group": true,
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
+                                    "icon": "mdi:android",
+                                    "type": "custom:mini-media-player"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "TV",
+                            "type": "entities"
                         },
                         {
                             "entity": "media_player.bedroom",
