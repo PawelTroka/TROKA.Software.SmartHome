@@ -305,3 +305,4 @@ www.opensubtitles.org
 static.opensubtitles.org
 mobile.pipe.aria.microsoft.com
 browser.pipe.aria.microsoft.com
+road.cc
