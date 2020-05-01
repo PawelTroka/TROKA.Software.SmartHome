@@ -1,7 +1,7 @@
-#- platform: xboxone
-#  #device: FD009374623167E
-#  ip_address: 10.10.10.79
-#  name: XBOX ONE X
+- platform: xboxone
+  device: !secret xbox_live_device_id
+  ip_address: 10.10.10.79
+  name: XBOX ONE X
 - platform: braviatv
   host: 10.10.10.8
   name: Living room TV
