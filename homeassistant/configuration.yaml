@@ -14,7 +14,17 @@ homeassistant:
   customize: !include customize.yaml
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
-default_config:
+config:
+frontend:
+map:
+mobile_app:
+person:
+ssdp:
+zeroconf:
+sun:
+system_health:
+updater:
+
 logger:
   default: error
 
