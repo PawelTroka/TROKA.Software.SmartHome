@@ -22,10 +22,10 @@
   host: localhost
   username: !secret unifi_username
   password: !secret unifi_password
-- platform: xbox_live
-  api_key: !secret xbox_live_api_key
-  xuid:
-    - !secret xbox_live_profile_id
+#- platform: xbox_live
+#  api_key: !secret xbox_live_api_key
+#  xuid:
+#    - !secret xbox_live_profile_id
 - platform: template
   sensors:
     unifi_gateway_wan_cpu:
