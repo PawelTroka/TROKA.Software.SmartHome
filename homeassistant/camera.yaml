@@ -1,4 +1,3 @@
-- platform: ring
 - platform: reolink_dev
   name: hallway_entrance_cam
   host: 10.10.10.104

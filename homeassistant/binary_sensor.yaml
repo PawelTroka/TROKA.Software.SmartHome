@@ -9,7 +9,6 @@
     - tornado_warning
   storms_nearby:
     radius: 30
-- platform: ring
 - platform: flic
   host: 10.10.10.55
 - platform: template
