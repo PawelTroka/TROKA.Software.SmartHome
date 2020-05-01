@@ -207,7 +207,7 @@
     - 'beat'
 # Weather prediction
 - platform: yr
-- platform: coinmarketcap
+#- platform: coinmarketcap
 - platform: waqi
   token: !secret waqi_token
   locations:
