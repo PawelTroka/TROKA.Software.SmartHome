@@ -1,3 +1,4 @@
+sudo hddtemp -d -p 11231 /dev/sda
 sudo hddtemp -d -p 11232 /dev/sdb
 sudo hddtemp -d -p 11233 /dev/sdc
 sudo hddtemp -d -p 11234 /dev/sdd
