@@ -7,6 +7,7 @@ import homeconnect
 from homeconnect.api import HomeConnectError
 
 from homeassistant import config_entries, core
+from homeassistant.const import DEVICE_CLASS_TIMESTAMP, TIME_SECONDS, UNIT_PERCENTAGE
 from homeassistant.core import callback
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers.entity import Entity
@@ -173,14 +174,13 @@ class DeviceWithPrograms(HomeConnectDevice):
     def get_program_sensors(self):
         """Get a dictionary with info about program sensors.
 
-        There will be one of the four types of sensors or each
+        There will be one of the four types of sensors for each
         device.
         """
         sensors = {
-            "Remaining Program Time": "s",
-            "Elapsed Program Time": "s",
-            "Duration": "s",
-            "Program Progress": "%",
+            "Remaining Program Time": (None, None, DEVICE_CLASS_TIMESTAMP, 1),
+            "Duration": (TIME_SECONDS, "mdi:update", None, 1),
+            "Program Progress": (UNIT_PERCENTAGE, "mdi:progress-clock", None, 1),
         }
         return [
             {
@@ -188,8 +188,11 @@ class DeviceWithPrograms(HomeConnectDevice):
                 "name": " ".join((self.appliance.name, name)),
                 "unit": unit,
                 "key": "BSH.Common.Option.{}".format(name.replace(" ", "")),
+                "icon": icon,
+                "device_class": device_class,
+                "sign": sign,
             }
-            for name, unit in sensors.items()
+            for name, (unit, icon, device_class, sign) in sensors.items()
         ]
 
 
@@ -353,6 +356,14 @@ class CoffeeMaker(DeviceWithPrograms):
         {"name": "ConsumerProducts.CoffeeMaker.Program.Beverage.Cappuccino"},
         {"name": "ConsumerProducts.CoffeeMaker.Program.Beverage.LatteMacchiato"},
         {"name": "ConsumerProducts.CoffeeMaker.Program.Beverage.CaffeLatte"},
+        {"name": "ConsumerProducts.CoffeeMaker.Program.CoffeeWorld.Americano"},
+        {"name": "ConsumerProducts.CoffeeMaker.Program.Beverage.EspressoDoppio"},
+        {"name": "ConsumerProducts.CoffeeMaker.Program.CoffeeWorld.FlatWhite"},
+        {"name": "ConsumerProducts.CoffeeMaker.Program.CoffeeWorld.Galao"},
+        {"name": "ConsumerProducts.CoffeeMaker.Program.Beverage.MilkFroth"},
+        {"name": "ConsumerProducts.CoffeeMaker.Program.Beverage.WarmMilk"},
+        {"name": "ConsumerProducts.CoffeeMaker.Program.Beverage.Ristretto"},
+        {"name": "ConsumerProducts.CoffeeMaker.Program.CoffeeWorld.Cortado"},
     ]
 
     power_off_state = "BSH.Common.EnumType.PowerState.Standby"
