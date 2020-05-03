@@ -74,7 +74,7 @@
         state: 'home'
   action:
       service: script.turn_on
-      entity_id: script.turn_on_necessary_things
+      entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
 
 
 - alias: Turn off media and lights elsewhere when everyone is in bed

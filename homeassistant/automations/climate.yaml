@@ -1,0 +1,71 @@
+- alias: 'Turn on heating when someone gets home'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'home'
+  condition: and
+  conditions:
+    - condition: numeric_state
+      entity_id: 'sensor.netatmo_outdoor_temperature'
+      below: 15
+    - condition: numeric_state
+      entity_id: 'sensor.netatmo_indoor_temperature'
+      below: 25
+  action:
+    service: script.turn_on
+    entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
+
+
+- alias: 'Turn off heating when it gets too warm'
+  trigger:
+    - platform: numeric_state
+      entity_id: 'sensor.netatmo_outdoor_temperature'
+      above: 20
+    - platform: numeric_state
+      entity_id: 'sensor.netatmo_indoor_temperature'
+      above: 25
+  action:
+    service: climate.turn_off
+    entity_id: group.all_climate
+
+- alias: 'Turn on heating when it gets too cold'
+  trigger:
+    - platform: numeric_state
+      entity_id: 'sensor.netatmo_outdoor_temperature'
+      below: 7
+    - platform: numeric_state
+      entity_id: 'sensor.netatmo_indoor_temperature'
+      above: 20
+  condition: state # at least 1 person is at home
+  entity_id: group.all_persons
+  state: 'home'
+  action:
+    service: script.turn_on
+    entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
+
+- alias: 'Turn off office heating when Pawel leaves home' # office is used exclusively by Pawel
+  trigger:
+    - platform: state
+      entity_id: person.pawel
+      to: 'not_home'
+  action:
+    service: climate.turn_off
+    entity_id: climate.office
+
+- alias: 'Turn on office heating when Pawel arrives home' # office is used exclusively by Pawel
+  trigger:
+    - platform: state
+      entity_id: person.pawel
+      to: 'home'
+  condition: and
+  conditions:
+    - condition: numeric_state
+      entity_id: 'sensor.netatmo_outdoor_temperature'
+      below: 15
+    - condition: numeric_state
+      entity_id: 'sensor.netatmo_indoor_temperature'
+      below: 25
+  action:
+    service: climate.turn_on
+    entity_id: climate.office
+
