@@ -28,7 +28,7 @@ Home automation configuration, scripts and state of affairs
 | Bedroom TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 | A/V Receiver|:heavy_check_mark:<sup>7</sup>|:warning:<sup>13</sup>|:warning:<sup>14</sup>|:heavy_check_mark:|
 | nVidia Shield|:heavy_check_mark:|:x:<sup>17</sup>|:heavy_check_mark:|:x:|
-| XBOX ONE X|:x:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
+| XBOX ONE X|:heavy_check_mark:<sup>18</sup>|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 | Netatmo Weather Station|:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
 | Nest Protect|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
 |Tado radiator thermostats|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
@@ -91,3 +91,5 @@ Home automation configuration, scripts and state of affairs
 <sup>16</sup> Currently not supported but there seems to be some motion in the development community: https://community.home-assistant.io/t/bticino-door-entry-for-classe300x13e/116517 and API is open: https://portal.developer.legrand.com/docs/services/classe-300x13e-v2
 
 <sup>17</sup> Is integrated but doesn't work for some reason
+
+<sup>18</sup> Via custom Home Assistant component https://github.com/OpenXbox/xboxone-home-assistant
