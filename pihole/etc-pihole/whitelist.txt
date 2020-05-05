@@ -307,3 +307,4 @@ mobile.pipe.aria.microsoft.com
 browser.pipe.aria.microsoft.com
 road.cc
 connect.facebook.net
+nymag.com
