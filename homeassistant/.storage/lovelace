@@ -40,6 +40,7 @@
             "title": "TROKA.Software.SmartHome",
             "views": [
                 {
+                    "badges": [],
                     "cards": [
                         {
                             "entities": [
@@ -932,10 +933,13 @@
                             "type": "entity-button"
                         }
                     ],
+                    "icon": "mdi:home",
+                    "panel": false,
                     "path": "default_view",
                     "title": "Home"
                 },
                 {
+                    "badges": [],
                     "cards": [
                         {
                             "entity": "climate.living_room",
@@ -1243,10 +1247,12 @@
                             "unit": "%"
                         }
                     ],
+                    "icon": "mdi:theater",
                     "path": "living_room",
                     "title": "Living room"
                 },
                 {
+                    "badges": [],
                     "cards": [
                         {
                             "entity": "climate.kitchen",
@@ -1427,10 +1433,12 @@
                             "type": "entities"
                         }
                     ],
+                    "icon": "mdi:silverware-fork-knife",
                     "path": "kitchen",
                     "title": "Kitchen"
                 },
                 {
+                    "badges": [],
                     "cards": [
                         {
                             "entities": [
@@ -1558,10 +1566,12 @@
                             "type": "entities"
                         }
                     ],
+                    "icon": "mdi:transit-transfer",
                     "path": "hallway",
                     "title": "Hallway"
                 },
                 {
+                    "badges": [],
                     "cards": [
                         {
                             "entity": "climate.bathroom",
@@ -1743,10 +1753,12 @@
                             "type": "entities"
                         }
                     ],
+                    "icon": "mdi:shower",
                     "path": "bathroom",
                     "title": "Bathroom"
                 },
                 {
+                    "badges": [],
                     "cards": [
                         {
                             "entity": "media_player.toilet",
@@ -1840,10 +1852,12 @@
                             "type": "entities"
                         }
                     ],
+                    "icon": "mdi:toilet",
                     "path": "toilet",
                     "title": "Toilet"
                 },
                 {
+                    "badges": [],
                     "cards": [
                         {
                             "entity": "climate.bedroom",
@@ -2064,10 +2078,12 @@
                             "type": "entities"
                         }
                     ],
+                    "icon": "mdi:bed-king-outline",
                     "path": "bedroom",
                     "title": "Bedroom"
                 },
                 {
+                    "badges": [],
                     "cards": [
                         {
                             "entity": "climate.office",
@@ -2696,10 +2712,12 @@
                             "type": "vertical-stack"
                         }
                     ],
+                    "icon": "mdi:briefcase-outline",
                     "path": "office",
                     "title": "Office"
                 },
                 {
+                    "badges": [],
                     "cards": [
                         {
                             "entity": "weather.openweathermap",
@@ -2835,151 +2853,9 @@
                             "type": "entities"
                         }
                     ],
+                    "icon": "mdi:sprout-outline",
                     "path": "outdoor",
                     "title": "Outdoor"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "card": {
-                                "show_header_toggle": false,
-                                "title": "Motion events",
-                                "type": "entities"
-                            },
-                            "filter": {
-                                "include": [
-                                    {
-                                        "attributes": {
-                                            "device_class": "motion"
-                                        },
-                                        "domain": "binary_sensor"
-                                    }
-                                ]
-                            },
-                            "sort": {
-                                "count": 5,
-                                "method": "last_changed",
-                                "numeric": true
-                            },
-                            "type": "custom:auto-entities"
-                        },
-                        {
-                            "card": {
-                                "show_header_toggle": true,
-                                "title": "Lights on",
-                                "type": "entities"
-                            },
-                            "filter": {
-                                "include": [
-                                    {
-                                        "domain": "light",
-                                        "options": {
-                                            "tap_action": {
-                                                "action": "toggle"
-                                            }
-                                        },
-                                        "state": "on"
-                                    }
-                                ]
-                            },
-                            "show_empty": false,
-                            "type": "custom:auto-entities"
-                        },
-                        {
-                            "card": {
-                                "show_header_toggle": false,
-                                "title": "Battery warning",
-                                "type": "entities"
-                            },
-                            "filter": {
-                                "include": [
-                                    {
-                                        "name": "*battery*",
-                                        "state": "< 40"
-                                    },
-                                    {
-                                        "entity_id": "*battery*",
-                                        "state": "< 40"
-                                    },
-                                    {
-                                        "attributes": {
-                                            "battery": "< 40"
-                                        }
-                                    },
-                                    {
-                                        "attributes": {
-                                            "battery_level": "< 40"
-                                        }
-                                    }
-                                ]
-                            },
-                            "type": "custom:auto-entities"
-                        },
-                        {
-                            "card": {
-                                "show_header_toggle": false,
-                                "title": "Temperatures warning",
-                                "type": "entities"
-                            },
-                            "filter": {
-                                "include": [
-                                    {
-                                        "name": "*temp*",
-                                        "state": "> 40"
-                                    },
-                                    {
-                                        "entity_id": "*temp*",
-                                        "state": "> 40"
-                                    },
-                                    {
-                                        "attributes": {
-                                            "temperature": "> 40"
-                                        }
-                                    },
-                                    {
-                                        "attributes": {
-                                            "temp": "> 40"
-                                        }
-                                    }
-                                ]
-                            },
-                            "type": "custom:auto-entities"
-                        },
-                        {
-                            "card": {
-                                "title": "Automations",
-                                "type": "entities"
-                            },
-                            "filter": {
-                                "include": [
-                                    {
-                                        "domain": "automation"
-                                    }
-                                ]
-                            },
-                            "type": "custom:auto-entities"
-                        },
-                        {
-                            "card": {
-                                "show_header_toggle": false,
-                                "title": "Unavailable",
-                                "type": "entities"
-                            },
-                            "filter": {
-                                "include": [
-                                    {
-                                        "state": "unavailable"
-                                    }
-                                ]
-                            },
-                            "show_empty": false,
-                            "type": "custom:auto-entities"
-                        }
-                    ],
-                    "panel": false,
-                    "path": "advanced",
-                    "title": "Advanced"
                 }
             ]
         }
