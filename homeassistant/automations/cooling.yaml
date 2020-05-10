@@ -24,7 +24,8 @@
   action:
     service: climate.set_hvac_mode
     entity_id: climate.living_room_ac
-    hvac_mode: off
+    data:
+      hvac_mode: off
 
 - alias: 'Set living room AC HVAC mode to cool based on cool living room input boolean change'
   trigger:
@@ -34,7 +35,8 @@
   action:
     service: climate.set_hvac_mode
     entity_id: climate.living_room_ac
-    hvac_mode: cool
+    data:
+      hvac_mode: cool
 
 
 - alias: 'Set cool office input boolean to off based on office AC HVAC mode change'
@@ -63,7 +65,8 @@
   action:
     service: climate.set_hvac_mode
     entity_id: climate.office_ac
-    hvac_mode: off
+    data:
+      hvac_mode: off
 
 - alias: 'Set office AC HVAC mode to cool based on cool office input boolean change'
   trigger:
@@ -73,7 +76,8 @@
   action:
     service: climate.set_hvac_mode
     entity_id: climate.office_ac
-    hvac_mode: cool
+    data:
+      hvac_mode: cool
 
 
 - alias: 'Set cool bedroom input boolean to off based on bedroom AC HVAC mode change'
@@ -102,7 +106,8 @@
   action:
     service: climate.set_hvac_mode
     entity_id: climate.bedroom_ac
-    hvac_mode: off
+    data:
+      hvac_mode: off
 
 - alias: 'Set bedroom AC HVAC mode to cool based on cool bedroom input boolean change'
   trigger:
@@ -112,4 +117,5 @@
   action:
     service: climate.set_hvac_mode
     entity_id: climate.bedroom_ac
-    hvac_mode: cool
+    data:
+      hvac_mode: cool
