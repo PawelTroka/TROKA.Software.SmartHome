@@ -16,6 +16,13 @@ Home automation configuration, scripts and state of affairs
     - Remotes
     - Dedicated apps
 
+## Main dashboard
+![main dashboard](https://raw.githubusercontent.com/PawelTroka/TROKA.Software.SmartHome/master/screenshots/dashboard-main.png "Dashboard main")
+## Living room dashboard
+![Living room dashboard](https://raw.githubusercontent.com/PawelTroka/TROKA.Software.SmartHome/master/screenshots/dashboard-living-room.png "Dashboard main")
+## Office dashboard
+![office dashboard](https://raw.githubusercontent.com/PawelTroka/TROKA.Software.SmartHome/master/screenshots/dashboard-office.png "Office dashboard")
+
 
 ## Devices/systems integration state matrix
 
