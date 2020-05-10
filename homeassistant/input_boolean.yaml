@@ -1,3 +1,16 @@
+cool_living_room:
+  initial: false
+  name: Cool living room
+  icon: mdi:snowflake
+cool_office:
+  initial: false
+  name: Cool office
+  icon: mdi:snowflake
+cool_bedroom:
+  initial: false
+  name: Cool bedroom
+  icon: mdi:snowflake
+
 living_room_ac_lights:
   initial: true
   icon: mdi:lightbulb-on-outline

@@ -1,0 +1,115 @@
+- alias: 'Set cool living room input boolean to off based on living room AC HVAC mode change'
+  trigger:
+    - platform: state
+      entity_id: climate.living_room_ac
+      to: 'off'
+  action:
+    service: input_boolean.turn_off
+    entity_id: input_boolean.cool_living_room
+
+- alias: 'Set cool living room input boolean to cool based on living room AC HVAC mode change'
+  trigger:
+    - platform: state
+      entity_id: climate.living_room_ac
+      to: 'cool'
+  action:
+    service: input_boolean.turn_on
+    entity_id: input_boolean.cool_living_room
+
+- alias: 'Set living room AC HVAC mode to off based on cool living room input boolean change'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.cool_living_room
+      to: 'off'
+  action:
+    service: climate.set_hvac_mode
+    entity_id: climate.living_room_ac
+    hvac_mode: off
+
+- alias: 'Set living room AC HVAC mode to cool based on cool living room input boolean change'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.cool_living_room
+      to: 'on'
+  action:
+    service: climate.set_hvac_mode
+    entity_id: climate.living_room_ac
+    hvac_mode: cool
+
+
+- alias: 'Set cool office input boolean to off based on office AC HVAC mode change'
+  trigger:
+    - platform: state
+      entity_id: climate.office_ac
+      to: 'off'
+  action:
+    service: input_boolean.turn_off
+    entity_id: input_boolean.cool_office
+
+- alias: 'Set cool office input boolean to cool based on office AC HVAC mode change'
+  trigger:
+    - platform: state
+      entity_id: climate.office_ac
+      to: 'cool'
+  action:
+    service: input_boolean.turn_on
+    entity_id: input_boolean.cool_office
+
+- alias: 'Set office AC HVAC mode to off based on cool office input boolean change'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.cool_office
+      to: 'off'
+  action:
+    service: climate.set_hvac_mode
+    entity_id: climate.office_ac
+    hvac_mode: off
+
+- alias: 'Set office AC HVAC mode to cool based on cool office input boolean change'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.cool_office
+      to: 'on'
+  action:
+    service: climate.set_hvac_mode
+    entity_id: climate.office_ac
+    hvac_mode: cool
+
+
+- alias: 'Set cool bedroom input boolean to off based on bedroom AC HVAC mode change'
+  trigger:
+    - platform: state
+      entity_id: climate.bedroom_ac
+      to: 'off'
+  action:
+    service: input_boolean.turn_off
+    entity_id: input_boolean.cool_bedroom
+
+- alias: 'Set cool bedroom input boolean to cool based on bedroom AC HVAC mode change'
+  trigger:
+    - platform: state
+      entity_id: climate.bedroom_ac
+      to: 'cool'
+  action:
+    service: input_boolean.turn_on
+    entity_id: input_boolean.cool_bedroom
+
+- alias: 'Set bedroom AC HVAC mode to off based on cool bedroom input boolean change'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.cool_bedroom
+      to: 'off'
+  action:
+    service: climate.set_hvac_mode
+    entity_id: climate.bedroom_ac
+    hvac_mode: off
+
+- alias: 'Set bedroom AC HVAC mode to cool based on cool bedroom input boolean change'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.cool_bedroom
+      to: 'on'
+  action:
+    service: climate.set_hvac_mode
+    entity_id: climate.bedroom_ac
+    hvac_mode: cool
