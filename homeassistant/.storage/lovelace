@@ -892,6 +892,23 @@
                                     "entity": "climate.bedroom_ac"
                                 }
                             ],
+                            "footer": {
+                                "entities": [
+                                    {
+                                        "entity": "input_boolean.cool_living_room",
+                                        "name": "Cool living room"
+                                    },
+                                    {
+                                        "entity": "input_boolean.cool_office",
+                                        "name": "Cool office"
+                                    },
+                                    {
+                                        "entity": "input_boolean.cool_bedroom",
+                                        "name": "Cool bedroom"
+                                    }
+                                ],
+                                "type": "buttons"
+                            },
                             "show_header_toggle": false,
                             "title": "Cooling",
                             "type": "entities"
