@@ -1,0 +1,21 @@
+front_door:
+  alias: Front door
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state('lock.front_door', 'locked') %}
+            script.unlock_front_door
+          {% else %}
+            script.lock_front_door
+          {% endif %}
+
+lock_front_door:
+  sequence:
+    - service: lock.lock
+      entity_id: lock.front_door
+
+unlock_front_door:
+  sequence:
+    - service: lock.unlock
+      entity_id: lock.front_door

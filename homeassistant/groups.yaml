@@ -1,6 +1,6 @@
-garmin_control:
+simple_control:
   entities:
-    - lock.front_door
+    - script.front_door
     - light.living_room_lights
     - light.hallway_lights
     - light.kitchen_lights
@@ -8,23 +8,9 @@ garmin_control:
     - light.toilet_lights
     - light.office_lights
     - light.bedroom_lights
-    - media_player.living_room
-    - media_player.kitchen
-    - media_player.bathroom
-    - media_player.toilet
-    - media_player.office
-    - media_player.bedroom
-    - climate.living_room_ac
-    - climate.office_ac
-    - climate.bedroom_ac
-    - climate.living_room
-    - climate.kitchen
-    - climate.bathroom
-    - climate.office
-    - climate.bedroom
-    - climate.kitchen_floor
-    - climate.bathroom_floor
-    - climate.toilet_floor
+    - input_boolean.cool_living_room
+    - input_boolean.cool_office
+    - input_boolean.cool_bedroom
 
 all_lights:
   entities:
