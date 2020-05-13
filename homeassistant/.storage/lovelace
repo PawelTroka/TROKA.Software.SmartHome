@@ -61,30 +61,43 @@
                                     "entity": "climate.living_room"
                                 },
                                 {
-                                    "entity": "climate.bathroom"
-                                },
-                                {
                                     "entity": "climate.kitchen"
                                 },
                                 {
-                                    "entity": "climate.bedroom"
+                                    "entity": "climate.bathroom"
                                 },
                                 {
                                     "entity": "climate.office"
                                 },
                                 {
-                                    "type": "divider"
-                                },
-                                {
-                                    "entity": "climate.bathroom_floor"
-                                },
-                                {
-                                    "entity": "climate.kitchen_floor"
-                                },
-                                {
-                                    "entity": "climate.toilet_floor"
+                                    "entity": "climate.bedroom"
                                 }
                             ],
+                            "footer": {
+                                "entities": [
+                                    {
+                                        "entity": "switch.heat_living_room",
+                                        "name": "Heat living room"
+                                    },
+                                    {
+                                        "entity": "switch.heat_kitchen",
+                                        "name": "Heat kitchen"
+                                    },
+                                    {
+                                        "entity": "switch.heat_bathroom",
+                                        "name": "Heat bathroom"
+                                    },
+                                    {
+                                        "entity": "switch.heat_office",
+                                        "name": "Heat office"
+                                    },
+                                    {
+                                        "entity": "switch.heat_bedroom",
+                                        "name": "Heat bedroom"
+                                    }
+                                ],
+                                "type": "buttons"
+                            },
                             "show_header_toggle": false,
                             "title": "Heating",
                             "type": "entities"
@@ -164,6 +177,19 @@
                                     "type": "custom:mini-media-player"
                                 }
                             ],
+                            "footer": {
+                                "entities": [
+                                    {
+                                        "entity": "switch.watch_movie",
+                                        "name": "Watch a movie"
+                                    },
+                                    {
+                                        "entity": "switch.play_game",
+                                        "name": "Play a game"
+                                    }
+                                ],
+                                "type": "buttons"
+                            },
                             "show_header_toggle": false,
                             "title": "Video",
                             "type": "entities"
@@ -879,6 +905,39 @@
                             "show_header_toggle": false,
                             "title": "Audio",
                             "type": "vertical-stack"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "climate.bathroom_floor"
+                                },
+                                {
+                                    "entity": "climate.kitchen_floor"
+                                },
+                                {
+                                    "entity": "climate.toilet_floor"
+                                }
+                            ],
+                            "footer": {
+                                "entities": [
+                                    {
+                                        "entity": "switch.heat_kitchen_floor",
+                                        "name": "Heat kitchen floor"
+                                    },
+                                    {
+                                        "entity": "switch.heat_bathroom_floor",
+                                        "name": "Heat bathroom floor"
+                                    },
+                                    {
+                                        "entity": "switch.heat_bathroom_floor",
+                                        "name": "Heat toilet floor"
+                                    }
+                                ],
+                                "type": "buttons"
+                            },
+                            "show_header_toggle": false,
+                            "title": "Floor heating",
+                            "type": "entities"
                         },
                         {
                             "entities": [
