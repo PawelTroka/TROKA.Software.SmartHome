@@ -8,9 +8,9 @@ simple_control:
     - light.toilet_lights
     - light.office_lights
     - light.bedroom_lights
-    - input_boolean.cool_living_room
-    - input_boolean.cool_office
-    - input_boolean.cool_bedroom
+    - switch.cool_living_room
+    - switch.cool_office
+    - switch.cool_bedroom
 
 all_lights:
   entities:

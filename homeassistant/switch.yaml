@@ -1,5 +1,54 @@
 - platform: template
   switches:
+    cool_living_room:
+      friendly_name: Cool living room
+      entity_id: climate.living_room_ac
+      value_template: "{{ is_state('climate.living_room_ac', 'cool') }}"
+      turn_on:
+        service: climate.set_hvac_mode
+        data:
+          entity_id: climate.living_room_ac
+          hvac_mode: cool
+      turn_off:
+        service: climate.set_hvac_mode
+        data:
+          entity_id: climate.living_room_ac
+          hvac_mode: off
+      icon_template: mdi:snowflake
+
+    cool_office:
+      friendly_name: Cool office
+      entity_id: climate.office_ac
+      value_template: "{{ is_state('climate.office_ac', 'cool') }}"
+      turn_on:
+        service: climate.set_hvac_mode
+        data:
+          entity_id: climate.office_ac
+          hvac_mode: cool
+      turn_off:
+        service: climate.set_hvac_mode
+        data:
+          entity_id: climate.office_ac
+          hvac_mode: off
+      icon_template: mdi:snowflake
+
+    cool_bedroom:
+      friendly_name: Cool bedroom
+      entity_id: climate.bedroom_ac
+      value_template: "{{ is_state('climate.bedroom_ac', 'cool') }}"
+      turn_on:
+        service: climate.set_hvac_mode
+        data:
+          entity_id: climate.bedroom_ac
+          hvac_mode: cool
+      turn_off:
+        service: climate.set_hvac_mode
+        data:
+          entity_id: climate.bedroom_ac
+          hvac_mode: off
+      icon_template: mdi:snowflake
+
+
     living_room_cam_email:
       value_template: "{{ is_state_attr('camera.living_room_cam', 'email_enabled', true) }}"
       turn_on:

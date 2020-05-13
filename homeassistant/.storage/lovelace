@@ -895,15 +895,15 @@
                             "footer": {
                                 "entities": [
                                     {
-                                        "entity": "input_boolean.cool_living_room",
+                                        "entity": "switch.cool_living_room",
                                         "name": "Cool living room"
                                     },
                                     {
-                                        "entity": "input_boolean.cool_office",
+                                        "entity": "switch.cool_office",
                                         "name": "Cool office"
                                     },
                                     {
-                                        "entity": "input_boolean.cool_bedroom",
+                                        "entity": "switch.cool_bedroom",
                                         "name": "Cool bedroom"
                                     }
                                 ],
