@@ -1,6 +1,8 @@
 simple_control:
   entities:
     - script.front_door
+    - switch.watch_movie
+    - switch.play_game
     - light.living_room_lights
     - light.hallway_lights
     - light.kitchen_lights
@@ -11,6 +13,14 @@ simple_control:
     - switch.cool_living_room
     - switch.cool_office
     - switch.cool_bedroom
+    - switch.heat_kitchen_floor
+    - switch.heat_bathroom_floor
+    - switch.heat_toilet_floor
+    - switch.heat_living_room
+    - switch.heat_kitchen
+    - switch.heat_bathroom
+    - switch.heat_office
+    - switch.heat_bedroom
 
 all_lights:
   entities:
