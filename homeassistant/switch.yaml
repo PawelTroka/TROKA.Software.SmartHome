@@ -10,10 +10,9 @@
           entity_id: climate.living_room_ac
           hvac_mode: cool
       turn_off:
-        service: climate.set_hvac_mode
+        service: climate.turn_off
         data:
           entity_id: climate.living_room_ac
-          hvac_mode: off
       icon_template: mdi:snowflake
 
     cool_office:
@@ -26,10 +25,9 @@
           entity_id: climate.office_ac
           hvac_mode: cool
       turn_off:
-        service: climate.set_hvac_mode
+        service: climate.turn_off
         data:
           entity_id: climate.office_ac
-          hvac_mode: off
       icon_template: mdi:snowflake
 
     cool_bedroom:
@@ -42,10 +40,9 @@
           entity_id: climate.bedroom_ac
           hvac_mode: cool
       turn_off:
-        service: climate.set_hvac_mode
+        service: climate.turn_off
         data:
           entity_id: climate.bedroom_ac
-          hvac_mode: off
       icon_template: mdi:snowflake
 
 
