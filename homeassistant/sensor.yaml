@@ -176,7 +176,7 @@
   api_key: !secret radarr_api_key
   host: 10.10.10.94
   port: 8411
-  days: 120
+  days: 240
   theaters: false
 - platform: sonarr
   api_key: !secret sonarr_api_key
