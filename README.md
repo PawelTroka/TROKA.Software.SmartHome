@@ -78,7 +78,7 @@ Home automation configuration, scripts and state of affairs
 <sup>9</sup> Works really slow and often does not trigger motion correctly. Vibration alarms not implemented.
 
 
-<sup>10</sup> Done via a fork (https://github.com/BottlecapDave/hass-smartthinq) of custom component (https://community.home-assistant.io/t/in-development-lg-smartthinq-component/40157/249)
+<sup>10</sup> Done via a fork (https://github.com/ollo69/ha-smartthinq-sensors) of custom component (https://community.home-assistant.io/t/in-development-lg-smartthinq-component/40157/249)
 
 
 <sup>11</sup> Through alternative RTSP firmware (https://support.wyzecam.com/hc/en-us/articles/360026245231-Wyze-Cam-RTSP)
