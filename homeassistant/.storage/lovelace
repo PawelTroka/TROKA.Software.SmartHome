@@ -90,10 +90,6 @@
                                     {
                                         "entity": "switch.heat_office",
                                         "name": "Heat office"
-                                    },
-                                    {
-                                        "entity": "switch.heat_bedroom",
-                                        "name": "Heat bedroom"
                                     }
                                 ],
                                 "type": "buttons"
@@ -909,10 +905,10 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "climate.bathroom_floor"
+                                    "entity": "climate.kitchen_floor"
                                 },
                                 {
-                                    "entity": "climate.kitchen_floor"
+                                    "entity": "climate.bathroom_floor"
                                 },
                                 {
                                     "entity": "climate.toilet_floor"
@@ -929,7 +925,7 @@
                                         "name": "Heat bathroom floor"
                                     },
                                     {
-                                        "entity": "switch.heat_bathroom_floor",
+                                        "entity": "switch.heat_toilet_floor",
                                         "name": "Heat toilet floor"
                                     }
                                 ],
