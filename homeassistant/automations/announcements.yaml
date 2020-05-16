@@ -1,0 +1,8 @@
+- alias: Announce input announcement everywhere
+  trigger:
+    - platform: state
+      entity_id: input_text.announcement
+  action:
+    - service: script.announce_everywhere
+      data_template:
+        message: "{{ states.input_text.announcement.state }}"

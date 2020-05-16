@@ -3,7 +3,7 @@ announce_everywhere:
   - service: script.sonos_say
     data_template:
       sonos_entity: group.all_sonos_except_living_room
-      volume: 0.4
+      volume: 0.5
       message: '{{ title }} {{message}}'
   - service: tts.google_say
     data_template:
