@@ -2782,6 +2782,37 @@
                                 }
                             ],
                             "type": "vertical-stack"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.dev_sda_dev_sda"
+                                },
+                                {
+                                    "entity": "sensor.dev_sdb_dev_sdb"
+                                },
+                                {
+                                    "entity": "sensor.dev_sdd_dev_sdd"
+                                },
+                                {
+                                    "entity": "sensor.dev_sde_dev_sde"
+                                },
+                                {
+                                    "entity": "sensor.dev_sdf_dev_sdf"
+                                },
+                                {
+                                    "entity": "sensor.dev_sdg_dev_sdg"
+                                },
+                                {
+                                    "entity": "sensor.dev_sdh_dev_sdh"
+                                },
+                                {
+                                    "entity": "sensor.dev_sdi_dev_sdi"
+                                }
+                            ],
+                            "hours_to_show": 12,
+                            "refresh_interval": 0,
+                            "type": "history-graph"
                         }
                     ],
                     "icon": "mdi:briefcase-outline",
