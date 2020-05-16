@@ -193,18 +193,24 @@
                         {
                             "cards": [
                                 {
+                                    "artwork": "cover",
                                     "card": null,
                                     "entity": "media_player.denon_avc_x6500h_2",
                                     "group": true,
                                     "hide": {
                                         "artwork_border": false,
+                                        "controls": false,
                                         "icon_state": false,
+                                        "mute": false,
+                                        "power": false,
                                         "power_state": false,
+                                        "progress": false,
                                         "runtime": false,
-                                        "sound_mode": false
+                                        "sound_mode": false,
+                                        "volume": false
                                     },
                                     "icon": "mdi:amplifier",
-                                    "info": "short",
+                                    "info": "long",
                                     "type": "custom:mini-media-player"
                                 },
                                 {
@@ -1152,17 +1158,22 @@
                             "type": "entities"
                         },
                         {
+                            "artwork": "cover",
                             "entity": "media_player.living_room",
                             "hide": {
                                 "artwork_border": false,
+                                "controls": false,
                                 "icon_state": false,
+                                "mute": false,
                                 "power": true,
                                 "power_state": false,
+                                "progress": false,
                                 "runtime": false,
                                 "shuffle": false,
                                 "sound_mode": false,
-                                "volume": true
+                                "volume": false
                             },
+                            "icon": "mdi:speaker",
                             "speaker_group": {
                                 "entities": [
                                     {
@@ -1193,32 +1204,48 @@
                                 "platform": "sonos",
                                 "show_group_count": true
                             },
+                            "tts": {
+                                "platform": "sonos",
+                                "volume": 0.5
+                            },
                             "type": "custom:mini-media-player"
                         },
                         {
                             "entities": [
                                 {
+                                    "artwork": "cover",
                                     "entity": "media_player.denon_avc_x6500h",
                                     "group": true,
                                     "hide": {
                                         "artwork_border": false,
+                                        "controls": false,
                                         "icon_state": false,
+                                        "mute": false,
+                                        "power": false,
                                         "power_state": false,
+                                        "progress": false,
                                         "runtime": false,
-                                        "sound_mode": false
+                                        "sound_mode": false,
+                                        "volume": false
                                     },
                                     "icon": "mdi:amplifier",
                                     "type": "custom:mini-media-player"
                                 },
                                 {
+                                    "artwork": "cover",
                                     "entity": "media_player.denon_avc_x6500h_2",
                                     "group": true,
                                     "hide": {
                                         "artwork_border": false,
+                                        "controls": false,
                                         "icon_state": false,
+                                        "mute": false,
+                                        "power": false,
                                         "power_state": false,
+                                        "progress": false,
                                         "runtime": false,
-                                        "sound_mode": false
+                                        "sound_mode": false,
+                                        "volume": false
                                     },
                                     "icon": "mdi:amplifier",
                                     "type": "custom:mini-media-player"
@@ -1237,14 +1264,20 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
+                                    "artwork": "cover",
                                     "entity": "media_player.denon_avr",
                                     "group": true,
                                     "hide": {
                                         "artwork_border": false,
+                                        "controls": false,
                                         "icon_state": false,
+                                        "mute": false,
+                                        "power": false,
                                         "power_state": false,
+                                        "progress": false,
                                         "runtime": false,
-                                        "sound_mode": false
+                                        "sound_mode": false,
+                                        "volume": false
                                     },
                                     "icon": "mdi:amplifier",
                                     "type": "custom:mini-media-player"
@@ -1332,10 +1365,22 @@
                             "type": "thermostat"
                         },
                         {
+                            "artwork": "cover",
                             "entity": "media_player.kitchen",
                             "hide": {
-                                "shuffle": false
+                                "artwork_border": false,
+                                "controls": false,
+                                "icon_state": false,
+                                "mute": false,
+                                "power": true,
+                                "power_state": false,
+                                "progress": false,
+                                "runtime": false,
+                                "shuffle": false,
+                                "sound_mode": false,
+                                "volume": false
                             },
+                            "icon": "mdi:speaker",
                             "speaker_group": {
                                 "entities": [
                                     {
@@ -1365,6 +1410,10 @@
                                 ],
                                 "platform": "sonos",
                                 "show_group_count": true
+                            },
+                            "tts": {
+                                "platform": "sonos",
+                                "volume": 0.5
                             },
                             "type": "custom:mini-media-player"
                         },
@@ -1650,10 +1699,22 @@
                             "type": "thermostat"
                         },
                         {
+                            "artwork": "cover",
                             "entity": "media_player.bathroom",
                             "hide": {
-                                "shuffle": false
+                                "artwork_border": false,
+                                "controls": false,
+                                "icon_state": false,
+                                "mute": false,
+                                "power": true,
+                                "power_state": false,
+                                "progress": false,
+                                "runtime": false,
+                                "shuffle": false,
+                                "sound_mode": false,
+                                "volume": false
                             },
+                            "icon": "mdi:speaker",
                             "speaker_group": {
                                 "entities": [
                                     {
@@ -1683,6 +1744,10 @@
                                 ],
                                 "platform": "sonos",
                                 "show_group_count": true
+                            },
+                            "tts": {
+                                "platform": "sonos",
+                                "volume": 0.5
                             },
                             "type": "custom:mini-media-player"
                         },
@@ -1833,10 +1898,22 @@
                     "badges": [],
                     "cards": [
                         {
+                            "artwork": "cover",
                             "entity": "media_player.toilet",
                             "hide": {
-                                "shuffle": false
+                                "artwork_border": false,
+                                "controls": false,
+                                "icon_state": false,
+                                "mute": false,
+                                "power": true,
+                                "power_state": false,
+                                "progress": false,
+                                "runtime": false,
+                                "shuffle": false,
+                                "sound_mode": false,
+                                "volume": false
                             },
+                            "icon": "mdi:speaker",
                             "speaker_group": {
                                 "entities": [
                                     {
@@ -1866,6 +1943,10 @@
                                 ],
                                 "platform": "sonos",
                                 "show_group_count": true
+                            },
+                            "tts": {
+                                "platform": "sonos",
+                                "volume": 0.5
                             },
                             "type": "custom:mini-media-player"
                         },
@@ -2031,10 +2112,22 @@
                             "type": "entities"
                         },
                         {
+                            "artwork": "cover",
                             "entity": "media_player.bedroom",
                             "hide": {
-                                "shuffle": false
+                                "artwork_border": false,
+                                "controls": false,
+                                "icon_state": false,
+                                "mute": false,
+                                "power": true,
+                                "power_state": false,
+                                "progress": false,
+                                "runtime": false,
+                                "shuffle": false,
+                                "sound_mode": false,
+                                "volume": false
                             },
+                            "icon": "mdi:speaker",
                             "speaker_group": {
                                 "entities": [
                                     {
@@ -2064,6 +2157,10 @@
                                 ],
                                 "platform": "sonos",
                                 "show_group_count": true
+                            },
+                            "tts": {
+                                "platform": "sonos",
+                                "volume": 0.5
                             },
                             "type": "custom:mini-media-player"
                         },
@@ -2179,10 +2276,22 @@
                             "type": "entities"
                         },
                         {
+                            "artwork": "cover",
                             "entity": "media_player.office",
                             "hide": {
-                                "shuffle": false
+                                "artwork_border": false,
+                                "controls": false,
+                                "icon_state": false,
+                                "mute": false,
+                                "power": true,
+                                "power_state": false,
+                                "progress": false,
+                                "runtime": false,
+                                "shuffle": false,
+                                "sound_mode": false,
+                                "volume": false
                             },
+                            "icon": "mdi:speaker",
                             "speaker_group": {
                                 "entities": [
                                     {
@@ -2212,6 +2321,10 @@
                                 ],
                                 "platform": "sonos",
                                 "show_group_count": true
+                            },
+                            "tts": {
+                                "platform": "sonos",
+                                "volume": 0.5
                             },
                             "type": "custom:mini-media-player"
                         },
