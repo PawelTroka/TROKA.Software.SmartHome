@@ -193,6 +193,13 @@
                         {
                             "cards": [
                                 {
+                                    "card": null,
+                                    "entities": [
+                                        "input_text.announcement"
+                                    ],
+                                    "type": "entities"
+                                },
+                                {
                                     "artwork": "cover",
                                     "card": null,
                                     "entity": "media_player.denon_avc_x6500h_2",
