@@ -1,3 +1,5 @@
 announcement:
   name: Announcement
+  icon: mdi:voice
   initial: ""
+  max: 255
