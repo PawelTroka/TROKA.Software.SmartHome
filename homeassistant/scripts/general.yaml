@@ -1,5 +1,8 @@
 # general
 
+do_nothing:
+  sequence: []
+
 turn_off_everything:
   sequence:
     - service: switch.turn_off

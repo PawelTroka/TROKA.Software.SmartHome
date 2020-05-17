@@ -3,6 +3,12 @@
     - platform: state
       entity_id: input_text.announcement
   action:
-    - service: script.announce_everywhere
+    - service_template:  >
+      {% if states('input_text.announcement') %} script.announce_everywhere
+      {% else %} script.do_nothing {% endif %}
       data_template:
         message: "{{ states.input_text.announcement.state }}"
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.announcement
+        value: ""
