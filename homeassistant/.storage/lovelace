@@ -100,8 +100,9 @@
                         },
                         {
                             "entities": [
-                                "person.pawel",
-                                "person.athena"
+                                {
+                                    "entity": "person.pawel"
+                                }
                             ],
                             "show_header_toggle": false,
                             "title": "Residents",
@@ -2250,7 +2251,7 @@
                                 }
                             ],
                             "show_header_toggle": false,
-                            "title": "Athena's bed",
+                            "title": "Right bed",
                             "type": "entities"
                         }
                     ],
