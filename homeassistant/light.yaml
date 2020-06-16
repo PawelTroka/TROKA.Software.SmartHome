@@ -17,7 +17,7 @@
   - platform: group
     name: Kitchen lights
     entities:
-      - light.kitchen_island_downlight_2
+      - light.kitchen_island_light_2
       - light.kitchen_island_light_1
       - light.kitchen_island_strip
       - light.kitchen_light_1
@@ -35,7 +35,7 @@
   - platform: group
     name: Kitchen island lights
     entities:
-      - light.kitchen_island_downlight_2
+      - light.kitchen_island_light_2
       - light.kitchen_island_light_1
 
   - platform: group
