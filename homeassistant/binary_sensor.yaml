@@ -28,7 +28,7 @@
       delay_off: 
           seconds: 60
     shower_in_use:
-      value_template: "{{ states('sensor.bathroom_multisensor_relative_humidity') | float > 55 or states('sensor.bathroom_humidity') | float > 50 }}"
+      value_template: "{{ states('sensor.bathroom_multisensor_relative_humidity') | float > 60 or states('sensor.bathroom_humidity') | float > 60 }}"
     toilet_sonos_is_master:
       value_template: "{{ 'media_player.toilet' == state_attr('media_player.toilet', 'sonos_group')[0] }}"
     bathroom_sonos_is_master:
