@@ -7,12 +7,11 @@ Alexa Devices Alarm Control Panel using Guard Mode.
 For more details about this platform, please refer to the documentation at
 https://community.home-assistant.io/t/echo-devices-alexa-as-media-player-testers-needed/58639
 """
-import logging
 from asyncio import sleep
+import logging
 from typing import Dict, List, Text  # noqa pylint: disable=unused-import
 
 from homeassistant import util
-from homeassistant.components.alarm_control_panel import AlarmControlPanel
 from homeassistant.const import (
     STATE_ALARM_ARMED_AWAY,
     STATE_ALARM_DISARMED,
@@ -28,6 +27,7 @@ from . import (
     CONF_INCLUDE_DEVICES,
     CONF_QUEUE_DELAY,
     DATA_ALEXAMEDIA,
+    DEFAULT_QUEUE_DELAY,
     DOMAIN as ALEXA_DOMAIN,
     MIN_TIME_BETWEEN_FORCED_SCANS,
     MIN_TIME_BETWEEN_SCANS,
@@ -35,6 +35,14 @@ from . import (
     hide_serial,
 )
 from .helpers import _catch_login_errors, add_devices, retry_async
+
+try:
+    from homeassistant.components.alarm_control_panel import (
+        AlarmControlPanelEntity as AlarmControlPanel,
+    )
+except ImportError:
+    from homeassistant.components.alarm_control_panel import AlarmControlPanel
+
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -219,6 +227,8 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
             pass
         import json
 
+        if self._login.session.closed:
+            return
         _LOGGER.debug("%s: Refreshing %s", self.account, self.name)
         state = None
         state_json = await self.alexa_api.get_guard_state(
@@ -275,7 +285,7 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
                 command_map[command],
                 queue_delay=self.hass.data[DATA_ALEXAMEDIA]["accounts"][self.email][
                     "options"
-                ][CONF_QUEUE_DELAY],
+                ].get(CONF_QUEUE_DELAY, DEFAULT_QUEUE_DELAY),
             )
             await sleep(2)  # delay
         else:

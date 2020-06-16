@@ -16,7 +16,7 @@ from urllib.parse import urljoin
 from packaging import version
 
 from homeassistant.components.media_player import (
-    MediaPlayerDevice, PLATFORM_SCHEMA)
+    MediaPlayerEntity, PLATFORM_SCHEMA)
 
 from homeassistant.components.media_player.const import (
     SUPPORT_NEXT_TRACK, SUPPORT_PAUSE, SUPPORT_PREVIOUS_TRACK,
@@ -498,7 +498,7 @@ class XboxOne:
             self._update_volume_controls()
 
 
-class XboxOneDevice(MediaPlayerDevice):
+class XboxOneDevice(MediaPlayerEntity):
     """Representation of an Xbox One device on the network."""
 
     def __init__(self, base_url, liveid, ip, name, auth):
