@@ -43,8 +43,12 @@ DATE_FORMAT = "%a, %d %b %Y %H:%M:%S +0000"
 API2_ERRORS = {
     "0102": exc.NotLoggedInError,
     "0106": exc.NotConnectedError,
+    "0100": exc.FailedRequestError,
+    "0110": exc.InvalidCredentialError,
+    9000: exc.InvalidRequestError,  # Surprisingly, an integer (not a string).
 }
 
+LOG_AUTH_INFO = False
 MIN_TIME_BETWEEN_UPDATE = 25  # seconds
 _LOGGER = logging.getLogger(__name__)
 
@@ -212,7 +216,7 @@ def parse_oauth_callback(url):
     return params["oauth2_backend_url"][0], params["code"][0], params["user_number"][0]
 
 
-def auth_request(oauth_url, data):
+def auth_request(oauth_url, data, *, log_auth_info=False):
     """Use an auth code to log into the v2 API and obtain an access token 
     and refresh token.
     """
@@ -234,7 +238,10 @@ def auth_request(oauth_url, data):
         raise exc.TokenError()
 
     res_data = res.json()
-    _LOGGER.debug(res_data)
+    if log_auth_info:
+        _LOGGER.debug(res_data)
+    else:
+        _LOGGER.debug("Authorization request successful")
 
     return res_data
 
@@ -252,6 +259,7 @@ def login(oauth_url, auth_code):
             "grant_type": "authorization_code",
             "redirect_uri": OAUTH_REDIRECT_URI,
         },
+        log_auth_info=LOG_AUTH_INFO,
     )
 
     return out["access_token"], out["refresh_token"]
@@ -263,7 +271,9 @@ def refresh_auth(oauth_root, refresh_token):
     May raise a `TokenError`.
     """
     out = auth_request(
-        oauth_root, {"grant_type": "refresh_token", "refresh_token": refresh_token}
+        oauth_root,
+        {"grant_type": "refresh_token", "refresh_token": refresh_token},
+        log_auth_info=LOG_AUTH_INFO,
     )
 
     return out["access_token"]

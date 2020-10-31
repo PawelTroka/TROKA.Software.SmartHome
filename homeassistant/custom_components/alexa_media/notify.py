@@ -85,7 +85,7 @@ class AlexaNotificationService(BaseNotificationService):
         ----------
         names : list(string)
             A list of names to convert
-        type : string
+        type_ : string
             The type to return entities, entity_ids, serialnumbers, names
         filter_matches : bool
             Whether non-matching items are removed from the returned list.
@@ -235,9 +235,26 @@ class AlexaNotificationService(BaseNotificationService):
                         entities, type_="entities", filter_matches=True
                     )
                     if alexa in targets and alexa.available:
-                        _LOGGER.debug("Push by %s : %s %s", alexa, title, message)
+                        _LOGGER.debug("Push by %s: %s %s", alexa, title, message)
                         tasks.append(
                             alexa.async_send_mobilepush(
+                                message,
+                                title=title,
+                                queue_delay=self.hass.data[DATA_ALEXAMEDIA]["accounts"][
+                                    account
+                                ]["options"].get(CONF_QUEUE_DELAY, DEFAULT_QUEUE_DELAY),
+                            )
+                        )
+                elif data["type"] == "dropin_notification":
+                    targets = self.convert(
+                        entities, type_="entities", filter_matches=True
+                    )
+                    if alexa in targets and alexa.available:
+                        _LOGGER.debug(
+                            "Notification dropin by %s: %s %s", alexa, title, message
+                        )
+                        tasks.append(
+                            alexa.async_send_dropin_notification(
                                 message,
                                 title=title,
                                 queue_delay=self.hass.data[DATA_ALEXAMEDIA]["accounts"][
