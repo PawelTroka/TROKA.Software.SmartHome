@@ -203,7 +203,7 @@
                                 {
                                     "artwork": "cover",
                                     "card": null,
-                                    "entity": "media_player.denon_avc_x6500h_2",
+                                    "entity": "media_player.denon_avc_x6500h_4",
                                     "group": true,
                                     "hide": {
                                         "artwork_border": false,
@@ -1289,6 +1289,25 @@
                                     },
                                     "icon": "mdi:amplifier",
                                     "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "artwork": "cover",
+                                    "entity": "media_player.denon_avc_x6500h_4",
+                                    "group": true,
+                                    "hide": {
+                                        "artwork_border": false,
+                                        "controls": false,
+                                        "icon_state": false,
+                                        "mute": false,
+                                        "power": false,
+                                        "power_state": false,
+                                        "progress": false,
+                                        "runtime": false,
+                                        "sound_mode": false,
+                                        "volume": false
+                                    },
+                                    "icon": "mdi:amplifier",
+                                    "type": "custom:mini-media-player"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -2226,32 +2245,7 @@
                                 }
                             ],
                             "show_header_toggle": false,
-                            "title": "Pawel's bed",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.eight_right_bed_presence"
-                                },
-                                {
-                                    "entity": "sensor.eight_right_bed_state"
-                                },
-                                {
-                                    "entity": "sensor.eight_right_bed_temperature"
-                                },
-                                {
-                                    "entity": "sensor.eight_right_previous_sleep_session"
-                                },
-                                {
-                                    "entity": "sensor.eight_right_sleep_session"
-                                },
-                                {
-                                    "entity": "sensor.eight_right_sleep_stage"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Right bed",
+                            "title": "Bed",
                             "type": "entities"
                         }
                     ],
@@ -2348,7 +2342,16 @@
                                     "entity": "sensor.office_temperature"
                                 },
                                 {
+                                    "entity": "sensor.netatmo_troka_software_apartment_office_temperature"
+                                },
+                                {
                                     "entity": "sensor.office_humidity"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_troka_software_apartment_office_humidity"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_troka_software_apartment_office_co2"
                                 }
                             ],
                             "show_header_toggle": false,
