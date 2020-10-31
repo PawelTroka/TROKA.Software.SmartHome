@@ -302,7 +302,7 @@ services:
       - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
   shinobi:
-    image: shinobisystems/shinobi:latest-ubuntu
+    image: shinobisystems/shinobi:latest
     ports:
       - "8899:8080"
     networks:
@@ -313,7 +313,7 @@ services:
       - $HOMESERVERDIR/shinobi/CustomAutoLoad:/customAutoLoad
       - $HOMESERVERDIR/shinobi/Database:/var/lib/mysql
       #- $HOMESERVERDIR/shinobi/super.json:/opt/shinobi/super.json  # better use /config/super.json
-      - ${SURVEILLANCEDIR}/shinobi-videos:/opt/shinobi/videos
+      - ${SURVEILLANCEDIR}/shinobi-videos:/home/Shinobi/videos
     environment:
       - APP_BRANCH=dev
       - PUID=${PUID}
