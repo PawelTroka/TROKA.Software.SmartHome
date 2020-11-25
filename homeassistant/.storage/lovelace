@@ -1,4 +1,6 @@
 {
+    "version": 1,
+    "key": "lovelace",
     "data": {
         "config": {
             "custom_header": {
@@ -164,7 +166,8 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.xbox_one_x",
+                                    "entity": "media_player.xboxone",
+                                    "name": "XBOX ONE X",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
@@ -919,39 +922,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "climate.kitchen_floor"
-                                },
-                                {
-                                    "entity": "climate.bathroom_floor"
-                                },
-                                {
-                                    "entity": "climate.toilet_floor"
-                                }
-                            ],
-                            "footer": {
-                                "entities": [
-                                    {
-                                        "entity": "switch.heat_kitchen_floor",
-                                        "name": "Heat kitchen floor"
-                                    },
-                                    {
-                                        "entity": "switch.heat_bathroom_floor",
-                                        "name": "Heat bathroom floor"
-                                    },
-                                    {
-                                        "entity": "switch.heat_toilet_floor",
-                                        "name": "Heat toilet floor"
-                                    }
-                                ],
-                                "type": "buttons"
-                            },
-                            "show_header_toggle": false,
-                            "title": "Floor heating",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
                                     "entity": "climate.living_room_ac"
                                 },
                                 {
@@ -984,6 +954,39 @@
                         },
                         {
                             "entities": [
+                                {
+                                    "entity": "climate.kitchen_floor"
+                                },
+                                {
+                                    "entity": "climate.bathroom_floor"
+                                },
+                                {
+                                    "entity": "climate.toilet_floor"
+                                }
+                            ],
+                            "footer": {
+                                "entities": [
+                                    {
+                                        "entity": "switch.heat_kitchen_floor",
+                                        "name": "Heat kitchen floor"
+                                    },
+                                    {
+                                        "entity": "switch.heat_bathroom_floor",
+                                        "name": "Heat bathroom floor"
+                                    },
+                                    {
+                                        "entity": "switch.heat_toilet_floor",
+                                        "name": "Heat toilet floor"
+                                    }
+                                ],
+                                "type": "buttons"
+                            },
+                            "show_header_toggle": false,
+                            "title": "Floor heating",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
                                 "sensor.netatmo_outdoor_temperature",
                                 "sensor.netatmo_outdoor_humidity",
                                 "sensor.netatmo_outdoor_rain_gauge_rain",
@@ -992,18 +995,6 @@
                             ],
                             "show_header_toggle": false,
                             "title": "Outdoor climate",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.netatmo_indoor_temperature",
-                                "sensor.netatmo_indoor_humidity",
-                                "sensor.netatmo_indoor_pressure",
-                                "sensor.netatmo_indoor_co2",
-                                "sensor.netatmo_indoor_noise"
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Indoor climate",
                             "type": "entities"
                         },
                         {
@@ -1017,6 +1008,18 @@
                                 "action": "toggle"
                             },
                             "type": "entity-button"
+                        },
+                        {
+                            "entities": [
+                                "sensor.netatmo_indoor_temperature",
+                                "sensor.netatmo_indoor_humidity",
+                                "sensor.netatmo_indoor_pressure",
+                                "sensor.netatmo_indoor_co2",
+                                "sensor.netatmo_indoor_noise"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Indoor climate",
+                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:home",
@@ -3086,7 +3089,5 @@
                 }
             ]
         }
-    },
-    "key": "lovelace",
-    "version": 1
+    }
 }
