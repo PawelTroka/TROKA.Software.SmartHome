@@ -54,6 +54,55 @@
                                 "light.bedroom_lights",
                                 "light.office_lights"
                             ],
+                            "footer": {
+                                "type": "buttons",
+                                "entities": [
+                                    {
+                                        "entity": "scene.default",
+                                        "name": "Normal",
+                                        "tap_action": {
+                                            "action": "call-service",
+                                            "service": "scene.turn_on",
+                                            "service_data": {
+                                                "entity_id": "scene.default"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "entity": "scene.ambient",
+                                        "name": "Dark",
+                                        "tap_action": {
+                                            "action": "call-service",
+                                            "service": "scene.turn_on",
+                                            "service_data": {
+                                                "entity_id": "scene.ambient"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "entity": "scene.movie_dinner",
+                                        "name": "Movie",
+                                        "tap_action": {
+                                            "action": "call-service",
+                                            "service": "scene.turn_on",
+                                            "service_data": {
+                                                "entity_id": "scene.movie_dinner"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "entity": "scene.romantic",
+                                        "name": "Sex",
+                                        "tap_action": {
+                                            "action": "call-service",
+                                            "service": "scene.turn_on",
+                                            "service_data": {
+                                                "entity_id": "scene.romantic"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
                             "title": "Lights",
                             "type": "entities"
                         },
@@ -922,39 +971,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "climate.living_room_ac"
-                                },
-                                {
-                                    "entity": "climate.office_ac"
-                                },
-                                {
-                                    "entity": "climate.bedroom_ac"
-                                }
-                            ],
-                            "footer": {
-                                "entities": [
-                                    {
-                                        "entity": "switch.cool_living_room",
-                                        "name": "Cool living room"
-                                    },
-                                    {
-                                        "entity": "switch.cool_office",
-                                        "name": "Cool office"
-                                    },
-                                    {
-                                        "entity": "switch.cool_bedroom",
-                                        "name": "Cool bedroom"
-                                    }
-                                ],
-                                "type": "buttons"
-                            },
-                            "show_header_toggle": false,
-                            "title": "Cooling",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
                                     "entity": "climate.kitchen_floor"
                                 },
                                 {
@@ -987,6 +1003,39 @@
                         },
                         {
                             "entities": [
+                                {
+                                    "entity": "climate.living_room_ac"
+                                },
+                                {
+                                    "entity": "climate.office_ac"
+                                },
+                                {
+                                    "entity": "climate.bedroom_ac"
+                                }
+                            ],
+                            "footer": {
+                                "entities": [
+                                    {
+                                        "entity": "switch.cool_living_room",
+                                        "name": "Cool living room"
+                                    },
+                                    {
+                                        "entity": "switch.cool_office",
+                                        "name": "Cool office"
+                                    },
+                                    {
+                                        "entity": "switch.cool_bedroom",
+                                        "name": "Cool bedroom"
+                                    }
+                                ],
+                                "type": "buttons"
+                            },
+                            "show_header_toggle": false,
+                            "title": "Cooling",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
                                 "sensor.netatmo_outdoor_temperature",
                                 "sensor.netatmo_outdoor_humidity",
                                 "sensor.netatmo_outdoor_rain_gauge_rain",
@@ -996,18 +1045,6 @@
                             "show_header_toggle": false,
                             "title": "Outdoor climate",
                             "type": "entities"
-                        },
-                        {
-                            "entity": "lock.front_door",
-                            "hold_action": {
-                                "action": "more-info"
-                            },
-                            "show_icon": true,
-                            "show_name": true,
-                            "tap_action": {
-                                "action": "toggle"
-                            },
-                            "type": "entity-button"
                         },
                         {
                             "entities": [
@@ -1020,6 +1057,17 @@
                             "show_header_toggle": false,
                             "title": "Indoor climate",
                             "type": "entities"
+                        },
+                        {
+                            "camera_image": "camera.front_door_2",
+                            "entities": [
+                                "lock.front_door",
+                                "binary_sensor.front_door_motion",
+                                "binary_sensor.front_door_ding",
+                                "sensor.front_door_last_activity"
+                            ],
+                            "title": "Doorbell cam",
+                            "type": "picture-glance"
                         }
                     ],
                     "icon": "mdi:home",
