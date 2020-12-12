@@ -27,6 +27,12 @@
       value_template: "{{ is_state('camera.hallway_entrance_cam', 'motion') }}"
       delay_off: 
           seconds: 60
+    bathroom_motion:
+      friendly_name: Bathroom motion
+      device_class: motion
+      value_template: "{{ is_state('binary_sensor.bathroom_shower_motion_sensor_sensor', 'on') or is_state('binary_sensor.bathroom_multisensor_motion', 'on') or is_state('sensor.bathroom_multisensor_burglar', '8') }}"
+      delay_off:
+          seconds: 60
     shower_in_use:
       value_template: "{{ states('sensor.bathroom_multisensor_relative_humidity') | float > 60 or states('sensor.bathroom_humidity') | float > 60 }}"
     toilet_sonos_is_master:
