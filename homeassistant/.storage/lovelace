@@ -222,7 +222,7 @@
                                         "icon_state": false,
                                         "power_state": false
                                     },
-                                    "icon": "mdi:xbox",
+                                    "icon": "mdi:microsoft-xbox",
                                     "type": "custom:mini-media-player"
                                 }
                             ],
@@ -1068,6 +1068,24 @@
                             ],
                             "title": "Doorbell cam",
                             "type": "picture-glance"
+                        },
+                        {
+                            "type": "logbook",
+                            "entities": [
+                                "binary_sensor.bathroom_flood_sensor",
+                                "binary_sensor.toilet_flood_sensor",
+                                "binary_sensor.kitchen_flood_sensor",
+                                "binary_sensor.front_door_ding",
+                                "binary_sensor.front_door_motion",
+                                "binary_sensor.bathroom_multisensor_motion",
+                                "binary_sensor.hallway_entrance_cam_motion",
+                                "binary_sensor.hallway_multisensor_motion",
+                                "binary_sensor.kitchen_multisensor_motion",
+                                "binary_sensor.living_room_cam_motion",
+                                "binary_sensor.toilet_multisensor_motion"
+                            ],
+                            "hours_to_show": 24,
+                            "title": "Events"
                         }
                     ],
                     "icon": "mdi:home",
@@ -1366,48 +1384,35 @@
                             "type": "entities"
                         },
                         {
-                            "cards": [
-                                {
-                                    "entity": "sensor.radarr_upcoming_media",
-                                    "image_style": "fanart",
-                                    "max": 3,
-                                    "title": "Upcoming movies",
-                                    "type": "custom:upcoming-media-card"
-                                },
-                                {
-                                    "entity": "sensor.sonarr_upcoming_media",
-                                    "image_style": "fanart",
-                                    "max": 3,
-                                    "title": "Upcoming TV",
-                                    "type": "custom:upcoming-media-card"
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
+                            "type": "grid",
+                            "columns": 2,
+                            "square": false,
                             "cards": [
                                 {
                                     "entity": "sensor.kodi_recently_added_movies",
                                     "image_style": "fanart",
                                     "max": 3,
-                                    "title": "Recently added movies",
                                     "type": "custom:upcoming-media-card"
                                 },
                                 {
                                     "entity": "sensor.kodi_recently_added_tv",
                                     "image_style": "fanart",
                                     "max": 3,
-                                    "title": "Recently added TV",
+                                    "type": "custom:upcoming-media-card"
+                                },
+                                {
+                                    "entity": "sensor.radarr_upcoming_media",
+                                    "image_style": "fanart",
+                                    "max": 3,
+                                    "type": "custom:upcoming-media-card"
+                                },
+                                {
+                                    "entity": "sensor.sonarr_upcoming_media",
+                                    "image_style": "fanart",
+                                    "max": 3,
                                     "type": "custom:upcoming-media-card"
                                 }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "camera_image": "camera.living_room_relax_area_cam",
-                            "entities": [],
-                            "title": "Living room relax area",
-                            "type": "picture-glance"
+                            ]
                         },
                         {
                             "aspect_ratio": "0%",
@@ -1420,6 +1425,12 @@
                                 "binary_sensor.living_room_cam_motion"
                             ],
                             "title": "Living room cam",
+                            "type": "picture-glance"
+                        },
+                        {
+                            "camera_image": "camera.living_room_relax_area_cam",
+                            "entities": [],
+                            "title": "Living room relax area",
                             "type": "picture-glance"
                         },
                         {
