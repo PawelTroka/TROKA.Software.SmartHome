@@ -6,7 +6,10 @@
     "requests_oauthlib"
   ],
   "dependencies": [
-    "http"
+    "http","configurator"
   ],
-  "codeowners": ["docbobo, Kloknibor"]
+  "codeowners": [
+    "@kloknibor",
+    "@docbobo"
+  ]
 }
