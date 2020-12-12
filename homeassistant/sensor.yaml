@@ -170,13 +170,13 @@
     - commands
     - diskspace
     - status
-  days: 120
+  days: 365
   unit: TB
 - platform: radarr_upcoming_media
   api_key: !secret radarr_api_key
   host: 10.10.10.94
   port: 8411
-  days: 240
+  days: 365
   theaters: false
 - platform: sonarr
   api_key: !secret sonarr_api_key
@@ -189,13 +189,13 @@
     - queue
     - commands
     - diskspace
-  days: 60
+  days: 365
   unit: TB
 - platform: sonarr_upcoming_media
   api_key: !secret sonarr_api_key
   host: 10.10.10.94
   port: 8412
-  days: 60
+  days: 365
 - platform: time_date
   display_options:
     - 'time'
