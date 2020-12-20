@@ -1859,6 +1859,9 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "binary_sensor.bathroom_motion"
+                                },
+                                {
                                     "entity": "binary_sensor.bathroom_door"
                                 },
                                 {
@@ -1890,6 +1893,18 @@
                                 },
                                 {
                                     "entity": "sensor.bathroom_multisensor_ultraviolet"
+                                },
+                                {
+                                    "entity": "binary_sensor.bathroom_shower_motion_sensor_sensor"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_shower_motion_sensor_luminance"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_shower_motion_sensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_shower_motion_sensor_seismic_intensity"
                                 }
                             ],
                             "show_header_toggle": false,
