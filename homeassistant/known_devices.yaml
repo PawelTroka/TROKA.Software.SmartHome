@@ -142,3 +142,10 @@ pawel_s_smartphone:
   name: Pawel's smartphone
   picture:
   track: false
+
+430i_xdrive:
+  name: 430i xDrive
+  mac:
+  icon: mdi:car
+  picture:
+  track: false
