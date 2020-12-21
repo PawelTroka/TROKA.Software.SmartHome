@@ -12,12 +12,6 @@
   port: !env_var PLEX_PORT
   section_types:
   - show
-- platform: kodi_recently_added
-  host: 10.10.10.87
-  port: 8779
-  tcp_port: 9090
-  username: !secret kodi_username
-  password: !secret kodi_password
 - platform: unifigateway
   host: localhost
   username: !secret unifi_username
