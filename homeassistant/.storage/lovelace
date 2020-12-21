@@ -3024,6 +3024,45 @@
                     "badges": [],
                     "cards": [
                         {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.430i_xdrive_check_control_messages"
+                                },
+                                {
+                                    "entity": "binary_sensor.430i_xdrive_condition_based_services"
+                                },
+                                {
+                                    "entity": "binary_sensor.430i_xdrive_door_lock_state"
+                                },
+                                {
+                                    "entity": "binary_sensor.430i_xdrive_lids"
+                                },
+                                {
+                                    "entity": "binary_sensor.430i_xdrive_lights_parking"
+                                },
+                                {
+                                    "entity": "binary_sensor.430i_xdrive_windows"
+                                },
+                                {
+                                    "entity": "lock.430i_xdrive_lock"
+                                },
+                                {
+                                    "entity": "sensor.430i_xdrive_mileage"
+                                },
+                                {
+                                    "entity": "sensor.430i_xdrive_remaining_fuel"
+                                },
+                                {
+                                    "entity": "sensor.430i_xdrive_remaining_range_fuel"
+                                },
+                                {
+                                    "entity": "sensor.430i_xdrive_remaining_range_total"
+                                }
+                            ],
+                            "title": "Car"
+                        },
+                        {
                             "entity": "weather.openweathermap",
                             "type": "weather-forecast"
                         },
@@ -3098,14 +3137,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "air_quality.gios"
-                                }
-                            ],
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                {
                                     "entity": "binary_sensor.burze_dzis_net_frost_warning"
                                 },
                                 {
@@ -3128,6 +3159,14 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "air_quality.gios"
+                                }
+                            ],
+                            "type": "glance"
                         },
                         {
                             "entities": [

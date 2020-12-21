@@ -99,10 +99,21 @@ xbox:
   client_secret: !secret xbox_client_secret
 withings: !include withings.yaml
 life360: !include life360.yaml
+bmw_connected_drive:
+  pawel:
+    username: !secret bmw_username
+    password: !secret bmw_password
+    region: "rest_of_world"
 
 ### Voice Assistants integrations:
 alexa: !include alexa.yaml
 google_assistant: !include google_assistant.yaml
+
+bmw_connected_drive:
+  name:
+    username: !secret bmw_username
+    password: !secret bmw_password
+    region: "rest_of_world"
 
 ### include section:
 alert: !include alerts.yaml
