@@ -1088,7 +1088,10 @@
                                 "binary_sensor.hallway_multisensor_motion",
                                 "binary_sensor.kitchen_multisensor_motion",
                                 "binary_sensor.living_room_cam_motion",
-                                "binary_sensor.toilet_multisensor_motion"
+                                "binary_sensor.toilet_multisensor_motion",
+                                "binary_sensor.bathroom_water_leak_sensor",
+                                "binary_sensor.toilet_water_leak_sensor",
+                                "binary_sensor.kitchen_water_leak_sensor"
                             ],
                             "hours_to_show": 24,
                             "title": "Events"
@@ -1629,6 +1632,9 @@
                                     "entity": "binary_sensor.kitchen_flood_sensor"
                                 },
                                 {
+                                    "entity": "binary_sensor.kitchen_water_leak_sensor"
+                                },
+                                {
                                     "entity": "sensor.kitchen_multisensor_temperature"
                                 },
                                 {
@@ -1877,6 +1883,9 @@
                                     "entity": "binary_sensor.bathroom_flood_sensor"
                                 },
                                 {
+                                    "entity": "binary_sensor.bathroom_water_leak_sensor"
+                                },
+                                {
                                     "entity": "sensor.bathroom_door_opening_sensor_temperature"
                                 },
                                 {
@@ -2092,6 +2101,9 @@
                                 },
                                 {
                                     "entity": "binary_sensor.toilet_flood_sensor"
+                                },
+                                {
+                                    "entity": "binary_sensor.toilet_water_leak_sensor"
                                 },
                                 {
                                     "entity": "sensor.toilet_door_opening_sensor_temperature"
