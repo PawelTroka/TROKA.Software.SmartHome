@@ -9,6 +9,24 @@
     - tornado_warning
   storms_nearby:
     radius: 30
+- platform: dlink_hnap
+  name: Toilet water leak sensor
+  host: 10.10.10.41
+  type: water
+  username: Admin
+  password: !secret dlink_toilet_water_sensor_pincode
+- platform: dlink_hnap
+  name: Kitchen water leak sensor
+  host: 10.10.10.42
+  type: water
+  username: Admin
+  password: !secret dlink_kitchen_water_sensor_pincode
+- platform: dlink_hnap
+  name: Bathroom water leak sensor
+  host: 10.10.10.112
+  type: water
+  username: Admin
+  password: !secret dlink_bathroom_water_sensor_pincode
 - platform: template
   sensors:
     living_room_cam_motion:
