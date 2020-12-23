@@ -562,7 +562,7 @@ services:
 # Radarr - Movie management
 # Set url_base in radarr settings if using PathPrefix
   radarr:
-    image: "linuxserver/radarr:preview"
+    image: "linuxserver/radarr:latest"
     container_name: "radarr"
     hostname: radarr
     restart: unless-stopped
