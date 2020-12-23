@@ -235,6 +235,12 @@
                                     {
                                         "entity": "switch.play_game",
                                         "name": "Play a game"
+                                    },
+                                    {
+                                        "entity": "media_player.xboxone",
+                                        "name": "Watch Netflix",
+                                        "media_content_type": "",
+                                        "media_content_id": "9WZDNCRFJ3TJ"
                                     }
                                 ],
                                 "type": "buttons"
