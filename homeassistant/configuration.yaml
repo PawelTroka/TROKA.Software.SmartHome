@@ -78,7 +78,7 @@ miele:
   client_id: !secret miele_client_id
   client_secret: !secret miele_client_secret
   lang: en
-homeconnect:
+home_connect:
   client_id: !secret homeconnect_client_id
   client_secret: !secret homeconnect_client_secret
 eight_sleep:
