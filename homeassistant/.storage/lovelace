@@ -46,13 +46,27 @@
                     "cards": [
                         {
                             "entities": [
-                                "light.living_room_lights",
-                                "light.kitchen_lights",
-                                "light.hallway_lights",
-                                "light.bathroom_lights",
-                                "light.toilet_lights",
-                                "light.bedroom_lights",
-                                "light.office_lights"
+                                {
+                                    "entity": "light.living_room_lights"
+                                },
+                                {
+                                    "entity": "light.kitchen_lights"
+                                },
+                                {
+                                    "entity": "light.hallway_lights"
+                                },
+                                {
+                                    "entity": "light.bathroom_lights"
+                                },
+                                {
+                                    "entity": "light.toilet_lights"
+                                },
+                                {
+                                    "entity": "light.bedroom_lights"
+                                },
+                                {
+                                    "entity": "light.office_lights"
+                                }
                             ],
                             "footer": {
                                 "type": "buttons",
@@ -67,6 +81,10 @@
                                                 "entity_id": "scene.default"
                                             }
                                         }
+                                    },
+                                    {
+                                        "entity": "switch.circadian_lighting_circadian_lighting",
+                                        "name": "Circadian"
                                     },
                                     {
                                         "entity": "scene.ambient",
