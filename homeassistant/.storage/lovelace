@@ -1595,7 +1595,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "switch.cooktop"
+                                    "entity": "switch.cooktop_power"
                                 },
                                 {
                                     "entity": "switch.cooktop_program_powerlevelmode"
@@ -1608,9 +1608,6 @@
                                 },
                                 {
                                     "entity": "sensor.cooktop_duration"
-                                },
-                                {
-                                    "entity": "sensor.cooktop_elapsed_program_time"
                                 }
                             ],
                             "show_header_toggle": false,
