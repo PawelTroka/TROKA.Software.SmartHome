@@ -1,3 +1,21 @@
+- platform: circadian_lighting
+  lights_ct:
+    - light.toilet_light
+    - light.toilet_mirror_light
+    - light.living_room_lights
+    - light.office_lights
+    - light.hallway_downlights
+    - light.hallway_cabinet_strip
+    - light.bathroom_gu10_lights
+    - light.bathroom_mirror_lights
+    - light.kitchen_lights
+    - light.bedroom_downlights
+    - light.bedroom_cabinet_strip
+  lights_rgb:
+    - light.toilet_strip
+    - light.hallway_strip
+    - light.bathroom_strip
+    - light.bedroom_strip
 - platform: template
   switches:
     watch_movie:
