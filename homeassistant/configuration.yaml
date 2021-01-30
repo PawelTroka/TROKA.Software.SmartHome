@@ -111,6 +111,10 @@ bmw_connected_drive:
 alexa: !include alexa.yaml
 google_assistant: !include google_assistant.yaml
 
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret
+
 ### include section:
 alert: !include alerts.yaml
 input_text: !include input_text.yaml
