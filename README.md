@@ -35,7 +35,7 @@ Home automation configuration, scripts and state of affairs
 | Bedroom TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 | A/V Receiver|:heavy_check_mark:<sup>7</sup>|:warning:<sup>13</sup>|:warning:<sup>14</sup>|:heavy_check_mark:|
 | nVidia Shield|:heavy_check_mark:|:x:<sup>17</sup>|:heavy_check_mark:|:x:|
-| XBOX ONE X|:heavy_check_mark:<sup>18</sup>|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
+| XBOX ONE X|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 | Netatmo Weather Station|:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
 | Nest Protect|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
 |Tado radiator thermostats|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
@@ -48,12 +48,22 @@ Home automation configuration, scripts and state of affairs
 |Aotec Multisensors 6|:warning:<sup>9</sup>|:x:|:x:|:x:|
 |Fibaro door sensors|:heavy_check_mark:|:x:|:x:|:x:|
 |Aotec WallMotes|:warning:<sup>8</sup>|:x:|:x:|:x:|
-|D-Link flood sensors|:x:<sup>15</sup>|:x:|:x:|:heavy_check_mark:|
+|D-Link flood sensors|:heavy_check_mark:<sup>15</sup>|:x:|:x:|:heavy_check_mark:|
+|Fibaro flood sensors|:heavy_check_mark:|:x:|:x:|:x:|
+|Fibaro Single Switch|:heavy_check_mark:|:x:|:x:|:x:|
 |Whirlpool W11 Oven|:x:|:x:|:x:|:heavy_check_mark:<sup>5</sup>|
 |Whirlpool W11 Microwave|:x:|:x:|:x:|:heavy_check_mark:<sup>5</sup>|
 |Eight Sleep|:heavy_check_mark:|:x:<sup>17</sup>|:x:|:heavy_check_mark:|
-
-
+|Gree A/C|:heavy_check_mark:<sup>18</sup>|:x:|:x:|:heavy_check_mark:|
+|BMW|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
+|Airthings Wave+|:heavy_check_mark:<sup>19</sup>|:x:|:x:|:heavy_check_mark:|
+|Ring Peephole Cam|:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
+|Fibaro Motion Sensor|:heavy_check_mark:|:x:|:x:|:x:|
+|August Smart Lock Pro|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
+|Withings|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
+|UPS PowerWalker VFI 1500 RMG PF1<sup>19</sup>|:heavy_check_mark:|:x:|:x:|:x:|
+|Brother MFC-J6930DW|:heavy_check_mark:|:x:|:x:|:x:|
+|UniFi|:heavy_check_mark:|:x:|:x:|:x:|
 
 
 <sup>1</sup> Exposed via Home Assistant Addon, requires open ports in network configuration
@@ -62,16 +72,16 @@ Home automation configuration, scripts and state of affairs
 <sup>2</sup> Via custom component https://github.com/ha-warmup/warmup
 
 
-<sup>3</sup> Via custom component https://github.com/docbobo/home-assistant-miele
+<sup>3</sup> Via custom component https://github.com/HomeAssistant-Mods/home-assistant-miele
 
-<sup>4</sup> API does not support Cooktop yet (https://developer.home-connect.com/docs/cooktop/supported_programs_and_options). Only very basic functionality is exposed via custom component https://github.com/DavidMStraub/homeassistant-homeconnect. Is coming to official Home Assistant soon via PR https://github.com/home-assistant/home-assistant/pull/29214.
+<sup>4</sup> API does not support Cooktop yet (https://developer.home-connect.com/docs/cooktop/supported_programs_and_options). Only very basic functionality is exposed https://github.com/DavidMStraub/homeassistant-homeconnect/issues/20.
 
-<sup>5</sup> Mobile app (https://play.google.com/store/apps/details?id=com.adbglobal.whirlpool&hl=en) sucks hard but at least it finally shows connected appliances correctly. Some discussions about integrating `6th Sense Live` platform into Home Asssitant (possibly by reverse engineering) have already started (https://community.home-assistant.io/t/whirlpool-wifi-airconditioner/136237).
+<sup>5</sup> Mobile app (https://play.google.com/store/apps/details?id=com.adbglobal.whirlpool&hl=en) sucks hard but at least it finally shows connected appliances correctly. Some discussions about integrating `6th Sense Live` platform into Home Asssitant (possibly by reverse engineering) have already started (https://community.home-assistant.io/t/whirlpool-wifi-airconditioner/136237). Some initial attempts integrate only AC (https://github.com/abmantis/homeassistant-custom-components/tree/master/whirlpool).
 
 
 <sup>6</sup> Doesn't work with all the functionality - e.g. playback from Tidal is region-locked, grouping is limited.
 
-<sup>7</sup> Zones and avanced features like sound modes do not work because DENON AVR Home Assistant component is not working (https://community.home-assistant.io/t/denonavr-with-avr-x6300/14744 https://github.com/scarface-4711/denonavr/issues/32). Is also integrated through HEOS component but it seems to have less capabilities. Scripts are in place to call both entities, so basic functionality works pretty well.
+<sup>7</sup> Zones and advanced features like sound modes do not work because DENON AVR Home Assistant component is not working (https://community.home-assistant.io/t/denonavr-with-avr-x6300/14744 https://github.com/scarface-4711/denonavr/issues/32). Is also integrated through HEOS component but it seems to have less capabilities. Scripts are in place to call both entities, so basic functionality works pretty well.
 
 <sup>8</sup> Swipe left/right and up/down doesn't work.
 
@@ -93,10 +103,14 @@ Home automation configuration, scripts and state of affairs
 <sup>14</sup> Extremely limited subset of functionality is supported, more is coming soon. See https://www.denon.co.uk/uk/googleassistant
 
 
-<sup>15</sup> Currently not supported. Should be possible to develop a component for it (https://community.home-assistant.io/t/d-link-water-sensor-dch-s160/40397), or simply use IFTTT and webhooks (https://www.reddit.com/r/homeassistant/comments/cv9y1m/dlink_water_sensor/).
+<sup>15</sup> Via custom component https://github.com/postlund/dlink_hnap
 
 <sup>16</sup> Currently not supported but there seems to be some motion in the development community: https://community.home-assistant.io/t/bticino-door-entry-for-classe300x13e/116517 and API is open: https://portal.developer.legrand.com/docs/services/classe-300x13e-v2
 
 <sup>17</sup> Is integrated but doesn't work for some reason
 
-<sup>18</sup> Via custom Home Assistant component https://github.com/OpenXbox/xboxone-home-assistant
+<sup>18</sup> Via custom Home Assistant component https://github.com/RobHofmann/HomeAssistant-GreeClimateComponent
+
+<sup>19</sup> Via custom Home Assistant component https://github.com/custom-components/sensor.airthings_wave
+
+<sup>19</sup> Through SNMP module PowerWalker 10120505
