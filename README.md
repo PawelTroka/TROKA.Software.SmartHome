@@ -26,44 +26,44 @@ Home automation configuration, scripts and state of affairs
 
 ## Devices/systems integration state matrix
 
-| Devices\Systems 	| Home Assistant 	| Amazon Alexa 	| Google Home 	| App 	|
-|-----------------	|----------------	|--------------	|-------------	|--------------	|
-| LIFX Lights     	|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
-| MiLight Lights   	|:heavy_check_mark:|:heavy_check_mark:<sup>1</sup>|:heavy_check_mark:<sup>1</sup>|:heavy_check_mark:|
-| Sonos Multi-room audio|:heavy_check_mark:|:warning:<sup>6</sup>|:warning:<sup>6</sup>|:heavy_check_mark:|
-| Living room TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
-| Bedroom TV|:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
-| A/V Receiver|:heavy_check_mark:<sup>7</sup>|:warning:<sup>13</sup>|:warning:<sup>14</sup>|:heavy_check_mark:|
-| nVidia Shield|:heavy_check_mark:|:x:<sup>17</sup>|:heavy_check_mark:|:x:|
-| XBOX ONE X|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
-| Netatmo Weather Station|:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
-| Nest Protect|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
-|Tado radiator thermostats|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
-|WarmUp 4iE Underfloor heating|:heavy_check_mark:<sup>2</sup>|:heavy_check_mark:|:x:|:heavy_check_mark:|
-|BTicino Classe 300X13E (video intercom)|:x:<sup>16</sup>|:x:|:x:|:heavy_check_mark:|
-|Miele Fridge-Freezer|:heavy_check_mark:<sup>3</sup>|:x:|:x:|:heavy_check_mark:|
-|Siemens Cooktop|:warning:<sup>4</sup>|:x:|:x:|:heavy_check_mark:|
-|LG Washer-Dryer|:heavy_check_mark:<sup>10</sup>|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
-|Wyze Cams|:heavy_check_mark:<sup>11</sup>|:warning:<sup>12</sup>|:heavy_check_mark:|:heavy_check_mark:|
-|Aotec Multisensors 6|:warning:<sup>9</sup>|:x:|:x:|:x:|
-|Fibaro door sensors|:heavy_check_mark:|:x:|:x:|:x:|
-|Aotec WallMotes|:warning:<sup>8</sup>|:x:|:x:|:x:|
-|D-Link flood sensors|:heavy_check_mark:<sup>15</sup>|:x:|:x:|:heavy_check_mark:|
-|Fibaro flood sensors|:heavy_check_mark:|:x:|:x:|:x:|
-|Fibaro Single Switch|:heavy_check_mark:|:x:|:x:|:x:|
-|Whirlpool W11 Oven|:x:|:x:|:x:|:heavy_check_mark:<sup>5</sup>|
-|Whirlpool W11 Microwave|:x:|:x:|:x:|:heavy_check_mark:<sup>5</sup>|
-|Eight Sleep|:heavy_check_mark:|:x:<sup>17</sup>|:x:|:heavy_check_mark:|
-|Gree A/C|:heavy_check_mark:<sup>18</sup>|:x:|:x:|:heavy_check_mark:|
-|BMW|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
-|Airthings Wave+|:heavy_check_mark:<sup>19</sup>|:x:|:x:|:heavy_check_mark:|
-|Ring Peephole Cam|:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
-|Fibaro Motion Sensor|:heavy_check_mark:|:x:|:x:|:x:|
-|August Smart Lock Pro|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
-|Withings|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
-|UPS PowerWalker VFI 1500 RMG PF1<sup>20</sup>|:heavy_check_mark:|:x:|:x:|:x:|
-|Brother MFC-J6930DW|:heavy_check_mark:|:x:|:x:|:x:|
-|UniFi|:heavy_check_mark:|:x:|:x:|:x:|
+| Devices\Systems 	| Protocol | Home Assistant 	| Amazon Alexa 	| Google Home 	| App 	|
+|-----------------	|---------------- |----------------	|--------------	|-------------	|--------------	|
+| LIFX Lights     	| Wi-Fi |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
+| MiLight Lights   	| 2.4GHz radio |:heavy_check_mark:|:heavy_check_mark:<sup>1</sup>|:heavy_check_mark:<sup>1</sup>|:heavy_check_mark:|
+| Sonos Multi-room audio	| Ethernet |:heavy_check_mark:|:warning:<sup>6</sup>|:warning:<sup>6</sup>|:heavy_check_mark:|
+| Living room TV	| Ethernet |:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
+| Bedroom TV	| Ethernet |:heavy_check_mark:|:x:|:heavy_check_mark:|:heavy_check_mark:|
+| A/V Receiver	| Ethernet |:heavy_check_mark:<sup>7</sup>|:warning:<sup>13</sup>|:warning:<sup>14</sup>|:heavy_check_mark:|
+| nVidia Shield	| Ethernet |:heavy_check_mark:|:x:<sup>17</sup>|:heavy_check_mark:|:x:|
+| XBOX ONE X	| Ethernet |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
+| Netatmo Weather Station	| 433 MHz |:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
+| Nest Protect	| Wi-Fi |:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
+|Tado radiator thermostats	| 6LoWPAN |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
+|WarmUp 4iE Underfloor heating	| Wi-Fi |:heavy_check_mark:<sup>2</sup>|:heavy_check_mark:|:x:|:heavy_check_mark:|
+|BTicino Classe 300X13E (video intercom)	| Wi-Fi |:x:<sup>16</sup>|:x:|:x:|:heavy_check_mark:|
+|Miele Fridge-Freezer	| Wi-Fi |:heavy_check_mark:<sup>3</sup>|:x:|:x:|:heavy_check_mark:|
+|Siemens Cooktop	| Wi-Fi 5Ghz |:warning:<sup>4</sup>|:x:|:x:|:heavy_check_mark:|
+|LG Washer-Dryer	| Wi-Fi |:heavy_check_mark:<sup>10</sup>|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
+|Wyze Cams	| Wi-Fi |:heavy_check_mark:<sup>11</sup>|:warning:<sup>12</sup>|:heavy_check_mark:|:heavy_check_mark:|
+|Aotec Multisensors 6	| Z-Wave |:warning:<sup>9</sup>|:x:|:x:|:x:|
+|Fibaro door sensors	| Z-Wave |:heavy_check_mark:|:x:|:x:|:x:|
+|Aotec WallMotes	| Z-Wave |:warning:<sup>8</sup>|:x:|:x:|:x:|
+|D-Link flood sensors	| Wi-Fi |:heavy_check_mark:<sup>15</sup>|:x:|:x:|:heavy_check_mark:|
+|Fibaro flood sensors	| Z-Wave |:heavy_check_mark:|:x:|:x:|:x:|
+|Fibaro Single Switch	| Z-Wave |:heavy_check_mark:|:x:|:x:|:x:|
+|Whirlpool W11 Oven	| Wi-Fi |:x:|:x:|:x:|:heavy_check_mark:<sup>5</sup>|
+|Whirlpool W11 Microwave	| Wi-Fi |:x:|:x:|:x:|:heavy_check_mark:<sup>5</sup>|
+|Eight Sleep	| Wi-Fi |:heavy_check_mark:|:x:<sup>17</sup>|:x:|:heavy_check_mark:|
+|Gree A/C	| Wi-Fi |:heavy_check_mark:<sup>18</sup>|:x:|:x:|:heavy_check_mark:|
+|BMW	| Cellular |:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
+|Airthings Wave+	| Blutooth |:heavy_check_mark:<sup>19</sup>|:x:|:x:|:heavy_check_mark:|
+|Ring Peephole Cam	| Wi-Fi |:heavy_check_mark:|:heavy_check_mark:|:x:|:heavy_check_mark:|
+|Fibaro Motion Sensor	| Z-Wave |:heavy_check_mark:|:x:|:x:|:x:|
+|August Smart Lock Pro	| Blutooth |:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
+|Withings	| Wi-Fi |:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
+|UPS PowerWalker VFI 1500 RMG PF1<sup>20</sup>	| Ethernet |:heavy_check_mark:|:x:|:x:|:x:|
+|Brother MFC-J6930DW	| Ethernet |:heavy_check_mark:|:x:|:x:|:x:|
+|UniFi	| Ethernet |:heavy_check_mark:|:x:|:x:|:x:|
 
 
 <sup>1</sup> Exposed via Home Assistant Addon, requires open ports in network configuration
