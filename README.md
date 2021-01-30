@@ -61,7 +61,7 @@ Home automation configuration, scripts and state of affairs
 |Fibaro Motion Sensor|:heavy_check_mark:|:x:|:x:|:x:|
 |August Smart Lock Pro|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
 |Withings|:heavy_check_mark:|:x:|:x:|:heavy_check_mark:|
-|UPS PowerWalker VFI 1500 RMG PF1<sup>19</sup>|:heavy_check_mark:|:x:|:x:|:x:|
+|UPS PowerWalker VFI 1500 RMG PF1<sup>20</sup>|:heavy_check_mark:|:x:|:x:|:x:|
 |Brother MFC-J6930DW|:heavy_check_mark:|:x:|:x:|:x:|
 |UniFi|:heavy_check_mark:|:x:|:x:|:x:|
 
@@ -113,4 +113,4 @@ Home automation configuration, scripts and state of affairs
 
 <sup>19</sup> Via custom Home Assistant component https://github.com/custom-components/sensor.airthings_wave
 
-<sup>19</sup> Through SNMP module PowerWalker 10120505
+<sup>20</sup> Through SNMP module PowerWalker 10120505
