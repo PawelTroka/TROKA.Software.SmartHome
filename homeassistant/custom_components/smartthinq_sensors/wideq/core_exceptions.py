@@ -50,6 +50,13 @@ class TokenError(APIError):
         pass
 
 
+class DeviceNotFound(APIError):
+    """Device ID not valid."""
+
+    def __init__(self):
+        pass
+
+
 class MonitorError(APIError):
     """Monitoring a device failed, possibly because the monitoring
     session failed and needs to be restarted.
@@ -58,3 +65,7 @@ class MonitorError(APIError):
     def __init__(self, device_id, code):
         self.device_id = device_id
         self.code = code
+
+
+class InvalidDeviceStatus(Exception):
+    """Device exception occurred when status of device is not valid."""

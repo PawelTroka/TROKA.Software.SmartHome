@@ -2,6 +2,7 @@
 Support for Miele.
 """
 import asyncio
+import functools
 import logging
 from datetime import timedelta
 from importlib import import_module
@@ -158,7 +159,10 @@ async def async_setup(hass, config):
 
     async def refresh_devices(event_time):
         _LOGGER.debug("Attempting to update Miele devices")
-        device_state = await client.get_devices(lang)
+        try:
+            device_state = await client.get_devices(lang)
+        except:
+            device_state = None
         if device_state is None:
             _LOGGER.error("Did not receive Miele devices")
         else:
@@ -220,7 +224,7 @@ class MieleAuthCallbackView(HomeAssistantView):
         self.oauth = oauth
 
     @callback
-    def get(self, request):
+    async def get(self, request):
         """Receive authorization token."""
         hass = request.app["hass"]
 
@@ -235,7 +239,11 @@ class MieleAuthCallbackView(HomeAssistantView):
         result = None
         if request.query.get("code") is not None:
             try:
-                result = self.oauth.get_access_token(request.query["code"])
+                func = functools.partial(
+                    self.oauth.get_access_token, request.query["code"]
+                )
+
+                result = await hass.async_add_executor_job(func)
             except MissingTokenError as error:
                 _LOGGER.error("Missing token: %s", error)
                 response_message = """Something went wrong when
@@ -325,7 +333,7 @@ class MieleDevice(Entity):
         return result
 
     async def action(self, action):
-        self._client.action(self.unique_id, action)
+        await self._client.action(self.unique_id, action)
 
     async def async_update(self):
         if not self.unique_id in self._hass.data[DOMAIN][DATA_DEVICES]:
