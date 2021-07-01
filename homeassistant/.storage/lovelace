@@ -171,11 +171,18 @@
                             "entities": [
                                 {
                                     "entity": "person.pawel"
+                                },
+                                {
+                                    "entity": "person.daria"
+                                },
+                                {
+                                    "entity": "device_tracker.430i_xdrive",
+                                    "name": "BMW"
                                 }
                             ],
                             "show_header_toggle": false,
-                            "title": "Residents",
-                            "type": "entities"
+                            "type": "glance",
+                            "state_color": false
                         },
                         {
                             "entities": [
@@ -269,13 +276,6 @@
                         },
                         {
                             "cards": [
-                                {
-                                    "card": null,
-                                    "entities": [
-                                        "input_text.announcement"
-                                    ],
-                                    "type": "entities"
-                                },
                                 {
                                     "artwork": "cover",
                                     "card": null,
@@ -1478,6 +1478,12 @@
                             "graph": "line",
                             "type": "sensor",
                             "unit": "%"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "remote.harmonyhub"
+                            ]
                         }
                     ],
                     "icon": "mdi:theater",
