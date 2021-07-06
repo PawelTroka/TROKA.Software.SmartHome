@@ -217,7 +217,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.plex_shield_android_tv",
+                                    "entity": "media_player.plex_plex_for_android_tv_shield_android_tv",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
@@ -1249,7 +1249,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.plex_shield_android_tv",
+                                    "entity": "media_player.plex_plex_for_android_tv_shield_android_tv",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
@@ -1259,13 +1259,14 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.xbox_one_x",
+                                    "entity": "media_player.xboxone",
+                                    "name": "XBOX ONE X",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
                                         "power_state": false
                                     },
-                                    "icon": "mdi:xbox",
+                                    "icon": "mdi:microsoft-xbox",
                                     "type": "custom:mini-media-player"
                                 }
                             ],
