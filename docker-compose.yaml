@@ -637,6 +637,69 @@ services:
 
 ############################# MEDIA
 
+# PhotoPrism - Photos Server
+  photoprism:
+    image: photoprism/photoprism:latest
+    container_name: photoprism
+    restart: unless-stopped
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    ports:
+      - 2342:2342 # [local port]:[container port]
+    environment:
+      PHOTOPRISM_ADMIN_PASSWORD: "U3AG3DhfqnVwsQKuci7BEb3AqknCPsyoc8YrXt7SdY8ffWhMjjsQL778xZ8HSrNJYCagT6qdj3obTVDjeVVstASaa9SwyTagoEJKEstDYe2EaXvHpa2LASXTZQa4biQt"
+      PHOTOPRISM_ORIGINALS_LIMIT: 10000              # File size limit for originals in MB (increase for high-res video)
+      PHOTOPRISM_HTTP_COMPRESSION: "gzip"            # Improves transfer speed and bandwidth utilization (none or gzip)
+      PHOTOPRISM_DEBUG: "false"                      # Run in debug mode (shows additional log messages)
+      PHOTOPRISM_PUBLIC: "false"                     # No authentication required (disables password protection)
+      PHOTOPRISM_READONLY: "false"                   # Don't modify originals directory (reduced functionality)
+      PHOTOPRISM_EXPERIMENTAL: "false"               # Enables experimental features
+      PHOTOPRISM_DISABLE_WEBDAV: "false"             # Disables built-in WebDAV server
+      PHOTOPRISM_DISABLE_SETTINGS: "false"           # Disables Settings in Web UI
+      PHOTOPRISM_DISABLE_TENSORFLOW: "false"         # Disables using TensorFlow for image classification
+      PHOTOPRISM_DARKTABLE_PRESETS: "false"          # Enables Darktable presets and disables concurrent RAW conversion
+      PHOTOPRISM_DETECT_NSFW: "false"                # Flag photos as private that MAY be offensive (requires TensorFlow)
+      PHOTOPRISM_UPLOAD_NSFW: "true"                 # Allow uploads that MAY be offensive
+      # PHOTOPRISM_DATABASE_DRIVER: "sqlite"         # SQLite is an embedded database that doesn't require a server
+      PHOTOPRISM_DATABASE_DRIVER: "mysql"            # Use MariaDB (or MySQL) instead of SQLite for improved performance
+      PHOTOPRISM_DATABASE_SERVER: "${DB_HOST}:${DB_PORT}" # MariaDB database server (hostname:port)
+      PHOTOPRISM_DATABASE_NAME: "photoprism"         # MariaDB database schema name
+      PHOTOPRISM_DATABASE_USER: ${USER}              # MariaDB database user name
+      PHOTOPRISM_DATABASE_PASSWORD: ${MYSQL_ROOT_PASSWORD} # MariaDB database user password
+      PHOTOPRISM_SITE_URL: "http://localhost:2342/"  # Public PhotoPrism URL
+      PHOTOPRISM_SITE_TITLE: "TROKA.Software.SmartHome.Photos"
+      PHOTOPRISM_SITE_CAPTION: "Thorough Research On Key Aspects"
+      PHOTOPRISM_SITE_DESCRIPTION: ""
+      PHOTOPRISM_SITE_AUTHOR: ""
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - "${STORAGEDIR}/private/photos:/photoprism/originals"
+      - "${STORAGEDIR}/private/photos/.import:/photoprism/import"
+      - "${HOMESERVERDIR}/photoprism:/photoprism/storage/config"
+      - "${CACHEDIR}/photoprism/sidecar:/photoprism/storage/sidecar"
+      - "${CACHEDIR}/photoprism/cache:/photoprism/storage/cache"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=photos"
+#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefix: /radarr"
+      - "traefik.frontend.rule=Host:photos.${DOMAINNAME}"
+      - "traefik.port=2342"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=photos.${DOMAINNAME}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
+      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
+
+
 # Plex - Media Server
   plexms:
     image: plexinc/pms-docker:public
