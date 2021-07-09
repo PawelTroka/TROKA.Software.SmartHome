@@ -229,7 +229,7 @@ services:
 
  # Home Assistant - Smart Home Hub
   homeassistant:
-    image: homeassistant/home-assistant
+    image: homeassistant/home-assistant:2021.6.6
     container_name: homeassistant
     hostname: hass
     restart: always
@@ -381,21 +381,37 @@ services:
   nextcloud:
     container_name: nextcloud
     hostname: nextcloud
-    restart: always
-    image: linuxserver/nextcloud
+    restart: unless-stopped
+    image: ghcr.io/linuxserver/nextcloud #nextcloud:latest
     volumes:
-      - ${HOMESERVERDIR}/nextcloud:/config
-      - ${STORAGEDIR}/shared_data:/data
+      - ${STORAGEDIR}/shared_data:/data #/var/www/html/data
+      - ${HOMESERVERDIR}/nextcloud/config:/config #/var/www/html/config
+      #- ${HOMESERVERDIR}/nextcloud/custom_apps:/var/www/html/custom_apps
+      #- ${HOMESERVERDIR}/nextcloud/themes:/var/www/html/themes
+      #- ${HOMESERVERDIR}/nextcloud/html:/var/www/html
       - ${HOMESERVERDIR}/shared:/shared
-    networks:
-      - traefik_proxy
+      #- ${HOMESERVERDIR}/nextcloud/custom-init.sh:/usr/local/bin/apache2-custom.sh
+    #networks:
+      #- traefik_proxy
+      #- default
+    #command:
+      #- apache2-custom.sh
     ports:
       - "${NEXTCLOUD_PORT}:443"
     environment:
+      - NEXTCLOUD_ADMIN_USER=${NEXTCLOUD_USER}
+      - NEXTCLOUD_ADMIN_PASSWORD=${NEXTCLOUD_PASSWORD}
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=${USER}
+      - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_HOST=${DB_HOST}
+      - MYSQL_PORT=${DB_PORT}
+      - REDIS_HOST_PORT=${REDIS_PORT}
+      - REDIS_HOST_PASSWORD=${REDIS_PASSWORD}
       - PUID=${PUID}
       - PGID=${PGID}
     labels:
-      - "traefik.enable=false"
+      - "traefik.enable=true"
       - "traefik.backend=nextcloud"
       - "traefik.frontend.rule=Host:cloud.${DOMAINNAME}"
       - "traefik.port=443"
@@ -411,6 +427,20 @@ services:
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
       - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
+
+
+# Redis - fast semi-persistant, in-memory DB
+  redis:
+    image: redis:latest
+    container_name: redis
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - "${HOMESERVERDIR}/redis:/data"
+
 
 ############################# DOWNLOADING
 
@@ -840,8 +870,8 @@ services:
     container_name: bazarr
     hostname: bazarr
     restart: unless-stopped
-    networks:
-      - traefik_proxy
+    #networks:
+      #- traefik_proxy
     ports:
       - "6767:6767"
     volumes:
@@ -857,7 +887,7 @@ services:
       - "traefik.backend=bazarr"
       - "traefik.frontend.rule=Host:bazarr.${DOMAINNAME}"
 #      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefixStrip: /bazarr"
-      - "traefik.port=8443"
+      - "traefik.port=6767"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.protocol=https"
       - "traefik.frontend.headers.SSLRedirect=true"
