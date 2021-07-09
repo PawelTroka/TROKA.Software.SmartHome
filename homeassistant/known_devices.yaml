@@ -149,3 +149,10 @@ pawel_s_smartphone:
   icon: mdi:car
   picture:
   track: false
+
+pawel_s_smartphone_2:
+  name: Pawel's smartphone
+  mac: '2492937'
+  icon:
+  picture:
+  track: false
