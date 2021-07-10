@@ -45,9 +45,10 @@ Home automation configuration, scripts and state of affairs
 |Siemens Cooktop	| Wi-Fi 5Ghz |:warning:<sup>4</sup>|:x:|:x:|:heavy_check_mark:|
 |LG Washer-Dryer	| Wi-Fi |:heavy_check_mark:<sup>10</sup>|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 |Wyze Cams	| Wi-Fi |:heavy_check_mark:<sup>11</sup>|:warning:<sup>12</sup>|:heavy_check_mark:|:heavy_check_mark:|
-|Aotec Multisensors 6	| Z-Wave |:warning:<sup>9</sup>|:x:|:x:|:x:|
+|Aeotec Multisensors 6	| Z-Wave |:warning:<sup>9</sup>|:x:|:x:|:x:|
+|Aeotec Siren 6	| Z-Wave |:x:<sup>21</sup>|:x:|:x:|:x:|
 |Fibaro door sensors	| Z-Wave |:heavy_check_mark:|:x:|:x:|:x:|
-|Aotec WallMotes	| Z-Wave |:warning:<sup>8</sup>|:x:|:x:|:x:|
+|Aeotec WallMotes	| Z-Wave |:warning:<sup>8</sup>|:x:|:x:|:x:|
 |D-Link flood sensors	| Wi-Fi |:heavy_check_mark:<sup>15</sup>|:x:|:x:|:heavy_check_mark:|
 |Fibaro flood sensors	| Z-Wave |:heavy_check_mark:|:x:|:x:|:x:|
 |Fibaro Single Switch	| Z-Wave |:heavy_check_mark:|:x:|:x:|:x:|
@@ -114,3 +115,5 @@ Home automation configuration, scripts and state of affairs
 <sup>19</sup> Via custom Home Assistant component https://github.com/custom-components/sensor.airthings_wave
 
 <sup>20</sup> Through SNMP module PowerWalker 10120505
+
+<sup>21</sup> Need to wait for migration to ZwaveJS and sirens support in it (see: https://github.com/home-assistant/architecture/issues/375)
