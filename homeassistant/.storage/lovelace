@@ -258,6 +258,14 @@
                                         "name": "Watch a movie"
                                     },
                                     {
+                                        "entity": "switch.watch_youtube",
+                                        "name": "Watch YouTube"
+                                    },
+                                    {
+                                        "entity": "switch.watch_netflix",
+                                        "name": "Watch Netflix"
+                                    },
+                                    {
                                         "entity": "switch.play_game",
                                         "name": "Play a game"
                                     }
