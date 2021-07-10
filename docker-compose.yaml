@@ -826,6 +826,54 @@ services:
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
       - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
+
+# AirSonic - Music Server
+  airsonic:
+    image: ghcr.io/linuxserver/airsonic
+    container_name: airsonic
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      #- CONTEXT_PATH=<URL_BASE> #optional
+      #- JAVA_OPTS=<options> #optional
+    volumes:
+      - ${HOMESERVERDIR}/airsonic:/config
+      - ${STORAGEDIR}/music:/music
+      #- </path/to/playlists>:/playlists
+      #- </path/to/podcasts>:/podcasts
+      #- </path/to/other media>:/media #optional
+    ports:
+      - 4040:4040
+    #devices:
+    #  - /dev/snd:/dev/snd #optional
+    restart: unless-stopped
+
+
+# Volumio - Audiophile Music Server
+  volumio:
+    image: jbonjean/volumio
+    container_name: volumio
+    environment:
+      - HOST=192.168.1.50:3000
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      #- CONTEXT_PATH=<URL_BASE> #optional
+      #- JAVA_OPTS=<options> #optional
+    volumes:
+      - ${HOMESERVERDIR}/volumio:/data
+      - ${STORAGEDIR}/music:/ro
+      #- </path/to/playlists>:/playlists
+      #- </path/to/podcasts>:/podcasts
+      #- </path/to/other media>:/media #optional
+    ports:
+      - 3000:3000
+    #devices:
+    #  - /dev/snd:/dev/snd #optional
+    restart: unless-stopped
+
+
 # Tautulli - Previously PlexPy. Plex statistics and monitoring
 # Set HTTP Root in Tautulli settings if using PathPrefix
   tautulli:
@@ -995,15 +1043,16 @@ services:
     container_name: glances
     restart: unless-stopped
     pid: host
-    networks:
-      - traefik_proxy
+    network_mode: host
+    #networks:
+      #- traefik_proxy
     ports:
       - "61208:61208" 
       - "61209:61209"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock 
     environment:
-      - "GLANCES_OPT=-w"
+      - "GLANCES_OPT=-w --enable-plugin hddtemp"
     labels:
       - "traefik.enable=true"
       - "traefik.backend=glances"
