@@ -1484,7 +1484,27 @@
                             "type": "entities",
                             "entities": [
                                 "remote.harmonyhub"
-                            ]
+                            ],
+                            "header": {
+                                "type": "buttons",
+                                "entities": [
+                                    {
+                                        "entity": "switch.harmonyhub_shield_tv",
+                                        "name": "Shield TV",
+                                        "icon": "mdi:shield"
+                                    },
+                                    {
+                                        "entity": "switch.harmonyhub_play_a_game",
+                                        "name": "XBOX",
+                                        "icon": "mdi:microsoft-xbox"
+                                    },
+                                    {
+                                        "entity": "switch.harmonyhub_listen_to_sonos",
+                                        "name": "Sonos",
+                                        "icon": "mdi:music"
+                                    }
+                                ]
+                            }
                         }
                     ],
                     "icon": "mdi:theater",
