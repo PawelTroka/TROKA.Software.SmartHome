@@ -207,7 +207,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.shield_2",
+                                    "entity": "media_player.shield_android_tv",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
@@ -260,12 +260,6 @@
                                     {
                                         "entity": "switch.play_game",
                                         "name": "Play a game"
-                                    },
-                                    {
-                                        "entity": "media_player.xboxone",
-                                        "name": "Watch Netflix",
-                                        "media_content_type": "",
-                                        "media_content_id": "9WZDNCRFJ3TJ"
                                     }
                                 ],
                                 "type": "buttons"
