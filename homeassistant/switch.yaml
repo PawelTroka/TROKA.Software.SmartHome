@@ -87,8 +87,9 @@
           target:
             entity_id: switch.harmonyhub_play_a_game
         - service: media_player.play_media
-          service_data:
-            entity: media_player.xboxone
+          target:
+            entity_id: media_player.xboxone
+          data:
             media_content_type: ''
             media_content_id: 9WZDNCRFJ3TJ
       turn_off:
