@@ -18,38 +18,85 @@
     - light.bedroom_strip
 - platform: template
   switches:
+
     watch_movie:
       friendly_name: Watch a movie
-      value_template: "{{ is_state_attr('remote.harmony_hub', 'current_activity', 'Shield TV') }}"
+      value_template: "{{ is_state_attr('media_player.shield_android_tv', 'source', 'Plex') }}"
       turn_on:
-        service: remote.turn_on
-        data:
-          entity_id: remote.harmony_hub
-          activity: Shield TV
+        - service: switch.turn_on
+          target:
+            entity_id: switch.harmonyhub_shield_tv
+        - service: media_player.select_source
+          target:
+            entity_id: media_player.shield_android_tv
+          data:
+            source: "Plex"
       turn_off:
         service: remote.turn_off
         data:
-          entity_id: remote.harmony_hub
+          entity_id: remote.harmonyhub
       icon_template: >-
-        {% if is_state_attr('remote.harmony_hub', 'current_activity', 'Shield TV') %}
+        {% if is_state_attr('media_player.shield_android_tv', 'source', 'Plex') %}
           mdi:filmstrip
         {% else %}
           mdi:filmstrip-off
         {% endif %}
 
-    play_game:
-      friendly_name: Play a game
-      value_template: "{{ is_state_attr('remote.harmony_hub', 'current_activity', 'Play a Game') }}"
+    watch_youtube:
+      friendly_name: Watch YouTube
+      value_template: "{{ is_state_attr('media_player.shield_android_tv', 'source', 'Smart YouTube TV') }}"
       turn_on:
-        service: remote.turn_on
-        data:
-          entity_id: remote.harmony_hub
-          activity: Play a Game
+        - service: switch.turn_on
+          target:
+            entity_id: switch.harmonyhub_shield_tv
+        - service: media_player.select_source
+          target:
+            entity_id: media_player.shield_android_tv
+          data:
+            source: "Smart YouTube TV"
       turn_off:
         service: remote.turn_off
         data:
-          entity_id: remote.harmony_hub
-      icon_template: mdi:gamepad-variant
+          entity_id: remote.harmonyhub
+      icon: mdi:youtube-tv
+
+    play_game:
+      friendly_name: Play a game
+      value_template: "{{ is_state_attr('remote.harmonyhub', 'current_activity', 'Play a Game') }}"
+      turn_on:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.harmonyhub_play_a_game
+      turn_off:
+        service: remote.turn_off
+        data:
+          entity_id: remote.harmonyhub
+      icon_template: >-
+        {% if is_state_attr('remote.harmonyhub', 'current_activity', 'Play a Game') %}
+          mdi:microsoft-xbox-controller
+        {% else %}
+          mdi:microsoft-xbox-controller-off
+        {% endif %}
+
+
+    watch_netflix:
+      friendly_name: Watch Netflix
+      value_template: "{{ is_state_attr('media_player.xboxone', 'media_content_id', '9WZDNCRFJ3TJ') }}"
+      turn_on:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.harmonyhub_play_a_game
+        - service: media_player.play_media
+          service_data:
+            entity: media_player.xboxone
+            media_content_type: ''
+            media_content_id: 9WZDNCRFJ3TJ
+      turn_off:
+        service: remote.turn_off
+        data:
+          entity_id: remote.harmonyhub
+      icon_template: mdi:netflix
+
 
 
     heat_living_room:
