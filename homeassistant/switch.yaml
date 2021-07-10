@@ -58,7 +58,7 @@
         service: remote.turn_off
         data:
           entity_id: remote.harmonyhub
-      icon: mdi:youtube-tv
+      icon_template: mdi:youtube-tv
 
     play_game:
       friendly_name: Play a game
