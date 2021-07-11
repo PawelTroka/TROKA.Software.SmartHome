@@ -14,13 +14,14 @@
     - platform: state
       entity_id: media_player.living_room
       from: 'playing'
+      for: "00:00:15" # only turn it off if not-playing holds for more than 15 seconds
   condition:
     condition: or
     conditions:
       - condition: template
-        value_template: '{{ state_attr("media_player.denon_avc_x6500h_heos", "source") == "Sonos" }}'
+        value_template: '{{ state_attr("media_player.denon_avc_x6500h", "source") == "Sonos" }}'
       - condition: template
-        value_template: '{{ state_attr("media_player.denon_avc_x6500h_receiver", "source") == "Sonos" }}'
+        value_template: '{{ state_attr("media_player.denon_avc_x6500h_avr", "source") == "Sonos" }}'
   action:
       service: script.turn_on
       entity_id: script.turn_off_denon_receiver
