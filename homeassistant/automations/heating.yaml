@@ -26,7 +26,7 @@
       above: 25
   action:
     service: climate.turn_off
-    entity_id: group.all_climate
+    entity_id: group.all_heating
 
 - alias: 'Turn on heating when it gets too cold'
   trigger:
