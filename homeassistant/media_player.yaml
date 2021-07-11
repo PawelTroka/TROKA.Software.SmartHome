@@ -11,12 +11,84 @@
 - platform: androidtv
   host: 10.10.10.87
   name: SHIELD Android TV
+  state_detection_rules:
+    'com.amazon.tv.launcher':
+      - 'standby'
+    'com.netflix.ninja':
+      - 'media_session_state'
+    'com.ellation.vrv':
+      - 'audio_state'
+    'com.plexapp.android':
+      - 'paused':
+          'media_session_state': 3  # this indentation is important!
+          'wake_lock_size': 1       # this indentation is important!
+      - 'playing':
+          'media_session_state': 3  # this indentation is important!
+      - 'standby'
+    'com.amazon.avod':
+      - 'playing':
+          'wake_lock_size': 4  # this indentation is important!
+      - 'playing':
+          'wake_lock_size': 3  # this indentation is important!
+      - 'paused':
+          'wake_lock_size': 2  # this indentation is important!
+      - 'paused':
+          'wake_lock_size': 1  # this indentation is important!
+      - 'standby'
 - platform: androidtv
   host: 10.10.10.8
   name: Living room Android TV
+  state_detection_rules:
+    'com.amazon.tv.launcher':
+      - 'standby'
+    'com.netflix.ninja':
+      - 'media_session_state'
+    'com.ellation.vrv':
+      - 'audio_state'
+    'com.plexapp.android':
+      - 'paused':
+          'media_session_state': 3  # this indentation is important!
+          'wake_lock_size': 1       # this indentation is important!
+      - 'playing':
+          'media_session_state': 3  # this indentation is important!
+      - 'standby'
+    'com.amazon.avod':
+      - 'playing':
+          'wake_lock_size': 4  # this indentation is important!
+      - 'playing':
+          'wake_lock_size': 3  # this indentation is important!
+      - 'paused':
+          'wake_lock_size': 2  # this indentation is important!
+      - 'paused':
+          'wake_lock_size': 1  # this indentation is important!
+      - 'standby'
 - platform: androidtv
   host: 10.10.10.53
   name: Bedroom Android TV
+  state_detection_rules:
+    'com.amazon.tv.launcher':
+      - 'standby'
+    'com.netflix.ninja':
+      - 'media_session_state'
+    'com.ellation.vrv':
+      - 'audio_state'
+    'com.plexapp.android':
+      - 'paused':
+          'media_session_state': 3  # this indentation is important!
+          'wake_lock_size': 1       # this indentation is important!
+      - 'playing':
+          'media_session_state': 3  # this indentation is important!
+      - 'standby'
+    'com.amazon.avod':
+      - 'playing':
+          'wake_lock_size': 4  # this indentation is important!
+      - 'playing':
+          'wake_lock_size': 3  # this indentation is important!
+      - 'paused':
+          'wake_lock_size': 2  # this indentation is important!
+      - 'paused':
+          'wake_lock_size': 1  # this indentation is important!
+      - 'standby'
 - platform: denon
   host: 10.10.10.70
   name: Denon AVC-X6500H Receiver
