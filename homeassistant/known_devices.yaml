@@ -95,14 +95,6 @@ life360_pawel:
   picture: https://www.life360.com/img/user_images/f84d1a15-d092-445d-8c33-3cf363f212d7/00df8d08-0523-43d8-8d4a-bd5b1c18c883.png?fd=2
   track: true
 
-life360_athena:
-  hide_if_away: false
-  icon:
-  mac:
-  name: life360 athena
-  picture:
-  track: true
-
 harmony_keyboard:
   hide_if_away: false
   icon:

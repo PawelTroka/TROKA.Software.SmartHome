@@ -27,7 +27,7 @@
             entity_id: person.pawel
             state: 'home'
           - condition: state
-            entity_id: person.athena
+            entity_id: person.daria
             state: 'home'
       - condition: and  # some residents are at home so only they need to fall asleep
         conditions:
@@ -45,7 +45,7 @@
               entity_id: person.pawel
               state: 'not_home'
             - condition: state
-              entity_id: person.athena
+              entity_id: person.daria
               state: 'not_home'
           - condition: state # at least 1 person is at home
             entity_id: group.all_persons
@@ -70,7 +70,7 @@
         entity_id: person.pawel
         state: 'home'
       - condition: state
-        entity_id: person.athena
+        entity_id: person.daria
         state: 'home'
   action:
       service: script.turn_on
@@ -104,7 +104,7 @@
             entity_id: person.pawel
             state: 'home'
           - condition: state
-            entity_id: person.athena
+            entity_id: person.daria
             state: 'home'
       - condition: and  # some residents are at home so only they need to be in bed
         conditions:
@@ -122,7 +122,7 @@
               entity_id: person.pawel
               state: 'not_home'
             - condition: state
-              entity_id: person.athena
+              entity_id: person.daria
               state: 'not_home'
           - condition: state # at least 1 person is at home
             entity_id: group.all_persons
