@@ -4,10 +4,10 @@
   name: XBOX ONE X
 - platform: braviatv
   host: 10.10.10.8
-  name: Living room TV
+  name: Living room Bravia TV
 - platform: braviatv
   host: 10.10.10.53
-  name: Bedroom TV
+  name: Bedroom Bravia TV
 - platform: androidtv
   host: 10.10.10.87
   name: SHIELD Android TV
