@@ -2,6 +2,8 @@ simple_control:
   entities:
     - script.front_door
     - switch.watch_movie
+    - switch.watch_netflix
+    - switch.watch_youtube
     - switch.play_game
     - light.living_room_lights
     - light.hallway_lights
@@ -51,8 +53,28 @@ all_climate:
     - climate.bathroom_floor
     - climate.kitchen_floor
     - climate.toilet_floor
+    - climate.bedroom_ac
+    - climate.office_ac
+    - climate.living_room_ac
 
-all_climate_except_bedroom:
+all_cooling:
+  entities:
+    - climate.bedroom_ac
+    - climate.office_ac
+    - climate.living_room_ac
+
+all_heating:
+  entities:
+    - climate.bathroom
+    - climate.bedroom
+    - climate.office
+    - climate.kitchen
+    - climate.living_room
+    - climate.bathroom_floor
+    - climate.kitchen_floor
+    - climate.toilet_floor
+
+all_heating_except_bedroom:
   entities:
     - climate.bathroom
     - climate.office
@@ -68,12 +90,37 @@ all_persons:
     - person.pawel
     - person.athena
 
+all_denon_receivers:
+  entities:
+    - media_player.denon_avc_x6500h
+    - media_player.denon_avc_x6500h_avr
+    - media_player.denon_avc_x6500h_heos
+    - media_player.denon_avc_x6500h_alexa
+
 all_tvs:
   entities:
-    - media_player.living_room_tv_2
-    - media_player.bedroom_tv_2
-    - media_player.living_room_tv
-    - media_player.bedroom_tv
+    - media_player.living_room_tv_cast
+    - media_player.bedroom_tv_cast
+    - media_player.living_room_bravia_tv
+    - media_player.bedroom_bravia_tv
+    - media_player.living_room_android_tv
+    - media_player.bedroom_android_tv
+    - media_player.shield_cast
+    - media_player.shield_android_tv
+
+all_living_room_tvs:
+  entities:
+    - media_player.living_room_tv_cast
+    - media_player.living_room_bravia_tv
+    - media_player.living_room_android_tv
+    - media_player.shield_cast
+    - media_player.shield_android_tv
+
+all_bedroom_tvs:
+  entities:
+    - media_player.bedroom_tv_cast
+    - media_player.bedroom_bravia_tv
+    - media_player.bedroom_android_tv
 
 all_sonos_except_living_room:
   entities:
