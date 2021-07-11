@@ -8,3 +8,6 @@ smart_home:
       - light.toilet_strip
       - light.hallway_strip
       - light.bedroom_strip
+      - climate.living_room_ac
+      - climate.office_ac
+      - climate.bedroom_ac
