@@ -5,6 +5,16 @@
   username: !secret kodi_username
   password: !secret kodi_password
 
+- platform: nfandroidtv
+  host: 10.10.10.87
+  name: SHIELD Android TV
+- platform: nfandroidtv
+  host: 10.10.10.8
+  name: Living room Android TV
+- platform: nfandroidtv
+  host: 10.10.10.53
+  name: Bedroom Android TV
+
 - name: residents
   platform: group
   services:
