@@ -18,9 +18,9 @@
     condition: or
     conditions:
       - condition: template
-        value_template: '{{ state_attr("media_player.denon_avc_x6500h", "source") == "Sonos" }}'
+        value_template: '{{ state_attr("media_player.denon_avc_x6500h_heos", "source") == "Sonos" }}'
       - condition: template
-        value_template: '{{ state_attr("media_player.denon_avc_x6500h_2", "source") == "Sonos" }}'
+        value_template: '{{ state_attr("media_player.denon_avc_x6500h_receiver", "source") == "Sonos" }}'
   action:
       service: script.turn_on
       entity_id: script.turn_off_denon_receiver

@@ -281,7 +281,7 @@
                                 {
                                     "artwork": "cover",
                                     "card": null,
-                                    "entity": "media_player.denon_avc_x6500h_4",
+                                    "entity": "media_player.denon_avc_x6500h_avr",
                                     "group": true,
                                     "hide": {
                                         "artwork_border": false,
@@ -1206,7 +1206,7 @@
                             "entity": "remote.harmony_hub",
                             "scale": 1,
                             "type": "custom:harmony-card",
-                            "volume_entity": "media_player.denon_avc_x6500h_3"
+                            "volume_entity": "media_player.denon_avc_x6500h_alexa"
                         },
                         {
                             "entities": [
@@ -1333,7 +1333,7 @@
                             "entities": [
                                 {
                                     "artwork": "cover",
-                                    "entity": "media_player.denon_avc_x6500h",
+                                    "entity": "media_player.denon_avc_x6500h_heos",
                                     "group": true,
                                     "hide": {
                                         "artwork_border": false,
@@ -1352,7 +1352,7 @@
                                 },
                                 {
                                     "artwork": "cover",
-                                    "entity": "media_player.denon_avc_x6500h_2",
+                                    "entity": "media_player.denon_avc_x6500h_receiver",
                                     "group": true,
                                     "hide": {
                                         "artwork_border": false,
@@ -1370,7 +1370,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.denon_avc_x6500h_3",
+                                    "entity": "media_player.denon_avc_x6500h_alexa",
                                     "group": true,
                                     "hide": {
                                         "artwork_border": false,
@@ -1384,26 +1384,7 @@
                                 },
                                 {
                                     "artwork": "cover",
-                                    "entity": "media_player.denon_avr",
-                                    "group": true,
-                                    "hide": {
-                                        "artwork_border": false,
-                                        "controls": false,
-                                        "icon_state": false,
-                                        "mute": false,
-                                        "power": false,
-                                        "power_state": false,
-                                        "progress": false,
-                                        "runtime": false,
-                                        "sound_mode": false,
-                                        "volume": false
-                                    },
-                                    "icon": "mdi:amplifier",
-                                    "type": "custom:mini-media-player"
-                                },
-                                {
-                                    "artwork": "cover",
-                                    "entity": "media_player.denon_avc_x6500h_4",
+                                    "entity": "media_player.denon_avc_x6500h_avr",
                                     "group": true,
                                     "hide": {
                                         "artwork_border": false,
@@ -1422,7 +1403,7 @@
                                 }
                             ],
                             "show_header_toggle": false,
-                            "title": "DENON AVC",
+                            "title": "DENON AVR",
                             "type": "entities"
                         },
                         {

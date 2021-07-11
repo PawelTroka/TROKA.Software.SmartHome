@@ -5,14 +5,14 @@ set_denon_receiver_to_sonos_input:
     - service: media_player.turn_on
       entity_id: media_player.denon_avc_x6500h
     - service: media_player.turn_on
-      entity_id: media_player.denon_avc_x6500h_2
+      entity_id: media_player.denon_avc_x6500h_receiver
     - delay: '00:00:01' # turning on DENON is slow, let's give it some time
     - service: media_player.select_source
       entity_id: media_player.denon_avc_x6500h
       data:
         source: Sonos
     - service: media_player.select_source
-      entity_id: media_player.denon_avc_x6500h_2
+      entity_id: media_player.denon_avc_x6500h_receiver
       data:
         source: Sonos
     - delay: '00:00:03' # turning on DENON is slow, let's give it some time
@@ -21,13 +21,13 @@ set_denon_receiver_to_sonos_input:
       data:
         source: Sonos
     - service: media_player.select_source
-      entity_id: media_player.denon_avc_x6500h_2
+      entity_id: media_player.denon_avc_x6500h_receiver
       data:
         source: Sonos
     - service: media_player.media_play
       entity_id: media_player.denon_avc_x6500h
     - service: media_player.media_play
-      entity_id: media_player.denon_avc_x6500h_2
+      entity_id: media_player.denon_avc_x6500h_receiver
 
 
 turn_off_media_everywhere:
@@ -96,4 +96,4 @@ turn_off_denon_receiver:
     - service: media_player.turn_off
       entity_id: media_player.denon_avc_x6500h
     - service: media_player.turn_off
-      entity_id: media_player.denon_avc_x6500h_2
+      entity_id: media_player.denon_avc_x6500h_receiver
