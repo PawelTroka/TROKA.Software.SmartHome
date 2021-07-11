@@ -8,14 +8,14 @@
 - name: residents
   platform: group
   services:
-    - service: mobile_app_sm_n975f # Pawel
-    - service: mobile_app_samsung_galaxy_s8 # Athena
+    - service: mobile_app_sm_g998b # Pawel
+    - service: mobile_app_iphone # Daria
 
 - name: all_mobile
   platform: group
   services:
-    - service: mobile_app_sm_n975f # Pawel
-    - service: mobile_app_samsung_galaxy_s8 # Athena
+    - service: mobile_app_sm_g998b # Pawel
+    - service: mobile_app_iphone # Daria
     - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
     - service: mobile_app_ipad # Smart Tablet iPad
     - service: mobile_app_sm_n910c # Smart Phone
@@ -23,8 +23,8 @@
 - name: everything_without_voice
   platform: group
   services:
-    - service: mobile_app_sm_n975f # Pawel
-    - service: mobile_app_samsung_galaxy_s8 # Athena
+    - service: mobile_app_sm_g998b # Pawel
+    - service: mobile_app_iphone # Daria
     - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
     - service: mobile_app_ipad # Smart Tablet iPad
     - service: mobile_app_sm_n910c # Smart Phone
@@ -39,8 +39,8 @@
 - name: everything
   platform: group
   services:
-    - service: mobile_app_sm_n975f # Pawel
-    - service: mobile_app_samsung_galaxy_s8 # Athena
+    - service: mobile_app_sm_g998b # Pawel
+    - service: mobile_app_iphone # Daria
     - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
     - service: mobile_app_ipad # Smart Tablet iPad
     - service: mobile_app_sm_n910c # Smart Phone
