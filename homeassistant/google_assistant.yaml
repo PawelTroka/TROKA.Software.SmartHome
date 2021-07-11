@@ -10,3 +10,9 @@
       expose: true
     light.bedroom_strip:
       expose: true
+    climate.living_room_ac:
+      expose: true
+    climate.office_ac:
+      expose: true
+    climate.bedroom_ac:
+      expose: true
