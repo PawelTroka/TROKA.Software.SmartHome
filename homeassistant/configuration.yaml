@@ -108,6 +108,12 @@ bmw_connected_drive:
     username: !secret bmw_username
     password: !secret bmw_password
     region: "rest_of_world"
+telegram_bot:
+  - platform: broadcast
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_group_id
+      - !secret telegram_my_id
 
 ### Voice Assistants integrations:
 alexa: !include alexa.yaml
