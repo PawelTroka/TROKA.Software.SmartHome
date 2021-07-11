@@ -211,7 +211,9 @@
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
-                                        "power_state": false
+                                        "power": false,
+                                        "power_state": false,
+                                        "volume": true
                                     },
                                     "icon": "mdi:shield",
                                     "type": "custom:mini-media-player"
@@ -221,7 +223,9 @@
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
-                                        "power_state": false
+                                        "power": true,
+                                        "power_state": false,
+                                        "volume": true
                                     },
                                     "icon": "mdi:plex",
                                     "name": "Living room Plex",
@@ -255,19 +259,19 @@
                                 "entities": [
                                     {
                                         "entity": "switch.watch_movie",
-                                        "name": "Watch a movie"
+                                        "name": "Movie"
                                     },
                                     {
                                         "entity": "switch.watch_youtube",
-                                        "name": "Watch YouTube"
+                                        "name": "YouTube"
                                     },
                                     {
                                         "entity": "switch.watch_netflix",
-                                        "name": "Watch Netflix"
+                                        "name": "Netflix"
                                     },
                                     {
                                         "entity": "switch.play_game",
-                                        "name": "Play a game"
+                                        "name": "Game"
                                     }
                                 ],
                                 "type": "buttons"
