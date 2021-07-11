@@ -19,12 +19,12 @@
     data:
       message: 'Welcome back Pawel!'
 
-- alias: 'Say welcome Athena when Athena is back home'
+- alias: 'Say welcome Daria when Daria is back home'
   trigger:
     - platform: state
-      entity_id: person.athena
+      entity_id: person.daria
       to: 'home'
   action:
     service: script.announce_everywhere
     data:
-      message: 'Welcome back Athena!'
+      message: 'Welcome back Daria!'
