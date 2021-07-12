@@ -1215,7 +1215,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "media_player.living_room_tv",
+                                    "entity": "media_player.living_room_android_tv",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
@@ -1225,7 +1225,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.living_room_tv_2",
+                                    "entity": "media_player.living_room_bravia_tv",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
@@ -1235,7 +1235,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.shield_2",
+                                    "entity": "media_player.shield_android_tv",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
@@ -1255,7 +1255,7 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.plex_plex_for_android_tv_shield_android_tv",
+                                    "entity": "media_player.shield_plex",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
@@ -1411,54 +1411,22 @@
                             "type": "entities"
                         },
                         {
-                            "type": "grid",
-                            "columns": 2,
-                            "square": false,
-                            "cards": [
+                            "type": "entities",
+                            "title": "Recently added movies & TV",
+                            "entities": [
                                 {
-                                    "entity": "sensor.kodi_recently_added_movies",
+                                    "entity": "sensor.plex_recently_added_movies",
                                     "image_style": "fanart",
                                     "max": 3,
                                     "type": "custom:upcoming-media-card"
                                 },
                                 {
-                                    "entity": "sensor.kodi_recently_added_tv",
-                                    "image_style": "fanart",
-                                    "max": 3,
-                                    "type": "custom:upcoming-media-card"
-                                },
-                                {
-                                    "entity": "sensor.radarr_upcoming_media",
-                                    "image_style": "fanart",
-                                    "max": 3,
-                                    "type": "custom:upcoming-media-card"
-                                },
-                                {
-                                    "entity": "sensor.sonarr_upcoming_media",
+                                    "entity": "sensor.plex_recently_added_tv",
                                     "image_style": "fanart",
                                     "max": 3,
                                     "type": "custom:upcoming-media-card"
                                 }
                             ]
-                        },
-                        {
-                            "aspect_ratio": "0%",
-                            "camera_image": "camera.living_room_cam",
-                            "entities": [
-                                "switch.living_room_reolink_rlc_420",
-                                "switch.living_room_cam_ir_lights",
-                                "switch.living_room_cam_email",
-                                "switch.living_room_cam_ftp",
-                                "binary_sensor.living_room_cam_motion"
-                            ],
-                            "title": "Living room cam",
-                            "type": "picture-glance"
-                        },
-                        {
-                            "camera_image": "camera.living_room_relax_area_cam",
-                            "entities": [],
-                            "title": "Living room relax area",
-                            "type": "picture-glance"
                         },
                         {
                             "type": "vertical-stack",
@@ -1669,6 +1637,43 @@
                             "graph": "line",
                             "type": "sensor",
                             "unit": "%"
+                        },
+                        {
+                            "camera_image": "camera.living_room_relax_area_cam",
+                            "entities": [],
+                            "title": "Living room relax area",
+                            "type": "picture-glance"
+                        },
+                        {
+                            "type": "entities",
+                            "title": "Upcoming movies & TV",
+                            "entities": [
+                                {
+                                    "entity": "sensor.radarr_upcoming_media",
+                                    "image_style": "fanart",
+                                    "max": 3,
+                                    "type": "custom:upcoming-media-card"
+                                },
+                                {
+                                    "entity": "sensor.sonarr_upcoming_media",
+                                    "image_style": "fanart",
+                                    "max": 3,
+                                    "type": "custom:upcoming-media-card"
+                                }
+                            ]
+                        },
+                        {
+                            "aspect_ratio": "0%",
+                            "camera_image": "camera.living_room_cam",
+                            "entities": [
+                                "switch.living_room_reolink_rlc_420",
+                                "switch.living_room_cam_ir_lights",
+                                "switch.living_room_cam_email",
+                                "switch.living_room_cam_ftp",
+                                "binary_sensor.living_room_cam_motion"
+                            ],
+                            "title": "Living room cam",
+                            "type": "picture-glance"
                         }
                     ],
                     "icon": "mdi:theater",
@@ -2383,12 +2388,6 @@
                                     "entity": "sensor.netatmo_bedroom_temperature"
                                 },
                                 {
-                                    "entity": "sensor.netatmo_bedroom_max_temp"
-                                },
-                                {
-                                    "entity": "sensor.netatmo_bedroom_min_temp"
-                                },
-                                {
                                     "entity": "sensor.eight_room_temperature"
                                 },
                                 {
@@ -2417,17 +2416,17 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "media_player.bedroom_tv",
+                                    "entity": "media_player.bedroom_android_tv",
                                     "group": true,
+                                    "icon": "mdi:android",
                                     "hide": {
                                         "icon_state": false,
                                         "power_state": false
                                     },
-                                    "icon": "mdi:television-box",
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.bedroom_tv_2",
+                                    "entity": "media_player.bedroom_bravia_tv",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
@@ -2437,13 +2436,35 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
-                                    "entity": "media_player.bedroom_android_tv",
+                                    "entity": "media_player.bedroom_tv_cast",
                                     "group": true,
                                     "hide": {
                                         "icon_state": false,
                                         "power_state": false
                                     },
-                                    "icon": "mdi:android",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.bedroom_tv_plex",
+                                    "group": true,
+                                    "hide": {
+                                        "volume": true,
+                                        "power": true,
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "entity": "media_player.bedroom_kodi",
+                                    "group": true,
+                                    "icon": "mdi:kodi",
+                                    "hide": {
+                                        "volume": true,
+                                        "power": true,
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
                                     "type": "custom:mini-media-player"
                                 }
                             ],
@@ -2507,31 +2528,31 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.withings_weight_kg_pawel"
+                                    "entity": "sensor.withings_weight_kg_pawel_t"
                                 },
                                 {
-                                    "entity": "sensor.withings_fat_ratio_pct_pawel"
+                                    "entity": "sensor.withings_fat_ratio_pct_pawel_t"
                                 },
                                 {
-                                    "entity": "sensor.withings_heart_pulse_bpm_pawel"
+                                    "entity": "sensor.withings_heart_pulse_bpm_pawel_t"
                                 },
                                 {
-                                    "entity": "sensor.withings_pulse_wave_velocity_pawel"
+                                    "entity": "sensor.withings_pulse_wave_velocity_pawel_t"
                                 },
                                 {
-                                    "entity": "sensor.withings_body_temperature_c_pawel"
+                                    "entity": "sensor.withings_body_temperature_c_pawel_t"
                                 },
                                 {
-                                    "entity": "sensor.withings_skin_temperature_c_pawel"
+                                    "entity": "sensor.withings_skin_temperature_c_pawel_t"
                                 },
                                 {
-                                    "entity": "sensor.withings_temperature_c_pawel"
+                                    "entity": "sensor.withings_temperature_c_pawel_t"
                                 },
                                 {
-                                    "entity": "sensor.withings_systolic_blood_pressure_mmhg_pawel"
+                                    "entity": "sensor.withings_systolic_blood_pressure_mmhg_pawel_t"
                                 },
                                 {
-                                    "entity": "sensor.withings_diastolic_blood_pressure_mmhg_pawel"
+                                    "entity": "sensor.withings_diastolic_blood_pressure_mmhg_pawel_t"
                                 }
                             ],
                             "type": "entities"
@@ -2753,10 +2774,13 @@
                                     "entity": "sensor.sonarr_upcoming"
                                 },
                                 {
+                                    "entity": "sensor.sonarr_queue"
+                                },
+                                {
                                     "entity": "sensor.radarr_movies"
                                 },
                                 {
-                                    "entity": "sensor.sonarr_series"
+                                    "entity": "sensor.sonarr_shows"
                                 },
                                 {
                                     "entity": "sensor.sonarr_wanted"
