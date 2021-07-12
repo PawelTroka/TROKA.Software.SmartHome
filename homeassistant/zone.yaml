@@ -5,17 +5,128 @@
   radius: 50
   icon: mdi:home
 
+
+# Career
+- name: Work
+  latitude: !secret work_latitude
+  longitude: !secret work_longitude
+  icon: mdi:briefcase
+
 - name: PhD
   latitude: !secret phd_latitude
   longitude: !secret phd_longitude
   icon: mdi:school
 
-- name: Gym
+
+# People's places
+- name: Family House
+  latitude: 54.1309892979547
+  longitude: 18.199889191629378
+  icon: mdi:home-heart
+
+- name: Grandma House
+  latitude: 54.12502632894782
+  longitude: 18.033384351070836
+  icon: mdi:face-woman-outline
+
+- name: Filip place
+  latitude: 54.3632193181512
+  longitude: 18.5878877929937
+  icon: mdi:human-greeting
+
+- name: Daria place
+  latitude: 54.25717934852823
+  longitude: 18.63477598987556
+  icon: mdi:face-woman-shimmer-outline
+
+
+# Sport
+- name: PowerPit Gym
   latitude: !secret gym_latitude
   longitude: !secret gym_longitude
   icon: mdi:dumbbell
 
-- name: Work
-  latitude: !secret work_latitude
-  longitude: !secret work_longitude
-  icon: mdi:briefcase
+- name: Zdrofit Alchemia Gym
+  latitude: 54.39921581793836
+  longitude: 18.576395250831485
+  icon: mdi:dumbbell
+
+- name: Zdrofit Przymorze Gym
+  latitude: 54.411974124465225
+  longitude: 18.602187554135185
+  icon: mdi:dumbbell
+
+- name: Marina Wellness Center
+  latitude: 54.42896048959086
+  longitude: 18.59045179724003
+  icon: mdi:dumbbell
+
+- name: Aquapark Sopot
+  latitude: 54.46001764954915
+  longitude: 18.557856508219356
+  icon: mdi:swim
+
+- name: Elewator climbing
+  latitude: 54.40734186060563
+  longitude: 18.574252798820297
+  icon: mdi:hiking
+
+
+# Travel
+- name: Gdansk Airport
+  latitude: 54.378542048825956
+  longitude: 18.467912873901827
+  icon: mdi:airplane
+
+- name: Warsaw Chopin Airport
+  latitude: 52.171360059905616
+  longitude: 20.973482057441153
+  icon: mdi:airport
+
+
+# Shopping
+- name: Galeria Baltycka Mall
+  latitude: 54.38269920024893
+  longitude: 18.600692808985798
+  icon: mdi:shopping
+
+- name: Forum Gdansk Mall
+  latitude: 54.34953601401919
+  longitude: 18.642613367817667
+  icon: mdi:shopping-outline
+
+
+# Dining
+- name: Chang Thai Street Food
+  latitude: 54.37926932877614
+  longitude: 18.607243217654442
+  icon: mdi:noodles
+
+
+# Partying
+- name: 100cznia food court
+  latitude: 54.36391513761775
+  longitude: 18.64541682569567
+  icon: mdi:ferry
+
+- name: Tkacka Music Club
+  latitude: 54.35012618535017
+  longitude: 18.64886705013047
+  icon: mdi:glass-cocktail
+
+- name: Elektrykow Night Club
+  latitude: 54.36421311641371
+  longitude: 18.648359048945853
+  icon: mdi:party-popper
+
+
+# Services
+- name: Mija Elite Hair and Spa
+  latitude: 54.35428235892131
+  longitude: 18.646611635717136
+  icon: mdi:hair-dryer
+
+- name: Paulina Rosiek Beauty Studio and Brow Academy
+  latitude: 54.3920495214459
+  longitude: 18.600099493743574
+  icon: mdi:face-man-shimmer
