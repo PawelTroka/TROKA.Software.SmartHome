@@ -2855,37 +2855,37 @@
                                     "entity": "sensor.dev_sdg_dev_sdg"
                                 },
                                 {
-                                    "entity": "sensor.glances_cputin_temp"
+                                    "entity": "sensor.glances_cputin_temperature"
                                 },
                                 {
-                                    "entity": "sensor.glances_systin_temp"
+                                    "entity": "sensor.glances_systin_temperature"
                                 },
                                 {
-                                    "entity": "sensor.glances_radeon_1_temp"
+                                    "entity": "sensor.glances_radeon_1_temperature"
                                 },
                                 {
-                                    "entity": "sensor.glances_smbusmaster_0_temp"
+                                    "entity": "sensor.glances_smbusmaster_0_temperature"
                                 },
                                 {
-                                    "entity": "sensor.glances_pch_cpu_temp_temp"
+                                    "entity": "sensor.glances_pch_cpu_temp_temperature"
                                 },
                                 {
-                                    "entity": "sensor.glances_pch_chip_temp_temp"
+                                    "entity": "sensor.glances_pch_chip_temp_temperature"
                                 },
                                 {
-                                    "entity": "sensor.glances_pch_chip_cpu_max_temp_temp"
+                                    "entity": "sensor.glances_pch_chip_cpu_max_temp_temperature"
                                 },
                                 {
-                                    "entity": "sensor.glances_auxtin0_temp"
+                                    "entity": "sensor.glances_auxtin0_temperature"
                                 },
                                 {
-                                    "entity": "sensor.glances_auxtin1_temp"
+                                    "entity": "sensor.glances_auxtin1_temperature"
                                 },
                                 {
-                                    "entity": "sensor.glances_auxtin2_temp"
+                                    "entity": "sensor.glances_auxtin2_temperature"
                                 },
                                 {
-                                    "entity": "sensor.glances_auxtin3_temp"
+                                    "entity": "sensor.glances_auxtin3_temperature"
                                 }
                             ],
                             "type": "entities"
@@ -3019,7 +3019,7 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "sensor.glances_cputin_temp",
+                                            "entity": "sensor.glances_cputin_temperature",
                                             "severity": {
                                                 "green": 0,
                                                 "red": 70,
@@ -3029,7 +3029,7 @@
                                             "unit": "\u00b0C"
                                         },
                                         {
-                                            "entity": "sensor.glances_systin_temp",
+                                            "entity": "sensor.glances_systin_temperature",
                                             "severity": {
                                                 "green": 0,
                                                 "red": 70,
@@ -3044,7 +3044,7 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "sensor.glances_radeon_1_temp",
+                                            "entity": "sensor.glances_radeon_1_temperature",
                                             "severity": {
                                                 "green": 0,
                                                 "red": 70,
@@ -3054,7 +3054,7 @@
                                             "unit": "\u00b0C"
                                         },
                                         {
-                                            "entity": "sensor.glances_smbusmaster_0_temp",
+                                            "entity": "sensor.glances_smbusmaster_0_temperature",
                                             "severity": {
                                                 "green": 0,
                                                 "red": 70,
@@ -3069,7 +3069,7 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "sensor.glances_pch_cpu_temp_temp",
+                                            "entity": "sensor.glances_pch_cpu_temp_temperature",
                                             "severity": {
                                                 "green": 0,
                                                 "red": 70,
@@ -3079,7 +3079,7 @@
                                             "unit": "\u00b0C"
                                         },
                                         {
-                                            "entity": "sensor.glances_pch_chip_temp_temp",
+                                            "entity": "sensor.glances_pch_chip_temp_temperature",
                                             "severity": {
                                                 "green": 0,
                                                 "red": 70,
@@ -3094,7 +3094,7 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "sensor.glances_pch_chip_cpu_max_temp_temp",
+                                            "entity": "sensor.glances_pch_chip_cpu_max_temp_temperature",
                                             "severity": {
                                                 "green": 0,
                                                 "red": 70,
@@ -3104,7 +3104,7 @@
                                             "unit": "\u00b0C"
                                         },
                                         {
-                                            "entity": "sensor.glances_auxtin0_temp",
+                                            "entity": "sensor.glances_auxtin0_temperature",
                                             "severity": {
                                                 "green": 0,
                                                 "red": 70,
@@ -3119,7 +3119,7 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "sensor.glances_auxtin1_temp",
+                                            "entity": "sensor.glances_auxtin1_temperature",
                                             "severity": {
                                                 "green": 0,
                                                 "red": 70,
@@ -3129,7 +3129,7 @@
                                             "unit": "\u00b0C"
                                         },
                                         {
-                                            "entity": "sensor.glances_auxtin2_temp",
+                                            "entity": "sensor.glances_auxtin2_temperature",
                                             "severity": {
                                                 "green": 0,
                                                 "red": 70,
@@ -3144,7 +3144,7 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "sensor.glances_auxtin3_temp",
+                                            "entity": "sensor.glances_auxtin3_temperature",
                                             "severity": {
                                                 "green": 0,
                                                 "red": 70,
