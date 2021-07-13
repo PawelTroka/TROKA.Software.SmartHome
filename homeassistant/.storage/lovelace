@@ -2553,7 +2553,8 @@
                                 },
                                 {
                                     "entity": "sensor.withings_diastolic_blood_pressure_mmhg_pawel_t"
-                                }
+                                },
+                                "sensor.withings_spo2_pct_pawel_t"
                             ],
                             "type": "entities"
                         },
@@ -2575,12 +2576,38 @@
                                     "entity": "sensor.eight_left_sleep_session"
                                 },
                                 {
+                                    "entity": "sensor.eight_left_sleep_fitness"
+                                },
+                                {
                                     "entity": "sensor.eight_left_sleep_stage"
                                 }
                             ],
                             "show_header_toggle": false,
                             "title": "Bed",
                             "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "binary_sensor.withings_in_bed_pawel_t",
+                                "sensor.withings_sleep_breathing_disturbances_intensity_pawel_t",
+                                "sensor.withings_sleep_deep_duration_seconds_pawel_t",
+                                "sensor.withings_sleep_heart_rate_average_bpm_pawel_t",
+                                "sensor.withings_sleep_heart_rate_max_bpm_pawel_t",
+                                "sensor.withings_sleep_heart_rate_min_bpm_pawel_t",
+                                "sensor.withings_sleep_light_duration_seconds_pawel_t",
+                                "sensor.withings_sleep_rem_duration_seconds_pawel_t",
+                                "sensor.withings_sleep_respiratory_average_bpm_pawel_t",
+                                "sensor.withings_sleep_respiratory_max_bpm_pawel_t",
+                                "sensor.withings_sleep_respiratory_min_bpm_pawel_t",
+                                "sensor.withings_sleep_score_pawel_t",
+                                "sensor.withings_sleep_snoring_pawel_t",
+                                "sensor.withings_sleep_snoring_eposode_count_pawel_t",
+                                "sensor.withings_sleep_tosleep_duration_seconds_pawel_t",
+                                "sensor.withings_sleep_towakeup_duration_seconds_pawel_t",
+                                "sensor.withings_sleep_wakeup_count_pawel_t",
+                                "sensor.withings_sleep_wakeup_duration_seconds_pawel_t"
+                            ]
                         }
                     ],
                     "icon": "mdi:bed-king-outline",
