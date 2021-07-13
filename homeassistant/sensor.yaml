@@ -156,7 +156,7 @@
   value_template: '{{value | float}}'
 - platform: radarr
   api_key: !secret radarr_api_key
-  host: 10.10.10.94
+  host: localhost
   port: 8411
   monitored_conditions:
     - movies
@@ -168,13 +168,13 @@
   unit: TB
 - platform: radarr_upcoming_media
   api_key: !secret radarr_api_key
-  host: 10.10.10.94
+  host: localhost
   port: 8411
   days: 365
   theaters: false
 - platform: sonarr
   api_key: !secret sonarr_api_key
-  host: 10.10.10.94
+  host: localhost
   port: 8412
   monitored_conditions:
     - series
@@ -187,7 +187,7 @@
   unit: TB
 - platform: sonarr_upcoming_media
   api_key: !secret sonarr_api_key
-  host: 10.10.10.94
+  host: localhost
   port: 8412
   days: 365
 - platform: time_date
