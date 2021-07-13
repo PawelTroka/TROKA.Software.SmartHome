@@ -47,25 +47,39 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.living_room_lights"
+                                    "entity": "light.living_room_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.kitchen_lights"
+                                    "entity": "light.kitchen_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.hallway_lights"
+                                    "entity": "light.hallway_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.bathroom_lights"
+                                    "entity": "light.bathroom_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.toilet_lights"
+                                    "entity": "light.toilet_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.bedroom_lights"
+                                    "entity": "light.bedroom_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.office_lights"
+                                    "entity": "light.office_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 }
                             ],
                             "footer": {
@@ -1149,40 +1163,62 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.living_room_lights"
+                                    "entity": "light.living_room_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.living_room_relax_area_lights"
+                                    "entity": "light.living_room_relax_area_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.living_room_dining_area_lights"
+                                    "entity": "light.living_room_dining_area_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
                                     "type": "divider"
                                 },
                                 {
-                                    "entity": "light.living_room_downlight_1"
+                                    "entity": "light.living_room_downlight_1",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.living_room_downlight_2"
+                                    "entity": "light.living_room_downlight_2",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.living_room_downlight_3"
+                                    "entity": "light.living_room_downlight_3",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.living_room_downlight_4"
+                                    "entity": "light.living_room_downlight_4",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.living_room_downlight_5"
+                                    "entity": "light.living_room_downlight_5",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.living_room_downlight_6"
+                                    "entity": "light.living_room_downlight_6",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.living_room_downlight_7"
+                                    "entity": "light.living_room_downlight_7",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.living_room_downlight_8"
+                                    "entity": "light.living_room_downlight_8",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 }
                             ],
                             "title": "Light",
@@ -1743,26 +1779,70 @@
                         },
                         {
                             "entities": [
-                                "light.kitchen_lights",
-                                "light.kitchen_countertop_lights",
-                                "light.kitchen_island_lights",
+                                {
+                                    "entity": "light.kitchen_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.kitchen_countertop_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.kitchen_island_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
                                 {
                                     "type": "divider"
                                 },
-                                "light.kitchen_island_light_1",
-                                "light.kitchen_island_light_2",
-                                "light.kitchen_island_strip",
+                                {
+                                    "entity": "light.kitchen_island_light_1",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.kitchen_island_light_2",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.kitchen_island_strip",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
                                 {
                                     "type": "divider"
                                 },
-                                "light.kitchen_light_1",
-                                "light.kitchen_light_2",
-                                "light.kitchen_light_3",
-                                "light.kitchen_light_4",
+                                {
+                                    "entity": "light.kitchen_light_1",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.kitchen_light_2",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.kitchen_light_3",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.kitchen_light_4",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
                                 {
                                     "type": "divider"
                                 },
-                                "light.kitchen_cabinet_strip"
+                                {
+                                    "entity": "light.kitchen_cabinet_strip",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                }
                             ],
                             "title": "Light",
                             "type": "entities"
@@ -1887,14 +1967,46 @@
                     "cards": [
                         {
                             "entities": [
-                                "light.hallway_lights",
-                                "light.hallway_downlight_1",
-                                "light.hallway_downlight_2",
-                                "light.hallway_downlight_3",
-                                "light.hallway_downlight_4",
-                                "light.hallway_downlight_5",
-                                "light.hallway_cabinet_strip",
-                                "light.hallway_strip"
+                                {
+                                    "entity": "light.hallway_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.hallway_downlight_1",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.hallway_downlight_2",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.hallway_downlight_3",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.hallway_downlight_4",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.hallway_downlight_5",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.hallway_cabinet_strip",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.hallway_strip",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                }
                             ],
                             "title": "Light",
                             "type": "entities"
@@ -2077,16 +2189,56 @@
                         },
                         {
                             "entities": [
-                                "light.bathroom_lights",
-                                "light.bathroom_light_1",
-                                "light.bathroom_light_2",
-                                "light.bathroom_light_3",
-                                "light.bathroom_light_4",
-                                "light.bathroom_light_5",
-                                "light.bathroom_light_6",
-                                "light.bathroom_mirror_light_1",
-                                "light.bathroom_mirror_light_2",
-                                "light.bathroom_strip"
+                                {
+                                    "entity": "light.bathroom_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bathroom_light_1",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bathroom_light_2",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bathroom_light_3",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bathroom_light_4",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bathroom_light_5",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bathroom_light_6",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bathroom_mirror_light_1",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bathroom_mirror_light_2",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bathroom_strip",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                }
                             ],
                             "title": "Light",
                             "type": "entities"
@@ -2295,16 +2447,24 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.toilet_lights"
+                                    "entity": "light.toilet_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.toilet_light"
+                                    "entity": "light.toilet_light",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.toilet_mirror_light"
+                                    "entity": "light.toilet_mirror_light",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 },
                                 {
-                                    "entity": "light.toilet_strip"
+                                    "entity": "light.toilet_strip",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
                                 }
                             ],
                             "title": "Light",
@@ -2364,13 +2524,41 @@
                         },
                         {
                             "entities": [
-                                "light.bedroom_lights",
-                                "light.bedroom_downlight_1",
-                                "light.bedroom_downlight_2",
-                                "light.bedroom_downlight_3",
-                                "light.bedroom_downlight_4",
-                                "light.bedroom_strip",
-                                "light.bedroom_cabinet_strip"
+                                {
+                                    "entity": "light.bedroom_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bedroom_downlight_1",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bedroom_downlight_2",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bedroom_downlight_3",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bedroom_downlight_4",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bedroom_strip",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.bedroom_cabinet_strip",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                }
                             ],
                             "title": "Light",
                             "type": "entities"
@@ -2628,12 +2816,36 @@
                         },
                         {
                             "entities": [
-                                "light.office_lights",
-                                "light.office_light_1",
-                                "light.office_light_2",
-                                "light.office_light_3",
-                                "light.office_light_4",
-                                "light.office_light_5"
+                                {
+                                    "entity": "light.office_lights",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.office_light_1",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.office_light_2",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.office_light_3",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.office_light_4",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                },
+                                {
+                                    "entity": "light.office_light_5",
+                                    "type": "custom:slider-entity-row",
+                                    "toggle": true
+                                }
                             ],
                             "title": "Light",
                             "type": "entities"
