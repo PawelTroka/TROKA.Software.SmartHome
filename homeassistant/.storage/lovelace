@@ -3355,31 +3355,38 @@
                         },
                         {
                             "entity": "sensor.netatmo_outdoor_temperature",
-                            "type": "sensor"
+                            "type": "sensor",
+                            "graph": "line"
                         },
                         {
                             "entity": "sensor.netatmo_outdoor_humidity",
-                            "type": "sensor"
+                            "type": "sensor",
+                            "graph": "line"
                         },
                         {
                             "entity": "sensor.netatmo_outdoor_rain_gauge_sum_rain_1",
-                            "type": "sensor"
+                            "type": "sensor",
+                            "graph": "line"
                         },
                         {
                             "entity": "sensor.netatmo_outdoor_rain_gauge_rain",
-                            "type": "sensor"
+                            "type": "sensor",
+                            "graph": "line"
                         },
                         {
                             "entity": "sensor.netatmo_outdoor_rain_gauge_sum_rain_24",
-                            "type": "sensor"
+                            "type": "sensor",
+                            "graph": "line"
                         },
                         {
                             "entity": "sensor.netatmo_outdoor_anemometer_strength",
-                            "type": "sensor"
+                            "type": "sensor",
+                            "graph": "line"
                         },
                         {
                             "entity": "sensor.netatmo_outdoor_anemometer_gust_strength",
-                            "type": "sensor"
+                            "type": "sensor",
+                            "graph": "line"
                         },
                         {
                             "entity": "sensor.netatmo_outdoor_anemometer_angle",
@@ -3391,7 +3398,8 @@
                         },
                         {
                             "entity": "sensor.waqi_gdansk_wrzeszcz_gdansk_poland",
-                            "type": "sensor"
+                            "type": "sensor",
+                            "graph": "line"
                         },
                         {
                             "entities": [
@@ -3481,6 +3489,12 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "air_quality.syrokomli"
+                            ]
                         }
                     ],
                     "icon": "mdi:sprout-outline",
