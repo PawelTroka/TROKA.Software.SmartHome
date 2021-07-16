@@ -1103,17 +1103,6 @@
                             "type": "entities"
                         },
                         {
-                            "camera_image": "camera.front_door_2",
-                            "entities": [
-                                "lock.front_door",
-                                "binary_sensor.front_door_motion",
-                                "binary_sensor.front_door_ding",
-                                "sensor.front_door_last_activity"
-                            ],
-                            "title": "Doorbell cam",
-                            "type": "picture-glance"
-                        },
-                        {
                             "type": "custom:home-feed-card",
                             "calendars": [
                                 "calendar.holidays_in_poland",
@@ -1145,6 +1134,17 @@
                             "state_color": true,
                             "hours_to_show": 24,
                             "title": "Events"
+                        },
+                        {
+                            "camera_image": "camera.front_door_2",
+                            "entities": [
+                                "lock.front_door",
+                                "binary_sensor.front_door_motion",
+                                "binary_sensor.front_door_ding",
+                                "sensor.front_door_last_activity"
+                            ],
+                            "title": "Doorbell cam",
+                            "type": "picture-glance"
                         }
                     ],
                     "icon": "mdi:home",
@@ -1669,9 +1669,19 @@
                         },
                         {
                             "detail": 2,
-                            "entity": "sensor.living_room_humidity",
-                            "graph": "line",
-                            "type": "sensor",
+                            "entities": [
+                                "sensor.living_room_humidity"
+                            ],
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            },
                             "unit": "%"
                         },
                         {
@@ -3566,39 +3576,71 @@
                             "type": "weather-forecast"
                         },
                         {
-                            "entity": "sensor.netatmo_outdoor_temperature",
-                            "type": "sensor",
+                            "entities": [
+                                "sensor.netatmo_outdoor_temperature",
+                                "sensor.netatmo_indoor_temperature"
+                            ],
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                "sensor.netatmo_outdoor_humidity",
+                                "sensor.netatmo_indoor_humidity"
+                            ],
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            },
                             "graph": "line"
                         },
                         {
-                            "entity": "sensor.netatmo_outdoor_humidity",
-                            "type": "sensor",
-                            "graph": "line"
+                            "entities": [
+                                "sensor.netatmo_outdoor_rain_gauge_rain",
+                                "sensor.netatmo_outdoor_rain_gauge_sum_rain_1",
+                                "sensor.netatmo_outdoor_rain_gauge_sum_rain_24"
+                            ],
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
                         },
                         {
-                            "entity": "sensor.netatmo_outdoor_rain_gauge_sum_rain_1",
-                            "type": "sensor",
-                            "graph": "line"
-                        },
-                        {
-                            "entity": "sensor.netatmo_outdoor_rain_gauge_rain",
-                            "type": "sensor",
-                            "graph": "line"
-                        },
-                        {
-                            "entity": "sensor.netatmo_outdoor_rain_gauge_sum_rain_24",
-                            "type": "sensor",
-                            "graph": "line"
-                        },
-                        {
-                            "entity": "sensor.netatmo_outdoor_anemometer_strength",
-                            "type": "sensor",
-                            "graph": "line"
-                        },
-                        {
-                            "entity": "sensor.netatmo_outdoor_anemometer_gust_strength",
-                            "type": "sensor",
-                            "graph": "line"
+                            "entities": [
+                                "sensor.netatmo_outdoor_anemometer_strength",
+                                "sensor.netatmo_outdoor_anemometer_gust_strength"
+                            ],
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            },
+                            "name": "Wind strength"
                         },
                         {
                             "entity": "sensor.netatmo_outdoor_anemometer_angle",
@@ -3609,8 +3651,19 @@
                             "type": "sensor"
                         },
                         {
-                            "entity": "sensor.waqi_gdansk_wrzeszcz_gdansk_poland",
-                            "type": "sensor",
+                            "entities": [
+                                "sensor.waqi_gdansk_wrzeszcz_gdansk_poland"
+                            ],
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            },
                             "graph": "line"
                         },
                         {
