@@ -26,6 +26,23 @@
   name: Bedroom Android TV
 
 
+- platform: tts
+  name: google_voice
+  tts_service: tts.picotts
+  media_player: group.all_google_assistant
+
+
+- platform: sonos_tts
+  name: sonos_voice
+  entities:
+    #- media_player.living_room
+    - media_player.bathroom
+    - media_player.bedroom
+    - media_player.office
+    - media_player.kitchen
+    - media_player.toilet
+  tts: picotts
+
 #### Groups ####
 
 - name: screens
@@ -45,6 +62,8 @@
         data:
           type: tts
           method: all
+    - service: google_voice
+    - service: sonos_voice
 
 - name: apps
   platform: group

@@ -156,8 +156,15 @@ all_alexa:
   entities:
     - media_player.living_room_echo
     - media_player.hallway_echo
+    #- media_player.living_room_sonos # Soinos Connect does not have Alexa built-in
     - media_player.bathroom_sonos
     - media_player.toilet_sonos
     - media_player.kitchen_sonos
     - media_player.bedroom_sonos
     - media_player.office_sonos
+
+all_google_assistant:
+  entities:
+    - media_player.living_room_speaker
+    - media_player.bedroom_tv_cast
+    - media_player.shield_cast
