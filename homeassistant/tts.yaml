@@ -1,3 +1,5 @@
 - platform: google_translate
   service_name: google_say
-  base_url: http://localhost:8123
+  base_url: !secret home_base_url
+- platform: picotts
+  language: en-US
