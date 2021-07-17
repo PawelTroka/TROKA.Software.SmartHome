@@ -8,7 +8,7 @@ front_door_left_open:
   can_acknowledge: true
   skip_first: true
   notifiers:
-    - everything
+    - level_important
 
 front_door_left_unlocked:
   name: "Error: Front door left unlocked"
@@ -20,7 +20,7 @@ front_door_left_unlocked:
   can_acknowledge: true
   skip_first: true
   notifiers:
-    - everything
+    - level_important
 
 flood_in_kitchen:
   name: "Error: Flood in kitchen"
@@ -32,7 +32,7 @@ flood_in_kitchen:
   can_acknowledge: false
   skip_first: false
   notifiers:
-    - everything
+    - level_important
 
 flood_in_bathroom:
   name: "Error: Flood in bathroom"
@@ -44,7 +44,7 @@ flood_in_bathroom:
   can_acknowledge: false
   skip_first: false
   notifiers:
-    - everything
+    - level_important
 
 flood_in_toilet:
   name: "Error: Flood in toilet"
@@ -56,7 +56,7 @@ flood_in_toilet:
   can_acknowledge: false
   skip_first: false
   notifiers:
-    - everything
+    - level_important
 
 power_outage:
   name: "Error: power outage!"
@@ -68,7 +68,7 @@ power_outage:
   can_acknowledge: true
   skip_first: false
   notifiers:
-    - everything
+    - level_important
 
 ups_low_power:
   name: "Error: low UPS remaining power!"
@@ -80,4 +80,4 @@ ups_low_power:
   can_acknowledge: false
   skip_first: false
   notifiers:
-    - everything
+    - level_important
