@@ -81,3 +81,55 @@ ups_low_power:
   skip_first: false
   notifiers:
     - level_important
+
+
+
+radon_longterm_level_warning:
+  name: "Radon level long term warning"
+  message:  "Radon level long term is {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3 which is starting to get dangerous. Open windows."
+  done_message: Power outage just ended
+  entity_id: sensor.airthings_radon_longterm_avg
+  state: '> 100'
+  repeat: 5
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
+
+
+radon_longterm_level_dangerous:
+  name: "Radon level long term dangerous"
+  message:  "Radon level long term is {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3 which is really dangerous. Open windows and leave home immediately!"
+  done_message: Power outage just ended
+  entity_id: sensor.airthings_radon_longterm_avg
+  state: '> 150'
+  repeat: 2
+  can_acknowledge: false
+  skip_first: false
+  notifiers:
+    - level_important
+
+radon_1day_level_warning:
+  name: "Radon level today warning"
+  message:  "Radon level today is {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3 which is starting to get dangerous. Open windows."
+  done_message: Power outage just ended
+  entity_id: sensor.airthings_radon_1day_avg
+  state: '> 100'
+  repeat: 5
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
+
+
+radon_1day_level_dangerous:
+  name: "Radon level today dangerous"
+  message:  "Radon level today is {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3 which is really dangerous. Open windows and leave home immediately!"
+  done_message: Power outage just ended
+  entity_id: sensor.airthings_radon_1day_avg
+  state: '> 150'
+  repeat: 2
+  can_acknowledge: false
+  skip_first: false
+  notifiers:
+    - level_important
