@@ -18,12 +18,21 @@
 - platform: nfandroidtv
   host: 10.10.10.87
   name: SHIELD Android TV
+  duration: 10
+  timeout: 10
+  fontsize: large
 - platform: nfandroidtv
   host: 10.10.10.8
   name: Living room Android TV
+  duration: 10
+  timeout: 10
+  fontsize: large
 - platform: nfandroidtv
   host: 10.10.10.53
   name: Bedroom Android TV
+  duration: 10
+  timeout: 10
+  fontsize: large
 
 
 - platform: tts
@@ -63,7 +72,7 @@
           type: tts
           method: all
     - service: google_voice
-    - service: sonos_voice
+    #- service: sonos_voice # sonos_voice is good but alexa_media accomplishes the same and is a higher quality component
 
 - name: apps
   platform: group
