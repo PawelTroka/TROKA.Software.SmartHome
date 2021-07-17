@@ -1,9 +1,19 @@
+#### Platforms ####
+
 - platform: kodi
   name: Notify Living room Kodi
   host: 10.10.10.87
   port: 8779
   username: !secret kodi_username
   password: !secret kodi_password
+
+- platform: telegram
+  name: telegram_group
+  chat_id: telegram_group_id
+
+- platform: telegram
+  name: telegram_me
+  chat_id: telegram_my_id
 
 - platform: nfandroidtv
   host: 10.10.10.87
@@ -15,55 +25,80 @@
   host: 10.10.10.53
   name: Bedroom Android TV
 
-- name: residents
-  platform: group
-  services:
-    - service: mobile_app_sm_g998b # Pawel
-    - service: mobile_app_iphone # Daria
 
-- name: all_mobile
-  platform: group
-  services:
-    - service: mobile_app_sm_g998b # Pawel
-    - service: mobile_app_iphone # Daria
-    - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
-    - service: mobile_app_ipad # Smart Tablet iPad
-    - service: mobile_app_sm_n910c # Smart Phone
+#### Groups ####
 
-- name: everything_without_voice
+- name: screens
   platform: group
   services:
-    - service: mobile_app_sm_g998b # Pawel
-    - service: mobile_app_iphone # Daria
-    - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
-    - service: mobile_app_ipad # Smart Tablet iPad
-    - service: mobile_app_sm_n910c # Smart Phone
     - service: notify_living_room_kodi
-    - service: alexa_media
-      data:
-        target: media_player.living_room_echo
-        data:
-          type: push
-          method: all
+    - service: shield_android_tv
+    - service: bedroom_android_tv
+    - service: living_room_android_tv
 
-- name: everything
+- name: voice
   platform: group
   services:
-    - service: mobile_app_sm_g998b # Pawel
-    - service: mobile_app_iphone # Daria
-    - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
-    - service: mobile_app_ipad # Smart Tablet iPad
-    - service: mobile_app_sm_n910c # Smart Phone
-    - service: notify_living_room_kodi
     - service: alexa_media
       data:
         target: group.all_alexa
         data:
           type: tts
           method: all
+
+- name: apps
+  platform: group
+  services:
+    - service: telegram_group
     - service: alexa_media
       data:
         target: media_player.living_room_echo
         data:
           type: push
           method: all
+
+- name: residents
+  platform: group
+  services:
+    - service: mobile_app_sm_g998b # Pawel
+    - service: mobile_app_iphone # Daria
+
+- name: cars
+  platform: group
+  services:
+    - service: bmw_connected_drive_430i_xdrive # BMW
+
+- name: home_control_devices
+  platform: group
+  services:
+    - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
+    - service: mobile_app_ipad # Smart Tablet iPad
+    - service: mobile_app_sm_n910c # Smart Phone
+
+
+#### Levels ####
+
+- name: level_trace
+  platform: group
+  services:
+    - service: residents
+    - service: apps
+
+- name: level_note
+  platform: group
+  services:
+    - service: level_trace
+    - service: home_control_devices
+    - service: cars
+
+- name: level_info # everything_without_voice
+  platform: group
+  services:
+    - service: level_note
+    - service: screens
+
+- name: level_important # everything
+  platform: group
+  services:
+    - service: level_info
+    - service: voice

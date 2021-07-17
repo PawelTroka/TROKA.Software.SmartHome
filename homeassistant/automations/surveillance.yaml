@@ -38,7 +38,7 @@
       entity_id: binary_sensor.front_door_ding
       to: 'on'
   action:
-      service: notify.everything
+      service: notify.level_important
       data:
         message: "Someone is at your front door! Front door ding has been pressed, you may have guests!"
         title: "Someone's at your front door!"
