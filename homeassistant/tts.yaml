@@ -2,4 +2,5 @@
   service_name: google_say
   base_url: !secret home_base_url
 - platform: picotts
+  service_name: picotts_say
   language: en-US

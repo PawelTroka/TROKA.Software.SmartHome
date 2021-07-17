@@ -9,11 +9,11 @@
 
 - platform: telegram
   name: telegram_group
-  chat_id: telegram_group_id
+  chat_id: !secret telegram_group_id
 
 - platform: telegram
   name: telegram_me
-  chat_id: telegram_my_id
+  chat_id: !secret telegram_my_id
 
 - platform: nfandroidtv
   host: 10.10.10.87
@@ -28,7 +28,7 @@
 
 - platform: tts
   name: google_voice
-  tts_service: tts.picotts
+  tts_service: tts.picotts_say
   media_player: group.all_google_assistant
 
 
