@@ -166,5 +166,5 @@ all_alexa:
 all_google_assistant:
   entities:
     - media_player.living_room_speaker
-    - media_player.bedroom_tv_cast
-    - media_player.shield_cast
+    #- media_player.bedroom_tv_cast # TVs either do not work or need to be turned on and stay turned on
+    #- media_player.shield_cast # TVs either do not work or need to be turned on and stay turned on
