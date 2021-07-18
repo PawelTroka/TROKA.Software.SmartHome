@@ -87,7 +87,7 @@ ups_low_power:
 radon_longterm_level_warning:
   name: "Radon level long term warning"
   message:  "Radon level long term is {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3 which is starting to get dangerous. Open windows."
-  done_message: Power outage just ended
+  done_message: Radon level long term just went down to {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3 which is safe again.
   entity_id: sensor.airthings_radon_longterm_avg
   state: '> 100'
   repeat: 5
@@ -100,7 +100,7 @@ radon_longterm_level_warning:
 radon_longterm_level_dangerous:
   name: "Radon level long term dangerous"
   message:  "Radon level long term is {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3 which is really dangerous. Open windows and leave home immediately!"
-  done_message: Power outage just ended
+  done_message: Radon level long term just went down to {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3 which is safer.
   entity_id: sensor.airthings_radon_longterm_avg
   state: '> 150'
   repeat: 2
@@ -112,7 +112,7 @@ radon_longterm_level_dangerous:
 radon_1day_level_warning:
   name: "Radon level today warning"
   message:  "Radon level today is {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3 which is starting to get dangerous. Open windows."
-  done_message: Power outage just ended
+  done_message: Radon level today just went down to {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3 which is safe again.
   entity_id: sensor.airthings_radon_1day_avg
   state: '> 100'
   repeat: 5
@@ -125,9 +125,110 @@ radon_1day_level_warning:
 radon_1day_level_dangerous:
   name: "Radon level today dangerous"
   message:  "Radon level today is {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3 which is really dangerous. Open windows and leave home immediately!"
-  done_message: Power outage just ended
+  done_message: Radon level today just went down to {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3 which is safer.
   entity_id: sensor.airthings_radon_1day_avg
   state: '> 150'
+  repeat: 2
+  can_acknowledge: false
+  skip_first: false
+  notifiers:
+    - level_important
+
+bedroom_co2_longterm_level_warning:
+  name: "Bedroom CO2 level warning"
+  message:  "Bedroom CO2 level is {{ states('sensor.netatmo_bedroom_co2') }} ppm which is starting to get dangerous. Open bedroom windows."
+  done_message: Bedroom CO2 level just went down to {{ states('sensor.netatmo_bedroom_co2') }} ppm, which is safe again.
+  entity_id: sensor.netatmo_bedroom_co2
+  state: '> 1500'
+  repeat: 5
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
+
+
+bedroom_co2_longterm_level_dangerous:
+  name: "Bedroom CO2 level dangerous"
+  message:  "Bedroom CO2 level is {{ states('sensor.netatmo_bedroom_co2') }} ppm which is really dangerous. Open windows and leave bedroom immediately!"
+  done_message: Bedroom CO2 level just went down to {{ states('sensor.netatmo_bedroom_co2') }} ppm, which is better.
+  entity_id: sensor.netatmo_bedroom_co2
+  state: '> 3000'
+  repeat: 2
+  can_acknowledge: false
+  skip_first: false
+  notifiers:
+    - level_important
+
+office_co2_longterm_level_warning:
+  name: "Office CO2 level warning"
+  message:  "Office CO2 level is {{ states('sensor.netatmo_office_co2') }} ppm which is starting to get dangerous. Open office windows."
+  done_message: Office CO2 level just went down to {{ states('sensor.netatmo_office_co2') }} ppm, which is safe again.
+  entity_id: sensor.netatmo_office_co2
+  state: '> 1500'
+  repeat: 5
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
+
+
+office_co2_longterm_level_dangerous:
+  name: "Office CO2 level dangerous"
+  message:  "Office CO2 level is {{ states('sensor.netatmo_office_co2') }} ppm which is really dangerous. Open windows and leave office immediately!"
+  done_message: Office CO2 level just went down to {{ states('sensor.netatmo_office_co2') }} ppm, which is better.
+  entity_id: sensor.netatmo_office_co2
+  state: '> 3000'
+  repeat: 2
+  can_acknowledge: false
+  skip_first: false
+  notifiers:
+    - level_important
+
+indoor_co2_longterm_level_warning:
+  name: "Indoor CO2 level warning"
+  message:  "Indoor CO2 level is {{ states('sensor.netatmo_indoor_co2') }} ppm which is starting to get dangerous. Open indoor windows."
+  done_message: Indoor CO2 level just went down to {{ states('sensor.netatmo_indoor_co2') }} ppm, which is safe again.
+  entity_id: sensor.netatmo_indoor_co2
+  state: '> 1500'
+  repeat: 5
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
+
+
+indoor_co2_longterm_level_dangerous:
+  name: "Indoor CO2 level dangerous"
+  message:  "Indoor CO2 level is {{ states('sensor.netatmo_indoor_co2') }} ppm which is really dangerous. Open windows and leave indoor immediately!"
+  done_message: Indoor CO2 level just went down to {{ states('sensor.netatmo_indoor_co2') }} ppm, which is better.
+  entity_id: sensor.netatmo_indoor_co2
+  state: '> 3000'
+  repeat: 2
+  can_acknowledge: false
+  skip_first: false
+  notifiers:
+    - level_important
+
+
+airthings_co2_longterm_level_warning:
+  name: "Airthings CO2 level warning"
+  message:  "Airthings CO2 level is {{ states('sensor.airthings_co2') }} ppm which is starting to get dangerous. Open airthings windows."
+  done_message: Airthings CO2 level just went down to {{ states('sensor.airthings_co2') }} ppm, which is safe again.
+  entity_id: sensor.airthings_co2
+  state: '> 1500'
+  repeat: 5
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
+
+
+airthings_co2_longterm_level_dangerous:
+  name: "Airthings CO2 level dangerous"
+  message:  "Airthings CO2 level is {{ states('sensor.airthings_co2') }} ppm which is really dangerous. Open windows and leave airthings immediately!"
+  done_message: Airthings CO2 level just went down to {{ states('sensor.airthings_co2') }} ppm, which is better.
+  entity_id: sensor.airthings_co2
+  state: '> 3000'
   repeat: 2
   can_acknowledge: false
   skip_first: false
