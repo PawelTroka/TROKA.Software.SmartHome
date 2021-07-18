@@ -2327,11 +2327,11 @@
                                             "name": "remaining time"
                                         },
                                         {
-                                            "attribute": "watertemp_option_state",
+                                            "entity": "sensor.washer_water_temp",
                                             "name": "temperature"
                                         },
                                         {
-                                            "attribute": "spin_option_state",
+                                            "entity": "sensor.washer_spin_speed",
                                             "name": "spin"
                                         }
                                     ],
