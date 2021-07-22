@@ -3523,6 +3523,77 @@
                             "hours_to_show": 12,
                             "refresh_interval": 0,
                             "type": "history-graph"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_energy_2"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_energy"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_power"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_power_2"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_power_3"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_power_4"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_current"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_current_2"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_current_3"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_voltage"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_voltage_2"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_voltage_3"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_power_factor"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_power_factor_2"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_power_factor_3"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_power_factor_4"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_unknown"
+                                }
+                            ]
                         }
                     ],
                     "icon": "mdi:briefcase-outline",
