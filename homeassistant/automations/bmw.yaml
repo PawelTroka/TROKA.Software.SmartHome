@@ -1,0 +1,11 @@
+- alias: Update BMW position
+  trigger:
+  - minutes: /10
+    platform: time_pattern
+  action:
+  - service: bmw_connected_drive.find_vehicle
+    data:
+      vin: !secret bmw_vin
+  - delay: '00:05:00'
+  - service: bmw_connected_drive.update_state
+    data: {}
