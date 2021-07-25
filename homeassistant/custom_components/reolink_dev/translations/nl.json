@@ -16,6 +16,11 @@
                     "username": "Gebruikersnaam",
                     "password": "Wachtwoord"
                 }
+            },
+            "nvr": {
+                "data": {
+                    "channel": "Kanaal"
+                }
             }
         }
     },
@@ -23,9 +28,9 @@
         "step": {
             "init": {
                 "data": {
-                    "stream": "Stream",
                     "protocol": "Protocol",
-                    "channel": "Kanaal",
+                    "stream": "Stream",
+                    "timeout": "Timeout (seconden)",
 					"motion_off_delay": "Bewegingssensor uit vertraging (seconden)"
                 }
             }
