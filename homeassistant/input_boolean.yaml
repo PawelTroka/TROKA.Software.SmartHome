@@ -52,3 +52,6 @@ bedroom_ac_powersave:
 bedroom_ac_8_degree_heating:
   initial: off
   icon: mdi:numeric-8-circle-outline
+birth_control_pill_taken:
+  initial: off
+  icon: mdi:pill

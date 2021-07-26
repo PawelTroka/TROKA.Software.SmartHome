@@ -1,0 +1,68 @@
+- alias: Low battery notify
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      actions:
+        - service: notify.level_note
+          data:
+            message: Devices {{sensors} are low on battery. Please change batteries!
+            title: Low battery alert!
+      time: '22:00:00'
+
+
+- alias: Home Assistant Update Notification
+  description: ''
+  use_blueprint:
+    path: >-
+      forte/fancy-home-assistant-update-available-notifier-for-android-with-customizable-notification-settings.yaml
+    input:
+      clickAction: https://my.home-assistant.io/redirect/supervisor/
+      delay: 0
+      notify_device: 66f5dd0693351cc7d8db2a8c595f5f13
+      include_hasspodcast: true
+
+
+- alias: "Notify about completed download"
+  trigger:
+    platform: event
+    event_type: transmission_downloaded_torrent
+  action:
+    - service: notify.level_note
+      data:
+        title: "Download completed!"
+        message: "{{trigger.event.data.name}} has just been downloaded."
+
+
+- alias: "Notify about started download"
+  trigger:
+    platform: event
+    event_type: transmission_downloaded_torrent
+  action:
+    - service: notify.level_note
+      data:
+        title: "Download started!"
+        message: "{{trigger.event.data.name}} has just started downloading."
+
+
+- alias: Birth control pill reminder
+  description: ''
+  use_blueprint:
+    path: Aohzan/medication_reminder.yaml
+    input:
+      logbook_message_no_answer: No answer time out
+      notify_device: 23d0cf934caa61067d3b1cd835c721b1
+      ask_later_wait_time: 5
+      reminder_time: '20:00:00'
+      notification_message: It's time to take your birth control pill!
+      notification_title: Birth control pill reminder!
+      optional_action:
+        - service: notify.level_info
+          data:
+            message: >-
+              Daria, it's time to take your birth control pill! Daria, it's time
+              to take your birth control pill! Daria, it's time to take your birth
+              control pill!
+            title: Birth control pill reminder!
+      logbook_message_skip: Reminder skipped
+      input_boolean: input_boolean.birth_control_pill_taken
