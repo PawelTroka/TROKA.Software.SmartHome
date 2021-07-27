@@ -45,24 +45,48 @@
         message: "{{trigger.event.data.name}} has just started downloading."
 
 
-- alias: Birth control pill reminder
-  description: ''
-  use_blueprint:
-    path: Aohzan/medication_reminder.yaml
-    input:
-      logbook_message_no_answer: No answer time out
-      notify_device: 23d0cf934caa61067d3b1cd835c721b1
-      ask_later_wait_time: 5
-      reminder_time: '20:00:00'
-      notification_message: It's time to take your birth control pill!
-      notification_title: Birth control pill reminder!
-      optional_action:
-        - service: notify.level_info
-          data:
-            message: >-
-              Daria, it's time to take your birth control pill! Daria, it's time
-              to take your birth control pill! Daria, it's time to take your birth
-              control pill!
-            title: Birth control pill reminder!
-      logbook_message_skip: Reminder skipped
-      input_boolean: input_boolean.birth_control_pill_taken
+- alias: "Birth control pill reminder"
+  trigger:
+    platform: time
+    at: "19:00:00"
+  action:
+    - service: notify.level_important
+      data:
+        title: "Birth control pill reminder!"
+        message: >-
+          Daria, it's time to take your birth control pill! Daria, it's time
+          to take your birth control pill! Daria, it's time to take your birth
+          control pill!
+
+- alias: "Morning vitamins reminder"
+  trigger:
+    platform: time
+    at: "10:00:00"
+  action:
+    - service: notify.level_info
+      data:
+        title: "Morning vitamins reminder!"
+        message: >-
+          Pawel, it's time to take your morning vitamins!
+
+- alias: "Lunch-time vitamins reminder"
+  trigger:
+    platform: time
+    at: "14:00:00"
+  action:
+    - service: notify.level_info
+      data:
+        title: "Lunch-time vitamins reminder!"
+        message: >-
+          Pawel, it's time to take your lunch-time vitamins!
+
+- alias: "Evening vitamins reminder"
+  trigger:
+    platform: time
+    at: "23:30:00"
+  action:
+    - service: notify.level_info
+      data:
+        title: "Evening vitamins reminder!"
+        message: >-
+          Pawel, it's time to take your evening vitamins!

@@ -18,20 +18,20 @@
 - platform: nfandroidtv
   host: 10.10.10.87
   name: SHIELD Android TV
-  duration: 10
-  timeout: 10
+  duration: 20
+  timeout: 20
   fontsize: large
 - platform: nfandroidtv
   host: 10.10.10.8
   name: Living room Android TV
-  duration: 10
-  timeout: 10
+  duration: 20
+  timeout: 20
   fontsize: large
 - platform: nfandroidtv
   host: 10.10.10.53
   name: Bedroom Android TV
-  duration: 10
-  timeout: 10
+  duration: 20
+  timeout: 20
   fontsize: large
 
 
