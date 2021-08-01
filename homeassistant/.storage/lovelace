@@ -1136,14 +1136,38 @@
                             "title": "Events"
                         },
                         {
-                            "camera_image": "camera.front_door_2",
+                            "camera_image": "camera.db1_doorbell",
                             "entities": [
                                 "lock.front_door",
+                                {
+                                    "entity": "sensor.db1_doorbell_pir_status"
+                                },
                                 "binary_sensor.front_door_motion",
                                 "binary_sensor.front_door_ding",
-                                "sensor.front_door_last_activity"
+                                "sensor.front_door_last_activity",
+                                {
+                                    "entity": "switch.db1_doorbell_light"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_light_flicker"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_infrared_light"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_outdoor_ringing_sound"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_privacy"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_sleep"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_sound"
+                                }
                             ],
-                            "title": "Doorbell cam",
+                            "title": "DB1 Doorbell",
                             "type": "picture-glance"
                         }
                     ],
@@ -2114,7 +2138,8 @@
                             "camera_image": "camera.front_door_2",
                             "entities": [
                                 "binary_sensor.front_door_motion",
-                                "binary_sensor.front_door_ding"
+                                "binary_sensor.front_door_ding",
+                                "sensor.front_door_last_activity"
                             ],
                             "title": "Doorbell cam",
                             "type": "picture-glance"
@@ -2140,6 +2165,126 @@
                             "show_header_toggle": false,
                             "title": "Doorbell",
                             "type": "entities"
+                        },
+                        {
+                            "camera_image": "camera.db1_doorbell",
+                            "entities": [
+                                {
+                                    "entity": "sensor.db1_doorbell_pir_status"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_light"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_light_flicker"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_infrared_light"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_outdoor_ringing_sound"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_privacy"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_sleep"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_sound"
+                                }
+                            ],
+                            "title": "DB1 Doorbell",
+                            "type": "picture-glance"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.db1_doorbell_pir_status"
+                                },
+                                {
+                                    "entity": "sensor.db1_doorbell_detection_sensibility"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_light"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_infrared_light"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_light_flicker"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_privacy"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_sound"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_outdoor_ringing_sound"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_alarm_tone"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_sleep"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_auto_sleep"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_stream_adaptive"
+                                },
+                                {
+                                    "entity": "switch.db1_doorbell_all_day_video"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.db1_doorbell_alarm_sound_mod"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.db1_doorbell_local_ip"
+                                },
+                                {
+                                    "entity": "sensor.db1_doorbell_wan_ip"
+                                },
+                                {
+                                    "entity": "sensor.db1_doorbell_supported_channels"
+                                },
+                                {
+                                    "entity": "binary_sensor.db1_doorbell_upgrade_available"
+                                },
+                                {
+                                    "entity": "binary_sensor.db1_doorbell_encrypted"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "binary_sensor.db1_doorbell_alarm_schedules_enabled"
+                                }
+                            ]
                         }
                     ],
                     "icon": "mdi:transit-transfer",
