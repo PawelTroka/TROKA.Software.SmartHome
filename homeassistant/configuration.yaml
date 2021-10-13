@@ -79,7 +79,7 @@ ecovacs:
   username: !secret ecovacs_username
   password: !secret ecovacs_password
   country: pl
-  continent: eu
+  continent: ww
 ring:
   username: !secret ring_username
   password: !secret ring_password
