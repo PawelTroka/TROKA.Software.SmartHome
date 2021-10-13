@@ -36,10 +36,12 @@ from .const import (
     CONF_MOTION_OFF_DELAY,
     CONF_PROTOCOL,
     CONF_STREAM,
+    CONF_STREAM_FORMAT,
     DEFAULT_CHANNEL,
     DEFAULT_MOTION_OFF_DELAY,
     DEFAULT_PROTOCOL,
     DEFAULT_STREAM,
+    DEFAULT_STREAM_FORMAT,
     DEFAULT_TIMEOUT,
     DOMAIN,
     PUSH_MANAGER,
@@ -50,6 +52,7 @@ from .const import (
 )
 
 _LOGGER = logging.getLogger(__name__)
+_LOGGER_DATA = logging.getLogger(__name__ + ".data")
 
 STORAGE_VERSION = 1
 
@@ -80,6 +83,11 @@ class ReolinkBase:
         else:
             self._stream = options[CONF_STREAM]
 
+        if CONF_STREAM_FORMAT not in options:
+            self._stream_format = DEFAULT_STREAM_FORMAT
+        else:
+            self._stream_format = options[CONF_STREAM_FORMAT]
+
         if CONF_PROTOCOL not in options:
             self._protocol = DEFAULT_PROTOCOL
         else:
@@ -92,6 +100,7 @@ class ReolinkBase:
             self._password,
             channel=self._channel - 1,
             stream=self._stream,
+            stream_format=self._stream_format,
             protocol=self._protocol,
             timeout=self._timeout,
         )
@@ -99,7 +108,10 @@ class ReolinkBase:
         self._hass = hass
         self.async_functions = list()
         self.sync_functions = list()
+
         self.motion_detection_state = True
+        self.object_person_detection_state = True
+        self.object_vehicle_detection_state = True
 
         if CONF_MOTION_OFF_DELAY not in options:
             self.motion_off_delay = DEFAULT_MOTION_OFF_DELAY
@@ -192,6 +204,11 @@ class ReolinkBase:
         """Set the stream."""
         self._stream = stream
         await self._api.set_stream(stream)
+
+    async def set_stream_format(self, stream_format):
+        """Set the stream format."""
+        self._stream_format = stream_format
+        await self._api.set_stream_format(stream_format)
 
     async def set_timeout(self, timeout):
         """Set the API timeout."""
@@ -312,6 +329,10 @@ class ReolinkPush:
             )
             await self.set_available(True)
         else:
+            _LOGGER.error(
+                "Host %s subscription failed to its webhook, base object state will to NotAvailable",
+                self._host,
+            )
             await self.set_available(False)
         return True
 
@@ -343,6 +364,10 @@ class ReolinkPush:
                 await self.set_available(False)
                 await self._sman.subscribe(self._webhook_url)
             else:
+                _LOGGER.info(
+                    "Host %s SUCCESSFULLY renewed Reolink subscription",
+                    self._host,
+                )
                 await self.set_available(True)
         else:
             await self.set_available(True)
@@ -386,7 +411,6 @@ class ReolinkPush:
 
 async def handle_webhook(hass, webhook_id, request):
     """Handle incoming webhook from Reolink for inbound messages and calls."""
-    _LOGGER.debug("Reolink webhook triggered")
 
     if not request.body_exists:
         _LOGGER.debug("Webhook triggered without payload")
@@ -396,7 +420,8 @@ async def handle_webhook(hass, webhook_id, request):
         _LOGGER.debug("Webhook triggered with unknown payload")
         return
 
-    _LOGGER.debug(data)
+    _LOGGER_DATA.debug(data)
+
     matches = re.findall(r'Name="IsMotion" Value="(.+?)"', data)
     if matches:
         is_motion = matches[0] == "true"

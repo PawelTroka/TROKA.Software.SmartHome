@@ -3,7 +3,6 @@ Support for LG SmartThinQ device.
 """
 # REQUIREMENTS = ['wideq']
 
-import asyncio
 import logging
 import time
 import voluptuous as vol
@@ -27,10 +26,11 @@ from .wideq.core_exceptions import (
 
 import homeassistant.helpers.config_validation as cv
 
-from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_REGION, CONF_TOKEN, TEMP_CELSIUS
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
+from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from homeassistant.util import Throttle
 
@@ -47,9 +47,6 @@ from .const import (
     SMARTTHINQ_COMPONENTS,
     STARTUP,
 )
-
-ATTR_MODEL = "model"
-ATTR_MAC_ADDRESS = "mac_address"
 
 MAX_RETRIES = 3
 MAX_UPDATE_FAIL_ALLOWED = 10
@@ -128,32 +125,21 @@ class LGEAuthentication:
         return client
 
 
-async def async_setup(hass, config):
-    """
-    This method gets called if HomeAssistant has a valid configuration entry within
-    configurations.yaml.
-
-    Thus, in this method we simply trigger the creation of a config entry.
-
-    :return:
-    """
-    conf = config.get(DOMAIN)
-    hass.data[DOMAIN] = {}
-
-    if conf is not None:
-        hass.async_create_task(
-            hass.config_entries.flow.async_init(
-                DOMAIN, context={"source": SOURCE_IMPORT}, data=conf
-            )
+def _notify_error(hass, notification_id, title, message):
+    """Notify user with persistent notification"""
+    hass.async_create_task(
+        hass.services.async_call(
+            domain='persistent_notification', service='create', service_data={
+                'title': title,
+                'message': message,
+                'notification_id': f"{DOMAIN}.{notification_id}"
+            }
         )
-
-    return True
+    )
 
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
-    """
-    This class is called by the HomeAssistant framework when a configuration entry is provided.
-    """
+    """Set up SmartThinQ integration from a config entry."""
 
     refresh_token = config_entry.data.get(CONF_TOKEN)
     region = config_entry.data.get(CONF_REGION)
@@ -171,8 +157,6 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
         language,
     )
 
-    hass.data.setdefault(DOMAIN, {})[LGE_DEVICES] = {}
-
     # if network is not connected we can have some error
     # raising ConfigEntryNotReady platform setup will be retried
     lgeauth = LGEAuthentication(region, language, use_api_v2)
@@ -182,7 +166,12 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
             lgeauth.createClientFromToken, refresh_token, oauth_url, oauth_user_num
         )
     except InvalidCredentialError:
-        _LOGGER.error("Invalid ThinQ credential error. Component setup aborted")
+        msg = "Invalid ThinQ credential error, integration setup aborted." \
+              " Please use the LG App on your mobile device to ensure your" \
+              " credentials are correct, then restart HomeAssistant." \
+              " If your credential changed, you must reconfigure integration"
+        _notify_error(hass, "inv_credential", "SmartThinQ Sensors", msg)
+        _LOGGER.error(msg)
         return False
 
     except Exception:
@@ -216,30 +205,21 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     # remove device not available anymore
     await cleanup_orphan_lge_devices(hass, config_entry.entry_id, client)
 
-    hass.data.setdefault(DOMAIN, {}).update(
-        {CLIENT: client, LGE_DEVICES: lge_devices}
-    )
-
-    for platform in SMARTTHINQ_COMPONENTS:
-        hass.async_create_task(
-            hass.config_entries.async_forward_entry_setup(config_entry, platform)
-        )
+    hass.data[DOMAIN] = {CLIENT: client, LGE_DEVICES: lge_devices}
+    hass.config_entries.async_setup_platforms(config_entry, SMARTTHINQ_COMPONENTS)
 
     return True
 
 
-async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry):
+async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Unload a config entry."""
-    await asyncio.gather(
-        *[
-            hass.config_entries.async_forward_entry_unload(config_entry, platform)
-            for platform in SMARTTHINQ_COMPONENTS
-        ]
+    unload_ok = await hass.config_entries.async_unload_platforms(
+        entry, SMARTTHINQ_COMPONENTS
     )
+    if unload_ok:
+        hass.data.pop(DOMAIN)
 
-    hass.data.pop(DOMAIN)
-
-    return True
+    return unload_ok
 
 
 class LGEDevice:
@@ -256,7 +236,7 @@ class LGEDevice:
         self._name = device.device_info.name
         self._device_id = device.device_info.id
         self._type = device.device_info.type
-        self._mac = device.device_info.macaddress or "N/A"
+        self._mac = device.device_info.macaddress
         self._firmware = device.device_info.firmware
 
         self._model = f"{device.device_info.model_name}"
@@ -287,36 +267,32 @@ class LGEDevice:
 
     @property
     def device(self):
+        """The device instance"""
         return self._device
 
     @property
     def name(self) -> str:
+        """The device name"""
         return self._name
 
     @property
     def type(self) -> DeviceType:
+        """The device type"""
         return self._type
 
     @property
     def unique_id(self) -> str:
+        """Device unique ID"""
         return self._id
 
     @property
     def state(self):
+        """Current device state"""
         return self._state
 
     @property
     def available_features(self) -> Dict:
         return self._device.available_features
-
-    @property
-    def state_attributes(self):
-        """Return the optional state attributes."""
-        data = {
-            ATTR_MODEL: self._model,
-            ATTR_MAC_ADDRESS: self._mac,
-        }
-        return data
 
     @property
     def device_info(self):
@@ -326,6 +302,8 @@ class LGEDevice:
             "manufacturer": "LG",
             "model": f"{self._model} ({self._type.name})",
         }
+        if self._mac:
+            data["connections"] = {(CONNECTION_NETWORK_MAC, self._mac)}
         if self._firmware:
             data["sw_version"] = self._firmware
 

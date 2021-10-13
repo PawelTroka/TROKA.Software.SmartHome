@@ -22,11 +22,14 @@ from .const import (
     CONF_PLAYBACK_MONTHS,
     CONF_PROTOCOL,
     CONF_STREAM,
+    CONF_STREAM_FORMAT,
     CONF_THUMBNAIL_PATH,
     DEFAULT_MOTION_OFF_DELAY,
     DEFAULT_PLAYBACK_MONTHS,
     DEFAULT_PROTOCOL,
     DEFAULT_STREAM,
+    DEFAULT_STREAM_FORMAT,
+    DEFAULT_THUMBNAIL_PATH,
     DEFAULT_TIMEOUT,
     DOMAIN,
 )
@@ -165,8 +168,16 @@ class ReolinkOptionsFlowHandler(config_entries.OptionsFlow):
                         CONF_STREAM,
                         default=self.config_entry.options.get(
                             CONF_STREAM, DEFAULT_STREAM
-                        ),
-                    ): vol.In(["main", "sub"]),
+                        ),): vol.In(
+                        ["main", "sub"]
+                    ),
+                    vol.Required(CONF_STREAM_FORMAT, 
+                    default=self.config_entry.options.get(
+                            CONF_STREAM_FORMAT, DEFAULT_STREAM_FORMAT
+                        ),): vol.In(
+                        ["h264", "h265"]
+                    ),
+
                     vol.Required(
                         CONF_MOTION_OFF_DELAY,
                         default=self.config_entry.options.get(
@@ -182,7 +193,7 @@ class ReolinkOptionsFlowHandler(config_entries.OptionsFlow):
                     vol.Optional(
                         CONF_THUMBNAIL_PATH,
                         default=self.config_entry.options.get(
-                            CONF_THUMBNAIL_PATH, None
+                            CONF_THUMBNAIL_PATH, DEFAULT_THUMBNAIL_PATH
                         ),
                     ): cv.string,
                     vol.Optional(
