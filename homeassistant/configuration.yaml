@@ -44,6 +44,10 @@ shopping_list:
 
 http:
   base_url: !secret home_base_url
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.20.0.12
+    - 172.19.0.14
   #ssl_certificate: /ssl/fullchain.pem
   #ssl_key: /ssl/privkey.pem
 
@@ -71,6 +75,11 @@ glances:
 #  country_code: 48
 circadian_lighting:
   max_colortemp: 9000
+ecovacs:
+  username: !secret ecovacs_username
+  password: !secret ecovacs_password
+  country: pl
+  continent: eu
 ring:
   username: !secret ring_username
   password: !secret ring_password
