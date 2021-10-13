@@ -1734,13 +1734,23 @@
                         },
                         {
                             "aspect_ratio": "0%",
-                            "camera_image": "camera.living_room_cam",
+                            "camera_image": "camera.living_room",
                             "entities": [
-                                "switch.living_room_reolink_rlc_420",
-                                "switch.living_room_cam_ir_lights",
-                                "switch.living_room_cam_email",
-                                "switch.living_room_cam_ftp",
-                                "binary_sensor.living_room_cam_motion"
+                                {
+                                    "entity": "switch.living_room_cam_reolink_rlc_420"
+                                },
+                                {
+                                    "entity": "switch.living_room_ir_lights"
+                                },
+                                {
+                                    "entity": "switch.living_room_email"
+                                },
+                                {
+                                    "entity": "switch.living_room_ftp"
+                                },
+                                {
+                                    "entity": "binary_sensor.living_room_motion"
+                                }
                             ],
                             "title": "Living room cam",
                             "type": "picture-glance"
@@ -2056,13 +2066,13 @@
                         },
                         {
                             "aspect_ratio": "0%",
-                            "camera_image": "camera.hallway_entrance_cam",
+                            "camera_image": "camera.hallway",
                             "entities": [
                                 "switch.hallway_reolink_rlc_420",
-                                "switch.hallway_entrance_cam_ir_lights",
-                                "switch.hallway_entrance_cam_email",
-                                "switch.hallway_entrance_cam_ftp",
-                                "binary_sensor.hallway_entrance_cam_motion"
+                                "switch.hallway_ir_lights",
+                                "switch.hallway_email",
+                                "switch.hallway_ftp",
+                                "binary_sensor.hallway_motion"
                             ],
                             "title": "Hallway entrance",
                             "type": "picture-glance"
@@ -2285,6 +2295,67 @@
                                     "entity": "binary_sensor.db1_doorbell_alarm_schedules_enabled"
                                 }
                             ]
+                        },
+                        {
+                            "type": "custom:vacuum-card",
+                            "entity": "vacuum.frank",
+                            "stats": {
+                                "default": [
+                                    {
+                                        "attribute": "filter_left",
+                                        "unit": "hours",
+                                        "subtitle": "Filter"
+                                    },
+                                    {
+                                        "attribute": "side_brush_left",
+                                        "unit": "hours",
+                                        "subtitle": "Side brush"
+                                    },
+                                    {
+                                        "attribute": "main_brush_left",
+                                        "unit": "hours",
+                                        "subtitle": "Main brush"
+                                    },
+                                    {
+                                        "attribute": "sensor_dirty_left",
+                                        "unit": "hours",
+                                        "subtitle": "Sensors"
+                                    }
+                                ],
+                                "cleaning": [
+                                    {
+                                        "attribute": "cleaned_area",
+                                        "unit": "m2",
+                                        "subtitle": "Cleaning area"
+                                    },
+                                    {
+                                        "attribute": "cleaning_time",
+                                        "unit": "minutes",
+                                        "subtitle": "Cleaning time"
+                                    }
+                                ]
+                            },
+                            "actions": [
+                                {
+                                    "name": "Clean living room",
+                                    "service": "script.clean_living_room",
+                                    "icon": "mdi:sofa"
+                                },
+                                {
+                                    "name": "Clean bedroom",
+                                    "service": "script.clean_bedroom",
+                                    "icon": "mdi:bed-empty"
+                                },
+                                {
+                                    "name": "Clean kitchen",
+                                    "service": "script.clean_kitchen",
+                                    "icon": "mdi:silverware-fork-knife"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom:xiaomi-vacuum-card",
+                            "entity": "vacuum.frank"
                         }
                     ],
                     "icon": "mdi:transit-transfer",
