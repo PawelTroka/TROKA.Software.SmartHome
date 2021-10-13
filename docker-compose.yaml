@@ -229,7 +229,7 @@ services:
 
  # Home Assistant - Smart Home Hub
   homeassistant:
-    image: homeassistant/home-assistant:2021.6.6
+    image: homeassistant/home-assistant:latest
     container_name: homeassistant
     hostname: hass
     restart: always
@@ -629,7 +629,7 @@ services:
 # Sonarr - TV Shows management
 # Set url_base in sonarr settings if using PathPrefix
   sonarr:
-    image: "linuxserver/sonarr:preview"
+    image: "linuxserver/sonarr:latest"
     container_name: "sonarr"
     hostname: sonarr
     restart: unless-stopped
@@ -697,11 +697,11 @@ services:
       PHOTOPRISM_DATABASE_NAME: "photoprism"         # MariaDB database schema name
       PHOTOPRISM_DATABASE_USER: ${USER}              # MariaDB database user name
       PHOTOPRISM_DATABASE_PASSWORD: ${MYSQL_ROOT_PASSWORD} # MariaDB database user password
-      PHOTOPRISM_SITE_URL: "http://localhost:2342/"  # Public PhotoPrism URL
+      PHOTOPRISM_SITE_URL: "https://photos.${DOMAINNAME}"  # Public PhotoPrism URL
       PHOTOPRISM_SITE_TITLE: "TROKA.Software.SmartHome.Photos"
       PHOTOPRISM_SITE_CAPTION: "Thorough Research On Key Aspects"
       PHOTOPRISM_SITE_DESCRIPTION: ""
-      PHOTOPRISM_SITE_AUTHOR: ""
+      PHOTOPRISM_SITE_AUTHOR: "TROKA Software"
       PUID: ${PUID}
       PGID: ${PGID}
       TZ: ${TZ}
@@ -962,7 +962,7 @@ services:
     ports:
       - "3478:3478/udp" # STUN
       - "6789:6789/tcp" # Speed test
-      - "8182:8080/tcp" # Device/ controller communication
+      - "8080:8080/tcp" # Device/ controller communication
       - "8443:8443/tcp" # Controller GUI/API as seen in a web browser
       - "8880:8880/tcp" # HTTP portal redirection
       - "8843:8843/tcp" # HTTPS portal redirection
@@ -1038,12 +1038,12 @@ services:
 
 # Glances - System Information
   glances:
-    image: nicolargo/glances
+    image: nicolargo/glances:latest-full
     hostname: glances
     container_name: glances
     restart: unless-stopped
     pid: host
-    network_mode: host
+    #network_mode: host
     #networks:
       #- traefik_proxy
     ports:
@@ -1052,7 +1052,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock 
     environment:
-      - "GLANCES_OPT=-w --enable-plugin hddtemp"
+      - "GLANCES_OPT=-w"
     labels:
       - "traefik.enable=true"
       - "traefik.backend=glances"
