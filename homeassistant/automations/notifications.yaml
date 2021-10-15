@@ -37,12 +37,29 @@
 - alias: "Notify about started download"
   trigger:
     platform: event
-    event_type: transmission_downloaded_torrent
+    event_type: transmission_started_torrent
   action:
     - service: notify.level_note
       data:
         title: "Download started!"
         message: "{{trigger.event.data.name}} has just started downloading."
+
+- id: vacuum_notifications
+  alias: Vacuum Notifications
+  trigger:
+  - platform: state
+    entity_id: vacuum.frank
+  - platform: state
+    entity_id: vacuum.frank
+  condition:
+    condition: template
+    value_template: "{{ not (trigger.to_state.state == trigger.from_state.state) }}"
+  action:
+    - service: notify.level_info
+      data:
+        title: "Robot vacuum changed state!"
+        message: >-
+          "{{ trigger.to_state.name }} is {{ trigger.to_state.state }}"
 
 
 - alias: "Birth control pill reminder"
