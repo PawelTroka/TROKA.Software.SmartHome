@@ -8,6 +8,10 @@
   action:
     - service: script.turn_on
       entity_id: script.turn_off_everything
+    - service: notify.level_note
+      data:
+        message: Turned off everything because everyone left home
+        title: Everything turned off!
     - service: script.turn_on
       entity_id: script.start_vacuum
 
