@@ -6,8 +6,19 @@
       entity_id: group.all_persons
       to: 'not_home'
   action:
-    service: script.turn_on
-    entity_id: script.turn_off_everything
+    - service: script.turn_on
+      entity_id: script.turn_off_everything
+    - service: script.turn_on
+      entity_id: script.start_vacuum
+
+- alias: 'Turn off vacuum when someone gets home'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'home'
+  action:
+    - service: script.turn_on
+      entity_id: script.stop_vacuum
 
 - alias: 'Say welcome Pawel when Pawel is back home'
   trigger:
