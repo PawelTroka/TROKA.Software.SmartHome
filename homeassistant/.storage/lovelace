@@ -2298,7 +2298,7 @@
                         },
                         {
                             "type": "custom:vacuum-card",
-                            "entity": "vacuum.frank_2",
+                            "entity": "vacuum.frank",
                             "stats": {
                                 "default": [
                                     {
@@ -2354,26 +2354,47 @@
                             ]
                         },
                         {
-                            "type": "custom:xiaomi-vacuum-card",
-                            "entity": "vacuum.frank_2"
-                        },
-                        {
                             "type": "entities",
                             "entities": [
-                                "vacuum.frank",
-                                "vacuum.frank_2",
-                                "sensor.frank_brush",
-                                "sensor.frank_heap",
-                                "sensor.frank_last_clean_image",
-                                "sensor.frank_last_error",
-                                "binary_sensor.frank_mop_attached",
-                                "sensor.frank_sidebrush",
-                                "sensor.frank_stats_area",
-                                "sensor.frank_stats_cid",
-                                "sensor.frank_stats_start",
-                                "sensor.frank_stats_time",
-                                "sensor.frank_stats_type",
-                                "sensor.frank_water_level"
+                                {
+                                    "entity": "vacuum.frank"
+                                },
+                                {
+                                    "entity": "sensor.frank_brush"
+                                },
+                                {
+                                    "entity": "sensor.frank_heap"
+                                },
+                                {
+                                    "entity": "sensor.frank_last_clean_image"
+                                },
+                                {
+                                    "entity": "sensor.frank_last_error"
+                                },
+                                {
+                                    "entity": "binary_sensor.frank_mop_attached"
+                                },
+                                {
+                                    "entity": "sensor.frank_sidebrush"
+                                },
+                                {
+                                    "entity": "sensor.frank_stats_area"
+                                },
+                                {
+                                    "entity": "sensor.frank_stats_cid"
+                                },
+                                {
+                                    "entity": "sensor.frank_stats_start"
+                                },
+                                {
+                                    "entity": "sensor.frank_stats_time"
+                                },
+                                {
+                                    "entity": "sensor.frank_stats_type"
+                                },
+                                {
+                                    "entity": "sensor.frank_water_level"
+                                }
                             ]
                         },
                         {
