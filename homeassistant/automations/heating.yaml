@@ -1,71 +1,96 @@
-# - alias: 'Turn on heating when someone gets home'
-#   trigger:
-#     - platform: state
-#       entity_id: group.all_persons
-#       to: 'home'
-#   condition: and
-#   conditions:
-#     - condition: numeric_state
-#       entity_id: 'sensor.netatmo_outdoor_temperature'
-#       below: 15
-#     - condition: numeric_state
-#       entity_id: 'sensor.netatmo_indoor_temperature'
-#       below: 25
-#   action:
-#     service: script.turn_on
-#     entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
+- alias: 'Turn on heating when someone gets home'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - condition: numeric_state
+        entity_id: 'sensor.netatmo_outdoor_temperature'
+        below: 15
+      - condition: numeric_state
+        entity_id: 'sensor.netatmo_indoor_temperature'
+        below: 25
+  action:
+    - service: script.turn_on
+      entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
+    - service: notify.level_note
+      data:
+        message: Heating turned on because {{ trigger.to_state.name }} got home
+        title: Heating turned on!
 
 
-# - alias: 'Turn off heating when it gets too warm'
-#   trigger:
-#     - platform: numeric_state
-#       entity_id: 'sensor.netatmo_outdoor_temperature'
-#       above: 20
-#     - platform: numeric_state
-#       entity_id: 'sensor.netatmo_indoor_temperature'
-#       above: 25
-#   action:
-#     service: climate.turn_off
-#     entity_id: group.all_heating
+- alias: 'Turn off heating when it gets too warm'
+  trigger:
+    - platform: numeric_state
+      entity_id: 'sensor.netatmo_outdoor_temperature'
+      above: 20
+    - platform: numeric_state
+      entity_id: 'sensor.netatmo_indoor_temperature'
+      above: 25
+  action:
+    - service: climate.turn_off
+      entity_id: group.all_heating
+    - service: notify.level_note
+      data:
+        message: Heating turned off because it got too warm
+        title: Heating turned off!
 
-# - alias: 'Turn on heating when it gets too cold'
-#   trigger:
-#     - platform: numeric_state
-#       entity_id: 'sensor.netatmo_outdoor_temperature'
-#       below: 7
-#     - platform: numeric_state
-#       entity_id: 'sensor.netatmo_indoor_temperature'
-#       above: 20
-#   condition: state # at least 1 person is at home
-#   entity_id: group.all_persons
-#   state: 'home'
-#   action:
-#     service: script.turn_on
-#     entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
 
-# - alias: 'Turn off office heating when Pawel leaves home' # office is used exclusively by Pawel
-#   trigger:
-#     - platform: state
-#       entity_id: person.pawel
-#       to: 'not_home'
-#   action:
-#     service: climate.turn_off
-#     entity_id: climate.office
+- alias: 'Turn on heating when it gets too cold'
+  trigger:
+    - platform: numeric_state
+      entity_id: 'sensor.netatmo_outdoor_temperature'
+      below: 7
+    - platform: numeric_state
+      entity_id: 'sensor.netatmo_indoor_temperature'
+      above: 20
+  condition:
+    condition: state # at least 1 person is at home
+    entity_id: group.all_persons
+  state: 'home'
+  action:
+    - service: script.turn_on
+      entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
+    - service: notify.level_note
+      data:
+        message: Heating turned on because it got too cold
+        title: Heating turned on!
 
-# - alias: 'Turn on office heating when Pawel arrives home' # office is used exclusively by Pawel
-#   trigger:
-#     - platform: state
-#       entity_id: person.pawel
-#       to: 'home'
-#   condition: and
-#   conditions:
-#     - condition: numeric_state
-#       entity_id: 'sensor.netatmo_outdoor_temperature'
-#       below: 15
-#     - condition: numeric_state
-#       entity_id: 'sensor.netatmo_indoor_temperature'
-#       below: 25
-#   action:
-#     service: climate.turn_on
-#     entity_id: climate.office
+
+- alias: 'Turn off office heating when Pawel leaves home' # office is used exclusively by Pawel
+  trigger:
+    - platform: state
+      entity_id: person.pawel
+      to: 'not_home'
+  action:
+    - service: climate.turn_off
+      entity_id: climate.office
+    - service: notify.level_note
+      data:
+        message: Office heating turned off because Pawel left home
+        title: Office heating turned off!
+
+- alias: 'Turn on office heating when Pawel arrives home' # office is used exclusively by Pawel
+  trigger:
+    - platform: state
+      entity_id: person.pawel
+      to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - condition: numeric_state
+        entity_id: 'sensor.netatmo_outdoor_temperature'
+        below: 15
+      - condition: numeric_state
+        entity_id: 'sensor.netatmo_indoor_temperature'
+        below: 25
+  action:
+    - service: climate.turn_on
+      entity_id: climate.office
+    - service: notify.level_note
+      data:
+        message: Office heating turned on because Pawel arrive at home
+        title: Office heating turned on!
 
