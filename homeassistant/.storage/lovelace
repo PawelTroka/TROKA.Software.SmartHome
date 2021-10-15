@@ -1737,7 +1737,7 @@
                             "camera_image": "camera.living_room",
                             "entities": [
                                 {
-                                    "entity": "switch.living_room_cam_reolink_rlc_420"
+                                    "entity": "switch.living_room_cam_cam_reolink_rlc_420"
                                 },
                                 {
                                     "entity": "switch.living_room_ir_lights"
@@ -2298,7 +2298,7 @@
                         },
                         {
                             "type": "custom:vacuum-card",
-                            "entity": "vacuum.frank",
+                            "entity": "vacuum.frank_2",
                             "stats": {
                                 "default": [
                                     {
@@ -2355,7 +2355,30 @@
                         },
                         {
                             "type": "custom:xiaomi-vacuum-card",
-                            "entity": "vacuum.frank"
+                            "entity": "vacuum.frank_2"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "vacuum.frank",
+                                "vacuum.frank_2",
+                                "sensor.frank_brush",
+                                "sensor.frank_heap",
+                                "sensor.frank_last_clean_image",
+                                "sensor.frank_last_error",
+                                "binary_sensor.frank_mop_attached",
+                                "sensor.frank_sidebrush",
+                                "sensor.frank_stats_area",
+                                "sensor.frank_stats_cid",
+                                "sensor.frank_stats_start",
+                                "sensor.frank_stats_time",
+                                "sensor.frank_stats_type",
+                                "sensor.frank_water_level"
+                            ]
+                        },
+                        {
+                            "type": "picture-entity",
+                            "entity": "camera.frank_livemap"
                         }
                     ],
                     "icon": "mdi:transit-transfer",
