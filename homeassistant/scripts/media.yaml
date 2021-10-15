@@ -13,6 +13,31 @@ set_denon_receiver_to_sonos_input:
     - service: media_player.media_play
       entity_id: group.all_denon_receivers
 
+set_denon_receiver_to_game_input:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.turn_on_denon_receiver
+    - delay: '00:00:02' # turning on DENON is slow, let's give it some time
+    - service: media_player.select_source
+      entity_id: group.all_denon_receivers
+      data:
+        source: Game
+    - delay: '00:00:02' # turning on DENON is slow, let's give it some time
+    - service: media_player.media_play
+      entity_id: group.all_denon_receivers
+
+set_denon_receiver_to_media_player_input:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.turn_on_denon_receiver
+    - delay: '00:00:02' # turning on DENON is slow, let's give it some time
+    - service: media_player.select_source
+      entity_id: group.all_denon_receivers
+      data:
+        source: 'Media Player'
+    - delay: '00:00:02' # turning on DENON is slow, let's give it some time
+    - service: media_player.media_play
+      entity_id: group.all_denon_receivers
 
 turn_off_media_everywhere:
   sequence:
