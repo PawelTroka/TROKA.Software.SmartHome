@@ -49,7 +49,7 @@
   condition:
     condition: state # at least 1 person is at home
     entity_id: group.all_persons
-  state: 'home'
+    state: 'home'
   action:
     - service: script.turn_on
       entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
