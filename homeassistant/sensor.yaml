@@ -222,14 +222,16 @@
     - 'time_date'
     - 'time_utc'
     - 'beat'
-# Weather prediction
-- platform: yr
-- platform: coinmarketcap
 - platform: waqi
   token: !secret waqi_token
   locations:
     - gdansk
 - platform: whois
+  name: WhoIs fizyka.dk
   domain: fizyka.dk
 - platform: whois
+  name: WhoIs morenka.pl
+  domain: morenka.pl
+- platform: whois
+  hame: WhoIs troka.software
   domain: troka.software
