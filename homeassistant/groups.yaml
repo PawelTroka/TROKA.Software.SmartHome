@@ -116,6 +116,12 @@ all_living_room_tvs:
     - media_player.shield_cast
     - media_player.shield_android_tv
 
+all_living_room_tvs_except_casts:
+  entities:
+    - media_player.living_room_bravia_tv
+    - media_player.living_room_android_tv
+    - media_player.shield_android_tv
+
 all_bedroom_tvs:
   entities:
     - media_player.bedroom_tv_cast
