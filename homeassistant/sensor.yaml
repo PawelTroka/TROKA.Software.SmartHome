@@ -233,5 +233,5 @@
   name: WhoIs morenka.pl
   domain: morenka.pl
 - platform: whois
-  hame: WhoIs troka.software
+  name: WhoIs troka.software
   domain: troka.software
