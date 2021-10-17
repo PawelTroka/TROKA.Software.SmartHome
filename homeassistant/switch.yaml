@@ -23,28 +23,11 @@
       friendly_name: Watch a movie
       value_template: "{{ is_state_attr('media_player.shield_android_tv', 'source', 'Plex') }}"
       turn_on:
-        - service: switch.turn_on
-          target:
-            entity_id: switch.harmonyhub_shield_tv
         - service: script.turn_on
-          entity_id: script.turn_on_living_room_tv
-        - service: script.turn_on
-          entity_id: script.set_denon_receiver_to_media_player_input
-        - service: media_player.select_source
-          target:
-            entity_id: media_player.shield_android_tv
-          data:
-            source: "Plex"
+          entity_id: script.watch_a_movie
       turn_off:
-        - service: remote.turn_off
-          data:
-            entity_id: remote.harmonyhub
         - service: script.turn_on
-          entity_id: script.turn_off_living_room_tv
-        - service: script.turn_on
-          entity_id: script.turn_off_denon_receiver
-        - service: media_player.turn_off
-          entity_id: media_player.xboxone
+          entity_id: script.turn_off_video_media_living_room
       icon_template: >-
         {% if is_state_attr('media_player.shield_android_tv', 'source', 'Plex') %}
           mdi:filmstrip
@@ -57,52 +40,21 @@
       value_template: "{{ is_state_attr('media_player.shield_android_tv', 'source', 'Smart YouTube TV') }}"
       turn_on:
         - service: script.turn_on
-          entity_id: script.turn_on_living_room_tv
-        - service: script.turn_on
-          entity_id: script.set_denon_receiver_to_media_player_input
-        - service: switch.turn_on
-          target:
-            entity_id: switch.harmonyhub_shield_tv
-        - service: media_player.select_source
-          target:
-            entity_id: media_player.shield_android_tv
-          data:
-            source: "Smart YouTube TV"
+          entity_id: script.watch_youtube
       turn_off:
-        - service: remote.turn_off
-          data:
-            entity_id: remote.harmonyhub
         - service: script.turn_on
-          entity_id: script.turn_off_living_room_tv
-        - service: script.turn_on
-          entity_id: script.turn_off_denon_receiver
-        - service: media_player.turn_off
-          entity_id: media_player.xboxone
+          entity_id: script.turn_off_video_media_living_room
       icon_template: mdi:youtube-tv
 
     play_game:
       friendly_name: Play a game
       value_template: "{{ is_state_attr('remote.harmonyhub', 'current_activity', 'Play a Game') }}"
       turn_on:
-        - service: switch.turn_on
-          target:
-            entity_id: switch.harmonyhub_play_a_game
         - service: script.turn_on
-          entity_id: script.turn_on_living_room_tv
-        - service: script.turn_on
-          entity_id: script.set_denon_receiver_to_game_input
-        - service: media_player.turn_on
-          entity_id: media_player.xboxone
+          entity_id: script.play_a_game
       turn_off:
-        - service: remote.turn_off
-          data:
-            entity_id: remote.harmonyhub
         - service: script.turn_on
-          entity_id: script.turn_off_living_room_tv
-        - service: script.turn_on
-          entity_id: script.turn_off_denon_receiver
-        - service: media_player.turn_off
-          entity_id: media_player.xboxone
+          entity_id: script.turn_off_video_media_living_room
       icon_template: >-
         {% if is_state_attr('remote.harmonyhub', 'current_activity', 'Play a Game') %}
           mdi:microsoft-xbox-controller
@@ -115,31 +67,11 @@
       friendly_name: Watch Netflix
       value_template: "{{ is_state_attr('media_player.xboxone', 'media_content_id', '9WZDNCRFJ3TJ') }}"
       turn_on:
-        - service: switch.turn_on
-          target:
-            entity_id: switch.harmonyhub_play_a_game
         - service: script.turn_on
-          entity_id: script.turn_on_living_room_tv
-        - service: script.turn_on
-          entity_id: script.set_denon_receiver_to_game_input
-        - service: media_player.turn_on
-          entity_id: media_player.xboxone
-        - service: media_player.play_media
-          target:
-            entity_id: media_player.xboxone
-          data:
-            media_content_type: ''
-            media_content_id: 9WZDNCRFJ3TJ
+          entity_id: script.watch_netflix
       turn_off:
-        - service: remote.turn_off
-          data:
-            entity_id: remote.harmonyhub
         - service: script.turn_on
-          entity_id: script.turn_off_living_room_tv
-        - service: script.turn_on
-          entity_id: script.turn_off_denon_receiver
-        - service: media_player.turn_off
-          entity_id: media_player.xboxone
+          entity_id: script.turn_off_video_media_living_room
       icon_template: mdi:netflix
 
 
