@@ -6,7 +6,7 @@
       actions:
         - service: notify.level_note
           data:
-            message: Devices {{sensors} are low on battery. Please change batteries!
+            message: Devices {{sensors}} are low on battery. Please change batteries!
             title: Low battery alert!
       time: '22:00:00'
 
