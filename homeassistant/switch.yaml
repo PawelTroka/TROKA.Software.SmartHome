@@ -76,6 +76,81 @@
 
 
 
+    dolby_atmos_music:
+      friendly_name: Dolby Atmos Music
+      value_template: "{{ is_state_attr('media_player.shield_android_tv', 'source', 'Tidal') }}"
+      turn_on:
+        - service: script.turn_on
+          entity_id: script.dolby_atmos_music
+      turn_off:
+        - service: script.turn_on
+          entity_id: script.turn_off_video_media_living_room
+      icon_template: mdi:dolby
+
+    shower_music:
+      friendly_name: Shower music
+      value_template: "{{ is_state('media_player.bathroom', 'playing') and (state_attr('media_player.bathroom', 'sonos_group') | count < 2) }}"
+      turn_on:
+        - service: script.turn_on
+          entity_id: script.shower_music
+      turn_off:
+        - service: media_player.media_pause
+          entity_id: media_player.bathroom
+      icon_template: mdi:shower-head
+
+
+    party_music:
+      friendly_name: Party music
+      value_template: "{{ is_state('media_player.living_room', 'playing') and (state_attr('media_player.denon_avc_x6500h_avr', 'volume_level') > 0.50) }}"
+      turn_on:
+        - service: script.turn_on
+          entity_id: script.party_music
+      turn_off:
+        - service: media_player.media_pause
+          entity_id: media_player.living_room
+        - service: script.turn_on
+          entity_id: script.turn_off_denon_receiver
+      icon_template: mdi:party-popper
+
+
+    ambient_music:
+      friendly_name: Ambient music
+      value_template: "{{ is_state('media_player.bathroom', 'playing') and (state_attr('media_player.bathroom', 'sonos_group') | count > 2) }}"
+      turn_on:
+        - service: script.turn_on
+          entity_id: script.ambient_music
+      turn_off:
+        - service: media_player.media_pause
+          entity_id: media_player.bathroom
+      icon_template: mdi:music-note-bluetooth
+
+
+    work_music:
+      friendly_name: Work music
+      value_template: "{{ is_state('media_player.bathroom', 'playing') and (state_attr('media_player.office', 'sonos_group') | count < 2) }}"
+      turn_on:
+        - service: script.turn_on
+          entity_id: script.work_music
+      turn_off:
+        - service: media_player.media_pause
+          entity_id: media_player.bathroom
+      icon_template: mdi:briefcase
+
+
+    ambient_living_room_music:
+      friendly_name: Ambient living room music
+      value_template: "{{ is_state('media_player.living_room', 'playing') and (state_attr('media_player.denon_avc_x6500h_avr', 'volume_level') < 0.50 }}"
+      turn_on:
+        - service: script.turn_on
+          entity_id: script.ambient_living_room_music
+      turn_off:
+        - service: media_player.media_pause
+          entity_id: media_player.living_room
+        - service: script.turn_on
+          entity_id: script.turn_off_denon_receiver
+      icon_template: mdi:surround-sound
+
+
     heat_living_room:
       friendly_name: Heat living room
       entity_id: climate.living_room
