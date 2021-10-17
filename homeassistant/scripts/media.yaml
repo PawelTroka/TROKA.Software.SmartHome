@@ -2,42 +2,60 @@
 
 set_denon_receiver_to_sonos_input:
   sequence:
-    - service: script.turn_on
-      entity_id: script.turn_on_denon_receiver
-    - delay: '00:00:02' # turning on DENON is slow, let's give it some time
     - service: media_player.select_source
       entity_id: group.all_denon_receivers
       data:
         source: Sonos
-    - delay: '00:00:02' # turning on DENON is slow, let's give it some time
+    - service: script.turn_on
+      entity_id: script.turn_on_denon_receiver
+    - service: media_player.select_source
+      entity_id: group.all_denon_receivers
+      data:
+        source: Sonos
     - service: media_player.media_play
       entity_id: group.all_denon_receivers
+    - service: media_player.select_source
+      entity_id: group.all_denon_receivers
+      data:
+        source: Sonos
 
 set_denon_receiver_to_game_input:
   sequence:
-    - service: script.turn_on
-      entity_id: script.turn_on_denon_receiver
-    - delay: '00:00:02' # turning on DENON is slow, let's give it some time
     - service: media_player.select_source
       entity_id: group.all_denon_receivers
       data:
         source: Game
-    - delay: '00:00:02' # turning on DENON is slow, let's give it some time
+    - service: script.turn_on
+      entity_id: script.turn_on_denon_receiver
+    - service: media_player.select_source
+      entity_id: group.all_denon_receivers
+      data:
+        source: Game
     - service: media_player.media_play
       entity_id: group.all_denon_receivers
+    - service: media_player.select_source
+      entity_id: group.all_denon_receivers
+      data:
+        source: Game
 
 set_denon_receiver_to_media_player_input:
   sequence:
-    - service: script.turn_on
-      entity_id: script.turn_on_denon_receiver
-    - delay: '00:00:02' # turning on DENON is slow, let's give it some time
     - service: media_player.select_source
       entity_id: group.all_denon_receivers
       data:
         source: 'Media Player'
-    - delay: '00:00:02' # turning on DENON is slow, let's give it some time
+    - service: script.turn_on
+      entity_id: script.turn_on_denon_receiver
+    - service: media_player.select_source
+      entity_id: group.all_denon_receivers
+      data:
+        source: 'Media Player'
     - service: media_player.media_play
       entity_id: group.all_denon_receivers
+    - service: media_player.select_source
+      entity_id: group.all_denon_receivers
+      data:
+        source: 'Media Player'
 
 turn_off_media_everywhere:
   sequence:
@@ -88,7 +106,7 @@ turn_on_bedroom_tv:
 turn_on_living_room_tv:
   sequence:
     - service: media_player.turn_on
-      entity_id: group.all_living_room_tvs
+      entity_id: group.all_living_room_tvs_except_casts
 
 turn_on_denon_receiver:
   sequence:
