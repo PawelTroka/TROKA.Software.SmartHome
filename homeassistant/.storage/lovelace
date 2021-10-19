@@ -297,7 +297,53 @@
                         {
                             "cards": [
                                 {
+                                    "type": "entities",
+                                    "entities": [],
+                                    "header": {
+                                        "entities": [
+                                            {
+                                                "entity": "switch.ambient_music",
+                                                "name": "Ambient"
+                                            },
+                                            {
+                                                "entity": "switch.party_music",
+                                                "name": "Party"
+                                            },
+                                            {
+                                                "entity": "switch.shower_music",
+                                                "name": "Shower"
+                                            },
+                                            {
+                                                "entity": "switch.dolby_atmos_music",
+                                                "name": "Atmos"
+                                            }
+                                        ],
+                                        "type": "buttons"
+                                    }
+                                },
+                                {
                                     "artwork": "cover",
+                                    "header": {
+                                        "entities": [
+                                            {
+                                                "entity": "switch.watch_movie",
+                                                "name": "Movie"
+                                            },
+                                            {
+                                                "entity": "switch.watch_youtube",
+                                                "name": "YouTube"
+                                            },
+                                            {
+                                                "entity": "switch.watch_netflix",
+                                                "name": "Netflix"
+                                            },
+                                            {
+                                                "entity": "switch.play_game",
+                                                "name": "Game"
+                                            }
+                                        ],
+                                        "type": "buttons"
+                                    },
                                     "card": null,
                                     "entity": "media_player.denon_avc_x6500h_avr",
                                     "group": true,
@@ -1006,6 +1052,23 @@
                                         }
                                     ],
                                     "type": "conditional"
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [],
+                                    "footer": {
+                                        "entities": [
+                                            {
+                                                "entity": "switch.ambient_living_room_music",
+                                                "name": "Ambient living room"
+                                            },
+                                            {
+                                                "entity": "switch.work_music",
+                                                "name": "Work"
+                                            }
+                                        ],
+                                        "type": "buttons"
+                                    }
                                 }
                             ],
                             "show_header_toggle": false,
