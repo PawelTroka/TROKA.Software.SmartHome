@@ -97,6 +97,13 @@ all_denon_receivers:
     - media_player.denon_avc_x6500h_heos
     - media_player.denon_avc_x6500h_alexa
 
+
+all_reliable_denon_receivers:
+  entities:
+    - media_player.denon_avc_x6500h
+    - media_player.denon_avc_x6500h_avr
+
+
 all_tvs:
   entities:
     - media_player.living_room_tv_cast
@@ -120,7 +127,6 @@ all_living_room_tvs_except_casts:
   entities:
     - media_player.living_room_bravia_tv
     - media_player.living_room_android_tv
-    - media_player.shield_android_tv
 
 all_bedroom_tvs:
   entities:

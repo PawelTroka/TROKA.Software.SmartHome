@@ -36,6 +36,8 @@ watch_youtube:
       entity_id: script.set_denon_receiver_to_media_player_input
     - service: script.turn_on
       entity_id: script.turn_on_living_room_tv
+    - service: media_player.turn_on
+      entity_id: media_player.shield_android_tv
     - service: switch.turn_on
       target:
         entity_id: switch.harmonyhub_shield_tv
@@ -52,9 +54,13 @@ watch_a_movie:
       entity_id: script.set_denon_receiver_to_media_player_input
     - service: script.turn_on
       entity_id: script.turn_on_living_room_tv
+    - service: media_player.turn_on
+      entity_id: media_player.shield_android_tv
     - service: switch.turn_on
       target:
         entity_id: switch.harmonyhub_shield_tv
+    - service: media_player.turn_on
+      entity_id: media_player.shield_plex
     - service: media_player.select_source
       target:
         entity_id: media_player.shield_android_tv

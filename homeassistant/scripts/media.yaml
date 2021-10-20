@@ -3,57 +3,51 @@
 set_denon_receiver_to_sonos_input:
   sequence:
     - service: media_player.select_source
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
       data:
         source: Sonos
-    - service: script.turn_on
-      entity_id: script.turn_on_denon_receiver
     - service: media_player.select_source
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
       data:
         source: Sonos
     - service: media_player.media_play
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
     - service: media_player.select_source
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
       data:
         source: Sonos
 
 set_denon_receiver_to_game_input:
   sequence:
     - service: media_player.select_source
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
       data:
         source: Game
-    - service: script.turn_on
-      entity_id: script.turn_on_denon_receiver
     - service: media_player.select_source
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
       data:
         source: Game
     - service: media_player.media_play
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
     - service: media_player.select_source
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
       data:
         source: Game
 
 set_denon_receiver_to_media_player_input:
   sequence:
     - service: media_player.select_source
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
       data:
         source: 'Media Player'
-    - service: script.turn_on
-      entity_id: script.turn_on_denon_receiver
     - service: media_player.select_source
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
       data:
         source: 'Media Player'
     - service: media_player.media_play
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
     - service: media_player.select_source
-      entity_id: group.all_denon_receivers
+      entity_id: group.all_reliable_denon_receivers
       data:
         source: 'Media Player'
 
