@@ -51,7 +51,7 @@
 
     play_game:
       friendly_name: Play a game
-      value_template: "{{ is_state_attr('remote.harmonyhub', 'current_activity', 'Play a Game') }}"
+      value_template: "{{ is_state_attr('remote.harmonyhub', 'current_activity', 'Play a Game') and not is_state_attr('media_player.xboxone', 'media_title', 'Netflix') }}"
       turn_on:
         - service: script.turn_on
           entity_id: script.play_a_game
@@ -68,7 +68,7 @@
 
     watch_netflix:
       friendly_name: Watch Netflix
-      value_template: "{{ is_state_attr('media_player.xboxone', 'media_content_id', '9WZDNCRFJ3TJ') }}"
+      value_template: "{{ is_state_attr('media_player.xboxone', 'media_title', 'Netflix') }}"
       turn_on:
         - service: script.turn_on
           entity_id: script.watch_netflix
