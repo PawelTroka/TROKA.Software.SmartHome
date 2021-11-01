@@ -13,9 +13,8 @@ watch_netflix:
       target:
         entity_id: media_player.xboxone
       data:
-        media_content_type: ''
+        media_content_type: 'app'
         media_content_id: 9WZDNCRFJ3TJ
-
 
 play_a_game:
   sequence:
@@ -28,6 +27,35 @@ play_a_game:
       entity_id: script.turn_on_living_room_tv
     - service: media_player.turn_on
       entity_id: media_player.xboxone
+    - service: media_player.play_media
+      target:
+        entity_id: media_player.xboxone
+      data:
+        media_content_type: 'game'
+        media_content_id: "{{ ['BQ9C40MT0WWK', '9PJGM0T0827V', '9N5W8W1WW9J9', '9N8KR1GM6V1X', 'BZM82SL2TP6V', 'C19N0723PHFL', 'BQNG40GVNR9K', 'C125W9BG2K0V', 'C19N0723PHFL', 'BRVK4W7RVCXR', 'BPCN22ZVT05C', 'BWTTW53M5B98', 'BVQ3V30ZXVT5', 'C0GWTPD0S8S1', 'C3HQKX3B35PD', 'BQN4N3CGBV1N'] | random }}"
+
+# BQ9C40MT0WWK #KnightSquad
+# 9N8KR1GM6V1X #KnightSquad 2
+# 9PJGM0T0827V #Dirt5
+# 9N5W8W1WW9J9 #Beach Buggy Racing 2
+# 9PP2NCZ72C79 #Overcooked! All You Can Eat #addLater
+# BQRB60PW2SDL #Crash Team Bandicoot
+# BZM82SL2TP6V #Nine Parchments
+# BQNG40GVNR9K #Trine 4
+# C2KDNLT2H7DM #Gears 5 #addLater
+# C125W9BG2K0V #Rocket League
+# C19N0723PHFL #Call of Duty: Black Ops 4
+# C0GWTPD0S8S1 #STAR WARS Battlefront II
+# BRVK4W7RVCXR #Shadow of the Tomb Raider
+# BPCN22ZVT05C #Rise of the Tomb Raider
+# BWTTW53M5B98 #Battlefield 1
+# BVQ3V30ZXVT5 #Tom Clancy's The Division® 2
+# 9PNQKHFLD2WQ #Forza Horizon 4
+# BPV56ZX2B8PJ #Star Wars Battlefront II
+# 9PLMGFWCFZ9G #Super Lucky's Tale #addLater
+# C3HQKX3B35PD #For Honor
+# BQN4N3CGBV1N #Lovers in a Dangerous Spacetime
+# C1TBTQBVJMFL #Metro Exodus #addLater
 
 
 watch_youtube:
