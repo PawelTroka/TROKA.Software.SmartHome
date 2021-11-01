@@ -1,0 +1,87 @@
+# Room corridor 0 #hallway
+# Room laundry 2 #toilet
+# Room study 3 #office
+# Room bedroom 5
+# Room living room 6
+# Room kitchen 7
+# Room bathroom 8
+
+
+clean_hallway:
+  sequence:
+    - service: vacuum.send_command
+      target:
+        entity_id: vacuum.frank
+      data:
+        command: spot_area
+        params:
+          rooms: 0
+          cleanings: 2
+
+clean_toilet:
+  sequence:
+    - service: vacuum.send_command
+      target:
+        entity_id: vacuum.frank
+      data:
+        command: spot_area
+        params:
+          rooms: 2
+          cleanings: 3
+
+clean_office:
+  sequence:
+    - service: vacuum.send_command
+      target:
+        entity_id: vacuum.frank
+      data:
+        command: spot_area
+        params:
+          rooms: 3
+          cleanings: 1
+
+clean_bedroom:
+  sequence:
+    - service: vacuum.send_command
+      target:
+        entity_id: vacuum.frank
+      data:
+        command: spot_area
+        params:
+          rooms: 5
+          cleanings: 2
+
+clean_living_room:
+  sequence:
+    - service: vacuum.send_command
+      target:
+        entity_id: vacuum.frank
+      data:
+        command: spot_area
+        params:
+          rooms: 6
+          cleanings: 1
+
+
+
+clean_kitchen:
+  sequence:
+    - service: vacuum.send_command
+      target:
+        entity_id: vacuum.frank
+      data:
+        command: spot_area
+        params:
+          rooms: 7
+          cleanings: 2
+
+clean_bathroom:
+  sequence:
+    - service: vacuum.send_command
+      target:
+        entity_id: vacuum.frank
+      data:
+        command: spot_area
+        params:
+          rooms: 8
+          cleanings: 2
