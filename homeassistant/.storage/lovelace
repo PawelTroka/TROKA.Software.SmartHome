@@ -2400,9 +2400,14 @@
                             },
                             "actions": [
                                 {
-                                    "name": "Clean living room",
-                                    "service": "script.clean_living_room",
-                                    "icon": "mdi:sofa"
+                                    "name": "Clean hallway",
+                                    "service": "script.clean_hallway",
+                                    "icon": "mdi:door-closed"
+                                },
+                                {
+                                    "name": "Clean kitchen",
+                                    "service": "script.clean_kitchen",
+                                    "icon": "mdi:silverware-fork-knife"
                                 },
                                 {
                                     "name": "Clean bedroom",
@@ -2410,9 +2415,24 @@
                                     "icon": "mdi:bed-empty"
                                 },
                                 {
-                                    "name": "Clean kitchen",
-                                    "service": "script.clean_kitchen",
-                                    "icon": "mdi:silverware-fork-knife"
+                                    "name": "Clean toilet",
+                                    "service": "script.clean_toilet",
+                                    "icon": "mdi:toilet"
+                                },
+                                {
+                                    "name": "Clean bathroom",
+                                    "service": "script.clean_bathroom",
+                                    "icon": "mdi:shower"
+                                },
+                                {
+                                    "name": "Clean living room",
+                                    "service": "script.clean_living_room",
+                                    "icon": "mdi:sofa"
+                                },
+                                {
+                                    "name": "Clean office",
+                                    "service": "script.clean_office",
+                                    "icon": "mdi:chair-rolling"
                                 }
                             ]
                         },

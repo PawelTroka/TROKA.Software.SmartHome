@@ -80,6 +80,10 @@ class ReolinkBase:
         else:
             self._use_https = config[CONF_USE_HTTPS]
 
+        if config[CONF_PORT] == 80 and self._use_https:
+            _LOGGER.warning("Port 80 is used, USE_HTTPS set back to False")
+            self._use_https = False
+
         if CONF_TIMEOUT not in options:
             self._timeout = DEFAULT_TIMEOUT
         else:
@@ -423,6 +427,8 @@ class ReolinkPush:
 
 async def handle_webhook(hass, webhook_id, request):
     """Handle incoming webhook from Reolink for inbound messages and calls."""
+
+    _LOGGER.debug("Webhook called")
 
     if not request.body_exists:
         _LOGGER.debug("Webhook triggered without payload")
