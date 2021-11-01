@@ -81,7 +81,7 @@
 
     dolby_atmos_music:
       friendly_name: Dolby Atmos Music
-      value_template: "{{ is_state_attr('media_player.shield_android_tv', 'source', 'Tidal') }}"
+      value_template: "{{ is_state_attr('media_player.shield_android_tv', 'source', 'com.aspiro.tidal') }}"
       turn_on:
         - service: script.turn_on
           entity_id: script.dolby_atmos_music
