@@ -1,12 +1,12 @@
 dolby_atmos_music:
   sequence:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.harmonyhub_shield_tv
     - service: script.turn_on
       entity_id: script.set_denon_receiver_to_media_player_input
     - service: script.turn_on
       entity_id: script.turn_on_living_room_tv
-    - service: switch.turn_on
-      target:
-        entity_id: switch.harmonyhub_shield_tv
     - service: media_player.select_source
       target:
         entity_id: media_player.shield_android_tv
@@ -57,7 +57,10 @@ party_music:
       target:
         entity_id: group.all_denon_receivers
       data:
-        volume_level: 0.55
+        volume_level: 0.65
+    - service: sonos.unjoin
+      target:
+        entity_id: [media_player.living_room, media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
     - service: sonos.join
       data:
         master: media_player.living_room
@@ -96,7 +99,7 @@ party_music:
       target:
         entity_id: group.all_denon_receivers
       data:
-        volume_level: 0.55
+        volume_level: 0.65
     - service: media_player.media_play
       target:
         entity_id: media_player.living_room
@@ -112,6 +115,9 @@ ambient_living_room_music:
         entity_id: group.all_denon_receivers
       data:
         volume_level: 0.35
+    - service: sonos.unjoin
+      target:
+        entity_id: [media_player.living_room, media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
     - service: sonos.join
       data:
         master: media_player.living_room
@@ -158,6 +164,9 @@ ambient_living_room_music:
 
 ambient_music:
   sequence:
+    - service: sonos.unjoin
+      target:
+        entity_id: [media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
     - service: sonos.join
       data:
         master: media_player.bathroom
@@ -194,6 +203,9 @@ ambient_music:
 
 work_music:
   sequence:
+    - service: sonos.unjoin
+      target:
+        entity_id: [media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.bedroom]
     - service: sonos.join
       data:
         master: media_player.bathroom

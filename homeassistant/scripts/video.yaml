@@ -1,12 +1,12 @@
 watch_netflix:
   sequence:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.harmonyhub_play_a_game
     - service: script.turn_on
       entity_id: script.set_denon_receiver_to_game_input
     - service: script.turn_on
       entity_id: script.turn_on_living_room_tv
-    - service: switch.turn_on
-      target:
-        entity_id: switch.harmonyhub_play_a_game
     - service: media_player.turn_on
       entity_id: media_player.xboxone
     - service: media_player.play_media
@@ -19,28 +19,28 @@ watch_netflix:
 
 play_a_game:
   sequence:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.harmonyhub_play_a_game
     - service: script.turn_on
       entity_id: script.set_denon_receiver_to_game_input
     - service: script.turn_on
       entity_id: script.turn_on_living_room_tv
-    - service: switch.turn_on
-      target:
-        entity_id: switch.harmonyhub_play_a_game
     - service: media_player.turn_on
       entity_id: media_player.xboxone
 
 
 watch_youtube:
   sequence:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.harmonyhub_shield_tv
     - service: script.turn_on
       entity_id: script.set_denon_receiver_to_media_player_input
     - service: script.turn_on
       entity_id: script.turn_on_living_room_tv
     - service: media_player.turn_on
       entity_id: media_player.shield_android_tv
-    - service: switch.turn_on
-      target:
-        entity_id: switch.harmonyhub_shield_tv
     - service: media_player.select_source
       target:
         entity_id: media_player.shield_android_tv
@@ -50,15 +50,15 @@ watch_youtube:
 
 watch_a_movie:
   sequence:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.harmonyhub_shield_tv
     - service: script.turn_on
       entity_id: script.set_denon_receiver_to_media_player_input
     - service: script.turn_on
       entity_id: script.turn_on_living_room_tv
     - service: media_player.turn_on
       entity_id: media_player.shield_android_tv
-    - service: switch.turn_on
-      target:
-        entity_id: switch.harmonyhub_shield_tv
     - service: media_player.turn_on
       entity_id: media_player.shield_plex
     - service: media_player.select_source
