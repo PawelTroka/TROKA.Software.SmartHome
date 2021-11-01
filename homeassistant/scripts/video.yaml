@@ -45,7 +45,7 @@ watch_youtube:
       target:
         entity_id: media_player.shield_android_tv
       data:
-        source: "Smart YouTube TV"
+        source: "com.teamsmart.videomanager.tv"
 
 
 watch_a_movie:
