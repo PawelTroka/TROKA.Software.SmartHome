@@ -1,0 +1,89 @@
+- alias: Watch movie webhook
+  trigger:
+    - platform: webhook
+      webhook_id: "watch_movie"
+  action:
+  - service: switch.toggle
+    data:
+      entity_id: switch.watch_movie
+
+- alias: Watch YouTube webhook
+  trigger:
+    - platform: webhook
+      webhook_id: "watch_youtube"
+  action:
+  - service: switch.toggle
+    data:
+      entity_id: switch.watch_youtube
+
+- alias: Play game webhook
+  trigger:
+    - platform: webhook
+      webhook_id: "play_game"
+  action:
+  - service: switch.toggle
+    data:
+      entity_id: switch.play_game
+
+- alias: Watch Netflix webhook
+  trigger:
+    - platform: webhook
+      webhook_id: "watch_netflix"
+  action:
+  - service: switch.toggle
+    data:
+      entity_id: switch.watch_netflix
+
+- alias: Dolby atmos webhook
+  trigger:
+    - platform: webhook
+      webhook_id: "dolby_atmos_music"
+  action:
+  - service: switch.toggle
+    data:
+      entity_id: switch.dolby_atmos_music
+
+- alias: Shower music webhook
+  trigger:
+    - platform: webhook
+      webhook_id: "shower_music"
+  action:
+  - service: switch.toggle
+    data:
+      entity_id: switch.shower_music
+
+- alias: Party music webhook
+  trigger:
+    - platform: webhook
+      webhook_id: "party_music"
+  action:
+  - service: switch.toggle
+    data:
+      entity_id: switch.party_music
+
+- alias: Ambient music webhook
+  trigger:
+    - platform: webhook
+      webhook_id: "ambient_music"
+  action:
+  - service: switch.toggle
+    data:
+      entity_id: switch.ambient_music
+
+- alias: Work music webhook
+  trigger:
+    - platform: webhook
+      webhook_id: "work_music"
+  action:
+  - service: switch.toggle
+    data:
+      entity_id: switch.work_music
+
+- alias: Ambient living room music
+  trigger:
+    - platform: webhook
+      webhook_id: "ambient_living_room_music"
+  action:
+  - service: switch.toggle
+    data:
+      entity_id: switch.ambient_living_room_music
