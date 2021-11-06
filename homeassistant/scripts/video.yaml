@@ -109,8 +109,4 @@ turn_off_video_media_living_room:
     - service: script.turn_on
       entity_id: script.turn_off_denon_receiver
     - service: media_player.turn_off
-      entity_id: media_player.shield_plex
-    - service: media_player.turn_off
-      entity_id: media_player.living_room_kodi
-    - service: media_player.turn_off
       entity_id: media_player.xboxone
