@@ -1,2 +1,15 @@
 - platform: openweathermap
   api_key: !secret openweathermap_api_key
+- platform: template
+  name: "Netatmo Weather Station"
+  condition_template: "{{ states('weather.accuweather') }}"
+  temperature_template: "{{ states('sensor.netatmo_outdoor_temperature') | float }}"
+  humidity_template: "{{ states('sensor.netatmo_outdoor_humidity') | float }}"
+  attribution_template: "Netatmo Personal Weather Station + AccuWeather data"
+  pressure_template: "{{ states('sensor.netatmo_indoor_pressure') | float }}"
+  wind_speed_template: "{{ states('sensor.netatmo_outdoor_anemometer_strength') | float }}"
+  wind_bearing_template: "{{ states('sensor.netatmo_outdoor_anemometer_angle') }}"
+  ozone_template: "{{ state_attr('weather.accuweather', 'ozone') | float }}"
+  visibility_template: "{{ state_attr('weather.accuweather', 'visibility') }}"
+  forecast_template: "{{ state_attr('weather.accuweather', 'forecast') }}"
+
