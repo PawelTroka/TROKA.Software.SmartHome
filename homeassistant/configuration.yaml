@@ -47,6 +47,7 @@ http:
   use_x_forwarded_for: true
   trusted_proxies:
     - 172.20.0.12
+    - 172.20.0.16
     - 172.19.0.14
   #ssl_certificate: /ssl/fullchain.pem
   #ssl_key: /ssl/privkey.pem
