@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace",
     "data": {
         "config": {
@@ -45,1193 +46,1311 @@
                     "badges": [],
                     "cards": [
                         {
-                            "entities": [
+                            "type": "vertical-stack",
+                            "cards": [
                                 {
-                                    "entity": "light.living_room_lights",
-                                    "type": "custom:slider-entity-row",
-                                    "toggle": true
+                                    "type": "entities",
+                                    "state_color": true,
+                                    "title": "Lights",
+                                    "entities": [
+                                        {
+                                            "entity": "light.living_room_lights",
+                                            "type": "custom:slider-entity-row",
+                                            "toggle": true
+                                        },
+                                        {
+                                            "entity": "light.kitchen_lights",
+                                            "type": "custom:slider-entity-row",
+                                            "toggle": true
+                                        },
+                                        {
+                                            "entity": "light.hallway_lights",
+                                            "type": "custom:slider-entity-row",
+                                            "toggle": true
+                                        },
+                                        {
+                                            "entity": "light.bathroom_lights",
+                                            "type": "custom:slider-entity-row",
+                                            "toggle": true
+                                        },
+                                        {
+                                            "entity": "light.toilet_lights",
+                                            "type": "custom:slider-entity-row",
+                                            "toggle": true
+                                        },
+                                        {
+                                            "entity": "light.bedroom_lights",
+                                            "type": "custom:slider-entity-row",
+                                            "toggle": true
+                                        },
+                                        {
+                                            "entity": "light.office_lights",
+                                            "type": "custom:slider-entity-row",
+                                            "toggle": true
+                                        },
+                                        {
+                                            "type": "custom:paper-buttons-row",
+                                            "buttons": [
+                                                {
+                                                    "entity": "scene.default",
+                                                    "name": false,
+                                                    "layout": "icon_name",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "scene.turn_on",
+                                                        "service_data": {
+                                                            "entity_id": "scene.default"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "scene.ambient",
+                                                    "name": false,
+                                                    "layout": "icon_name",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "scene.turn_on",
+                                                        "service_data": {
+                                                            "entity_id": "scene.ambient"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "scene.movie_dinner",
+                                                    "name": false,
+                                                    "layout": "icon_name",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "scene.turn_on",
+                                                        "service_data": {
+                                                            "entity_id": "scene.movie_dinner"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "scene.party",
+                                                    "name": false,
+                                                    "layout": "icon_name",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "scene.turn_on",
+                                                        "service_data": {
+                                                            "entity_id": "scene.party_2"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.circadian_lighting_circadian_lighting",
+                                                    "name": false
+                                                },
+                                                {
+                                                    "entity": "scene.full_bright",
+                                                    "name": false,
+                                                    "layout": "icon_name",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "scene.turn_on",
+                                                        "service_data": {
+                                                            "entity_id": "scene.full_bright"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "scene.romantic",
+                                                    "name": false,
+                                                    "layout": "icon_name",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "scene.turn_on",
+                                                        "service_data": {
+                                                            "entity_id": "scene.romantic"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "scene.christmas",
+                                                    "name": false,
+                                                    "icon": "mdi:string-lights",
+                                                    "layout": "icon_name",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "scene.turn_on",
+                                                        "service_data": {
+                                                            "entity_id": "scene.christmas"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
-                                    "entity": "light.kitchen_lights",
-                                    "type": "custom:slider-entity-row",
-                                    "toggle": true
+                                    "title": "Cooling",
+                                    "type": "entities",
+                                    "show_header_toggle": false,
+                                    "state_color": true,
+                                    "entities": [
+                                        {
+                                            "entity": "climate.living_room_ac"
+                                        },
+                                        {
+                                            "entity": "climate.office_ac"
+                                        },
+                                        {
+                                            "entity": "climate.bedroom_ac"
+                                        },
+                                        {
+                                            "type": "custom:paper-buttons-row",
+                                            "buttons": [
+                                                {
+                                                    "entity": "switch.cool_living_room",
+                                                    "name": "Cool living room"
+                                                },
+                                                {
+                                                    "entity": "switch.cool_office",
+                                                    "name": "Cool office"
+                                                },
+                                                {
+                                                    "entity": "switch.cool_bedroom",
+                                                    "name": "Cool bedroom"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
-                                    "entity": "light.hallway_lights",
-                                    "type": "custom:slider-entity-row",
-                                    "toggle": true
-                                },
-                                {
-                                    "entity": "light.bathroom_lights",
-                                    "type": "custom:slider-entity-row",
-                                    "toggle": true
-                                },
-                                {
-                                    "entity": "light.toilet_lights",
-                                    "type": "custom:slider-entity-row",
-                                    "toggle": true
-                                },
-                                {
-                                    "entity": "light.bedroom_lights",
-                                    "type": "custom:slider-entity-row",
-                                    "toggle": true
-                                },
-                                {
-                                    "entity": "light.office_lights",
-                                    "type": "custom:slider-entity-row",
-                                    "toggle": true
+                                    "camera_image": "camera.front_door_2",
+                                    "entities": [
+                                        {
+                                            "entity": "lock.front_door"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.front_door_motion"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.front_door_ding"
+                                        },
+                                        {
+                                            "entity": "sensor.front_door_last_activity"
+                                        },
+                                        {
+                                            "entity": "sensor.front_door_last_ding"
+                                        },
+                                        {
+                                            "entity": "sensor.front_door_last_motion"
+                                        }
+                                    ],
+                                    "title": "Doorbell",
+                                    "type": "picture-glance"
                                 }
-                            ],
-                            "footer": {
-                                "type": "buttons",
-                                "entities": [
-                                    {
-                                        "entity": "scene.default",
-                                        "name": "Normal",
-                                        "tap_action": {
-                                            "action": "call-service",
-                                            "service": "scene.turn_on",
-                                            "service_data": {
-                                                "entity_id": "scene.default"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "entity": "switch.circadian_lighting_circadian_lighting",
-                                        "name": "Circadian"
-                                    },
-                                    {
-                                        "entity": "scene.ambient",
-                                        "name": "Dark",
-                                        "tap_action": {
-                                            "action": "call-service",
-                                            "service": "scene.turn_on",
-                                            "service_data": {
-                                                "entity_id": "scene.ambient"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "entity": "scene.movie_dinner",
-                                        "name": "Movie",
-                                        "tap_action": {
-                                            "action": "call-service",
-                                            "service": "scene.turn_on",
-                                            "service_data": {
-                                                "entity_id": "scene.movie_dinner"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "entity": "scene.romantic",
-                                        "name": "Sex",
-                                        "tap_action": {
-                                            "action": "call-service",
-                                            "service": "scene.turn_on",
-                                            "service_data": {
-                                                "entity_id": "scene.romantic"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
-                            "title": "Lights",
-                            "type": "entities"
+                            ]
                         },
                         {
-                            "entities": [
+                            "type": "vertical-stack",
+                            "cards": [
                                 {
-                                    "entity": "climate.living_room"
+                                    "type": "entities",
+                                    "state_color": true,
+                                    "show_header_toggle": false,
+                                    "title": "Heating",
+                                    "entities": [
+                                        {
+                                            "entity": "climate.living_room"
+                                        },
+                                        {
+                                            "entity": "climate.kitchen"
+                                        },
+                                        {
+                                            "entity": "climate.bathroom"
+                                        },
+                                        {
+                                            "entity": "climate.office"
+                                        },
+                                        {
+                                            "entity": "climate.bedroom"
+                                        },
+                                        {
+                                            "type": "custom:paper-buttons-row",
+                                            "buttons": [
+                                                {
+                                                    "entity": "switch.heat_living_room",
+                                                    "name": "Heat living room"
+                                                },
+                                                {
+                                                    "entity": "switch.heat_kitchen",
+                                                    "name": "Heat kitchen"
+                                                },
+                                                {
+                                                    "entity": "switch.heat_bathroom",
+                                                    "name": "Heat bathroom"
+                                                },
+                                                {
+                                                    "entity": "switch.heat_office",
+                                                    "name": "Heat office"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:text-divider-row",
+                                            "text": "Floor heating"
+                                        },
+                                        {
+                                            "entity": "climate.kitchen_floor"
+                                        },
+                                        {
+                                            "entity": "climate.bathroom_floor"
+                                        },
+                                        {
+                                            "entity": "climate.toilet_floor"
+                                        },
+                                        {
+                                            "type": "custom:paper-buttons-row",
+                                            "buttons": [
+                                                {
+                                                    "entity": "switch.heat_kitchen_floor",
+                                                    "name": "Heat kitchen floor",
+                                                    "icon": "mdi:waves-arrow-up"
+                                                },
+                                                {
+                                                    "entity": "switch.heat_bathroom_floor",
+                                                    "name": "Heat bathroom floor",
+                                                    "icon": "mdi:waves-arrow-up"
+                                                },
+                                                {
+                                                    "entity": "switch.heat_toilet_floor",
+                                                    "name": "Heat toilet floor",
+                                                    "icon": "mdi:waves-arrow-up"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
-                                    "entity": "climate.kitchen"
-                                },
-                                {
-                                    "entity": "climate.bathroom"
-                                },
-                                {
-                                    "entity": "climate.office"
-                                },
-                                {
-                                    "entity": "climate.bedroom"
+                                    "title": "Outdoor climate",
+                                    "type": "custom:weather-card",
+                                    "entity_temperature": "sensor.neatmo_outdoor_temperature",
+                                    "entity": "weather.netatmo_weather_station",
+                                    "number_of_forecasts": "5",
+                                    "hourly_forecast": false,
+                                    "forecast": true,
+                                    "details": true,
+                                    "current": true
                                 }
-                            ],
-                            "footer": {
-                                "entities": [
-                                    {
-                                        "entity": "switch.heat_living_room",
-                                        "name": "Heat living room"
-                                    },
-                                    {
-                                        "entity": "switch.heat_kitchen",
-                                        "name": "Heat kitchen"
-                                    },
-                                    {
-                                        "entity": "switch.heat_bathroom",
-                                        "name": "Heat bathroom"
-                                    },
-                                    {
-                                        "entity": "switch.heat_office",
-                                        "name": "Heat office"
-                                    }
-                                ],
-                                "type": "buttons"
-                            },
-                            "show_header_toggle": false,
-                            "title": "Heating",
-                            "type": "entities"
+                            ]
                         },
                         {
-                            "entities": [
+                            "type": "vertical-stack",
+                            "cards": [
                                 {
-                                    "entity": "person.pawel"
+                                    "show_header_toggle": false,
+                                    "type": "glance",
+                                    "state_color": true,
+                                    "title": "Residents",
+                                    "entities": [
+                                        {
+                                            "entity": "person.pawel"
+                                        },
+                                        {
+                                            "entity": "person.daria"
+                                        },
+                                        {
+                                            "entity": "device_tracker.430i_xdrive",
+                                            "name": "BMW"
+                                        },
+                                        {
+                                            "entity": "vacuum.frank"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "entity": "person.daria"
+                                    "show_header_toggle": false,
+                                    "title": "Video",
+                                    "type": "entities",
+                                    "state_color": true,
+                                    "entities": [
+                                        {
+                                            "entity": "media_player.bedroom_android_tv",
+                                            "group": true,
+                                            "hide": {
+                                                "icon_state": false,
+                                                "power_state": false
+                                            },
+                                            "icon": "mdi:television-box",
+                                            "type": "custom:mini-media-player"
+                                        },
+                                        {
+                                            "entity": "media_player.living_room_android_tv",
+                                            "group": true,
+                                            "hide": {
+                                                "icon_state": false,
+                                                "power_state": false
+                                            },
+                                            "icon": "mdi:television",
+                                            "type": "custom:mini-media-player"
+                                        },
+                                        {
+                                            "entity": "media_player.shield_android_tv",
+                                            "group": true,
+                                            "hide": {
+                                                "icon_state": false,
+                                                "power": false,
+                                                "power_state": false,
+                                                "volume": true
+                                            },
+                                            "icon": "mdi:shield",
+                                            "type": "custom:mini-media-player"
+                                        },
+                                        {
+                                            "entity": "media_player.shield_plex",
+                                            "group": true,
+                                            "hide": {
+                                                "icon_state": false,
+                                                "power": true,
+                                                "power_state": false,
+                                                "volume": true
+                                            },
+                                            "icon": "mdi:plex",
+                                            "name": "Living room Plex",
+                                            "type": "custom:mini-media-player"
+                                        },
+                                        {
+                                            "entity": "media_player.living_room_kodi",
+                                            "group": true,
+                                            "hide": {
+                                                "icon_state": false,
+                                                "power": true,
+                                                "power_state": false,
+                                                "volume": true
+                                            },
+                                            "icon": "mdi:kodi",
+                                            "type": "custom:mini-media-player"
+                                        },
+                                        {
+                                            "entity": "media_player.xboxone",
+                                            "name": "XBOX ONE X",
+                                            "group": true,
+                                            "hide": {
+                                                "icon_state": false,
+                                                "power_state": false
+                                            },
+                                            "icon": "mdi:microsoft-xbox",
+                                            "type": "custom:mini-media-player"
+                                        },
+                                        {
+                                            "type": "custom:paper-buttons-row",
+                                            "buttons": [
+                                                {
+                                                    "entity": "switch.watch_movie",
+                                                    "name": "Movie"
+                                                },
+                                                {
+                                                    "entity": "switch.watch_youtube",
+                                                    "name": "YouTube"
+                                                },
+                                                {
+                                                    "entity": "switch.watch_netflix",
+                                                    "name": "Netflix"
+                                                },
+                                                {
+                                                    "entity": "switch.play_game",
+                                                    "name": "Game"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
-                                    "entity": "device_tracker.430i_xdrive",
-                                    "name": "BMW"
+                                    "show_header_toggle": false,
+                                    "title": "Indoor climate",
+                                    "type": "entities",
+                                    "entities": [
+                                        "sensor.netatmo_indoor_temperature",
+                                        "sensor.netatmo_indoor_humidity",
+                                        "sensor.netatmo_indoor_pressure",
+                                        "sensor.netatmo_indoor_co2",
+                                        "sensor.netatmo_indoor_noise"
+                                    ]
                                 }
-                            ],
-                            "show_header_toggle": false,
-                            "type": "glance",
-                            "state_color": false
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "media_player.bedroom_android_tv",
-                                    "group": true,
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power_state": false
-                                    },
-                                    "icon": "mdi:television-box",
-                                    "type": "custom:mini-media-player"
-                                },
-                                {
-                                    "entity": "media_player.living_room_android_tv",
-                                    "group": true,
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power_state": false
-                                    },
-                                    "icon": "mdi:television",
-                                    "type": "custom:mini-media-player"
-                                },
-                                {
-                                    "entity": "media_player.shield_android_tv",
-                                    "group": true,
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power": false,
-                                        "power_state": false,
-                                        "volume": true
-                                    },
-                                    "icon": "mdi:shield",
-                                    "type": "custom:mini-media-player"
-                                },
-                                {
-                                    "entity": "media_player.shield_plex",
-                                    "group": true,
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power": true,
-                                        "power_state": false,
-                                        "volume": true
-                                    },
-                                    "icon": "mdi:plex",
-                                    "name": "Living room Plex",
-                                    "type": "custom:mini-media-player"
-                                },
-                                {
-                                    "entity": "media_player.living_room_kodi",
-                                    "group": true,
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power": true,
-                                        "power_state": false,
-                                        "volume": true
-                                    },
-                                    "icon": "mdi:kodi",
-                                    "type": "custom:mini-media-player"
-                                },
-                                {
-                                    "entity": "media_player.xboxone",
-                                    "name": "XBOX ONE X",
-                                    "group": true,
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power_state": false
-                                    },
-                                    "icon": "mdi:microsoft-xbox",
-                                    "type": "custom:mini-media-player"
-                                }
-                            ],
-                            "footer": {
-                                "entities": [
-                                    {
-                                        "entity": "switch.watch_movie",
-                                        "name": "Movie"
-                                    },
-                                    {
-                                        "entity": "switch.watch_youtube",
-                                        "name": "YouTube"
-                                    },
-                                    {
-                                        "entity": "switch.watch_netflix",
-                                        "name": "Netflix"
-                                    },
-                                    {
-                                        "entity": "switch.play_game",
-                                        "name": "Game"
-                                    }
-                                ],
-                                "type": "buttons"
-                            },
-                            "show_header_toggle": false,
-                            "title": "Video",
-                            "type": "entities"
+                            ]
                         },
                         {
                             "cards": [
                                 {
-                                    "type": "entities",
-                                    "entities": [],
-                                    "header": {
-                                        "entities": [
-                                            {
-                                                "entity": "switch.ambient_music",
-                                                "name": "Ambient"
+                                    "type": "custom:vertical-stack-in-card",
+                                    "title": "Audio",
+                                    "cards": [
+                                        {
+                                            "type": "custom:notify-card",
+                                            "target": "level_important",
+                                            "label": "Announce everywhere",
+                                            "card_title": false,
+                                            "notification_title": "Announce everywhere notification!"
+                                        },
+                                        {
+                                            "type": "entities",
+                                            "entities": [
+                                                {
+                                                    "type": "custom:paper-buttons-row",
+                                                    "buttons": [
+                                                        {
+                                                            "entity": "switch.ambient_music",
+                                                            "name": "Ambient"
+                                                        },
+                                                        {
+                                                            "entity": "switch.party_music",
+                                                            "name": "Party"
+                                                        },
+                                                        {
+                                                            "entity": "switch.shower_music",
+                                                            "name": "Shower"
+                                                        },
+                                                        {
+                                                            "entity": "switch.dolby_atmos_music",
+                                                            "name": "Atmos"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "artwork": "cover",
+                                            "header": {
+                                                "entities": [
+                                                    {
+                                                        "entity": "switch.watch_movie",
+                                                        "name": "Movie"
+                                                    },
+                                                    {
+                                                        "entity": "switch.watch_youtube",
+                                                        "name": "YouTube"
+                                                    },
+                                                    {
+                                                        "entity": "switch.watch_netflix",
+                                                        "name": "Netflix"
+                                                    },
+                                                    {
+                                                        "entity": "switch.play_game",
+                                                        "name": "Game"
+                                                    }
+                                                ],
+                                                "type": "buttons"
                                             },
-                                            {
-                                                "entity": "switch.party_music",
-                                                "name": "Party"
+                                            "card": null,
+                                            "entity": "media_player.denon_avc_x6500h_avr",
+                                            "group": true,
+                                            "hide": {
+                                                "artwork_border": false,
+                                                "controls": false,
+                                                "icon_state": false,
+                                                "mute": false,
+                                                "power": false,
+                                                "power_state": false,
+                                                "progress": false,
+                                                "runtime": false,
+                                                "sound_mode": false,
+                                                "volume": false
                                             },
-                                            {
-                                                "entity": "switch.shower_music",
-                                                "name": "Shower"
+                                            "icon": "mdi:amplifier",
+                                            "info": "long",
+                                            "type": "custom:mini-media-player"
+                                        },
+                                        {
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.living_room",
+                                                "group": true,
+                                                "hide": {
+                                                    "artwork_border": false,
+                                                    "controls": false,
+                                                    "icon_state": false,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "power_state": false,
+                                                    "progress": true,
+                                                    "runtime": false,
+                                                    "shuffle": false,
+                                                    "sound_mode": false,
+                                                    "volume": true
+                                                },
+                                                "icon": "mdi:speaker",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": true
+                                                },
+                                                "type": "custom:mini-media-player"
                                             },
-                                            {
-                                                "entity": "switch.dolby_atmos_music",
-                                                "name": "Atmos"
-                                            }
-                                        ],
-                                        "type": "buttons"
-                                    }
-                                },
-                                {
-                                    "artwork": "cover",
-                                    "header": {
-                                        "entities": [
-                                            {
-                                                "entity": "switch.watch_movie",
-                                                "name": "Movie"
+                                            "conditions": [
+                                                {
+                                                    "entity": "binary_sensor.living_room_sonos_is_master",
+                                                    "state": "on"
+                                                }
+                                            ],
+                                            "type": "conditional"
+                                        },
+                                        {
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.living_room",
+                                                "group": true,
+                                                "hide": {
+                                                    "controls": true,
+                                                    "icon": false,
+                                                    "info": true,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "progress": true,
+                                                    "source": true,
+                                                    "volume": true
+                                                },
+                                                "icon": "mdi:speaker-wireless",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": false
+                                                },
+                                                "type": "custom:mini-media-player"
                                             },
-                                            {
-                                                "entity": "switch.watch_youtube",
-                                                "name": "YouTube"
+                                            "conditions": [
+                                                {
+                                                    "entity": "binary_sensor.living_room_sonos_is_master",
+                                                    "state_not": "on"
+                                                }
+                                            ],
+                                            "type": "conditional"
+                                        },
+                                        {
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.bathroom",
+                                                "group": true,
+                                                "hide": {
+                                                    "artwork_border": false,
+                                                    "controls": false,
+                                                    "icon_state": false,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "power_state": false,
+                                                    "progress": true,
+                                                    "runtime": false,
+                                                    "shuffle": false,
+                                                    "sound_mode": false,
+                                                    "volume": false
+                                                },
+                                                "icon": "mdi:speaker",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": true
+                                                },
+                                                "type": "custom:mini-media-player"
                                             },
-                                            {
-                                                "entity": "switch.watch_netflix",
-                                                "name": "Netflix"
+                                            "conditions": [
+                                                {
+                                                    "entity": "binary_sensor.bathroom_sonos_is_master",
+                                                    "state": "on"
+                                                }
+                                            ],
+                                            "type": "conditional"
+                                        },
+                                        {
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.bathroom",
+                                                "group": true,
+                                                "hide": {
+                                                    "controls": true,
+                                                    "icon": false,
+                                                    "info": true,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "progress": true,
+                                                    "source": true,
+                                                    "volume": false
+                                                },
+                                                "icon": "mdi:speaker-wireless",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": false
+                                                },
+                                                "type": "custom:mini-media-player"
                                             },
-                                            {
-                                                "entity": "switch.play_game",
-                                                "name": "Game"
-                                            }
-                                        ],
-                                        "type": "buttons"
-                                    },
-                                    "card": null,
-                                    "entity": "media_player.denon_avc_x6500h_avr",
-                                    "group": true,
-                                    "hide": {
-                                        "artwork_border": false,
-                                        "controls": false,
-                                        "icon_state": false,
-                                        "mute": false,
-                                        "power": false,
-                                        "power_state": false,
-                                        "progress": false,
-                                        "runtime": false,
-                                        "sound_mode": false,
-                                        "volume": false
-                                    },
-                                    "icon": "mdi:amplifier",
-                                    "info": "long",
-                                    "type": "custom:mini-media-player"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.living_room",
-                                        "group": true,
-                                        "hide": {
-                                            "artwork_border": false,
-                                            "controls": false,
-                                            "icon_state": false,
-                                            "mute": true,
-                                            "power": true,
-                                            "power_state": false,
-                                            "progress": true,
-                                            "runtime": false,
-                                            "shuffle": false,
-                                            "sound_mode": false,
-                                            "volume": true
-                                        },
-                                        "icon": "mdi:speaker",
-                                        "speaker_group": {
-                                            "entities": [
+                                            "conditions": [
                                                 {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
+                                                    "entity": "binary_sensor.bathroom_sonos_is_master",
+                                                    "state_not": "on"
                                                 }
                                             ],
-                                            "platform": "sonos",
-                                            "show_group_count": true
+                                            "type": "conditional"
                                         },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
                                         {
-                                            "entity": "binary_sensor.living_room_sonos_is_master",
-                                            "state": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.living_room",
-                                        "group": true,
-                                        "hide": {
-                                            "controls": true,
-                                            "icon": false,
-                                            "info": true,
-                                            "mute": true,
-                                            "power": true,
-                                            "progress": true,
-                                            "source": true,
-                                            "volume": true
-                                        },
-                                        "icon": "mdi:speaker-wireless",
-                                        "speaker_group": {
-                                            "entities": [
-                                                {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.toilet",
+                                                "group": true,
+                                                "hide": {
+                                                    "artwork_border": false,
+                                                    "controls": false,
+                                                    "icon_state": false,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "power_state": false,
+                                                    "progress": true,
+                                                    "runtime": false,
+                                                    "shuffle": false,
+                                                    "sound_mode": false,
+                                                    "volume": false
                                                 },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
+                                                "icon": "mdi:speaker",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": true
                                                 },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
-                                                }
-                                            ],
-                                            "platform": "sonos",
-                                            "show_group_count": false
-                                        },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "binary_sensor.living_room_sonos_is_master",
-                                            "state_not": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.bathroom",
-                                        "group": true,
-                                        "hide": {
-                                            "artwork_border": false,
-                                            "controls": false,
-                                            "icon_state": false,
-                                            "mute": true,
-                                            "power": true,
-                                            "power_state": false,
-                                            "progress": true,
-                                            "runtime": false,
-                                            "shuffle": false,
-                                            "sound_mode": false,
-                                            "volume": false
-                                        },
-                                        "icon": "mdi:speaker",
-                                        "speaker_group": {
-                                            "entities": [
-                                                {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
-                                                }
-                                            ],
-                                            "platform": "sonos",
-                                            "show_group_count": true
-                                        },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "binary_sensor.bathroom_sonos_is_master",
-                                            "state": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.bathroom",
-                                        "group": true,
-                                        "hide": {
-                                            "controls": true,
-                                            "icon": false,
-                                            "info": true,
-                                            "mute": true,
-                                            "power": true,
-                                            "progress": true,
-                                            "source": true,
-                                            "volume": false
-                                        },
-                                        "icon": "mdi:speaker-wireless",
-                                        "speaker_group": {
-                                            "entities": [
-                                                {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
-                                                }
-                                            ],
-                                            "platform": "sonos",
-                                            "show_group_count": false
-                                        },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "binary_sensor.bathroom_sonos_is_master",
-                                            "state_not": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.toilet",
-                                        "group": true,
-                                        "hide": {
-                                            "artwork_border": false,
-                                            "controls": false,
-                                            "icon_state": false,
-                                            "mute": true,
-                                            "power": true,
-                                            "power_state": false,
-                                            "progress": true,
-                                            "runtime": false,
-                                            "shuffle": false,
-                                            "sound_mode": false,
-                                            "volume": false
-                                        },
-                                        "icon": "mdi:speaker",
-                                        "speaker_group": {
-                                            "entities": [
-                                                {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
-                                                }
-                                            ],
-                                            "platform": "sonos",
-                                            "show_group_count": true
-                                        },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "binary_sensor.toilet_sonos_is_master",
-                                            "state": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.toilet",
-                                        "group": true,
-                                        "hide": {
-                                            "controls": true,
-                                            "icon": false,
-                                            "info": true,
-                                            "mute": true,
-                                            "power": true,
-                                            "progress": true,
-                                            "source": true,
-                                            "volume": false
-                                        },
-                                        "icon": "mdi:speaker-wireless",
-                                        "speaker_group": {
-                                            "entities": [
-                                                {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
-                                                }
-                                            ],
-                                            "platform": "sonos",
-                                            "show_group_count": false
-                                        },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "binary_sensor.toilet_sonos_is_master",
-                                            "state_not": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.kitchen",
-                                        "group": true,
-                                        "hide": {
-                                            "artwork_border": false,
-                                            "controls": false,
-                                            "icon_state": false,
-                                            "mute": true,
-                                            "power": true,
-                                            "power_state": false,
-                                            "progress": true,
-                                            "runtime": false,
-                                            "shuffle": false,
-                                            "sound_mode": false,
-                                            "volume": false
-                                        },
-                                        "icon": "mdi:speaker",
-                                        "speaker_group": {
-                                            "entities": [
-                                                {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
-                                                }
-                                            ],
-                                            "platform": "sonos",
-                                            "show_group_count": true
-                                        },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "binary_sensor.kitchen_sonos_is_master",
-                                            "state": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.kitchen",
-                                        "group": true,
-                                        "hide": {
-                                            "controls": true,
-                                            "icon": false,
-                                            "info": true,
-                                            "mute": true,
-                                            "power": true,
-                                            "progress": true,
-                                            "source": true,
-                                            "volume": false
-                                        },
-                                        "icon": "mdi:speaker-wireless",
-                                        "speaker_group": {
-                                            "entities": [
-                                                {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
-                                                }
-                                            ],
-                                            "platform": "sonos",
-                                            "show_group_count": false
-                                        },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "binary_sensor.kitchen_sonos_is_master",
-                                            "state_not": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.office",
-                                        "group": true,
-                                        "hide": {
-                                            "artwork_border": false,
-                                            "controls": false,
-                                            "icon_state": false,
-                                            "mute": true,
-                                            "power": true,
-                                            "power_state": false,
-                                            "progress": true,
-                                            "runtime": false,
-                                            "shuffle": false,
-                                            "sound_mode": false,
-                                            "volume": false
-                                        },
-                                        "icon": "mdi:speaker",
-                                        "speaker_group": {
-                                            "entities": [
-                                                {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
-                                                }
-                                            ],
-                                            "platform": "sonos",
-                                            "show_group_count": true
-                                        },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "binary_sensor.office_sonos_is_master",
-                                            "state": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.office",
-                                        "group": true,
-                                        "hide": {
-                                            "controls": true,
-                                            "icon": false,
-                                            "info": true,
-                                            "mute": true,
-                                            "power": true,
-                                            "progress": true,
-                                            "source": true,
-                                            "volume": false
-                                        },
-                                        "icon": "mdi:speaker-wireless",
-                                        "speaker_group": {
-                                            "entities": [
-                                                {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
-                                                }
-                                            ],
-                                            "platform": "sonos",
-                                            "show_group_count": false
-                                        },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "binary_sensor.office_sonos_is_master",
-                                            "state_not": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.bedroom",
-                                        "group": true,
-                                        "hide": {
-                                            "artwork_border": false,
-                                            "controls": false,
-                                            "icon_state": false,
-                                            "mute": true,
-                                            "power": true,
-                                            "power_state": false,
-                                            "progress": true,
-                                            "runtime": false,
-                                            "shuffle": false,
-                                            "sound_mode": false,
-                                            "volume": false
-                                        },
-                                        "icon": "mdi:speaker",
-                                        "speaker_group": {
-                                            "entities": [
-                                                {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
-                                                }
-                                            ],
-                                            "platform": "sonos",
-                                            "show_group_count": true
-                                        },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "binary_sensor.bedroom_sonos_is_master",
-                                            "state": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "artwork": "cover",
-                                        "entity": "media_player.bedroom",
-                                        "group": true,
-                                        "hide": {
-                                            "controls": true,
-                                            "icon": false,
-                                            "info": true,
-                                            "mute": true,
-                                            "power": true,
-                                            "progress": true,
-                                            "source": true,
-                                            "volume": false
-                                        },
-                                        "icon": "mdi:speaker-wireless",
-                                        "speaker_group": {
-                                            "entities": [
-                                                {
-                                                    "entity_id": "media_player.bathroom",
-                                                    "name": "Sonos Bathroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.toilet",
-                                                    "name": "Sonos Toilet"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.living_room",
-                                                    "name": "Sonos Living Room"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.kitchen",
-                                                    "name": "Sonos Kitchen"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.bedroom",
-                                                    "name": "Sonos Bedroom"
-                                                },
-                                                {
-                                                    "entity_id": "media_player.office",
-                                                    "name": "Sonos Office"
-                                                }
-                                            ],
-                                            "platform": "sonos",
-                                            "show_group_count": false
-                                        },
-                                        "type": "custom:mini-media-player"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "binary_sensor.bedroom_sonos_is_master",
-                                            "state_not": "on"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "type": "entities",
-                                    "entities": [],
-                                    "footer": {
-                                        "entities": [
-                                            {
-                                                "entity": "switch.ambient_living_room_music",
-                                                "name": "Ambient living room"
+                                                "type": "custom:mini-media-player"
                                             },
-                                            {
-                                                "entity": "switch.work_music",
-                                                "name": "Work"
-                                            }
-                                        ],
-                                        "type": "buttons"
-                                    }
+                                            "conditions": [
+                                                {
+                                                    "entity": "binary_sensor.toilet_sonos_is_master",
+                                                    "state": "on"
+                                                }
+                                            ],
+                                            "type": "conditional"
+                                        },
+                                        {
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.toilet",
+                                                "group": true,
+                                                "hide": {
+                                                    "controls": true,
+                                                    "icon": false,
+                                                    "info": true,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "progress": true,
+                                                    "source": true,
+                                                    "volume": false
+                                                },
+                                                "icon": "mdi:speaker-wireless",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": false
+                                                },
+                                                "type": "custom:mini-media-player"
+                                            },
+                                            "conditions": [
+                                                {
+                                                    "entity": "binary_sensor.toilet_sonos_is_master",
+                                                    "state_not": "on"
+                                                }
+                                            ],
+                                            "type": "conditional"
+                                        },
+                                        {
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.kitchen",
+                                                "group": true,
+                                                "hide": {
+                                                    "artwork_border": false,
+                                                    "controls": false,
+                                                    "icon_state": false,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "power_state": false,
+                                                    "progress": true,
+                                                    "runtime": false,
+                                                    "shuffle": false,
+                                                    "sound_mode": false,
+                                                    "volume": false
+                                                },
+                                                "icon": "mdi:speaker",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": true
+                                                },
+                                                "type": "custom:mini-media-player"
+                                            },
+                                            "conditions": [
+                                                {
+                                                    "entity": "binary_sensor.kitchen_sonos_is_master",
+                                                    "state": "on"
+                                                }
+                                            ],
+                                            "type": "conditional"
+                                        },
+                                        {
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.kitchen",
+                                                "group": true,
+                                                "hide": {
+                                                    "controls": true,
+                                                    "icon": false,
+                                                    "info": true,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "progress": true,
+                                                    "source": true,
+                                                    "volume": false
+                                                },
+                                                "icon": "mdi:speaker-wireless",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": false
+                                                },
+                                                "type": "custom:mini-media-player"
+                                            },
+                                            "conditions": [
+                                                {
+                                                    "entity": "binary_sensor.kitchen_sonos_is_master",
+                                                    "state_not": "on"
+                                                }
+                                            ],
+                                            "type": "conditional"
+                                        },
+                                        {
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.office",
+                                                "group": true,
+                                                "hide": {
+                                                    "artwork_border": false,
+                                                    "controls": false,
+                                                    "icon_state": false,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "power_state": false,
+                                                    "progress": true,
+                                                    "runtime": false,
+                                                    "shuffle": false,
+                                                    "sound_mode": false,
+                                                    "volume": false
+                                                },
+                                                "icon": "mdi:speaker",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": true
+                                                },
+                                                "type": "custom:mini-media-player"
+                                            },
+                                            "conditions": [
+                                                {
+                                                    "entity": "binary_sensor.office_sonos_is_master",
+                                                    "state": "on"
+                                                }
+                                            ],
+                                            "type": "conditional"
+                                        },
+                                        {
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.office",
+                                                "group": true,
+                                                "hide": {
+                                                    "controls": true,
+                                                    "icon": false,
+                                                    "info": true,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "progress": true,
+                                                    "source": true,
+                                                    "volume": false
+                                                },
+                                                "icon": "mdi:speaker-wireless",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": false
+                                                },
+                                                "type": "custom:mini-media-player"
+                                            },
+                                            "conditions": [
+                                                {
+                                                    "entity": "binary_sensor.office_sonos_is_master",
+                                                    "state_not": "on"
+                                                }
+                                            ],
+                                            "type": "conditional"
+                                        },
+                                        {
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.bedroom",
+                                                "group": true,
+                                                "hide": {
+                                                    "artwork_border": false,
+                                                    "controls": false,
+                                                    "icon_state": false,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "power_state": false,
+                                                    "progress": true,
+                                                    "runtime": false,
+                                                    "shuffle": false,
+                                                    "sound_mode": false,
+                                                    "volume": false
+                                                },
+                                                "icon": "mdi:speaker",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": true
+                                                },
+                                                "type": "custom:mini-media-player"
+                                            },
+                                            "conditions": [
+                                                {
+                                                    "entity": "binary_sensor.bedroom_sonos_is_master",
+                                                    "state": "on"
+                                                }
+                                            ],
+                                            "type": "conditional"
+                                        },
+                                        {
+                                            "card": {
+                                                "artwork": "cover",
+                                                "entity": "media_player.bedroom",
+                                                "group": true,
+                                                "hide": {
+                                                    "controls": true,
+                                                    "icon": false,
+                                                    "info": true,
+                                                    "mute": true,
+                                                    "power": true,
+                                                    "progress": true,
+                                                    "source": true,
+                                                    "volume": false
+                                                },
+                                                "icon": "mdi:speaker-wireless",
+                                                "speaker_group": {
+                                                    "entities": [
+                                                        {
+                                                            "entity_id": "media_player.bathroom",
+                                                            "name": "Sonos Bathroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.toilet",
+                                                            "name": "Sonos Toilet"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.living_room",
+                                                            "name": "Sonos Living Room"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.kitchen",
+                                                            "name": "Sonos Kitchen"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.bedroom",
+                                                            "name": "Sonos Bedroom"
+                                                        },
+                                                        {
+                                                            "entity_id": "media_player.office",
+                                                            "name": "Sonos Office"
+                                                        }
+                                                    ],
+                                                    "platform": "sonos",
+                                                    "show_group_count": false
+                                                },
+                                                "type": "custom:mini-media-player"
+                                            },
+                                            "conditions": [
+                                                {
+                                                    "entity": "binary_sensor.bedroom_sonos_is_master",
+                                                    "state_not": "on"
+                                                }
+                                            ],
+                                            "type": "conditional"
+                                        },
+                                        {
+                                            "type": "entities",
+                                            "entities": [
+                                                {
+                                                    "type": "custom:paper-buttons-row",
+                                                    "buttons": [
+                                                        {
+                                                            "entity": "switch.ambient_living_room_music",
+                                                            "name": "Ambient living room"
+                                                        },
+                                                        {
+                                                            "entity": "switch.work_music",
+                                                            "name": "Work"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "custom:home-feed-card",
+                                    "calendar_days_forward": 90,
+                                    "calendar_days_back": 60,
+                                    "history_days_back": 60,
+                                    "more_info_on_tap": true,
+                                    "compact_mode": true,
+                                    "show_notification_title": false,
+                                    "state_color": true,
+                                    "hours_to_show": 48,
+                                    "title": "Events",
+                                    "calendars": [
+                                        "calendar.holidays_in_poland",
+                                        "calendar.eng_pawel_troka_gmail_com",
+                                        "calendar.birthdays",
+                                        "calendar.friends_birthdays"
+                                    ],
+                                    "entities": [
+                                        {
+                                            "entity": "binary_sensor.hallway_motion",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.living_room_motion",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.bathroom_flood_sensor",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.toilet_flood_sensor",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.kitchen_flood_sensor",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.front_door_ding",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.front_door_motion",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.bathroom_multisensor_motion",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.hallway_entrance_cam_motion",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.hallway_multisensor_motion",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.kitchen_multisensor_motion",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.living_room_cam_motion",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.toilet_multisensor_motion",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.bathroom_water_leak_sensor",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.toilet_water_leak_sensor",
+                                            "include_history": true
+                                        },
+                                        {
+                                            "entity": "binary_sensor.kitchen_water_leak_sensor",
+                                            "include_history": true
+                                        }
+                                    ]
                                 }
                             ],
                             "show_header_toggle": false,
-                            "title": "Audio",
                             "type": "vertical-stack"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "climate.kitchen_floor"
-                                },
-                                {
-                                    "entity": "climate.bathroom_floor"
-                                },
-                                {
-                                    "entity": "climate.toilet_floor"
-                                }
-                            ],
-                            "footer": {
-                                "entities": [
-                                    {
-                                        "entity": "switch.heat_kitchen_floor",
-                                        "name": "Heat kitchen floor"
-                                    },
-                                    {
-                                        "entity": "switch.heat_bathroom_floor",
-                                        "name": "Heat bathroom floor"
-                                    },
-                                    {
-                                        "entity": "switch.heat_toilet_floor",
-                                        "name": "Heat toilet floor"
-                                    }
-                                ],
-                                "type": "buttons"
-                            },
-                            "show_header_toggle": false,
-                            "title": "Floor heating",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "climate.living_room_ac"
-                                },
-                                {
-                                    "entity": "climate.office_ac"
-                                },
-                                {
-                                    "entity": "climate.bedroom_ac"
-                                }
-                            ],
-                            "footer": {
-                                "entities": [
-                                    {
-                                        "entity": "switch.cool_living_room",
-                                        "name": "Cool living room"
-                                    },
-                                    {
-                                        "entity": "switch.cool_office",
-                                        "name": "Cool office"
-                                    },
-                                    {
-                                        "entity": "switch.cool_bedroom",
-                                        "name": "Cool bedroom"
-                                    }
-                                ],
-                                "type": "buttons"
-                            },
-                            "show_header_toggle": false,
-                            "title": "Cooling",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.netatmo_outdoor_temperature",
-                                "sensor.netatmo_outdoor_humidity",
-                                "sensor.netatmo_outdoor_rain_gauge_rain",
-                                "sensor.netatmo_outdoor_anemometer_strength",
-                                "sensor.netatmo_outdoor_anemometer_angle"
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Outdoor climate",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.netatmo_indoor_temperature",
-                                "sensor.netatmo_indoor_humidity",
-                                "sensor.netatmo_indoor_pressure",
-                                "sensor.netatmo_indoor_co2",
-                                "sensor.netatmo_indoor_noise"
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Indoor climate",
-                            "type": "entities"
-                        },
-                        {
-                            "type": "custom:home-feed-card",
-                            "calendars": [
-                                "calendar.holidays_in_poland",
-                                "calendar.eng_pawel_troka_gmail_com",
-                                "calendar.birthdays",
-                                "calendar.friends_birthdays"
-                            ],
-                            "entities": [
-                                "binary_sensor.bathroom_flood_sensor",
-                                "binary_sensor.toilet_flood_sensor",
-                                "binary_sensor.kitchen_flood_sensor",
-                                "binary_sensor.front_door_ding",
-                                "binary_sensor.front_door_motion",
-                                "binary_sensor.bathroom_multisensor_motion",
-                                "binary_sensor.hallway_entrance_cam_motion",
-                                "binary_sensor.hallway_multisensor_motion",
-                                "binary_sensor.kitchen_multisensor_motion",
-                                "binary_sensor.living_room_cam_motion",
-                                "binary_sensor.toilet_multisensor_motion",
-                                "binary_sensor.bathroom_water_leak_sensor",
-                                "binary_sensor.toilet_water_leak_sensor",
-                                "binary_sensor.kitchen_water_leak_sensor"
-                            ],
-                            "calendar_days_forward": 90,
-                            "calendar_days_back": 60,
-                            "history_days_back": 60,
-                            "more_info_on_tap": true,
-                            "compact_mode": true,
-                            "state_color": true,
-                            "hours_to_show": 24,
-                            "title": "Events"
-                        },
-                        {
-                            "camera_image": "camera.db1_doorbell",
-                            "entities": [
-                                "lock.front_door",
-                                {
-                                    "entity": "sensor.db1_doorbell_pir_status"
-                                },
-                                "binary_sensor.front_door_motion",
-                                "binary_sensor.front_door_ding",
-                                "sensor.front_door_last_activity",
-                                {
-                                    "entity": "switch.db1_doorbell_light"
-                                },
-                                {
-                                    "entity": "switch.db1_doorbell_light_flicker"
-                                },
-                                {
-                                    "entity": "switch.db1_doorbell_infrared_light"
-                                },
-                                {
-                                    "entity": "switch.db1_doorbell_outdoor_ringing_sound"
-                                },
-                                {
-                                    "entity": "switch.db1_doorbell_privacy"
-                                },
-                                {
-                                    "entity": "switch.db1_doorbell_sleep"
-                                },
-                                {
-                                    "entity": "switch.db1_doorbell_sound"
-                                }
-                            ],
-                            "title": "DB1 Doorbell",
-                            "type": "picture-glance"
                         }
                     ],
                     "icon": "mdi:home",
@@ -2210,9 +2329,21 @@
                         {
                             "camera_image": "camera.front_door_2",
                             "entities": [
-                                "binary_sensor.front_door_motion",
-                                "binary_sensor.front_door_ding",
-                                "sensor.front_door_last_activity"
+                                {
+                                    "entity": "binary_sensor.front_door_motion"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_ding"
+                                },
+                                {
+                                    "entity": "sensor.front_door_last_activity"
+                                },
+                                {
+                                    "entity": "sensor.front_door_last_ding"
+                                },
+                                {
+                                    "entity": "sensor.front_door_last_motion"
+                                }
                             ],
                             "title": "Doorbell cam",
                             "type": "picture-glance"
@@ -3132,9 +3263,38 @@
                                     "entity": "sensor.eight_left_sleep_stage"
                                 }
                             ],
-                            "show_header_toggle": false,
-                            "title": "Bed",
-                            "type": "entities"
+                            "show_header_toggle": true,
+                            "title": "Bed - Pawel",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.eight_right_bed_presence"
+                                },
+                                {
+                                    "entity": "sensor.eight_right_bed_state"
+                                },
+                                {
+                                    "entity": "sensor.eight_right_bed_temperature"
+                                },
+                                {
+                                    "entity": "sensor.eight_right_previous_sleep_session"
+                                },
+                                {
+                                    "entity": "sensor.eight_right_sleep_fitness"
+                                },
+                                {
+                                    "entity": "sensor.eight_right_sleep_session"
+                                },
+                                {
+                                    "entity": "sensor.eight_right_sleep_stage"
+                                }
+                            ],
+                            "title": "Bed - Daria",
+                            "state_color": true
                         },
                         {
                             "type": "entities",
@@ -3987,6 +4147,23 @@
                     "badges": [],
                     "cards": [
                         {
+                            "type": "custom:weather-card",
+                            "entity": "weather.accuweather",
+                            "number_of_forecasts": "5",
+                            "hourly_forecast": false,
+                            "forecast": true,
+                            "details": true,
+                            "current": true
+                        },
+                        {
+                            "type": "weather-forecast",
+                            "entity": "weather.accuweather"
+                        },
+                        {
+                            "entity": "weather.openweathermap",
+                            "type": "weather-forecast"
+                        },
+                        {
                             "type": "entities",
                             "entities": [
                                 {
@@ -4024,10 +4201,6 @@
                                 }
                             ],
                             "title": "Car"
-                        },
-                        {
-                            "entity": "weather.openweathermap",
-                            "type": "weather-forecast"
                         },
                         {
                             "entities": [
@@ -4214,11 +4387,171 @@
                             "entities": [
                                 "air_quality.syrokomli"
                             ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.accuweather_apparent_temperature",
+                                "sensor.accuweather_cloud_ceiling",
+                                "sensor.accuweather_cloud_cover",
+                                "sensor.accuweather_cloud_cover_day_0d",
+                                "sensor.accuweather_cloud_cover_day_1d",
+                                "sensor.accuweather_cloud_cover_day_2d",
+                                "sensor.accuweather_cloud_cover_day_3d",
+                                "sensor.accuweather_cloud_cover_day_4d",
+                                "sensor.accuweather_cloud_cover_night_0d",
+                                "sensor.accuweather_cloud_cover_night_1d",
+                                "sensor.accuweather_cloud_cover_night_2d",
+                                "sensor.accuweather_cloud_cover_night_3d",
+                                "sensor.accuweather_cloud_cover_night_4d",
+                                "sensor.accuweather_dew_point",
+                                "sensor.accuweather_grass_pollen_0d",
+                                "sensor.accuweather_grass_pollen_1d",
+                                "sensor.accuweather_grass_pollen_2d",
+                                "sensor.accuweather_grass_pollen_3d",
+                                "sensor.accuweather_grass_pollen_4d",
+                                "sensor.accuweather_hours_of_sun_0d",
+                                "sensor.accuweather_hours_of_sun_1d",
+                                "sensor.accuweather_hours_of_sun_2d",
+                                "sensor.accuweather_hours_of_sun_3d",
+                                "sensor.accuweather_hours_of_sun_4d",
+                                "sensor.accuweather_mold_pollen_0d",
+                                "sensor.accuweather_mold_pollen_1d",
+                                "sensor.accuweather_mold_pollen_2d",
+                                "sensor.accuweather_mold_pollen_3d",
+                                "sensor.accuweather_mold_pollen_4d",
+                                "sensor.accuweather_ozone_0d",
+                                "sensor.accuweather_ozone_1d",
+                                "sensor.accuweather_ozone_2d",
+                                "sensor.accuweather_ozone_3d",
+                                "sensor.accuweather_ozone_4d",
+                                "sensor.accuweather_precipitation",
+                                "sensor.accuweather_pressure_tendency",
+                                "sensor.accuweather_ragweed_pollen_0d",
+                                "sensor.accuweather_ragweed_pollen_1d",
+                                "sensor.accuweather_ragweed_pollen_2d",
+                                "sensor.accuweather_ragweed_pollen_3d",
+                                "sensor.accuweather_ragweed_pollen_4d",
+                                "sensor.accuweather_realfeel_temperature",
+                                "sensor.accuweather_realfeel_temperature_max_0d",
+                                "sensor.accuweather_realfeel_temperature_max_1d",
+                                "sensor.accuweather_realfeel_temperature_max_2d",
+                                "sensor.accuweather_realfeel_temperature_max_3d",
+                                "sensor.accuweather_realfeel_temperature_max_4d",
+                                "sensor.accuweather_realfeel_temperature_min_0d",
+                                "sensor.accuweather_realfeel_temperature_min_1d",
+                                "sensor.accuweather_realfeel_temperature_min_2d",
+                                "sensor.accuweather_realfeel_temperature_min_3d",
+                                "sensor.accuweather_realfeel_temperature_min_4d",
+                                "sensor.accuweather_realfeel_temperature_shade",
+                                "sensor.accuweather_realfeel_temperature_shade_max_0d",
+                                "sensor.accuweather_realfeel_temperature_shade_max_1d",
+                                "sensor.accuweather_realfeel_temperature_shade_max_2d",
+                                "sensor.accuweather_realfeel_temperature_shade_max_3d",
+                                "sensor.accuweather_realfeel_temperature_shade_max_4d",
+                                "sensor.accuweather_realfeel_temperature_shade_min_0d",
+                                "sensor.accuweather_realfeel_temperature_shade_min_1d",
+                                "sensor.accuweather_realfeel_temperature_shade_min_2d",
+                                "sensor.accuweather_realfeel_temperature_shade_min_3d",
+                                "sensor.accuweather_realfeel_temperature_shade_min_4d",
+                                "sensor.accuweather_thunderstorm_probability_day_0d",
+                                "sensor.accuweather_thunderstorm_probability_day_1d",
+                                "sensor.accuweather_thunderstorm_probability_day_2d",
+                                "sensor.accuweather_thunderstorm_probability_day_3d",
+                                "sensor.accuweather_thunderstorm_probability_day_4d",
+                                "sensor.accuweather_thunderstorm_probability_night_0d",
+                                "sensor.accuweather_thunderstorm_probability_night_1d",
+                                "sensor.accuweather_thunderstorm_probability_night_2d",
+                                "sensor.accuweather_thunderstorm_probability_night_3d",
+                                "sensor.accuweather_thunderstorm_probability_night_4d",
+                                "sensor.accuweather_tree_pollen_0d",
+                                "sensor.accuweather_tree_pollen_1d",
+                                "sensor.accuweather_tree_pollen_2d",
+                                "sensor.accuweather_tree_pollen_3d",
+                                "sensor.accuweather_tree_pollen_4d",
+                                "sensor.accuweather_uv_index",
+                                "sensor.accuweather_uv_index_0d",
+                                "sensor.accuweather_uv_index_1d",
+                                "sensor.accuweather_uv_index_2d",
+                                "sensor.accuweather_uv_index_3d",
+                                "sensor.accuweather_uv_index_4d",
+                                "sensor.accuweather_wet_bulb_temperature",
+                                "sensor.accuweather_wind",
+                                "sensor.accuweather_wind_chill_temperature",
+                                "sensor.accuweather_wind_day_0d",
+                                "sensor.accuweather_wind_day_1d",
+                                "sensor.accuweather_wind_day_2d",
+                                "sensor.accuweather_wind_day_3d",
+                                "sensor.accuweather_wind_day_4d",
+                                "sensor.accuweather_wind_gust",
+                                "sensor.accuweather_wind_gust_day_0d",
+                                "sensor.accuweather_wind_gust_day_1d",
+                                "sensor.accuweather_wind_gust_day_2d",
+                                "sensor.accuweather_wind_gust_day_3d",
+                                "sensor.accuweather_wind_gust_day_4d",
+                                "sensor.accuweather_wind_gust_night_0d",
+                                "sensor.accuweather_wind_gust_night_1d",
+                                "sensor.accuweather_wind_gust_night_2d",
+                                "sensor.accuweather_wind_gust_night_3d",
+                                "sensor.accuweather_wind_gust_night_4d",
+                                "sensor.accuweather_wind_night_0d",
+                                "sensor.accuweather_wind_night_1d",
+                                "sensor.accuweather_wind_night_2d",
+                                "sensor.accuweather_wind_night_3d",
+                                "sensor.accuweather_wind_night_4d"
+                            ]
                         }
                     ],
                     "icon": "mdi:sprout-outline",
                     "path": "outdoor",
                     "title": "Outdoor"
+                },
+                {
+                    "icon": "mdi:texture-box",
+                    "title": "",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "area",
+                            "area": "37ea50a384964ad19d71a018c28d9558",
+                            "show_camera": true
+                        },
+                        {
+                            "type": "area",
+                            "area": "7caa0d3ab4ac42598aa0b18ccc5f2c00",
+                            "show_camera": true
+                        },
+                        {
+                            "type": "area",
+                            "area": "f4ac4719059c458a9a98aaae34e40761",
+                            "show_camera": true
+                        },
+                        {
+                            "type": "area",
+                            "area": "11453598279e4cb7bd1d0b4c44689c1b",
+                            "show_camera": true
+                        },
+                        {
+                            "type": "area",
+                            "area": "4746a0dde54943d9ac854ea7e9977e9f",
+                            "show_camera": true
+                        },
+                        {
+                            "type": "area",
+                            "area": "45310f2f8cfc4b72aafe78722291e362",
+                            "show_camera": true
+                        },
+                        {
+                            "type": "area",
+                            "area": "9821357291a4469db5ce0ac14b7ec7d8",
+                            "show_camera": true
+                        },
+                        {
+                            "type": "area",
+                            "area": "60d1350ede9646628135eec5faeb0b1c",
+                            "show_camera": true
+                        }
+                    ]
                 }
             ]
         }
