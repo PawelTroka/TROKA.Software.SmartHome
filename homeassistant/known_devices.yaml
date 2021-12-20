@@ -155,3 +155,10 @@ pawel_s_smartphone_3:
   icon:
   picture:
   track: false
+
+pawel_s_smartphone_4:
+  name: Pawel's smartphone
+  mac: '3233230'
+  icon:
+  picture:
+  track: false
