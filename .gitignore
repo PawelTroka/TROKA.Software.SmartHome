@@ -4,6 +4,7 @@ __pycache__/
 
 # Home Assistant HACS-managed custom components
 homeassistant/custom_components/airthings_wave
+homeassistant/custom_components/alexa_media
 homeassistant/custom_components/circadian_lighting
 homeassistant/custom_components/gree
 homeassistant/custom_components/miele
@@ -20,6 +21,13 @@ homeassistant/custom_components/kodi_recently_added
 homeassistant/custom_components/plex_recently_added
 homeassistant/custom_components/smartthinq_sensors
 homeassistant/custom_components/unifigateway
+
+# Home Assistant HACS-managed custom themes
+homeassistant/themes
+
+# Home Assistant HACS-managed custom UI components
+homeassistant/www/community
+homeassistant/www/custom-lovelace
 
 
 /shared/.htpasswd
