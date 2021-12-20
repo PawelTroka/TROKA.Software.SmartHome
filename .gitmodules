@@ -1,3 +1,0 @@
-[submodule "homeassistant/custom_components/wideq"]
-	path = homeassistant/custom_components/wideq
-	url = https://github.com/sampsyo/wideq.git
