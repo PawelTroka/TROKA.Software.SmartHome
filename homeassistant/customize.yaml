@@ -14,3 +14,9 @@ binary_sensor.flic_80e4da74589d:
   friendly_name: kitchen_flic
 binary_sensor.kitchen_multisensor_motion:
   device_class: motion
+climate.bathroom_floor:
+  icon: mdi:waves-arrow-up
+climate.kitchen_floor:
+  icon: mdi:waves-arrow-up
+climate.toilet_floor:
+  icon: mdi:waves-arrow-up
