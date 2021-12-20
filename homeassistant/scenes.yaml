@@ -1,3 +1,5 @@
+- platform: lifx_cloud
+  token: !secret lifx_token
 - id: '1606341317491'
   name: Default
   entities:
@@ -1765,3 +1767,1115 @@
       supported_features: 61
       state: 'on'
   icon: mdi:human-male-female
+- id: '1636308860478'
+  name: Party
+  entities:
+    light.bathroom_light_1:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 163.995
+      - 98.999
+      rgb_color:
+      - 2
+      - 255
+      - 187
+      xy_color:
+      - 0.158
+      - 0.465
+      friendly_name: Bathroom Light 1
+      supported_features: 55
+      state: 'on'
+    light.bathroom_light_2:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 242
+      - 75
+      rgb_color:
+      - 70
+      - 63
+      - 255
+      xy_color:
+      - 0.162
+      - 0.076
+      friendly_name: Bathroom Light 2
+      supported_features: 55
+      state: 'on'
+    light.bathroom_light_3:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 299.997
+      - 100
+      rgb_color:
+      - 254
+      - 0
+      - 255
+      xy_color:
+      - 0.384
+      - 0.154
+      friendly_name: Bathroom Light 3
+      supported_features: 55
+      state: 'on'
+    light.bathroom_light_5:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 242
+      - 75
+      rgb_color:
+      - 70
+      - 63
+      - 255
+      xy_color:
+      - 0.162
+      - 0.076
+      friendly_name: Bathroom Light 5
+      supported_features: 55
+      state: 'on'
+    light.bathroom_light_6:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 299.997
+      - 100
+      rgb_color:
+      - 254
+      - 0
+      - 255
+      xy_color:
+      - 0.384
+      - 0.154
+      friendly_name: Bathroom Light 6
+      supported_features: 55
+      state: 'on'
+    light.bathroom_mirror_light_1:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 242
+      - 75
+      rgb_color:
+      - 70
+      - 63
+      - 255
+      xy_color:
+      - 0.162
+      - 0.076
+      friendly_name: Bathroom Mirror Light 1
+      supported_features: 55
+      state: 'on'
+    light.bathroom_mirror_light_2:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 163.995
+      - 98.999
+      rgb_color:
+      - 2
+      - 255
+      - 187
+      xy_color:
+      - 0.158
+      - 0.465
+      friendly_name: Bathroom Mirror Light 2
+      supported_features: 55
+      state: 'on'
+    light.bathroom_strip:
+      effect_list:
+      - colorloop
+      - night
+      - white
+      supported_color_modes:
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 180
+      - 71.765
+      rgb_color:
+      - 71
+      - 255
+      - 255
+      xy_color:
+      - 0.167
+      - 0.341
+      friendly_name: Bathroom Strip
+      assumed_state: true
+      supported_features: 61
+      state: 'on'
+    light.bedroom_cabinet_strip:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 299.997
+      - 100
+      rgb_color:
+      - 254
+      - 0
+      - 255
+      xy_color:
+      - 0.384
+      - 0.154
+      friendly_name: Bedroom Cabinet Strip
+      supported_features: 55
+      state: 'on'
+    light.bedroom_downlight_1:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 163.995
+      - 98.999
+      rgb_color:
+      - 2
+      - 255
+      - 187
+      xy_color:
+      - 0.158
+      - 0.465
+      friendly_name: Bedroom Downlight 1
+      supported_features: 55
+      state: 'on'
+    light.bedroom_downlight_2:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 299.997
+      - 100
+      rgb_color:
+      - 254
+      - 0
+      - 255
+      xy_color:
+      - 0.384
+      - 0.154
+      friendly_name: Bedroom Downlight 2
+      supported_features: 55
+      state: 'on'
+    light.bedroom_downlight_3:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 242
+      - 75
+      rgb_color:
+      - 70
+      - 63
+      - 255
+      xy_color:
+      - 0.162
+      - 0.076
+      friendly_name: Bedroom Downlight 3
+      supported_features: 55
+      state: 'on'
+    light.bedroom_downlight_4:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 247.998
+      - 100
+      rgb_color:
+      - 33
+      - 0
+      - 255
+      xy_color:
+      - 0.142
+      - 0.043
+      friendly_name: Bedroom Downlight 4
+      supported_features: 55
+      state: 'on'
+    light.bedroom_strip:
+      effect_list:
+      - colorloop
+      - night
+      - white
+      supported_color_modes:
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 345
+      - 57.143
+      rgb_color:
+      - 255
+      - 109
+      - 145
+      xy_color:
+      - 0.515
+      - 0.281
+      friendly_name: Bedroom Strip
+      assumed_state: true
+      supported_features: 61
+      state: 'on'
+    light.hallway_cabinet_strip:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 247.998
+      - 100
+      rgb_color:
+      - 33
+      - 0
+      - 255
+      xy_color:
+      - 0.142
+      - 0.043
+      friendly_name: Hallway Cabinet Strip
+      supported_features: 55
+      state: 'on'
+    light.hallway_downlight_1:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 247.998
+      - 100
+      rgb_color:
+      - 33
+      - 0
+      - 255
+      xy_color:
+      - 0.142
+      - 0.043
+      friendly_name: Hallway Downlight 1
+      supported_features: 55
+      state: 'on'
+    light.hallway_downlight_3:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 163.995
+      - 98.999
+      rgb_color:
+      - 2
+      - 255
+      - 187
+      xy_color:
+      - 0.158
+      - 0.465
+      friendly_name: Hallway Downlight 3
+      supported_features: 55
+      state: 'on'
+    light.hallway_downlight_4:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 299.997
+      - 100
+      rgb_color:
+      - 254
+      - 0
+      - 255
+      xy_color:
+      - 0.384
+      - 0.154
+      friendly_name: Hallway Downlight 4
+      supported_features: 55
+      state: 'on'
+    light.hallway_downlight_5:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 242
+      - 75
+      rgb_color:
+      - 70
+      - 63
+      - 255
+      xy_color:
+      - 0.162
+      - 0.076
+      friendly_name: Hallway Downlight 5
+      supported_features: 55
+      state: 'on'
+    light.hallway_strip:
+      effect_list:
+      - colorloop
+      - night
+      - white
+      supported_color_modes:
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 315
+      - 100
+      rgb_color:
+      - 255
+      - 0
+      - 191
+      xy_color:
+      - 0.477
+      - 0.196
+      friendly_name: Hallway Strip
+      assumed_state: true
+      supported_features: 61
+      state: 'on'
+    light.kitchen_cabinet_strip:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 163.995
+      - 98.999
+      rgb_color:
+      - 2
+      - 255
+      - 187
+      xy_color:
+      - 0.158
+      - 0.465
+      friendly_name: Kitchen Cabinet Strip
+      supported_features: 55
+      state: 'on'
+    light.kitchen_island_light_1:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 247.998
+      - 100
+      rgb_color:
+      - 33
+      - 0
+      - 255
+      xy_color:
+      - 0.142
+      - 0.043
+      friendly_name: Kitchen Island Light 1
+      supported_features: 55
+      state: 'on'
+    light.kitchen_island_light_2:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 299.997
+      - 100
+      rgb_color:
+      - 254
+      - 0
+      - 255
+      xy_color:
+      - 0.384
+      - 0.154
+      friendly_name: Kitchen Island Light 2
+      supported_features: 55
+      state: 'on'
+    light.kitchen_island_strip:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 163.995
+      - 98.999
+      rgb_color:
+      - 2
+      - 255
+      - 187
+      xy_color:
+      - 0.158
+      - 0.465
+      friendly_name: Kitchen Island Strip
+      supported_features: 55
+      state: 'on'
+    light.kitchen_light_1:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 242
+      - 75
+      rgb_color:
+      - 70
+      - 63
+      - 255
+      xy_color:
+      - 0.162
+      - 0.076
+      friendly_name: Kitchen Light 1
+      supported_features: 55
+      state: 'on'
+    light.kitchen_light_2:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 242
+      - 75
+      rgb_color:
+      - 70
+      - 63
+      - 255
+      xy_color:
+      - 0.162
+      - 0.076
+      friendly_name: Kitchen Light 2
+      supported_features: 55
+      state: 'on'
+    light.kitchen_light_3:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 247.998
+      - 100
+      rgb_color:
+      - 33
+      - 0
+      - 255
+      xy_color:
+      - 0.142
+      - 0.043
+      friendly_name: Kitchen Light 3
+      supported_features: 55
+      state: 'on'
+    light.kitchen_light_4:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 247.998
+      - 100
+      rgb_color:
+      - 33
+      - 0
+      - 255
+      xy_color:
+      - 0.142
+      - 0.043
+      friendly_name: Kitchen Light 4
+      supported_features: 55
+      state: 'on'
+    light.toilet_strip:
+      effect_list:
+      - colorloop
+      - night
+      - white
+      supported_color_modes:
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 180
+      - 85.882
+      rgb_color:
+      - 36
+      - 255
+      - 255
+      xy_color:
+      - 0.156
+      - 0.342
+      friendly_name: Toilet Strip
+      assumed_state: true
+      supported_features: 61
+      state: 'on'
+    light.toilet_mirror_light:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 247.998
+      - 100
+      rgb_color:
+      - 33
+      - 0
+      - 255
+      xy_color:
+      - 0.142
+      - 0.043
+      friendly_name: Toilet Mirror Light
+      supported_features: 55
+      state: 'on'
+    light.toilet_light:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 163.995
+      - 98.999
+      rgb_color:
+      - 2
+      - 255
+      - 187
+      xy_color:
+      - 0.158
+      - 0.465
+      friendly_name: LIFX Dlight 26C092
+      supported_features: 55
+      state: 'on'
+    light.office_light_5:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 163.995
+      - 98.999
+      rgb_color:
+      - 2
+      - 255
+      - 187
+      xy_color:
+      - 0.158
+      - 0.465
+      friendly_name: LIFX A19 2D40D5
+      supported_features: 55
+      state: 'on'
+    light.office_light_4:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 247.998
+      - 100
+      rgb_color:
+      - 33
+      - 0
+      - 255
+      xy_color:
+      - 0.142
+      - 0.043
+      friendly_name: LIFX A19 2D0376
+      supported_features: 55
+      state: 'on'
+    light.office_light_3:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 299.997
+      - 100
+      rgb_color:
+      - 254
+      - 0
+      - 255
+      xy_color:
+      - 0.384
+      - 0.154
+      friendly_name: LIFX A19 2CD06A
+      supported_features: 55
+      state: 'on'
+    light.office_light_2:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 247.998
+      - 100
+      rgb_color:
+      - 33
+      - 0
+      - 255
+      xy_color:
+      - 0.142
+      - 0.043
+      friendly_name: LIFX A19 2D36D2
+      supported_features: 55
+      state: 'on'
+    light.office_light_1:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 163.995
+      - 98.999
+      rgb_color:
+      - 2
+      - 255
+      - 187
+      xy_color:
+      - 0.158
+      - 0.465
+      friendly_name: LIFX A19 2D1157
+      supported_features: 55
+      state: 'on'
+    light.living_room_downlight_8:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 299.997
+      - 100
+      rgb_color:
+      - 254
+      - 0
+      - 255
+      xy_color:
+      - 0.384
+      - 0.154
+      friendly_name: Living room Downlight 8
+      supported_features: 55
+      state: 'on'
+    light.living_room_downlight_7:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 299.997
+      - 100
+      rgb_color:
+      - 254
+      - 0
+      - 255
+      xy_color:
+      - 0.384
+      - 0.154
+      friendly_name: Living room Downlight 7
+      supported_features: 55
+      state: 'on'
+    light.living_room_downlight_6:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 247.998
+      - 100
+      rgb_color:
+      - 33
+      - 0
+      - 255
+      xy_color:
+      - 0.142
+      - 0.043
+      friendly_name: Living room Downlight 6
+      supported_features: 55
+      state: 'on'
+    light.living_room_downlight_5:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 163.995
+      - 98.999
+      rgb_color:
+      - 2
+      - 255
+      - 187
+      xy_color:
+      - 0.158
+      - 0.465
+      friendly_name: Living room Downlight 5
+      supported_features: 55
+      state: 'on'
+    light.living_room_downlight_4:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 299.997
+      - 100
+      rgb_color:
+      - 254
+      - 0
+      - 255
+      xy_color:
+      - 0.384
+      - 0.154
+      friendly_name: Living room Downlight 4
+      supported_features: 55
+      state: 'on'
+    light.living_room_downlight_3:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 163.995
+      - 98.999
+      rgb_color:
+      - 2
+      - 255
+      - 187
+      xy_color:
+      - 0.158
+      - 0.465
+      friendly_name: LIFX A19 299D13
+      supported_features: 55
+      state: 'on'
+    light.living_room_downlight_2:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 242
+      - 75
+      rgb_color:
+      - 70
+      - 63
+      - 255
+      xy_color:
+      - 0.162
+      - 0.076
+      friendly_name: Living room Downlight 2
+      supported_features: 55
+      state: 'on'
+    light.living_room_downlight_1:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 242
+      - 75
+      rgb_color:
+      - 70
+      - 63
+      - 255
+      xy_color:
+      - 0.162
+      - 0.076
+      friendly_name: LIFX A19 2993DE
+      supported_features: 55
+      state: 'on'
+  icon: mdi:party-popper
+- id: '1636317865653'
+  name: Full bright
+  entities:
+    group.all_lights:
+      entity_id:
+      - light.toilet_lights
+      - light.living_room_lights
+      - light.office_lights
+      - light.hallway_lights
+      - light.bathroom_lights
+      - light.kitchen_lights
+      - light.bedroom_lights
+      order: 1
+      friendly_name: all_lights
+      state: 'on'
+  icon: mdi:brightness-7
