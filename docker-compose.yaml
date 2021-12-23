@@ -818,6 +818,25 @@ services:
     restart: unless-stopped
 
 
+# Roon - Audiophile Commercial Music Server
+  roon:
+    image: ghcr.io/jmmaloney4/roon:latest
+    container_name: roon
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${HOMESERVERDIR}/roon:/var/roon
+      - ${STORAGEDIR}/music:/music
+    ports:
+      - 9100:9100
+    #devices:
+    #  - /dev/snd:/dev/snd #optional
+
+
 # Volumio - Audiophile Music Server
   volumio:
     image: jbonjean/volumio
