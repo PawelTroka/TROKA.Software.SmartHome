@@ -820,19 +820,22 @@ services:
 
 # Roon - Audiophile Commercial Music Server
   roon:
-    image: ghcr.io/jmmaloney4/roon:latest
+    image: steefdebruijn/docker-roonserver
     container_name: roon
     network_mode: host
     restart: unless-stopped
+    init: true
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
-      - ${HOMESERVERDIR}/roon:/var/roon
+      - ${HOMESERVERDIR}/roon-app:/app
+      - ${HOMESERVERDIR}/roon-data:/data
+      - ${HOMESERVERDIR}/backups/roon:/backup
       - ${STORAGEDIR}/music:/music
-    ports:
-      - 9100:9100
+    #ports:
+     # - 9100:9100
     #devices:
     #  - /dev/snd:/dev/snd #optional
 
