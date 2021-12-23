@@ -63,6 +63,18 @@
       value_template: "{{ 'media_player.office' == state_attr('media_player.office', 'sonos_group')[0] }}"
     bedroom_sonos_is_master:
       value_template: "{{ 'media_player.bedroom' == state_attr('media_player.bedroom', 'sonos_group')[0] }}"
+    toilet_sonos_roon_is_master:
+      value_template: "{{ 'media_player.toilet_sonos_roon' == state_attr('media_player.toilet_sonos_roon', 'group_members')[0] }}"
+    bathroom_sonos_roon_is_master:
+      value_template: "{{ 'media_player.bathroom_sonos_roon' == state_attr('media_player.bathroom_sonos_roon', 'group_members')[0] }}"
+    living_room_amplifier_roon_is_master:
+      value_template: "{{ 'media_player.living_room_amplifier_roon' == state_attr('media_player.living_room_amplifier_roon', 'group_members')[0] }}"
+    kitchen_sonos_roon_is_master:
+      value_template: "{{ 'media_player.kitchen_sonos_roon' == state_attr('media_player.kitchen_sonos_roon', 'group_members')[0] }}"
+    office_sonos_roon_is_master:
+      value_template: "{{ 'media_player.office_sonos_roon' == state_attr('media_player.office_sonos_roon', 'group_members')[0] }}"
+    bedroom_sonos_roon_is_master:
+      value_template: "{{ 'media_player.bedroom_sonos_roon' == state_attr('media_player.bedroom_sonos_roon', 'group_members')[0] }}"
     hallway_door:
       device_class: door
       friendly_name: Hallway door
