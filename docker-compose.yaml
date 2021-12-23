@@ -822,7 +822,14 @@ services:
   roon:
     image: steefdebruijn/docker-roonserver
     container_name: roon
-    network_mode: host
+    expose:
+      - "9003/udp"
+      - "9100-9200/tcp"
+      - "1900/udp"
+    ports:
+      - "9003:9003/udp"
+      - "9100-9200:9100-9200/udp"
+      - "1900:1900/udp"
     pid: host
     privileged: true
     restart: unless-stopped
@@ -835,6 +842,7 @@ services:
       - ${HOMESERVERDIR}/roon-app:/app
       - ${HOMESERVERDIR}/roon-data:/data
       - ${HOMESERVERDIR}/backups/roon:/backup
+      - ${HOMESERVERDIR}/roon-storage:/storage
       - ${STORAGEDIR}/music:/music
     #ports:
      # - 9100:9100
