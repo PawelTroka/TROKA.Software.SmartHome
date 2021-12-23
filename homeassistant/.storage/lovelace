@@ -557,7 +557,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.living_room",
+                                                "entity": "media_player.living_room_amplifier_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "artwork_border": false,
@@ -570,44 +570,44 @@
                                                     "runtime": false,
                                                     "shuffle": false,
                                                     "sound_mode": false,
-                                                    "volume": true
+                                                    "volume": false
                                                 },
-                                                "icon": "mdi:speaker",
+                                                "icon": "mdi:amplifier",
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": true
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.living_room_sonos_is_master",
+                                                    "entity": "binary_sensor.living_room_amplifier_roon_is_master",
                                                     "state": "on"
                                                 }
                                             ],
@@ -616,7 +616,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.living_room",
+                                                "entity": "media_player.living_room_amplifier_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "controls": true,
@@ -626,44 +626,44 @@
                                                     "power": true,
                                                     "progress": true,
                                                     "source": true,
-                                                    "volume": true
+                                                    "volume": false
                                                 },
-                                                "icon": "mdi:speaker-wireless",
+                                                "icon": "mdi:amplifier",
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": false
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.living_room_sonos_is_master",
+                                                    "entity": "binary_sensor.living_room_amplifier_roon_is_master",
                                                     "state_not": "on"
                                                 }
                                             ],
@@ -672,7 +672,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.bathroom",
+                                                "entity": "media_player.bathroom_sonos_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "artwork_border": false,
@@ -691,38 +691,38 @@
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": true
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.bathroom_sonos_is_master",
+                                                    "entity": "binary_sensor.bathroom_sonos_roon_is_master",
                                                     "state": "on"
                                                 }
                                             ],
@@ -731,7 +731,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.bathroom",
+                                                "entity": "media_player.bathroom_sonos_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "controls": true,
@@ -747,38 +747,38 @@
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": false
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.bathroom_sonos_is_master",
+                                                    "entity": "binary_sensor.bathroom_sonos_roon_is_master",
                                                     "state_not": "on"
                                                 }
                                             ],
@@ -787,7 +787,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.toilet",
+                                                "entity": "media_player.toilet_sonos_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "artwork_border": false,
@@ -806,38 +806,38 @@
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": true
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.toilet_sonos_is_master",
+                                                    "entity": "binary_sensor.toilet_sonos_roon_is_master",
                                                     "state": "on"
                                                 }
                                             ],
@@ -846,7 +846,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.toilet",
+                                                "entity": "media_player.toilet_sonos_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "controls": true,
@@ -862,38 +862,38 @@
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": false
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.toilet_sonos_is_master",
+                                                    "entity": "binary_sensor.toilet_sonos_roon_is_master",
                                                     "state_not": "on"
                                                 }
                                             ],
@@ -902,7 +902,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.kitchen",
+                                                "entity": "media_player.kitchen_sonos_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "artwork_border": false,
@@ -921,38 +921,38 @@
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": true
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.kitchen_sonos_is_master",
+                                                    "entity": "binary_sensor.kitchen_sonos_roon_is_master",
                                                     "state": "on"
                                                 }
                                             ],
@@ -961,7 +961,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.kitchen",
+                                                "entity": "media_player.kitchen_sonos_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "controls": true,
@@ -977,38 +977,38 @@
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": false
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.kitchen_sonos_is_master",
+                                                    "entity": "binary_sensor.kitchen_sonos_roon_is_master",
                                                     "state_not": "on"
                                                 }
                                             ],
@@ -1017,7 +1017,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.office",
+                                                "entity": "media_player.office_sonos_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "artwork_border": false,
@@ -1036,38 +1036,38 @@
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": true
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.office_sonos_is_master",
+                                                    "entity": "binary_sensor.office_sonos_roon_is_master",
                                                     "state": "on"
                                                 }
                                             ],
@@ -1076,7 +1076,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.office",
+                                                "entity": "media_player.office_sonos_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "controls": true,
@@ -1092,38 +1092,38 @@
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": false
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.office_sonos_is_master",
+                                                    "entity": "binary_sensor.office_sonos_roon_is_master",
                                                     "state_not": "on"
                                                 }
                                             ],
@@ -1132,7 +1132,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.bedroom",
+                                                "entity": "media_player.bedroom_sonos_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "artwork_border": false,
@@ -1151,38 +1151,38 @@
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": true
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.bedroom_sonos_is_master",
+                                                    "entity": "binary_sensor.bedroom_sonos_roon_is_master",
                                                     "state": "on"
                                                 }
                                             ],
@@ -1191,7 +1191,7 @@
                                         {
                                             "card": {
                                                 "artwork": "cover",
-                                                "entity": "media_player.bedroom",
+                                                "entity": "media_player.bedroom_sonos_roon",
                                                 "group": true,
                                                 "hide": {
                                                     "controls": true,
@@ -1207,38 +1207,38 @@
                                                 "speaker_group": {
                                                     "entities": [
                                                         {
-                                                            "entity_id": "media_player.bathroom",
+                                                            "entity_id": "media_player.bathroom_sonos_roon",
                                                             "name": "Sonos Bathroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.toilet",
+                                                            "entity_id": "media_player.toilet_sonos_roon",
                                                             "name": "Sonos Toilet"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.living_room",
-                                                            "name": "Sonos Living Room"
+                                                            "entity_id": "media_player.living_room_amplifier_roon",
+                                                            "name": "Living Room amplifier"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.kitchen",
+                                                            "entity_id": "media_player.kitchen_sonos_roon",
                                                             "name": "Sonos Kitchen"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.bedroom",
+                                                            "entity_id": "media_player.bedroom_sonos_roon",
                                                             "name": "Sonos Bedroom"
                                                         },
                                                         {
-                                                            "entity_id": "media_player.office",
+                                                            "entity_id": "media_player.office_sonos_roon",
                                                             "name": "Sonos Office"
                                                         }
                                                     ],
-                                                    "platform": "sonos",
+                                                    "platform": "media_player",
                                                     "show_group_count": false
                                                 },
                                                 "type": "custom:mini-media-player"
                                             },
                                             "conditions": [
                                                 {
-                                                    "entity": "binary_sensor.bedroom_sonos_is_master",
+                                                    "entity": "binary_sensor.bedroom_sonos_roon_is_master",
                                                     "state_not": "on"
                                                 }
                                             ],
