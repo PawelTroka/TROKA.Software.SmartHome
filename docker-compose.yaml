@@ -823,6 +823,8 @@ services:
     image: steefdebruijn/docker-roonserver
     container_name: roon
     network_mode: host
+    pid: host
+    privileged: true
     restart: unless-stopped
     init: true
     environment:
