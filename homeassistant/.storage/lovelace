@@ -513,29 +513,8 @@
                                             ]
                                         },
                                         {
+                                            "type": "custom:mini-media-player",
                                             "artwork": "cover",
-                                            "header": {
-                                                "entities": [
-                                                    {
-                                                        "entity": "switch.watch_movie",
-                                                        "name": "Movie"
-                                                    },
-                                                    {
-                                                        "entity": "switch.watch_youtube",
-                                                        "name": "YouTube"
-                                                    },
-                                                    {
-                                                        "entity": "switch.watch_netflix",
-                                                        "name": "Netflix"
-                                                    },
-                                                    {
-                                                        "entity": "switch.play_game",
-                                                        "name": "Game"
-                                                    }
-                                                ],
-                                                "type": "buttons"
-                                            },
-                                            "card": null,
                                             "entity": "media_player.denon_avc_x6500h_avr",
                                             "group": true,
                                             "hide": {
@@ -551,8 +530,7 @@
                                                 "volume": false
                                             },
                                             "icon": "mdi:amplifier",
-                                            "info": "long",
-                                            "type": "custom:mini-media-player"
+                                            "info": "long"
                                         },
                                         {
                                             "card": {
@@ -2529,7 +2507,7 @@
                                     }
                                 ]
                             },
-                            "actions": [
+                            "shortcuts": [
                                 {
                                     "name": "Clean hallway",
                                     "service": "script.clean_hallway",
@@ -2570,50 +2548,29 @@
                         {
                             "type": "entities",
                             "entities": [
-                                {
-                                    "entity": "vacuum.frank"
-                                },
-                                {
-                                    "entity": "sensor.frank_brush"
-                                },
-                                {
-                                    "entity": "sensor.frank_heap"
-                                },
-                                {
-                                    "entity": "sensor.frank_last_clean_image"
-                                },
-                                {
-                                    "entity": "sensor.frank_last_error"
-                                },
-                                {
-                                    "entity": "binary_sensor.frank_mop_attached"
-                                },
-                                {
-                                    "entity": "sensor.frank_sidebrush"
-                                },
-                                {
-                                    "entity": "sensor.frank_stats_area"
-                                },
-                                {
-                                    "entity": "sensor.frank_stats_cid"
-                                },
-                                {
-                                    "entity": "sensor.frank_stats_start"
-                                },
-                                {
-                                    "entity": "sensor.frank_stats_time"
-                                },
-                                {
-                                    "entity": "sensor.frank_stats_type"
-                                },
-                                {
-                                    "entity": "sensor.frank_water_level"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "picture-entity",
-                            "entity": "camera.frank_livemap"
+                                "vacuum.frank",
+                                "button.frank_life_span_brush_reset",
+                                "button.frank_life_span_filter_reset",
+                                "button.frank_life_span_side_brush_reset",
+                                "button.frank_relocate",
+                                "automation.turn_off_vacuum_when_someone_gets_home",
+                                "automation.vacuum_notifications"
+                            ],
+                            "footer": {
+                                "type": "buttons",
+                                "entities": [
+                                    {
+                                        "entity": "script.start_vacuum",
+                                        "show_icon": true,
+                                        "show_name": true
+                                    },
+                                    {
+                                        "entity": "script.stop_vacuum",
+                                        "show_icon": true,
+                                        "show_name": true
+                                    }
+                                ]
+                            }
                         }
                     ],
                     "icon": "mdi:transit-transfer",
