@@ -351,9 +351,6 @@
                                             "entity": "person.pawel"
                                         },
                                         {
-                                            "entity": "person.daria"
-                                        },
-                                        {
                                             "entity": "device_tracker.430i_xdrive",
                                             "name": "BMW"
                                         },
