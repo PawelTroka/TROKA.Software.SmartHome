@@ -229,7 +229,7 @@ services:
 
  # Home Assistant - Smart Home Hub
   homeassistant:
-    image: homeassistant/home-assistant:latest
+    image: homeassistant/home-assistant:2022.3
     container_name: homeassistant
     hostname: hass
     restart: always
