@@ -1,85 +1,112 @@
-light:
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.6
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.9
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.11
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.12
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.13
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.14
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.16
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.17
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.18
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.19
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.20
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.21
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.27
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.29
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.30
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.31
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.32
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.37
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.38
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.59
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.72
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.73
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.80
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.81
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.82
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.83
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.84
+- light:
   - server: 10.10.10.94
     port: 56700
     broadcast: 10.10.10.102
