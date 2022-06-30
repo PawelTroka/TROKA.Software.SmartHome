@@ -75,27 +75,3 @@
       value_template: "{{ 'media_player.office_sonos_roon' == state_attr('media_player.office_sonos_roon', 'group_members')[0] }}"
     bedroom_sonos_roon_is_master:
       value_template: "{{ 'media_player.bedroom_sonos_roon' == state_attr('media_player.bedroom_sonos_roon', 'group_members')[0] }}"
-    bathroom_flood_sensor:
-      device_class: moisture
-      friendly_name: 'Bathroom flood sensor'
-      value_template: >-
-        {{ states("sensor.bathroom_flood_sensor_flood") | int > 0
-            and states("sensor.bathroom_flood_sensor_flood") | int < 254
-            or states("sensor.bathroom_flood_sensor_alarm_type") | int > 0
-            or states("sensor.bathroom_flood_sensor_alarm_level") | int == 2 }}
-    toilet_flood_sensor:
-      device_class: moisture
-      friendly_name: 'Toilet flood sensor'
-      value_template: >-
-        {{ states("sensor.toilet_flood_sensor_flood") | int > 0
-            and states("sensor.toilet_flood_sensor_flood") | int < 254
-            or states("sensor.toilet_flood_sensor_alarm_type") | int > 0
-            or states("sensor.toilet_flood_sensor_alarm_level") | int == 2 }}
-    kitchen_flood_sensor:
-      device_class: moisture
-      friendly_name: 'Kitchen flood sensor'
-      value_template: >-
-        {{ states("sensor.kitchen_flood_sensor_flood") | int > 0
-            and states("sensor.kitchen_flood_sensor_flood") | int < 254
-            or states("sensor.kitchen_flood_sensor_alarm_type") | int > 0
-            or states("sensor.kitchen_flood_sensor_alarm_level") | int == 2 }}
