@@ -1,4 +1,0 @@
-light:
-  - server: 10.10.10.94
-    port: 56700
-    broadcast: 10.10.10.0/25 # 10.10.10.6 - 10.10.10.102 but we are limited because of netmask 25 - 10.10.10.1 - 10.10.10.126
