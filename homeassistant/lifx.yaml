@@ -1,29 +1,43 @@
 light:
-  - broadcast: 10.10.10.6
-  - broadcast: 10.10.10.9
-  - broadcast: 10.10.10.11
-  - broadcast: 10.10.10.12
-  - broadcast: 10.10.10.13
-  - broadcast: 10.10.10.14
-  - broadcast: 10.10.10.16
-  - broadcast: 10.10.10.17
-  - broadcast: 10.10.10.18
-  - broadcast: 10.10.10.19
-  - broadcast: 10.10.10.20
-  - broadcast: 10.10.10.21
+  - broadcast: 10.10.10.6 #Toilet light
+  - broadcast: 10.10.10.9 #Bathroom light1
+  - broadcast: 10.10.10.11 #Bathroom light2
+  - broadcast: 10.10.10.12 #Bathroom light3
+  - broadcast: 10.10.10.13 #Bathroom light4
+  - broadcast: 10.10.10.14 #Living room Downlight1
+  - broadcast: 10.10.10.15 #Living room Downlight2
+  - broadcast: 10.10.10.16 #Living room Downlight3
+  - broadcast: 10.10.10.17 #Living room Downlight4
+  - broadcast: 10.10.10.18 #Living room Downlight5
+  - broadcast: 10.10.10.19 #Living room Downlight6
+  - broadcast: 10.10.10.20 #Living room Downlight7
+  - broadcast: 10.10.10.21 #Living room Downlight8
+  - broadcast: 10.10.10.22 #Hallway downlight1
+  - broadcast: 10.10.10.23 #Hallway downlight2
+  - broadcast: 10.10.10.24 #Hallway downlight3
+  - broadcast: 10.10.10.25 #Hallway downlight4
+  - broadcast: 10.10.10.26 #Hallway downlight5
   - broadcast: 10.10.10.27
   - broadcast: 10.10.10.29
   - broadcast: 10.10.10.30
   - broadcast: 10.10.10.31
   - broadcast: 10.10.10.32
+  - broadcast: 10.10.10.33
+  - broadcast: 10.10.10.34
+  - broadcast: 10.10.10.35
+  - broadcast: 10.10.10.36
   - broadcast: 10.10.10.37
   - broadcast: 10.10.10.38
+  - broadcast: 10.10.10.56
   - broadcast: 10.10.10.59
-  - broadcast: 10.10.10.72
-  - broadcast: 10.10.10.73
+  - broadcast: 10.10.10.72 # Bathroom mirror light1
+  - broadcast: 10.10.10.73 # Bathroom mirror light2
+  - broadcast: 10.10.10.75 # Bedroom cabinet strip
   - broadcast: 10.10.10.80
   - broadcast: 10.10.10.81
   - broadcast: 10.10.10.82
   - broadcast: 10.10.10.83
   - broadcast: 10.10.10.84
-  - broadcast: 10.10.10.102
+  - broadcast: 10.10.10.85 #Kitchen Island Strip
+  - broadcast: 10.10.10.102 #Toilet Mirror Light
+  - broadcast: 10.10.10.107 #Hallway cabinet strip
