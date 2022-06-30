@@ -52,17 +52,17 @@
     shower_in_use:
       value_template: "{{ states('sensor.bathroom_multisensor_relative_humidity') | float > 60 or states('sensor.bathroom_humidity') | float > 60 }}"
     toilet_sonos_is_master:
-      value_template: "{{ 'media_player.toilet' == state_attr('media_player.toilet', 'sonos_group')[0] }}"
+      value_template: "{{ 'media_player.toilet' == state_attr('media_player.toilet', 'group_members')[0] }}"
     bathroom_sonos_is_master:
-      value_template: "{{ 'media_player.bathroom' == state_attr('media_player.bathroom', 'sonos_group')[0] }}"
+      value_template: "{{ 'media_player.bathroom' == state_attr('media_player.bathroom', 'group_members')[0] }}"
     living_room_sonos_is_master:
-      value_template: "{{ 'media_player.living_room' == state_attr('media_player.living_room', 'sonos_group')[0] }}"
+      value_template: "{{ 'media_player.living_room' == state_attr('media_player.living_room', 'group_members')[0] }}"
     kitchen_sonos_is_master:
-      value_template: "{{ 'media_player.kitchen' == state_attr('media_player.kitchen', 'sonos_group')[0] }}"
+      value_template: "{{ 'media_player.kitchen' == state_attr('media_player.kitchen', 'group_members')[0] }}"
     office_sonos_is_master:
-      value_template: "{{ 'media_player.office' == state_attr('media_player.office', 'sonos_group')[0] }}"
+      value_template: "{{ 'media_player.office' == state_attr('media_player.office', 'group_members')[0] }}"
     bedroom_sonos_is_master:
-      value_template: "{{ 'media_player.bedroom' == state_attr('media_player.bedroom', 'sonos_group')[0] }}"
+      value_template: "{{ 'media_player.bedroom' == state_attr('media_player.bedroom', 'group_members')[0] }}"
     toilet_sonos_roon_is_master:
       value_template: "{{ 'media_player.toilet_sonos_roon' == state_attr('media_player.toilet_sonos_roon', 'group_members')[0] }}"
     bathroom_sonos_roon_is_master:
