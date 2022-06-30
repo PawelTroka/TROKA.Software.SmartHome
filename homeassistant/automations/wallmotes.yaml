@@ -3,10 +3,10 @@
 - alias: Toggle bathroom lights on wallmote button 1 click
   trigger:
   - event_data:
-      entity_id: zwave.bathroom_wallmote
-      scene_data: 0
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 12
+      value: "KeyPressed"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -15,10 +15,10 @@
 - alias: Set bathroom lights to default on wallmote button 1 hold
   trigger:
   - event_data:
-      entity_id: zwave.bathroom_wallmote
-      scene_data: 2
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 12
+      value: "KeyHeldDown"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -27,10 +27,10 @@
 - alias: Toggle hallway lights on wallmote button 2 click
   trigger:
   - event_data:
-      entity_id: zwave.bathroom_wallmote
-      scene_data: 0
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 12
+      value: "KeyPressed"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -39,10 +39,10 @@
 - alias: Set hallway lights to default on wallmote button 2 hold
   trigger:
   - event_data:
-      entity_id: zwave.bathroom_wallmote
-      scene_data: 2
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 12
+      value: "KeyHeldDown"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -52,10 +52,10 @@
 - alias: Toggle living room lights on wallmote button 3 click
   trigger:
   - event_data:
-      entity_id: zwave.bathroom_wallmote
-      scene_data: 0
-      scene_id: 3
-    event_type: zwave.scene_activated
+      node_id: 12
+      value: "KeyPressed"
+      label: "Scene 003"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -64,10 +64,10 @@
 - alias: Set living room lights to default on wallmote button 3 hold
   trigger:
   - event_data:
-      entity_id: zwave.bathroom_wallmote
-      scene_data: 2
-      scene_id: 3
-    event_type: zwave.scene_activated
+      node_id: 12
+      value: "KeyHeldDown"
+      label: "Scene 003"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -77,10 +77,10 @@
 - alias: Toggle kitchen lights on wallmote button 4 click
   trigger:
   - event_data:
-      entity_id: zwave.bathroom_wallmote
-      scene_data: 0
-      scene_id: 4
-    event_type: zwave.scene_activated
+      node_id: 12
+      value: "KeyPressed"
+      label: "Scene 004"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -89,10 +89,10 @@
 - alias: Set kitchen lights to default on wallmote button 4 hold
   trigger:
   - event_data:
-      entity_id: zwave.bathroom_wallmote
-      scene_data: 2
-      scene_id: 4
-    event_type: zwave.scene_activated
+      node_id: 12
+      value: "KeyHeldDown"
+      label: "Scene 004"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -104,10 +104,10 @@
 - alias: Toggle office lights on wallmote button 1 click
   trigger:
   - event_data:
-      entity_id: zwave.toilet_wallmote
-      scene_data: 0
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 14
+      value: "KeyPressed"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -116,10 +116,10 @@
 - alias: Set office lights to default on wallmote button 1 hold
   trigger:
   - event_data:
-      entity_id: zwave.toilet_wallmote
-      scene_data: 2
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 14
+      value: "KeyHeldDown"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -128,10 +128,10 @@
 - alias: Toggle toilet lights on wallmote button 2 click
   trigger:
   - event_data:
-      entity_id: zwave.toilet_wallmote
-      scene_data: 0
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 14
+      value: "KeyPressed"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -140,10 +140,10 @@
 - alias: Set toilet lights to default on wallmote button 2 hold
   trigger:
   - event_data:
-      entity_id: zwave.toilet_wallmote
-      scene_data: 2
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 14
+      value: "KeyHeldDown"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -153,10 +153,10 @@
 - alias: Toggle hallway lights on wallmote button 3 click
   trigger:
   - event_data:
-      entity_id: zwave.toilet_wallmote
-      scene_data: 0
-      scene_id: 3
-    event_type: zwave.scene_activated
+      node_id: 14
+      value: "KeyPressed"
+      label: "Scene 003"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -165,10 +165,10 @@
 - alias: Set hallway lights to default on wallmote button 3 hold
   trigger:
   - event_data:
-      entity_id: zwave.toilet_wallmote
-      scene_data: 2
-      scene_id: 3
-    event_type: zwave.scene_activated
+      node_id: 14
+      value: "KeyHeldDown"
+      label: "Scene 003"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -178,10 +178,10 @@
 - alias: Toggle toilet strip on wallmote button 4 click
   trigger:
   - event_data:
-      entity_id: zwave.toilet_wallmote
-      scene_data: 0
-      scene_id: 4
-    event_type: zwave.scene_activated
+      node_id: 14
+      value: "KeyPressed"
+      label: "Scene 004"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -190,10 +190,10 @@
 - alias: Set toilet strip to default on wallmote button 4 hold
   trigger:
   - event_data:
-      entity_id: zwave.toilet_wallmote
-      scene_data: 2
-      scene_id: 4
-    event_type: zwave.scene_activated
+      node_id: 14
+      value: "KeyHeldDown"
+      label: "Scene 004"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -205,10 +205,10 @@
 - alias: Toggle bedroom downlights on wallmote button 1 click
   trigger:
   - event_data:
-      entity_id: zwave.bedroom_wallmote
-      scene_data: 0
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 16
+      value: "KeyPressed"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -217,10 +217,10 @@
 - alias: Set bedroom downlights to default on wallmote button 1 hold
   trigger:
   - event_data:
-      entity_id: zwave.bedroom_wallmote
-      scene_data: 2
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 16
+      value: "KeyHeldDown"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -230,10 +230,10 @@
 - alias: Toggle bedroom strip on wallmote button 2 click
   trigger:
   - event_data:
-      entity_id: zwave.bedroom_wallmote
-      scene_data: 0
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 16
+      value: "KeyPressed"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -242,10 +242,10 @@
 - alias: Set bedroom strip to default on wallmote button 2 hold
   trigger:
   - event_data:
-      entity_id: zwave.bedroom_wallmote
-      scene_data: 2
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 16
+      value: "KeyHeldDown"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -255,10 +255,10 @@
 - alias: Toggle bedroom cabinet strip on wallmote button 3 click
   trigger:
   - event_data:
-      entity_id: zwave.bedroom_wallmote
-      scene_data: 0
-      scene_id: 3
-    event_type: zwave.scene_activated
+      node_id: 16
+      value: "KeyPressed"
+      label: "Scene 003"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -267,10 +267,10 @@
 - alias: Set bedroom cabinet strip to default on wallmote button 3 hold
   trigger:
   - event_data:
-      entity_id: zwave.bedroom_wallmote
-      scene_data: 2
-      scene_id: 3
-    event_type: zwave.scene_activated
+      node_id: 16
+      value: "KeyHeldDown"
+      label: "Scene 003"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -280,10 +280,10 @@
 - alias: Toggle bedroom TV on wallmote button 4 click
   trigger:
   - event_data:
-      entity_id: zwave.bedroom_wallmote
-      scene_data: 0
-      scene_id: 4
-    event_type: zwave.scene_activated
+      node_id: 16
+      value: "KeyPressed"
+      label: "Scene 004"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: media_player.toggle
@@ -292,10 +292,10 @@
 - alias: Turn off bedroom TV on wallmote button 4 hold
   trigger:
   - event_data:
-      entity_id: zwave.bedroom_wallmote
-      scene_data: 2
-      scene_id: 4
-    event_type: zwave.scene_activated
+      node_id: 16
+      value: "KeyHeldDown"
+      label: "Scene 004"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: media_player.turn_off
@@ -307,10 +307,10 @@
 - alias: Toggle kitchen countertop lights on wallmote button 1 click
   trigger:
   - event_data:
-      entity_id: zwave.kitchen_wallmote
-      scene_data: 0
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 20
+      value: "KeyPressed"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -319,10 +319,10 @@
 - alias: Set kitchen countertop lights to default on wallmote button 1 hold
   trigger:
   - event_data:
-      entity_id: zwave.kitchen_wallmote
-      scene_data: 2
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 20
+      value: "KeyHeldDown"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -331,10 +331,10 @@
 - alias: Toggle kitchen island lights on wallmote button 2 click
   trigger:
   - event_data:
-      entity_id: zwave.kitchen_wallmote
-      scene_data: 0
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 20
+      value: "KeyPressed"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -343,10 +343,10 @@
 - alias: Set kitchen island lights to default on wallmote button 2 hold
   trigger:
   - event_data:
-      entity_id: zwave.kitchen_wallmote
-      scene_data: 2
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 20
+      value: "KeyHeldDown"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -356,10 +356,10 @@
 - alias: Toggle kitchen cabinet strip on wallmote button 3 click
   trigger:
   - event_data:
-      entity_id: zwave.kitchen_wallmote
-      scene_data: 0
-      scene_id: 3
-    event_type: zwave.scene_activated
+      node_id: 20
+      value: "KeyPressed"
+      label: "Scene 003"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -368,10 +368,10 @@
 - alias: Set kitchen cabinet strip to default on wallmote button 3 hold
   trigger:
   - event_data:
-      entity_id: zwave.kitchen_wallmote
-      scene_data: 2
-      scene_id: 3
-    event_type: zwave.scene_activated
+      node_id: 20
+      value: "KeyHeldDown"
+      label: "Scene 003"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -381,10 +381,10 @@
 - alias: Toggle kitchen island strip on wallmote button 4 click
   trigger:
   - event_data:
-      entity_id: zwave.kitchen_wallmote
-      scene_data: 0
-      scene_id: 4
-    event_type: zwave.scene_activated
+      node_id: 20
+      value: "KeyPressed"
+      label: "Scene 004"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -393,10 +393,10 @@
 - alias: Set kitchen island strip to default on wallmote button 4 hold
   trigger:
   - event_data:
-      entity_id: zwave.kitchen_wallmote
-      scene_data: 2
-      scene_id: 4
-    event_type: zwave.scene_activated
+      node_id: 20
+      value: "KeyHeldDown"
+      label: "Scene 004"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -408,10 +408,10 @@
 - alias: Toggle hallway lights on hallway wallmote button 1 click
   trigger:
   - event_data:
-      entity_id: zwave.hallway_wallmote
-      scene_data: 0
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 28
+      value: "KeyPressed"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -420,10 +420,10 @@
 - alias: Set hallway lights to default on hallway wallmote button 1 hold
   trigger:
   - event_data:
-      entity_id: zwave.hallway_wallmote
-      scene_data: 2
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 28
+      value: "KeyHeldDown"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -432,10 +432,10 @@
 - alias: Toggle hallway cabinet strip on hallway wallmote button 2 click
   trigger:
   - event_data:
-      entity_id: zwave.hallway_wallmote
-      scene_data: 0
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 28
+      value: "KeyPressed"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -444,10 +444,10 @@
 - alias: Set hallway cabinet strip to default on hallway wallmote button 2 hold
   trigger:
   - event_data:
-      entity_id: zwave.hallway_wallmote
-      scene_data: 2
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 28
+      value: "KeyHeldDown"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -457,10 +457,10 @@
 - alias: Turn off all lights on hallway wallmote button 3 click
   trigger:
   - event_data:
-      entity_id: zwave.hallway_wallmote
-      scene_data: 0
-      scene_id: 3
-    event_type: zwave.scene_activated
+      node_id: 28
+      value: "KeyPressed"
+      label: "Scene 003"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.turn_off
@@ -469,10 +469,10 @@
 - alias: Turn off all devices on hallway wallmote button 3 hold
   trigger:
   - event_data:
-      entity_id: zwave.hallway_wallmote
-      scene_data: 2
-      scene_id: 3
-    event_type: zwave.scene_activated
+      node_id: 28
+      value: "KeyHeldDown"
+      label: "Scene 003"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -488,10 +488,10 @@
 - alias: Toggle living room relax area lights on living room wallmote button 1 click
   trigger:
   - event_data:
-      entity_id: zwave.living_room_wallmote
-      scene_data: 0
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 23
+      value: "KeyPressed"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -500,10 +500,10 @@
 - alias: Set living room relax area lights lights to default on living room wallmote button 1 hold
   trigger:
   - event_data:
-      entity_id: zwave.living_room_wallmote
-      scene_data: 2
-      scene_id: 1
-    event_type: zwave.scene_activated
+      node_id: 23
+      value: "KeyHeldDown"
+      label: "Scene 001"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -512,10 +512,10 @@
 - alias: Toggle living room dining area lights on living room wallmote button 2 click
   trigger:
   - event_data:
-      entity_id: zwave.living_room_wallmote
-      scene_data: 0
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 23
+      value: "KeyPressed"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: light.toggle
@@ -524,10 +524,10 @@
 - alias: Set living room dining area lights lights to default on living room wallmote button 2 hold
   trigger:
   - event_data:
-      entity_id: zwave.living_room_wallmote
-      scene_data: 2
-      scene_id: 2
-    event_type: zwave.scene_activated
+      node_id: 23
+      value: "KeyHeldDown"
+      label: "Scene 002"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: script.turn_on
@@ -537,10 +537,10 @@
 - alias: Toggle living room TV on living room wallmote button 3 click
   trigger:
   - event_data:
-      entity_id: zwave.living_room_wallmote
-      scene_data: 0
-      scene_id: 3
-    event_type: zwave.scene_activated
+      node_id: 23
+      value: "KeyPressed"
+      label: "Scene 003"
+    event_type: zwave_js_value_notification
     platform: event
   action:
     service: media_player.toggle
