@@ -75,26 +75,6 @@
       value_template: "{{ 'media_player.office_sonos_roon' == state_attr('media_player.office_sonos_roon', 'group_members')[0] }}"
     bedroom_sonos_roon_is_master:
       value_template: "{{ 'media_player.bedroom_sonos_roon' == state_attr('media_player.bedroom_sonos_roon', 'group_members')[0] }}"
-    hallway_door:
-      device_class: door
-      friendly_name: Hallway door
-      value_template: " {{ is_state('sensor.hallway_door_opening_sensor_access_control', '22') if states('sensor.hallway_door_opening_sensor_access_control') in ['22','23'] else states('binary_sensor.hallway_door') == 'on' }} "
-    bathroom_door:
-      device_class: door
-      friendly_name: Bathroom door
-      value_template: " {{ is_state('sensor.bathroom_door_opening_sensor_access_control', '22') if states('sensor.bathroom_door_opening_sensor_access_control') in ['22','23'] else states('binary_sensor.bathroom_door') == 'on' }} "
-    toilet_door:
-      device_class: door
-      friendly_name: Toilet door
-      value_template: " {{ is_state('sensor.toilet_door_opening_sensor_access_control', '22') if states('sensor.toilet_door_opening_sensor_access_control') in ['22','23'] else states('binary_sensor.toilet_door') == 'on' }} "
-    bedroom_door:
-      device_class: door
-      friendly_name: Bedroom door
-      value_template: " {{ is_state('sensor.bedroom_door_opening_sensor_access_control', '22') if states('sensor.bedroom_door_opening_sensor_access_control') in ['22','23'] else states('binary_sensor.bedroom_door') == 'on' }} "
-    office_door:
-      device_class: door
-      friendly_name: Office door
-      value_template: " {{ is_state('sensor.office_door_opening_sensor_access_control', '22') if states('sensor.office_door_opening_sensor_access_control') in ['22','23'] else states('binary_sensor.office_door') == 'on' }} "
     bathroom_flood_sensor:
       device_class: moisture
       friendly_name: 'Bathroom flood sensor'
