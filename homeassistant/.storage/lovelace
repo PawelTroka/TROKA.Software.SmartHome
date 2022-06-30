@@ -3225,34 +3225,6 @@
                         {
                             "type": "entities",
                             "entities": [
-                                {
-                                    "entity": "binary_sensor.eight_right_bed_presence"
-                                },
-                                {
-                                    "entity": "sensor.eight_right_bed_state"
-                                },
-                                {
-                                    "entity": "sensor.eight_right_bed_temperature"
-                                },
-                                {
-                                    "entity": "sensor.eight_right_previous_sleep_session"
-                                },
-                                {
-                                    "entity": "sensor.eight_right_sleep_fitness"
-                                },
-                                {
-                                    "entity": "sensor.eight_right_sleep_session"
-                                },
-                                {
-                                    "entity": "sensor.eight_right_sleep_stage"
-                                }
-                            ],
-                            "title": "Bed - Daria",
-                            "state_color": true
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
                                 "binary_sensor.withings_in_bed_pawel_t",
                                 "sensor.withings_sleep_breathing_disturbances_intensity_pawel_t",
                                 "sensor.withings_sleep_deep_duration_seconds_pawel_t",
