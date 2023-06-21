@@ -183,48 +183,6 @@ services:
       - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 
-############################# GAMING
-
-  minecraft:
-    image: itzg/minecraft-bedrock-server
-    container_name: minecraft
-    hostname: minecraft
-    restart: always
-    networks:
-      - traefik_proxy
-    ports:
-      - 19132:19132/udp
-    volumes:
-      - ${HOMESERVERDIR}/minecraft:/data
-    environment:
-      - LEVEL_NAME=CosmicFriendsV3
-      - SERVER_NAME=TROKA.Software.Minecraft
-      - SERVER_PORT=19132
-      - EULA=TRUE
-      - GAMEMODE=survival
-      - DIFFICULTY=easy
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    labels:
-      - "traefik.enable=true"
-      - "traefik.backend=minecraft"
-      - "traefik.frontend.rule=Host:minecraft.${DOMAINNAME}"  
-#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefixStrip: /minecraft"
-      - "traefik.port=19132"
-      - "traefik.docker.network=traefik_proxy"
-      - "traefik.frontend.headers.SSLRedirect=true"
-      - "traefik.frontend.headers.STSSeconds=315360000"
-      - "traefik.frontend.headers.browserXSSFilter=true"
-      - "traefik.frontend.headers.contentTypeNosniff=true"
-      - "traefik.frontend.headers.forceSTSHeader=true"
-      - "traefik.frontend.headers.SSLHost=minecraft.${DOMAINNAME}"
-      - "traefik.frontend.headers.STSIncludeSubdomains=true"
-      - "traefik.frontend.headers.STSPreload=true"
-#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
-
-
 ############################# SMART HOME
 
  # Home Assistant - Smart Home Hub
@@ -845,62 +803,6 @@ services:
     restart: unless-stopped
 
 
-# Roon - Audiophile Commercial Music Server
-  roon:
-    image: steefdebruijn/docker-roonserver
-    container_name: roon
-    expose:
-      - "9003/udp"
-      - "9100-9200/tcp"
-      - "1900/udp"
-    ports:
-      - "9003:9003/udp"
-      - "9100-9200:9100-9200/udp"
-      - "1900:1900/udp"
-    pid: host
-    privileged: true
-    network_mode: host
-    restart: unless-stopped
-    init: true
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${HOMESERVERDIR}/roon-app:/app
-      - ${HOMESERVERDIR}/roon-data:/data
-      - ${HOMESERVERDIR}/backups/roon:/backup
-      - ${HOMESERVERDIR}/roon-storage:/storage
-      - ${STORAGEDIR}/music:/music
-    #ports:
-     # - 9100:9100
-    #devices:
-    #  - /dev/snd:/dev/snd #optional
-
-
-# Volumio - Audiophile Music Server
-  volumio:
-    image: jbonjean/volumio
-    container_name: volumio
-    environment:
-      - HOST=192.168.1.50:3000
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      #- CONTEXT_PATH=<URL_BASE> #optional
-      #- JAVA_OPTS=<options> #optional
-    volumes:
-      - ${HOMESERVERDIR}/volumio:/data
-      - ${STORAGEDIR}/music:/ro
-      #- </path/to/playlists>:/playlists
-      #- </path/to/podcasts>:/podcasts
-      #- </path/to/other media>:/media #optional
-    ports:
-      - 3000:3000
-    #devices:
-    #  - /dev/snd:/dev/snd #optional
-    restart: unless-stopped
-
 
 # Tautulli - Previously PlexPy. Plex statistics and monitoring
 # Set HTTP Root in Tautulli settings if using PathPrefix
@@ -1019,50 +921,6 @@ services:
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
       - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
-
-# PiHole - network wide DNS-level ads blocking
-  pihole:
-    container_name: pihole
-    domainname: ${DOMAINNAME}
-    image: pihole/pihole:latest
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "67:67/udp"
-      - "8053:80/tcp"
-      #- "443:443/tcp"
-    environment:
-      TZ: ${TZ}
-      WEBPASSWORD: ${PIHOLE_WEBPASSWORD}
-      #DNSSEC: 'true'
-      #CONDITIONAL_FORWARDING: 'true'
-      #CONDITIONAL_FORWARDING_IP: '192.168.1.1'
-      #CONDITIONAL_FORWARDING_DOMAIN: 'localdomain'
-      ServerIP: ${SERVER_IP}
-      PROXY_LOCATION: pihole
-      VIRTUAL_HOST: pihole.${DOMAINNAME}
-      VIRTUAL_PORT: 80
-    # Volumes store your data between container upgrades
-    volumes:
-      - ${HOMESERVERDIR}/pihole/etc-pihole/:/etc/pihole/
-      - ${HOMESERVERDIR}/pihole/etc-dnsmasq.d/:/etc/dnsmasq.d/
-    dns:
-      - 127.0.0.1
-      - 1.1.1.1
-    # Recommended but not required (DHCP needs NET_ADMIN)
-    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
-    #cap_add:
-      #- NET_ADMIN
-    #network_mode: host
-    restart: unless-stopped
-    labels:
-       # required when using --docker.exposedbydefault=false
-       - "traefik.enable=true"
-       # https://www.techjunktrunk.com/docker/2017/11/03/traefik-default-server-catch-all/
-       - "traefik.frontend.rule=HostRegexp:pihole.${DOMAINNAME},{catchall:.*}"
-       - "traefik.frontend.priority=1"
-       - "traefik.backend=pihole"
-       - "traefik.port=80"
 
 # Glances - System Information
   glances:
