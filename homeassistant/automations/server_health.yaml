@@ -1,0 +1,43 @@
+# Server & Infrastructure Health Monitoring
+
+- alias: "NAS HDD Overheating Alert"
+  trigger:
+    - platform: numeric_state
+      entity_id:
+        - sensor.dev_sda
+        - sensor.dev_sdb
+        - sensor.dev_sdc
+        - sensor.dev_sdd
+        - sensor.dev_sde
+        - sensor.dev_sdf
+        - sensor.dev_sdg
+        - sensor.dev_sdh
+        - sensor.dev_sdi
+      above: 50
+  action:
+    - service: notify.level_important
+      data:
+        title: "NAS Overheating!"
+        message: "Hard Drive {{ trigger.to_state.attributes.friendly_name }} is at {{ trigger.to_state.state }}°C! Check cooling immediately."
+
+- alias: "UPS Power Loss Alert"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.ups_input_voltage
+      below: 200 # Assuming 230V standard, alerting if it drops significantly
+  action:
+    - service: notify.level_important
+      data:
+        title: "Power Loss Detected!"
+        message: "UPS Input Voltage dropped to {{ trigger.to_state.state }}V. System is running on battery."
+
+- alias: "UPS Battery Critical"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.ups_battery_capacity
+      below: 20
+  action:
+    - service: notify.level_important
+      data:
+        title: "Server Shutdown Imminent!"
+        message: "UPS Battery is at {{ trigger.to_state.state }}%. Safe shutdown recommended."
