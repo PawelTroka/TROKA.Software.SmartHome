@@ -62,18 +62,6 @@
           "{{ trigger.to_state.name }} is {{ trigger.to_state.state }}"
 
 
-- alias: "Birth control pill reminder"
-  trigger:
-    platform: time
-    at: "19:00:00"
-  action:
-    - service: notify.level_important
-      data:
-        title: "Birth control pill reminder!"
-        message: >-
-          Daria, it's time to take your birth control pill! Daria, it's time
-          to take your birth control pill! Daria, it's time to take your birth
-          control pill!
 
 - alias: "Morning vitamins reminder"
   trigger:

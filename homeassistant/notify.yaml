@@ -89,7 +89,7 @@
   platform: group
   services:
     - service: mobile_app_sm_g998b # Pawel
-    - service: mobile_app_iphone # Daria
+
 
 - name: cars
   platform: group

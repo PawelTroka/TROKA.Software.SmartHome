@@ -3,43 +3,31 @@
 - alias: 'Turn off everything when everybody leaves home'
   trigger:
     - platform: state
-      entity_id: group.all_persons
-      to: 'not_home'
+      entity_id: zone.home
+      to: 0
   action:
-    - service: script.turn_on
-      entity_id: script.turn_off_everything
+    - service: script.turn_off_everything
     - service: notify.level_note
       data:
         message: Turned off everything because everyone left home
         title: Everything turned off!
-    - service: script.turn_on
-      entity_id: script.start_vacuum
+    - service: script.start_vacuum
 
 - alias: 'Turn off vacuum when someone gets home'
   trigger:
-    - platform: state
-      entity_id: group.all_persons
-      to: 'home'
+    - platform: numeric_state
+      entity_id: zone.home
+      above: 0
   action:
-    - service: script.turn_on
-      entity_id: script.stop_vacuum
+    - service: script.stop_vacuum
 
 - alias: 'Say welcome Pawel when Pawel is back home'
   trigger:
     - platform: state
       entity_id: person.pawel
+      from: 'not_home'
       to: 'home'
   action:
     service: script.announce_everywhere
     data:
       message: 'Welcome back Pawel!'
-
-- alias: 'Say welcome Daria when Daria is back home'
-  trigger:
-    - platform: state
-      entity_id: person.daria
-      to: 'home'
-  action:
-    service: script.announce_everywhere
-    data:
-      message: 'Welcome back Daria!'
