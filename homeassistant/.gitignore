@@ -12,10 +12,16 @@ tts/
 
 .shopping_list.json
 
-.august.conf
+.ha_run.lock
+
+# tokens
+.whirlpool_auth.json
+.google.token
 .homeconnect-token-cache
 .miele-token-cache
 
+.august.conf
+.pawel.troka@outlook.com.august.conf
 bravia.conf
 harmony_harmony_hub.conf
 
