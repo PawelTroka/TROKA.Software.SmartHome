@@ -1,0 +1,28 @@
+
+- cal_id: en.polish#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: holidays_in_poland
+    ignore_availability: true
+    name: Holidays in Poland
+    track: true
+
+- cal_id: eng.pawel.troka@gmail.com
+  entities:
+  - device_id: eng_pawel_troka_gmail_com
+    ignore_availability: true
+    name: eng.pawel.troka@gmail.com
+    track: true
+
+- cal_id: o2kpq38k8cp0l0g66otlhl51so@group.calendar.google.com
+  entities:
+  - device_id: friends_birthdays
+    ignore_availability: true
+    name: Friends' Birthdays
+    track: true
+
+- cal_id: addressbook#contacts@group.v.calendar.google.com
+  entities:
+  - device_id: birthdays
+    ignore_availability: true
+    name: Birthdays
+    track: true
