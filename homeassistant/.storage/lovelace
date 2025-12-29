@@ -130,26 +130,24 @@
                         {
                           "entity": "scene.movie_dinner",
                           "name": false,
-                          "icon": "mdi:popcorn",
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "script.turn_on",
+                            "service": "scene.turn_on",
                             "service_data": {
-                              "entity_id": "script.activate_movie_mode"
+                              "entity_id": "scene.movie_dinner"
                             }
                           }
                         },
                         {
                           "entity": "scene.party",
                           "name": false,
-                          "icon": "mdi:party-popper",
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "script.turn_on",
+                            "service": "scene.turn_on",
                             "service_data": {
-                              "entity_id": "script.activate_party_mode"
+                              "entity_id": "scene.party_2"
                             }
                           }
                         },
@@ -172,13 +170,12 @@
                         {
                           "entity": "scene.romantic",
                           "name": false,
-                          "icon": "mdi:human-male-female",
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "script.turn_on",
+                            "service": "scene.turn_on",
                             "service_data": {
-                              "entity_id": "script.activate_relax_mode"
+                              "entity_id": "scene.romantic"
                             }
                           }
                         },
@@ -436,8 +433,8 @@
                       "type": "custom:mini-media-player"
                     },
                     {
-                      "entity": "media_player.xboxone",
-                      "name": "XBOX ONE X",
+                      "entity": "media_player.living_room_xbox",
+                      "name": "XBOX Series X",
                       "group": true,
                       "hide": {
                         "icon_state": false,
@@ -1455,6 +1452,16 @@
                   "type": "custom:mini-media-player"
                 },
                 {
+                  "entity": "media_player.living_room_tv_cast",
+                  "group": true,
+                  "hide": {
+                    "icon_state": false,
+                    "power_state": false
+                  },
+                  "icon": "mdi:television",
+                  "type": "custom:mini-media-player"
+                },
+                {
                   "entity": "media_player.living_room_bravia_tv",
                   "group": true,
                   "hide": {
@@ -1466,6 +1473,26 @@
                 },
                 {
                   "entity": "media_player.shield_android_tv",
+                  "group": true,
+                  "hide": {
+                    "icon_state": false,
+                    "power_state": false
+                  },
+                  "icon": "mdi:shield",
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "entity": "media_player.shield_cast",
+                  "group": true,
+                  "hide": {
+                    "icon_state": false,
+                    "power_state": false
+                  },
+                  "icon": "mdi:shield",
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "entity": "media_player.shield",
                   "group": true,
                   "hide": {
                     "icon_state": false,
@@ -1495,8 +1522,8 @@
                   "type": "custom:mini-media-player"
                 },
                 {
-                  "entity": "media_player.xboxone",
-                  "name": "XBOX ONE X",
+                  "entity": "media_player.living_room_xbox",
+                  "name": "XBOX Series X",
                   "group": true,
                   "hide": {
                     "icon_state": false,
