@@ -2928,3 +2928,14 @@
       brightness: 255
       rgb_color: [255, 0, 0]
   icon: mdi:medical-bag
+- id: 'living_room_dimmed_for_pause'
+  name: Living Room Pause
+  entities:
+    light.living_room_lights:
+      state: 'on'
+      brightness: 50
+      color_temp: 366
+    light.kitchen_countertop_lights:
+      state: 'on'
+      brightness: 30
+  icon: mdi:popcorn
