@@ -1,0 +1,8 @@
+{
+
+    "version": "1.0.0",
+    "domain": "sonos_tts",
+    "name": "Sonos tts notifcatione",
+    "dependencies": ["sonos", "tts"],
+    "codeowners": ["@ulfalfa"]
+}
