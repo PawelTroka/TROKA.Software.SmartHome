@@ -468,9 +468,11 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
+      brightness: 255
+      color_temp: 115
       friendly_name: Kitchen Cabinet Strip
       supported_features: 55
-      state: unavailable
+      state: 'on'
     light.kitchen_island_light_1:
       min_mireds: 111
       max_mireds: 400
@@ -1241,531 +1243,97 @@
   name: Movie & dinner
   entities:
     light.living_room_dining_area_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_stop
-      - effect_pulse
-      - effect_colorloop
-      brightness: 26
-      color_temp: 111
-      entity_id:
-      - light.living_room_downlight_5
-      - light.living_room_downlight_6
-      - light.living_room_downlight_7
-      - light.living_room_downlight_8
-      friendly_name: Living room dining area lights
-      icon: mdi:lightbulb-group
-      supported_features: 55
       state: 'on'
+      brightness: 40
+      color_temp: 370
     light.living_room_relax_area_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_stop
-      - effect_pulse
-      - effect_colorloop
-      brightness: 26
-      color_temp: 111
-      entity_id:
-      - light.living_room_downlight_1
-      - light.living_room_downlight_2
-      - light.living_room_downlight_3
-      - light.living_room_downlight_4
-      friendly_name: Living room relax area lights
-      icon: mdi:lightbulb-group
-      supported_features: 55
       state: 'on'
+      brightness: 26
+      color_temp: 370
     light.kitchen_countertop_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_stop
-      - effect_pulse
-      - effect_colorloop
-      brightness: 38
-      color_temp: 181
-      entity_id:
-      - light.kitchen_light_1
-      - light.kitchen_light_2
-      - light.kitchen_light_3
-      - light.kitchen_light_4
-      friendly_name: Kitchen countertop lights
-      icon: mdi:lightbulb-group
-      supported_features: 55
       state: 'on'
+      brightness: 38
+      color_temp: 370
     light.kitchen_island_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_stop
-      - effect_pulse
-      - effect_colorloop
+      state: 'on'
       brightness: 26
-      color_temp: 153
-      entity_id:
-      - light.kitchen_island_light_2
-      - light.kitchen_island_light_1
-      friendly_name: Kitchen island lights
-      icon: mdi:lightbulb-group
-      supported_features: 55
-      state: 'on'
+      color_temp: 370
     light.kitchen_island_strip:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
+      state: 'on'
       brightness: 38
-      color_temp: 111
-      friendly_name: Kitchen Island Strip
-      supported_features: 55
-      state: 'on'
+      color_temp: 370
     light.kitchen_cabinet_strip:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      brightness: 102
-      color_temp: 115
-      friendly_name: Kitchen Cabinet Strip
-      supported_features: 55
       state: 'on'
+      brightness: 102
+      color_temp: 370
     light.hallway_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - colorloop
-      - night
-      - white
-      - effect_stop
-      - effect_colorloop
-      - effect_pulse
-      entity_id:
-      - light.hallway_downlight_1
-      - light.hallway_downlight_2
-      - light.hallway_downlight_3
-      - light.hallway_downlight_4
-      - light.hallway_downlight_5
-      - light.hallway_cabinet_strip
-      - light.hallway_strip
-      friendly_name: Hallway lights
-      icon: mdi:lightbulb-group
-      supported_features: 63
       state: 'off'
     light.bathroom_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - colorloop
-      - night
-      - white
-      - effect_stop
-      - effect_colorloop
-      - effect_pulse
-      entity_id:
-      - light.bathroom_light_1
-      - light.bathroom_light_2
-      - light.bathroom_light_3
-      - light.bathroom_light_4
-      - light.bathroom_light_5
-      - light.bathroom_light_6
-      - light.bathroom_strip
-      - light.bathroom_mirror_light_1
-      - light.bathroom_mirror_light_2
-      friendly_name: Bathroom lights
-      icon: mdi:lightbulb-group
-      supported_features: 63
       state: 'off'
     light.toilet_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - colorloop
-      - night
-      - white
-      - effect_stop
-      - effect_colorloop
-      - effect_pulse
-      entity_id:
-      - light.toilet_light
-      - light.toilet_mirror_light
-      - light.toilet_strip
-      friendly_name: Toilet lights
-      icon: mdi:lightbulb-group
-      supported_features: 63
       state: 'off'
     light.bedroom_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - colorloop
-      - night
-      - white
-      - effect_stop
-      - effect_colorloop
-      - effect_pulse
-      entity_id:
-      - light.bedroom_downlight_1
-      - light.bedroom_downlight_2
-      - light.bedroom_downlight_3
-      - light.bedroom_downlight_4
-      - light.bedroom_cabinet_strip
-      - light.bedroom_strip
-      friendly_name: Bedroom lights
-      icon: mdi:lightbulb-group
-      supported_features: 63
       state: 'off'
     light.office_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_stop
-      - effect_pulse
-      - effect_colorloop
-      entity_id:
-      - light.office_light_1
-      - light.office_light_2
-      - light.office_light_3
-      - light.office_light_4
-      - light.office_light_5
-      friendly_name: Office lights
-      icon: mdi:lightbulb-group
-      supported_features: 55
       state: 'off'
   icon: mdi:popcorn
 - id: '1606344871267'
   name: Romantic
   entities:
     light.living_room_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_stop
-      - effect_pulse
-      - effect_colorloop
-      brightness: 38
-      hs_color:
-      - 344.537
-      - 100
-      rgb_color:
-      - 255
-      - 0
-      - 65
-      xy_color:
-      - 0.665
-      - 0.283
-      entity_id:
-      - light.living_room_downlight_1
-      - light.living_room_downlight_2
-      - light.living_room_downlight_3
-      - light.living_room_downlight_4
-      - light.living_room_downlight_5
-      - light.living_room_downlight_6
-      - light.living_room_downlight_7
-      - light.living_room_downlight_8
-      friendly_name: Living room lights
-      icon: mdi:lightbulb-group
-      supported_features: 55
       state: 'on'
+      brightness: 38
+      rgb_color: [255, 147, 41]
     light.office_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_stop
-      - effect_pulse
-      - effect_colorloop
-      entity_id:
-      - light.office_light_1
-      - light.office_light_2
-      - light.office_light_3
-      - light.office_light_4
-      - light.office_light_5
-      friendly_name: Office lights
-      icon: mdi:lightbulb-group
-      supported_features: 55
       state: 'off'
     light.hallway_strip:
-      effect_list:
-      - colorloop
-      - night
-      - white
-      brightness: 255
-      hs_color:
-      - 269.589
-      - 28.627
-      rgb_color:
-      - 218
-      - 182
-      - 255
-      xy_color:
-      - 0.307
-      - 0.245
-      friendly_name: Hallway Strip
-      assumed_state: true
-      supported_features: 61
       state: 'on'
+      brightness: 255
+      rgb_color: [255, 147, 41]
     light.hallway_downlight_5:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Hallway Downlight 5
-      supported_features: 55
       state: 'off'
     light.hallway_downlight_4:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Hallway Downlight 4
-      supported_features: 55
       state: 'off'
     light.hallway_downlight_3:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Hallway Downlight 3
-      supported_features: 55
       state: 'off'
     light.hallway_downlight_2:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Hallway Downlight 2
-      supported_features: 55
       state: 'off'
     light.hallway_downlight_1:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Hallway Downlight 1
-      supported_features: 55
       state: 'off'
     light.hallway_cabinet_strip:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      brightness: 74
-      hs_color:
-      - 268.598
-      - 28.626
-      rgb_color:
-      - 216
-      - 182
-      - 255
-      xy_color:
-      - 0.305
-      - 0.245
-      friendly_name: Hallway Cabinet Strip
-      supported_features: 55
       state: 'on'
+      brightness: 74
+      rgb_color: [255, 147, 41]
     light.bathroom_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - colorloop
-      - night
-      - white
-      - effect_stop
-      - effect_colorloop
-      - effect_pulse
-      entity_id:
-      - light.bathroom_light_1
-      - light.bathroom_light_2
-      - light.bathroom_light_3
-      - light.bathroom_light_4
-      - light.bathroom_light_5
-      - light.bathroom_light_6
-      - light.bathroom_strip
-      - light.bathroom_mirror_light_1
-      - light.bathroom_mirror_light_2
-      friendly_name: Bathroom lights
-      icon: mdi:lightbulb-group
-      supported_features: 63
       state: 'off'
     light.toilet_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - colorloop
-      - night
-      - white
-      - effect_stop
-      - effect_colorloop
-      - effect_pulse
-      entity_id:
-      - light.toilet_light
-      - light.toilet_mirror_light
-      - light.toilet_strip
-      friendly_name: Toilet lights
-      icon: mdi:lightbulb-group
-      supported_features: 63
       state: 'off'
     light.kitchen_lights:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_stop
-      - effect_pulse
-      - effect_colorloop
-      entity_id:
-      - light.kitchen_island_light_2
-      - light.kitchen_island_light_1
-      - light.kitchen_island_strip
-      - light.kitchen_light_1
-      - light.kitchen_light_2
-      - light.kitchen_light_3
-      - light.kitchen_light_4
-      - light.kitchen_cabinet_strip
-      friendly_name: Kitchen lights
-      icon: mdi:lightbulb-group
-      supported_features: 55
       state: 'off'
     light.bedroom_cabinet_strip:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
+      state: 'on'
       brightness: 115
-      hs_color:
-      - 284.995
-      - 100
-      rgb_color:
-      - 191
-      - 0
-      - 255
-      xy_color:
-      - 0.301
-      - 0.116
-      friendly_name: Bedroom Cabinet Strip
-      supported_features: 55
-      state: 'on'
+      rgb_color: [255, 147, 41]
     light.bedroom_downlight_1:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
+      state: 'on'
       brightness: 79
-      hs_color:
-      - 344.537
-      - 100
-      rgb_color:
-      - 255
-      - 0
-      - 65
-      xy_color:
-      - 0.665
-      - 0.283
-      friendly_name: Bedroom Downlight 1
-      supported_features: 55
-      state: 'on'
+      rgb_color: [255, 147, 41]
     light.bedroom_downlight_2:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      brightness: 41
-      hs_color:
-      - 299.536
-      - 100
-      rgb_color:
-      - 253
-      - 0
-      - 255
-      xy_color:
-      - 0.383
-      - 0.153
-      friendly_name: Bedroom Downlight 2
-      supported_features: 55
       state: 'on'
+      brightness: 41
+      rgb_color: [255, 147, 41]
     light.bedroom_downlight_3:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
+      state: 'on'
       brightness: 41
-      hs_color:
-      - 299.536
-      - 100
-      rgb_color:
-      - 253
-      - 0
-      - 255
-      xy_color:
-      - 0.383
-      - 0.153
-      friendly_name: Bedroom Downlight 3
-      supported_features: 55
-      state: 'on'
+      rgb_color: [255, 147, 41]
     light.bedroom_downlight_4:
-      min_mireds: 111
-      max_mireds: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
+      state: 'on'
       brightness: 76
-      hs_color:
-      - 358.599
-      - 100
-      rgb_color:
-      - 255
-      - 0
-      - 5
-      xy_color:
-      - 0.7
-      - 0.299
-      friendly_name: Bedroom Downlight 4
-      supported_features: 55
-      state: 'on'
+      rgb_color: [255, 147, 41]
     light.bedroom_strip:
-      effect_list:
-      - colorloop
-      - night
-      - white
-      brightness: 178
-      hs_color:
-      - 345
-      - 57.143
-      rgb_color:
-      - 255
-      - 109
-      - 145
-      xy_color:
-      - 0.515
-      - 0.281
-      friendly_name: Bedroom Strip
-      assumed_state: true
-      supported_features: 61
       state: 'on'
+      brightness: 178
+      rgb_color: [255, 147, 41]
   icon: mdi:human-male-female
 - id: '1636308860478'
   name: Party
@@ -2887,6 +2455,10 @@
       brightness: 255
       color_temp: 111
     light.kitchen_lights:
+      state: 'on'
+      brightness: 255
+      color_temp: 111
+    light.kitchen_cabinet_strip:
       state: 'on'
       brightness: 255
       color_temp: 111

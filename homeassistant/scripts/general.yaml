@@ -46,3 +46,30 @@ flash_all_lights:
     - delay: '00:00:01' 
     - service: light.toggle
       entity_id: group.all_lights
+
+activate_party_mode:
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.circadian_lighting_circadian_lighting
+    - service: scene.turn_on
+      target:
+        entity_id: scene.party
+    - service: scene.turn_on
+      target:
+        entity_id: scene.party_2
+
+activate_movie_mode:
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.circadian_lighting_circadian_lighting
+    - service: scene.turn_on
+      target:
+        entity_id: scene.movie_dinner
+
+activate_relax_mode:
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.circadian_lighting_circadian_lighting
+    - service: scene.turn_on
+      target:
+        entity_id: scene.romantic
