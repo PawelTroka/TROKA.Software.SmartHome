@@ -4,6 +4,7 @@ wideq_state.json
 
 home-assistant_v2.db
 home-assistant.log
+*.log*
 
 pyozw.sqlite
 OZW_Log.txt
@@ -24,6 +25,8 @@ tts/
 .pawel.troka@outlook.com.august.conf
 bravia.conf
 harmony_harmony_hub.conf
+zwcfg_*.xml
+
 
 #keys
 .storage/androidtv_adbkey
