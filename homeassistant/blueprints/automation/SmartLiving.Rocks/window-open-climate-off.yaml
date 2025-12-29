@@ -1,0 +1,54 @@
+blueprint:
+  name: Window open, climate off after a defined time
+  description: An automation that turns off a running your climate device for exmple
+    a heater or an air conditioning if a window sensor is open for a specific time.
+    It waits until the window is closed again in order to turn the climate entity
+    on again.
+  domain: automation
+  input:
+    window_entity:
+      name: Window Sensor
+      description: The window sensor that controls the climate entity.
+      selector:
+        entity:
+          domain: binary_sensor
+          device_class: window
+    minimum_open_time:
+      name: Miniumum time the window is open
+      description: Time in seconds to wait until the automation is triggered
+      default: 12
+      selector:
+        number:
+          min: 0.0
+          max: 120.0
+          unit_of_measurement: seconds
+          mode: slider
+          step: 1.0
+    climate_target:
+      name: Climate Device
+      description: The climate entity that is controlled by the window sensor.
+      selector:
+        entity:
+          domain: climate
+  source_url: https://community.home-assistant.io/t/window-open-climate-off/257293
+trigger:
+- platform: state
+  entity_id: !input 'window_entity'
+  to: 'on'
+  for: !input 'minimum_open_time'
+condition:
+- condition: not
+  conditions:
+  - condition: state
+    entity_id: !input 'climate_target'
+    state: 'off'
+action:
+- service: climate.turn_off
+  entity_id: !input 'climate_target'
+- wait_for_trigger:
+  - platform: state
+    entity_id: !input 'window_entity'
+    to: 'off'
+  continue_on_timeout: false
+- service: climate.turn_on
+  entity_id: !input 'climate_target'

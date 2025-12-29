@@ -1,0 +1,67 @@
+blueprint:
+  name: Mute mediaplayer when calling.
+  description: 'Mute a mediaplayer when phone rings or is calling. Only when person
+    is home and the mediaplayer is playing.
+
+    '
+  domain: automation
+  input:
+    phone_state:
+      name: Phone State sensor
+      description: All sensors form the mobile app. Select the phone state sensor
+        here.
+      selector:
+        entity:
+          integration: mobile_app
+          domain: sensor
+    person:
+      name: Person
+      description: Select the person that needs to be at the zone selected.
+      selector:
+        entity:
+          domain: person
+    zone:
+      name: Zone
+      description: Select the Zone the person needs to be in.
+      default: zone.home
+      selector:
+        entity:
+          domain: zone
+    media_player:
+      name: Media Player
+      description: Select the media player that needs to be muted.
+      selector:
+        entity:
+          domain: media_player
+  source_url: https://gist.github.com/JackPoint/2375dd5d15f0b4c52161207170c14f60
+trigger:
+- platform: state
+  entity_id: !input 'phone_state'
+  to: ringing
+- platform: state
+  entity_id: !input 'phone_state'
+  to: offhook
+variables:
+  zone: !input 'zone'
+  zone_name: '{{ zone[5:] }}'
+  entity: !input 'person'
+condition:
+- '{{is_state(entity, zone_name)}}'
+- condition: state
+  entity_id: !input 'media_player'
+  state: playing
+action:
+- service: media_player.volume_mute
+  entity_id: !input 'media_player'
+  data:
+    is_volume_muted: true
+- wait_for_trigger:
+  - platform: state
+    entity_id: !input 'phone_state'
+    to: idle
+  timeout:
+    seconds: 300
+- service: media_player.volume_mute
+  entity_id: !input 'media_player'
+  data:
+    is_volume_muted: false
