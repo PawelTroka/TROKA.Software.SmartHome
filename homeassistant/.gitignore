@@ -6,6 +6,10 @@ home-assistant_v2.db
 home-assistant.log
 *.log*
 
+configuration.yaml.save
+custom_components/hacs.zip*
+.storage/tmp*
+
 pyozw.sqlite
 OZW_Log.txt
 
