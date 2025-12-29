@@ -2879,3 +2879,35 @@
       friendly_name: all_lights
       state: 'on'
   icon: mdi:brightness-7
+
+- id: 'red_light_therapy'
+  name: Red Light Therapy
+  entities:
+    light.toilet_lights:
+      state: 'on'
+      brightness: 255
+      rgb_color: [255, 0, 0]
+    light.living_room_lights:
+      state: 'on'
+      brightness: 255
+      rgb_color: [255, 0, 0]
+    light.office_lights:
+      state: 'on'
+      brightness: 255
+      rgb_color: [255, 0, 0]
+    light.hallway_lights:
+      state: 'on'
+      brightness: 255
+      rgb_color: [255, 0, 0]
+    light.bathroom_lights:
+      state: 'on'
+      brightness: 255
+      rgb_color: [255, 0, 0]
+    light.kitchen_lights:
+      state: 'on'
+      brightness: 255
+      rgb_color: [255, 0, 0]
+    light.bedroom_lights:
+      state: 'on'
+      brightness: 255
+      rgb_color: [255, 0, 0]
