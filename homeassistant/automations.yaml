@@ -1,0 +1,80 @@
+- id: '1626473640966'
+  alias: Low battery level detection & notification for all battery sensors
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      time: '22:00:00'
+      actions:
+      - service: notify.everything_without_voice
+        data:
+          message: Sensors {{sensors}} are low on battery
+- id: '1626642629602'
+  alias: Low battery level detection & notification for all battery sensors
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      time: '22:00:00'
+      actions:
+      - service: notify.level_trace
+        data:
+          title: Low battery
+          message: Devices {{sensors}} are low on battery. Please change batteries.
+- id: '1626642814242'
+  alias: Low battery level detection & notification for all battery sensors
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      actions:
+      - service: notify.level_note
+        data:
+          message: Devices {{sensors}} are low on battery. Please change batteries!
+      time: '22:00:00'
+- id: '1626825812530'
+  alias: Low battery level detection & notification for all battery sensors
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      time: '22:00:00'
+      actions:
+      - service: notify.level_note
+        data:
+          title: Low battery alert!
+          message: Devices {{sensors}} are low on battery. Please change batteries!
+- id: '1626825925555'
+  alias: Low battery level detection and notification for all battery sensors
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      actions:
+      - service: notify.level_note
+        data:
+          message: Devices {{sensors} are low on battery. Please change batteries!
+          title: Low battery alert!
+      time: '22:00:00'
+- id: '1626826029557'
+  alias: Low battery notify
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      time: '22:00:00'
+      actions:
+      - service: notify.level_note
+        data:
+          message: Devices {{sensors} are low on battery. Please change batteries!
+          title: Low battery alert!
+- id: '1627296159418'
+  alias: Home Assistant Update Notification for Android
+  description: ''
+  use_blueprint:
+    path: forte/fancy-home-assistant-update-available-notifier-for-android-with-customizable-notification-settings.yaml
+    input:
+      clickAction: https://my.home-assistant.io/redirect/supervisor/
+      delay: 0
+      notify_device: 66f5dd0693351cc7d8db2a8c595f5f13
+      include_hasspodcast: true
