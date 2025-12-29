@@ -25,6 +25,12 @@ tts/
 bravia.conf
 harmony_harmony_hub.conf
 
+#keys
+.storage/androidtv_adbkey
+.storage/androidtv_adbkey.pub
+.storage/application_credentials
+.storage/auth.session
+
 /core
 
 /.storage/auth
