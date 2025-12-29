@@ -104,6 +104,18 @@
                           }
                         },
                         {
+                          "entity": "scene.red_light_therapy",
+                          "name": false,
+                          "layout": "icon_name",
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "scene.turn_on",
+                            "service_data": {
+                              "entity_id": "scene.red_light_therapy"
+                            }
+                          }
+                        },
+                        {
                           "entity": "scene.ambient",
                           "name": false,
                           "layout": "icon_name",
@@ -329,12 +341,13 @@
                   "title": "Outdoor climate",
                   "type": "custom:weather-card",
                   "entity_temperature": "sensor.neatmo_outdoor_temperature",
-                  "entity": "weather.netatmo_weather_station",
                   "number_of_forecasts": "5",
                   "hourly_forecast": false,
                   "forecast": true,
                   "details": true,
-                  "current": true
+                  "current": true,
+                  "forecast_type": "daily",
+                  "entity": "weather.accuweather"
                 }
               ]
             },
@@ -349,10 +362,6 @@
                   "entities": [
                     {
                       "entity": "person.pawel"
-                    },
-                    {
-                      "entity": "device_tracker.430i_xdrive",
-                      "name": "BMW"
                     },
                     {
                       "entity": "vacuum.roborock_s8_pro_ultra",
@@ -2544,31 +2553,79 @@
               ]
             },
             {
-              "type": "entities",
-              "entities": [
-                "vacuum.frank",
-                "button.frank_life_span_brush_reset",
-                "button.frank_life_span_filter_reset",
-                "button.frank_life_span_side_brush_reset",
-                "button.frank_relocate",
-                "automation.turn_off_vacuum_when_someone_gets_home",
-                "automation.vacuum_notifications"
-              ],
-              "footer": {
-                "type": "buttons",
-                "entities": [
-                  {
-                    "entity": "script.start_vacuum",
-                    "show_icon": true,
-                    "show_name": true
-                  },
-                  {
-                    "entity": "script.stop_vacuum",
-                    "show_icon": true,
-                    "show_name": true
+              "type": "grid",
+              "square": false,
+              "columns": 1,
+              "cards": [
+                {
+                  "type": "entities",
+                  "entities": [
+                    "vacuum.roborock_s8_pro_ultra",
+                    "switch.roborock_s8_pro_ultra_do_not_disturb",
+                    "time.roborock_s8_pro_ultra_do_not_disturb_begin",
+                    "time.roborock_s8_pro_ultra_do_not_disturb_end",
+                    "switch.roborock_s8_pro_ultra_child_lock",
+                    "select.roborock_s8_pro_ultra_dock_empty_mode",
+                    "select.roborock_s8_pro_ultra_mop_intensity",
+                    "select.roborock_s8_pro_ultra_mop_mode",
+                    "select.roborock_s8_pro_ultra_selected_map",
+                    "number.roborock_s8_pro_ultra_volume",
+                    "sensor.roborock_s8_pro_ultra_battery",
+                    "binary_sensor.roborock_s8_pro_ultra_charging",
+                    "binary_sensor.roborock_s8_pro_ultra_cleaning",
+                    "sensor.roborock_s8_pro_ultra_cleaning_area",
+                    "sensor.roborock_s8_pro_ultra_cleaning_progress",
+                    "sensor.roborock_s8_pro_ultra_cleaning_time",
+                    "sensor.roborock_s8_pro_ultra_current_room",
+                    "sensor.roborock_s8_pro_ultra_dock_error",
+                    "binary_sensor.roborock_s8_pro_ultra_mop_drying",
+                    "sensor.roborock_s8_pro_ultra_mop_drying_remaining_time",
+                    "sensor.roborock_s8_pro_ultra_filter_time_left",
+                    "sensor.roborock_s8_pro_ultra_last_clean_begin",
+                    "sensor.roborock_s8_pro_ultra_last_clean_end",
+                    "sensor.roborock_s8_pro_ultra_main_brush_time_left",
+                    "binary_sensor.roborock_s8_pro_ultra_mop_attached",
+                    "sensor.roborock_s8_pro_ultra_sensor_time_left",
+                    "sensor.roborock_s8_pro_ultra_side_brush_time_left",
+                    "sensor.roborock_s8_pro_ultra_status",
+                    "sensor.roborock_s8_pro_ultra_total_cleaning_area",
+                    "sensor.roborock_s8_pro_ultra_total_cleaning_count",
+                    "sensor.roborock_s8_pro_ultra_total_cleaning_time",
+                    "sensor.roborock_s8_pro_ultra_vacuum_error",
+                    "binary_sensor.roborock_s8_pro_ultra_water_box_attached",
+                    "binary_sensor.roborock_s8_pro_ultra_water_shortage",
+                    "automation.turn_off_vacuum_when_someone_gets_home",
+                    "automation.vacuum_notifications"
+                  ],
+                  "footer": {
+                    "type": "buttons",
+                    "entities": [
+                      {
+                        "entity": "script.start_vacuum",
+                        "show_icon": true,
+                        "show_name": true
+                      },
+                      {
+                        "entity": "script.stop_vacuum",
+                        "show_icon": true,
+                        "show_name": true
+                      }
+                    ]
                   }
-                ]
-              }
+                },
+                {
+                  "type": "picture",
+                  "image_entity": "image.roborock_s8_pro_ultra"
+                },
+                {
+                  "type": "picture",
+                  "image_entity": "image.roborock_s8_pro_ultra_map_0"
+                }
+              ]
+            },
+            {
+              "type": "custom:vacuum-card",
+              "entity": "vacuum.roborock_s8_pro_ultra"
             }
           ],
           "icon": "mdi:transit-transfer",
