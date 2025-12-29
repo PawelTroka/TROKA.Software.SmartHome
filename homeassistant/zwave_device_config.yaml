@@ -1,0 +1,9 @@
+sensor.hallway_door_opening_sensor_access_control:
+  ignored: false
+  polling_intensity: 1
+sensor.qubino_goap_zmnhxdx_3_phase_smart_meter_power:
+  ignored: false
+  polling_intensity: 1
+binary_sensor.bathroom_multisensor_motion:
+  ignored: false
+  polling_intensity: 0
