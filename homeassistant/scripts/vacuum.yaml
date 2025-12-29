@@ -2,10 +2,10 @@ start_vacuum:
   sequence:
     - service: vacuum.start
       target:
-        entity_id: vacuum.frank
+        entity_id: vacuum.roborock_s8_pro_ultra
 
 stop_vacuum:
   sequence:
     - service: vacuum.stop
       target:
-        entity_id: vacuum.frank
+        entity_id: vacuum.roborock_s8_pro_ultra
