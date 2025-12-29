@@ -3,24 +3,8 @@
 __pycache__/
 
 # Home Assistant HACS-managed custom components
-homeassistant/custom_components/airthings_wave
-homeassistant/custom_components/alexa_media
-homeassistant/custom_components/circadian_lighting
-homeassistant/custom_components/gree
-homeassistant/custom_components/miele
-homeassistant/custom_components/radarr_upcoming_media
-homeassistant/custom_components/sonarr_upcoming_media
-homeassistant/custom_components/alexa_media
-homeassistant/custom_components/deebot
-homeassistant/custom_components/hacs
-homeassistant/custom_components/o365
-homeassistant/custom_components/reolink_dev
-homeassistant/custom_components/burze_dzis_net
-homeassistant/custom_components/dlink_hnap
-homeassistant/custom_components/kodi_recently_added
-homeassistant/custom_components/plex_recently_added
-homeassistant/custom_components/smartthinq_sensors
-homeassistant/custom_components/unifigateway
+homeassistant/custom_components/*
+!homeassistant/custom_components/sonos_tts
 
 # Home Assistant HACS-managed custom themes
 homeassistant/themes
