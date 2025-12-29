@@ -1,5 +1,4 @@
-- platform: openweathermap
-  api_key: !secret openweathermap_api_key
+
 - platform: template
   name: "Netatmo Weather Station"
   condition_template: "{{ states('weather.accuweather') }}"

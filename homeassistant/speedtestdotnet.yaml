@@ -1,7 +1,0 @@
-server_id: 338
-scan_interval:
-  minutes: 5
-monitored_conditions:
-  - ping
-  - download
-  - upload

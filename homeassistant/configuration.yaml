@@ -111,10 +111,6 @@ circadian_lighting:
 ring:
   username: !secret ring_username
   password: !secret ring_password
-august:
-  login_method: email
-  username: !secret august_username
-  password: !secret august_password
 miele:
   client_id: !secret miele_client_id
   client_secret: !secret miele_client_secret
@@ -138,7 +134,7 @@ xbox:
   client_id: !secret xbox_client_id
   client_secret: !secret xbox_client_secret
 withings: !include withings.yaml
-life360: !include life360.yaml
+
 bmw_connected_drive:
   pawel:
     username: !secret bmw_username
@@ -167,7 +163,7 @@ input_boolean: !include input_boolean.yaml
 zone: !include zone.yaml
 notify: !include notify.yaml
 climate: !include climate.yaml
-speedtestdotnet: !include speedtestdotnet.yaml
+
 switch: !include switch.yaml
 camera: !include camera.yaml
 device_tracker: !include device_tracker.yaml

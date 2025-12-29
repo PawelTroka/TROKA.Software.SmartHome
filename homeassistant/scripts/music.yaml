@@ -16,7 +16,7 @@ dolby_atmos_music:
 
 shower_music:
   sequence:
-    - service: sonos.unjoin
+    - service: media_player.unjoin
       target:
         entity_id: media_player.bathroom
     - service: media_player.volume_set
@@ -58,13 +58,14 @@ party_music:
         entity_id: group.all_denon_receivers
       data:
         volume_level: 0.55
-    - service: sonos.unjoin
+    - service: media_player.unjoin
       target:
         entity_id: [media_player.living_room, media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
-    - service: sonos.join
+    - service: media_player.join
+      target:
+        entity_id: media_player.living_room
       data:
-        master: media_player.living_room
-        entity_id: [media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
+        group_members: [media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
 
     - service: media_player.volume_set
       target:
@@ -115,13 +116,14 @@ ambient_living_room_music:
         entity_id: group.all_denon_receivers
       data:
         volume_level: 0.35
-    - service: sonos.unjoin
+    - service: media_player.unjoin
       target:
         entity_id: [media_player.living_room, media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
-    - service: sonos.join
+    - service: media_player.join
+      target:
+        entity_id: media_player.living_room
       data:
-        master: media_player.living_room
-        entity_id: [media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
+        group_members: [media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
 
     - service: media_player.volume_set
       target:
@@ -164,13 +166,14 @@ ambient_living_room_music:
 
 ambient_music:
   sequence:
-    - service: sonos.unjoin
+    - service: media_player.unjoin
       target:
         entity_id: [media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
-    - service: sonos.join
+    - service: media_player.join
+      target:
+        entity_id: media_player.bathroom
       data:
-        master: media_player.bathroom
-        entity_id: [media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
+        group_members: [media_player.kitchen, media_player.toilet, media_player.office, media_player.bedroom]
 
     - service: media_player.volume_set
       target:
@@ -203,13 +206,14 @@ ambient_music:
 
 work_music:
   sequence:
-    - service: sonos.unjoin
+    - service: media_player.unjoin
       target:
         entity_id: [media_player.bathroom, media_player.kitchen, media_player.toilet, media_player.bedroom]
-    - service: sonos.join
+    - service: media_player.join
+      target:
+        entity_id: media_player.bathroom
       data:
-        master: media_player.bathroom
-        entity_id: [media_player.kitchen, media_player.toilet, media_player.bedroom]
+        group_members: [media_player.kitchen, media_player.toilet, media_player.bedroom]
 
     - service: media_player.volume_set
       target:
