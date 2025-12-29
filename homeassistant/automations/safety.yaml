@@ -1,0 +1,43 @@
+# Safety & Environment Automations
+
+- alias: "High Radon Alert"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.airthings_wave_radon_1_day_avg # Adjust based on actual entity ID
+      above: 100 # Bq/m3 (WHO action level)
+  action:
+    - service: notify.level_important
+      data:
+        title: "High Radon Detected!"
+        message: "Radon levels are high ({{ trigger.to_state.state }} Bq/m3). Please ventilate the basement/house."
+
+- alias: "High VOC Alert"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.airthings_wave_voc
+      above: 2000 # ppb
+  action:
+    - service: notify.level_info
+      data:
+        title: "Poor Air Quality"
+        message: "VOC levels are rising. Consider opening a window."
+
+- alias: "Storm Approaching Warning"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.burze_dzis_net_storms_nearby
+      below: 10 # km
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.burze_dzis_net_storms_nearby
+      above: 0 # Ensure it's not an error value
+  action:
+    - service: notify.level_important
+      data:
+        title: "Storm Approaching!"
+        message: "A storm is detected {{ trigger.to_state.state }}km away. Secure windows and outdoor items."
+    - service: light.turn_on
+      target:
+        entity_id: group.all_lights
+      data:
+        flash: short
