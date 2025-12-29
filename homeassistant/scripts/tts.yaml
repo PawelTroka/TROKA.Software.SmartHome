@@ -29,7 +29,7 @@ alexa_say:
 sonos_say:
   alias: "Sonos TTS script"
   sequence:
-    - service: sonos.snapshot
+    - service: media_player.snapshot
       data_template:
         entity_id: "{{ sonos_entity|default('group.all_sonos_except_living_room') }}"
     - service: media_player.unjoin
@@ -48,6 +48,6 @@ sonos_say:
       timeout: '00:00:03'
     - wait_template: "{{ not is_state(sonos_entity|default('group.all_sonos_except_living_room'), 'playing') }}"
       timeout: '00:01:00'        
-    - service: sonos.restore
+    - service: media_player.restore
       data_template:
         entity_id: "{{ sonos_entity|default('group.all_sonos_except_living_room') }}"

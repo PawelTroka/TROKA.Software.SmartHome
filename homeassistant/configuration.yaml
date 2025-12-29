@@ -10,6 +10,7 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Warsaw
+  country: PL
   external_url: !secret home_base_url
   internal_url: "http://10.10.10.94:8123"
   # Customization file
@@ -86,14 +87,7 @@ http:
 
 wake_on_lan:
 
-# downloader for surveillance purposes
-downloader:
-  download_dir: /downloads/surveillance
-
 #### Local integrations
-tplink:
-glances:
-  - host: localhost
 #transmission:
 #  host: localhost
 #  port: 8412
@@ -108,45 +102,18 @@ glances:
 #  country_code: 48
 circadian_lighting:
   max_colortemp: 9000
-ring:
-  username: !secret ring_username
-  password: !secret ring_password
 miele:
   client_id: !secret miele_client_id
   client_secret: !secret miele_client_secret
   lang: en
-home_connect:
-  client_id: !secret homeconnect_client_id
-  client_secret: !secret homeconnect_client_secret
-eight_sleep:
-  username: !secret eight_sleep_username
-  password: !secret eight_sleep_password
-tado:
-  username: !secret tado_username
-  password: !secret tado_password
-netatmo:
-  client_id: !secret netatmo_client_id
-  client_secret: !secret netatmo_client_secret
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
-xbox:
-  client_id: !secret xbox_client_id
-  client_secret: !secret xbox_client_secret
-withings: !include withings.yaml
-
 bmw_connected_drive:
   pawel:
     username: !secret bmw_username
     password: !secret bmw_password
     region: "rest_of_world"
-telegram_bot:
-  - platform: broadcast
-    api_key: !secret telegram_api_key
-    allowed_chat_ids:
-      - !secret telegram_group_id
-      - !secret telegram_my_id
-
 ### Voice Assistants integrations:
 alexa: !include alexa.yaml
 google_assistant: !include google_assistant.yaml

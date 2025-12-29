@@ -7,14 +7,6 @@
   username: !secret kodi_username
   password: !secret kodi_password
 
-- platform: telegram
-  name: telegram_group
-  chat_id: !secret telegram_group_id
-
-- platform: telegram
-  name: telegram_me
-  chat_id: !secret telegram_my_id
-
 - platform: nfandroidtv
   host: 10.10.10.87
   name: SHIELD Android TV

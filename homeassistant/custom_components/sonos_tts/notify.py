@@ -50,7 +50,7 @@ class SonosTTSNotificationService(BaseNotificationService):
         if self.speaking and entity_id == self.master:
             _LOGGER.debug("Restoring sonos")
             self.hass.services.call(
-                DOMAIN_SONOS, COMMAND_RESTORE, {CONF_ENTITY_ID: self.entities}, True)
+                DOMAIN_MEDIA_PLAYER, "restore", {CONF_ENTITY_ID: self.entities}, True)
             self.speaking = False
 
     def state_logger(self, entity_id, old_state, new_state):
@@ -88,11 +88,11 @@ class SonosTTSNotificationService(BaseNotificationService):
 
         _LOGGER.debug("Making snapshot of %s", self.entities)
         self.hass.services.call(
-            DOMAIN_SONOS, "snapshot", {CONF_ENTITY_ID: self.entities}, True
+            DOMAIN_MEDIA_PLAYER, "snapshot", {CONF_ENTITY_ID: self.entities}, True
         )
 
         # unjoin all players
-        self.hass.services.call(DOMAIN_SONOS, "unjoin", {
+        self.hass.services.call(DOMAIN_MEDIA_PLAYER, "unjoin", {
                                 CONF_ENTITY_ID: self.entities}, True)
 
         # pause the current playback
@@ -103,7 +103,7 @@ class SonosTTSNotificationService(BaseNotificationService):
         if len(self.entities) > 1:
             _LOGGER.debug("Join group %s", self.entities)
             self.hass.services.call(
-                DOMAIN_SONOS, "join", {ATTR_MASTER: self.entities[0], CONF_ENTITY_ID: self.entities[1:]}, True)
+                DOMAIN_MEDIA_PLAYER, "join", {CONF_ENTITY_ID: self.entities[0], "group_members": self.entities[1:]}, True)
 
         if data is not None and ATTR_VOLUME in data:
             volume = data.get(ATTR_VOLUME)

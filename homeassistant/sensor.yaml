@@ -1,44 +1,3 @@
-- platform: plex_recently_added
-  name: Plex recently added Movies
-  token: !secret plex_token
-  host: localhost
-  port: !env_var PLEX_PORT
-  max: 5000
-  section_types:
-  - movie
-  exclude_keywords:
-    - "2021-01-"
-    - "2021-02-"
-    - "2021-03-"
-    - "2021-04-"
-    - "2021-05-"
-    - "2021-06-"
-    - "2021-07-"
-    - "2021-08-"
-    - "2021-09-"
-    - "2021-10-"
-    - "2021-11-"
-    - "2021-12-"
-    - "2022-01-"
-    - "2022-02-"
-    - "2022-03-"
-    - "2022-04-"
-    - "2022-05-"
-    - "2022-06-"
-    - "2022-07-"
-    - "2022-08-"
-    - "2022-09-"
-    - "2022-10-"
-    - "2022-11-"
-    - "2022-12-"
-
-- platform: plex_recently_added
-  name: Plex recently added TV
-  token: !secret plex_token
-  host: localhost
-  port: !env_var PLEX_PORT
-  section_types:
-  - show
 - platform: unifigateway
   host: localhost
   username: !secret unifi_username
@@ -177,42 +136,9 @@
   baseoid: iso.3.6.1.2.1.33.1.2.4.0
   unit_of_measurement: '%'
   value_template: '{{value | float}}'
-- platform: radarr
-  api_key: !secret radarr_api_key
-  host: localhost
-  port: 8411
-  monitored_conditions:
-    - movies
-    - upcoming
-    - commands
-    - diskspace
-    - status
-  days: 365
-  unit: TB
-- platform: radarr_upcoming_media
-  api_key: !secret radarr_api_key
-  host: localhost
-  port: 8411
-  days: 365
-  theaters: false
-- platform: sonarr
-  api_key: !secret sonarr_api_key
-  host: localhost
-  port: 8412
-  monitored_conditions:
-    - series
-    - upcoming
-    - wanted
-    - queue
-    - commands
-    - diskspace
-  days: 365
-  unit: TB
-- platform: sonarr_upcoming_media
-  api_key: !secret sonarr_api_key
-  host: localhost
-  port: 8412
-  days: 365
+
+
+
 - platform: time_date
   display_options:
     - 'time'
@@ -222,16 +148,5 @@
     - 'time_date'
     - 'time_utc'
     - 'beat'
-- platform: waqi
-  token: !secret waqi_token
-  locations:
-    - gdansk
-- platform: whois
-  name: WhoIs fizyka.dk
-  domain: fizyka.dk
-- platform: whois
-  name: WhoIs morenka.pl
-  domain: morenka.pl
-- platform: whois
-  name: WhoIs troka.software
-  domain: troka.software
+
+

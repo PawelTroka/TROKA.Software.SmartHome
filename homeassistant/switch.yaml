@@ -16,9 +16,7 @@
     - light.hallway_strip
     - light.bathroom_strip
     - light.bedroom_strip
-- platform: switchbot
-  mac: 'f9:3a:13:56:67:17'
-  name: 'ComputerBot'
+
 - platform: template
   switches:
 
