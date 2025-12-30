@@ -109,11 +109,6 @@ miele:
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
-bmw_connected_drive:
-  pawel:
-    username: !secret bmw_username
-    password: !secret bmw_password
-    region: "rest_of_world"
 ### Voice Assistants integrations:
 alexa: !include alexa.yaml
 google_assistant: !include google_assistant.yaml
