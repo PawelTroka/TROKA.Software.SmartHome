@@ -35,3 +35,5 @@ homeassistant/www/custom-lovelace
 /pihole/etc-pihole/**
 !/pihole/etc-pihole/adlists.list
 !/pihole/etc-pihole/whitelist.txt
+
+homeassistant/custom_components/warmup
