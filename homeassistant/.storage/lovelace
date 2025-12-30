@@ -1347,11 +1347,6 @@
           "badges": [],
           "cards": [
             {
-              "entity": "climate.living_room",
-              "name": "Living room heater",
-              "type": "thermostat"
-            },
-            {
               "entities": [
                 {
                   "entity": "light.living_room_lights",
@@ -1416,28 +1411,61 @@
               "type": "entities"
             },
             {
-              "entity": "climate.living_room_ac",
+              "entity": "climate.living_room",
+              "name": "Living room heater",
               "type": "thermostat"
             },
             {
-              "activities": [
+              "square": false,
+              "type": "grid",
+              "columns": 1,
+              "cards": [
                 {
-                  "device": "NVIDIA Game Console",
-                  "name": "SHIELD TV"
+                  "type": "thermostat",
+                  "entity": "climate.living_room_ac",
+                  "features": [
+                    {
+                      "type": "climate-hvac-modes",
+                      "hvac_modes": [
+                        "auto",
+                        "cool",
+                        "dry",
+                        "fan_only",
+                        "heat",
+                        "off"
+                      ]
+                    }
+                  ]
                 },
                 {
-                  "device": "Microsoft Game Console",
-                  "name": "Play a Game"
-                },
-                {
-                  "device": "Sonos",
-                  "name": "Listen To Sonos"
+                  "type": "entities",
+                  "entities": [
+                    "input_boolean.living_room_ac_8_degree_heating",
+                    "switch.living_room_ac_8degc_heat",
+                    "switch.living_room_ac_air",
+                    "switch.living_room_ac_anti_direct_blow",
+                    "switch.living_room_ac_auto_light",
+                    "switch.living_room_ac_auto_x_fan",
+                    "switch.living_room_ac_beeper",
+                    "select.living_room_ac_external_temperature_sensor",
+                    "input_boolean.living_room_ac_health",
+                    "switch.living_room_ac_health",
+                    "switch.living_room_ac_light_sensor",
+                    "input_boolean.living_room_ac_lights",
+                    "switch.living_room_ac_lights",
+                    "switch.living_room_ac_power_save",
+                    "input_boolean.living_room_ac_powersave",
+                    "input_boolean.living_room_ac_sleep",
+                    "switch.living_room_ac_sleep",
+                    "number.living_room_ac_temperature_step",
+                    "switch.living_room_ac_x_fan",
+                    "input_boolean.living_room_ac_xfan",
+                    "device_tracker.living_room_ac",
+                    "sensor.living_room_ac_outside_temperature",
+                    "sensor.living_room_ac_room_humidity"
+                  ]
                 }
-              ],
-              "entity": "remote.harmonyhub",
-              "scale": 1,
-              "type": "custom:harmony-card",
-              "volume_entity": "media_player.denon_avc_x6500h_alexa"
+              ]
             },
             {
               "entities": [
@@ -1536,6 +1564,26 @@
               "show_header_toggle": false,
               "title": "TV",
               "type": "entities"
+            },
+            {
+              "activities": [
+                {
+                  "device": "NVIDIA Game Console",
+                  "name": "SHIELD TV"
+                },
+                {
+                  "device": "Microsoft Game Console",
+                  "name": "Play a Game"
+                },
+                {
+                  "device": "Sonos",
+                  "name": "Listen To Sonos"
+                }
+              ],
+              "entity": "remote.harmonyhub",
+              "scale": 1,
+              "type": "custom:harmony-card",
+              "volume_entity": "media_player.denon_avc_x6500h_alexa"
             },
             {
               "artwork": "cover",
