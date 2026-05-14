@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_dashboards",
+  "data": {
+    "items": [
+      {
+        "icon": "mdi:dumbbell",
+        "id": "lovelace_health",
+        "mode": "storage",
+        "require_admin": false,
+        "show_in_sidebar": true,
+        "title": "Health",
+        "url_path": "lovelace-health"
+      },
+      {
+        "icon": "mdi:cogs",
+        "id": "lovelace_system",
+        "mode": "storage",
+        "require_admin": false,
+        "show_in_sidebar": true,
+        "title": "System",
+        "url_path": "lovelace-system"
+      },
+      {
+        "id": "map",
+        "icon": "mdi:map",
+        "title": "Map",
+        "url_path": "map",
+        "require_admin": false,
+        "show_in_sidebar": true,
+        "mode": "storage"
+      },
+      {
+        "id": "lovelace",
+        "icon": "mdi:view-dashboard",
+        "title": "Overview",
+        "url_path": "lovelace",
+        "show_in_sidebar": true,
+        "require_admin": false,
+        "mode": "storage"
+      }
+    ]
+  }
+}

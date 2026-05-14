@@ -1,7 +1,7 @@
 {
   "version": 1,
   "minor_version": 1,
-  "key": "lovelace",
+  "key": "lovelace.lovelace",
   "data": {
     "config": {
       "custom_header": {
@@ -341,13 +341,13 @@
                   "title": "Outdoor climate",
                   "type": "custom:weather-card",
                   "entity_temperature": "sensor.neatmo_outdoor_temperature",
-                  "number_of_forecasts": "5",
+                  "number_of_forecasts": 7,
                   "hourly_forecast": false,
                   "forecast": true,
                   "details": true,
                   "current": true,
                   "forecast_type": "daily",
-                  "entity": "weather.accuweather"
+                  "entity": "weather.openweathermap"
                 }
               ]
             },
@@ -362,6 +362,9 @@
                   "entities": [
                     {
                       "entity": "person.pawel"
+                    },
+                    {
+                      "entity": "person.misiuszka"
                     },
                     {
                       "entity": "vacuum.roborock_s8_pro_ultra",
@@ -437,6 +440,7 @@
                       "name": "XBOX Series X",
                       "group": true,
                       "hide": {
+                        "volume": true,
                         "icon_state": false,
                         "power_state": false
                       },
@@ -1413,7 +1417,16 @@
             {
               "entity": "climate.living_room",
               "name": "Living room heater",
-              "type": "thermostat"
+              "type": "thermostat",
+              "features": [
+                {
+                  "type": "climate-hvac-modes"
+                },
+                {
+                  "type": "climate-preset-modes",
+                  "style": "dropdown"
+                }
+              ]
             },
             {
               "square": false,
@@ -1434,6 +1447,18 @@
                         "heat",
                         "off"
                       ]
+                    },
+                    {
+                      "type": "climate-fan-modes",
+                      "style": "dropdown"
+                    },
+                    {
+                      "type": "climate-swing-modes",
+                      "style": "dropdown"
+                    },
+                    {
+                      "type": "climate-swing-horizontal-modes",
+                      "style": "dropdown"
                     }
                   ]
                 },
@@ -1441,28 +1466,21 @@
                   "type": "entities",
                   "entities": [
                     "input_boolean.living_room_ac_8_degree_heating",
-                    "switch.living_room_ac_8degc_heat",
                     "switch.living_room_ac_air",
-                    "switch.living_room_ac_anti_direct_blow",
                     "switch.living_room_ac_auto_light",
                     "switch.living_room_ac_auto_x_fan",
                     "switch.living_room_ac_beeper",
                     "select.living_room_ac_external_temperature_sensor",
                     "input_boolean.living_room_ac_health",
                     "switch.living_room_ac_health",
-                    "switch.living_room_ac_light_sensor",
                     "input_boolean.living_room_ac_lights",
                     "switch.living_room_ac_lights",
-                    "switch.living_room_ac_power_save",
                     "input_boolean.living_room_ac_powersave",
                     "input_boolean.living_room_ac_sleep",
-                    "switch.living_room_ac_sleep",
                     "number.living_room_ac_temperature_step",
                     "switch.living_room_ac_x_fan",
                     "input_boolean.living_room_ac_xfan",
-                    "device_tracker.living_room_ac",
-                    "sensor.living_room_ac_outside_temperature",
-                    "sensor.living_room_ac_room_humidity"
+                    "device_tracker.living_room_ac"
                   ]
                 }
               ]
@@ -1769,9 +1787,9 @@
                     {
                       "type": "service-button",
                       "title": "",
-                      "service": "remote.send_command",
+                      "action": "remote.send_command",
                       "service_data": {
-                        "entity_id": "remote.xboxone_remote",
+                        "entity_id": "remote.living_room_xbox_remote",
                         "command": "Up"
                       },
                       "style": {
@@ -1785,9 +1803,9 @@
                     {
                       "type": "service-button",
                       "title": "",
-                      "service": "remote.send_command",
+                      "action": "remote.send_command",
                       "service_data": {
-                        "entity_id": "remote.xboxone_remote",
+                        "entity_id": "remote.living_room_xbox_remote",
                         "command": "Down"
                       },
                       "style": {
@@ -1801,9 +1819,9 @@
                     {
                       "type": "service-button",
                       "title": "",
-                      "service": "remote.send_command",
+                      "action": "remote.send_command",
                       "service_data": {
-                        "entity_id": "remote.xboxone_remote",
+                        "entity_id": "remote.living_room_xbox_remote",
                         "command": "Left"
                       },
                       "style": {
@@ -1817,9 +1835,9 @@
                     {
                       "type": "service-button",
                       "title": "",
-                      "service": "remote.send_command",
+                      "action": "remote.send_command",
                       "service_data": {
-                        "entity_id": "remote.xboxone_remote",
+                        "entity_id": "remote.living_room_xbox_remote",
                         "command": "Right"
                       },
                       "style": {
@@ -1833,9 +1851,9 @@
                     {
                       "type": "service-button",
                       "title": "",
-                      "service": "remote.send_command",
+                      "action": "remote.send_command",
                       "service_data": {
-                        "entity_id": "remote.xboxone_remote",
+                        "entity_id": "remote.living_room_xbox_remote",
                         "command": "A"
                       },
                       "style": {
@@ -1850,9 +1868,9 @@
                     {
                       "type": "service-button",
                       "title": "",
-                      "service": "remote.send_command",
+                      "action": "remote.send_command",
                       "service_data": {
-                        "entity_id": "remote.xboxone_remote",
+                        "entity_id": "remote.living_room_xbox_remote",
                         "command": "X"
                       },
                       "style": {
@@ -1867,9 +1885,9 @@
                     {
                       "type": "service-button",
                       "title": "",
-                      "service": "remote.send_command",
+                      "action": "remote.send_command",
                       "service_data": {
-                        "entity_id": "remote.xboxone_remote",
+                        "entity_id": "remote.living_room_xbox_remote",
                         "command": "B"
                       },
                       "style": {
@@ -1884,9 +1902,9 @@
                     {
                       "type": "service-button",
                       "title": "",
-                      "service": "remote.send_command",
+                      "action": "remote.send_command",
                       "service_data": {
-                        "entity_id": "remote.xboxone_remote",
+                        "entity_id": "remote.living_room_xbox_remote",
                         "command": "Y"
                       },
                       "style": {
@@ -1901,9 +1919,9 @@
                     {
                       "type": "service-button",
                       "title": "",
-                      "service": "remote.toggle",
+                      "action": "remote.toggle",
                       "service_data": {
-                        "entity_id": "remote.xboxone_remote"
+                        "entity_id": "remote.living_room_xbox_remote"
                       },
                       "style": {
                         "top": "80.2%",
@@ -1917,11 +1935,10 @@
                     {
                       "type": "service-button",
                       "title": "",
-                      "service": "media_player.play_media",
+                      "action": "remote.send_command",
                       "service_data": {
-                        "entity_id": "media_player.xboxone",
-                        "media_content_type": "",
-                        "media_content_id": "Home"
+                        "entity_id": "remote.living_room_xbox_remote",
+                        "command": "Nexus"
                       },
                       "style": {
                         "top": "22.2%",
@@ -2011,7 +2028,16 @@
             {
               "entity": "climate.kitchen",
               "name": "Kitchen",
-              "type": "thermostat"
+              "type": "thermostat",
+              "features": [
+                {
+                  "type": "climate-hvac-modes"
+                },
+                {
+                  "type": "climate-preset-modes",
+                  "style": "dropdown"
+                }
+              ]
             },
             {
               "artwork": "cover",
@@ -2139,7 +2165,16 @@
             {
               "entity": "climate.kitchen_floor",
               "theme": "default",
-              "type": "thermostat"
+              "type": "thermostat",
+              "features": [
+                {
+                  "type": "climate-hvac-modes"
+                },
+                {
+                  "type": "climate-preset-modes",
+                  "style": "dropdown"
+                }
+              ]
             },
             {
               "entities": [
@@ -2715,7 +2750,16 @@
           "cards": [
             {
               "entity": "climate.bathroom",
-              "type": "thermostat"
+              "type": "thermostat",
+              "features": [
+                {
+                  "type": "climate-hvac-modes"
+                },
+                {
+                  "type": "climate-preset-modes",
+                  "style": "dropdown"
+                }
+              ]
             },
             {
               "artwork": "cover",
@@ -2885,7 +2929,16 @@
             },
             {
               "entity": "climate.bathroom_floor",
-              "type": "thermostat"
+              "type": "thermostat",
+              "features": [
+                {
+                  "type": "climate-hvac-modes"
+                },
+                {
+                  "type": "climate-preset-modes",
+                  "style": "dropdown"
+                }
+              ]
             },
             {
               "entities": [
@@ -3055,7 +3108,16 @@
             },
             {
               "entity": "climate.toilet_floor",
-              "type": "thermostat"
+              "type": "thermostat",
+              "features": [
+                {
+                  "type": "climate-hvac-modes"
+                },
+                {
+                  "type": "climate-preset-modes",
+                  "style": "dropdown"
+                }
+              ]
             },
             {
               "entities": [
@@ -3101,11 +3163,6 @@
           "badges": [],
           "cards": [
             {
-              "entity": "climate.bedroom",
-              "name": "Bedroom heater",
-              "type": "thermostat"
-            },
-            {
               "entities": [
                 {
                   "entity": "light.bedroom_lights",
@@ -3147,11 +3204,85 @@
               "type": "entities"
             },
             {
-              "entity": "climate.bedroom_ac",
-              "type": "thermostat"
+              "entity": "climate.bedroom",
+              "name": "Bedroom heater",
+              "type": "thermostat",
+              "show_current_as_primary": false,
+              "features": [
+                {
+                  "type": "climate-hvac-modes"
+                },
+                {
+                  "type": "climate-preset-modes",
+                  "style": "dropdown"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "square": false,
+              "columns": 1,
+              "cards": [
+                {
+                  "type": "thermostat",
+                  "entity": "climate.bedroom_ac",
+                  "features": [
+                    {
+                      "type": "climate-hvac-modes",
+                      "hvac_modes": [
+                        "auto",
+                        "cool",
+                        "dry",
+                        "fan_only",
+                        "heat",
+                        "off"
+                      ]
+                    },
+                    {
+                      "type": "climate-fan-modes",
+                      "style": "dropdown"
+                    },
+                    {
+                      "type": "climate-swing-modes",
+                      "style": "dropdown"
+                    },
+                    {
+                      "type": "climate-swing-horizontal-modes",
+                      "style": "dropdown"
+                    }
+                  ]
+                },
+                {
+                  "type": "entities",
+                  "entities": [
+                    "input_boolean.bedroom_ac_8_degree_heating",
+                    "switch.bedroom_ac_air",
+                    "switch.bedroom_ac_auto_light",
+                    "switch.bedroom_ac_auto_x_fan",
+                    "switch.bedroom_ac_beeper",
+                    "select.bedroom_ac_external_temperature_sensor",
+                    "input_boolean.bedroom_ac_health",
+                    "switch.bedroom_ac_health",
+                    "input_boolean.bedroom_ac_lights",
+                    "switch.bedroom_ac_lights",
+                    "input_boolean.bedroom_ac_powersave",
+                    "input_boolean.bedroom_ac_sleep",
+                    "number.bedroom_ac_temperature_step",
+                    "switch.bedroom_ac_x_fan",
+                    "input_boolean.bedroom_ac_xfan",
+                    "device_tracker.bedroom_ac"
+                  ]
+                }
+              ]
             },
             {
               "entities": [
+                {
+                  "entity": "sensor.netatmo_bedroom_co2"
+                },
+                {
+                  "entity": "sensor.netatmo_bedroom_battery_percent"
+                },
                 {
                   "entity": "binary_sensor.bedroom_door"
                 },
@@ -3178,6 +3309,24 @@
                 },
                 {
                   "entity": "sensor.bedroom_nest_protect_smoke_status"
+                },
+                {
+                  "entity": "sensor.netatmo_bedroom_temperature"
+                },
+                {
+                  "entity": "sensor.netatmo_troka_software_apartment_bedroom_temperature_trend"
+                },
+                {
+                  "entity": "sensor.netatmo_bedroom_radio"
+                },
+                {
+                  "entity": "sensor.netatmo_bedroom_reachability"
+                },
+                {
+                  "entity": "binary_sensor.indoor_bedroom_connectivity"
+                },
+                {
+                  "entity": "sensor.netatmo_bedroom_humidity"
                 }
               ],
               "show_header_toggle": false,
@@ -3390,15 +3539,6 @@
           "badges": [],
           "cards": [
             {
-              "entity": "climate.office",
-              "name": "Office heater",
-              "type": "thermostat"
-            },
-            {
-              "entity": "climate.office_ac",
-              "type": "thermostat"
-            },
-            {
               "entities": [
                 {
                   "entity": "light.office_lights",
@@ -3433,6 +3573,135 @@
               ],
               "title": "Light",
               "type": "entities"
+            },
+            {
+              "entity": "climate.office",
+              "name": "Office heater",
+              "type": "thermostat",
+              "features": [
+                {
+                  "type": "climate-hvac-modes"
+                },
+                {
+                  "type": "climate-preset-modes",
+                  "style": "dropdown"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "square": false,
+              "columns": 1,
+              "cards": [
+                {
+                  "type": "thermostat",
+                  "entity": "climate.office_ac",
+                  "features": [
+                    {
+                      "type": "climate-hvac-modes",
+                      "hvac_modes": [
+                        "auto",
+                        "cool",
+                        "dry",
+                        "fan_only",
+                        "heat",
+                        "off"
+                      ]
+                    },
+                    {
+                      "type": "climate-fan-modes",
+                      "style": "dropdown"
+                    },
+                    {
+                      "type": "climate-swing-modes",
+                      "style": "dropdown"
+                    },
+                    {
+                      "type": "climate-swing-horizontal-modes",
+                      "style": "dropdown"
+                    }
+                  ]
+                },
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "input_boolean.office_ac_8_degree_heating"
+                    },
+                    {
+                      "entity": "switch.office_ac_air"
+                    },
+                    {
+                      "entity": "switch.office_ac_auto_light"
+                    },
+                    {
+                      "entity": "switch.office_ac_auto_x_fan"
+                    },
+                    {
+                      "entity": "switch.office_ac_beeper"
+                    },
+                    {
+                      "entity": "select.office_ac_external_temperature_sensor"
+                    },
+                    {
+                      "entity": "input_boolean.office_ac_health"
+                    },
+                    {
+                      "entity": "switch.office_ac_health"
+                    },
+                    {
+                      "entity": "input_boolean.office_ac_lights"
+                    },
+                    {
+                      "entity": "switch.office_ac_lights"
+                    },
+                    {
+                      "entity": "input_boolean.office_ac_powersave"
+                    },
+                    {
+                      "entity": "input_boolean.office_ac_sleep"
+                    },
+                    {
+                      "entity": "number.office_ac_temperature_step"
+                    },
+                    {
+                      "entity": "switch.office_ac_x_fan"
+                    },
+                    {
+                      "entity": "input_boolean.office_ac_xfan"
+                    },
+                    {
+                      "entity": "device_tracker.office_ac"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "sensor.netatmo_troka_software_apartment_office_battery_percent",
+                "binary_sensor.indoor_office_connectivity",
+                "sensor.netatmo_troka_software_apartment_office_reachability",
+                "sensor.netatmo_troka_software_apartment_office_radio",
+                "sensor.netatmo_troka_software_apartment_office_temperature_trend",
+                "sensor.netatmo_office_co2",
+                "sensor.netatmo_troka_software_apartment_office_humidity",
+                "sensor.netatmo_troka_software_apartment_office_temperature"
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "fan.vestfrost_air_humidifier",
+                "switch.vestfrost_air_humidifier_child_lock",
+                "select.vestfrost_air_humidifier_countdown",
+                "switch.vestfrost_air_humidifier_ionizer",
+                "switch.vestfrost_air_humidifier_power",
+                "switch.vestfrost_air_humidifier_uv_sterilization",
+                "sensor.vestfrost_air_humidifier_humidity",
+                "sensor.vestfrost_air_humidifier_temperature"
+              ]
             },
             {
               "artwork": "cover",
@@ -4184,21 +4453,6 @@
                   }
                 ]
               }
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "switch.pi_hole",
-                "sensor.pi_hole_ads_blocked_today",
-                "sensor.pi_hole_ads_percentage_blocked_today",
-                "sensor.pi_hole_dns_queries_cached",
-                "sensor.pi_hole_dns_queries_forwarded",
-                "sensor.pi_hole_dns_queries_today",
-                "sensor.pi_hole_dns_unique_clients",
-                "sensor.pi_hole_dns_unique_domains",
-                "sensor.pi_hole_domains_blocked",
-                "sensor.pi_hole_seen_clients"
-              ]
             }
           ],
           "icon": "mdi:briefcase-outline",

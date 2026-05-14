@@ -1,0 +1,591 @@
+{
+    "version": 1,
+    "key": "lovelace.lovelace_health",
+    "data": {
+        "config": {
+            "title": "TROKA.Software.SmartHome.Health",
+            "views": [
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "air_quality.airly"
+                                },
+                                {
+                                    "entity": "air_quality.gios"
+                                },
+                                {
+                                    "entity": "air_quality.syrokomli"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "name": "Air quality",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.airly_pm1"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.netatmo_indoor_pressure"
+                                },
+                                {
+                                    "entity": "sensor.airthings_rel_atm_pressure"
+                                },
+                                {
+                                    "entity": "sensor.airly_pressure"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "name": "Pressure",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.airthings_radon_1day_avg"
+                                },
+                                {
+                                    "entity": "sensor.airthings_radon_longterm_avg"
+                                }
+                            ],
+                            "hours_to_show": 48,
+                            "refresh_interval": 0,
+                            "name": "Radon",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.netatmo_indoor_co2"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_co2"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_office_co2"
+                                },
+                                {
+                                    "entity": "sensor.airthings_co2"
+                                }
+                            ],
+                            "hours_to_show": 6,
+                            "refresh_interval": 0,
+                            "name": "CO2",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 24,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "columns": 2,
+                            "entities": [
+                                {
+                                    "entity": "sensor.bedroom_nest_protect_smoke_status"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_nest_protect_smoke_status"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_nest_protect_co_status"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_nest_protect_co_status"
+                                }
+                            ],
+                            "show_icon": true,
+                            "show_name": true,
+                            "show_state": true,
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.airthings_voc"
+                                }
+                            ],
+                            "hours_to_show": 48,
+                            "refresh_interval": 0,
+                            "name": "VOC",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.airly_humidity"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_outdoor_humidity"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "name": "Outdoor humidity",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 12,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.airthings_humidity"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_humidity"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_humidity"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_humidity"
+                                },
+                                {
+                                    "entity": "sensor.living_room_humidity"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_indoor_humidity"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_bedroom_humidity"
+                                },
+                                {
+                                    "entity": "sensor.netatmo_troka_software_apartment_office_humidity"
+                                },
+                                {
+                                    "entity": "sensor.office_humidity"
+                                },
+                                {
+                                    "entity": "sensor.toilet_multisensor_relative_humidity"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_multisensor_relative_humidity"
+                                },
+                                {
+                                    "entity": "sensor.bathroom_multisensor_relative_humidity"
+                                },
+                                {
+                                    "entity": "sensor.hallway_multisensor_relative_humidity"
+                                }
+                            ],
+                            "hours_to_show": 3,
+                            "refresh_interval": 0,
+                            "name": "Indoor humidity",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 60,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.bathroom_multisensor_ultraviolet"
+                                },
+                                {
+                                    "entity": "sensor.hallway_multisensor_ultraviolet"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_multisensor_ultraviolet"
+                                },
+                                {
+                                    "entity": "sensor.toilet_multisensor_ultraviolet"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "name": "UV light",
+                            "icon": "mdi:uv",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                "sensor.waqi_gdansk_wrzeszcz_gdansk_poland"
+                            ],
+                            "graph": "line",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        }
+                    ],
+                    "path": "air",
+                    "title": "Air"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                "sensor.withings_weight_kg_pawel_t"
+                            ],
+                            "graph": "line",
+                            "hours_to_show": 2400,
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                "sensor.withings_pulse_wave_velocity_pawel_t"
+                            ],
+                            "graph": "line",
+                            "hours_to_show": 240,
+                            "name": "PWV",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                "sensor.withings_fat_ratio_pct_pawel_t"
+                            ],
+                            "graph": "line",
+                            "hours_to_show": 240,
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.withings_diastolic_blood_pressure_mmhg_pawel_t"
+                                },
+                                {
+                                    "entity": "sensor.withings_systolic_blood_pressure_mmhg_pawel_t"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "name": "Blood pressure",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.withings_body_temperature_c_pawel_t"
+                                },
+                                {
+                                    "entity": "sensor.withings_skin_temperature_c_pawel_t"
+                                },
+                                {
+                                    "entity": "sensor.withings_temperature_c_pawel_t"
+                                }
+                            ],
+                            "hours_to_show": 240,
+                            "refresh_interval": 0,
+                            "name": "Temperature",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.withings_heart_pulse_bpm_pawel_t"
+                                },
+                                {
+                                    "entity": "sensor.withings_sleep_heart_rate_average_bpm_pawel_t"
+                                },
+                                {
+                                    "entity": "sensor.withings_sleep_heart_rate_max_bpm_pawel_t"
+                                },
+                                {
+                                    "entity": "sensor.withings_sleep_heart_rate_min_bpm_pawel_t"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "title": "Heart rate",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                "sensor.withings_hydration_pawel_t"
+                            ],
+                            "graph": "line",
+                            "hours_to_show": 240,
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.withings_bone_mass_kg_pawel_t"
+                                },
+                                {
+                                    "entity": "sensor.withings_fat_free_mass_kg_pawel_t"
+                                },
+                                {
+                                    "entity": "sensor.withings_fat_mass_kg_pawel_t"
+                                },
+                                {
+                                    "entity": "sensor.withings_muscle_mass_kg_pawel_t"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "name": "Mass",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                "sensor.eight_left_bed_temperature"
+                            ],
+                            "graph": "line",
+                            "hours_to_show": 24,
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.eight_left_bed_presence"
+                                },
+                                {
+                                    "entity": "sensor.eight_left_sleep_stage"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "type": "history-graph"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.eight_left_sleep_session"
+                                },
+                                {
+                                    "entity": "sensor.eight_left_previous_sleep_session"
+                                }
+                            ],
+                            "hours_to_show": 48,
+                            "refresh_interval": 0,
+                            "title": "Sleep session",
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                "sensor.eight_left_sleep_fitness"
+                            ],
+                            "graph": "line",
+                            "hours_to_show": 72,
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                "sensor.eight_left_bed_state"
+                            ],
+                            "graph": "line",
+                            "hours_to_show": 48,
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        },
+                        {
+                            "entities": [
+                                "sensor.withings_sleep_score_pawel_t"
+                            ],
+                            "type": "custom:mini-graph-card",
+                            "hour24": true,
+                            "points_per_hour": 6,
+                            "show": {
+                                "legend": true,
+                                "points": false,
+                                "extrema": true,
+                                "average": true,
+                                "labels": true
+                            }
+                        }
+                    ],
+                    "path": "pawel",
+                    "title": "Pawel"
+                }
+            ]
+        }
+    }
+}

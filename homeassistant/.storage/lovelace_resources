@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_resources",
+  "data": {
+    "items": [
+      {
+        "id": "f7f30c7cdf9f4ae5a93d8f0805500565",
+        "type": "module",
+        "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js?hacstag=1677445841161"
+      },
+      {
+        "id": "a8e10fedd0fa48e4be174668bccd565d",
+        "type": "module",
+        "url": "/hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js?hacstag=178921037451"
+      },
+      {
+        "id": "a61ce754e3cf48f7ae5e8c2f0156c70e",
+        "type": "js",
+        "url": "/hacsfiles/upcoming-media-card/upcoming-media-card.js?hacstag=146783593071"
+      },
+      {
+        "url": "/hacsfiles/text-divider-row/text-divider-row.js?hacstag=179788256141",
+        "type": "module",
+        "id": "026d5598f4eb4ca5a2bd2e7fc00a7b4f"
+      },
+      {
+        "url": "/hacsfiles/lovelace-paper-buttons-row/paper-buttons-row.js?hacstag=244872232231",
+        "type": "module",
+        "id": "3e9b9711230e4a21b2e53b7363fa3eab"
+      },
+      {
+        "url": "/hacsfiles/lovelace-notify-card/notify-card.js?hacstag=358962656030",
+        "type": "module",
+        "id": "e5852168e6e34c1c8f7f9019b4f824ac"
+      },
+      {
+        "url": "/hacsfiles/button-card/button-card.js?hacstag=146194325701",
+        "type": "module",
+        "id": "15287fee4c7f413493087c720a1f92f1"
+      },
+      {
+        "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js?hacstag=1512800620130",
+        "type": "module",
+        "id": "5c019729fd684fef94b89870be0180bf"
+      },
+      {
+        "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js?hacstag=14852083811611",
+        "type": "module",
+        "id": "23d9320d8f5c493298b31242348b6d0b"
+      },
+      {
+        "url": "/hacsfiles/lovelace-slider-entity-row/slider-entity-row.js?hacstag=1448997001750",
+        "type": "module",
+        "id": "f85b073d106d44499727f2f17a8abebc"
+      },
+      {
+        "url": "/hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js?hacstag=142051833101",
+        "type": "module",
+        "id": "89e260a648a8458c83023f6fe6d08058"
+      },
+      {
+        "url": "/hacsfiles/weather-card/weather-card.js?hacstag=1927326362000",
+        "type": "module",
+        "id": "fe02dde90d904578ac5e15fe86de602b"
+      },
+      {
+        "url": "/hacsfiles/lovelace-home-feed-card/lovelace-home-feed-card.js?hacstag=174016256065",
+        "type": "module",
+        "id": "1a3b0da4401641868f29e9686eb63902"
+      },
+      {
+        "url": "/hacsfiles/vacuum-card/vacuum-card.js?hacstag=2612912952120",
+        "type": "module",
+        "id": "d952194538374d2b939cca4ef986c374"
+      },
+      {
+        "url": "/hacsfiles/harmony-card/harmony-card.js?hacstag=2375327500143",
+        "type": "module",
+        "id": "5968c1a7df9f4e7095508e7edaf3a5f3"
+      },
+      {
+        "id": "4b9c8455b1354ab59c658c6b2265cb07",
+        "url": "/hacsfiles/HA-Firemote/HA-Firemote.js?hacstag=536329656419",
+        "type": "module"
+      }
+    ]
+  }
+}
