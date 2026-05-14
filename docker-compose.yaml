@@ -36,7 +36,7 @@ services:
 
 # Blog TROKA Software about software, smart home, etc
   blog-troka-software:
-    image: 'bitnami/nginx:1.16'
+    image: 'bitnami/nginx'
     volumes:
       - ${HOMESERVERDIR}/blog.troka.software:/app
       - ${HOMESERVERDIR}/shared:/shared
