@@ -7,7 +7,15 @@
       entity_id: light.kitchen_island_strip
       to: 'on'
   action:
-    - service: light.turn_on
-      data:
-        entity_id: "{{ trigger.entity_id }}"
-        effect: none
+    - repeat:
+        count: 3
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: "{{ trigger.entity_id }}"
+              rgb_color: [255, 255, 255]
+              brightness: 255
+              effect: none
+          - delay: '00:00:01'
+
+

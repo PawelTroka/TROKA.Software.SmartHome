@@ -20,6 +20,8 @@
       above: 0
   action:
     - service: script.stop_vacuum
+    - service: fan.turn_on
+      entity_id: fan.vestfrost_air_humidifier
 
 - alias: 'Say welcome Pawel when Pawel is back home'
   trigger:

@@ -1,0 +1,10 @@
+- alias: "CO2 Level Alert"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.netatmo_indoor_co2
+      above: 1000
+  action:
+    - service: notify.level_note
+      data:
+        title: "High CO2 Level"
+        message: "CO2 levels are above 1000 ppm ({{ states('sensor.netatmo_indoor_co2') }} ppm). Please open a window!"

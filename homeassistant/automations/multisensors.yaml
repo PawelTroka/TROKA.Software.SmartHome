@@ -50,8 +50,7 @@
         - condition: sun
           before: sunrise
   action:
-    service: light.turn_on
-    entity_id: light.kitchen_lights
+    service: script.set_kitchen_lights_to_default
 
 - alias: Turn off kitchen lights when motion stops
   trigger:

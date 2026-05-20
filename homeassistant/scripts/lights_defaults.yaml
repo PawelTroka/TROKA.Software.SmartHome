@@ -164,7 +164,8 @@ set_kitchen_cabinet_strip_to_default:
     entity_id: light.kitchen_cabinet_strip
     data:
       brightness: 168
-      color_temp: 115
+      rgb_color: [255, 255, 255]
+      effect: none
 
 set_kitchen_island_strip_to_default:
   sequence:
@@ -172,7 +173,8 @@ set_kitchen_island_strip_to_default:
     entity_id: light.kitchen_island_strip
     data:
       brightness: 126
-      color_temp: 111
+      rgb_color: [255, 255, 255]
+      effect: none
 
 
 # Office lights defaults
