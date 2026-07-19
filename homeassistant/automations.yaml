@@ -78,3 +78,43 @@
       delay: 0
       notify_device: 66f5dd0693351cc7d8db2a8c595f5f13
       include_hasspodcast: true
+- id: '1782426392942'
+  alias: Refresh remote calendars
+  description: Force Remote Calendar sync more often
+  triggers:
+  - trigger: time_pattern
+    minutes: /5
+  actions:
+  - action: homeassistant.update_entity
+    target:
+      entity_id:
+      - calendar.personal
+      - calendar.work
+  mode: single
+- id: '1782426447860'
+  alias: Refresh remote calendars
+  description: Force Remote Calendar sync more often
+  triggers:
+  - trigger: time_pattern
+    minutes: /5
+  actions:
+  - action: homeassistant.update_entity
+    target:
+      entity_id:
+      - calendar.personal
+      - calendar.work
+  mode: single
+- id: '1782426613837'
+  alias: Update calendars
+  description: ''
+  triggers:
+  - trigger: time_pattern
+    minutes: /5
+  conditions: []
+  actions:
+  - action: homeassistant.update_entity
+    target:
+      entity_id:
+      - calendar.personal
+      - calendar.work
+  mode: single

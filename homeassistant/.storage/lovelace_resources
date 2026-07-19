@@ -83,6 +83,11 @@
         "id": "4b9c8455b1354ab59c658c6b2265cb07",
         "url": "/hacsfiles/HA-Firemote/HA-Firemote.js?hacstag=536329656419",
         "type": "module"
+      },
+      {
+        "id": "a761f1a26179412797cf9c56d32824fd",
+        "url": "/hacsfiles/calendar-card-pro/calendar-card-pro.js?hacstag=939311749320",
+        "type": "module"
       }
     ]
   }
