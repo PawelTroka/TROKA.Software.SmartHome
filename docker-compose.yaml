@@ -184,6 +184,50 @@ services:
 
 
 ############################# SMART HOME
+  otbr:
+    image: openthread/border-router:latest
+    container_name: otbr
+    restart: unless-stopped
+    network_mode: host
+
+    cap_add:
+      - NET_ADMIN
+
+    devices:
+      - /dev/serial/by-id/usb-Nabu_Casa_ZBT-2_94A990D185AC-if00:/dev/ttyZBT2
+      - /dev/net/tun:/dev/net/tun
+
+    volumes:
+      - /var/lib/otbr:/data
+
+    environment:
+      OT_RCP_DEVICE: "spinel+hdlc+uart:///dev/ttyZBT2?uart-baudrate=460800&uart-flow-control"
+      OT_INFRA_IF: "enp13s0"
+      OT_THREAD_IF: "wpan0"
+      OT_LOG_LEVEL: "5"
+
+      # Home Assistant REST API
+      OT_REST_LISTEN_ADDR: "127.0.0.1"
+      OT_REST_LISTEN_PORT: "8081"
+
+      # Optional OTBR web interface—moved away from UniFi
+      OT_WEB_LISTEN_ADDR: "127.0.0.1"
+      OT_WEB_LISTEN_PORT: "8082"
+
+  matter-server:
+    image: ghcr.io/matter-js/matterjs-server:stable
+    container_name: matter-server
+    restart: unless-stopped
+    network_mode: host
+
+    volumes:
+      - ./matter-data:/data
+
+    environment:
+      TZ: "Europe/Warsaw"
+      PRIMARY_INTERFACE: "enp13s0"
+      LISTEN_ADDRESS: "127.0.0.1"
+
 
  # Home Assistant - Smart Home Hub
   homeassistant:
@@ -194,6 +238,7 @@ services:
     network_mode: host
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
+      #- /dev/serial/by-id/usb-Nabu_Casa_ZBT-2_94A990D185AC-if00:/dev/ttyZBT2
     volumes:
       - ${HOMESERVERDIR}/homeassistant:/config
   #    - ${HOMESERVERDIR}/hassio-addons-duckdns/ssl/:/ssl/

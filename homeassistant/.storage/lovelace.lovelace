@@ -234,7 +234,7 @@
                   "camera_image": "camera.front_door_2",
                   "entities": [
                     {
-                      "entity": "lock.front_door"
+                      "entity": "lock.smart_lock_ultra"
                     },
                     {
                       "entity": "binary_sensor.front_door_motion"
@@ -1968,6 +1968,21 @@
               ],
               "title": "Living room cam",
               "type": "picture-glance"
+            },
+            {
+              "type": "tile",
+              "entity": "remote.bedroom_android_tv",
+              "vertical": false,
+              "features": [
+                {
+                  "type": "media-player-source"
+                }
+              ],
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "remote.living_room_bravia_tv"
             }
           ],
           "icon": "mdi:theater",
@@ -2297,6 +2312,15 @@
               "type": "entities"
             },
             {
+              "type": "tile",
+              "entity": "lock.smart_lock_ultra",
+              "features": [
+                {
+                  "type": "lock-commands"
+                }
+              ]
+            },
+            {
               "aspect_ratio": "0%",
               "camera_image": "camera.hallway",
               "entities": [
@@ -2311,9 +2335,6 @@
             },
             {
               "entities": [
-                {
-                  "entity": "binary_sensor.front_door_open"
-                },
                 {
                   "entity": "binary_sensor.hallway_door"
                 },
@@ -2337,18 +2358,6 @@
                 }
               ],
               "type": "entities"
-            },
-            {
-              "entity": "lock.front_door",
-              "hold_action": {
-                "action": "more-info"
-              },
-              "show_icon": true,
-              "show_name": true,
-              "tap_action": {
-                "action": "toggle"
-              },
-              "type": "entity-button"
             },
             {
               "entities": [
