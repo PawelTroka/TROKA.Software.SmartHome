@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TROKASoftware - Premium Engineering & Scientific Solutions</title>
+  <title>TROKA Software - Tech Lead & Concurrency Specialist</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
     
     :root {
       --bg-color: #050814;
-      --bg-card: rgba(11, 17, 34, 0.7);
+      --bg-card: rgba(11, 17, 34, 0.75);
       --bg-card-border: rgba(0, 245, 155, 0.15);
       --color-primary: #00f59b; /* High-energy neon green */
       --color-secondary: #00c6ff; /* Tech cyan */
@@ -102,7 +102,7 @@
 
     /* Container */
     .container {
-      max-width: 1200px;
+      max-width: 1440px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -764,7 +764,7 @@
       border-radius: 16px;
       overflow: hidden;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
       box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     }
 
@@ -774,10 +774,10 @@
       }
     }
 
-    /* Left Side: Screenshot Viewer */
+    /* Left Side: Screenshot Viewer (Larger preview images) */
     .gallery-viewer-container {
       background: #02040a;
-      padding: 30px;
+      padding: 35px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -790,21 +790,27 @@
       .gallery-viewer-container {
         border-right: none;
         border-bottom: 1px solid rgba(0, 245, 155, 0.1);
+        padding: 20px;
       }
     }
 
     .main-preview-wrapper {
       width: 100%;
-      height: 320px;
+      height: 480px; /* Increased to allow larger wide screenshots */
       border-radius: 8px;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.08);
       position: relative;
       cursor: zoom-in;
-      background: #080d1a;
+      background: #070c18;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: border-color 0.2s;
+    }
+
+    .main-preview-wrapper:hover {
+      border-color: var(--color-primary);
     }
 
     .main-preview-img {
@@ -813,13 +819,14 @@
       object-fit: contain;
       transition: opacity 0.25s ease;
       opacity: 1;
+      padding: 10px;
     }
 
     .preview-caption {
       margin-top: 15px;
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--color-primary);
-      font-weight: 500;
+      font-weight: 600;
       font-family: var(--font-mono);
       text-align: center;
       min-height: 20px;
@@ -845,8 +852,8 @@
     }
 
     .thumb-btn {
-      flex: 0 0 70px;
-      height: 48px;
+      flex: 0 0 90px; /* Increased thumbnail width */
+      height: 60px; /* Increased thumbnail height */
       border-radius: 4px;
       overflow: hidden;
       border: 2px solid transparent;
@@ -882,6 +889,12 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-details-container {
+        padding: 24px;
+      }
     }
 
     .product-badge {
@@ -1162,7 +1175,7 @@
       margin-top: 2px;
     }
 
-    /* Infoshare Presentation Area */
+    /* Speaking Highlight Banner */
     .infoshare-presentation-card {
       background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(244, 63, 94, 0.12) 100%);
       border: 1px solid rgba(239, 68, 68, 0.2);
@@ -1234,9 +1247,131 @@
       text-decoration: underline;
     }
 
+    /* Speaking honors tags list */
+    .honors-list {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .honor-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .honor-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+    }
+
+    .honor-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--color-text-main);
+    }
+
+    .honor-issuer {
+      font-size: 12px;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-family: var(--font-display);
+    }
+
+    .honor-date {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    /* Skills, Traits, Languages layout */
+    .tags-section-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .tags-section-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tags-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .tags-card h4 {
+      font-size: 16px;
+      color: var(--color-primary);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .cloud-tag {
+      background: rgba(0, 245, 155, 0.05);
+      border: 1px solid rgba(0, 245, 155, 0.12);
+      color: var(--color-text-main);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .trait-tag {
+      background: rgba(0, 198, 255, 0.05);
+      border: 1px solid rgba(0, 198, 255, 0.12);
+      color: var(--color-text-main);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    
+    .lang-item:last-child {
+      border-bottom: none;
+    }
+
+    .lang-name {
+      font-weight: 600;
+      color: var(--color-text-main);
+    }
+
+    .lang-level {
+      color: var(--color-text-muted);
+    }
+
     /* Passions/Interests Polaroid Gallery */
     .interests-gallery-wrapper {
-      margin-top: 30px;
+      margin-top: 35px;
       border-top: 1px solid rgba(255,255,255,0.06);
       padding-top: 25px;
     }
@@ -1293,10 +1428,11 @@
 
     .polaroid-caption {
       margin-top: 12px;
-      font-size: 12px;
+      font-size: 12.5px;
       color: var(--color-text-muted);
       font-family: var(--font-display);
       text-align: center;
+      line-height: 1.3;
     }
 
     /* Contact & Billing Details */
@@ -1388,37 +1524,51 @@
       color: var(--color-text-main);
     }
 
-    /* Lightbox Modal */
+    /* Lightbox Modal (Enlarged view improvements with slider) */
     .lightbox-modal {
       display: none;
       position: fixed;
       z-index: 1000;
-      padding-top: 50px;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
-      background-color: rgba(5, 8, 20, 0.95);
-      backdrop-filter: blur(10px);
+      background-color: rgba(4, 6, 15, 0.96);
+      backdrop-filter: blur(12px);
+      justify-content: center;
+      align-items: center;
     }
 
-    .lightbox-content-wrapper {
-      margin: auto;
+    .lightbox-container {
+      position: relative;
+      width: 90%;
+      max-width: 1000px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 90%;
-      max-height: 85%;
+      justify-content: center;
+    }
+
+    .lightbox-img-wrapper {
+      width: 100%;
+      max-height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #02040a;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.8);
     }
 
     .lightbox-img {
       max-width: 100%;
       max-height: 75vh;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
       object-fit: contain;
+      display: block;
+      transition: opacity 0.2s ease;
     }
 
     .lightbox-caption {
@@ -1426,25 +1576,73 @@
       color: var(--color-primary);
       font-size: 15px;
       font-family: var(--font-mono);
-      font-weight: 500;
+      font-weight: 600;
       text-align: center;
     }
 
     .lightbox-close {
       position: absolute;
-      top: 25px;
-      right: 35px;
+      top: -45px;
+      right: 0;
       color: var(--color-text-muted);
-      font-size: 40px;
+      font-size: 35px;
       font-weight: bold;
-      transition: 0.3s;
       cursor: pointer;
+      transition: color 0.2s;
     }
 
-    .lightbox-close:hover,
-    .lightbox-close:focus {
+    .lightbox-close:hover {
       color: var(--color-primary);
-      text-decoration: none;
+    }
+
+    /* Lightbox slider navigation buttons */
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(0, 245, 155, 0.2);
+      color: var(--color-primary);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      z-index: 1010;
+      user-select: none;
+    }
+
+    .lightbox-nav-btn:hover {
+      background: var(--color-primary);
+      color: #050814;
+      box-shadow: 0 0 15px rgba(0, 245, 155, 0.4);
+    }
+
+    .lightbox-prev {
+      left: -24px;
+    }
+
+    .lightbox-next {
+      right: -24px;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox-nav-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+      }
+      .lightbox-prev {
+        left: 5px;
+      }
+      .lightbox-next {
+        right: 5px;
+      }
     }
 
     /* Footer */
@@ -1529,6 +1727,19 @@
       transform: rotate(180deg);
     }
 
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 50px;
+      align-items: center;
+    }
+    @media (max-width: 991px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1542,7 +1753,7 @@
     <div class="container nav-container">
       <a href="#" class="logo-container">
         <div class="logo-symbol">T</div>
-        <div class="logo-text">TROKASoftware</div>
+        <div class="logo-text">TROKA Software</div>
       </a>
       <nav>
         <ul>
@@ -1561,7 +1772,7 @@
     <section class="hero">
       
       <div class="hero-info">
-        <span class="badge">Elite C# & Latency-Critical Specialist</span>
+        <span class="badge">Tech Lead & Concurrency Specialist</span>
         <h1 class="hero-title">
           Engineering Ultra-High Performance <span>Software</span>
         </h1>
@@ -1581,7 +1792,7 @@
 
         <div class="hero-actions">
           <a href="#contact" class="btn-primary">
-            Retain Lead Software Engineer
+            Retain Tech Lead
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
           <a href="#portfolio" class="btn-secondary">Explore Creations</a>
@@ -1605,7 +1816,7 @@
             <div class="card-face card-front">
               <div class="card-brand">
                 <div>
-                  <div class="card-logo-text">TROKASoftware</div>
+                  <div class="card-logo-text">TROKA Software</div>
                   <div class="card-slogan">Thorough Research On Key Aspects</div>
                 </div>
                 <div class="card-chip"></div>
@@ -1628,7 +1839,7 @@
             <div class="card-face card-back">
               <div class="card-owner">
                 <span class="card-name">dr inż. Paweł Troka</span>
-                <span class="card-title">Lead Software Engineer</span>
+                <span class="card-title">Tech Lead</span>
               </div>
 
               <div class="card-contacts">
@@ -1647,7 +1858,7 @@
               </div>
 
               <div class="card-back-footer">
-                <span>TROKASoftware</span>
+                <span>TROKA Software</span>
                 <span>GDANSK | POLAND</span>
               </div>
             </div>
@@ -1671,17 +1882,14 @@
 
     </section>
 
-    <!-- Code Panel Showcase Section (Now SIMD AVX2 processing) -->
+    <!-- Code Panel Showcase Section (AVX2 processing) -->
     <section class="section section-alt" id="about">
       <div class="section-title-wrapper">
         <span class="section-subtitle">Advanced Algorithmic Foundations</span>
         <h2 class="section-title">Institutional Grade Engineering</h2>
       </div>
       
-      <div style="display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 50px; align-items: center;">
-        @media (max-width: 991px) {
-          <div style="grid-template-columns: 1fr; gap: 30px;"></div>
-        }
+      <div class="about-grid">
         <div>
           <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--color-primary);">Elite Grade Quality</h3>
           <p style="color: var(--color-text-muted); margin-bottom: 25px; font-size: 16px;">
@@ -1708,37 +1916,61 @@
           <div class="code-body">
             <pre><code><span class="keyword">using</span> System;
 <span class="keyword">using</span> System.Runtime.CompilerServices;
+<span class="keyword">using</span> System.Runtime.InteropServices;
+<span class="keyword">using</span> System.Threading;
 <span class="keyword">using</span> System.Runtime.Intrinsics;
-<span class="keyword">using</span> System.Runtime.Intrinsics.X86;
 
 <span class="keyword">namespace</span> <span class="type">TROKASoftware.HighPerformance</span>
 {
     <span class="comment">/// &lt;summary&gt;</span>
-    <span class="comment">/// AVX2 & FMA hardware-accelerated Blade Tip-Timing signal kernel.</span>
-    <span class="comment">/// Performs 4 double FMA operations concurrently inside registers.</span>
+    <span class="comment">/// Low-latency order dispatcher. Suspends GC cycles,</span>
+    <span class="comment">/// busy-waits on volatile shared memory, and routes trades.</span>
     <span class="comment">/// &lt;/summary&gt;</span>
-    <span class="keyword">public sealed unsafe class</span> <span class="type">BttSignalKernel</span>
+    <span class="keyword">public sealed unsafe class</span> <span class="type">LowLatencyOrderDispatcher</span> : <span class="type">IDisposable</span>
     {
-        [<span class="type">MethodImpl</span>(<span class="type">MethodImplOptions</span>.AggressiveOptimization)]
-        <span class="keyword">public static void</span> <span class="method">ProcessSignalSIMD</span>(
-            <span class="type">double</span>* signal, <span class="type">double</span>* filter, <span class="type">double</span>* output, <span class="type">int</span> length)
-        {
-            <span class="type">int</span> i = <span class="number">0</span>;
-            <span class="comment">// 256-bit SIMD registers load 4 doubles concurrently</span>
-            <span class="keyword">for</span> (; i &lt;= length - <span class="number">4</span>; i += <span class="number">4</span>)
-            {
-                <span class="type">Vector256</span>&lt;<span class="type">double</span>&gt; sig = <span class="type">Avx</span>.<span class="method">LoadVector256</span>(signal + i);
-                <span class="type">Vector256</span>&lt;<span class="type">double</span>&gt; filt = <span class="type">Avx</span>.<span class="method">LoadVector256</span>(filter + i);
-                <span class="type">Vector256</span>&lt;<span class="type">double</span>&gt; acc = <span class="type">Avx</span>.<span class="method">LoadVector256</span>(output + i);
+        <span class="keyword">private readonly</span> <span class="type">ConcurrentValueSortedDictionary</span>&lt;<span class="type">long</span>, <span class="type">OrderLevel</span>&gt; _orderBook;
+        <span class="keyword">private readonly</span> <span class="type">byte</span>* _sharedMemoryBuffer;
+        <span class="keyword">private readonly</span> <span class="type">int</span> _spinWaitCycles;
+        <span class="keyword">private</span> <span class="type">bool</span> _inNoGCRegion;
 
-                <span class="comment">// Single CPU cycle execution of acc = (sig * filt) + acc</span>
-                <span class="type">Vector256</span>&lt;<span class="type">double</span>&gt; res = <span class="type">Fma</span>.<span class="method">MultiplyAdd</span>(sig, filt, acc);
-                <span class="type">Avx</span>.<span class="method">Store</span>(output + i, res);
-            }
-            <span class="comment">// Clean up remaining elements</span>
-            <span class="keyword">for</span> (; i &lt; length; i++)
+        [<span class="type">MethodImpl</span>(<span class="type">MethodImplOptions</span>.AggressiveOptimization | <span class="type">MethodImplOptions</span>.AggressiveInlining)]
+        <span class="keyword">public void</span> <span class="method">DispatchAggressively</span>(<span class="type">long</span> targetVolume, <span class="type">decimal</span> limitPrice)
+        {
+            <span class="comment">// Prevent Garbage Collector latency spikes during active hot path</span>
+            <span class="keyword">if</span> (!_inNoGCRegion &amp;&amp; <span class="type">GC</span>.<span class="method">TryStartNoGCRegion</span>(<span class="number">1024</span> * <span class="number">1024</span> * <span class="number">64</span>, <span class="keyword">true</span>))
             {
-                output[i] += signal[i] * filter[i];
+                _inNoGCRegion = <span class="keyword">true</span>;
+            }
+
+            <span class="keyword">try</span>
+            {
+                <span class="comment">// Busy-wait polling raw shared memory ticks using hardware spin wait</span>
+                <span class="type">int</span> spinAttempts = <span class="number">0</span>;
+                <span class="keyword">while</span> (<span class="type">Volatile</span>.<span class="method">Read</span>(<span class="keyword">ref</span> _sharedMemoryBuffer[<span class="number">0</span>]) == <span class="number">0</span>)
+                {
+                    <span class="keyword">if</span> (++spinAttempts &gt; _spinWaitCycles)
+                    {
+                        <span class="type">Thread</span>.<span class="method">SpinWait</span>(<span class="number">64</span>); <span class="comment">// Low-level CPU pause instruction</span>
+                        spinAttempts = <span class="number">0</span>;
+                    }
+                }
+
+                <span class="comment">// Lock-optimized retrieval from sorted concurrent structures</span>
+                <span class="keyword">ref var</span> bestLevel = <span class="keyword">ref</span> _orderBook.<span class="method">GetRef</span>(limitPrice);
+                
+                <span class="comment">// Execute direct zero-copy Aeron publishing or direct IPC transmission</span>
+                <span class="keyword">if</span> (bestLevel.Volume &gt;= targetVolume)
+                {
+                    <span class="method">TransmitDirect</span>(_sharedMemoryBuffer + <span class="number">8</span>, <span class="type">sizeof</span>(<span class="type">OrderRequest</span>));
+                }
+            }
+            <span class="keyword">finally</span>
+            {
+                <span class="keyword">if</span> (_inNoGCRegion)
+                {
+                    <span class="type">GC</span>.<span class="method">EndNoGCRegion</span>();
+                    _inNoGCRegion = <span class="keyword">false</span>;
+                }
             }
         }
     }
@@ -1819,7 +2051,54 @@
         <h2 class="section-title">Creations & Portfolio</h2>
       </div>
 
-      <!-- Creation 1: Volue Algo Trader -->
+      <!-- Creation 1: Neutral Exchange (Newly added) -->
+      <div class="portfolio-item-wrapper">
+        <!-- Interactive Gallery -->
+        <div class="gallery-viewer-container">
+          <div class="main-preview-wrapper" onclick="openLightbox('gallery-neutral')">
+            <img id="neutral-main" src="neutral_1.png" class="main-preview-img" alt="Neutral Exchange interface">
+          </div>
+          <div class="preview-caption" id="neutral-caption">Neutral Exchange Trade Page</div>
+          
+          <div class="thumbnails-scroller">
+            <button class="thumb-btn active" onclick="swapGalleryImage('neutral', 'neutral_1.png', 'Neutral Exchange Trade Page', this)">
+              <img src="neutral_1.png" alt="Neutral Exchange Trade Page thumb">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('neutral', 'neutral_2.png', 'Neutral Exchange Markets Page', this)">
+              <img src="neutral_2.png" alt="Neutral Exchange Markets Page thumb">
+            </button>
+          </div>
+        </div>
+
+        <div class="gallery-details-container">
+          <div>
+            <span class="product-badge" style="color: #e0f2fe; background: rgba(14, 165, 233, 0.15); border-color: rgba(14, 165, 233, 0.3);">Regenerative Finance Asset Market</span>
+            <h3 class="portfolio-item-title">Neutral<span>Exchange</span></h3>
+            <p class="portfolio-item-desc">
+              Designed and engineered an institutional-grade central limit order book (CEX) exchange for semi-fungible digital ReFi assets. Integrates high-performance off-chain transaction matching with multiple on-chain settlement blockchains.
+            </p>
+            <ul class="portfolio-features-list">
+              <li>High-speed matching engine optimized for semi-fungible sub-orderbooks</li>
+              <li>Deployed custom dynamic fee calculators on Polygon and Celo networks</li>
+              <li>Integrated ChatGPT/OpenAI APIs for intelligent analytics</li>
+              <li>Continuous deployment managed via ArgoCD on containerized Kubernetes</li>
+            </ul>
+          </div>
+          <div>
+            <div class="portfolio-tech-tags">
+              <span class="portfolio-tech-tag">.NET 10</span>
+              <span class="portfolio-tech-tag">Solidity</span>
+              <span class="portfolio-tech-tag">Polygon</span>
+              <span class="portfolio-tech-tag">Celo</span>
+              <span class="portfolio-tech-tag">ArgoCD</span>
+              <span class="portfolio-tech-tag">Go</span>
+              <span class="portfolio-tech-tag">NATS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creation 2: Volue Algo Trader -->
       <div class="portfolio-item-wrapper">
         <!-- Interactive Gallery -->
         <div class="gallery-viewer-container">
@@ -1880,7 +2159,7 @@
         </div>
       </div>
 
-      <!-- Creation 2: Computator.NET -->
+      <!-- Creation 3: Computator.NET -->
       <div class="portfolio-item-wrapper">
         <!-- Interactive Gallery -->
         <div class="gallery-viewer-container">
@@ -1946,7 +2225,7 @@
 
     </section>
 
-    <!-- Timeline / Experience Section -->
+    <!-- Industry Experience / Timeline -->
     <section class="section" id="timeline">
       <div class="section-title-wrapper">
         <span class="section-subtitle">Professional Journey</span>
@@ -1960,13 +2239,13 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">AxpoGroup</span>
-              <div class="timeline-role">Lead Software Engineer</div>
+              <span class="timeline-company">Axpo Group</span>
+              <div class="timeline-role">Tech Lead</div>
             </div>
             <span class="timeline-date">06/2025 - Present</span>
           </div>
           <p class="timeline-desc">
-            Directing a large, multi-national development, testing, and UI/UX design team to build high-speed automated trading engines for the MACH+ energy trading initiative. Architecting market-beating execution models and low-latency pricing infrastructure in active remote cooperation with Baden, Switzerland.
+            Leading a large, cross-functional team of software engineers, testers, and designers in developing high-performance trading algorithms and strategies for Axpo's cutting-edge MACH+ initiative. Driving the success of Axpo's energy trading operations by architecting low-latency, market-beating systems that deliver a competitive edge in today's fast-moving energy markets. Remote cooperation with Baden, Switzerland.
           </p>
           <div class="timeline-tech-list">
             <span class="timeline-tech-item">.NET 10</span>
@@ -1983,13 +2262,13 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">AxpoGroup</span>
+              <span class="timeline-company">Axpo Group</span>
               <div class="timeline-role">Senior Full Stack Developer</div>
             </div>
             <span class="timeline-date">08/2024 - 05/2025</span>
           </div>
           <p class="timeline-desc">
-            Retained as an independent contractor to conduct system-wide code reviews, optimize database procedures, and provide expert architectural guidance on software craftsmanship and engineering best practices.
+            Leveraging deep experience in trading systems as an independent consultant to provide expert guidance on software engineering best practices. Conducting system audits and performance diagnostics.
           </p>
           <div class="timeline-tech-list">
             <span class="timeline-tech-item">C#</span>
@@ -2004,22 +2283,23 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">NeutralLabs Inc.</span>
+              <span class="timeline-company">Neutral Labs Inc.</span>
               <div class="timeline-role">Lead Software Engineer</div>
             </div>
             <span class="timeline-date">03/2023 - 07/2024</span>
           </div>
           <p class="timeline-desc">
-            Led the design and coding of a high-performance central limit order-book exchange (CEX) for digital ReFi assets. Programmed sub-orderbook execution algorithms and deployed custom Solidity smart contracts for biochar fee dynamics on Polygon and Celo blockchains.
+            Built, with a team of highly engaged individuals, first ever regenerative finance assets market (Neutral exchange) off-chain (CEX) with on-chain integrations on different blockchains. Designed highly optimized algorithms for efficient semi-fungible assets trading, including sub-orderbooks matching. Implemented, tested and deployed Solidity smart contracts such as dynamic fee calculators on Polygon and Celo networks.
           </p>
           <div class="timeline-tech-list">
-            <span class="timeline-tech-item">.NET 10</span>
+            <span class="timeline-tech-item">.NET 8</span>
             <span class="timeline-tech-item">Go</span>
             <span class="timeline-tech-item">Solidity</span>
             <span class="timeline-tech-item">Polygon</span>
             <span class="timeline-tech-item">Celo</span>
             <span class="timeline-tech-item">Docker</span>
             <span class="timeline-tech-item">ArgoCD</span>
+            <span class="timeline-tech-item">OpenAI API</span>
           </div>
         </div>
 
@@ -2028,13 +2308,13 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">VolueAS</span>
+              <span class="timeline-company">Volue AS</span>
               <div class="timeline-role">Development Owner & Software Architect</div>
             </div>
             <span class="timeline-date">02/2020 - 04/2023</span>
           </div>
           <p class="timeline-desc">
-            Designed high-throughput architectures to unify acquired automated energy trading modules. Managed engineering resources across Poland, Germany, and Norway. Spearheaded low-latency Aeron.NET integrations and high-performance PyPy script pipelines.
+            Drove new software architecture consolidating mergers and acquisitions of other companies in energy trading and asset-based trading domain. Developed high performance Python and C# software. Managed a medium-sized team of developers, dev-ops and testers.
           </p>
           <div class="timeline-tech-list">
             <span class="timeline-tech-item">C#</span>
@@ -2052,13 +2332,13 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">PowelAS</span>
+              <span class="timeline-company">Powel AS</span>
               <div class="timeline-role">Team Lead & Senior Software Engineer</div>
             </div>
             <span class="timeline-date">08/2017 - 03/2020</span>
           </div>
           <p class="timeline-desc">
-            Directed the design of the core microservice architecture for 24/7 automated intraday energy trading. Managed scrum priorities, coordinated with Scandinavian client boards, and built Python execution adapters.
+            Built cutting-edge microservices solution for algorithmic, automated, 24/7 intraday energy trading, enabling energy traders to use Python to write their own trading strategies. Managed a small team including representation on meetings with customers, setting priorities for tasks, filling-in responsibilities of a scrum master, and communicating with management.
           </p>
           <div class="timeline-tech-list">
             <span class="timeline-tech-item">Python</span>
@@ -2074,13 +2354,13 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">PowelAS</span>
+              <span class="timeline-company">Powel AS</span>
               <div class="timeline-role">Software Engineer</div>
             </div>
             <span class="timeline-date">06/2016 - 09/2017</span>
           </div>
           <p class="timeline-desc">
-            Programmed adapter modules for head-end meter database synchronization in the Powel ELIN project. Converted legacy Visual Basic code bases into modern multi-threaded C# assemblies.
+            Fixed bugs and developed new features in Powel ELIN project - an interoperable head-end meter data collection system that supports a wide range of meter types, terminals and concentrators. Implemented web-services for energy sector, developed electric meters adapters, managed Oracle SQL database, and converted legacy VB code to modern C#.
           </p>
           <div class="timeline-tech-list">
             <span class="timeline-tech-item">C#</span>
@@ -2101,7 +2381,7 @@
             <span class="timeline-date">09/2013 - 05/2024</span>
           </div>
           <p class="timeline-desc">
-            Researched and coded mathematical blade tip-timing (BTT) numerical models. Processed high-frequency vibration signals using C# Task Parallel Library (TPL), NumPy, and C++ kernels.
+            Developed blade tip-timing numerical algorithms, signal analysis models, and numerical software on .NET platform using C# TPL and Fortran translations. Visualized scientific datasets.
           </p>
           <div class="timeline-tech-list">
             <span class="timeline-tech-item">Numerical Analysis</span>
@@ -2114,11 +2394,11 @@
       </div>
     </section>
 
-    <!-- Biography / Founder Profile -->
+    <!-- Biography / Profile Section -->
     <section class="section section-alt" id="profile">
       <div class="section-title-wrapper">
-        <span class="section-subtitle">Technical Leadership</span>
-        <h2 class="section-title">Biography & Education</h2>
+        <span class="section-subtitle">Biography & Credentials</span>
+        <h2 class="section-title">About Me</h2>
       </div>
 
       <div class="profile-card">
@@ -2126,7 +2406,7 @@
         <div class="profile-avatar-wrapper">
           <img src="portrait.jpg" class="profile-avatar-img" alt="Paweł Troka portrait">
           <h3 class="profile-name">Paweł Troka, PhD Eng</h3>
-          <span class="profile-meta">Lead Software Engineer</span>
+          <span class="profile-meta">Tech Lead at Axpo Group</span>
           
           <a href="PawelTroka-CV2025-11v2.pdf" download class="btn-primary" style="margin-top: 15px; padding: 10px 20px; font-size: 13px;">
             Download CV (PDF)
@@ -2136,13 +2416,14 @@
 
         <div class="profile-bio">
           <p>
-            I am a lead software engineer who bridges the boundary between advanced mathematical research and latency-critical production code. Combining over a decade of hands-on experience in Scandinavian energy trading sectors with a Ph.D. in Mechanical Engineering, I construct architectures that are optimized down to the processor registry level.
+            I am an impassioned software engineering Tech Lead & architect, driven by the sheer thrill of building innovative, scalable solutions. Combining over a decade of experience in automated 24/7 intraday energy trading platforms with a Ph.D. in Mechanical Engineering, I specialize in low-latency systems, high-performance C# setups, lock-free concurrency, and hardware CPU intrinsics.
           </p>
 
+          <!-- Education Section -->
           <div>
             <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Academic Credentials</h4>
             <div class="education-item">
-              <strong>PhD in Mechanical Engineering (Machine Design & Operation)</strong>
+              <strong>PhD degree in Mechanical Engineering</strong>
               The Szewalski Institute of Fluid-Flow Machinery, Polish Academy of Sciences (2016 - 2021)
               <span>Graduated with honors for development of blade tip-timing turbine numerical models.</span>
             </div>
@@ -2154,62 +2435,196 @@
             <div class="education-item">
               <strong>Engineer's Degree in Computer Science</strong>
               Gdańsk University of Technology (2011 - 2015)
-              <span>Foundation in systems engineering, low-level compilers, and databases.</span>
+              <span>Core training in systems engineering, algorithms, and databases.</span>
             </div>
             <div class="education-item">
               <strong>Engineer's Degree in Technical Physics</strong>
               Gdańsk University of Technology (2010 - 2014)
-              <span>Focused on mathematical modeling, computational physics, and analytical calculus.</span>
+              <span>Mathematical physics modeling and analytical calculus.</span>
             </div>
           </div>
 
+          <!-- Other projects from CV -->
+          <div>
+            <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Bespoke Projects</h4>
+            <div class="education-item" style="border-left-color: var(--color-primary);">
+              <strong>TROKA.Software.SmartHome</strong> (01/2020 - Present)
+              <span>Comprehensive custom smart home automation project.</span>
+            </div>
+          </div>
+
+          <!-- Management Credentials -->
           <div>
             <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Management Credentials</h4>
             <div class="education-item" style="border-left-color: var(--color-primary);">
               <strong>Leadership Development Program</strong>
               execu.no, Kristiansand, Norway (2021)
-              <span>Focused on cross-functional remote management and collaborative engineering cultures.</span>
+              <span>Specialized remote management frameworks, agile coaching, and collaborative engineering.</span>
             </div>
           </div>
 
-          <!-- Infoshare speaking detail -->
+          <!-- Speaking & Honors list (Direct from CV) -->
+          <div>
+            <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Speaking Engagements & Honors</h4>
+            <div class="honors-list">
+              <div class="honor-item">
+                <div>
+                  <span class="honor-issuer">TG.NET</span>
+                  <div class="honor-title">Speaker at #137 TG-NET Meeting</div>
+                </div>
+                <span class="honor-date">11/2022</span>
+              </div>
+              <div class="honor-item">
+                <div>
+                  <span class="honor-issuer">Infoshare</span>
+                  <div class="honor-title">Speaker at Infoshare Conference (CEE Prime Stage)</div>
+                </div>
+                <span class="honor-date">10/2022</span>
+              </div>
+              <div class="honor-item">
+                <div>
+                  <span class="honor-issuer">Scandinavian IT Night</span>
+                  <div class="honor-title">Speaker at Scandinavian IT Night 3city</div>
+                </div>
+                <span class="honor-date">12/2018</span>
+              </div>
+              <div class="honor-item">
+                <div>
+                  <span class="honor-issuer">Den norske dataforening</span>
+                  <div class="honor-title">Speaker at Smidig Skalerbarhet Nettverksmøte</div>
+                </div>
+                <span class="honor-date">06/2018</span>
+              </div>
+              <div class="honor-item">
+                <div>
+                  <span class="honor-issuer">HackerSpace</span>
+                  <div class="honor-title">Speaker at HACKER:SPACE meetup</div>
+                </div>
+                <span class="honor-date">03/2017</span>
+              </div>
+              <div class="honor-item">
+                <div>
+                  <span class="honor-issuer">Gdańsk University of Technology</span>
+                  <div class="honor-title">Rector's Scholarship for the best students</div>
+                </div>
+                <span class="honor-date">01/2011</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed publications list from CV -->
+          <div>
+            <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Academic Publications</h4>
+            <div class="education-item">
+              <strong>Nonsynchronous Rotor Blade Vibrations in Last Stage of 380 MW LP Steam Turbine at Various Condenser Pressures</strong> (Applied Sciences, 2022)
+            </div>
+            <div class="education-item">
+              <strong>New blade tip-timing system for measuring rotor blade vibration of steam and gas turbines</strong> (XIV Research & Development in Power Engineering, 2019)
+            </div>
+            <div class="education-item">
+              <strong>Tip-Timing Measurements and Numerical Analysis of Last-Stage Steam Turbine Mistuned Bladed Disc During Run-Down</strong> (Journal of Vibration Engineering & Technologies, 2019)
+            </div>
+            <div class="education-item">
+              <strong>Analysis of Middle Bearing Failure in Rotor Jet Engine Using Tip-Timing and RMS Technique</strong> (Journal of Vibration Engineering & Technologies, 2016)
+            </div>
+            <div class="education-item">
+              <strong>Rotor Blade Vibration Simulator of Steam Turbine with Aliasing Frequencies up to 25 Hz</strong> (Transactions of the Institute of Fluid-Flow Machinery, 2016)
+            </div>
+          </div>
+
+          <!-- Skills, Traits, Languages lists direct from CV -->
+          <div class="tags-section-grid">
+            <div class="tags-card">
+              <h4>CV Core Skills</h4>
+              <div class="tag-cloud">
+                <span class="cloud-tag">C#</span>
+                <span class="cloud-tag">.NET</span>
+                <span class="cloud-tag">Python</span>
+                <span class="cloud-tag">Solidity</span>
+                <span class="cloud-tag">Microservices</span>
+                <span class="cloud-tag">Docker</span>
+                <span class="cloud-tag">Kubernetes</span>
+                <span class="cloud-tag">Algorithms</span>
+                <span class="cloud-tag">Smart Contracts</span>
+                <span class="cloud-tag">Performance</span>
+                <span class="cloud-tag">API Design</span>
+                <span class="cloud-tag">Azure</span>
+                <span class="cloud-tag">AWS</span>
+                <span class="cloud-tag">OpenAI</span>
+              </div>
+            </div>
+            <div class="tags-card">
+              <h4>Traits</h4>
+              <div class="tag-cloud">
+                <span class="trait-tag">Hardworking</span>
+                <span class="trait-tag">Dedicated</span>
+                <span class="trait-tag">Precise</span>
+                <span class="trait-tag">Likeable</span>
+                <span class="trait-tag">Always available</span>
+                <span class="trait-tag">Persistent</span>
+                <span class="trait-tag">Highly driven</span>
+                <span class="trait-tag">Super motivated</span>
+              </div>
+            </div>
+            <div class="tags-card">
+              <h4>Languages</h4>
+              <div class="lang-item">
+                <span class="lang-name">Polish</span>
+                <span class="lang-level">Native</span>
+              </div>
+              <div class="lang-item">
+                <span class="lang-name">English</span>
+                <span class="lang-level">Full Prof.</span>
+              </div>
+              <div class="lang-item">
+                <span class="lang-name">Norwegian</span>
+                <span class="lang-level">Elementary</span>
+              </div>
+              <div class="lang-item">
+                <span class="lang-name">German</span>
+                <span class="lang-level">Elementary</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Infoshare Presentation Area -->
           <div class="infoshare-presentation-card">
             <span class="infoshare-badge">Infoshare Speaker</span>
             <div class="infoshare-pres-grid">
-              <div class="infoshare-img-wrapper" onclick="openLightboxImage('conference-talk-about-kubernetes.jpg', 'Paweł Troka presenting at Infoshare Conference 2022')">
+              <div class="infoshare-img-wrapper" onclick="openLightboxImage('conference-talk-about-kubernetes.jpg', 'Paweł Troka presenting on Aeron.NET at Infoshare 2022')">
                 <img src="conference-talk-about-kubernetes.jpg" class="infoshare-img" alt="Paweł presenting Aeron.NET">
               </div>
               <div>
                 <h4 class="infoshare-title" style="margin-top:0;">Infoshare 2022 Stage Speaker</h4>
                 <p class="infoshare-desc">
-                  Invited to present at CEE's largest tech arena. Delivered a talk on the AdvancedDev Red Stage explaining Aeron.NET, zero-copy socket setups, and lock-free rings. 
-                  View my speaker profile on <a href="https://infoshare.pl/conference/speakers/#speaker1828" target="_blank">Infoshare</a> or see the original <a href="https://infoshare.pl/conference/agenda/#talk655-4" target="_blank">agenda details</a>.
+                  Presented on the prime-time <strong>AdvancedDev Red Stage</strong>. Discussed zero-copy latency optimization, microservice communication, and lock-free rings. 
+                  View profile on <a href="https://infoshare.pl/conference/speakers/#speaker1828" target="_blank">Infoshare</a> or see the original <a href="https://infoshare.pl/conference/agenda/#talk655-4" target="_blank">talk details</a>.
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- Passions Section -->
+          <!-- Passions Section (Captions updated) -->
           <div class="interests-gallery-wrapper">
             <h4 class="interests-gallery-title">Outside of Code</h4>
             <div class="polaroid-grid">
-              <div class="polaroid-card" onclick="openLightboxImage('passion-traveling.jpg', 'Exploring peaks')">
+              <div class="polaroid-card" onclick="openLightboxImage('passion-traveling.jpg', 'Temple of Hephaestus (God of Fire) in Athens, Greece')">
                 <div class="polaroid-img-wrapper">
-                  <img src="passion-traveling.jpg" class="polaroid-img" alt="Traveling peaks">
+                  <img src="passion-traveling.jpg" class="polaroid-img" alt="Temple in Athens">
                 </div>
-                <div class="polaroid-caption">Alpine peaks</div>
+                <div class="polaroid-caption">Temple of Hephaestus, Athens</div>
               </div>
-              <div class="polaroid-card" onclick="openLightboxImage('passion-travelling3.JPG', 'Active traveling')">
+              <div class="polaroid-card" onclick="openLightboxImage('passion-traveling (2).jpg', 'Scotland Highlands, near a mountain stream')">
                 <div class="polaroid-img-wrapper">
-                  <img src="passion-travelling3.JPG" class="polaroid-img" alt="Traveling photo">
+                  <img src="passion-traveling (2).jpg" class="polaroid-img" alt="Scotland stream">
                 </div>
-                <div class="polaroid-caption">Coastal treks</div>
+                <div class="polaroid-caption">Scotland Highlands stream</div>
               </div>
-              <div class="polaroid-card" onclick="openLightboxImage('passion-traveling (2).jpg', 'Alpine valleys')">
+              <div class="polaroid-card" onclick="openLightboxImage('climbing-gym-boulder.jpg', 'Bouldering at the climbing gym')">
                 <div class="polaroid-img-wrapper">
-                  <img src="passion-traveling (2).jpg" class="polaroid-img" alt="Traveling nature">
+                  <img src="climbing-gym-boulder.jpg" class="polaroid-img" alt="Bouldering gym">
                 </div>
-                <div class="polaroid-caption">High valleys</div>
+                <div class="polaroid-caption">Bouldering at climbing gym</div>
               </div>
             </div>
           </div>
@@ -2263,7 +2678,7 @@
           <table class="billing-table">
             <tr>
               <td class="label-cell">Company Name</td>
-              <td class="val-cell">TROKASoftware Paweł Troka</td>
+              <td class="val-cell">TROKA Software Paweł Troka</td>
             </tr>
             <tr>
               <td class="label-cell">Registered Address</td>
@@ -2292,11 +2707,15 @@
     </section>
   </main>
 
-  <!-- Lightbox Modal -->
+  <!-- Lightbox Modal (Enlarged view improvements with slider) -->
   <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
     <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <div class="lightbox-content-wrapper" onclick="event.stopPropagation()">
-      <img class="lightbox-img" id="lightbox-img" src="" alt="Zoomed view">
+    <button class="lightbox-nav-btn lightbox-prev" id="lightbox-prev-btn" onclick="prevLightboxImage(event)">&#10094;</button>
+    <button class="lightbox-nav-btn lightbox-next" id="lightbox-next-btn" onclick="nextLightboxImage(event)">&#10095;</button>
+    <div class="lightbox-container" onclick="event.stopPropagation()">
+      <div class="lightbox-img-wrapper">
+        <img class="lightbox-img" id="lightbox-img" src="" alt="Zoomed view">
+      </div>
       <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
   </div>
@@ -2305,7 +2724,7 @@
   <footer>
     <div class="container footer-content">
       <div class="footer-text">
-        &copy; 2026 <strong>TROKASoftware</strong>. Crafted with <span>✦</span> for High Performance.
+        &copy; 2026 <strong>TROKA Software</strong>. Crafted with <span>✦</span> for High Performance.
       </div>
       <div class="social-links">
         <a href="https://www.linkedin.com/in/paweltroka/" target="_blank">LinkedIn</a>
@@ -2358,6 +2777,35 @@
       }
     }
 
+    // Product Galleries definitions for Lightbox Navigation
+    const galleries = {
+      'neutral': [
+        { src: 'neutral_1.png', caption: 'Neutral Exchange Trade Page' },
+        { src: 'neutral_2.png', caption: 'Neutral Exchange Markets Page' }
+      ],
+      'algotrader': [
+        { src: 'algotrader_1.png', caption: 'Trading strategy editor' },
+        { src: 'algotrader_2.png', caption: 'Assigning a trading strategy to a product' },
+        { src: 'algotrader_3.png', caption: 'Trading strategy assigned to products list' },
+        { src: 'algotrader_4.png', caption: 'Executed trades monitoring view' },
+        { src: 'algotrader_5.png', caption: 'Live market data feed grid' },
+        { src: 'algotrader_6.png', caption: 'Active strategy log & console output' },
+        { src: 'algotrader_7.png', caption: 'Historical time series database configuration' }
+      ],
+      'computator': [
+        { src: 'computator_1.png', caption: 'Complex function chart with autocomplete in desktop version' },
+        { src: 'computator_2.png', caption: '3d two-variable function chart in desktop version' },
+        { src: 'computator_3.png', caption: 'Complex function chart in web version' },
+        { src: 'computator_4.png', caption: 'Implicit function chart in desktop version' },
+        { src: 'computator_5.png', caption: 'Mathematical scripting in web version' },
+        { src: 'computator_6.png', caption: 'Scripting in web version with autocomplete' }
+      ]
+    };
+
+    // State for current active gallery index
+    let currentGalleryId = '';
+    let currentImageIndex = 0;
+
     // Gallery controller
     function swapGalleryImage(productId, imgSrc, captionText, thumbButton) {
       // Update preview image
@@ -2380,44 +2828,98 @@
     }
 
     // Lightbox modal controller
-    function openLightbox(galleryType) {
-      const modal = document.getElementById('lightbox');
-      const modalImg = document.getElementById('lightbox-img');
-      const modalCaption = document.getElementById('lightbox-caption');
+    function openLightbox(galleryId) {
+      currentGalleryId = galleryId.replace('gallery-', '');
+      const gallery = galleries[currentGalleryId];
+      if (!gallery) return;
 
-      if (galleryType === 'gallery-algotrader') {
-        const activeThumb = document.querySelector('#portfolio .portfolio-item-wrapper:nth-of-type(1) .thumb-btn.active img');
-        const activeCaption = document.getElementById('algotrader-caption').textContent;
-        modalImg.src = activeThumb.src;
-        modalCaption.textContent = activeCaption;
-      } else if (galleryType === 'gallery-computator') {
-        const activeThumb = document.querySelector('#portfolio .portfolio-item-wrapper:nth-of-type(2) .thumb-btn.active img');
-        const activeCaption = document.getElementById('computator-caption').textContent;
-        modalImg.src = activeThumb.src;
-        modalCaption.textContent = activeCaption;
-      }
+      // Find current index based on active thumbnail image path
+      const activeThumb = document.querySelector('#' + currentGalleryId + ' .thumb-btn.active img');
+      const activeSrc = activeThumb ? activeThumb.getAttribute('src') : gallery[0].src;
       
-      modal.style.display = 'block';
+      currentImageIndex = gallery.findIndex(item => item.src === activeSrc);
+      if (currentImageIndex === -1) currentImageIndex = 0;
+
+      updateLightboxContent();
+      document.getElementById('lightbox').style.display = 'flex';
     }
 
     function openLightboxImage(imgSrc, captionText) {
-      const modal = document.getElementById('lightbox');
+      currentGalleryId = 'standalone'; // standalone image view
+      currentImageIndex = 0;
+
       const modalImg = document.getElementById('lightbox-img');
       const modalCaption = document.getElementById('lightbox-caption');
-
+      
       modalImg.src = imgSrc;
       modalCaption.textContent = captionText;
-      modal.style.display = 'block';
+
+      // Hide navigation arrows for standalone views
+      document.getElementById('lightbox-prev-btn').style.display = 'none';
+      document.getElementById('lightbox-next-btn').style.display = 'none';
+
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function updateLightboxContent() {
+      const gallery = galleries[currentGalleryId];
+      if (!gallery) return;
+
+      const modalImg = document.getElementById('lightbox-img');
+      const modalCaption = document.getElementById('lightbox-caption');
+      const prevBtn = document.getElementById('lightbox-prev-btn');
+      const nextBtn = document.getElementById('lightbox-next-btn');
+
+      modalImg.style.opacity = '0.2';
+      setTimeout(() => {
+        modalImg.src = gallery[currentImageIndex].src;
+        modalCaption.textContent = gallery[currentImageIndex].caption;
+        modalImg.style.opacity = '1';
+      }, 150);
+
+      // Toggle display of arrows based on gallery length
+      if (gallery.length > 1) {
+        prevBtn.style.display = 'flex';
+        nextBtn.style.display = 'flex';
+      } else {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+      }
+    }
+
+    function prevLightboxImage(event) {
+      if (event) event.stopPropagation();
+      const gallery = galleries[currentGalleryId];
+      if (!gallery || gallery.length <= 1) return;
+
+      currentImageIndex = (currentImageIndex - 1 + gallery.length) % gallery.length;
+      updateLightboxContent();
+    }
+
+    function nextLightboxImage(event) {
+      if (event) event.stopPropagation();
+      const gallery = galleries[currentGalleryId];
+      if (!gallery || gallery.length <= 1) return;
+
+      currentImageIndex = (currentImageIndex + 1) % gallery.length;
+      updateLightboxContent();
     }
 
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
     }
 
-    // Escape key closes Lightbox
+    // Keyboard Navigation for Lightbox
     document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closeLightbox();
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox.style.display === 'flex') {
+        if (event.key === 'Escape') {
+          closeLightbox();
+        } else if (event.key === 'ArrowLeft') {
+          prevLightboxImage();
+        } else if (event.key === 'ArrowRight') {
+          nextLightboxImage();
+        }
       }
     });
 
