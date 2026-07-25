@@ -47,29 +47,54 @@ flash_all_lights:
     - service: light.toggle
       entity_id: group.all_lights
 
+activate_lighting_scene:
+  alias: Activate a lighting scene with solid LIFX colors
+  mode: queued
+  max: 10
+  fields:
+    scene_entity:
+      name: Scene
+      description: Scene entity to activate
+      required: true
+      selector:
+        entity:
+          domain: scene
+  sequence:
+    - action: switch.turn_off
+      target:
+        entity_id: switch.circadian_lighting_circadian_lighting
+      continue_on_error: true
+    - action: lifx.effect_stop
+      target:
+        entity_id:
+          - light.kitchen_cabinet_strip
+          - light.kitchen_island_strip
+      continue_on_error: true
+    - action: scene.turn_on
+      target:
+        entity_id: "{{ scene_entity }}"
+    - delay: "00:00:01"
+    - action: lifx.effect_stop
+      target:
+        entity_id:
+          - light.kitchen_cabinet_strip
+          - light.kitchen_island_strip
+      continue_on_error: true
+
 activate_party_mode:
   sequence:
-    - service: switch.turn_off
-      entity_id: switch.circadian_lighting_circadian_lighting
-    - service: scene.turn_on
-      target:
-        entity_id: scene.party
-    - service: scene.turn_on
-      target:
-        entity_id: scene.party_2
+    - action: script.activate_lighting_scene
+      data:
+        scene_entity: scene.party_2
 
 activate_movie_mode:
   sequence:
-    - service: switch.turn_off
-      entity_id: switch.circadian_lighting_circadian_lighting
-    - service: scene.turn_on
-      target:
-        entity_id: scene.movie_dinner
+    - action: script.activate_lighting_scene
+      data:
+        scene_entity: scene.movie_dinner
 
 activate_relax_mode:
   sequence:
-    - service: switch.turn_off
-      entity_id: switch.circadian_lighting_circadian_lighting
-    - service: scene.turn_on
-      target:
-        entity_id: scene.romantic
+    - action: script.activate_lighting_scene
+      data:
+        scene_entity: scene.romantic

@@ -1,0 +1,444 @@
+- switch:
+    - name: Watch a movie
+      default_entity_id: switch.watch_movie
+      unique_id: watch_movie
+      state: "{{ is_state_attr('media_player.shield_android_tv', 'source', 'Plex') }}"
+      turn_on:
+        - action: script.turn_on
+          target:
+            entity_id: script.watch_a_movie
+      turn_off:
+        - action: script.turn_on
+          target:
+            entity_id: script.turn_off_video_media_living_room
+      icon: >-
+        {% if is_state_attr('media_player.shield_android_tv', 'source', 'Plex') %}
+          mdi:filmstrip
+        {% else %}
+          mdi:filmstrip-off
+        {% endif %}
+
+    - name: Watch YouTube
+      default_entity_id: switch.watch_youtube
+      unique_id: watch_youtube
+      state: "{{ is_state_attr('media_player.shield_android_tv', 'source', 'com.teamsmart.videomanager.tv') }}"
+      turn_on:
+        - action: script.turn_on
+          target:
+            entity_id: script.watch_youtube
+      turn_off:
+        - action: script.turn_on
+          target:
+            entity_id: script.turn_off_video_media_living_room
+      icon: mdi:youtube-tv
+
+    - name: Play a game
+      default_entity_id: switch.play_game
+      unique_id: play_game
+      state: >-
+        {{ is_state_attr('remote.harmonyhub', 'current_activity', 'Play a Game')
+           and not is_state_attr('media_player.xboxone', 'media_title', 'Netflix') }}
+      turn_on:
+        - action: script.turn_on
+          target:
+            entity_id: script.play_a_game
+      turn_off:
+        - action: script.turn_on
+          target:
+            entity_id: script.turn_off_video_media_living_room
+      icon: >-
+        {% if is_state_attr('remote.harmonyhub', 'current_activity', 'Play a Game') %}
+          mdi:microsoft-xbox-controller
+        {% else %}
+          mdi:microsoft-xbox-controller-off
+        {% endif %}
+
+    - name: Watch Netflix
+      default_entity_id: switch.watch_netflix
+      unique_id: watch_netflix
+      state: "{{ is_state_attr('media_player.xboxone', 'media_title', 'Netflix') }}"
+      turn_on:
+        - action: script.turn_on
+          target:
+            entity_id: script.watch_netflix
+      turn_off:
+        - action: script.turn_on
+          target:
+            entity_id: script.turn_off_video_media_living_room
+      icon: mdi:netflix
+
+    - name: Dolby Atmos Music
+      default_entity_id: switch.dolby_atmos_music
+      unique_id: dolby_atmos_music
+      state: "{{ is_state_attr('media_player.shield_android_tv', 'source', 'com.aspiro.tidal') }}"
+      turn_on:
+        - action: script.turn_on
+          target:
+            entity_id: script.dolby_atmos_music
+      turn_off:
+        - action: script.turn_on
+          target:
+            entity_id: script.turn_off_video_media_living_room
+      icon: mdi:dolby
+
+    - name: Shower music
+      default_entity_id: switch.shower_music
+      unique_id: shower_music
+      state: >-
+        {{ is_state('media_player.bathroom', 'playing')
+           and (state_attr('media_player.bathroom', 'group_members') | default([], true) | count < 2) }}
+      turn_on:
+        - action: script.turn_on
+          target:
+            entity_id: script.shower_music
+      turn_off:
+        - action: media_player.media_pause
+          target:
+            entity_id: media_player.bathroom
+      icon: mdi:shower-head
+
+    - name: Party music
+      default_entity_id: switch.party_music
+      unique_id: party_music
+      state: >-
+        {{ is_state('media_player.living_room', 'playing')
+           and (state_attr('media_player.living_room', 'group_members') | default([], true) | count > 2)
+           and (state_attr('media_player.denon_avc_x6500h_avr', 'volume_level') | float(0) > 0.50) }}
+      turn_on:
+        - action: script.turn_on
+          target:
+            entity_id: script.party_music
+      turn_off:
+        - action: media_player.media_pause
+          target:
+            entity_id: media_player.living_room
+        - action: script.turn_on
+          target:
+            entity_id: script.turn_off_denon_receiver
+      icon: mdi:party-popper
+
+    - name: Ambient music
+      default_entity_id: switch.ambient_music
+      unique_id: ambient_music
+      state: >-
+        {{ is_state('media_player.bathroom', 'playing')
+           and (state_attr('media_player.bathroom', 'group_members') | default([], true) | count > 2)
+           and (state_attr('media_player.office', 'group_members') | default([], true) | count > 2)
+           and (state_attr('media_player.living_room', 'group_members') | default([], true) | count < 2) }}
+      turn_on:
+        - action: script.turn_on
+          target:
+            entity_id: script.ambient_music
+      turn_off:
+        - action: media_player.media_pause
+          target:
+            entity_id: media_player.bathroom
+      icon: mdi:music-note-bluetooth
+
+    - name: Work music
+      default_entity_id: switch.work_music
+      unique_id: work_music
+      state: >-
+        {{ is_state('media_player.bathroom', 'playing')
+           and (state_attr('media_player.bathroom', 'group_members') | default([], true) | count > 2)
+           and (state_attr('media_player.office', 'group_members') | default([], true) | count < 2) }}
+      turn_on:
+        - action: script.turn_on
+          target:
+            entity_id: script.work_music
+      turn_off:
+        - action: media_player.media_pause
+          target:
+            entity_id: media_player.bathroom
+      icon: mdi:briefcase
+
+    - name: Ambient living room music
+      default_entity_id: switch.ambient_living_room_music
+      unique_id: ambient_living_room_music
+      state: >-
+        {{ is_state('media_player.living_room', 'playing')
+           and (state_attr('media_player.living_room', 'group_members') | default([], true) | count > 2)
+           and (state_attr('media_player.denon_avc_x6500h_avr', 'volume_level') | float(0) < 0.50) }}
+      turn_on:
+        - action: script.turn_on
+          target:
+            entity_id: script.ambient_living_room_music
+      turn_off:
+        - action: media_player.media_pause
+          target:
+            entity_id: media_player.living_room
+        - action: script.turn_on
+          target:
+            entity_id: script.turn_off_denon_receiver
+      icon: mdi:surround-sound
+
+    - name: Heat living room
+      default_entity_id: switch.heat_living_room
+      unique_id: heat_living_room
+      availability: "{{ has_value('climate.living_room') }}"
+      state: "{{ is_state('climate.living_room', 'heat') }}"
+      turn_on:
+        - action: climate.set_hvac_mode
+          target:
+            entity_id: climate.living_room
+          data:
+            hvac_mode: heat
+      turn_off:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.living_room
+      icon: "{{ 'mdi:radiator' if is_state('climate.living_room', 'heat') else 'mdi:radiator-off' }}"
+
+    - name: Heat kitchen
+      default_entity_id: switch.heat_kitchen
+      unique_id: heat_kitchen
+      availability: "{{ has_value('climate.kitchen') }}"
+      state: "{{ is_state('climate.kitchen', 'heat') }}"
+      turn_on:
+        - action: climate.set_hvac_mode
+          target:
+            entity_id: climate.kitchen
+          data:
+            hvac_mode: heat
+      turn_off:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.kitchen
+      icon: "{{ 'mdi:radiator' if is_state('climate.kitchen', 'heat') else 'mdi:radiator-off' }}"
+
+    - name: Heat bathroom
+      default_entity_id: switch.heat_bathroom
+      unique_id: heat_bathroom
+      availability: "{{ has_value('climate.bathroom') }}"
+      state: "{{ is_state('climate.bathroom', 'heat') }}"
+      turn_on:
+        - action: climate.set_hvac_mode
+          target:
+            entity_id: climate.bathroom
+          data:
+            hvac_mode: heat
+      turn_off:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.bathroom
+      icon: "{{ 'mdi:radiator' if is_state('climate.bathroom', 'heat') else 'mdi:radiator-off' }}"
+
+    - name: Heat office
+      default_entity_id: switch.heat_office
+      unique_id: heat_office
+      availability: "{{ has_value('climate.office') }}"
+      state: "{{ is_state('climate.office', 'heat') }}"
+      turn_on:
+        - action: climate.set_hvac_mode
+          target:
+            entity_id: climate.office
+          data:
+            hvac_mode: heat
+      turn_off:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.office
+      icon: "{{ 'mdi:radiator' if is_state('climate.office', 'heat') else 'mdi:radiator-off' }}"
+
+    - name: Heat bedroom
+      default_entity_id: switch.heat_bedroom
+      unique_id: heat_bedroom
+      availability: "{{ has_value('climate.bedroom') }}"
+      state: "{{ is_state('climate.bedroom', 'heat') }}"
+      turn_on:
+        - action: climate.set_hvac_mode
+          target:
+            entity_id: climate.bedroom
+          data:
+            hvac_mode: heat
+      turn_off:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.bedroom
+      icon: "{{ 'mdi:radiator' if is_state('climate.bedroom', 'heat') else 'mdi:radiator-off' }}"
+
+    - name: Heat bathroom floor
+      default_entity_id: switch.heat_bathroom_floor
+      unique_id: heat_bathroom_floor
+      availability: "{{ has_value('climate.bathroom_floor') }}"
+      state: "{{ is_state('climate.bathroom_floor', 'heat') }}"
+      turn_on:
+        - action: climate.set_hvac_mode
+          target:
+            entity_id: climate.bathroom_floor
+          data:
+            hvac_mode: heat
+      turn_off:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.bathroom_floor
+      icon: "{{ 'mdi:radiator' if is_state('climate.bathroom_floor', 'heat') else 'mdi:radiator-off' }}"
+
+    - name: Heat toilet floor
+      default_entity_id: switch.heat_toilet_floor
+      unique_id: heat_toilet_floor
+      availability: "{{ has_value('climate.toilet_floor') }}"
+      state: "{{ is_state('climate.toilet_floor', 'heat') }}"
+      turn_on:
+        - action: climate.set_hvac_mode
+          target:
+            entity_id: climate.toilet_floor
+          data:
+            hvac_mode: heat
+      turn_off:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.toilet_floor
+      icon: "{{ 'mdi:radiator' if is_state('climate.toilet_floor', 'heat') else 'mdi:radiator-off' }}"
+
+    - name: Heat kitchen floor
+      default_entity_id: switch.heat_kitchen_floor
+      unique_id: heat_kitchen_floor
+      availability: "{{ has_value('climate.kitchen_floor') }}"
+      state: "{{ is_state('climate.kitchen_floor', 'heat') }}"
+      turn_on:
+        - action: climate.set_hvac_mode
+          target:
+            entity_id: climate.kitchen_floor
+          data:
+            hvac_mode: heat
+      turn_off:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.kitchen_floor
+      icon: "{{ 'mdi:radiator' if is_state('climate.kitchen_floor', 'heat') else 'mdi:radiator-off' }}"
+
+    - name: Cool living room
+      default_entity_id: switch.cool_living_room
+      unique_id: cool_living_room
+      availability: "{{ has_value('climate.living_room_ac') }}"
+      state: "{{ is_state('climate.living_room_ac', 'cool') }}"
+      turn_on:
+        - action: climate.set_hvac_mode
+          target:
+            entity_id: climate.living_room_ac
+          data:
+            hvac_mode: cool
+      turn_off:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.living_room_ac
+      icon: mdi:snowflake
+
+    - name: Cool office
+      default_entity_id: switch.cool_office
+      unique_id: cool_office
+      availability: "{{ has_value('climate.office_ac') }}"
+      state: "{{ is_state('climate.office_ac', 'cool') }}"
+      turn_on:
+        - action: climate.set_hvac_mode
+          target:
+            entity_id: climate.office_ac
+          data:
+            hvac_mode: cool
+      turn_off:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.office_ac
+      icon: mdi:snowflake
+
+    - name: Cool bedroom
+      default_entity_id: switch.cool_bedroom
+      unique_id: cool_bedroom
+      availability: "{{ has_value('climate.bedroom_ac') }}"
+      state: "{{ is_state('climate.bedroom_ac', 'cool') }}"
+      turn_on:
+        - action: climate.set_hvac_mode
+          target:
+            entity_id: climate.bedroom_ac
+          data:
+            hvac_mode: cool
+      turn_off:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.bedroom_ac
+      icon: mdi:snowflake
+
+    - name: Living room camera email
+      default_entity_id: switch.living_room_cam_email
+      unique_id: living_room_cam_email
+      state: "{{ is_state_attr('camera.living_room_cam', 'email_enabled', true) }}"
+      turn_on:
+        - action: camera.enable_email
+          target:
+            entity_id: camera.living_room_cam
+      turn_off:
+        - action: camera.disable_email
+          target:
+            entity_id: camera.living_room_cam
+      icon: "{{ 'mdi:email' if is_state_attr('camera.living_room_cam', 'email_enabled', true) else 'mdi:email-outline' }}"
+
+    - name: Living room camera FTP
+      default_entity_id: switch.living_room_cam_ftp
+      unique_id: living_room_cam_ftp
+      state: "{{ is_state_attr('camera.living_room_cam', 'ftp_enabled', true) }}"
+      turn_on:
+        - action: camera.enable_ftp
+          target:
+            entity_id: camera.living_room_cam
+      turn_off:
+        - action: camera.disable_ftp
+          target:
+            entity_id: camera.living_room_cam
+      icon: "{{ 'mdi:filmstrip' if is_state_attr('camera.living_room_cam', 'ftp_enabled', true) else 'mdi:filmstrip-off' }}"
+
+    - name: Living room camera IR lights
+      default_entity_id: switch.living_room_cam_ir_lights
+      unique_id: living_room_cam_ir_lights
+      state: "{{ is_state_attr('camera.living_room_cam', 'ir_lights_enabled', true) }}"
+      turn_on:
+        - action: camera.enable_ir_lights
+          target:
+            entity_id: camera.living_room_cam
+      turn_off:
+        - action: camera.disable_ir_lights
+          target:
+            entity_id: camera.living_room_cam
+      icon: "{{ 'mdi:flashlight' if is_state_attr('camera.living_room_cam', 'ir_lights_enabled', true) else 'mdi:flashlight-off' }}"
+
+    - name: Hallway entrance camera email
+      default_entity_id: switch.hallway_entrance_cam_email
+      unique_id: hallway_entrance_cam_email
+      state: "{{ is_state_attr('camera.hallway_entrance_cam', 'email_enabled', true) }}"
+      turn_on:
+        - action: camera.enable_email
+          target:
+            entity_id: camera.hallway_entrance_cam
+      turn_off:
+        - action: camera.disable_email
+          target:
+            entity_id: camera.hallway_entrance_cam
+      icon: "{{ 'mdi:email' if is_state_attr('camera.hallway_entrance_cam', 'email_enabled', true) else 'mdi:email-outline' }}"
+
+    - name: Hallway entrance camera FTP
+      default_entity_id: switch.hallway_entrance_cam_ftp
+      unique_id: hallway_entrance_cam_ftp
+      state: "{{ is_state_attr('camera.hallway_entrance_cam', 'ftp_enabled', true) }}"
+      turn_on:
+        - action: camera.enable_ftp
+          target:
+            entity_id: camera.hallway_entrance_cam
+      turn_off:
+        - action: camera.disable_ftp
+          target:
+            entity_id: camera.hallway_entrance_cam
+      icon: "{{ 'mdi:filmstrip' if is_state_attr('camera.hallway_entrance_cam', 'ftp_enabled', true) else 'mdi:filmstrip-off' }}"
+
+    - name: Hallway entrance camera IR lights
+      default_entity_id: switch.hallway_entrance_cam_ir_lights
+      unique_id: hallway_entrance_cam_ir_lights
+      state: "{{ is_state_attr('camera.hallway_entrance_cam', 'ir_lights_enabled', true) }}"
+      turn_on:
+        - action: camera.enable_ir_lights
+          target:
+            entity_id: camera.hallway_entrance_cam
+      turn_off:
+        - action: camera.disable_ir_lights
+          target:
+            entity_id: camera.hallway_entrance_cam
+      icon: "{{ 'mdi:flashlight' if is_state_attr('camera.hallway_entrance_cam', 'ir_lights_enabled', true) else 'mdi:flashlight-off' }}"

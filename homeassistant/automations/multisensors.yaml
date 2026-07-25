@@ -50,8 +50,13 @@
         - condition: sun
           before: sunrise
   action:
-    service: light.turn_on
-    entity_id: light.kitchen_lights
+    - service: light.turn_on
+      entity_id: light.kitchen_lights
+    - service: lifx.effect_stop
+      target:
+        entity_id:
+          - light.kitchen_cabinet_strip
+          - light.kitchen_island_strip
 
 - alias: Turn off kitchen lights when motion stops
   trigger:

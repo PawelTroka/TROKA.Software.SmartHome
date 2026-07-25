@@ -88,6 +88,7 @@ all_persons:
   name: 'Residents'
   entities:
     - person.pawel
+    - person.misiuszka
 
 all_denon_receivers:
   entities:

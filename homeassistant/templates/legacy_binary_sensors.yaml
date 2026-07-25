@@ -1,0 +1,124 @@
+- binary_sensor:
+    - name: Living room cam motion
+      default_entity_id: binary_sensor.living_room_cam_motion
+      unique_id: living_room_cam_motion
+      device_class: motion
+      availability: "{{ has_value('camera.living_room_cam') }}"
+      state: "{{ is_state('camera.living_room_cam', 'motion') }}"
+      delay_off: "00:01:00"
+
+    - name: Hallway entrance cam motion
+      default_entity_id: binary_sensor.hallway_entrance_cam_motion
+      unique_id: hallway_entrance_cam_motion
+      device_class: motion
+      availability: "{{ has_value('camera.hallway_entrance_cam') }}"
+      state: "{{ is_state('camera.hallway_entrance_cam', 'motion') }}"
+      delay_off: "00:01:00"
+
+    - name: Bathroom motion
+      default_entity_id: binary_sensor.bathroom_motion
+      unique_id: bathroom_motion
+      device_class: motion
+      availability: >-
+        {{ has_value('binary_sensor.bathroom_shower_motion_sensor_sensor')
+           or has_value('binary_sensor.bathroom_multisensor_motion')
+           or has_value('sensor.bathroom_multisensor_burglar') }}
+      state: >-
+        {{ is_state('binary_sensor.bathroom_shower_motion_sensor_sensor', 'on')
+           or is_state('binary_sensor.bathroom_multisensor_motion', 'on')
+           or is_state('sensor.bathroom_multisensor_burglar', '8') }}
+      delay_off: "00:01:00"
+
+    - name: Shower in use
+      default_entity_id: binary_sensor.shower_in_use
+      unique_id: shower_in_use
+      availability: >-
+        {{ is_number(states('sensor.bathroom_multisensor_relative_humidity'))
+           or is_number(states('sensor.bathroom_humidity')) }}
+      state: >-
+        {{ states('sensor.bathroom_multisensor_relative_humidity') | float(0) > 60
+           or states('sensor.bathroom_humidity') | float(0) > 60 }}
+
+    - name: Toilet Sonos is master
+      default_entity_id: binary_sensor.toilet_sonos_is_master
+      unique_id: toilet_sonos_is_master
+      state: >-
+        {{ (state_attr('media_player.toilet', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.toilet' }}
+
+    - name: Bathroom Sonos is master
+      default_entity_id: binary_sensor.bathroom_sonos_is_master
+      unique_id: bathroom_sonos_is_master
+      state: >-
+        {{ (state_attr('media_player.bathroom', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.bathroom' }}
+
+    - name: Living room Sonos is master
+      default_entity_id: binary_sensor.living_room_sonos_is_master
+      unique_id: living_room_sonos_is_master
+      state: >-
+        {{ (state_attr('media_player.living_room', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.living_room' }}
+
+    - name: Kitchen Sonos is master
+      default_entity_id: binary_sensor.kitchen_sonos_is_master
+      unique_id: kitchen_sonos_is_master
+      state: >-
+        {{ (state_attr('media_player.kitchen', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.kitchen' }}
+
+    - name: Office Sonos is master
+      default_entity_id: binary_sensor.office_sonos_is_master
+      unique_id: office_sonos_is_master
+      state: >-
+        {{ (state_attr('media_player.office', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.office' }}
+
+    - name: Bedroom Sonos is master
+      default_entity_id: binary_sensor.bedroom_sonos_is_master
+      unique_id: bedroom_sonos_is_master
+      state: >-
+        {{ (state_attr('media_player.bedroom', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.bedroom' }}
+
+    - name: Toilet Sonos Roon is master
+      default_entity_id: binary_sensor.toilet_sonos_roon_is_master
+      unique_id: toilet_sonos_roon_is_master
+      state: >-
+        {{ (state_attr('media_player.toilet_sonos_roon', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.toilet_sonos_roon' }}
+
+    - name: Bathroom Sonos Roon is master
+      default_entity_id: binary_sensor.bathroom_sonos_roon_is_master
+      unique_id: bathroom_sonos_roon_is_master
+      state: >-
+        {{ (state_attr('media_player.bathroom_sonos_roon', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.bathroom_sonos_roon' }}
+
+    - name: Living room amplifier Roon is master
+      default_entity_id: binary_sensor.living_room_amplifier_roon_is_master
+      unique_id: living_room_amplifier_roon_is_master
+      state: >-
+        {{ (state_attr('media_player.living_room_amplifier_roon', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.living_room_amplifier_roon' }}
+
+    - name: Kitchen Sonos Roon is master
+      default_entity_id: binary_sensor.kitchen_sonos_roon_is_master
+      unique_id: kitchen_sonos_roon_is_master
+      state: >-
+        {{ (state_attr('media_player.kitchen_sonos_roon', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.kitchen_sonos_roon' }}
+
+    - name: Office Sonos Roon is master
+      default_entity_id: binary_sensor.office_sonos_roon_is_master
+      unique_id: office_sonos_roon_is_master
+      state: >-
+        {{ (state_attr('media_player.office_sonos_roon', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.office_sonos_roon' }}
+
+    - name: Bedroom Sonos Roon is master
+      default_entity_id: binary_sensor.bedroom_sonos_roon_is_master
+      unique_id: bedroom_sonos_roon_is_master
+      state: >-
+        {{ (state_attr('media_player.bedroom_sonos_roon', 'group_members')
+            | default([], true) | first | default('')) == 'media_player.bedroom_sonos_roon' }}

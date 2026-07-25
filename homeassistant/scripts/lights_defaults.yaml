@@ -24,14 +24,12 @@ set_bathroom_lights_to_default:
     entity_id: light.bathroom_lights
     data:
       brightness_pct: 100
-      kelvin: 9000
+      color_temp_kelvin: 9000
   - service: light.turn_on
     entity_id: light.bathroom_strip
     data:
       brightness: 255
-      #hs_color: [180,71.429]
-      rgb_color: [72,255,255]
-      #xy_color: [0.167,0.341]
+      rgb_color: [255, 255, 255]
 
 
 # Toilet lights defaults
@@ -42,7 +40,7 @@ set_toilet_lights_to_default:
     entity_id: light.toilet_lights
     data:
       brightness_pct: 100
-      kelvin: 8000
+      color_temp_kelvin: 8000
   - service: script.turn_on
     entity_id: script.set_toilet_strip_to_default
   - service: script.turn_on
@@ -54,9 +52,7 @@ set_toilet_strip_to_default:
     entity_id: light.toilet_strip
     data:
       brightness: 255
-      #hs_color: [180,85.714]
-      rgb_color: [36,255,255]
-      #xy_color: [0.156,0.342]
+      rgb_color: [255, 255, 255]
 
 set_toilet_mirror_light_to_default:
   sequence:
@@ -64,9 +60,7 @@ set_toilet_mirror_light_to_default:
     entity_id: light.toilet_mirror_light
     data:
       brightness: 255
-      #hs_color: [180,85.714]
-      rgb_color: [36,255,255]
-      #xy_color: [0.156,0.342]
+      color_temp_kelvin: 8000
 
 # Hallway lights default
 
@@ -76,7 +70,7 @@ set_hallway_lights_to_default:
     entity_id: light.hallway_lights
     data:
       brightness_pct: 50
-      kelvin: 8000
+      color_temp_kelvin: 8000
   - service: script.turn_on
     entity_id: script.set_hallway_strip_to_default
   - service: script.turn_on
@@ -88,9 +82,7 @@ set_hallway_strip_to_default:
     entity_id: light.hallway_strip
     data:
       brightness: 199
-      #hs_color: [270,28.571]
-      rgb_color: [218,182,255]
-      #xy_color: [0.307,0.245]
+      rgb_color: [255, 255, 255]
 
 set_hallway_cabinet_strip_to_default:
   sequence:
@@ -98,9 +90,7 @@ set_hallway_cabinet_strip_to_default:
     entity_id: light.hallway_cabinet_strip
     data:
       brightness: 199
-      #hs_color: [270,28.571]
-      rgb_color: [218,182,255]
-      #xy_color: [0.307,0.245]
+      color_temp_kelvin: 8000
 
 
 # Living room lights defaults
@@ -118,7 +108,7 @@ set_living_room_relax_area_lights_to_default:
     entity_id: light.living_room_relax_area_lights
     data:
       brightness_pct: 50
-      kelvin: 9000 #6000
+      color_temp_kelvin: 9000 #6000
 
 set_living_room_dining_area_lights_to_default:
   sequence:
@@ -126,13 +116,18 @@ set_living_room_dining_area_lights_to_default:
     entity_id: light.living_room_dining_area_lights
     data:
       brightness_pct: 50
-      kelvin: 9000 #6000
+      color_temp_kelvin: 9000 #6000
 
 
 # Kitchen lights defaults
 
 set_kitchen_lights_to_default:
   sequence:
+  - service: lifx.effect_stop
+    target:
+      entity_id:
+        - light.kitchen_cabinet_strip
+        - light.kitchen_island_strip
   - service: script.turn_on
     entity_id: script.set_kitchen_countertop_lights_to_default
   - service: script.turn_on
@@ -148,7 +143,7 @@ set_kitchen_countertop_lights_to_default:
     entity_id: light.kitchen_countertop_lights
     data:
       brightness_pct: 100
-      kelvin: 5500
+      color_temp_kelvin: 5500
 
 set_kitchen_island_lights_to_default:
   sequence:
@@ -156,7 +151,7 @@ set_kitchen_island_lights_to_default:
     entity_id: light.kitchen_island_lights
     data:
       brightness_pct: 50
-      kelvin: 6500
+      color_temp_kelvin: 6500
 
 set_kitchen_cabinet_strip_to_default:
   sequence:
@@ -164,7 +159,7 @@ set_kitchen_cabinet_strip_to_default:
     entity_id: light.kitchen_cabinet_strip
     data:
       brightness: 168
-      color_temp: 115
+      color_temp_kelvin: 8696
 
 set_kitchen_island_strip_to_default:
   sequence:
@@ -172,7 +167,7 @@ set_kitchen_island_strip_to_default:
     entity_id: light.kitchen_island_strip
     data:
       brightness: 126
-      color_temp: 111
+      color_temp_kelvin: 9000
 
 
 # Office lights defaults
@@ -183,7 +178,7 @@ set_office_lights_to_default:
     entity_id: light.office_lights
     data:
       brightness_pct: 66
-      kelvin: 9000
+      color_temp_kelvin: 9000
 
 
 # Bedroom lights defaults
@@ -193,7 +188,7 @@ set_bedroom_downlights_to_default:
     entity_id: light.bedroom_downlights
     data:
       brightness_pct: 50
-      kelvin: 9000
+      color_temp_kelvin: 9000
 
 set_bedroom_lights_to_default:
   sequence:
@@ -210,7 +205,7 @@ set_bedroom_cabinet_strip_to_default:
     entity_id: light.bedroom_cabinet_strip
     data:
       brightness_pct: 50
-      kelvin: 9000
+      color_temp_kelvin: 9000
 
 set_bedroom_strip_to_default:
   sequence:
@@ -218,4 +213,4 @@ set_bedroom_strip_to_default:
     entity_id: light.bedroom_strip
     data:
       brightness_pct: 75
-      kelvin: 9000
+      rgb_color: [255, 255, 255]

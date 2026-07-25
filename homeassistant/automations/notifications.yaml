@@ -48,12 +48,13 @@
   alias: Vacuum Notifications
   trigger:
   - platform: state
-    entity_id: vacuum.frank
-  - platform: state
-    entity_id: vacuum.frank
+    entity_id: vacuum.roborock_s8_pro_ultra
   condition:
     condition: template
-    value_template: "{{ not (trigger.to_state.state == trigger.from_state.state) }}"
+    value_template: >-
+      {{ trigger.from_state is not none
+         and trigger.to_state is not none
+         and trigger.to_state.state != trigger.from_state.state }}
   action:
     - service: notify.level_info
       data:

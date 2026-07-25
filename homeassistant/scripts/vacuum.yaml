@@ -6,6 +6,6 @@ start_vacuum:
 
 stop_vacuum:
   sequence:
-    - service: vacuum.stop
+    - service: vacuum.return_to_base
       target:
         entity_id: vacuum.roborock_s8_pro_ultra

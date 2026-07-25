@@ -1,0 +1,14 @@
+- id: stop_kitchen_strip_effects_when_turned_on
+  alias: Stop kitchen strip effects when turned on
+  mode: parallel
+  max: 2
+  triggers:
+    - trigger: state
+      entity_id:
+        - light.kitchen_cabinet_strip
+        - light.kitchen_island_strip
+      to: "on"
+  actions:
+    - action: lifx.effect_stop
+      target:
+        entity_id: "{{ trigger.entity_id }}"

@@ -97,9 +97,9 @@
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "scene.turn_on",
+                            "service": "script.activate_lighting_scene",
                             "service_data": {
-                              "entity_id": "scene.default"
+                              "scene_entity": "scene.default"
                             }
                           }
                         },
@@ -109,9 +109,9 @@
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "scene.turn_on",
+                            "service": "script.activate_lighting_scene",
                             "service_data": {
-                              "entity_id": "scene.red_light_therapy"
+                              "scene_entity": "scene.red_light_therapy"
                             }
                           }
                         },
@@ -121,9 +121,9 @@
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "scene.turn_on",
+                            "service": "script.activate_lighting_scene",
                             "service_data": {
-                              "entity_id": "scene.ambient"
+                              "scene_entity": "scene.ambient"
                             }
                           }
                         },
@@ -133,21 +133,21 @@
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "scene.turn_on",
+                            "service": "script.activate_lighting_scene",
                             "service_data": {
-                              "entity_id": "scene.movie_dinner"
+                              "scene_entity": "scene.movie_dinner"
                             }
                           }
                         },
                         {
-                          "entity": "scene.party",
+                          "entity": "scene.party_2",
                           "name": false,
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "scene.turn_on",
+                            "service": "script.activate_lighting_scene",
                             "service_data": {
-                              "entity_id": "scene.party_2"
+                              "scene_entity": "scene.party_2"
                             }
                           }
                         },
@@ -161,9 +161,9 @@
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "scene.turn_on",
+                            "service": "script.activate_lighting_scene",
                             "service_data": {
-                              "entity_id": "scene.full_bright"
+                              "scene_entity": "scene.full_bright"
                             }
                           }
                         },
@@ -173,9 +173,9 @@
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "scene.turn_on",
+                            "service": "script.activate_lighting_scene",
                             "service_data": {
-                              "entity_id": "scene.romantic"
+                              "scene_entity": "scene.romantic"
                             }
                           }
                         },
@@ -186,9 +186,9 @@
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "scene.turn_on",
+                            "service": "script.activate_lighting_scene",
                             "service_data": {
-                              "entity_id": "scene.christmas"
+                              "scene_entity": "scene.christmas"
                             }
                           }
                         }
@@ -2551,7 +2551,7 @@
             },
             {
               "type": "custom:vacuum-card",
-              "entity": "vacuum.frank",
+              "entity": "vacuum.roborock_s8_pro_ultra",
               "stats": {
                 "default": [
                   {
@@ -2668,7 +2668,8 @@
                     "sensor.roborock_s8_pro_ultra_vacuum_error",
                     "binary_sensor.roborock_s8_pro_ultra_water_box_attached",
                     "binary_sensor.roborock_s8_pro_ultra_water_shortage",
-                    "automation.turn_off_vacuum_when_someone_gets_home",
+                    "automation.household_shut_down_and_clean_when_both_residents_are_away",
+                    "automation.household_purifier_on_and_roborock_docked_when_someone_arrives",
                     "automation.vacuum_notifications"
                   ],
                   "footer": {

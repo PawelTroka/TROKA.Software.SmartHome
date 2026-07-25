@@ -3,13 +3,7 @@
 - alias: "Shower Mode: Start"
   trigger:
     - platform: state
-      entity_id: sensor.shower_in_use
-      to: 'True' # Template sensors often return strings 'True'/'False' or 'on'/'off' depending on config. Assuming 'True' based on standard boolean templates, but standard binary_sensor is 'on'.
-      # Checking sensor.yaml: value_template returns boolean logic which HA converts to 'True'/'False' for legacy sensors or 'on'/'off' if device_class is set.
-      # Your sensor 'shower_in_use' has no device_class, so it likely returns 'True'.
-      # To be safe, I will check for 'True' and 'on'.
-    - platform: state
-      entity_id: sensor.shower_in_use
+      entity_id: binary_sensor.shower_in_use
       to: 'on'
   action:
     - service: light.turn_on
@@ -17,7 +11,7 @@
         entity_id: light.bathroom_lights
       data:
         brightness_pct: 80
-        color_temp: 300 # Soft white
+        color_temp_kelvin: 3333 # Soft white
     - service: script.turn_on
       entity_id: script.shower_music
     - service: notify.level_info
@@ -27,11 +21,7 @@
 - alias: "Shower Mode: End"
   trigger:
     - platform: state
-      entity_id: sensor.shower_in_use
-      from: 'True'
-      to: 'False'
-    - platform: state
-      entity_id: sensor.shower_in_use
+      entity_id: binary_sensor.shower_in_use
       from: 'on'
       to: 'off'
   action:
@@ -43,6 +33,6 @@
         entity_id: light.bathroom_lights
       data:
         brightness_pct: 100
-        kelvin: 9000 # Back to bright cleaning light
+        color_temp_kelvin: 9000 # Back to bright cleaning light
     - service: script.turn_on
       entity_id: script.set_bathroom_lights_to_default

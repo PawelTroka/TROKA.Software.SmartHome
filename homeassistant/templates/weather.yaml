@@ -1,0 +1,60 @@
+- triggers:
+    - trigger: homeassistant
+      event: start
+    - trigger: event
+      event_type: event_template_reloaded
+    - trigger: time_pattern
+      hours: "/1"
+    - trigger: state
+      entity_id:
+        - weather.accuweather
+        - sensor.netatmo_outdoor_temperature
+        - sensor.netatmo_outdoor_humidity
+        - sensor.netatmo_indoor_pressure
+        - sensor.netatmo_outdoor_anemometer_strength
+        - sensor.netatmo_outdoor_anemometer_angle
+  actions:
+    - variables:
+        accuweather_daily: {}
+    - choose:
+        - conditions: "{{ has_value('weather.accuweather') }}"
+          sequence:
+            - action: weather.get_forecasts
+              target:
+                entity_id: weather.accuweather
+              data:
+                type: daily
+              response_variable: accuweather_daily
+              continue_on_error: true
+  weather:
+    - name: Netatmo Weather Station
+      default_entity_id: weather.netatmo_weather_station
+      unique_id: netatmo_weather_station
+      availability: >-
+        {{ has_value('weather.accuweather')
+           and is_number(states('sensor.netatmo_outdoor_temperature'))
+           and is_number(states('sensor.netatmo_outdoor_humidity')) }}
+      condition: "{{ states('weather.accuweather') }}"
+      temperature: "{{ states('sensor.netatmo_outdoor_temperature') | float(0) }}"
+      temperature_unit: "°C"
+      humidity: "{{ states('sensor.netatmo_outdoor_humidity') | float(0) }}"
+      pressure: >-
+        {% set value = states('sensor.netatmo_indoor_pressure') %}
+        {{ value | float if is_number(value) else none }}
+      pressure_unit: hPa
+      wind_speed: >-
+        {% set value = states('sensor.netatmo_outdoor_anemometer_strength') %}
+        {{ value | float if is_number(value) else none }}
+      wind_speed_unit: km/h
+      wind_bearing: >-
+        {% set value = states('sensor.netatmo_outdoor_anemometer_angle') %}
+        {{ value | float if is_number(value) else none }}
+      visibility: >-
+        {% set value = state_attr('weather.accuweather', 'visibility') %}
+        {{ value | float if is_number(value) else none }}
+      visibility_unit: km
+      precipitation_unit: mm
+      attribution: Netatmo Personal Weather Station + AccuWeather data
+      forecast_daily: >-
+        {% set daily = accuweather_daily | default({}, true) %}
+        {{ daily.get('weather.accuweather', {}).get('forecast', []) }}
