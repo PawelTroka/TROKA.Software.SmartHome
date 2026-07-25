@@ -140,14 +140,15 @@
                           }
                         },
                         {
-                          "entity": "scene.party_2",
+                          "entity": "scene.party",
                           "name": false,
+                          "icon": "mdi:party-popper",
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
                             "service": "script.activate_lighting_scene",
                             "service_data": {
-                              "scene_entity": "scene.party_2"
+                              "scene_entity": "scene.party"
                             }
                           }
                         },
@@ -186,9 +187,9 @@
                           "layout": "icon_name",
                           "tap_action": {
                             "action": "call-service",
-                            "service": "script.activate_lighting_scene",
+                            "service": "scene.turn_on",
                             "service_data": {
-                              "scene_entity": "scene.christmas"
+                              "entity_id": "scene.christmas"
                             }
                           }
                         }

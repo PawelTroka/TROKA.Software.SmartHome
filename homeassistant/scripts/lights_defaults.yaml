@@ -29,7 +29,7 @@ set_bathroom_lights_to_default:
     entity_id: light.bathroom_strip
     data:
       brightness: 255
-      rgb_color: [255, 255, 255]
+      rgb_color: [72, 255, 255]
 
 
 # Toilet lights defaults
@@ -52,7 +52,7 @@ set_toilet_strip_to_default:
     entity_id: light.toilet_strip
     data:
       brightness: 255
-      rgb_color: [255, 255, 255]
+      rgb_color: [36, 255, 255]
 
 set_toilet_mirror_light_to_default:
   sequence:
@@ -60,7 +60,7 @@ set_toilet_mirror_light_to_default:
     entity_id: light.toilet_mirror_light
     data:
       brightness: 255
-      color_temp_kelvin: 8000
+      rgb_color: [36, 255, 255]
 
 # Hallway lights default
 
@@ -82,7 +82,7 @@ set_hallway_strip_to_default:
     entity_id: light.hallway_strip
     data:
       brightness: 199
-      rgb_color: [255, 255, 255]
+      rgb_color: [218, 182, 255]
 
 set_hallway_cabinet_strip_to_default:
   sequence:
@@ -90,7 +90,7 @@ set_hallway_cabinet_strip_to_default:
     entity_id: light.hallway_cabinet_strip
     data:
       brightness: 199
-      color_temp_kelvin: 8000
+      rgb_color: [218, 182, 255]
 
 
 # Living room lights defaults
@@ -123,19 +123,19 @@ set_living_room_dining_area_lights_to_default:
 
 set_kitchen_lights_to_default:
   sequence:
-  - service: lifx.effect_stop
+  - action: lifx.effect_stop
     target:
       entity_id:
         - light.kitchen_cabinet_strip
         - light.kitchen_island_strip
-  - service: script.turn_on
-    entity_id: script.set_kitchen_countertop_lights_to_default
-  - service: script.turn_on
-    entity_id: script.set_kitchen_island_lights_to_default
-  - service: script.turn_on
-    entity_id: script.set_kitchen_cabinet_strip_to_default
-  - service: script.turn_on
-    entity_id: script.set_kitchen_island_strip_to_default
+    continue_on_error: true
+  - parallel:
+      - action: script.set_kitchen_countertop_lights_to_default
+      - action: script.set_kitchen_island_lights_to_default
+      - action: script.set_kitchen_cabinet_strip_to_default
+      - action: script.set_kitchen_island_strip_to_default
+  - delay: "00:00:01"
+  - action: script.normalize_kitchen_lifx_strips
 
 set_kitchen_countertop_lights_to_default:
   sequence:
@@ -213,4 +213,4 @@ set_bedroom_strip_to_default:
     entity_id: light.bedroom_strip
     data:
       brightness_pct: 75
-      rgb_color: [255, 255, 255]
+      color_temp_kelvin: 9000

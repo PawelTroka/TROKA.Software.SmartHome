@@ -176,86 +176,86 @@
       default_entity_id: switch.heat_living_room
       unique_id: heat_living_room
       availability: "{{ has_value('climate.living_room') }}"
-      state: "{{ is_state('climate.living_room', 'heat') }}"
+      state: "{{ states('climate.living_room') in ['auto', 'heat'] }}"
       turn_on:
         - action: climate.set_hvac_mode
           target:
             entity_id: climate.living_room
           data:
-            hvac_mode: heat
+            hvac_mode: auto
       turn_off:
         - action: climate.turn_off
           target:
             entity_id: climate.living_room
-      icon: "{{ 'mdi:radiator' if is_state('climate.living_room', 'heat') else 'mdi:radiator-off' }}"
+      icon: "{{ 'mdi:radiator' if states('climate.living_room') in ['auto', 'heat'] else 'mdi:radiator-off' }}"
 
     - name: Heat kitchen
       default_entity_id: switch.heat_kitchen
       unique_id: heat_kitchen
       availability: "{{ has_value('climate.kitchen') }}"
-      state: "{{ is_state('climate.kitchen', 'heat') }}"
+      state: "{{ states('climate.kitchen') in ['auto', 'heat'] }}"
       turn_on:
         - action: climate.set_hvac_mode
           target:
             entity_id: climate.kitchen
           data:
-            hvac_mode: heat
+            hvac_mode: auto
       turn_off:
         - action: climate.turn_off
           target:
             entity_id: climate.kitchen
-      icon: "{{ 'mdi:radiator' if is_state('climate.kitchen', 'heat') else 'mdi:radiator-off' }}"
+      icon: "{{ 'mdi:radiator' if states('climate.kitchen') in ['auto', 'heat'] else 'mdi:radiator-off' }}"
 
     - name: Heat bathroom
       default_entity_id: switch.heat_bathroom
       unique_id: heat_bathroom
       availability: "{{ has_value('climate.bathroom') }}"
-      state: "{{ is_state('climate.bathroom', 'heat') }}"
+      state: "{{ states('climate.bathroom') in ['auto', 'heat'] }}"
       turn_on:
         - action: climate.set_hvac_mode
           target:
             entity_id: climate.bathroom
           data:
-            hvac_mode: heat
+            hvac_mode: auto
       turn_off:
         - action: climate.turn_off
           target:
             entity_id: climate.bathroom
-      icon: "{{ 'mdi:radiator' if is_state('climate.bathroom', 'heat') else 'mdi:radiator-off' }}"
+      icon: "{{ 'mdi:radiator' if states('climate.bathroom') in ['auto', 'heat'] else 'mdi:radiator-off' }}"
 
     - name: Heat office
       default_entity_id: switch.heat_office
       unique_id: heat_office
       availability: "{{ has_value('climate.office') }}"
-      state: "{{ is_state('climate.office', 'heat') }}"
+      state: "{{ states('climate.office') in ['auto', 'heat'] }}"
       turn_on:
         - action: climate.set_hvac_mode
           target:
             entity_id: climate.office
           data:
-            hvac_mode: heat
+            hvac_mode: auto
       turn_off:
         - action: climate.turn_off
           target:
             entity_id: climate.office
-      icon: "{{ 'mdi:radiator' if is_state('climate.office', 'heat') else 'mdi:radiator-off' }}"
+      icon: "{{ 'mdi:radiator' if states('climate.office') in ['auto', 'heat'] else 'mdi:radiator-off' }}"
 
     - name: Heat bedroom
       default_entity_id: switch.heat_bedroom
       unique_id: heat_bedroom
       availability: "{{ has_value('climate.bedroom') }}"
-      state: "{{ is_state('climate.bedroom', 'heat') }}"
+      state: "{{ states('climate.bedroom') in ['auto', 'heat'] }}"
       turn_on:
         - action: climate.set_hvac_mode
           target:
             entity_id: climate.bedroom
           data:
-            hvac_mode: heat
+            hvac_mode: auto
       turn_off:
         - action: climate.turn_off
           target:
             entity_id: climate.bedroom
-      icon: "{{ 'mdi:radiator' if is_state('climate.bedroom', 'heat') else 'mdi:radiator-off' }}"
+      icon: "{{ 'mdi:radiator' if states('climate.bedroom') in ['auto', 'heat'] else 'mdi:radiator-off' }}"
 
     - name: Heat bathroom floor
       default_entity_id: switch.heat_bathroom_floor

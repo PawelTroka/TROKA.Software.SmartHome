@@ -6,17 +6,32 @@ turn_on_heating_everywhere_except_bedroom_and_office:
       entity_id: climate.kitchen_floor
     - service: climate.turn_on
       entity_id: climate.toilet_floor
-    - service: climate.turn_on
-      entity_id: climate.living_room
+    - service: climate.set_hvac_mode
+      target:
+        entity_id: climate.living_room
+      data:
+        hvac_mode: auto
     - delay: '00:00:01'
-    #- service: climate.turn_on
-    #  entity_id: climate.office # office is used exclusively by Pawel
+    #- service: climate.set_hvac_mode
+    #  target:
+    #    entity_id: climate.office # office is used exclusively by Pawel
+    #  data:
+    #    hvac_mode: auto
     - delay: '00:00:02'
-    - service: climate.turn_on
-      entity_id: climate.bathroom
+    - service: climate.set_hvac_mode
+      target:
+        entity_id: climate.bathroom
+      data:
+        hvac_mode: auto
     - delay: '00:00:03'
-    - service: climate.turn_on
-      entity_id: climate.kitchen
+    - service: climate.set_hvac_mode
+      target:
+        entity_id: climate.kitchen
+      data:
+        hvac_mode: auto
     # it is desired to keep Bedroom cool, so it's commented out for now
-    #- service: climate.turn_on
-    #  entity_id: climate.bedroom
+    #- service: climate.set_hvac_mode
+    #  target:
+    #    entity_id: climate.bedroom
+    #  data:
+    #    hvac_mode: auto

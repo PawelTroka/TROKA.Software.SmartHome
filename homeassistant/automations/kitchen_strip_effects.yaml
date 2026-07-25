@@ -1,5 +1,6 @@
 - id: stop_kitchen_strip_effects_when_turned_on
-  alias: Stop kitchen strip effects when turned on
+  alias: Keep kitchen LIFX strips solid when turned on
+  initial_state: true
   mode: parallel
   max: 2
   triggers:
@@ -9,6 +10,12 @@
         - light.kitchen_island_strip
       to: "on"
   actions:
-    - action: lifx.effect_stop
-      target:
-        entity_id: "{{ trigger.entity_id }}"
+    - variables:
+        strip_entity: "{{ trigger.entity_id }}"
+    - action: script.normalize_kitchen_lifx_strip
+      data:
+        strip_entity: "{{ strip_entity }}"
+    - delay: "00:00:01"
+    - action: script.normalize_kitchen_lifx_strip
+      data:
+        strip_entity: "{{ strip_entity }}"

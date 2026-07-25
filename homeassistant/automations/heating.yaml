@@ -87,10 +87,12 @@
         entity_id: 'sensor.netatmo_indoor_temperature'
         below: 25
   action:
-    - service: climate.turn_on
-      entity_id: climate.office
+    - service: climate.set_hvac_mode
+      target:
+        entity_id: climate.office
+      data:
+        hvac_mode: auto
     - service: notify.level_note
       data:
         message: Office heating turned on because Pawel arrive at home
         title: Office heating turned on!
-

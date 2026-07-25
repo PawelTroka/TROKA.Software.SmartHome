@@ -47,6 +47,69 @@ flash_all_lights:
     - service: light.toggle
       entity_id: group.all_lights
 
+normalize_kitchen_lifx_strip:
+  alias: Normalize a kitchen LIFX strip to one solid color
+  mode: parallel
+  max: 8
+  fields:
+    strip_entity:
+      name: Kitchen strip
+      description: Kitchen LIFX strip whose zones should be made uniform
+      required: true
+      selector:
+        entity:
+          domain: light
+  sequence:
+    - condition: template
+      value_template: >-
+        {{ strip_entity in ['light.kitchen_cabinet_strip',
+                            'light.kitchen_island_strip']
+           and is_state(strip_entity, 'on') }}
+    - variables:
+        saved_mode: "{{ state_attr(strip_entity, 'color_mode') }}"
+        saved_hs: "{{ state_attr(strip_entity, 'hs_color') }}"
+        saved_brightness: >-
+          {{ state_attr(strip_entity, 'brightness')
+             | int(168 if strip_entity == 'light.kitchen_cabinet_strip' else 126) }}
+        saved_kelvin: >-
+          {{ state_attr(strip_entity, 'color_temp_kelvin')
+             | int(8696 if strip_entity == 'light.kitchen_cabinet_strip' else 9000) }}
+    - action: lifx.effect_stop
+      target:
+        entity_id: "{{ strip_entity }}"
+      continue_on_error: true
+    - choose:
+        - conditions: "{{ saved_mode == 'hs' and saved_hs is not none }}"
+          sequence:
+            - action: light.turn_on
+              target:
+                entity_id: "{{ strip_entity }}"
+              data:
+                brightness: "{{ saved_brightness }}"
+                hs_color: "{{ saved_hs }}"
+                transition: 0
+      default:
+        - action: light.turn_on
+          target:
+            entity_id: "{{ strip_entity }}"
+          data:
+            brightness: "{{ saved_brightness }}"
+            color_temp_kelvin: "{{ saved_kelvin }}"
+            transition: 0
+
+normalize_kitchen_lifx_strips:
+  alias: Normalize both kitchen LIFX strips to solid colors
+  mode: queued
+  max: 10
+  sequence:
+    - parallel:
+        - action: script.normalize_kitchen_lifx_strip
+          data:
+            strip_entity: light.kitchen_cabinet_strip
+        - action: script.normalize_kitchen_lifx_strip
+          data:
+            strip_entity: light.kitchen_island_strip
+
 activate_lighting_scene:
   alias: Activate a lighting scene with solid LIFX colors
   mode: queued
@@ -74,18 +137,15 @@ activate_lighting_scene:
       target:
         entity_id: "{{ scene_entity }}"
     - delay: "00:00:01"
-    - action: lifx.effect_stop
-      target:
-        entity_id:
-          - light.kitchen_cabinet_strip
-          - light.kitchen_island_strip
-      continue_on_error: true
+    - action: script.normalize_kitchen_lifx_strips
+    - delay: "00:00:01"
+    - action: script.normalize_kitchen_lifx_strips
 
 activate_party_mode:
   sequence:
     - action: script.activate_lighting_scene
       data:
-        scene_entity: scene.party_2
+        scene_entity: scene.party
 
 activate_movie_mode:
   sequence:
