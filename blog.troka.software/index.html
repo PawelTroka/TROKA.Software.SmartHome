@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TROKA Software - Premium Engineering & Scientific Solutions</title>
+  <title>TROKASoftware - Premium Engineering & Scientific Solutions</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,9 +19,9 @@
     }
     
     :root {
-      --bg-color: #070b19;
-      --bg-card: rgba(15, 23, 42, 0.65);
-      --bg-card-border: rgba(255, 255, 255, 0.08);
+      --bg-color: #050814;
+      --bg-card: rgba(11, 17, 34, 0.7);
+      --bg-card-border: rgba(0, 245, 155, 0.15);
       --color-primary: #00f59b; /* High-energy neon green */
       --color-secondary: #00c6ff; /* Tech cyan */
       --color-text-main: #f8fafc;
@@ -54,7 +54,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: linear-gradient(rgba(7, 11, 25, 0.94), rgba(7, 11, 25, 0.97)), url('sourcecode.jpg');
+      background-image: linear-gradient(rgba(5, 8, 20, 0.93), rgba(5, 8, 20, 0.96)), url('sourcecode.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -69,10 +69,33 @@
       width: 100%;
       height: 100%;
       background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
+        linear-gradient(rgba(0, 245, 155, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 155, 0.015) 1px, transparent 1px);
+      background-size: 80px 80px;
       background-position: center;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Glowing decorative blobs */
+    .glow-blob {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 245, 155, 0.08) 0%, transparent 70%);
+      top: 10%;
+      right: -100px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .glow-blob-2 {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 198, 255, 0.06) 0%, transparent 75%);
+      bottom: 20%;
+      left: -200px;
       z-index: -1;
       pointer-events: none;
     }
@@ -95,10 +118,10 @@
     header {
       position: sticky;
       top: 0;
-      background: rgba(7, 11, 25, 0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(5, 8, 20, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 245, 155, 0.08);
       z-index: 100;
     }
     
@@ -112,30 +135,31 @@
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       text-decoration: none;
     }
     
     .logo-symbol {
       background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-      color: #070b19;
+      color: #050814;
       font-family: var(--font-display);
       font-weight: 800;
       font-size: 20px;
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0, 245, 155, 0.3);
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(0, 245, 155, 0.35);
     }
     
     .logo-text {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 800;
       color: var(--color-text-main);
-      letter-spacing: -0.5px;
+      letter-spacing: -0.8px;
+      font-family: var(--font-display);
     }
     
     .logo-text span {
@@ -163,26 +187,27 @@
     }
 
     .nav-cta {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 10px 20px;
+      background: rgba(0, 245, 155, 0.05);
+      border: 1px solid rgba(0, 245, 155, 0.2);
+      padding: 10px 22px;
       border-radius: 30px;
-      color: var(--color-text-main) !important;
+      color: var(--color-primary) !important;
       transition: all var(--transition-speed);
+      font-weight: 600;
     }
 
     .nav-cta:hover {
       background: var(--color-primary);
-      color: #070b19 !important;
+      color: #050814 !important;
       border-color: var(--color-primary);
-      box-shadow: 0 4px 15px rgba(0, 245, 155, 0.2);
+      box-shadow: 0 0 20px rgba(0, 245, 155, 0.4);
     }
 
     /* Hero Section */
     .hero {
-      padding: 80px 0;
+      padding: 90px 0;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 60px;
       align-items: center;
     }
@@ -203,23 +228,25 @@
     .badge {
       display: inline-flex;
       align-items: center;
-      background: rgba(0, 245, 155, 0.1);
+      background: rgba(0, 245, 155, 0.08);
       border: 1px solid rgba(0, 245, 155, 0.2);
       color: var(--color-primary);
       padding: 6px 14px;
       border-radius: 30px;
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 20px;
       width: fit-content;
+      box-shadow: 0 0 15px rgba(0, 245, 155, 0.05);
     }
 
     .hero-title {
-      font-size: 56px;
+      font-size: 58px;
       line-height: 1.1;
       margin-bottom: 15px;
+      letter-spacing: -0.03em;
     }
     
     .hero-title span {
@@ -230,7 +257,7 @@
 
     /* Slogan Acronym Highlight Styling */
     .slogan-box {
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 500;
       color: var(--color-text-muted);
       margin-bottom: 30px;
@@ -240,11 +267,11 @@
     .slogan-box span.acronym-letter {
       color: var(--color-primary);
       font-weight: 800;
-      text-shadow: 0 0 10px rgba(0, 245, 155, 0.4);
+      text-shadow: 0 0 12px rgba(0, 245, 155, 0.5);
     }
 
     .hero-desc {
-      font-size: 17px;
+      font-size: 18px;
       color: var(--color-text-muted);
       margin-bottom: 40px;
       max-width: 580px;
@@ -258,53 +285,56 @@
 
     .btn-primary {
       background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-      color: #070b19;
-      font-weight: 600;
-      padding: 14px 28px;
+      color: #050814;
+      font-weight: 700;
+      padding: 14px 30px;
       border-radius: 8px;
       text-decoration: none;
-      box-shadow: 0 4px 20px rgba(0, 245, 155, 0.3);
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      box-shadow: 0 4px 20px rgba(0, 245, 155, 0.35);
+      transition: all var(--transition-speed);
       display: flex;
       align-items: center;
       gap: 8px;
+      border: none;
+      cursor: pointer;
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(0, 245, 155, 0.5);
+      box-shadow: 0 6px 25px rgba(0, 245, 155, 0.55);
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       color: var(--color-text-main);
       font-weight: 600;
-      padding: 14px 28px;
+      padding: 14px 30px;
       border-radius: 8px;
       text-decoration: none;
       transition: all var(--transition-speed);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
     }
 
     /* Code Panel Showcase */
     .code-panel {
-      background: #090e1a;
-      border: 1px solid var(--bg-card-border);
+      background: #040711;
+      border: 1px solid rgba(0, 245, 155, 0.2);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.65);
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12.5px;
       text-align: left;
+      position: relative;
     }
 
     .code-header {
-      background: #0f172a;
+      background: #080d22;
       padding: 12px 18px;
       display: flex;
       justify-content: space-between;
@@ -362,7 +392,7 @@
     .card-toggle-controls {
       display: flex;
       align-items: center;
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(8, 13, 30, 0.9);
       border: 1px solid var(--bg-card-border);
       padding: 5px;
       border-radius: 30px;
@@ -383,8 +413,8 @@
 
     .toggle-btn.active {
       background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-      color: #070b19;
-      box-shadow: 0 4px 10px rgba(0, 245, 155, 0.2);
+      color: #050814;
+      box-shadow: 0 0 15px rgba(0, 245, 155, 0.35);
     }
 
     .card-container {
@@ -422,17 +452,17 @@
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(0, 245, 155, 0.25);
       padding: 30px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.55);
     }
 
     .card-front {
-      background: linear-gradient(135deg, #0e172a 0%, #070b19 100%);
+      background: linear-gradient(135deg, #070d1e 0%, #030612 100%);
       text-align: left;
     }
 
@@ -449,7 +479,7 @@
     }
 
     .card-back {
-      background: linear-gradient(135deg, #0b1329 0%, #111a33 100%);
+      background: linear-gradient(135deg, #050a18 0%, #09112a 100%);
       transform: rotateY(180deg);
       text-align: left;
     }
@@ -477,6 +507,7 @@
       font-size: 24px;
       font-weight: 800;
       color: var(--color-text-main);
+      letter-spacing: -0.8px;
     }
 
     .card-logo-text span {
@@ -486,9 +517,10 @@
     .card-chip {
       width: 35px;
       height: 25px;
-      background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+      background: linear-gradient(135deg, #f1f5f9 0%, #64748b 100%);
       border-radius: 4px;
-      opacity: 0.8;
+      opacity: 0.85;
+      box-shadow: 0 0 8px rgba(255,255,255,0.1);
     }
 
     .card-slogan {
@@ -611,6 +643,7 @@
       font-size: 38px;
       font-weight: 800;
       color: var(--color-text-main);
+      letter-spacing: -0.02em;
     }
 
     .section {
@@ -618,9 +651,9 @@
     }
     
     .section-alt {
-      background: rgba(10, 16, 32, 0.4);
-      border-top: 1px solid rgba(255, 255, 255, 0.03);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      background: rgba(6, 10, 24, 0.55);
+      border-top: 1px solid rgba(0, 245, 155, 0.05);
+      border-bottom: 1px solid rgba(0, 245, 155, 0.05);
     }
 
     /* Grid layout / Metro UI tiles - Glassmorphism style */
@@ -662,20 +695,20 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(255,255,255,0.06), transparent 40%);
+      background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(0, 245, 155, 0.06), transparent 40%);
       z-index: 1;
       pointer-events: none;
     }
 
     .tile:hover {
       transform: translateY(-4px);
-      border-color: rgba(0, 245, 155, 0.3);
-      box-shadow: 0 10px 30px rgba(0, 245, 155, 0.06);
+      border-color: rgba(0, 245, 155, 0.45);
+      box-shadow: 0 10px 30px rgba(0, 245, 155, 0.08);
     }
 
     .tile-icon {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 245, 155, 0.03);
+      border: 1px solid rgba(0, 245, 155, 0.1);
       width: 50px;
       height: 50px;
       border-radius: 10px;
@@ -688,8 +721,8 @@
     }
 
     .tile:hover .tile-icon {
-      background: rgba(0, 245, 155, 0.1);
-      border-color: rgba(0, 245, 155, 0.3);
+      background: rgba(0, 245, 155, 0.12);
+      border-color: rgba(0, 245, 155, 0.4);
       transform: scale(1.05);
     }
 
@@ -701,7 +734,7 @@
     }
 
     .tile-desc {
-      font-size: 14px;
+      font-size: 14.5px;
       color: var(--color-text-muted);
       flex-grow: 1;
     }
@@ -714,7 +747,7 @@
     }
 
     .tile-tag {
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.06);
       font-size: 11px;
       color: var(--color-text-muted);
@@ -723,175 +756,339 @@
       font-family: var(--font-mono);
     }
 
-    /* Products Section Style */
-    .products-grid {
+    /* Interactive Portfolio Carousels */
+    .portfolio-item-wrapper {
+      margin-bottom: 80px;
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      overflow: hidden;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
+      grid-template-columns: 1.1fr 0.9fr;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     }
 
-    @media (max-width: 768px) {
-      .products-grid {
+    @media (max-width: 991px) {
+      .portfolio-item-wrapper {
         grid-template-columns: 1fr;
       }
     }
 
-    .product-card {
-      background: var(--bg-card);
-      border: 1px solid var(--bg-card-border);
-      border-radius: 16px;
+    /* Left Side: Screenshot Viewer */
+    .gallery-viewer-container {
+      background: #02040a;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-right: 1px solid rgba(0, 245, 155, 0.1);
+      position: relative;
+    }
+    
+    @media (max-width: 991px) {
+      .gallery-viewer-container {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 245, 155, 0.1);
+      }
+    }
+
+    .main-preview-wrapper {
+      width: 100%;
+      height: 320px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      cursor: zoom-in;
+      background: #080d1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-preview-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: opacity 0.25s ease;
+      opacity: 1;
+    }
+
+    .preview-caption {
+      margin-top: 15px;
+      font-size: 13.5px;
+      color: var(--color-primary);
+      font-weight: 500;
+      font-family: var(--font-mono);
+      text-align: center;
+      min-height: 20px;
+    }
+
+    .thumbnails-scroller {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-primary) rgba(0,0,0,0.3);
+    }
+
+    .thumbnails-scroller::-webkit-scrollbar {
+      height: 6px;
+    }
+    .thumbnails-scroller::-webkit-scrollbar-thumb {
+      background: var(--color-primary);
+      border-radius: 3px;
+    }
+
+    .thumb-btn {
+      flex: 0 0 70px;
+      height: 48px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: all 0.2s;
+      background: #080d1a;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thumb-btn:hover {
+      opacity: 0.8;
+    }
+
+    .thumb-btn.active {
+      border-color: var(--color-primary);
+      opacity: 1;
+      box-shadow: 0 0 10px rgba(0, 245, 155, 0.3);
+    }
+
+    .thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Right Side: Description and specs */
+    .gallery-details-container {
       padding: 40px;
       display: flex;
       flex-direction: column;
-      height: 100%;
-      position: relative;
-      transition: all var(--transition-speed);
-    }
-
-    .product-card:hover {
-      border-color: rgba(0, 198, 255, 0.3);
-      box-shadow: 0 10px 30px rgba(0, 198, 255, 0.05);
-      transform: translateY(-2px);
+      justify-content: space-between;
     }
 
     .product-badge {
-      background: rgba(0, 198, 255, 0.1);
+      background: rgba(0, 198, 255, 0.08);
       border: 1px solid rgba(0, 198, 255, 0.2);
       color: var(--color-secondary);
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 20px;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
       width: fit-content;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .product-title {
-      font-size: 26px;
+    .portfolio-item-title {
+      font-size: 28px;
       margin-bottom: 15px;
+      letter-spacing: -0.02em;
+    }
+    
+    .portfolio-item-title span {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .product-desc {
+    .portfolio-item-desc {
       color: var(--color-text-muted);
       font-size: 15px;
       margin-bottom: 25px;
-      flex-grow: 1;
     }
 
-    .product-features {
+    .portfolio-features-list {
       list-style: none;
       margin-bottom: 30px;
       font-size: 14px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-    }
-
-    .product-features li {
-      display: flex;
-      align-items: center;
       gap: 10px;
     }
 
-    .product-features li::before {
+    .portfolio-features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .portfolio-features-list li::before {
       content: "✓";
-      color: var(--color-secondary);
+      color: var(--color-primary);
       font-weight: bold;
+      margin-top: 1px;
     }
 
-    .product-link {
-      color: var(--color-text-main);
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
+    .portfolio-tech-tags {
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
-      transition: color var(--transition-speed);
-      width: fit-content;
+      margin-bottom: 25px;
     }
 
-    .product-link:hover {
-      color: var(--color-secondary);
+    .portfolio-tech-tag {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--color-text-muted);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 12px;
     }
 
-    /* Track Record & Customers Section */
-    .clients-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    .portfolio-links-wrapper {
+      display: flex;
       gap: 20px;
     }
 
-    @media (max-width: 991px) {
-      .clients-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .clients-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .client-card {
-      background: rgba(15, 23, 42, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
+    .portfolio-btn-link {
+      display: inline-flex;
       align-items: center;
-      text-align: center;
-      transition: all var(--transition-speed);
+      gap: 8px;
+      color: var(--color-text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color var(--transition-speed);
     }
 
-    .client-card:hover {
-      background: rgba(15, 23, 42, 0.8);
-      border-color: rgba(255, 255, 255, 0.1);
-      transform: translateY(-2px);
+    .portfolio-btn-link:hover {
+      color: var(--color-primary);
     }
 
-    .client-logo-placeholder {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
+    /* Industry Experience / Timeline */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 30px;
+      width: 2px;
+      background: rgba(0, 245, 155, 0.15);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+      padding-left: 70px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 20px;
+      top: 6px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #050814;
+      border: 4px solid var(--color-primary);
+      box-shadow: 0 0 10px rgba(0, 245, 155, 0.4);
+      z-index: 2;
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-header {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+
+    .timeline-role {
+      font-size: 19px;
+      font-weight: 700;
       color: var(--color-text-main);
     }
+    
+    .timeline-role span {
+      color: var(--color-secondary);
+      font-weight: 500;
+    }
 
-    .client-logo-placeholder span {
+    .timeline-company {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
       color: var(--color-primary);
     }
 
-    .client-domain {
-      font-size: 11px;
-      color: var(--color-primary);
-      text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-    }
-
-    .client-role {
+    .timeline-date {
+      font-family: var(--font-mono);
       font-size: 13px;
       color: var(--color-text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 3px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.05);
     }
 
-    /* Founder profile section */
+    .timeline-desc {
+      color: var(--color-text-muted);
+      font-size: 14.5px;
+      margin-bottom: 12px;
+    }
+    
+    .timeline-tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+    }
+
+    .timeline-tech-item {
+      color: var(--color-secondary);
+      background: rgba(0, 198, 255, 0.05);
+      border: 1px solid rgba(0, 198, 255, 0.1);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    /* Full Bio Grid */
     .profile-card {
       background: var(--bg-card);
       border: 1px solid var(--bg-card-border);
       border-radius: 16px;
       padding: 40px;
       display: grid;
-      grid-template-columns: 0.7fr 1.3fr;
+      grid-template-columns: 0.75fr 1.25fr;
       gap: 50px;
-      align-items: center;
+      align-items: flex-start;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.45);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 991px) {
       .profile-card {
         grid-template-columns: 1fr;
         padding: 30px;
@@ -904,28 +1101,24 @@
       flex-direction: column;
       align-items: center;
       gap: 15px;
+      position: sticky;
+      top: 110px;
     }
 
-    .profile-avatar {
-      width: 180px;
-      height: 180px;
+    .profile-avatar-img {
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 54px;
-      font-weight: 800;
-      color: #070b19;
-      box-shadow: 0 10px 30px rgba(0, 245, 155, 0.2);
-      border: 4px solid rgba(255, 255, 255, 0.05);
+      object-fit: cover;
+      border: 4px solid rgba(0, 245, 155, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 245, 155, 0.25);
     }
 
     .profile-name {
       font-size: 26px;
       font-weight: 800;
       text-align: center;
+      letter-spacing: -0.02em;
     }
 
     .profile-meta {
@@ -933,7 +1126,7 @@
       color: var(--color-primary);
       text-transform: uppercase;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-align: center;
       margin-top: -10px;
     }
@@ -941,41 +1134,68 @@
     .profile-bio {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 25px;
     }
 
     .profile-bio p {
       color: var(--color-text-muted);
-      font-size: 16px;
+      font-size: 15.5px;
+      line-height: 1.7;
     }
 
     .education-item {
       border-left: 2px solid var(--color-secondary);
       padding-left: 15px;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       font-size: 14px;
     }
 
     .education-item strong {
       color: var(--color-text-main);
+      font-size: 15px;
     }
 
     .education-item span {
       color: var(--color-text-muted);
       display: block;
       font-size: 12px;
+      margin-top: 2px;
     }
 
-    /* Speaking Highlight Banner */
-    .infoshare-banner {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(244, 63, 94, 0.15) 100%);
-      border: 1px solid rgba(239, 68, 68, 0.25);
+    /* Infoshare Presentation Area */
+    .infoshare-presentation-card {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(244, 63, 94, 0.12) 100%);
+      border: 1px solid rgba(239, 68, 68, 0.2);
       border-radius: 12px;
       padding: 24px;
-      margin-top: 25px;
-      display: flex;
+      margin-top: 15px;
+    }
+
+    .infoshare-pres-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
       gap: 20px;
-      align-items: flex-start;
+      align-items: center;
+    }
+
+    @media (max-width: 600px) {
+      .infoshare-pres-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .infoshare-img-wrapper {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      cursor: zoom-in;
+    }
+
+    .infoshare-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
     }
 
     .infoshare-badge {
@@ -987,10 +1207,12 @@
       font-weight: 700;
       text-transform: uppercase;
       font-family: var(--font-display);
+      display: inline-block;
+      margin-bottom: 10px;
     }
 
     .infoshare-title {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
       margin-bottom: 6px;
       color: var(--color-text-main);
@@ -1012,6 +1234,71 @@
       text-decoration: underline;
     }
 
+    /* Passions/Interests Polaroid Gallery */
+    .interests-gallery-wrapper {
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 25px;
+    }
+
+    .interests-gallery-title {
+      font-size: 16px;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .polaroid-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .polaroid-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .polaroid-card {
+      background: #0b1122;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 6px;
+      padding: 10px 10px 20px 10px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      cursor: zoom-in;
+      transition: all 0.25s;
+    }
+
+    .polaroid-card:hover {
+      transform: translateY(-3px) rotate(1deg);
+      border-color: rgba(0, 245, 155, 0.2);
+    }
+
+    .polaroid-img-wrapper {
+      width: 100%;
+      height: 150px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #02040a;
+    }
+
+    .polaroid-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .polaroid-caption {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--color-text-muted);
+      font-family: var(--font-display);
+      text-align: center;
+    }
+
     /* Contact & Billing Details */
     .contact-grid {
       display: grid;
@@ -1031,11 +1318,12 @@
       border: 1px solid var(--bg-card-border);
       border-radius: 16px;
       padding: 35px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     }
 
     .contact-title {
       font-size: 22px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       color: var(--color-text-main);
     }
 
@@ -1043,26 +1331,25 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
     }
 
     .contact-info-item {
       display: flex;
       gap: 15px;
-      font-size: 14px;
+      font-size: 14.5px;
     }
 
     .contact-info-icon {
       color: var(--color-primary);
-      font-weight: bold;
+      font-size: 18px;
     }
 
     .contact-info-text strong {
       display: block;
-      color: var(--color-text-main);
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
       color: var(--color-text-muted);
       margin-bottom: 2px;
     }
@@ -1083,7 +1370,6 @@
       border-collapse: collapse;
       font-size: 13px;
       font-family: var(--font-mono);
-      margin-top: 10px;
     }
 
     .billing-table td {
@@ -1094,7 +1380,7 @@
 
     .billing-table td.label-cell {
       color: var(--color-text-muted);
-      width: 120px;
+      width: 130px;
       font-weight: 500;
     }
 
@@ -1102,12 +1388,71 @@
       color: var(--color-text-main);
     }
 
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(5, 8, 20, 0.95);
+      backdrop-filter: blur(10px);
+    }
+
+    .lightbox-content-wrapper {
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 90%;
+      max-height: 85%;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      margin-top: 15px;
+      color: var(--color-primary);
+      font-size: 15px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: var(--color-text-muted);
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-close:focus {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
     /* Footer */
     footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      background: rgba(7, 11, 25, 0.9);
-      padding: 40px 0;
-      font-size: 13px;
+      border-top: 1px solid rgba(0, 245, 155, 0.08);
+      background: rgba(5, 8, 20, 0.95);
+      padding: 45px 0;
+      font-size: 13.5px;
       color: var(--color-text-muted);
     }
 
@@ -1145,7 +1490,7 @@
       color: var(--color-primary);
     }
 
-    /* Card flip instructions styling */
+    /* Card flip actions styling */
     .card-actions-wrapper {
       margin-top: 10px;
       display: flex;
@@ -1155,9 +1500,9 @@
     }
 
     .flip-btn-action {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--color-text-main);
+      background: rgba(0, 245, 155, 0.05);
+      border: 1px solid rgba(0, 245, 155, 0.2);
+      color: var(--color-primary);
       border-radius: 30px;
       padding: 8px 20px;
       font-weight: 600;
@@ -1170,9 +1515,10 @@
     }
 
     .flip-btn-action:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
+      background: var(--color-primary);
+      color: #050814;
       transform: translateY(-1px);
+      box-shadow: 0 0 10px rgba(0, 245, 155, 0.3);
     }
 
     .flip-icon-svg {
@@ -1188,19 +1534,21 @@
 <body>
 
   <div class="bg-grid"></div>
+  <div class="glow-blob"></div>
+  <div class="glow-blob-2"></div>
 
   <!-- Header -->
   <header>
     <div class="container nav-container">
       <a href="#" class="logo-container">
         <div class="logo-symbol">T</div>
-        <div class="logo-text">TROKA<span>Software</span></div>
+        <div class="logo-text">TROKASoftware</div>
       </a>
       <nav>
         <ul>
           <li><a href="#about">Focus</a></li>
-          <li><a href="#expertise">Services</a></li>
-          <li><a href="#products">Products</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#timeline">Experience</a></li>
           <li><a href="#profile">About Me</a></li>
           <li><a href="#contact" class="nav-cta">Contact & Invoicing</a></li>
         </ul>
@@ -1213,9 +1561,9 @@
     <section class="hero">
       
       <div class="hero-info">
-        <span class="badge">Elite C# & Algorithmic Trading Specialist</span>
+        <span class="badge">Elite C# & Latency-Critical Specialist</span>
         <h1 class="hero-title">
-          Engineering High-Performance <span>Software</span> Systems
+          Engineering Ultra-High Performance <span>Software</span>
         </h1>
         
         <!-- TROKA Slogan with highlights -->
@@ -1228,15 +1576,15 @@
         </div>
 
         <p class="hero-desc">
-          Providing expert-level backend software architecture, mathematical modeling, and latency-critical computational services. Delivering bespoke, scientific solutions for energy trading markets, ReFi exchanges, and research institutions.
+          Delivering institutional-grade backend architectures, lock-free concurrency models, and scientific algorithms. Tailored computing engines for energy trading operations, digital token exchanges, and physical research applications.
         </p>
 
         <div class="hero-actions">
           <a href="#contact" class="btn-primary">
-            Hire Expert Consultant
+            Retain Lead Software Engineer
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
-          <a href="#profile" class="btn-secondary">View Profile</a>
+          <a href="#portfolio" class="btn-secondary">Explore Creations</a>
         </div>
       </div>
 
@@ -1257,7 +1605,7 @@
             <div class="card-face card-front">
               <div class="card-brand">
                 <div>
-                  <div class="card-logo-text">TROKA<span>Software</span></div>
+                  <div class="card-logo-text">TROKASoftware</div>
                   <div class="card-slogan">Thorough Research On Key Aspects</div>
                 </div>
                 <div class="card-chip"></div>
@@ -1265,7 +1613,7 @@
 
               <!-- Marketing text loaded dynamically or toggled -->
               <ul class="card-marketing-list" id="marketing-list">
-                <li>Expensive but high quality</li>
+                <li>Elite Grade Quality</li>
                 <li>Custom-tailored software</li>
                 <li>Engineering and scientific solutions</li>
               </ul>
@@ -1280,7 +1628,7 @@
             <div class="card-face card-back">
               <div class="card-owner">
                 <span class="card-name">dr inż. Paweł Troka</span>
-                <span class="card-title">CEO & Chief Architect</span>
+                <span class="card-title">Lead Software Engineer</span>
               </div>
 
               <div class="card-contacts">
@@ -1299,7 +1647,7 @@
               </div>
 
               <div class="card-back-footer">
-                <span>TROKA Software</span>
+                <span>TROKASoftware</span>
                 <span>GDANSK | POLAND</span>
               </div>
             </div>
@@ -1323,11 +1671,11 @@
 
     </section>
 
-    <!-- Code Panel Showcase Section -->
+    <!-- Code Panel Showcase Section (Now SIMD AVX2 processing) -->
     <section class="section section-alt" id="about">
       <div class="section-title-wrapper">
-        <span class="section-subtitle">Real-world Technical Focus</span>
-        <h2 class="section-title">Engineered for Absolute Performance</h2>
+        <span class="section-subtitle">Advanced Algorithmic Foundations</span>
+        <h2 class="section-title">Institutional Grade Engineering</h2>
       </div>
       
       <div style="display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 50px; align-items: center;">
@@ -1335,18 +1683,18 @@
           <div style="grid-template-columns: 1fr; gap: 30px;"></div>
         }
         <div>
-          <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--color-primary);">Expensive But High Quality</h3>
+          <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--color-primary);">Elite Grade Quality</h3>
           <p style="color: var(--color-text-muted); margin-bottom: 25px; font-size: 16px;">
-            I don't write cheap, generic templates. I deliver institutional-grade backend structures, designed to survive extreme throughput and strict real-time deadlines. By applying rigorous computer-science methodologies, PhD-level mathematics, and absolute attention to detail, my solutions stand the test of time.
+            I specialize in developing low-latency execution loops, zero-copy structures, and real-time computation kernels. Drawing from my background as a Doctor of Engineering, I apply advanced data-locality principles and assembly-level CPU vectorization to construct systems that run with absolute efficiency.
           </p>
           
-          <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--color-secondary);">Custom-Tailored Software</h3>
+          <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--color-secondary);">Scientific & Mathematical Mastery</h3>
           <p style="color: var(--color-text-muted); margin-bottom: 25px; font-size: 16px;">
-            Your business rules are unique. Standard off-the-shelf software will limit your capability. I specialize in custom-tailoring software specifically around your operations. Whether it's a bespoke algorithmic order-matcher, state-of-the-art telemetry collection, or high-performance financial systems, you get a custom build matching your business down to the byte.
+            Complex computations require custom-tailored implementations. By utilizing CPU instructions like AVX2/FMA and lock-free rings directly in .NET 10, I strip out runtime overhead. I bridge the gap between academic mathematics and mission-critical production systems.
           </p>
         </div>
 
-        <!-- Embed real high-performance C# snippet from recent memories (VWAP & Strike Price matching engine logic) -->
+        <!-- Clever C# hardware intrinsics signal analysis kernel -->
         <div class="code-panel">
           <div class="code-header">
             <div class="code-dots">
@@ -1354,52 +1702,44 @@
               <span class="code-dot dot-yellow"></span>
               <span class="code-dot dot-green"></span>
             </div>
-            <span class="code-title">VwapCalculator.cs</span>
-            <span style="color: #6a9955; font-size: 11px;">C# .NET 8</span>
+            <span class="code-title">BttSignalKernel.cs</span>
+            <span style="color: #6a9955; font-size: 11px;">C# .NET 10</span>
           </div>
           <div class="code-body">
             <pre><code><span class="keyword">using</span> System;
-<span class="keyword">using</span> System.Collections.Generic;
+<span class="keyword">using</span> System.Runtime.CompilerServices;
+<span class="keyword">using</span> System.Runtime.Intrinsics;
+<span class="keyword">using</span> System.Runtime.Intrinsics.X86;
 
-<span class="keyword">namespace</span> <span class="type">Troka.Software.HighPerformance</span>
+<span class="keyword">namespace</span> <span class="type">TROKASoftware.HighPerformance</span>
 {
     <span class="comment">/// &lt;summary&gt;</span>
-    <span class="comment">/// High-performance VWAP and Strike Price calculator.</span>
-    <span class="comment">/// Calculates marginal price required to fill volume.</span>
+    <span class="comment">/// AVX2 & FMA hardware-accelerated Blade Tip-Timing signal kernel.</span>
+    <span class="comment">/// Performs 4 double FMA operations concurrently inside registers.</span>
     <span class="comment">/// &lt;/summary&gt;</span>
-    <span class="keyword">public class</span> <span class="type">VwapCalculator</span> : <span class="type">IVwapCalculator</span>
+    <span class="keyword">public sealed unsafe class</span> <span class="type">BttSignalKernel</span>
     {
-        <span class="keyword">public</span> <span class="type">VwapResult</span> <span class="method">CalculateStrikePrice</span>(
-            <span class="type">ReadOnlySpan</span>&lt;<span class="type">OrderBookLevel</span>&gt; levels, 
-            <span class="type">decimal</span> targetVolume)
+        [<span class="type">MethodImpl</span>(<span class="type">MethodImplOptions</span>.AggressiveOptimization)]
+        <span class="keyword">public static void</span> <span class="method">ProcessSignalSIMD</span>(
+            <span class="type">double</span>* signal, <span class="type">double</span>* filter, <span class="type">double</span>* output, <span class="type">int</span> length)
         {
-            <span class="keyword">decimal</span> accumulatedVolume = <span class="number">0</span>;
-            <span class="keyword">decimal</span> accumulatedCost = <span class="number">0</span>;
-            <span class="keyword">decimal</span> strikePrice = <span class="number">0</span>;
-
-            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; levels.Length; i++)
+            <span class="type">int</span> i = <span class="number">0</span>;
+            <span class="comment">// 256-bit SIMD registers load 4 doubles concurrently</span>
+            <span class="keyword">for</span> (; i &lt;= length - <span class="number">4</span>; i += <span class="number">4</span>)
             {
-                <span class="keyword">ref readonly var</span> level = ref levels[i];
-                <span class="type">decimal</span> volumeToTake = Math.<span class="method">Min</span>(
-                    level.Volume, 
-                    targetVolume - accumulatedVolume
-                );
+                <span class="type">Vector256</span>&lt;<span class="type">double</span>&gt; sig = <span class="type">Avx</span>.<span class="method">LoadVector256</span>(signal + i);
+                <span class="type">Vector256</span>&lt;<span class="type">double</span>&gt; filt = <span class="type">Avx</span>.<span class="method">LoadVector256</span>(filter + i);
+                <span class="type">Vector256</span>&lt;<span class="type">double</span>&gt; acc = <span class="type">Avx</span>.<span class="method">LoadVector256</span>(output + i);
 
-                accumulatedCost += volumeToTake * level.Price;
-                accumulatedVolume += volumeToTake;
-                strikePrice = level.Price;
-
-                <span class="keyword">if</span> (accumulatedVolume &gt;= targetVolume)
-                {
-                    <span class="keyword">return new</span> <span class="type">VwapResult</span>(
-                        vwap: accumulatedCost / targetVolume,
-                        strikePrice: strikePrice, <span class="comment">// Limit Price</span>
-                        isFullyFilled: <span class="keyword">true</span>
-                    );
-                }
+                <span class="comment">// Single CPU cycle execution of acc = (sig * filt) + acc</span>
+                <span class="type">Vector256</span>&lt;<span class="type">double</span>&gt; res = <span class="type">Fma</span>.<span class="method">MultiplyAdd</span>(sig, filt, acc);
+                <span class="type">Avx</span>.<span class="method">Store</span>(output + i, res);
             }
-            <span class="keyword">return new</span> <span class="type">VwapResult</span>(accumulatedCost / accumulatedVolume, 
-                                  strikePrice, <span class="keyword">false</span>);
+            <span class="comment">// Clean up remaining elements</span>
+            <span class="keyword">for</span> (; i &lt; length; i++)
+            {
+                output[i] += signal[i] * filter[i];
+            }
         }
     }
 }</code></pre>
@@ -1409,11 +1749,11 @@
       </div>
     </section>
 
-    <!-- Services / What we do (Metro Tiles) -->
+    <!-- Services Overview -->
     <section class="section" id="expertise">
       <div class="section-title-wrapper">
         <span class="section-subtitle">Expert Offerings</span>
-        <h2 class="section-title">Core Competencies</h2>
+        <h2 class="section-title">Core Services</h2>
       </div>
 
       <div class="metro-grid">
@@ -1423,15 +1763,15 @@
           <div class="tile-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
           </div>
-          <h3 class="tile-title">High-Performance Backend Architecture</h3>
+          <h3 class="tile-title">High-Performance Architectures</h3>
           <p class="tile-desc">
-            Designing low-latency, scalable backend engines. Veteran in C# .NET Core/8, high-throughput microservices, distributed messaging (Aeron.NET, RabbitMQ, Redis, NATS), and async thread synchronization.
+            Constructing latency-critical execution pipelines. Specialist in lock-free ring-buffers, memory-mapped IPC channels, zero-copy socket publishers, and thread allocation algorithms.
           </p>
           <div class="tile-tags">
-            <span class="tile-tag">C#</span>
-            <span class="tile-tag">.NET 8</span>
-            <span class="tile-tag">Microservices</span>
-            <span class="tile-tag">Docker</span>
+            <span class="tile-tag">C# 14</span>
+            <span class="tile-tag">.NET 10</span>
+            <span class="tile-tag">Aeron.NET</span>
+            <span class="tile-tag">MemoryPack</span>
           </div>
         </div>
 
@@ -1440,15 +1780,15 @@
           <div class="tile-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
           </div>
-          <h3 class="tile-title">Algorithmic & Automated Trading</h3>
+          <h3 class="tile-title">Trading Systems & Market Adapters</h3>
           <p class="tile-desc">
-            Developing robust order-matching engines, smart trading connectors, and automated execution strategies for energy markets (24/7 intraday EPEX/Nord Pool) and on-chain ReFi exchanges.
+            Developing market-beating execution engines and order-book matching algorithms. Integrating off-chain trade routing architectures with on-chain Ethereum/Celo smart contract registries.
           </p>
           <div class="tile-tags">
-            <span class="tile-tag">Algo Trading</span>
-            <span class="tile-tag">Energy Market</span>
+            <span class="tile-tag">MACH+</span>
             <span class="tile-tag">OrderBook</span>
-            <span class="tile-tag">Low Latency</span>
+            <span class="tile-tag">Solidity</span>
+            <span class="tile-tag">Microservices</span>
           </div>
         </div>
 
@@ -1457,122 +1797,338 @@
           <div class="tile-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
           </div>
-          <h3 class="tile-title">Scientific & Numerical Solutions</h3>
+          <h3 class="tile-title">Scientific & Numerical Calculus</h3>
           <p class="tile-desc">
-            Leveraging engineering physics and mathematics for complex computations, signal analysis, blade tip-timing, vibration engineering, and numerical physics modeling.
+            Implementing advanced vibration diagnostic calculations, blade tip-timing (BTT) software frameworks, real-time signal analysis processors, and complex multi-variable calculus solvers.
           </p>
           <div class="tile-tags">
-            <span class="tile-tag">Numerical Math</span>
-            <span class="tile-tag">Signal Processing</span>
-            <span class="tile-tag">Python NumPy</span>
-            <span class="tile-tag">C++</span>
+            <span class="tile-tag">Signal Diagnostics</span>
+            <span class="tile-tag">AVX2 Intrinsics</span>
+            <span class="tile-tag">NumPy</span>
+            <span class="tile-tag">Math.NET</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Products & Open Source Projects -->
-    <section class="section section-alt" id="products">
+    <!-- Portfolio & Creations Section -->
+    <section class="section section-alt" id="portfolio">
       <div class="section-title-wrapper">
-        <span class="section-subtitle">Proven Software Products</span>
-        <h2 class="section-title">Products & Contributions</h2>
+        <span class="section-subtitle">Real-World Deployments</span>
+        <h2 class="section-title">Creations & Portfolio</h2>
       </div>
 
-      <div class="products-grid">
-        
-        <!-- Product 1: Computator.NET -->
-        <div class="product-card">
-          <span class="product-badge">Open Source Project</span>
-          <h3 class="product-title">Computator.NET</h3>
-          <p class="product-desc">
-            A fast, high-quality numerical analysis application built for scientists, engineers, and educators. Supports complex equations, multi-variable calculus, 3D visualizations, and custom scripting notation.
-          </p>
-          <ul class="product-features">
-            <li>100+ elementary functions & 140+ special mathematical functions</li>
-            <li>Interactive 2D & 3D real and complex function plotting</li>
-            <li>Custom high-speed mathematical scripting language</li>
-            <li>Highly rated desktop app converted for Modern UWP / Windows Store</li>
-          </ul>
-          <a href="https://github.com/PawelTroka/Computator.NET" target="_blank" class="product-link">
-            Explore Computator.NET on GitHub
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
+      <!-- Creation 1: Volue Algo Trader -->
+      <div class="portfolio-item-wrapper">
+        <!-- Interactive Gallery -->
+        <div class="gallery-viewer-container">
+          <div class="main-preview-wrapper" onclick="openLightbox('gallery-algotrader')">
+            <img id="algotrader-main" src="algotrader_1.png" class="main-preview-img" alt="Volue Algo Trader interface">
+          </div>
+          <div class="preview-caption" id="algotrader-caption">Trading strategy editor</div>
+          
+          <div class="thumbnails-scroller">
+            <button class="thumb-btn active" onclick="swapGalleryImage('algotrader', 'algotrader_1.png', 'Trading strategy editor', this)">
+              <img src="algotrader_1.png" alt="Thumb 1">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('algotrader', 'algotrader_2.png', 'Assigning a trading strategy to a product', this)">
+              <img src="algotrader_2.png" alt="Thumb 2">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('algotrader', 'algotrader_3.png', 'Trading strategy assigned to products list', this)">
+              <img src="algotrader_3.png" alt="Thumb 3">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('algotrader', 'algotrader_4.png', 'Executed trades monitoring view', this)">
+              <img src="algotrader_4.png" alt="Thumb 4">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('algotrader', 'algotrader_5.png', 'Live market data feed grid', this)">
+              <img src="algotrader_5.png" alt="Thumb 5">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('algotrader', 'algotrader_6.png', 'Active strategy log & console output', this)">
+              <img src="algotrader_6.png" alt="Thumb 6">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('algotrader', 'algotrader_7.png', 'Historical time series database configuration', this)">
+              <img src="algotrader_7.png" alt="Thumb 7">
+            </button>
+          </div>
         </div>
 
-        <!-- Product 2: Fizyka Dla Kazdego -->
-        <div class="product-card">
-          <span class="product-badge">Educational Resource</span>
-          <h3 class="product-title">Fizyka Dla Każdego</h3>
-          <p class="product-desc">
-            A popular, customized educational portal targeting Polish students and enthusiasts. Promotes basic and advanced physics principles, breaking down complex mathematical formulations into intuitive, readable, and highly visual modules.
+        <div class="gallery-details-container">
+          <div>
+            <span class="product-badge">Algorithmic Trading Platform</span>
+            <h3 class="portfolio-item-title">Volue<span>AlgoTrader</span></h3>
+            <p class="portfolio-item-desc">
+              A comprehensive single-page algorithmic trading workspace developed for energy traders. Allows users to write, backtest, and deploy custom intraday and asset-based strategies directly in Python. Built for 24/7 automated execution in Scandinavian and European energy markets.
+            </p>
+            <ul class="portfolio-features-list">
+              <li>Low-latency multi-threading strategy editor with visual autocomplete</li>
+              <li>Dynamic product assigning and runtime config controls</li>
+              <li>Real-time order book execution, trade logging, and telemetry</li>
+              <li>Scalable execution engine using Kubernetes container clusters</li>
+            </ul>
+          </div>
+          <div>
+            <div class="portfolio-tech-tags">
+              <span class="portfolio-tech-tag">Python 3.13</span>
+              <span class="portfolio-tech-tag">C#</span>
+              <span class="portfolio-tech-tag">Flask</span>
+              <span class="portfolio-tech-tag">React</span>
+              <span class="portfolio-tech-tag">Kubernetes</span>
+              <span class="portfolio-tech-tag">Aeron.NET</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creation 2: Computator.NET -->
+      <div class="portfolio-item-wrapper">
+        <!-- Interactive Gallery -->
+        <div class="gallery-viewer-container">
+          <div class="main-preview-wrapper" onclick="openLightbox('gallery-computator')">
+            <img id="computator-main" src="computator_1.png" class="main-preview-img" alt="Computator.NET interface">
+          </div>
+          <div class="preview-caption" id="computator-caption">Complex function chart with autocomplete in desktop version</div>
+          
+          <div class="thumbnails-scroller">
+            <button class="thumb-btn active" onclick="swapGalleryImage('computator', 'computator_1.png', 'Complex function chart with autocomplete in desktop version', this)">
+              <img src="computator_1.png" alt="Thumb 1">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('computator', 'computator_2.png', '3d two-variable function chart in desktop version', this)">
+              <img src="computator_2.png" alt="Thumb 2">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('computator', 'computator_3.png', 'Complex function chart in web version', this)">
+              <img src="computator_3.png" alt="Thumb 3">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('computator', 'computator_4.png', 'Implicit function chart in desktop version', this)">
+              <img src="computator_4.png" alt="Thumb 4">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('computator', 'computator_5.png', 'Mathematical scripting in web version', this)">
+              <img src="computator_5.png" alt="Thumb 5">
+            </button>
+            <button class="thumb-btn" onclick="swapGalleryImage('computator', 'computator_6.png', 'Scripting in web version with autocomplete', this)">
+              <img src="computator_6.png" alt="Thumb 6">
+            </button>
+          </div>
+        </div>
+
+        <div class="gallery-details-container">
+          <div>
+            <span class="product-badge">Mathematical Software Suite</span>
+            <h3 class="portfolio-item-title">Computator<span>.NET</span></h3>
+            <p class="portfolio-item-desc">
+              A high-speed open-source numerical calculations suite tailored for engineers, academic researchers, and students. Combines a desktop application (converted for Modern UWP/Microsoft Store) with an online calculator interface, supporting advanced scripting and visualization.
+            </p>
+            <ul class="portfolio-features-list">
+              <li>Plots 2D and 3D real/complex functions on high-speed hardware graphics</li>
+              <li>Implements custom scripting language formatted for scientists</li>
+              <li>Features 100+ elementary functions & 140+ specialized complex math functions</li>
+              <li>Highly optimized matrix operations, numerical calculus integration algorithms</li>
+            </ul>
+          </div>
+          <div>
+            <div class="portfolio-tech-tags">
+              <span class="portfolio-tech-tag">C# 14</span>
+              <span class="portfolio-tech-tag">.NET 10</span>
+              <span class="portfolio-tech-tag">WPF</span>
+              <span class="portfolio-tech-tag">UWP</span>
+              <span class="portfolio-tech-tag">Accord.NET</span>
+              <span class="portfolio-tech-tag">Math.NET</span>
+            </div>
+            <div class="portfolio-links-wrapper">
+              <a href="https://github.com/PawelTroka/Computator.NET" target="_blank" class="portfolio-btn-link">
+                Source Code (GitHub)
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Timeline / Experience Section -->
+    <section class="section" id="timeline">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">Professional Journey</span>
+        <h2 class="section-title">Work Experience</h2>
+      </div>
+
+      <div class="timeline">
+        
+        <!-- Job 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <span class="timeline-company">AxpoGroup</span>
+              <div class="timeline-role">Lead Software Engineer</div>
+            </div>
+            <span class="timeline-date">06/2025 - Present</span>
+          </div>
+          <p class="timeline-desc">
+            Directing a large, multi-national development, testing, and UI/UX design team to build high-speed automated trading engines for the MACH+ energy trading initiative. Architecting market-beating execution models and low-latency pricing infrastructure in active remote cooperation with Baden, Switzerland.
           </p>
-          <ul class="product-features">
-            <li>Interactive mechanics and optics simulation guides</li>
-            <li>Structured syllabuses from secondary school to university level</li>
-            <li>Promotes science outreach and science-focused business ethics</li>
-            <li>High search visibility on the Polish internet</li>
-          </ul>
-          <a href="http://fizyka.dk" target="_blank" class="product-link">
-            Visit Fizyka Dla Każdego (fizyka.dk)
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
+          <div class="timeline-tech-list">
+            <span class="timeline-tech-item">.NET 10</span>
+            <span class="timeline-tech-item">C# 14</span>
+            <span class="timeline-tech-item">Low Latency</span>
+            <span class="timeline-tech-item">MACH+</span>
+            <span class="timeline-tech-item">Microservices</span>
+            <span class="timeline-tech-item">System Architecture</span>
+          </div>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <span class="timeline-company">AxpoGroup</span>
+              <div class="timeline-role">Senior Full Stack Developer</div>
+            </div>
+            <span class="timeline-date">08/2024 - 05/2025</span>
+          </div>
+          <p class="timeline-desc">
+            Retained as an independent contractor to conduct system-wide code reviews, optimize database procedures, and provide expert architectural guidance on software craftsmanship and engineering best practices.
+          </p>
+          <div class="timeline-tech-list">
+            <span class="timeline-tech-item">C#</span>
+            <span class="timeline-tech-item">SQL Server</span>
+            <span class="timeline-tech-item">API Optimization</span>
+            <span class="timeline-tech-item">Technical Consulting</span>
+          </div>
+        </div>
+
+        <!-- Job 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <span class="timeline-company">NeutralLabs Inc.</span>
+              <div class="timeline-role">Lead Software Engineer</div>
+            </div>
+            <span class="timeline-date">03/2023 - 07/2024</span>
+          </div>
+          <p class="timeline-desc">
+            Led the design and coding of a high-performance central limit order-book exchange (CEX) for digital ReFi assets. Programmed sub-orderbook execution algorithms and deployed custom Solidity smart contracts for biochar fee dynamics on Polygon and Celo blockchains.
+          </p>
+          <div class="timeline-tech-list">
+            <span class="timeline-tech-item">.NET 10</span>
+            <span class="timeline-tech-item">Go</span>
+            <span class="timeline-tech-item">Solidity</span>
+            <span class="timeline-tech-item">Polygon</span>
+            <span class="timeline-tech-item">Celo</span>
+            <span class="timeline-tech-item">Docker</span>
+            <span class="timeline-tech-item">ArgoCD</span>
+          </div>
+        </div>
+
+        <!-- Job 4 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <span class="timeline-company">VolueAS</span>
+              <div class="timeline-role">Development Owner & Software Architect</div>
+            </div>
+            <span class="timeline-date">02/2020 - 04/2023</span>
+          </div>
+          <p class="timeline-desc">
+            Designed high-throughput architectures to unify acquired automated energy trading modules. Managed engineering resources across Poland, Germany, and Norway. Spearheaded low-latency Aeron.NET integrations and high-performance PyPy script pipelines.
+          </p>
+          <div class="timeline-tech-list">
+            <span class="timeline-tech-item">C#</span>
+            <span class="timeline-tech-item">Python 3.13</span>
+            <span class="timeline-tech-item">Aeron.NET</span>
+            <span class="timeline-tech-item">MemoryPack</span>
+            <span class="timeline-tech-item">IPC/SHM</span>
+            <span class="timeline-tech-item">Kafka</span>
+            <span class="timeline-tech-item">Helm</span>
+          </div>
+        </div>
+
+        <!-- Job 5 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <span class="timeline-company">PowelAS</span>
+              <div class="timeline-role">Team Lead & Senior Software Engineer</div>
+            </div>
+            <span class="timeline-date">08/2017 - 03/2020</span>
+          </div>
+          <p class="timeline-desc">
+            Directed the design of the core microservice architecture for 24/7 automated intraday energy trading. Managed scrum priorities, coordinated with Scandinavian client boards, and built Python execution adapters.
+          </p>
+          <div class="timeline-tech-list">
+            <span class="timeline-tech-item">Python</span>
+            <span class="timeline-tech-item">React</span>
+            <span class="timeline-tech-item">SQLite</span>
+            <span class="timeline-tech-item">Docker</span>
+            <span class="timeline-tech-item">Scrum Master</span>
+          </div>
+        </div>
+
+        <!-- Job 6 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <span class="timeline-company">PowelAS</span>
+              <div class="timeline-role">Software Engineer</div>
+            </div>
+            <span class="timeline-date">06/2016 - 09/2017</span>
+          </div>
+          <p class="timeline-desc">
+            Programmed adapter modules for head-end meter database synchronization in the Powel ELIN project. Converted legacy Visual Basic code bases into modern multi-threaded C# assemblies.
+          </p>
+          <div class="timeline-tech-list">
+            <span class="timeline-tech-item">C#</span>
+            <span class="timeline-tech-item">WCF</span>
+            <span class="timeline-tech-item">Oracle SQL</span>
+            <span class="timeline-tech-item">Unit Testing</span>
+          </div>
+        </div>
+
+        <!-- Job 7 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <span class="timeline-company">The Szewalski Institute of Fluid-Flow Machinery, Polish Academy of Sciences</span>
+              <div class="timeline-role">Research Assistant</div>
+            </div>
+            <span class="timeline-date">09/2013 - 05/2024</span>
+          </div>
+          <p class="timeline-desc">
+            Researched and coded mathematical blade tip-timing (BTT) numerical models. Processed high-frequency vibration signals using C# Task Parallel Library (TPL), NumPy, and C++ kernels.
+          </p>
+          <div class="timeline-tech-list">
+            <span class="timeline-tech-item">Numerical Analysis</span>
+            <span class="timeline-tech-item">Signal Processing</span>
+            <span class="timeline-tech-item">C# TPL</span>
+            <span class="timeline-tech-item">Matplotlib</span>
+          </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Track Record / Sectors -->
-    <section class="section">
-      <div class="section-title-wrapper">
-        <span class="section-subtitle">Where I Deliver Value</span>
-        <h2 class="section-title">Industry Track Record</h2>
-      </div>
-
-      <div class="clients-grid">
-        
-        <div class="client-card">
-          <div class="client-logo-placeholder">Axpo<span>Group</span></div>
-          <div class="client-domain">Energy Trading</div>
-          <div class="client-role">External Tech Lead (MACH+)</div>
-        </div>
-
-        <div class="client-card">
-          <div class="client-logo-placeholder">Neutral<span>Inc</span></div>
-          <div class="client-domain">Regenerative Finance</div>
-          <div class="client-role">Backend Dev Lead (Exchange)</div>
-        </div>
-
-        <div class="client-card">
-          <div class="client-logo-placeholder">Volue<span>/ Powel</span></div>
-          <div class="client-domain">Automated Trading</div>
-          <div class="client-role">Architect & Team Leader</div>
-        </div>
-
-        <div class="client-card">
-          <div class="client-logo-placeholder">PAN<span>IMP</span></div>
-          <div class="client-domain">Scientific R&D</div>
-          <div class="client-role">Research Assistant</div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Founder Biography (Personnel) -->
+    <!-- Biography / Founder Profile -->
     <section class="section section-alt" id="profile">
       <div class="section-title-wrapper">
-        <span class="section-subtitle">The Mind Behind The Code</span>
-        <h2 class="section-title">Founder & Chief Engineer</h2>
+        <span class="section-subtitle">Technical Leadership</span>
+        <h2 class="section-title">Biography & Education</h2>
       </div>
 
       <div class="profile-card">
         
         <div class="profile-avatar-wrapper">
-          <div class="profile-avatar">PT</div>
+          <img src="portrait.jpg" class="profile-avatar-img" alt="Paweł Troka portrait">
           <h3 class="profile-name">Paweł Troka, PhD Eng</h3>
-          <span class="profile-meta">Independent Consultant</span>
+          <span class="profile-meta">Lead Software Engineer</span>
           
-          <a href="PawelTroka-CV2025-11v2.pdf" download class="btn-primary" style="margin-top: 15px; padding: 10px 20px; font-size: 14px;">
+          <a href="PawelTroka-CV2025-11v2.pdf" download class="btn-primary" style="margin-top: 15px; padding: 10px 20px; font-size: 13px;">
             Download CV (PDF)
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           </a>
@@ -1580,40 +2136,81 @@
 
         <div class="profile-bio">
           <p>
-            I am a passionate software engineering leader & architect, combining high-end computer science mastery with deep scientific roots. I hold a <strong>Ph.D. in Mechanical Engineering</strong> from the Polish Academy of Sciences, specialized in numerical algorithms and signal-timing analysis, alongside degrees in <strong>Computer Science</strong> and <strong>Engineering Physics</strong>.
-          </p>
-          <p>
-            For over a decade, I have driven complex software architectures in the automated 24/7 intraday energy trading sector (Scandinavia & Western Europe), Web3/ReFi order book engines, and high-performance scientific simulations. I have managed multi-national development teams and specialized in low-latency systems.
+            I am a lead software engineer who bridges the boundary between advanced mathematical research and latency-critical production code. Combining over a decade of hands-on experience in Scandinavian energy trading sectors with a Ph.D. in Mechanical Engineering, I construct architectures that are optimized down to the processor registry level.
           </p>
 
           <div>
-            <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Academic & Engineering Background</h4>
+            <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Academic Credentials</h4>
             <div class="education-item">
-              <strong>PhD Eng. in Mechanical Engineering (Machine Design)</strong>
+              <strong>PhD in Mechanical Engineering (Machine Design & Operation)</strong>
               The Szewalski Institute of Fluid-Flow Machinery, Polish Academy of Sciences (2016 - 2021)
-              <span>Graduated with highest grades and honors for blade vibration numerical models.</span>
+              <span>Graduated with honors for development of blade tip-timing turbine numerical models.</span>
             </div>
             <div class="education-item">
-              <strong>MEng & Eng. in Computer Science (Informatics)</strong>
-              Gdańsk University of Technology (2011 - 2016)
-              <span>Specialized in algorithms, high-throughput web protocols, and distributed computing.</span>
+              <strong>Master's Degree in Computer Science</strong>
+              Gdańsk University of Technology (2015 - 2016)
+              <span>Thesis focused on advanced algorithms and internet architectures.</span>
             </div>
             <div class="education-item">
-              <strong>Eng. in Engineering Physics</strong>
+              <strong>Engineer's Degree in Computer Science</strong>
+              Gdańsk University of Technology (2011 - 2015)
+              <span>Foundation in systems engineering, low-level compilers, and databases.</span>
+            </div>
+            <div class="education-item">
+              <strong>Engineer's Degree in Technical Physics</strong>
               Gdańsk University of Technology (2010 - 2014)
-              <span>Solid foundation in computational physics, mathematics, and advanced scientific analysis.</span>
+              <span>Focused on mathematical modeling, computational physics, and analytical calculus.</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Management Credentials</h4>
+            <div class="education-item" style="border-left-color: var(--color-primary);">
+              <strong>Leadership Development Program</strong>
+              execu.no, Kristiansand, Norway (2021)
+              <span>Focused on cross-functional remote management and collaborative engineering cultures.</span>
             </div>
           </div>
 
           <!-- Infoshare speaking detail -->
-          <div class="infoshare-banner">
+          <div class="infoshare-presentation-card">
             <span class="infoshare-badge">Infoshare Speaker</span>
-            <div>
-              <h4 class="infoshare-title">Invited Speaker at CEE's Largest Tech Stage (Infoshare 2022)</h4>
-              <p class="infoshare-desc">
-                Represented Volue on the prime-time <strong>AdvancedDev Red Stage</strong>. Shared expert insights on building high-performance, low-latency communication in microservice architectures utilizing Aeron.NET. 
-                Read my bio on <a href="https://infoshare.pl/conference/speakers/#speaker1828" target="_blank">Infoshare</a> or access my original <a href="https://infoshare.pl/conference/agenda/#talk655-4" target="_blank">talk details</a>.
-              </p>
+            <div class="infoshare-pres-grid">
+              <div class="infoshare-img-wrapper" onclick="openLightboxImage('conference-talk-about-kubernetes.jpg', 'Paweł Troka presenting at Infoshare Conference 2022')">
+                <img src="conference-talk-about-kubernetes.jpg" class="infoshare-img" alt="Paweł presenting Aeron.NET">
+              </div>
+              <div>
+                <h4 class="infoshare-title" style="margin-top:0;">Infoshare 2022 Stage Speaker</h4>
+                <p class="infoshare-desc">
+                  Invited to present at CEE's largest tech arena. Delivered a talk on the AdvancedDev Red Stage explaining Aeron.NET, zero-copy socket setups, and lock-free rings. 
+                  View my speaker profile on <a href="https://infoshare.pl/conference/speakers/#speaker1828" target="_blank">Infoshare</a> or see the original <a href="https://infoshare.pl/conference/agenda/#talk655-4" target="_blank">agenda details</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Passions Section -->
+          <div class="interests-gallery-wrapper">
+            <h4 class="interests-gallery-title">Outside of Code</h4>
+            <div class="polaroid-grid">
+              <div class="polaroid-card" onclick="openLightboxImage('passion-traveling.jpg', 'Exploring peaks')">
+                <div class="polaroid-img-wrapper">
+                  <img src="passion-traveling.jpg" class="polaroid-img" alt="Traveling peaks">
+                </div>
+                <div class="polaroid-caption">Alpine peaks</div>
+              </div>
+              <div class="polaroid-card" onclick="openLightboxImage('passion-travelling3.JPG', 'Active traveling')">
+                <div class="polaroid-img-wrapper">
+                  <img src="passion-travelling3.JPG" class="polaroid-img" alt="Traveling photo">
+                </div>
+                <div class="polaroid-caption">Coastal treks</div>
+              </div>
+              <div class="polaroid-card" onclick="openLightboxImage('passion-traveling (2).jpg', 'Alpine valleys')">
+                <div class="polaroid-img-wrapper">
+                  <img src="passion-traveling (2).jpg" class="polaroid-img" alt="Traveling nature">
+                </div>
+                <div class="polaroid-caption">High valleys</div>
+              </div>
             </div>
           </div>
 
@@ -1626,7 +2223,7 @@
     <section class="section" id="contact">
       <div class="section-title-wrapper">
         <span class="section-subtitle">Get In Touch</span>
-        <h2 class="section-title">Contact & Professional Services</h2>
+        <h2 class="section-title">Contact & Invoicing Details</h2>
       </div>
 
       <div class="contact-grid">
@@ -1653,8 +2250,8 @@
             <li class="contact-info-item">
               <span class="contact-info-icon">📍</span>
               <div class="contact-info-text">
-                <strong>Main Office Address</strong>
-                <span>Józefa Wybickiego 9, 83-404 Nowa Karczma, Poland</span>
+                <strong>Correspondence / Delivery Address</strong>
+                <span>Dywizjonu 303 1A/48<br>80-462 Gdańsk, Poland</span>
               </div>
             </li>
           </ul>
@@ -1662,14 +2259,14 @@
 
         <!-- Right panel: Invoice & Billing Info -->
         <div class="contact-card">
-          <h3 class="contact-title">Invoicing & Company Details</h3>
+          <h3 class="contact-title">Company Registration</h3>
           <table class="billing-table">
             <tr>
               <td class="label-cell">Company Name</td>
-              <td class="val-cell">TROKA Software Paweł Troka</td>
+              <td class="val-cell">TROKASoftware Paweł Troka</td>
             </tr>
             <tr>
-              <td class="label-cell">Address</td>
+              <td class="label-cell">Registered Address</td>
               <td class="val-cell">Józefa Wybickiego 9<br>83-404 Nowa Karczma, Poland</td>
             </tr>
             <tr>
@@ -1685,11 +2282,7 @@
               <td class="val-cell">PL591169150800000</td>
             </tr>
             <tr>
-              <td class="label-cell">mBank PLN/EUR</td>
-              <td class="val-cell">39 1140 2004 0000 3202 7862 1005</td>
-            </tr>
-            <tr>
-              <td class="label-cell">Deutsche Bank</td>
+              <td class="label-cell">Erste Bank</td>
               <td class="val-cell">79 1910 1048 2623 6857 5656 0001</td>
             </tr>
           </table>
@@ -1699,11 +2292,20 @@
     </section>
   </main>
 
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-content-wrapper" onclick="event.stopPropagation()">
+      <img class="lightbox-img" id="lightbox-img" src="" alt="Zoomed view">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <div class="container footer-content">
       <div class="footer-text">
-        &copy; 2026 <strong>TROKA Software</strong>. All Rights Reserved. Crafted with <span>✦</span> for High Performance.
+        &copy; 2026 <strong>TROKASoftware</strong>. Crafted with <span>✦</span> for High Performance.
       </div>
       <div class="social-links">
         <a href="https://www.linkedin.com/in/paweltroka/" target="_blank">LinkedIn</a>
@@ -1713,7 +2315,7 @@
     </div>
   </footer>
 
-  <!-- Interactive script for Business Card toggling and 3D flip -->
+  <!-- Interactive script for Business Card, Gallery, and Lightbox -->
   <script>
     // 3D Card flip control
     function flipCard() {
@@ -1736,7 +2338,7 @@
         btnMinimal.classList.remove('active');
         marketingList.style.opacity = '1';
         marketingList.innerHTML = `
-          <li>Expensive but high quality</li>
+          <li>Elite Grade Quality</li>
           <li>Custom-tailored software</li>
           <li>Engineering and scientific solutions</li>
         `;
@@ -1756,8 +2358,71 @@
       }
     }
 
+    // Gallery controller
+    function swapGalleryImage(productId, imgSrc, captionText, thumbButton) {
+      // Update preview image
+      const previewImg = document.getElementById(productId + '-main');
+      previewImg.style.opacity = '0.3';
+      
+      setTimeout(() => {
+        previewImg.src = imgSrc;
+        previewImg.style.opacity = '1';
+      }, 150);
+
+      // Update caption
+      document.getElementById(productId + '-caption').textContent = captionText;
+
+      // Update active state in thumbnail container
+      const container = thumbButton.parentElement;
+      const buttons = container.querySelectorAll('.thumb-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      thumbButton.classList.add('active');
+    }
+
+    // Lightbox modal controller
+    function openLightbox(galleryType) {
+      const modal = document.getElementById('lightbox');
+      const modalImg = document.getElementById('lightbox-img');
+      const modalCaption = document.getElementById('lightbox-caption');
+
+      if (galleryType === 'gallery-algotrader') {
+        const activeThumb = document.querySelector('#portfolio .portfolio-item-wrapper:nth-of-type(1) .thumb-btn.active img');
+        const activeCaption = document.getElementById('algotrader-caption').textContent;
+        modalImg.src = activeThumb.src;
+        modalCaption.textContent = activeCaption;
+      } else if (galleryType === 'gallery-computator') {
+        const activeThumb = document.querySelector('#portfolio .portfolio-item-wrapper:nth-of-type(2) .thumb-btn.active img');
+        const activeCaption = document.getElementById('computator-caption').textContent;
+        modalImg.src = activeThumb.src;
+        modalCaption.textContent = activeCaption;
+      }
+      
+      modal.style.display = 'block';
+    }
+
+    function openLightboxImage(imgSrc, captionText) {
+      const modal = document.getElementById('lightbox');
+      const modalImg = document.getElementById('lightbox-img');
+      const modalCaption = document.getElementById('lightbox-caption');
+
+      modalImg.src = imgSrc;
+      modalCaption.textContent = captionText;
+      modal.style.display = 'block';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    // Escape key closes Lightbox
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
     // Metro Reveal Effect logic: Mouse pointer tracking for card hover glowing highlights
-    const tiles = document.querySelectorAll('.tile, .product-card');
+    const tiles = document.querySelectorAll('.tile');
     tiles.forEach(tile => {
       tile.addEventListener('mousemove', e => {
         const rect = tile.getBoundingClientRect();
