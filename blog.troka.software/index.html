@@ -1,144 +1,1772 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>TROKA Software</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="bootstrap.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<style type="text/css">
-h1 {
-  font-size: 192px;
-  color: #258c61;
-  text-shadow: 0 1px 0 #ccc,
-               0 2px 0 #c9c9c9,
-               0 3px 0 #bbb,
-               0 4px 0 #b9b9b9,
-               0 5px 0 #aaa,
-               0 6px 1px rgba(0,0,0,.1),
-               0 0 5px rgba(0,0,0,.1),
-               0 1px 3px rgba(0,0,0,.3),
-               0 3px 5px rgba(0,0,0,.2),
-               0 5px 10px rgba(0,0,0,.25),
-               0 10px 10px rgba(0,0,0,.2),
-               0 20px 20px rgba(0,0,0,.15);
-}
-h2 {
-  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-  color: #18ca7d;
-  font-size: 45px;
-  padding: 10px 50px;
-  text-align: center;
-  text-transform: uppercase;
-  text-rendering: optimizeLegibility;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TROKA Software - Premium Engineering & Scientific Solutions</title>
   
-  &.elegantshadow {
-    color: #131313;
-    background-color: #e7e5e4;
-    letter-spacing: .15em;
-    text-shadow: 
-      1px -1px 0 #767676, 
-      -1px 2px 1px #737272, 
-      -2px 4px 1px #767474, 
-      -3px 6px 1px #787777, 
-      -4px 8px 1px #7b7a7a, 
-      -5px 10px 1px #7f7d7d, 
-      -6px 12px 1px #828181, 
-      -7px 14px 1px #868585, 
-      -8px 16px 1px #8b8a89, 
-      -9px 18px 1px #8f8e8d, 
-      -10px 20px 1px #949392, 
-      -11px 22px 1px #999897, 
-      -12px 24px 1px #9e9c9c, 
-      -13px 26px 1px #a3a1a1, 
-      -14px 28px 1px #a8a6a6, 
-      -15px 30px 1px #adabab, 
-      -16px 32px 1px #b2b1b0, 
-      -17px 34px 1px #b7b6b5, 
-      -18px 36px 1px #bcbbba, 
-      -19px 38px 1px #c1bfbf, 
-      -20px 40px 1px #c6c4c4, 
-      -21px 42px 1px #cbc9c8, 
-      -22px 44px 1px #cfcdcd, 
-      -23px 46px 1px #d4d2d1, 
-      -24px 48px 1px #d8d6d5, 
-      -25px 50px 1px #dbdad9, 
-      -26px 52px 1px #dfdddc, 
-      -27px 54px 1px #e2e0df, 
-      -28px 56px 1px #e4e3e2;
-  }
-  &.deepshadow {
-    color: #e0dfdc;
-    background-color: #333;
-    letter-spacing: .1em;
-    text-shadow: 
-      0 -1px 0 #fff, 
-      0 1px 0 #2e2e2e, 
-      0 2px 0 #2c2c2c, 
-      0 3px 0 #2a2a2a, 
-      0 4px 0 #282828, 
-      0 5px 0 #262626, 
-      0 6px 0 #242424, 
-      0 7px 0 #222, 
-      0 8px 0 #202020, 
-      0 9px 0 #1e1e1e, 
-      0 10px 0 #1c1c1c, 
-      0 11px 0 #1a1a1a, 
-      0 12px 0 #181818, 
-      0 13px 0 #161616, 
-      0 14px 0 #141414, 
-      0 15px 0 #121212, 
-      0 22px 30px rgba(0, 0, 0, 0.9);
-  }
-  &.insetshadow {
-    color: #202020;
-    background-color: #2d2d2d;
-    letter-spacing: .1em;
-    text-shadow: 
-      -1px -1px 1px #111, 
-      2px 2px 1px #363636;
-  }
-  &.retroshadow {
-    color: #2c2c2c;
-    background-color: #d5d5d5;
-    letter-spacing: .05em;
-    text-shadow: 
-      4px 4px 0px #d5d5d5, 
-      7px 7px 0px rgba(0, 0, 0, 0.2);
-  }
-}
-</style>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    :root {
+      --bg-color: #070b19;
+      --bg-card: rgba(15, 23, 42, 0.65);
+      --bg-card-border: rgba(255, 255, 255, 0.08);
+      --color-primary: #00f59b; /* High-energy neon green */
+      --color-secondary: #00c6ff; /* Tech cyan */
+      --color-text-main: #f8fafc;
+      --color-text-muted: #94a3b8;
+      --color-accent: #3b82f6;
+      --font-sans: 'Inter', sans-serif;
+      --font-display: 'Outfit', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --transition-speed: 0.3s;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background-color: var(--bg-color);
+      color: var(--color-text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
 
+    /* Source Code Background Overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(rgba(7, 11, 25, 0.94), rgba(7, 11, 25, 0.97)), url('sourcecode.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -2;
+    }
+
+    /* Subtle Grid lines */
+    .bg-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      background-position: center;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* Navigation Bar */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(7, 11, 25, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    
+    .logo-symbol {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: #070b19;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 20px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 245, 155, 0.3);
+    }
+    
+    .logo-text {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--color-text-main);
+      letter-spacing: -0.5px;
+    }
+    
+    .logo-text span {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    nav a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color var(--transition-speed);
+    }
+    
+    nav a:hover {
+      color: var(--color-primary);
+    }
+
+    .nav-cta {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 30px;
+      color: var(--color-text-main) !important;
+      transition: all var(--transition-speed);
+    }
+
+    .nav-cta:hover {
+      background: var(--color-primary);
+      color: #070b19 !important;
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 15px rgba(0, 245, 155, 0.2);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 0;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 991px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 0 60px;
+        gap: 50px;
+      }
+    }
+
+    .hero-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(0, 245, 155, 0.1);
+      border: 1px solid rgba(0, 245, 155, 0.2);
+      color: var(--color-primary);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+
+    .hero-title {
+      font-size: 56px;
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+    
+    .hero-title span {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Slogan Acronym Highlight Styling */
+    .slogan-box {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .slogan-box span.acronym-letter {
+      color: var(--color-primary);
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(0, 245, 155, 0.4);
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--color-text-muted);
+      margin-bottom: 40px;
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      color: #070b19;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0, 245, 155, 0.3);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 245, 155, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--color-text-main);
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all var(--transition-speed);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Code Panel Showcase */
+    .code-panel {
+      background: #090e1a;
+      border: 1px solid var(--bg-card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      text-align: left;
+    }
+
+    .code-header {
+      background: #0f172a;
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .code-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #eab308; }
+    .dot-green { background: #22c55e; }
+
+    .code-title {
+      color: var(--color-text-muted);
+      font-size: 12px;
+    }
+
+    .code-body {
+      padding: 20px;
+      overflow-x: auto;
+      color: #9cdcfe;
+    }
+
+    .code-body pre {
+      margin: 0;
+      white-space: pre;
+    }
+
+    /* Simple Syntax Highlighting classes */
+    .keyword { color: #569cd6; }
+    .type { color: #4ec9b0; }
+    .string { color: #ce9178; }
+    .comment { color: #6a9955; font-style: italic; }
+    .number { color: #b5cea8; }
+    .method { color: #dcdcaa; }
+
+    /* Interactive 3D Business Card Showcase */
+    .business-card-showcase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-toggle-controls {
+      display: flex;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--bg-card-border);
+      padding: 5px;
+      border-radius: 30px;
+      margin-bottom: 25px;
+    }
+
+    .toggle-btn {
+      background: transparent;
+      border: none;
+      color: var(--color-text-muted);
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .toggle-btn.active {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      color: #070b19;
+      box-shadow: 0 4px 10px rgba(0, 245, 155, 0.2);
+    }
+
+    .card-container {
+      perspective: 1000px;
+      width: 450px;
+      height: 260px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 480px) {
+      .card-container {
+        width: 100%;
+        height: 220px;
+      }
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .card-container.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 30px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+
+    .card-front {
+      background: linear-gradient(135deg, #0e172a 0%, #070b19 100%);
+      text-align: left;
+    }
+
+    /* Glowing accent border on the business card */
+    .card-front::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      border-radius: 16px 16px 0 0;
+    }
+
+    .card-back {
+      background: linear-gradient(135deg, #0b1329 0%, #111a33 100%);
+      transform: rotateY(180deg);
+      text-align: left;
+    }
+
+    .card-back::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+      border-radius: 0 0 16px 16px;
+    }
+
+    /* Card Details formatting */
+    .card-brand {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .card-logo-text {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-text-main);
+    }
+
+    .card-logo-text span {
+      color: var(--color-primary);
+    }
+
+    .card-chip {
+      width: 35px;
+      height: 25px;
+      background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+      border-radius: 4px;
+      opacity: 0.8;
+    }
+
+    .card-slogan {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-text-muted);
+      margin-top: -10px;
+    }
+
+    .card-marketing-list {
+      margin-top: 15px;
+      list-style: none;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 70px;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .card-marketing-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-text-main);
+    }
+
+    .card-marketing-list li::before {
+      content: "✦";
+      color: var(--color-primary);
+      font-size: 10px;
+    }
+
+    .card-footer-front {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Card Back Details */
+    .card-owner {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .card-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text-main);
+    }
+
+    .card-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 15px 0;
+      font-size: 11px;
+      font-family: var(--font-mono);
+    }
+
+    .card-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-text-muted);
+    }
+
+    .card-contact-item strong {
+      color: var(--color-text-main);
+    }
+
+    .card-back-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: var(--color-text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 8px;
+    }
+
+    .card-hint {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Section Styling */
+    .section-title-wrapper {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .section-subtitle {
+      color: var(--color-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--color-text-main);
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+    
+    .section-alt {
+      background: rgba(10, 16, 32, 0.4);
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    /* Grid layout / Metro UI tiles - Glassmorphism style */
+    .metro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    @media (max-width: 991px) {
+      .metro-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .metro-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tile {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 12px;
+      padding: 30px;
+      transition: all var(--transition-speed);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .tile::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(255,255,255,0.06), transparent 40%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .tile:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 245, 155, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 245, 155, 0.06);
+    }
+
+    .tile-icon {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--color-primary);
+      transition: all var(--transition-speed);
+    }
+
+    .tile:hover .tile-icon {
+      background: rgba(0, 245, 155, 0.1);
+      border-color: rgba(0, 245, 155, 0.3);
+      transform: scale(1.05);
+    }
+
+    .tile-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--color-text-main);
+    }
+
+    .tile-desc {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      flex-grow: 1;
+    }
+
+    .tile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 20px;
+    }
+
+    .tile-tag {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      font-size: 11px;
+      color: var(--color-text-muted);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+    }
+
+    /* Products Section Style */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      transition: all var(--transition-speed);
+    }
+
+    .product-card:hover {
+      border-color: rgba(0, 198, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 198, 255, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .product-badge {
+      background: rgba(0, 198, 255, 0.1);
+      border: 1px solid rgba(0, 198, 255, 0.2);
+      color: var(--color-secondary);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      width: fit-content;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .product-title {
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    .product-desc {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      margin-bottom: 25px;
+      flex-grow: 1;
+    }
+
+    .product-features {
+      list-style: none;
+      margin-bottom: 30px;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .product-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .product-features li::before {
+      content: "✓";
+      color: var(--color-secondary);
+      font-weight: bold;
+    }
+
+    .product-link {
+      color: var(--color-text-main);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color var(--transition-speed);
+      width: fit-content;
+    }
+
+    .product-link:hover {
+      color: var(--color-secondary);
+    }
+
+    /* Track Record & Customers Section */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 991px) {
+      .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .clients-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .client-card {
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all var(--transition-speed);
+    }
+
+    .client-card:hover {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .client-logo-placeholder {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      color: var(--color-text-main);
+    }
+
+    .client-logo-placeholder span {
+      color: var(--color-primary);
+    }
+
+    .client-domain {
+      font-size: 11px;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .client-role {
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+
+    /* Founder profile section */
+    .profile-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .profile-card {
+        grid-template-columns: 1fr;
+        padding: 30px;
+        gap: 30px;
+      }
+    }
+
+    .profile-avatar-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .profile-avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 54px;
+      font-weight: 800;
+      color: #070b19;
+      box-shadow: 0 10px 30px rgba(0, 245, 155, 0.2);
+      border: 4px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .profile-name {
+      font-size: 26px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .profile-meta {
+      font-size: 13px;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-align: center;
+      margin-top: -10px;
+    }
+
+    .profile-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .profile-bio p {
+      color: var(--color-text-muted);
+      font-size: 16px;
+    }
+
+    .education-item {
+      border-left: 2px solid var(--color-secondary);
+      padding-left: 15px;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .education-item strong {
+      color: var(--color-text-main);
+    }
+
+    .education-item span {
+      color: var(--color-text-muted);
+      display: block;
+      font-size: 12px;
+    }
+
+    /* Speaking Highlight Banner */
+    .infoshare-banner {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(244, 63, 94, 0.15) 100%);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 25px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .infoshare-badge {
+      background: #ef4444;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-family: var(--font-display);
+    }
+
+    .infoshare-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--color-text-main);
+    }
+
+    .infoshare-desc {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    .infoshare-desc a {
+      color: #ef4444;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .infoshare-desc a:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact & Billing Details */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      padding: 35px;
+    }
+
+    .contact-title {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: var(--color-text-main);
+    }
+
+    .contact-info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-info-item {
+      display: flex;
+      gap: 15px;
+      font-size: 14px;
+    }
+
+    .contact-info-icon {
+      color: var(--color-primary);
+      font-weight: bold;
+    }
+
+    .contact-info-text strong {
+      display: block;
+      color: var(--color-text-main);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 2px;
+    }
+
+    .contact-info-text span, .contact-info-text a {
+      color: var(--color-text-main);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .contact-info-text a:hover {
+      color: var(--color-primary);
+    }
+
+    .billing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      font-family: var(--font-mono);
+      margin-top: 10px;
+    }
+
+    .billing-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      vertical-align: top;
+    }
+
+    .billing-table td.label-cell {
+      color: var(--color-text-muted);
+      width: 120px;
+      font-weight: 500;
+    }
+
+    .billing-table td.val-cell {
+      color: var(--color-text-main);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(7, 11, 25, 0.9);
+      padding: 40px 0;
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+    }
+
+    .footer-text span {
+      color: var(--color-primary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .social-links a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition-speed);
+    }
+
+    .social-links a:hover {
+      color: var(--color-primary);
+    }
+
+    /* Card flip instructions styling */
+    .card-actions-wrapper {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .flip-btn-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--color-text-main);
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .flip-btn-action:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .flip-icon-svg {
+      transition: transform 0.4s;
+    }
+
+    .flip-btn-action:hover .flip-icon-svg {
+      transform: rotate(180deg);
+    }
+
+  </style>
 </head>
-<body background="sourcecode.jpg">
-<h1>TROKA Software</h1>
-<h2>Thorough Research On Key Aspects</h2>
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="work-icon-informatique-musique-cinma-2.png" width="30%" alt="...">
-      <div class="caption">
-        <h3>What we do</h3>
-  <p>High quality, custom-tailored software</p>
-  <p>Numerical, computational and scientific software</p>
-  <p>Software and scientific consultations</p>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="logo-container">
+        <div class="logo-symbol">T</div>
+        <div class="logo-text">TROKA<span>Software</span></div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#about">Focus</a></li>
+          <li><a href="#expertise">Services</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#profile">About Me</a></li>
+          <li><a href="#contact" class="nav-cta">Contact & Invoicing</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="container">
+    <section class="hero">
+      
+      <div class="hero-info">
+        <span class="badge">Elite C# & Algorithmic Trading Specialist</span>
+        <h1 class="hero-title">
+          Engineering High-Performance <span>Software</span> Systems
+        </h1>
+        
+        <!-- TROKA Slogan with highlights -->
+        <div class="slogan-box">
+          <span class="acronym-letter">T</span>horough 
+          <span class="acronym-letter">R</span>esearch 
+          <span class="acronym-letter">O</span>n 
+          <span class="acronym-letter">K</span>ey 
+          <span class="acronym-letter">A</span>spects
+        </div>
+
+        <p class="hero-desc">
+          Providing expert-level backend software architecture, mathematical modeling, and latency-critical computational services. Delivering bespoke, scientific solutions for energy trading markets, ReFi exchanges, and research institutions.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            Hire Expert Consultant
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#profile" class="btn-secondary">View Profile</a>
+        </div>
+      </div>
+
+      <!-- Business Card & Toggle Interactive Showcase -->
+      <div class="business-card-showcase">
+        
+        <!-- Toggle to show Version 1 (with marketing phrases) vs Version 2 (without) -->
+        <div class="card-toggle-controls">
+          <button class="toggle-btn active" id="btn-marketing" onclick="setMarketingMode(true, event)">With Marketing Focus</button>
+          <button class="toggle-btn" id="btn-minimal" onclick="setMarketingMode(false, event)">Minimal Design</button>
+        </div>
+
+        <!-- 3D Flip Card Container -->
+        <div class="card-container" id="business-card" onclick="flipCard()">
+          <div class="card-inner">
+            
+            <!-- Side A: Front -->
+            <div class="card-face card-front">
+              <div class="card-brand">
+                <div>
+                  <div class="card-logo-text">TROKA<span>Software</span></div>
+                  <div class="card-slogan">Thorough Research On Key Aspects</div>
+                </div>
+                <div class="card-chip"></div>
+              </div>
+
+              <!-- Marketing text loaded dynamically or toggled -->
+              <ul class="card-marketing-list" id="marketing-list">
+                <li>Expensive but high quality</li>
+                <li>Custom-tailored software</li>
+                <li>Engineering and scientific solutions</li>
+              </ul>
+
+              <div class="card-footer-front">
+                <span>Business Profile Preview</span>
+                <span>Click to Flip Card</span>
+              </div>
+            </div>
+
+            <!-- Side B: Back -->
+            <div class="card-face card-back">
+              <div class="card-owner">
+                <span class="card-name">dr inż. Paweł Troka</span>
+                <span class="card-title">CEO & Chief Architect</span>
+              </div>
+
+              <div class="card-contacts">
+                <div class="card-contact-item">
+                  <strong>TEL:</strong> <span>+48 725 656 424</span>
+                </div>
+                <div class="card-contact-item">
+                  <strong>EMAIL:</strong> <span>pawel@troka.software</span>
+                </div>
+                <div class="card-contact-item">
+                  <strong>WEB:</strong> <span>troka.software</span>
+                </div>
+                <div class="card-contact-item">
+                  <strong>NIP:</strong> <span>PL5911691508</span>
+                </div>
+              </div>
+
+              <div class="card-back-footer">
+                <span>TROKA Software</span>
+                <span>GDANSK | POLAND</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Help instructions -->
+        <div class="card-actions-wrapper">
+          <div class="card-hint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            <span>Interactive 3D business card</span>
+          </div>
+          <button class="flip-btn-action" onclick="flipCard(); event.stopPropagation();">
+            <svg class="flip-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+            Flip Card
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Code Panel Showcase Section -->
+    <section class="section section-alt" id="about">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">Real-world Technical Focus</span>
+        <h2 class="section-title">Engineered for Absolute Performance</h2>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 50px; align-items: center;">
+        @media (max-width: 991px) {
+          <div style="grid-template-columns: 1fr; gap: 30px;"></div>
+        }
+        <div>
+          <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--color-primary);">Expensive But High Quality</h3>
+          <p style="color: var(--color-text-muted); margin-bottom: 25px; font-size: 16px;">
+            I don't write cheap, generic templates. I deliver institutional-grade backend structures, designed to survive extreme throughput and strict real-time deadlines. By applying rigorous computer-science methodologies, PhD-level mathematics, and absolute attention to detail, my solutions stand the test of time.
+          </p>
+          
+          <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--color-secondary);">Custom-Tailored Software</h3>
+          <p style="color: var(--color-text-muted); margin-bottom: 25px; font-size: 16px;">
+            Your business rules are unique. Standard off-the-shelf software will limit your capability. I specialize in custom-tailoring software specifically around your operations. Whether it's a bespoke algorithmic order-matcher, state-of-the-art telemetry collection, or high-performance financial systems, you get a custom build matching your business down to the byte.
+          </p>
+        </div>
+
+        <!-- Embed real high-performance C# snippet from recent memories (VWAP & Strike Price matching engine logic) -->
+        <div class="code-panel">
+          <div class="code-header">
+            <div class="code-dots">
+              <span class="code-dot dot-red"></span>
+              <span class="code-dot dot-yellow"></span>
+              <span class="code-dot dot-green"></span>
+            </div>
+            <span class="code-title">VwapCalculator.cs</span>
+            <span style="color: #6a9955; font-size: 11px;">C# .NET 8</span>
+          </div>
+          <div class="code-body">
+            <pre><code><span class="keyword">using</span> System;
+<span class="keyword">using</span> System.Collections.Generic;
+
+<span class="keyword">namespace</span> <span class="type">Troka.Software.HighPerformance</span>
+{
+    <span class="comment">/// &lt;summary&gt;</span>
+    <span class="comment">/// High-performance VWAP and Strike Price calculator.</span>
+    <span class="comment">/// Calculates marginal price required to fill volume.</span>
+    <span class="comment">/// &lt;/summary&gt;</span>
+    <span class="keyword">public class</span> <span class="type">VwapCalculator</span> : <span class="type">IVwapCalculator</span>
+    {
+        <span class="keyword">public</span> <span class="type">VwapResult</span> <span class="method">CalculateStrikePrice</span>(
+            <span class="type">ReadOnlySpan</span>&lt;<span class="type">OrderBookLevel</span>&gt; levels, 
+            <span class="type">decimal</span> targetVolume)
+        {
+            <span class="keyword">decimal</span> accumulatedVolume = <span class="number">0</span>;
+            <span class="keyword">decimal</span> accumulatedCost = <span class="number">0</span>;
+            <span class="keyword">decimal</span> strikePrice = <span class="number">0</span>;
+
+            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; levels.Length; i++)
+            {
+                <span class="keyword">ref readonly var</span> level = ref levels[i];
+                <span class="type">decimal</span> volumeToTake = Math.<span class="method">Min</span>(
+                    level.Volume, 
+                    targetVolume - accumulatedVolume
+                );
+
+                accumulatedCost += volumeToTake * level.Price;
+                accumulatedVolume += volumeToTake;
+                strikePrice = level.Price;
+
+                <span class="keyword">if</span> (accumulatedVolume &gt;= targetVolume)
+                {
+                    <span class="keyword">return new</span> <span class="type">VwapResult</span>(
+                        vwap: accumulatedCost / targetVolume,
+                        strikePrice: strikePrice, <span class="comment">// Limit Price</span>
+                        isFullyFilled: <span class="keyword">true</span>
+                    );
+                }
+            }
+            <span class="keyword">return new</span> <span class="type">VwapResult</span>(accumulatedCost / accumulatedVolume, 
+                                  strikePrice, <span class="keyword">false</span>);
+        }
+    }
+}</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Services / What we do (Metro Tiles) -->
+    <section class="section" id="expertise">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">Expert Offerings</span>
+        <h2 class="section-title">Core Competencies</h2>
+      </div>
+
+      <div class="metro-grid">
+        
+        <!-- Tile 1 -->
+        <div class="tile">
+          <div class="tile-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <h3 class="tile-title">High-Performance Backend Architecture</h3>
+          <p class="tile-desc">
+            Designing low-latency, scalable backend engines. Veteran in C# .NET Core/8, high-throughput microservices, distributed messaging (Aeron.NET, RabbitMQ, Redis, NATS), and async thread synchronization.
+          </p>
+          <div class="tile-tags">
+            <span class="tile-tag">C#</span>
+            <span class="tile-tag">.NET 8</span>
+            <span class="tile-tag">Microservices</span>
+            <span class="tile-tag">Docker</span>
+          </div>
+        </div>
+
+        <!-- Tile 2 -->
+        <div class="tile">
+          <div class="tile-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          </div>
+          <h3 class="tile-title">Algorithmic & Automated Trading</h3>
+          <p class="tile-desc">
+            Developing robust order-matching engines, smart trading connectors, and automated execution strategies for energy markets (24/7 intraday EPEX/Nord Pool) and on-chain ReFi exchanges.
+          </p>
+          <div class="tile-tags">
+            <span class="tile-tag">Algo Trading</span>
+            <span class="tile-tag">Energy Market</span>
+            <span class="tile-tag">OrderBook</span>
+            <span class="tile-tag">Low Latency</span>
+          </div>
+        </div>
+
+        <!-- Tile 3 -->
+        <div class="tile">
+          <div class="tile-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <h3 class="tile-title">Scientific & Numerical Solutions</h3>
+          <p class="tile-desc">
+            Leveraging engineering physics and mathematics for complex computations, signal analysis, blade tip-timing, vibration engineering, and numerical physics modeling.
+          </p>
+          <div class="tile-tags">
+            <span class="tile-tag">Numerical Math</span>
+            <span class="tile-tag">Signal Processing</span>
+            <span class="tile-tag">Python NumPy</span>
+            <span class="tile-tag">C++</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Products & Open Source Projects -->
+    <section class="section section-alt" id="products">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">Proven Software Products</span>
+        <h2 class="section-title">Products & Contributions</h2>
+      </div>
+
+      <div class="products-grid">
+        
+        <!-- Product 1: Computator.NET -->
+        <div class="product-card">
+          <span class="product-badge">Open Source Project</span>
+          <h3 class="product-title">Computator.NET</h3>
+          <p class="product-desc">
+            A fast, high-quality numerical analysis application built for scientists, engineers, and educators. Supports complex equations, multi-variable calculus, 3D visualizations, and custom scripting notation.
+          </p>
+          <ul class="product-features">
+            <li>100+ elementary functions & 140+ special mathematical functions</li>
+            <li>Interactive 2D & 3D real and complex function plotting</li>
+            <li>Custom high-speed mathematical scripting language</li>
+            <li>Highly rated desktop app converted for Modern UWP / Windows Store</li>
+          </ul>
+          <a href="https://github.com/PawelTroka/Computator.NET" target="_blank" class="product-link">
+            Explore Computator.NET on GitHub
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- Product 2: Fizyka Dla Kazdego -->
+        <div class="product-card">
+          <span class="product-badge">Educational Resource</span>
+          <h3 class="product-title">Fizyka Dla Każdego</h3>
+          <p class="product-desc">
+            A popular, customized educational portal targeting Polish students and enthusiasts. Promotes basic and advanced physics principles, breaking down complex mathematical formulations into intuitive, readable, and highly visual modules.
+          </p>
+          <ul class="product-features">
+            <li>Interactive mechanics and optics simulation guides</li>
+            <li>Structured syllabuses from secondary school to university level</li>
+            <li>Promotes science outreach and science-focused business ethics</li>
+            <li>High search visibility on the Polish internet</li>
+          </ul>
+          <a href="http://fizyka.dk" target="_blank" class="product-link">
+            Visit Fizyka Dla Każdego (fizyka.dk)
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Track Record / Sectors -->
+    <section class="section">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">Where I Deliver Value</span>
+        <h2 class="section-title">Industry Track Record</h2>
+      </div>
+
+      <div class="clients-grid">
+        
+        <div class="client-card">
+          <div class="client-logo-placeholder">Axpo<span>Group</span></div>
+          <div class="client-domain">Energy Trading</div>
+          <div class="client-role">External Tech Lead (MACH+)</div>
+        </div>
+
+        <div class="client-card">
+          <div class="client-logo-placeholder">Neutral<span>Inc</span></div>
+          <div class="client-domain">Regenerative Finance</div>
+          <div class="client-role">Backend Dev Lead (Exchange)</div>
+        </div>
+
+        <div class="client-card">
+          <div class="client-logo-placeholder">Volue<span>/ Powel</span></div>
+          <div class="client-domain">Automated Trading</div>
+          <div class="client-role">Architect & Team Leader</div>
+        </div>
+
+        <div class="client-card">
+          <div class="client-logo-placeholder">PAN<span>IMP</span></div>
+          <div class="client-domain">Scientific R&D</div>
+          <div class="client-role">Research Assistant</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Founder Biography (Personnel) -->
+    <section class="section section-alt" id="profile">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">The Mind Behind The Code</span>
+        <h2 class="section-title">Founder & Chief Engineer</h2>
+      </div>
+
+      <div class="profile-card">
+        
+        <div class="profile-avatar-wrapper">
+          <div class="profile-avatar">PT</div>
+          <h3 class="profile-name">Paweł Troka, PhD Eng</h3>
+          <span class="profile-meta">Independent Consultant</span>
+          
+          <a href="PawelTroka-CV2025-11v2.pdf" download class="btn-primary" style="margin-top: 15px; padding: 10px 20px; font-size: 14px;">
+            Download CV (PDF)
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <div class="profile-bio">
+          <p>
+            I am a passionate software engineering leader & architect, combining high-end computer science mastery with deep scientific roots. I hold a <strong>Ph.D. in Mechanical Engineering</strong> from the Polish Academy of Sciences, specialized in numerical algorithms and signal-timing analysis, alongside degrees in <strong>Computer Science</strong> and <strong>Engineering Physics</strong>.
+          </p>
+          <p>
+            For over a decade, I have driven complex software architectures in the automated 24/7 intraday energy trading sector (Scandinavia & Western Europe), Web3/ReFi order book engines, and high-performance scientific simulations. I have managed multi-national development teams and specialized in low-latency systems.
+          </p>
+
+          <div>
+            <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Academic & Engineering Background</h4>
+            <div class="education-item">
+              <strong>PhD Eng. in Mechanical Engineering (Machine Design)</strong>
+              The Szewalski Institute of Fluid-Flow Machinery, Polish Academy of Sciences (2016 - 2021)
+              <span>Graduated with highest grades and honors for blade vibration numerical models.</span>
+            </div>
+            <div class="education-item">
+              <strong>MEng & Eng. in Computer Science (Informatics)</strong>
+              Gdańsk University of Technology (2011 - 2016)
+              <span>Specialized in algorithms, high-throughput web protocols, and distributed computing.</span>
+            </div>
+            <div class="education-item">
+              <strong>Eng. in Engineering Physics</strong>
+              Gdańsk University of Technology (2010 - 2014)
+              <span>Solid foundation in computational physics, mathematics, and advanced scientific analysis.</span>
+            </div>
+          </div>
+
+          <!-- Infoshare speaking detail -->
+          <div class="infoshare-banner">
+            <span class="infoshare-badge">Infoshare Speaker</span>
+            <div>
+              <h4 class="infoshare-title">Invited Speaker at CEE's Largest Tech Stage (Infoshare 2022)</h4>
+              <p class="infoshare-desc">
+                Represented Volue on the prime-time <strong>AdvancedDev Red Stage</strong>. Shared expert insights on building high-performance, low-latency communication in microservice architectures utilizing Aeron.NET. 
+                Read my bio on <a href="https://infoshare.pl/conference/speakers/#speaker1828" target="_blank">Infoshare</a> or access my original <a href="https://infoshare.pl/conference/agenda/#talk655-4" target="_blank">talk details</a>.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact & Billing Info -->
+    <section class="section" id="contact">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">Get In Touch</span>
+        <h2 class="section-title">Contact & Professional Services</h2>
+      </div>
+
+      <div class="contact-grid">
+        
+        <!-- Left panel: Contact Details -->
+        <div class="contact-card">
+          <h3 class="contact-title">Direct Communication</h3>
+          <ul class="contact-info-list">
+            <li class="contact-info-item">
+              <span class="contact-info-icon">✉</span>
+              <div class="contact-info-text">
+                <strong>Email Address</strong>
+                <a href="mailto:pawel@troka.software">pawel@troka.software</a>
+                <span style="display: block; font-size: 12px; color: var(--color-text-muted);">Secondary: pawel.troka@outlook.com</span>
+              </div>
+            </li>
+            <li class="contact-info-item">
+              <span class="contact-info-icon">☎</span>
+              <div class="contact-info-text">
+                <strong>Direct Mobile</strong>
+                <a href="tel:+48725656424">+48 725 656 424</a>
+              </div>
+            </li>
+            <li class="contact-info-item">
+              <span class="contact-info-icon">📍</span>
+              <div class="contact-info-text">
+                <strong>Main Office Address</strong>
+                <span>Józefa Wybickiego 9, 83-404 Nowa Karczma, Poland</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right panel: Invoice & Billing Info -->
+        <div class="contact-card">
+          <h3 class="contact-title">Invoicing & Company Details</h3>
+          <table class="billing-table">
+            <tr>
+              <td class="label-cell">Company Name</td>
+              <td class="val-cell">TROKA Software Paweł Troka</td>
+            </tr>
+            <tr>
+              <td class="label-cell">Address</td>
+              <td class="val-cell">Józefa Wybickiego 9<br>83-404 Nowa Karczma, Poland</td>
+            </tr>
+            <tr>
+              <td class="label-cell">VAT ID (NIP)</td>
+              <td class="val-cell">PL5911691508</td>
+            </tr>
+            <tr>
+              <td class="label-cell">REGON</td>
+              <td class="val-cell">364528510</td>
+            </tr>
+            <tr>
+              <td class="label-cell">EORI</td>
+              <td class="val-cell">PL591169150800000</td>
+            </tr>
+            <tr>
+              <td class="label-cell">mBank PLN/EUR</td>
+              <td class="val-cell">39 1140 2004 0000 3202 7862 1005</td>
+            </tr>
+            <tr>
+              <td class="label-cell">Deutsche Bank</td>
+              <td class="val-cell">79 1910 1048 2623 6857 5656 0001</td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-text">
+        &copy; 2026 <strong>TROKA Software</strong>. All Rights Reserved. Crafted with <span>✦</span> for High Performance.
+      </div>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paweltroka/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/PawelTroka" target="_blank">GitHub</a>
+        <a href="http://troka.software">Website</a>
       </div>
     </div>
-  </div>
-</div>
-<!--
-<div class="jumbotron">
-  <h3>What we do</h3>
-  <p>High quality, custom-tailored software</p>
-  <p>Numerical, computational and scientific software</p>
-  <p>Software and scientific consultations</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-</div>
--->
+  </footer>
+
+  <!-- Interactive script for Business Card toggling and 3D flip -->
+  <script>
+    // 3D Card flip control
+    function flipCard() {
+      const card = document.getElementById('business-card');
+      card.classList.toggle('flipped');
+    }
+
+    // Dynamic Business Card content toggle (Marketing list vs Minimalist)
+    function setMarketingMode(showMarketing, event) {
+      if (event) {
+        event.stopPropagation(); // Avoid triggering card flip on clicking toggle button
+      }
+      
+      const btnMarketing = document.getElementById('btn-marketing');
+      const btnMinimal = document.getElementById('btn-minimal');
+      const marketingList = document.getElementById('marketing-list');
+
+      if (showMarketing) {
+        btnMarketing.classList.add('active');
+        btnMinimal.classList.remove('active');
+        marketingList.style.opacity = '1';
+        marketingList.innerHTML = `
+          <li>Expensive but high quality</li>
+          <li>Custom-tailored software</li>
+          <li>Engineering and scientific solutions</li>
+        `;
+      } else {
+        btnMarketing.classList.remove('active');
+        btnMinimal.classList.add('active');
+        marketingList.style.opacity = '0';
+        setTimeout(() => {
+          if (!btnMarketing.classList.contains('active')) {
+            marketingList.innerHTML = `
+              <li style="visibility: hidden;">Placeholder space</li>
+              <li style="visibility: hidden;">Placeholder space</li>
+              <li style="visibility: hidden;">Placeholder space</li>
+            `;
+          }
+        }, 150); // Small delay to clear list content smoothly after fade-out
+      }
+    }
+
+    // Metro Reveal Effect logic: Mouse pointer tracking for card hover glowing highlights
+    const tiles = document.querySelectorAll('.tile, .product-card');
+    tiles.forEach(tile => {
+      tile.addEventListener('mousemove', e => {
+        const rect = tile.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        tile.style.setProperty('--x', `${x}px`);
+        tile.style.setProperty('--y', `${y}px`);
+      });
+    });
+  </script>
 </body>
 </html>
