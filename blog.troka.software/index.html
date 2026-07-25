@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TROKA Software - Tech Lead & Concurrency Specialist</title>
+  <title>TROKA Software - Lead Software Engineer & Architect</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1624,11 +1624,11 @@
     }
 
     .lightbox-prev {
-      left: -24px;
+      left: 20px;
     }
 
     .lightbox-next {
-      right: -24px;
+      right: 20px;
     }
 
     @media (max-width: 768px) {
@@ -1638,10 +1638,10 @@
         font-size: 16px;
       }
       .lightbox-prev {
-        left: 5px;
+        left: 10px;
       }
       .lightbox-next {
-        right: 5px;
+        right: 10px;
       }
     }
 
@@ -1772,9 +1772,9 @@
     <section class="hero">
       
       <div class="hero-info">
-        <span class="badge">Tech Lead & Concurrency Specialist</span>
+        <span class="badge">Lead Software Engineer & Architect</span>
         <h1 class="hero-title">
-          Engineering Ultra-High Performance <span>Software</span>
+          Engineering High-Performance, Low-Latency <span>Software</span>
         </h1>
         
         <!-- TROKA Slogan with highlights -->
@@ -1799,38 +1799,39 @@
         </div>
       </div>
 
-      <!-- Business Card & Toggle Interactive Showcase -->
+      <!-- Business Card Interactive Showcase -->
       <div class="business-card-showcase">
-        
-        <!-- Toggle to show Version 1 (with marketing phrases) vs Version 2 (without) -->
-        <div class="card-toggle-controls">
-          <button class="toggle-btn active" id="btn-marketing" onclick="setMarketingMode(true, event)">With Marketing Focus</button>
-          <button class="toggle-btn" id="btn-minimal" onclick="setMarketingMode(false, event)">Minimal Design</button>
-        </div>
 
         <!-- 3D Flip Card Container -->
         <div class="card-container" id="business-card" onclick="flipCard()">
           <div class="card-inner">
             
             <!-- Side A: Front -->
-            <div class="card-face card-front">
-              <div class="card-brand">
-                <div>
-                  <div class="card-logo-text">TROKA Software</div>
-                  <div class="card-slogan">Thorough Research On Key Aspects</div>
+            <div class="card-face card-front" style="padding: 24px;">
+              <div style="display: flex; gap: 15px; align-items: center;">
+                <img src="portrait.jpg" alt="Paweł Troka" style="width: 65px; height: 65px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-primary); box-shadow: 0 0 10px rgba(0,245,155,0.25);">
+                <div style="flex-grow: 1;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                      <div class="card-name-text" style="font-family: var(--font-display); font-size: 19px; font-weight: 800; color: var(--color-text-main); line-height: 1.2;">Paweł Troka, PhD Eng</div>
+                      <div class="card-sub-text" style="color: var(--color-secondary); font-size: 11.5px; font-weight: 600; margin-top: 1px;">Lead Software Engineer & Architect</div>
+                    </div>
+                    <div style="font-family: var(--font-display); font-size: 9px; font-weight: 800; color: var(--color-text-muted); text-transform: uppercase; border: 1px solid rgba(255,255,255,0.15); padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px; white-space: nowrap; margin-top: 2px;">
+                      TROKA Software
+                    </div>
+                  </div>
                 </div>
-                <div class="card-chip"></div>
               </div>
 
-              <!-- Marketing text loaded dynamically or toggled -->
-              <ul class="card-marketing-list" id="marketing-list">
+              <!-- Marketing text -->
+              <ul class="card-marketing-list" id="marketing-list" style="margin-top: 10px; list-style: none; font-size: 12px; display: flex; flex-direction: column; gap: 6px;">
                 <li>Elite Grade Quality</li>
                 <li>Custom-tailored software</li>
                 <li>Engineering and scientific solutions</li>
               </ul>
 
-              <div class="card-footer-front">
-                <span>Business Profile Preview</span>
+              <div class="card-footer-front" style="margin-top: 10px;">
+                <span>Professional Profile Preview</span>
                 <span>Click to Flip Card</span>
               </div>
             </div>
@@ -1916,62 +1917,42 @@
           <div class="code-body">
             <pre><code><span class="keyword">using</span> System;
 <span class="keyword">using</span> System.Runtime.CompilerServices;
-<span class="keyword">using</span> System.Runtime.InteropServices;
 <span class="keyword">using</span> System.Threading;
 <span class="keyword">using</span> System.Runtime.Intrinsics;
+<span class="keyword">using</span> System.Runtime.Intrinsics.X86;
 
-<span class="keyword">namespace</span> <span class="type">TROKASoftware.HighPerformance</span>
+<span class="keyword">namespace</span> <span class="type">TROKA.Software</span>
 {
-    <span class="comment">/// &lt;summary&gt;</span>
-    <span class="comment">/// Low-latency order dispatcher. Suspends GC cycles,</span>
-    <span class="comment">/// busy-waits on volatile shared memory, and routes trades.</span>
-    <span class="comment">/// &lt;/summary&gt;</span>
-    <span class="keyword">public sealed unsafe class</span> <span class="type">LowLatencyOrderDispatcher</span> : <span class="type">IDisposable</span>
+    <span class="keyword">public sealed unsafe class</span> <span class="type">LowLatencyProcessor</span>
     {
-        <span class="keyword">private readonly</span> <span class="type">ConcurrentValueSortedDictionary</span>&lt;<span class="type">long</span>, <span class="type">OrderLevel</span>&gt; _orderBook;
-        <span class="keyword">private readonly</span> <span class="type">byte</span>* _sharedMemoryBuffer;
-        <span class="keyword">private readonly</span> <span class="type">int</span> _spinWaitCycles;
-        <span class="keyword">private</span> <span class="type">bool</span> _inNoGCRegion;
+        <span class="keyword">private readonly</span> <span class="type">LockFreeRingBuffer</span>&lt;<span class="type">SignalTick</span>&gt; _ring;
+        <span class="keyword">private readonly</span> <span class="type">double</span>* _weights;
 
-        [<span class="type">MethodImpl</span>(<span class="type">MethodImplOptions</span>.AggressiveOptimization | <span class="type">MethodImplOptions</span>.AggressiveInlining)]
-        <span class="keyword">public void</span> <span class="method">DispatchAggressively</span>(<span class="type">long</span> targetVolume, <span class="type">decimal</span> limitPrice)
+        [<span class="type">MethodImpl</span>(<span class="type">MethodImplOptions</span>.AggressiveOptimization)]
+        <span class="keyword">public void</span> <span class="method">ProcessBatch</span>(<span class="type">double</span>* output, <span class="type">int</span> length)
         {
-            <span class="comment">// Prevent Garbage Collector latency spikes during active hot path</span>
-            <span class="keyword">if</span> (!_inNoGCRegion &amp;&amp; <span class="type">GC</span>.<span class="method">TryStartNoGCRegion</span>(<span class="number">1024</span> * <span class="number">1024</span> * <span class="number">64</span>, <span class="keyword">true</span>))
-            {
-                _inNoGCRegion = <span class="keyword">true</span>;
-            }
-
+            <span class="comment">// 1. Suspend GC latency spikes during hot-path execution</span>
+            <span class="type">GC</span>.<span class="method">TryStartNoGCRegion</span>(<span class="number">1024</span> * <span class="number">1024</span> * <span class="number">64</span>, <span class="keyword">true</span>);
             <span class="keyword">try</span>
             {
-                <span class="comment">// Busy-wait polling raw shared memory ticks using hardware spin wait</span>
-                <span class="type">int</span> spinAttempts = <span class="number">0</span>;
-                <span class="keyword">while</span> (<span class="type">Volatile</span>.<span class="method">Read</span>(<span class="keyword">ref</span> _sharedMemoryBuffer[<span class="number">0</span>]) == <span class="number">0</span>)
-                {
-                    <span class="keyword">if</span> (++spinAttempts &gt; _spinWaitCycles)
-                    {
-                        <span class="type">Thread</span>.<span class="method">SpinWait</span>(<span class="number">64</span>); <span class="comment">// Low-level CPU pause instruction</span>
-                        spinAttempts = <span class="number">0</span>;
-                    }
-                }
+                <span class="type">SignalTick</span> tick;
+                <span class="comment">// 2. Lock-free busy-waiting on ring buffer (PAUSE instruction yield)</span>
+                <span class="keyword">while</span> (!_ring.<span class="method">TryDequeue</span>(<span class="keyword">out</span> tick)) <span class="type">Thread</span>.<span class="method">SpinWait</span>(<span class="number">64</span>);
 
-                <span class="comment">// Lock-optimized retrieval from sorted concurrent structures</span>
-                <span class="keyword">ref var</span> bestLevel = <span class="keyword">ref</span> _orderBook.<span class="method">GetRef</span>(limitPrice);
-                
-                <span class="comment">// Execute direct zero-copy Aeron publishing or direct IPC transmission</span>
-                <span class="keyword">if</span> (bestLevel.Volume &gt;= targetVolume)
+                <span class="type">double</span>* raw = tick.RawDataPointer;
+                <span class="type">int</span> i = <span class="number">0</span>;
+
+                <span class="comment">// 3. AVX2 & FMA SIMD vectorized kernel</span>
+                <span class="keyword">for</span> (; i &lt;= length - <span class="number">4</span>; i += <span class="number">4</span>)
                 {
-                    <span class="method">TransmitDirect</span>(_sharedMemoryBuffer + <span class="number">8</span>, <span class="type">sizeof</span>(<span class="type">OrderRequest</span>));
+                    <span class="keyword">var</span> sig = <span class="type">Avx</span>.<span class="method">LoadVector256</span>(raw + i);
+                    <span class="keyword">var</span> w = <span class="type">Avx</span>.<span class="method">LoadVector256</span>(_weights + i);
+                    <span class="keyword">var</span> acc = <span class="type">Avx</span>.<span class="method">LoadVector256</span>(output + i);
+                    <span class="type">Avx</span>.<span class="method">Store</span>(output + i, <span class="type">Fma</span>.<span class="method">MultiplyAdd</span>(sig, w, acc));
                 }
+                <span class="keyword">for</span> (; i &lt; length; i++) output[i] += raw[i] * _weights[i];
             }
-            <span class="keyword">finally</span>
-            {
-                <span class="keyword">if</span> (_inNoGCRegion)
-                {
-                    <span class="type">GC</span>.<span class="method">EndNoGCRegion</span>();
-                    _inNoGCRegion = <span class="keyword">false</span>;
-                }
-            }
+            <span class="keyword">finally</span> { <span class="type">GC</span>.<span class="method">EndNoGCRegion</span>(); }
         }
     }
 }</code></pre>
@@ -2083,6 +2064,12 @@
               <li>Integrated ChatGPT/OpenAI APIs for intelligent analytics</li>
               <li>Continuous deployment managed via ArgoCD on containerized Kubernetes</li>
             </ul>
+            <div class="portfolio-links-wrapper" style="margin-bottom: 20px;">
+              <a href="https://www.neutralx.com/" target="_blank" class="portfolio-btn-link">
+                Visit neutralx.com
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
           </div>
           <div>
             <div class="portfolio-tech-tags">
@@ -2145,6 +2132,12 @@
               <li>Real-time order book execution, trade logging, and telemetry</li>
               <li>Scalable execution engine using Kubernetes container clusters</li>
             </ul>
+            <div class="portfolio-links-wrapper" style="margin-bottom: 20px;">
+              <a href="https://www.volue.com/news/uniper-automates-trading-volue-algo-trader" target="_blank" class="portfolio-btn-link">
+                Uniper Case Study (volue.com)
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
           </div>
           <div>
             <div class="portfolio-tech-tags">
@@ -2218,6 +2211,10 @@
                 Source Code (GitHub)
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
+              <a href="https://www.microsoft.com/store/apps/9NBLGGH43GHS" target="_blank" class="portfolio-btn-link">
+                Microsoft Store App
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
             </div>
           </div>
         </div>
@@ -2239,7 +2236,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">Axpo Group</span>
+              <span class="timeline-company"><a href="https://www.axpo.com" target="_blank" style="color: inherit; text-decoration: none;">Axpo Group</a></span>
               <div class="timeline-role">Tech Lead</div>
             </div>
             <span class="timeline-date">06/2025 - Present</span>
@@ -2262,7 +2259,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">Axpo Group</span>
+              <span class="timeline-company"><a href="https://www.axpo.com" target="_blank" style="color: inherit; text-decoration: none;">Axpo Group</a></span>
               <div class="timeline-role">Senior Full Stack Developer</div>
             </div>
             <span class="timeline-date">08/2024 - 05/2025</span>
@@ -2283,7 +2280,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">Neutral Labs Inc.</span>
+              <span class="timeline-company"><a href="https://www.neutralx.com" target="_blank" style="color: inherit; text-decoration: none;">Neutral Labs Inc.</a></span>
               <div class="timeline-role">Lead Software Engineer</div>
             </div>
             <span class="timeline-date">03/2023 - 07/2024</span>
@@ -2308,7 +2305,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">Volue AS</span>
+              <span class="timeline-company"><a href="https://www.volue.com" target="_blank" style="color: inherit; text-decoration: none;">Volue AS</a></span>
               <div class="timeline-role">Development Owner & Software Architect</div>
             </div>
             <span class="timeline-date">02/2020 - 04/2023</span>
@@ -2332,7 +2329,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">Powel AS</span>
+              <span class="timeline-company"><a href="https://www.volue.com" target="_blank" style="color: inherit; text-decoration: none;">Powel AS</a></span>
               <div class="timeline-role">Team Lead & Senior Software Engineer</div>
             </div>
             <span class="timeline-date">08/2017 - 03/2020</span>
@@ -2354,7 +2351,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">Powel AS</span>
+              <span class="timeline-company"><a href="https://www.volue.com" target="_blank" style="color: inherit; text-decoration: none;">Powel AS</a></span>
               <div class="timeline-role">Software Engineer</div>
             </div>
             <span class="timeline-date">06/2016 - 09/2017</span>
@@ -2375,7 +2372,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <div>
-              <span class="timeline-company">The Szewalski Institute of Fluid-Flow Machinery, Polish Academy of Sciences</span>
+              <span class="timeline-company"><a href="https://www.imp.gda.pl" target="_blank" style="color: inherit; text-decoration: none;">The Szewalski Institute of Fluid-Flow Machinery, Polish Academy of Sciences</a></span>
               <div class="timeline-role">Research Assistant</div>
             </div>
             <span class="timeline-date">09/2013 - 05/2024</span>
@@ -2424,22 +2421,22 @@
             <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Academic Credentials</h4>
             <div class="education-item">
               <strong>PhD degree in Mechanical Engineering</strong>
-              The Szewalski Institute of Fluid-Flow Machinery, Polish Academy of Sciences (2016 - 2021)
+              <a href="https://www.imp.gda.pl" target="_blank" style="color: inherit; text-decoration: none;">The Szewalski Institute of Fluid-Flow Machinery, Polish Academy of Sciences</a> (2016 - 2021)
               <span>Graduated with honors for development of blade tip-timing turbine numerical models.</span>
             </div>
             <div class="education-item">
               <strong>Master's Degree in Computer Science</strong>
-              Gdańsk University of Technology (2015 - 2016)
+              <a href="https://pg.edu.pl" target="_blank" style="color: inherit; text-decoration: none;">Gdańsk University of Technology</a> (2015 - 2016)
               <span>Thesis focused on advanced algorithms and internet architectures.</span>
             </div>
             <div class="education-item">
               <strong>Engineer's Degree in Computer Science</strong>
-              Gdańsk University of Technology (2011 - 2015)
+              <a href="https://pg.edu.pl" target="_blank" style="color: inherit; text-decoration: none;">Gdańsk University of Technology</a> (2011 - 2015)
               <span>Core training in systems engineering, algorithms, and databases.</span>
             </div>
             <div class="education-item">
               <strong>Engineer's Degree in Technical Physics</strong>
-              Gdańsk University of Technology (2010 - 2014)
+              <a href="https://pg.edu.pl" target="_blank" style="color: inherit; text-decoration: none;">Gdańsk University of Technology</a> (2010 - 2014)
               <span>Mathematical physics modeling and analytical calculus.</span>
             </div>
           </div>
@@ -2458,7 +2455,7 @@
             <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Management Credentials</h4>
             <div class="education-item" style="border-left-color: var(--color-primary);">
               <strong>Leadership Development Program</strong>
-              execu.no, Kristiansand, Norway (2021)
+              <a href="https://execu.no" target="_blank" style="color: var(--color-secondary); text-decoration: none;">execu.no</a>, Kristiansand, Norway (2021)
               <span>Specialized remote management frameworks, agile coaching, and collaborative engineering.</span>
             </div>
           </div>
@@ -2470,7 +2467,7 @@
               <div class="honor-item">
                 <div>
                   <span class="honor-issuer">TG.NET</span>
-                  <div class="honor-title">Speaker at #137 TG-NET Meeting</div>
+                  <div class="honor-title">Speaker at #137 TG-NET Meeting <br> <a href="https://www.meetup.com/pl-PL/tg-net/events/289213525/" target="_blank" style="color: var(--color-primary); text-decoration: none; font-size: 12px;">[View Meetup Details]</a></div>
                 </div>
                 <span class="honor-date">11/2022</span>
               </div>
@@ -2481,10 +2478,10 @@
                 </div>
                 <span class="honor-date">10/2022</span>
               </div>
-              <div class="honor-item">
+              <div class="honor-item" style="cursor: zoom-in;" onclick="openLightboxImage('conference-talk-about-kubernetes.jpg', 'Paweł Troka presenting on Kubernetes at Scandinavian IT Night 3city 2018')">
                 <div>
                   <span class="honor-issuer">Scandinavian IT Night</span>
-                  <div class="honor-title">Speaker at Scandinavian IT Night 3city</div>
+                  <div class="honor-title">Speaker at Scandinavian IT Night 3city <span style="font-size: 11px; color: var(--color-primary); margin-left: 6px;">✦ Click to view photo</span></div>
                 </div>
                 <span class="honor-date">12/2018</span>
               </div>
@@ -2516,13 +2513,13 @@
           <div>
             <h4 style="margin-bottom: 12px; color: var(--color-text-main); font-size: 16px;">Academic Publications</h4>
             <div class="education-item">
-              <strong>Nonsynchronous Rotor Blade Vibrations in Last Stage of 380 MW LP Steam Turbine at Various Condenser Pressures</strong> (Applied Sciences, 2022)
+              <strong>Nonsynchronous Rotor Blade Vibrations in Last Stage of 380 MW LP Steam Turbine at Various Condenser Pressures</strong> (Applied Sciences, 2022) <br> <a href="https://doi.org/10.3390/app12104884" target="_blank" style="color: var(--color-primary); text-decoration: none; font-size: 13px; font-family: var(--font-mono);">[View Scientific Paper - DOI]</a>
             </div>
             <div class="education-item">
               <strong>New blade tip-timing system for measuring rotor blade vibration of steam and gas turbines</strong> (XIV Research & Development in Power Engineering, 2019)
             </div>
             <div class="education-item">
-              <strong>Tip-Timing Measurements and Numerical Analysis of Last-Stage Steam Turbine Mistuned Bladed Disc During Run-Down</strong> (Journal of Vibration Engineering & Technologies, 2019)
+              <strong>Tip-Timing Measurements and Numerical Analysis of Last-Stage Steam Turbine Mistuned Bladed Disc During Run-Down</strong> (Journal of Vibration Engineering & Technologies, 2019) <br> <a href="https://ui.adsabs.harvard.edu/abs/2019E3SWC.13701040K/abstract" target="_blank" style="color: var(--color-primary); text-decoration: none; font-size: 13px; font-family: var(--font-mono);">[View Publication Abstract]</a>
             </div>
             <div class="education-item">
               <strong>Analysis of Middle Bearing Failure in Rotor Jet Engine Using Tip-Timing and RMS Technique</strong> (Journal of Vibration Engineering & Technologies, 2016)
@@ -2535,7 +2532,7 @@
           <!-- Skills, Traits, Languages lists direct from CV -->
           <div class="tags-section-grid">
             <div class="tags-card">
-              <h4>CV Core Skills</h4>
+              <h4>Core Skills</h4>
               <div class="tag-cloud">
                 <span class="cloud-tag">C#</span>
                 <span class="cloud-tag">.NET</span>
@@ -2591,8 +2588,8 @@
           <div class="infoshare-presentation-card">
             <span class="infoshare-badge">Infoshare Speaker</span>
             <div class="infoshare-pres-grid">
-              <div class="infoshare-img-wrapper" onclick="openLightboxImage('conference-talk-about-kubernetes.jpg', 'Paweł Troka presenting on Aeron.NET at Infoshare 2022')">
-                <img src="conference-talk-about-kubernetes.jpg" class="infoshare-img" alt="Paweł presenting Aeron.NET">
+              <div class="infoshare-img-wrapper" onclick="openLightboxImage('infoshare.jpg', 'Paweł Troka presenting on Aeron.NET at Infoshare 2022')">
+                <img src="infoshare.jpg" class="infoshare-img" alt="Paweł presenting Aeron.NET">
               </div>
               <div>
                 <h4 class="infoshare-title" style="margin-top:0;">Infoshare 2022 Stage Speaker</h4>
@@ -2700,6 +2697,10 @@
               <td class="label-cell">Erste Bank</td>
               <td class="val-cell">79 1910 1048 2623 6857 5656 0001</td>
             </tr>
+            <tr>
+              <td class="label-cell">Upwork Profile</td>
+              <td class="val-cell"><a href="https://www.upwork.com/freelancers/~01aa4eb5076bb7bc4c" target="_blank" style="color: var(--color-primary); text-decoration: none; font-family: var(--font-mono);">pawel-troka-upwork</a></td>
+            </tr>
           </table>
         </div>
 
@@ -2710,9 +2711,9 @@
   <!-- Lightbox Modal (Enlarged view improvements with slider) -->
   <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
     <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <button class="lightbox-nav-btn lightbox-prev" id="lightbox-prev-btn" onclick="prevLightboxImage(event)">&#10094;</button>
-    <button class="lightbox-nav-btn lightbox-next" id="lightbox-next-btn" onclick="nextLightboxImage(event)">&#10095;</button>
     <div class="lightbox-container" onclick="event.stopPropagation()">
+      <button class="lightbox-nav-btn lightbox-prev" id="lightbox-prev-btn" onclick="prevLightboxImage(event)">&#10094;</button>
+      <button class="lightbox-nav-btn lightbox-next" id="lightbox-next-btn" onclick="nextLightboxImage(event)">&#10095;</button>
       <div class="lightbox-img-wrapper">
         <img class="lightbox-img" id="lightbox-img" src="" alt="Zoomed view">
       </div>
@@ -2729,6 +2730,7 @@
       <div class="social-links">
         <a href="https://www.linkedin.com/in/paweltroka/" target="_blank">LinkedIn</a>
         <a href="https://github.com/PawelTroka" target="_blank">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01aa4eb5076bb7bc4c" target="_blank">Upwork</a>
         <a href="http://troka.software">Website</a>
       </div>
     </div>
@@ -2742,40 +2744,7 @@
       card.classList.toggle('flipped');
     }
 
-    // Dynamic Business Card content toggle (Marketing list vs Minimalist)
-    function setMarketingMode(showMarketing, event) {
-      if (event) {
-        event.stopPropagation(); // Avoid triggering card flip on clicking toggle button
-      }
-      
-      const btnMarketing = document.getElementById('btn-marketing');
-      const btnMinimal = document.getElementById('btn-minimal');
-      const marketingList = document.getElementById('marketing-list');
 
-      if (showMarketing) {
-        btnMarketing.classList.add('active');
-        btnMinimal.classList.remove('active');
-        marketingList.style.opacity = '1';
-        marketingList.innerHTML = `
-          <li>Elite Grade Quality</li>
-          <li>Custom-tailored software</li>
-          <li>Engineering and scientific solutions</li>
-        `;
-      } else {
-        btnMarketing.classList.remove('active');
-        btnMinimal.classList.add('active');
-        marketingList.style.opacity = '0';
-        setTimeout(() => {
-          if (!btnMarketing.classList.contains('active')) {
-            marketingList.innerHTML = `
-              <li style="visibility: hidden;">Placeholder space</li>
-              <li style="visibility: hidden;">Placeholder space</li>
-              <li style="visibility: hidden;">Placeholder space</li>
-            `;
-          }
-        }, 150); // Small delay to clear list content smoothly after fade-out
-      }
-    }
 
     // Product Galleries definitions for Lightbox Navigation
     const galleries = {
@@ -2833,9 +2802,9 @@
       const gallery = galleries[currentGalleryId];
       if (!gallery) return;
 
-      // Find current index based on active thumbnail image path
-      const activeThumb = document.querySelector('#' + currentGalleryId + ' .thumb-btn.active img');
-      const activeSrc = activeThumb ? activeThumb.getAttribute('src') : gallery[0].src;
+      // Find current index based on the currently displayed preview image path
+      const mainPreviewImg = document.getElementById(currentGalleryId + '-main');
+      const activeSrc = mainPreviewImg ? mainPreviewImg.getAttribute('src') : gallery[0].src;
       
       currentImageIndex = gallery.findIndex(item => item.src === activeSrc);
       if (currentImageIndex === -1) currentImageIndex = 0;
