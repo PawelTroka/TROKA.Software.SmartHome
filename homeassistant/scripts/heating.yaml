@@ -10,28 +10,28 @@ turn_on_heating_everywhere_except_bedroom_and_office:
       target:
         entity_id: climate.living_room
       data:
-        hvac_mode: auto
+        hvac_mode: heat
     - delay: '00:00:01'
     #- service: climate.set_hvac_mode
     #  target:
     #    entity_id: climate.office # office is used exclusively by Pawel
     #  data:
-    #    hvac_mode: auto
+    #    hvac_mode: heat
     - delay: '00:00:02'
     - service: climate.set_hvac_mode
       target:
         entity_id: climate.bathroom
       data:
-        hvac_mode: auto
+        hvac_mode: heat
     - delay: '00:00:03'
     - service: climate.set_hvac_mode
       target:
         entity_id: climate.kitchen
       data:
-        hvac_mode: auto
+        hvac_mode: heat
     # it is desired to keep Bedroom cool, so it's commented out for now
     #- service: climate.set_hvac_mode
     #  target:
     #    entity_id: climate.bedroom
     #  data:
-    #    hvac_mode: auto
+    #    hvac_mode: heat
