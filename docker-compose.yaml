@@ -457,7 +457,6 @@ services:
       - NET_ADMIN
     devices:
       - /dev/net/tun
-    restart: always
     dns:
       - 1.1.1.1
       - 1.0.0.1
