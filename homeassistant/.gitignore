@@ -51,3 +51,13 @@ zwcfg_*.xml
 /.storage/core.restore_state
 /.storage/frontend.user_data_*
 /.storage/person
+
+# Default-deny Home Assistant mutable storage while keeping reviewed UI state
+/.storage/*
+!/.storage/camera
+!/.storage/lovelace.*
+!/.storage/lovelace_dashboards
+!/.storage/lovelace_resources
+
+/.HA_VERSION
+/zwscene.xml

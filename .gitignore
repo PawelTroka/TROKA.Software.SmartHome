@@ -2,6 +2,15 @@
 *.pyc
 __pycache__/
 
+# Host-local secrets, mutable state, and operator backups
+.env.*
+!.env.example
+!.env.template
+/.codex-backups/
+/zwave/
+/homeassistant/backup/
+/homeassistant/backups/
+
 # Home Assistant HACS-managed custom components
 homeassistant/custom_components/*
 !homeassistant/custom_components/sonos_tts
