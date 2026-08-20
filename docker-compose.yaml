@@ -36,20 +36,20 @@ services:
 
 # Blog TROKA Software about software, smart home, etc
   blog-troka-software:
-    image: 'bitnami/nginx'
+    image: 'nginx:1.30.4-alpine@sha256:97d490c12ba55b4946b01546d1c3ed324e8d41ab1c9fcb2a616aa470620e5b46'
+    restart: unless-stopped
     volumes:
-      - ${HOMESERVERDIR}/blog.troka.software:/app
-      - ${HOMESERVERDIR}/shared:/shared
+      - ${HOMESERVERDIR}/blog.troka.software:/usr/share/nginx/html:ro
     ports:
-      - '${BLOG_TROKA_SOFTWARE_PORT}:8080'
+      - '${BLOG_TROKA_SOFTWARE_PORT}:80'
     networks:
       - traefik_proxy
     labels:
       - "traefik.enable=true"
       - "traefik.backend=blog-troka-software"
-      - "traefik.frontend.rule=Host:${DOMAINNAME}"  
+      - "traefik.frontend.rule=Host:${DOMAINNAME},blog.${DOMAINNAME}"
 #      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefixStrip: /portainer"
-      - "traefik.port=8080"
+      - "traefik.port=80"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.frontend.headers.SSLRedirect=true"
       - "traefik.frontend.headers.STSSeconds=315360000"
