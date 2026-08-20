@@ -60,7 +60,7 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
+      - "traefik.frontend.headers.customFrameOptionsValue=SAMEORIGIN"
 
 ############################# FRONTENDS
 
