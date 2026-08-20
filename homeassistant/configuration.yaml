@@ -20,14 +20,12 @@ homeassistant:
 config:
 frontend:
   themes: !include_dir_merge_named themes
-map:
 mobile_app:
 person:
 ssdp:
 zeroconf:
 sun:
 system_health:
-updater:
 
 logger:
   default: error
@@ -42,15 +40,13 @@ template: !include_dir_merge_list templates
 
 # Enables support for tracking state changes over time
 recorder: !include recorder.yaml
-history: !include history.yaml
+history:
 logbook: !include logbook.yaml
 
 api:
-discovery:
 shopping_list:
 
 http:
-  base_url: !secret home_base_url
   use_x_forwarded_for: true
   trusted_proxies:
     - 192.168.1.50
