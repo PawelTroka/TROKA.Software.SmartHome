@@ -1,6 +1,5 @@
 media_player:
   advertise_addr: 10.10.10.94
-  interface_addr: 10.10.10.94
   hosts:
     - 10.10.10.69
     - 10.10.10.68
