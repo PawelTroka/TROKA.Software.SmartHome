@@ -24,8 +24,8 @@ x-common-variables: &common-variables
 ########################### NETWORKS
 networks:
   traefik_proxy:
-    external:
-      name: traefik_proxy
+    name: traefik_proxy
+    external: true
   default:
     driver: bridge
 
@@ -810,7 +810,7 @@ services:
       - "traefik.backend=jellyfin"
       - "traefik.frontend.rule=Host:jellyfin.${DOMAINNAME}"
       - "traefik.port=8096"
-      - "traefik.protocol=https"
+      - "traefik.protocol=http"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.frontend.headers.SSLRedirect=true"
       - "traefik.frontend.headers.STSSeconds=315360000"
@@ -892,8 +892,9 @@ services:
     container_name: bazarr
     hostname: bazarr
     restart: unless-stopped
-    #networks:
-      #- traefik_proxy
+    networks:
+      - default
+      - traefik_proxy
     ports:
       - "6767:6767"
     volumes:
@@ -911,7 +912,7 @@ services:
 #      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefixStrip: /bazarr"
       - "traefik.port=6767"
       - "traefik.docker.network=traefik_proxy"
-      - "traefik.protocol=https"
+      - "traefik.protocol=http"
       - "traefik.frontend.headers.SSLRedirect=true"
       - "traefik.frontend.headers.STSSeconds=315360000"
       - "traefik.frontend.headers.browserXSSFilter=true"
