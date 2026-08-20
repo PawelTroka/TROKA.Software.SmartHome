@@ -1011,6 +1011,10 @@ services:
     image: pyouroboros/ouroboros
     container_name: ouroboros
     hostname: ouroboros
+    # Unattended upgrades have skipped unsupported major versions on stateful
+    # services. Keep this opt-in until images are pinned and backups are tested.
+    profiles:
+      - manual-maintenance
     restart: unless-stopped
     networks:
       - default
