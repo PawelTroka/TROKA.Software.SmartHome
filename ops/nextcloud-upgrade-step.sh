@@ -111,7 +111,10 @@ while (( SECONDS < deadline )); do
     fail 'upgrade container stopped unexpectedly'
   fi
   observed_version=$(read_version || true)
-  if [[ $observed_version == "$target_version" ]]; then
+  status_json=$(curl -fsS "http://127.0.0.1:${bind_port}/status.php" 2>/dev/null || true)
+  if [[ $observed_version == "$target_version" ]] &&
+     grep -Fq '"needsDbUpgrade":false' <<<"$status_json" &&
+     grep -Fq "\"versionstring\":\"$target_version\"" <<<"$status_json"; then
     break
   fi
   sleep 5
@@ -121,8 +124,8 @@ done
   fail "timed out waiting for $target_version (observed ${observed_version:-unknown})"
 }
 
-occ integrity:check-core
 occ maintenance:mode --off >/dev/null
+occ integrity:check-core
 for _ in 1 2 3; do
   docker exec -u www-data "$app_container" php -f cron.php
 done
