@@ -1,0 +1,32 @@
+# Deploy to /etc/netplan/01-netcfg.yaml on the home server.
+# IPv6 link-local on enp13s0 is required by OTBR for Matter/Thread routing.
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp13s0:
+      addresses:
+        - 10.10.10.94/24
+      gateway4: 10.10.10.1
+      nameservers:
+        addresses:
+          - 1.1.1.1
+      dhcp4: false
+      dhcp4-overrides:
+        route-metric: 100
+      dhcp6: false
+      accept-ra: false
+      link-local: [ipv4, ipv6]
+    enp10s0:
+      addresses:
+        - 192.168.1.50/24
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses:
+          - 1.1.1.1
+      dhcp4: false
+      dhcp4-overrides:
+        route-metric: 200
+      dhcp6: false
+      accept-ra: false
+      link-local: [ipv4]
