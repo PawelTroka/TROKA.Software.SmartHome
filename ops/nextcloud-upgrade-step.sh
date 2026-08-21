@@ -37,6 +37,21 @@ read_version() {
     tail -n 1
 }
 
+wait_web_ready() {
+  local version=$1 expected_maintenance=$2 deadline status_json
+  deadline=$((SECONDS + 180))
+  while (( SECONDS < deadline )); do
+    status_json=$(curl -fsS "http://127.0.0.1:${bind_port}/status.php" 2>/dev/null || true)
+    if grep -Fq '"needsDbUpgrade":false' <<<"$status_json" &&
+       grep -Fq "\"maintenance\":$expected_maintenance" <<<"$status_json" &&
+       grep -Fq "\"versionstring\":\"$version\"" <<<"$status_json"; then
+      return 0
+    fi
+    sleep 5
+  done
+  return 1
+}
+
 checkpoint() {
   local version image checkpoint_dir dump_tmp
   version=$(read_version)
@@ -114,6 +129,7 @@ while (( SECONDS < deadline )); do
   status_json=$(curl -fsS "http://127.0.0.1:${bind_port}/status.php" 2>/dev/null || true)
   if [[ $observed_version == "$target_version" ]] &&
      grep -Fq '"needsDbUpgrade":false' <<<"$status_json" &&
+     grep -Fq '"maintenance":true' <<<"$status_json" &&
      grep -Fq "\"versionstring\":\"$target_version\"" <<<"$status_json"; then
     break
   fi
@@ -130,10 +146,7 @@ for _ in 1 2 3; do
   docker exec -u www-data "$app_container" php -f cron.php
 done
 
-status_json=$(curl -fsS "http://127.0.0.1:${bind_port}/status.php")
-grep -Fq '"maintenance":false' <<<"$status_json" || fail 'status.php reports maintenance mode'
-grep -Fq '"needsDbUpgrade":false' <<<"$status_json" || fail 'status.php reports a pending database upgrade'
-grep -Fq "\"versionstring\":\"$target_version\"" <<<"$status_json" || fail 'status.php reports the wrong version'
+wait_web_ready "$target_version" false || fail 'status.php did not leave maintenance mode'
 
 docker exec "$db_container" sh -lc \
   'mariadb-check -u"$MARIADB_USER" -p"$MARIADB_PASSWORD" --check-upgrade --silent nextcloud'
@@ -149,5 +162,5 @@ mapfile -t counts < <(docker exec "$db_container" sh -lc \
 occ maintenance:mode --on >/dev/null
 checkpoint
 occ maintenance:mode --off >/dev/null
-curl -fsS "http://127.0.0.1:${bind_port}/status.php" >/dev/null
+wait_web_ready "$target_version" false || fail 'status.php did not leave maintenance mode after checkpointing'
 log "validated and checkpointed $target_version"
