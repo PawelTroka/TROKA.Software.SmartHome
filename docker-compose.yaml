@@ -340,7 +340,7 @@ services:
 
 # MariaDB – Database Server for your Apps
   mariadb:
-    image: "linuxserver/mariadb"
+    image: "linuxserver/mariadb@sha256:b20cdf0ea4148ef800f9459078e93ba2388df6db786c4b9848ffd20b5ebb0d3fa"
     container_name: "mariadb"
     hostname: ${DB_HOST}
     volumes:
@@ -354,6 +354,9 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      # MariaDB 11.4+ defaults to waiting for a replica before expiring binlogs.
+      # This server is standalone, so retain ten days, cap usage, and rotate errors.
+      - CLI_OPTS=--log-error=/config/log/mysql/mariadb.log --slave-connections-needed-for-purge=0 --binlog-expire-logs-seconds=864000 --max-binlog-total-size=5368709120
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
