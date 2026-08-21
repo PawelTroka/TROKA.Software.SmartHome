@@ -52,6 +52,24 @@ bedroom_ac_powersave:
 bedroom_ac_8_degree_heating:
   initial: off
   icon: mdi:numeric-8-circle-outline
+
+# Restored across restarts. Personal and shared profiles are separate so
+# Pawel going to bed does not change shared-room behavior for Michalina.
+bedroom_night_mode:
+  name: Bedroom night mode
+  icon: mdi:weather-night
+
+house_night_mode:
+  name: House night mode
+  icon: mdi:home-clock
+
+bedroom_ac_night_cooling:
+  name: Bedroom AC night cooling requested
+  icon: mdi:snowflake-clock
+
+circadian_lighting_was_on:
+  name: Circadian lighting was on before bedtime
+  icon: mdi:theme-light-dark
 birth_control_pill_taken:
   initial: off
   icon: mdi:pill

@@ -37,7 +37,7 @@
     - variables:
         night_key: >-
           {{ (as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true) }}
-        shutdown_allowed: >-
+        shared_shutdown_allowed: >-
           {{ trigger.id == 'withings'
              and states('person.misiuszka') not in ['home', 'unknown', 'unavailable'] }}
         trigger_source: >-
@@ -52,26 +52,25 @@
       target:
         entity_id: lock.smart_lock_ultra
       continue_on_error: true
-    # Pawel going to bed must not shut down the whole house while Michalina is
-    # home or her presence is uncertain.
-    - choose:
-        - conditions:
-            - condition: template
-              value_template: "{{ shutdown_allowed }}"
-          sequence:
-            - action: script.turn_off_everything
-              continue_on_error: true
+    - action: script.activate_night_mode
+      data:
+        whole_house: "{{ shared_shutdown_allowed }}"
+      continue_on_error: true
     - action: notify.level_info
       data:
         title: "Good night"
         message: >-
-          Pawel bedtime detected via {{ trigger_source }}.
+          Pawel bedtime detected via {{ trigger_source }}. Bedroom lights,
+          screens, and music were requested off; bedroom cooling was requested
+          at 18 degrees.
           {% if trigger.id == 'oppo_fallback' %}
-            The Oppo fallback cannot run the whole-house shutdown; only the lock was requested.
-          {% elif shutdown_allowed %}
-            Michalina is away, so the whole-house night shutdown was requested.
+            The conservative Oppo fallback left shared lights and media in use;
+            the shared 1-percent red profile was not enabled.
+          {% elif shared_shutdown_allowed %}
+            Michalina is away, so shared lights, screens, and music were also requested off.
           {% else %}
-            Whole-house shutdown was skipped because Michalina is home or her presence is uncertain.
+            Shared lights and media were left in use because Michalina is home
+            or her presence is uncertain; the shared 1-percent red profile was not enabled.
           {% endif %}
           {{ 'The door reports locked.' if is_state('lock.smart_lock_ultra', 'locked')
              else 'The door lock could not be confirmed.' }}
@@ -131,5 +130,118 @@
         entity_id: input_text.pawel_wake_night
       data:
         value: "{{ night_key }}"
+    - action: climate.turn_off
+      target:
+        entity_id: climate.bedroom_ac
+      continue_on_error: true
+    - action: script.deactivate_night_mode
+      continue_on_error: true
+    - wait_template: "{{ is_state('climate.bedroom_ac', 'off') }}"
+      timeout: "00:00:20"
+      continue_on_timeout: true
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: climate.bedroom_ac
+              state: "off"
+            - condition: state
+              entity_id: input_boolean.bedroom_night_mode
+              state: "off"
+          sequence:
+            - action: input_boolean.turn_off
+              target:
+                entity_id: input_boolean.bedroom_ac_night_cooling
     - action: script.turn_on_heating_everywhere_except_bedroom_and_office
       continue_on_error: true
+
+- id: night_mode_daytime_failsafe
+  alias: "Night mode: daytime failsafe"
+  mode: single
+  triggers:
+    - trigger: time_pattern
+      id: scheduled
+      minutes: "/15"
+    - trigger: homeassistant
+      id: startup
+      event: start
+  actions:
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.id == 'startup' }}"
+          sequence:
+            - delay: "00:00:30"
+    - variables:
+        should_end_night_mode: >-
+          {% set minute = now().hour * 60 + now().minute %}
+          {% set current_night = (as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true) %}
+          {{ (minute >= 660 and minute < 1200)
+             or states('input_text.pawel_bedtime_night') != current_night }}
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: >-
+                {{ should_end_night_mode
+                   and (is_state('input_boolean.bedroom_night_mode', 'on')
+                        or is_state('input_boolean.house_night_mode', 'on')
+                        or is_state('input_boolean.circadian_lighting_was_on', 'on')) }}
+          sequence:
+            - action: script.deactivate_night_mode
+              continue_on_error: true
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.bedroom_night_mode
+              state: "off"
+            - condition: state
+              entity_id: input_boolean.bedroom_ac_night_cooling
+              state: "on"
+          sequence:
+            - action: climate.turn_off
+              target:
+                entity_id: climate.bedroom_ac
+              continue_on_error: true
+            - wait_template: "{{ is_state('climate.bedroom_ac', 'off') }}"
+              timeout: "00:00:20"
+              continue_on_timeout: true
+            - choose:
+                - conditions:
+                    - condition: state
+                      entity_id: climate.bedroom_ac
+                      state: "off"
+                    - condition: state
+                      entity_id: input_boolean.bedroom_night_mode
+                      state: "off"
+                  sequence:
+                    - action: input_boolean.turn_off
+                      target:
+                        entity_id: input_boolean.bedroom_ac_night_cooling
+
+- id: house_night_mode_disable_when_michalina_arrives
+  alias: "Night mode: restore shared rooms when Michalina arrives"
+  mode: single
+  triggers:
+    - trigger: state
+      entity_id: person.misiuszka
+      to: "home"
+  conditions:
+    - condition: state
+      entity_id: input_boolean.house_night_mode
+      state: "on"
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.house_night_mode
+    # If the door/motion event won the race with presence detection, replace
+    # the already-lit red hallway immediately instead of waiting for new motion.
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: sun.sun
+              state: "below_horizon"
+            - condition: state
+              entity_id: light.hallway_lights
+              state: "on"
+          sequence:
+            - action: script.set_hallway_lights_to_default
+              continue_on_error: true

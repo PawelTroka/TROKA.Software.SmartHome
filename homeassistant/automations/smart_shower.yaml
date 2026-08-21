@@ -12,8 +12,15 @@
       data:
         brightness_pct: 80
         color_temp_kelvin: 3333 # Soft white
-    - service: script.turn_on
-      entity_id: script.shower_music
+    # Bright task lighting is retained as a shower safety exception, but do
+    # not restart whole-house music after household night mode has begun.
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.house_night_mode
+              state: "off"
+          sequence:
+            - action: script.shower_music
     - service: notify.level_info
       data:
         message: "Shower mode activated. Enjoy!"
@@ -33,5 +40,21 @@
           entity_id: binary_sensor.bathroom_motion
           state: 'on'
       then:
-        - service: script.turn_on
-          entity_id: script.set_bathroom_lights_to_default
+        - choose:
+            - conditions:
+                - condition: state
+                  entity_id: input_boolean.house_night_mode
+                  state: "on"
+              sequence:
+                - action: light.turn_off
+                  target:
+                    entity_id: light.bathroom_lights
+                  continue_on_error: true
+                - action: script.turn_on_automatic_lights
+                  data:
+                    day_profile: script.set_bathroom_lights_to_default
+                    night_lights:
+                      - light.bathroom_strip
+                    night_mode: input_boolean.house_night_mode
+          default:
+            - action: script.set_bathroom_lights_to_default

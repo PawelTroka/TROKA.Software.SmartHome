@@ -13,8 +13,12 @@
         - condition: sun
           before: sunrise
   action:
-    service: light.turn_on
-    entity_id: light.hallway_lights
+    action: script.turn_on_automatic_lights
+    data:
+      day_profile: script.set_hallway_lights_to_default
+      night_lights:
+        - light.hallway_strip
+      night_mode: input_boolean.house_night_mode
 
 - alias: Turn off hallway lights when motion stops
   trigger:
@@ -41,8 +45,13 @@
         - condition: sun
           before: sunrise
   action:
-    - service: light.turn_on
-      entity_id: light.kitchen_lights
+    - action: script.turn_on_automatic_lights
+      data:
+        day_profile: script.set_kitchen_lights_to_default
+        night_lights:
+          - light.kitchen_cabinet_strip
+          - light.kitchen_island_strip
+        night_mode: input_boolean.house_night_mode
     - delay: "00:00:01"
     - service: script.normalize_kitchen_lifx_strips
 
@@ -64,8 +73,12 @@
       entity_id: binary_sensor.toilet_multisensor_motion
       to: 'on'
   action:
-    service: light.turn_on
-    entity_id: light.toilet_lights
+    action: script.turn_on_automatic_lights
+    data:
+      day_profile: script.set_toilet_lights_to_default
+      night_lights:
+        - light.toilet_strip
+      night_mode: input_boolean.house_night_mode
 
 - alias: Turn off toilet lights when motion stops
   trigger:
@@ -85,8 +98,12 @@
       entity_id: binary_sensor.bathroom_motion
       to: 'on'
   action:
-    service: light.turn_on
-    entity_id: light.bathroom_lights
+    action: script.turn_on_automatic_lights
+    data:
+      day_profile: script.set_bathroom_lights_to_default
+      night_lights:
+        - light.bathroom_strip
+      night_mode: input_boolean.house_night_mode
 
 
 - alias: Turn off bathroom lights when motion stops unless shower is in use

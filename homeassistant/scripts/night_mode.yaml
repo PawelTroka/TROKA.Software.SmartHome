@@ -1,0 +1,260 @@
+turn_on_automatic_lights:
+  alias: Turn on automatic lights using the active day or night profile
+  mode: parallel
+  max: 20
+  fields:
+    day_profile:
+      name: Normal light profile
+      description: Script that restores the room's normal color and brightness
+      required: true
+      selector:
+        entity:
+          domain: script
+    night_lights:
+      name: Night lights
+      description: Color-capable low-glare lights used during night mode
+      required: true
+      selector:
+        entity:
+          domain: light
+          multiple: true
+    night_mode:
+      name: Night-mode helper
+      description: Bedroom or house helper controlling this automatic light
+      required: true
+      selector:
+        entity:
+          domain: input_boolean
+  sequence:
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ is_state(night_mode, 'on') }}"
+          sequence:
+            - action: light.turn_on
+              target:
+                entity_id: "{{ night_lights }}"
+              data:
+                brightness_pct: 1
+                rgb_color: [255, 0, 0]
+              continue_on_error: true
+      default:
+        # Restore explicit normal values; plain turn_on would retain the
+        # previous night's 1% red state on LIFX and LimitlessLED lights.
+        - action: script.turn_on
+          target:
+            entity_id: "{{ day_profile }}"
+          continue_on_error: true
+        - wait_template: "{{ is_state(day_profile, 'off') }}"
+          timeout: "00:00:30"
+          continue_on_timeout: true
+
+activate_night_mode:
+  alias: Activate bedroom and optional whole-house night mode
+  mode: single
+  fields:
+    whole_house:
+      name: Shut down shared rooms
+      description: Also switch off shared lights, screens, and music
+      required: false
+      default: false
+      selector:
+        boolean:
+  variables:
+    whole_house_requested: "{{ whole_house | default(false) | bool }}"
+  sequence:
+    # A manual invocation should participate in the same once-per-night wake
+    # and stale-state safeguards as an automatic bedtime detection.
+    - action: input_text.set_value
+      target:
+        entity_id: input_text.pawel_bedtime_night
+      data:
+        value: >-
+          {{ (as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true) }}
+    # Capture Circadian Lighting only on the first bedtime activation so a
+    # repeated/manual call cannot overwrite the saved pre-bedtime state.
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ not is_state('input_boolean.bedroom_night_mode', 'on') }}"
+          sequence:
+            - choose:
+                - conditions:
+                    - condition: state
+                      entity_id: switch.circadian_lighting_circadian_lighting
+                      state: "on"
+                  sequence:
+                    - action: input_boolean.turn_on
+                      target:
+                        entity_id: input_boolean.circadian_lighting_was_on
+              default:
+                - action: input_boolean.turn_off
+                  target:
+                    entity_id: input_boolean.circadian_lighting_was_on
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.bedroom_night_mode
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ whole_house_requested }}"
+          sequence:
+            - action: input_boolean.turn_on
+              target:
+                entity_id: input_boolean.house_night_mode
+      default:
+        - action: input_boolean.turn_off
+          target:
+            entity_id: input_boolean.house_night_mode
+
+    # Prevent adaptive lighting from replacing the requested 1% red profile.
+    - action: switch.turn_off
+      target:
+        entity_id: switch.circadian_lighting_circadian_lighting
+      continue_on_error: true
+
+    # Pawel's bedroom is always shut down, even when shared rooms remain in use.
+    - action: light.turn_off
+      target:
+        entity_id: light.bedroom_lights
+      continue_on_error: true
+    - action: media_player.turn_off
+      target:
+        entity_id:
+          - media_player.bedroom_tv
+          - media_player.bedroom_bravia_tv
+          - media_player.bedroom_android_tv
+      continue_on_error: true
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ not whole_house_requested }}"
+          sequence:
+            # A Sonos follower cannot be paused independently. Unjoin it first
+            # so stopping bedroom audio does not stop another resident's group.
+            - action: media_player.unjoin
+              target:
+                entity_id: media_player.bedroom
+              continue_on_error: true
+            - delay: "00:00:01"
+            - action: media_player.media_pause
+              target:
+                entity_id: media_player.bedroom
+              continue_on_error: true
+
+    # Never heat and cool the bedroom simultaneously; keep the AC display dark.
+    - action: climate.set_hvac_mode
+      target:
+        entity_id: climate.bedroom
+      data:
+        hvac_mode: "off"
+      continue_on_error: true
+    - action: switch.turn_off
+      target:
+        entity_id: switch.bedroom_ac_lights
+      continue_on_error: true
+
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ whole_house_requested }}"
+          sequence:
+            - action: switch.turn_off
+              target:
+                entity_id: switch.bathroom_mirror_switch_demister
+              continue_on_error: true
+            # Isolate light failures by room; one unavailable bulb must not
+            # prevent the remaining rooms from switching off.
+            - parallel:
+                - action: light.turn_off
+                  target:
+                    entity_id: light.toilet_lights
+                  continue_on_error: true
+                - action: light.turn_off
+                  target:
+                    entity_id: light.living_room_lights
+                  continue_on_error: true
+                - action: light.turn_off
+                  target:
+                    entity_id: light.office_lights
+                  continue_on_error: true
+                - action: light.turn_off
+                  target:
+                    entity_id: light.hallway_lights
+                  continue_on_error: true
+                - action: light.turn_off
+                  target:
+                    entity_id: light.bathroom_lights
+                  continue_on_error: true
+                - action: light.turn_off
+                  target:
+                    entity_id: light.kitchen_lights
+                  continue_on_error: true
+            - action: script.pause_sonos_group
+              data:
+                sonos_group: group.all_sonos
+              continue_on_error: true
+            - parallel:
+                - action: media_player.turn_off
+                  target:
+                    entity_id:
+                      - media_player.living_room_bravia_tv
+                      - media_player.shield_2
+                  continue_on_error: true
+                - action: media_player.turn_off
+                  target:
+                    entity_id: media_player.denon_avc_x6500h_avr
+                  continue_on_error: true
+                - action: media_player.media_stop
+                  target:
+                    entity_id: media_player.living_room_speaker
+                  continue_on_error: true
+
+    # Configure cooling last so no preceding shutdown action can undo it.
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.bedroom_ac_night_cooling
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.bedroom_ac
+      data:
+        hvac_mode: cool
+        temperature: 18
+      continue_on_error: true
+
+deactivate_night_mode:
+  alias: Deactivate bedroom and house night mode
+  mode: restart
+  sequence:
+    - action: input_boolean.turn_off
+      target:
+        entity_id:
+          - input_boolean.bedroom_night_mode
+          - input_boolean.house_night_mode
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.circadian_lighting_was_on
+              state: "on"
+          sequence:
+            - action: switch.turn_on
+              target:
+                entity_id: switch.circadian_lighting_circadian_lighting
+              continue_on_error: true
+            - wait_template: >-
+                {{ is_state('switch.circadian_lighting_circadian_lighting', 'on') }}
+              timeout: "00:00:10"
+              continue_on_timeout: true
+            - choose:
+                - conditions:
+                    - condition: state
+                      entity_id: switch.circadian_lighting_circadian_lighting
+                      state: "on"
+                  sequence:
+                    - action: input_boolean.turn_off
+                      target:
+                        entity_id: input_boolean.circadian_lighting_was_on
+      default:
+        - action: input_boolean.turn_off
+          target:
+            entity_id: input_boolean.circadian_lighting_was_on
