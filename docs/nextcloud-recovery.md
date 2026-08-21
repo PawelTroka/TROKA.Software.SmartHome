@@ -24,6 +24,9 @@ The 2026-08-21 migration left local rollback material on the server:
   checkpoints for every supported major-version step.
 - `/app/homeserver/.codex-backups/20260821-nextcloud-final` — final v34
   database/config/app checkpoint after repairs and index creation.
+- `/app/homeserver/.codex-backups/20260821-nextcloud-production` — quiescent,
+  Compose-ready v34 checkpoint with the production database hostname and
+  current image-managed config fragments.
 - stopped container `nextcloud-migration-db-10.5` and bind directory
   `/app/homeserver/nextcloud/database-10.5` — pre-v30 database rollback point.
 
