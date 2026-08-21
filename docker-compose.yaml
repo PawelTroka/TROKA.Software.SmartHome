@@ -300,40 +300,24 @@ services:
 
 
   shinobi:
-    image: shinobisystems/shinobi:latest
+    image: registry.gitlab.com/shinobi-systems/shinobi:dev@sha256:800ea1a9d48b07a6439d3fb6f552e9087dd31113ce056ca10f82d6ef9445e003
+    restart: unless-stopped
     ports:
       - "8899:8080"
     networks:
       - traefik_proxy
     volumes:
       - /dev/shm/shinobiStreams:/dev/shm/streams
-      - $HOMESERVERDIR/shinobi/Config:/config
-      - $HOMESERVERDIR/shinobi/CustomAutoLoad:/customAutoLoad
-      - $HOMESERVERDIR/shinobi/Database:/var/lib/mysql
-      #- $HOMESERVERDIR/shinobi/super.json:/opt/shinobi/super.json  # better use /config/super.json
+      - ${HOMESERVERDIR}/shinobi/App:/home/Shinobi
+      - ${HOMESERVERDIR}/shinobi/Database:/var/lib/mysql
       - ${SURVEILLANCEDIR}/shinobi-videos:/home/Shinobi/videos
-    environment:
-      - APP_BRANCH=dev
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
+      - /etc/localtime:/etc/localtime:ro
     labels:
       - "traefik.enable=true"
       - "traefik.backend=nvr"
-#      - "traefik.frontend.rule=Host:${DOMAINNAME}; PathPrefix: /nvr"
       - "traefik.frontend.rule=Host:nvr.${DOMAINNAME}"
       - "traefik.port=8080"
       - "traefik.docker.network=traefik_proxy"
-      - "traefik.frontend.headers.SSLRedirect=true"
-      - "traefik.frontend.headers.STSSeconds=315360000"
-      - "traefik.frontend.headers.browserXSSFilter=true"
-      - "traefik.frontend.headers.contentTypeNosniff=true"
-      - "traefik.frontend.headers.forceSTSHeader=true"
-      - "traefik.frontend.headers.SSLHost=nvr.${DOMAINNAME}"
-      - "traefik.frontend.headers.STSIncludeSubdomains=true"
-      - "traefik.frontend.headers.STSPreload=true"
-#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 ############################# DATABASE
 
