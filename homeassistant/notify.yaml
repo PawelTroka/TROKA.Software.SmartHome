@@ -1,25 +1,5 @@
 #### Platforms ####
 
-- platform: nfandroidtv
-  host: 10.10.10.87
-  name: SHIELD Android TV
-  duration: 20
-  timeout: 20
-  fontsize: large
-- platform: nfandroidtv
-  host: 10.10.10.8
-  name: Living room Android TV
-  duration: 20
-  timeout: 20
-  fontsize: large
-- platform: nfandroidtv
-  host: 10.10.10.53
-  name: Bedroom Android TV
-  duration: 20
-  timeout: 20
-  fontsize: large
-
-
 - platform: tts
   name: google_voice
   tts_service: tts.picotts_say
@@ -38,11 +18,6 @@
   tts: picotts
 
 #### Groups ####
-
-- name: screens
-  platform: group
-  services:
-    - service: shield_android_tv
 
 - name: voice
   platform: group
@@ -107,7 +82,6 @@
   platform: group
   services:
     - service: level_note
-    - service: screens
 
 - name: level_important # everything
   platform: group
