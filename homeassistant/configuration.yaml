@@ -30,11 +30,6 @@ system_health:
 
 logger:
   default: error
-  logs:
-    # These battery leak sensors poll every five seconds. When one is offline,
-    # the legacy integration emits a full traceback on every poll.
-    custom_components.dlink_hnap.binary_sensor: critical
-    custom_components.dlink_hnap.dlink: critical
 
 scene: !include scenes.yaml
 template: !include_dir_merge_list templates

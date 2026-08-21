@@ -42,7 +42,13 @@ flood_in_kitchen:
 flood_in_bathroom:
   name: "Error: Flood in bathroom"
   message:  "Flood in bathroom!!! There is a flood in bathroom. Flood in bathroom!!!"
-  done_message: There is no longer flood in bathroom.
+  done_message: >-
+    {% if is_state('binary_sensor.bathroom_water_leak_sensor', 'off') %}
+      There is no longer a flood in the bathroom.
+    {% else %}
+      The bathroom leak sensor became unavailable while reporting a flood.
+      The flood state cannot be confirmed; check the bathroom manually.
+    {% endif %}
   entity_id: binary_sensor.bathroom_water_leak_sensor
   state: 'on'
   repeat:
@@ -217,7 +223,8 @@ airthings_monitor_unavailable:
 bathroom_leak_sensor_unavailable:
   name: "Error: Bathroom leak sensor unavailable"
   message: >-
-    The bathroom leak sensor has not reported for more than 6 hours.
+    The bathroom leak sensor has been unreachable or has not returned a valid
+    state for at least 5 minutes.
     Bathroom leak protection is not currently reliable.
   done_message: The bathroom leak sensor is reporting again.
   entity_id: binary_sensor.bathroom_leak_sensor_unavailable

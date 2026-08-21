@@ -14,6 +14,9 @@ __pycache__/
 # Home Assistant HACS-managed custom components
 homeassistant/custom_components/*
 !homeassistant/custom_components/sonos_tts
+!homeassistant/custom_components/dlink_hnap/
+!homeassistant/custom_components/dlink_hnap/**
+homeassistant/custom_components/dlink_hnap/__pycache__/
 
 # Home Assistant HACS-managed custom themes
 homeassistant/themes
