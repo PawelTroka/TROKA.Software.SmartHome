@@ -112,7 +112,7 @@ Home automation configuration, scripts and state of affairs
 
 <sup>18</sup> Via custom Home Assistant component https://github.com/RobHofmann/HomeAssistant-GreeClimateComponent
 
-<sup>19</sup> Via custom Home Assistant component https://github.com/custom-components/sensor.airthings_wave
+<sup>19</sup> Via Home Assistant's built-in Airthings BLE integration https://www.home-assistant.io/integrations/airthings_ble/
 
 <sup>20</sup> Through SNMP module PowerWalker 10120505
 

@@ -244,6 +244,7 @@ services:
   #    - ${HOMESERVERDIR}/hassio-addons-duckdns/ssl/:/ssl/
       - ${SURVEILLANCEDIR}:/downloads/surveillance
       - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro # Bluetooth access through the host BlueZ service
       - ${HOMESERVERDIR}/shared:/shared
       - ${HOMESERVERDIR}/mariadb/mysqld:/run/mysqld # unix socket volume share for blazing fast MySQL communication on local network (https://stackoverflow.com/questions/58029324/2002-cant-connect-to-local-mysql-server-through-socket-run-mysqld-mysqld-so)
     #ports:
