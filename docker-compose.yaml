@@ -340,7 +340,7 @@ services:
 
 # MariaDB – Database Server for your Apps
   mariadb:
-    image: "linuxserver/mariadb@sha256:b20cdf0ea4148ef800f9459078e93ba2388df6db786c4b9848ffd20b5ebb0d3fa"
+    image: "linuxserver/mariadb@sha256:b20cdf0ea4148ef800f9459078e93ba2388df6db786c4b9848fd20b5ebb0d3fa"
     container_name: "mariadb"
     hostname: ${DB_HOST}
     volumes:
