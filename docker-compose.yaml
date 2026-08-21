@@ -359,56 +359,88 @@ services:
 
 ############################# STORAGE
 
-# NextCloud – Your Own Cloud Storage
+# Nextcloud – private cloud storage with its own supported database
+  nextcloud-db:
+    image: mariadb:10.11.18@sha256:8020e05c4c498d06c87f0a1db010eb79bd6f8fb30e9b763d4690c34ce1e61008
+    container_name: nextcloud-db
+    hostname: nextcloud-db
+    restart: unless-stopped
+    command:
+      - --transaction-isolation=READ-COMMITTED
+      - --binlog-format=ROW
+      - --innodb-file-per-table=1
+    env_file:
+      - ${HOMESERVERDIR}/nextcloud/mariadb.env
+    volumes:
+      - ${HOMESERVERDIR}/nextcloud/database-10.11:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
   nextcloud:
+    image: nextcloud:34.0.3-apache@sha256:368cd1c75bc4a32c2aee8a119cae31bcebff80c374782f404c440c3295726814
     container_name: nextcloud
     hostname: nextcloud
     restart: unless-stopped
-    image: ghcr.io/linuxserver/nextcloud #nextcloud:latest
+    depends_on:
+      nextcloud-db:
+        condition: service_healthy
+    networks:
+      - default
+      - traefik_proxy
     volumes:
-      - ${STORAGEDIR}/shared_data:/data #/var/www/html/data
-      - ${HOMESERVERDIR}/nextcloud/config:/config #/var/www/html/config
-      #- ${HOMESERVERDIR}/nextcloud/custom_apps:/var/www/html/custom_apps
-      #- ${HOMESERVERDIR}/nextcloud/themes:/var/www/html/themes
-      #- ${HOMESERVERDIR}/nextcloud/html:/var/www/html
+      - ${HOMESERVERDIR}/nextcloud/html:/var/www/html
+      - ${STORAGEDIR}/shared_data:/var/www/html/data
       - ${HOMESERVERDIR}/shared:/shared
-      #- ${HOMESERVERDIR}/nextcloud/custom-init.sh:/usr/local/bin/apache2-custom.sh
-    #networks:
-      #- traefik_proxy
-      #- default
-    #command:
-      #- apache2-custom.sh
-    ports:
-      - "${NEXTCLOUD_PORT}:443"
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - NEXTCLOUD_ADMIN_USER=${NEXTCLOUD_USER}
-      - NEXTCLOUD_ADMIN_PASSWORD=${NEXTCLOUD_PASSWORD}
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=${USER}
-      - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_HOST=${DB_HOST}
-      - MYSQL_PORT=${DB_PORT}
-      - REDIS_HOST_PORT=${REDIS_PORT}
-      - REDIS_HOST_PASSWORD=${REDIS_PASSWORD}
-      - PUID=${PUID}
-      - PGID=${PGID}
+      - APACHE_DISABLE_REWRITE_IP=1
+      - TRUSTED_PROXIES=${TRAEFIK_PROXY_SUBNET:-172.18.0.0/16}
+      - OVERWRITEHOST=cloud.${DOMAINNAME}
+      - OVERWRITEPROTOCOL=https
+      - OVERWRITECLIURL=https://cloud.${DOMAINNAME}
+      - NEXTCLOUD_INIT_HTACCESS=true
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1/status.php | grep -q '\"maintenance\":false'"]
+      start_period: 120s
+      interval: 30s
+      timeout: 10s
+      retries: 10
     labels:
       - "traefik.enable=true"
       - "traefik.backend=nextcloud"
       - "traefik.frontend.rule=Host:cloud.${DOMAINNAME}"
-      - "traefik.port=443"
-      - "traefik.protocol=https"
+      - "traefik.port=80"
+      - "traefik.protocol=http"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.frontend.headers.SSLRedirect=true"
-      - "traefik.frontend.headers.STSSeconds=315360000"
-      - "traefik.frontend.headers.browserXSSFilter=true"
-      - "traefik.frontend.headers.contentTypeNosniff=true"
-      - "traefik.frontend.headers.forceSTSHeader=true"
-      - "traefik.frontend.headers.SSLHost=cloud.${DOMAINNAME}"
-      - "traefik.frontend.headers.STSIncludeSubdomains=true"
-      - "traefik.frontend.headers.STSPreload=true"
-#      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
+
+  nextcloud-cron:
+    image: nextcloud:34.0.3-apache@sha256:368cd1c75bc4a32c2aee8a119cae31bcebff80c374782f404c440c3295726814
+    container_name: nextcloud-cron
+    restart: unless-stopped
+    entrypoint: /cron.sh
+    depends_on:
+      nextcloud:
+        condition: service_healthy
+    networks:
+      - default
+    volumes:
+      - ${HOMESERVERDIR}/nextcloud/html:/var/www/html
+      - ${STORAGEDIR}/shared_data:/var/www/html/data
+      - ${HOMESERVERDIR}/shared:/shared
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - TRUSTED_PROXIES=${TRAEFIK_PROXY_SUBNET:-172.18.0.0/16}
+      - OVERWRITEHOST=cloud.${DOMAINNAME}
+      - OVERWRITEPROTOCOL=https
+      - OVERWRITECLIURL=https://cloud.${DOMAINNAME}
 
 
 # Redis - fast semi-persistant, in-memory DB
