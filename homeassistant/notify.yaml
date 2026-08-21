@@ -45,11 +45,7 @@
   platform: group
   services:
     - service: mobile_app_oppofindx9ultra # Pawel
-
-- name: critical_residents
-  platform: group
-  services:
-    - service: mobile_app_iphone_michalina # Michalina receives only critical alerts
+    - service: mobile_app_iphone_michalina # Michalina
 
 - name: home_control_devices
   platform: group
@@ -60,7 +56,6 @@
   platform: group
   services:
     - service: residents
-    - service: critical_residents
     - service: apps
     - service: persistent_notification
 
@@ -88,6 +83,5 @@
   platform: group
   services:
     - service: level_info
-    - service: critical_residents
     - service: voice
     - service: persistent_notification
