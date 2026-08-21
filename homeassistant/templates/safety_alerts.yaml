@@ -77,9 +77,12 @@
       unique_id: bathroom_leak_sensor_unavailable
       device_class: problem
       state: >-
+        {% set leak_entity = 'binary_sensor.bathroom_water_leak_sensor' %}
+        {% set leak_missing = states(leak_entity) == 'unknown' %}
         {% set leak_sensor = states.binary_sensor.bathroom_water_leak_sensor %}
-        {{ not has_value('binary_sensor.bathroom_water_leak_sensor')
+        {{ leak_missing
+           or (not has_value(leak_entity)
+               and now() - leak_sensor.last_changed >= timedelta(minutes=5))
            or leak_sensor.last_reported is none
            or now() - leak_sensor.last_reported > timedelta(hours=6) }}
-      delay_on: "00:05:00"
       delay_off: "00:05:00"
