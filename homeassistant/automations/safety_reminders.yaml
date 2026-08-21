@@ -23,22 +23,10 @@
           then:
             - action: notify.level_important
               data:
-                title: "UPS monitoring unavailable"
-                message: UPS voltage, battery, or runtime telemetry is missing.
-        - if:
-            - condition: state
-              entity_id: binary_sensor.ups_low_runtime
-              state: 'on'
-            - condition: state
-              entity_id: alert.ups_low_power
-              state: 'idle'
-          then:
-            - action: notify.level_important
-              data:
-                title: "UPS battery needs attention"
+                title: "UPS input monitoring unavailable"
                 message: >-
-                  UPS reports {{ states('sensor.ups_battery_capacity') }}% charge and
-                  {{ states('sensor.ups_remaining_backup_time') }} minute(s) of runtime.
+                  UPS input-voltage telemetry is missing, so mains-power outage
+                  detection is unavailable.
         - if:
             - condition: state
               entity_id: binary_sensor.airthings_monitor_unavailable

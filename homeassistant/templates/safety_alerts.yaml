@@ -14,24 +14,12 @@
       unique_id: ups_telemetry_unavailable
       device_class: problem
       state: >-
-        {{ not (has_value('sensor.ups_input_voltage')
-                and has_value('sensor.ups_battery_capacity')
-                and has_value('sensor.ups_remaining_backup_time')) }}
+        {{ not has_value('sensor.ups_input_voltage') }}
       delay_on: "00:05:00"
       delay_off: "00:05:00"
 
-    - name: UPS low runtime
-      default_entity_id: binary_sensor.ups_low_runtime
-      unique_id: ups_low_runtime
-      device_class: problem
-      availability: >-
-        {{ has_value('sensor.ups_battery_capacity')
-           and has_value('sensor.ups_remaining_backup_time') }}
-      state: >-
-        {{ states('sensor.ups_battery_capacity') | float(100) < 20
-           or states('sensor.ups_remaining_backup_time') | float(60) < 10 }}
-      delay_on: "00:00:05"
-      delay_off: "00:00:30"
+    # Battery/runtime alerting is intentionally disabled while the UPS is
+    # operated without a battery. Input-voltage monitoring remains active.
 
     - name: Radon longterm warning
       default_entity_id: binary_sensor.radon_longterm_warning
