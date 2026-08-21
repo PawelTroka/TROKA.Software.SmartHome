@@ -346,6 +346,8 @@ services:
     volumes:
         - ${HOMESERVERDIR}/mariadb:/config
         - ${HOMESERVERDIR}/mariadb/mysqld:/var/run/mysqld # unix socket volume share for blazing fast MySQL communication on local network
+        - ${HOMESERVERDIR}/mariadb-init/10-logrotate-auth.sh:/custom-cont-init.d/10-logrotate-auth.sh:ro
+        - ${HOMESERVERDIR}/mariadb-init/mariadb.logrotate:/etc/logrotate.d/mariadb:ro
     ports:
       - target: ${DB_PORT}
         published: ${DB_PORT}
