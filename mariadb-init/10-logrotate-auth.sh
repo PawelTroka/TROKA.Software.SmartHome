@@ -6,6 +6,10 @@ set -eu
 MARIADB_LOGROTATE_CLIENT=/run/mariadb-logrotate.cnf
 MARIADB_LOGROTATE_TEMP=${MARIADB_LOGROTATE_CLIENT}.tmp
 
+install -o root -g root -m 644 \
+    /defaults/mariadb.logrotate.homeserver \
+    /etc/logrotate.d/mariadb
+
 cleanup() {
     rm -f -- "$MARIADB_LOGROTATE_TEMP"
 }
