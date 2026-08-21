@@ -7,26 +7,34 @@ turn_off_everything:
   sequence:
     - service: switch.turn_off
       entity_id: switch.bathroom_mirror_switch_demister
+      continue_on_error: true
     - service: light.turn_off
       entity_id: group.all_lights
+      continue_on_error: true
     - service: climate.turn_off
       entity_id: group.all_climate
+      continue_on_error: true
     - service: script.turn_on
       entity_id: script.turn_off_media_everywhere
+      continue_on_error: true
 
 turn_off_media_and_lights_everywhere_except_bedroom:
   sequence:
     - service: light.turn_off
       entity_id: group.all_lights_except_bedroom
+      continue_on_error: true
     - service: script.turn_on
       entity_id: script.turn_off_media_everywhere_except_bedroom
+      continue_on_error: true
 
 turn_off_lights_and_tv_in_bedroom:
   sequence:
     - service: light.turn_off
-      entity_id: group.bedroom_lights
+      entity_id: light.bedroom_lights
+      continue_on_error: true
     - service: script.turn_on
       entity_id: script.turn_off_bedroom_tv
+      continue_on_error: true
 
 turn_on_necessary_things:
   sequence:

@@ -28,11 +28,10 @@
     - service: media_player.media_stop
       target:
         entity_id: media_player.bathroom
-    - service: light.turn_on
-      target:
-        entity_id: light.bathroom_lights
-      data:
-        brightness_pct: 100
-        color_temp_kelvin: 9000 # Back to bright cleaning light
-    - service: script.turn_on
-      entity_id: script.set_bathroom_lights_to_default
+    - if:
+        - condition: state
+          entity_id: binary_sensor.bathroom_motion
+          state: 'on'
+      then:
+        - service: script.turn_on
+          entity_id: script.set_bathroom_lights_to_default

@@ -92,7 +92,6 @@ all_persons:
 
 all_denon_receivers:
   entities:
-    - media_player.denon_avc_x6500h
     - media_player.denon_avc_x6500h_avr
     - media_player.denon_avc_x6500h_heos
     - media_player.denon_avc_x6500h_alexa
@@ -100,7 +99,6 @@ all_denon_receivers:
 
 all_reliable_denon_receivers:
   entities:
-    - media_player.denon_avc_x6500h
     - media_player.denon_avc_x6500h_avr
 
 

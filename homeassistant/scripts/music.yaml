@@ -29,7 +29,7 @@ shower_music:
       target:
         entity_id: media_player.bathroom
       data:
-        source: "{{ ['Tracks', 'My Mix 1', 'My Mix 2', 'My Mix 3', 'My Mix 4', 'My Mix 5', 'TIDAL Top 100 UK', 'Pop Party Mix' , 'Electronic Party Mix', 'PartyTidal', 'PartyLocal', 'Wolfgang Amadeus Mozart Essentials', 'TIDAL''s Top Hits'] | random }}"
+        source: "{{ ['My Mix 3', 'Electronic Party Mix', 'PartyLocal'] | random }}"
 
     - service: media_player.shuffle_set
       data:
@@ -83,7 +83,7 @@ party_music:
       target:
         entity_id: media_player.living_room
       data:
-        source: "{{ ['Tracks', 'My Mix 1', 'My Mix 2', 'My Mix 3', 'My Mix 4', 'My Mix 5', 'Pop Party Mix' , 'Electronic Party Mix', 'PartyTidal', 'PartyLocal'] | random }}"
+        source: "{{ ['My Mix 3', 'Electronic Party Mix', 'PartyLocal'] | random }}"
 
     - service: media_player.shuffle_set
       data:
@@ -141,7 +141,7 @@ ambient_living_room_music:
       target:
         entity_id: media_player.living_room
       data:
-        source: "{{ ['Tracks', 'My Mix 1', 'My Mix 2', 'My Mix 3', 'My Mix 4', 'My Mix 5', 'TIDAL Top 100 UK', 'Pop Party Mix' , 'Electronic Party Mix', 'PartyTidal', 'PartyLocal', 'Wolfgang Amadeus Mozart Essentials', 'TIDAL''s Top Hits'] | random }}"
+        source: "{{ ['My Mix 3', 'Electronic Party Mix', 'PartyLocal'] | random }}"
 
     - service: media_player.shuffle_set
       data:
@@ -185,7 +185,7 @@ ambient_music:
       target:
         entity_id: media_player.bathroom
       data:
-        source: "{{ ['Tracks', 'My Mix 1', 'My Mix 2', 'My Mix 3', 'My Mix 4', 'My Mix 5', 'TIDAL Top 100 UK', 'Pop Party Mix' , 'Electronic Party Mix', 'PartyTidal', 'PartyLocal', 'Wolfgang Amadeus Mozart Essentials', 'TIDAL''s Top Hits'] | random }}"
+        source: "{{ ['My Mix 3', 'Electronic Party Mix', 'PartyLocal'] | random }}"
 
     - service: media_player.shuffle_set
       data:
@@ -225,7 +225,7 @@ work_music:
       target:
         entity_id: media_player.bathroom
       data:
-        source: "{{ ['Tracks', 'My Mix 1', 'My Mix 2', 'My Mix 3', 'My Mix 4', 'My Mix 5', 'TIDAL Top 100 UK', 'Pop Party Mix' , 'Electronic Party Mix', 'PartyTidal', 'PartyLocal', 'Wolfgang Amadeus Mozart Essentials', 'TIDAL''s Top Hits'] | random }}"
+        source: "{{ ['My Mix 3', 'Electronic Party Mix', 'PartyLocal'] | random }}"
 
     - service: media_player.shuffle_set
       data:

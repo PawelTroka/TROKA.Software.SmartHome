@@ -3,9 +3,8 @@
 - alias: Turn bedroom lights on door open
   trigger:
     platform: state
-    entity_id: sensor.bedroom_door_opening_sensor_access_control
-    from: '23'
-    to: '22'
+    entity_id: binary_sensor.bedroom_door_opening_sensor_window_door_is_open
+    to: 'on'
   condition:
       condition: or  # 'when dark' condition: either after sunset or before sunrise - equivalent to a state condition on `sun.sun` of `below_horizon`
       conditions:
@@ -21,13 +20,12 @@
 - alias: Say welcome on bedroom door open
   trigger:
     platform: state
-    entity_id: sensor.bedroom_door_opening_sensor_access_control
-    from: '23'
-    to: '22'
+    entity_id: binary_sensor.bedroom_door_opening_sensor_window_door_is_open
+    to: 'on'
   action:
-    service: tts.google_say
-    entity_id: "media_player.bedroom"
+    service: script.sonos_say
     data:
+      sonos_entity: media_player.bedroom
       message: 'Welcome to the bedroom!'
 
 # Office door sensor
@@ -35,9 +33,8 @@
 - alias: Turn office lights on door open
   trigger:
     platform: state
-    entity_id: sensor.office_door_opening_sensor_access_control
-    from: '23'
-    to: '22'
+    entity_id: binary_sensor.office_door_opening_sensor_window_door_is_open
+    to: 'on'
   condition:
       condition: or  # 'when dark' condition: either after sunset or before sunrise - equivalent to a state condition on `sun.sun` of `below_horizon`
       conditions:
@@ -52,13 +49,12 @@
 - alias: Say welcome on office door open
   trigger:
     platform: state
-    entity_id: sensor.office_door_opening_sensor_access_control
-    from: '23'
-    to: '22'
+    entity_id: binary_sensor.office_door_opening_sensor_window_door_is_open
+    to: 'on'
   action:
-    service: tts.google_say
-    entity_id: "media_player.office"
+    service: script.sonos_say
     data:
+      sonos_entity: media_player.office
       message: 'Welcome to the office!'
 
 # Hallway door sensor
@@ -66,9 +62,8 @@
 - alias: Turn hallway lights on door open
   trigger:
     platform: state
-    entity_id: sensor.hallway_door_opening_sensor_access_control
-    from: '23'
-    to: '22'
+    entity_id: binary_sensor.hallway_door_opening_sensor_window_door_is_open
+    to: 'on'
   condition:
       condition: or  # 'when dark' condition: either after sunset or before sunrise - equivalent to a state condition on `sun.sun` of `below_horizon`
       conditions:
@@ -88,9 +83,8 @@
 - alias: Turn bathroom lights on door open
   trigger:
     platform: state
-    entity_id: sensor.bathroom_door_opening_sensor_access_control
-    from: '23'
-    to: '22'
+    entity_id: binary_sensor.bathroom_door_opening_senor_window_door_is_open
+    to: 'on'
   action:
     service: light.turn_on
     entity_id: light.bathroom_lights
@@ -98,9 +92,8 @@
 - alias: Say welcome on bathroom door open
   trigger:
     platform: state
-    entity_id: sensor.bathroom_door_opening_sensor_access_control
-    from: '23'
-    to: '22'
+    entity_id: binary_sensor.bathroom_door_opening_senor_window_door_is_open
+    to: 'on'
   action:
     service: script.announce_everywhere
     data:
@@ -109,20 +102,14 @@
 - alias: Turn off bathroom lights on door close if there is no motion inside and shower not in use
   trigger:
     platform: state
-    entity_id: sensor.bathroom_door_opening_sensor_access_control
-    from: '22'
-    to: '23'
+    entity_id: binary_sensor.bathroom_door_opening_senor_window_door_is_open
+    to: 'off'
     for:
       seconds: 90
   condition:
     - condition: state
       entity_id: 'binary_sensor.bathroom_multisensor_motion'
       state: 'off'
-      for:
-        seconds: 90
-    - condition: state
-      entity_id: 'sensor.bathroom_multisensor_burglar'
-      state: '0'
       for:
         seconds: 90
     - condition: state
@@ -138,9 +125,8 @@
 - alias: Turn toilet lights on door open
   trigger:
     platform: state
-    entity_id: sensor.toilet_door_opening_sensor_access_control
-    from: '23'
-    to: '22'
+    entity_id: binary_sensor.toilet_door_opening_sensor_window_door_is_open
+    to: 'on'
   action:
     service: light.turn_on
     entity_id: light.toilet_lights
@@ -149,33 +135,26 @@
 - alias: Say welcome on toilet door open
   trigger:
     platform: state
-    entity_id: sensor.toilet_door_opening_sensor_access_control
-    from: '23'
-    to: '22'
+    entity_id: binary_sensor.toilet_door_opening_sensor_window_door_is_open
+    to: 'on'
   action:
-    service: tts.google_say
-    entity_id: "media_player.toilet"
+    service: script.sonos_say
     data:
+      sonos_entity: media_player.toilet
       message: 'Welcome to the toilet!'
 
 
 - alias: Turn off toilet lights on door close if there is no motion inside
   trigger:
     platform: state
-    entity_id: sensor.toilet_door_opening_sensor_access_control
-    from: '22'
-    to: '23'
+    entity_id: binary_sensor.toilet_door_opening_sensor_window_door_is_open
+    to: 'off'
     for:
       seconds: 10
   condition:
     - condition: state
       entity_id: 'binary_sensor.toilet_multisensor_motion'
       state: 'off'
-      for:
-        seconds: 10
-    - condition: state
-      entity_id: 'sensor.toilet_multisensor_burglar'
-      state: '0'
       for:
         seconds: 10
   action:

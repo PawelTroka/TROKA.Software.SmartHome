@@ -10,8 +10,6 @@ set_denon_receiver_to_sonos_input:
       entity_id: group.all_reliable_denon_receivers
       data:
         source: Sonos
-    - service: media_player.media_play
-      entity_id: group.all_reliable_denon_receivers
     - service: media_player.select_source
       entity_id: group.all_reliable_denon_receivers
       data:
@@ -27,8 +25,6 @@ set_denon_receiver_to_game_input:
       entity_id: group.all_reliable_denon_receivers
       data:
         source: Game
-    - service: media_player.media_play
-      entity_id: group.all_reliable_denon_receivers
     - service: media_player.select_source
       entity_id: group.all_reliable_denon_receivers
       data:
@@ -44,8 +40,6 @@ set_denon_receiver_to_media_player_input:
       entity_id: group.all_reliable_denon_receivers
       data:
         source: 'Media Player'
-    - service: media_player.media_play
-      entity_id: group.all_reliable_denon_receivers
     - service: media_player.select_source
       entity_id: group.all_reliable_denon_receivers
       data:
@@ -60,14 +54,15 @@ turn_off_media_everywhere:
 
 turn_off_media_everywhere_except_bedroom:
   sequence:
-    - service: media_player.media_pause
-      entity_id: group.all_sonos_except_bedroom
-    - service: media_player.turn_off
-      entity_id: group.all_sonos_except_bedroom
+    - action: script.pause_sonos_group
+      data:
+        sonos_group: group.all_sonos_except_bedroom
     - service: script.turn_on
       entity_id: script.turn_off_denon_receiver
+      continue_on_error: true
     - service: script.turn_on
       entity_id: script.turn_off_living_room_tv
+      continue_on_error: true
 
 turn_off_tvs_everywhere:
   sequence:
@@ -85,10 +80,37 @@ turn_off_music_everywhere:
 
 turn_off_sonos_everywhere:
   sequence:
-    - service: media_player.media_pause
-      entity_id: group.all_sonos
-    - service: media_player.turn_off
-      entity_id: group.all_sonos
+    - action: script.pause_sonos_group
+      data:
+        sonos_group: group.all_sonos
+
+pause_sonos_group:
+  alias: Pause available Sonos coordinators
+  mode: parallel
+  max: 4
+  fields:
+    sonos_group:
+      required: true
+      selector:
+        entity:
+          domain: group
+  variables:
+    sonos_coordinators: >-
+      {% set result = namespace(entity_ids=[]) %}
+      {% for player in expand(sonos_group) %}
+        {% set members = state_attr(player.entity_id, 'group_members') or [] %}
+        {% if player.state not in ['unknown', 'unavailable']
+              and (members | count == 0 or members | first == player.entity_id) %}
+          {% set result.entity_ids = result.entity_ids + [player.entity_id] %}
+        {% endif %}
+      {% endfor %}
+      {{ result.entity_ids }}
+  sequence:
+    - condition: template
+      value_template: "{{ sonos_coordinators | count > 0 }}"
+    - action: media_player.media_pause
+      target:
+        entity_id: "{{ sonos_coordinators }}"
 
 
 # Turn ON
@@ -105,7 +127,7 @@ turn_on_living_room_tv:
 turn_on_denon_receiver:
   sequence:
     - service: media_player.turn_on
-      entity_id: group.all_denon_receivers
+      entity_id: media_player.denon_avc_x6500h_avr
 
 # Turn OFF
 turn_off_bedroom_tv:
@@ -115,10 +137,16 @@ turn_off_bedroom_tv:
 
 turn_off_living_room_tv:
   sequence:
+    - condition: template
+      value_template: >-
+        {{ states('media_player.living_room_bravia_tv')
+           not in ['off', 'unknown', 'unavailable'] }}
     - service: media_player.turn_off
-      entity_id: group.all_living_room_tvs
+      entity_id: media_player.living_room_bravia_tv
+      continue_on_error: true
 
 turn_off_denon_receiver:
   sequence:
     - service: media_player.turn_off
-      entity_id: group.all_denon_receivers
+      entity_id: media_player.denon_avc_x6500h_avr
+      continue_on_error: true

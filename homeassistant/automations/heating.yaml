@@ -48,7 +48,7 @@
       below: 7
     - platform: numeric_state
       entity_id: 'sensor.netatmo_indoor_temperature'
-      above: 20
+      below: 20
   condition:
     condition: state # at least 1 person is at home
     entity_id: group.all_persons
