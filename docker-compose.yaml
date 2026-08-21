@@ -420,6 +420,9 @@ services:
       - "traefik.protocol=http"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.redirect.regex=^https?://cloud[.]${DOMAINNAME}/[.]well-known/(card|cal)dav/?"
+      - "traefik.frontend.redirect.replacement=https://cloud.${DOMAINNAME}/remote.php/dav/"
+      - "traefik.frontend.redirect.permanent=true"
 
   nextcloud-cron:
     image: nextcloud:34.0.3-apache@sha256:368cd1c75bc4a32c2aee8a119cae31bcebff80c374782f404c440c3295726814
