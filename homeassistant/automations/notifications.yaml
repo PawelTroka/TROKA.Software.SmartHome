@@ -11,18 +11,6 @@
       time: '22:00:00'
 
 
-- alias: Home Assistant Update Notification
-  description: ''
-  use_blueprint:
-    path: >-
-      forte/fancy-home-assistant-update-available-notifier-for-android-with-customizable-notification-settings.yaml
-    input:
-      clickAction: https://my.home-assistant.io/redirect/supervisor/
-      delay: 0
-      notify_device: 66f5dd0693351cc7d8db2a8c595f5f13
-      include_hasspodcast: true
-
-
 - alias: "Notify about completed download"
   trigger:
     platform: event
@@ -50,17 +38,20 @@
   - platform: state
     entity_id: vacuum.roborock_s8_pro_ultra
   condition:
-    condition: template
-    value_template: >-
-      {{ trigger.from_state is not none
-         and trigger.to_state is not none
-         and trigger.to_state.state != trigger.from_state.state }}
+    - condition: template
+      value_template: >-
+        {{ trigger.from_state is not none
+           and trigger.to_state is not none
+           and trigger.to_state.state != trigger.from_state.state }}
+    - condition: template
+      value_template: >-
+        {{ trigger.to_state.state not in ['unknown', 'unavailable'] }}
   action:
     - service: notify.level_info
       data:
         title: "Robot vacuum changed state!"
         message: >-
-          "{{ trigger.to_state.name }} is {{ trigger.to_state.state }}"
+          {{ trigger.to_state.name }} is {{ trigger.to_state.state }}
 
 
 

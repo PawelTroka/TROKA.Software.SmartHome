@@ -4,7 +4,7 @@ front_door:
     - service: script.turn_on
       data_template:
         entity_id: >
-          {% if is_state('lock.front_door', 'locked') %}
+          {% if is_state('lock.smart_lock_ultra', 'locked') %}
             script.unlock_front_door
           {% else %}
             script.lock_front_door
@@ -13,9 +13,9 @@ front_door:
 lock_front_door:
   sequence:
     - service: lock.lock
-      entity_id: lock.front_door
+      entity_id: lock.smart_lock_ultra
 
 unlock_front_door:
   sequence:
     - service: lock.unlock
-      entity_id: lock.front_door
+      entity_id: lock.smart_lock_ultra

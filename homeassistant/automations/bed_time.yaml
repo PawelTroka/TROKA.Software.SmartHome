@@ -14,7 +14,7 @@
   action:
     - service: lock.lock
       target:
-        entity_id: lock.front_door
+        entity_id: lock.smart_lock_ultra
     - service: script.turn_off_everything
     - service: notify.level_info
       data:

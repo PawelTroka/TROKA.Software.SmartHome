@@ -42,10 +42,7 @@
 - name: screens
   platform: group
   services:
-    - service: notify_living_room_kodi
     - service: shield_android_tv
-    - service: bedroom_android_tv
-    - service: living_room_android_tv
 
 - name: voice
   platform: group
@@ -62,7 +59,6 @@
 - name: apps
   platform: group
   services:
-    - service: telegram_group
     - service: alexa_media
       data:
         target: media_player.living_room_echo
@@ -73,20 +69,24 @@
 - name: residents
   platform: group
   services:
-    - service: mobile_app_sm_g998b # Pawel
+    - service: mobile_app_oppofindx9ultra # Pawel
 
-
-- name: cars
+- name: critical_residents
   platform: group
   services:
-    - service: bmw_connected_drive_430i_xdrive # BMW
+    - service: mobile_app_iphone_michalina # Michalina receives only critical alerts
 
 - name: home_control_devices
   platform: group
   services:
-    - service: mobile_app_archos_101_oxygen_4g # Smart Tablet
     - service: mobile_app_ipad # Smart Tablet iPad
-    - service: mobile_app_sm_n910c # Smart Phone
+
+- name: safety_silent
+  platform: group
+  services:
+    - service: residents
+    - service: critical_residents
+    - service: apps
 
 
 #### Levels ####
@@ -102,7 +102,6 @@
   services:
     - service: level_trace
     - service: home_control_devices
-    - service: cars
 
 - name: level_info # everything_without_voice
   platform: group
@@ -114,4 +113,5 @@
   platform: group
   services:
     - service: level_info
+    - service: critical_residents
     - service: voice

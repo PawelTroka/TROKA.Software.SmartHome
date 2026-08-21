@@ -3,7 +3,7 @@
 - alias: Raise an alarm on bathroom flood
   trigger:
     platform: state
-    entity_id: binary_sensor.bathroom_flood_sensor
+    entity_id: binary_sensor.bathroom_water_leak_sensor
     to: 'on'
   action:
     - service: script.raise_flood_alarm

@@ -1,0 +1,97 @@
+- binary_sensor:
+    - name: UPS power outage
+      default_entity_id: binary_sensor.ups_power_outage
+      unique_id: ups_power_outage
+      device_class: problem
+      availability: "{{ has_value('sensor.ups_input_voltage') }}"
+      state: >-
+        {{ states('sensor.ups_input_voltage') | float(230) < 200 }}
+      delay_on: "00:00:05"
+      delay_off: "00:00:30"
+
+    - name: UPS telemetry unavailable
+      default_entity_id: binary_sensor.ups_telemetry_unavailable
+      unique_id: ups_telemetry_unavailable
+      device_class: problem
+      state: >-
+        {{ not (has_value('sensor.ups_input_voltage')
+                and has_value('sensor.ups_battery_capacity')
+                and has_value('sensor.ups_remaining_backup_time')) }}
+      delay_on: "00:05:00"
+      delay_off: "00:05:00"
+
+    - name: UPS low runtime
+      default_entity_id: binary_sensor.ups_low_runtime
+      unique_id: ups_low_runtime
+      device_class: problem
+      availability: >-
+        {{ has_value('sensor.ups_battery_capacity')
+           and has_value('sensor.ups_remaining_backup_time') }}
+      state: >-
+        {{ states('sensor.ups_battery_capacity') | float(100) < 20
+           or states('sensor.ups_remaining_backup_time') | float(60) < 10 }}
+      delay_on: "00:00:05"
+      delay_off: "00:00:30"
+
+    - name: Radon longterm warning
+      default_entity_id: binary_sensor.radon_longterm_warning
+      unique_id: radon_longterm_warning
+      device_class: problem
+      availability: "{{ has_value('sensor.airthings_radon_longterm_avg') }}"
+      state: >-
+        {% set radon = states('sensor.airthings_radon_longterm_avg') | float(0) %}
+        {{ radon > 100 and radon <= 150 }}
+      delay_on: "00:05:00"
+
+    - name: Radon longterm dangerous
+      default_entity_id: binary_sensor.radon_longterm_dangerous
+      unique_id: radon_longterm_dangerous
+      device_class: safety
+      availability: "{{ has_value('sensor.airthings_radon_longterm_avg') }}"
+      state: >-
+        {{ states('sensor.airthings_radon_longterm_avg') | float(0) > 150 }}
+      delay_on: "00:05:00"
+      delay_off: "00:05:00"
+
+    - name: Radon 1day warning
+      default_entity_id: binary_sensor.radon_1day_warning
+      unique_id: radon_1day_warning
+      device_class: problem
+      availability: "{{ has_value('sensor.airthings_radon_1day_avg') }}"
+      state: >-
+        {% set radon = states('sensor.airthings_radon_1day_avg') | float(0) %}
+        {{ radon > 100 and radon <= 150 }}
+      delay_on: "00:05:00"
+
+    - name: Radon 1day dangerous
+      default_entity_id: binary_sensor.radon_1day_dangerous
+      unique_id: radon_1day_dangerous
+      device_class: safety
+      availability: "{{ has_value('sensor.airthings_radon_1day_avg') }}"
+      state: >-
+        {{ states('sensor.airthings_radon_1day_avg') | float(0) > 150 }}
+      delay_on: "00:05:00"
+      delay_off: "00:05:00"
+
+    - name: Airthings monitor unavailable
+      default_entity_id: binary_sensor.airthings_monitor_unavailable
+      unique_id: airthings_monitor_unavailable
+      device_class: problem
+      state: >-
+        {{ not (has_value('sensor.airthings_radon_longterm_avg')
+                and has_value('sensor.airthings_radon_1day_avg')
+                and has_value('sensor.airthings_voc')) }}
+      delay_on: "00:05:00"
+      delay_off: "00:05:00"
+
+    - name: Bathroom leak sensor unavailable
+      default_entity_id: binary_sensor.bathroom_leak_sensor_unavailable
+      unique_id: bathroom_leak_sensor_unavailable
+      device_class: problem
+      state: >-
+        {% set leak_sensor = states.binary_sensor.bathroom_water_leak_sensor %}
+        {{ leak_sensor.state in ['unknown', 'unavailable']
+           or leak_sensor.last_reported is none
+           or now() - leak_sensor.last_reported > timedelta(hours=6) }}
+      delay_on: "00:05:00"
+      delay_off: "00:05:00"

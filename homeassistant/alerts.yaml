@@ -14,8 +14,8 @@ front_door_left_unlocked:
   name: "Error: Front door left unlocked"
   message: Front door has been left unlocked.
   done_message: Front door is finally locked
-  entity_id: lock.front_door
-  state: 'on'
+  entity_id: lock.smart_lock_ultra
+  state: 'unlocked'
   repeat: 2
   can_acknowledge: true
   skip_first: true
@@ -28,23 +28,33 @@ flood_in_kitchen:
   done_message: There is no longer flood in kitchen.
   entity_id: binary_sensor.kitchen_flood_sensor
   state: 'on'
-  repeat: 1
+  repeat:
+    - 1
+    - 5
+    - 15
+    - 30
+    - 60
   can_acknowledge: false
   skip_first: false
   notifiers:
-    - level_important
+    - safety_silent
 
 flood_in_bathroom:
   name: "Error: Flood in bathroom"
   message:  "Flood in bathroom!!! There is a flood in bathroom. Flood in bathroom!!!"
   done_message: There is no longer flood in bathroom.
-  entity_id: binary_sensor.bathroom_flood_sensor
+  entity_id: binary_sensor.bathroom_water_leak_sensor
   state: 'on'
-  repeat: 1
+  repeat:
+    - 1
+    - 5
+    - 15
+    - 30
+    - 60
   can_acknowledge: false
   skip_first: false
   notifiers:
-    - level_important
+    - safety_silent
 
 flood_in_toilet:
   name: "Error: Flood in toilet"
@@ -52,18 +62,28 @@ flood_in_toilet:
   done_message: There is no longer flood in toilet.
   entity_id: binary_sensor.toilet_flood_sensor
   state: 'on'
-  repeat: 1
+  repeat:
+    - 1
+    - 5
+    - 15
+    - 30
+    - 60
   can_acknowledge: false
   skip_first: false
   notifiers:
-    - level_important
+    - safety_silent
 
 power_outage:
   name: "Error: power outage!"
-  message:  "Power outage just happenned {{ states('sensor.ups_line_outage_time') | multiply(0.016666666666667) | float(1) }} minutes ago!"
-  done_message: Power outage just ended
-  entity_id: sensor.ups_line_outage_time
-  state: '> 0'
+  message:  "Power outage happened {{ states('sensor.ups_line_outage_time') | multiply(0.016666666666667) | float(1) }} minutes ago!"
+  done_message: >-
+    {% if has_value('sensor.ups_input_voltage') %}
+      Power outage just ended.
+    {% else %}
+      UPS input telemetry became unavailable; mains power cannot be confirmed.
+    {% endif %}
+  entity_id: binary_sensor.ups_power_outage
+  state: 'on'
   repeat: 5
   can_acknowledge: true
   skip_first: false
@@ -72,12 +92,42 @@ power_outage:
 
 ups_low_power:
   name: "Error: low UPS remaining power!"
-  message:  "UPS remaining power is very low. In {{ states('sensor.ups_remaining_backup_time') }} minutes home server and the network infrastructure will go down"
-  done_message: There is no longer flood in toilet.
-  entity_id: sensor.ups_remaining_backup_time
-  state: '< 10'
-  repeat: 2
-  can_acknowledge: false
+  message: >-
+    UPS reports {{ states('sensor.ups_battery_capacity') }}% charge and
+    {{ states('sensor.ups_remaining_backup_time') }} minute(s) of runtime.
+    It cannot safely protect the home server during an outage.
+  done_message: >-
+    {% if has_value('sensor.ups_battery_capacity')
+          and has_value('sensor.ups_remaining_backup_time') %}
+      UPS battery capacity and runtime are no longer critical.
+    {% else %}
+      UPS battery telemetry became unavailable; recovery cannot be confirmed.
+    {% endif %}
+  entity_id: binary_sensor.ups_low_runtime
+  state: 'on'
+  repeat:
+    - 2
+    - 10
+    - 30
+    - 60
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_important
+
+ups_telemetry_unavailable:
+  name: "Error: UPS telemetry unavailable"
+  message: >-
+    UPS voltage, battery, or runtime telemetry has been unavailable for 5 minutes.
+    Power protection cannot be monitored.
+  done_message: UPS telemetry is available again.
+  entity_id: binary_sensor.ups_telemetry_unavailable
+  state: 'on'
+  repeat:
+    - 10
+    - 60
+    - 360
+  can_acknowledge: true
   skip_first: false
   notifiers:
     - level_important
@@ -86,10 +136,18 @@ ups_low_power:
 
 radon_longterm_level_warning:
   name: "Radon level long term warning"
-  message:  "Radon level long term is {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3 which is starting to get dangerous. Open windows."
-  done_message: Radon level long term just went down to {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3 which is safe again.
-  entity_id: sensor.airthings_radon_longterm_avg
-  state: '> 100'
+  message: >-
+    Long-term radon is {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3,
+    above the recommended residential reference level. Ventilate and keep monitoring.
+  done_message: >-
+    {% if has_value('sensor.airthings_radon_longterm_avg') %}
+      Long-term radon warning ended at {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3;
+      it may have returned safe or escalated to the dangerous tier.
+    {% else %}
+      The Airthings radon reading became unavailable; safety cannot be confirmed.
+    {% endif %}
+  entity_id: binary_sensor.radon_longterm_warning
+  state: 'on'
   repeat: 5
   can_acknowledge: true
   skip_first: false
@@ -98,23 +156,42 @@ radon_longterm_level_warning:
 
 
 radon_longterm_level_dangerous:
-  name: "Radon level long term dangerous"
-  message:  "Radon level long term is {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3 which is really dangerous. Open windows and leave home immediately!"
-  done_message: Radon level long term just went down to {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3 which is safer.
-  entity_id: sensor.airthings_radon_longterm_avg
-  state: '> 150'
-  repeat: 2
-  can_acknowledge: false
+  name: "Radon level long term high"
+  message: >-
+    Long-term radon is {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3.
+    Ventilate, confirm the reading, and arrange professional radon mitigation.
+  done_message: >-
+    {% if has_value('sensor.airthings_radon_longterm_avg') %}
+      Long-term radon fell to {{ states('sensor.airthings_radon_longterm_avg') }} Bq/m3.
+    {% else %}
+      The Airthings radon reading became unavailable; safety cannot be confirmed.
+    {% endif %}
+  entity_id: binary_sensor.radon_longterm_dangerous
+  state: 'on'
+  repeat:
+    - 5
+    - 30
+    - 120
+    - 720
+  can_acknowledge: true
   skip_first: false
   notifiers:
     - level_important
 
 radon_1day_level_warning:
   name: "Radon level today warning"
-  message:  "Radon level today is {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3 which is starting to get dangerous. Open windows."
-  done_message: Radon level today just went down to {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3 which is safe again.
-  entity_id: sensor.airthings_radon_1day_avg
-  state: '> 100'
+  message: >-
+    Daily radon is {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3,
+    above the recommended residential reference level. Ventilate and keep monitoring.
+  done_message: >-
+    {% if has_value('sensor.airthings_radon_1day_avg') %}
+      Daily radon warning ended at {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3;
+      it may have returned safe or escalated to the dangerous tier.
+    {% else %}
+      The Airthings radon reading became unavailable; safety cannot be confirmed.
+    {% endif %}
+  entity_id: binary_sensor.radon_1day_warning
+  state: 'on'
   repeat: 5
   can_acknowledge: true
   skip_first: false
@@ -123,16 +200,61 @@ radon_1day_level_warning:
 
 
 radon_1day_level_dangerous:
-  name: "Radon level today dangerous"
-  message:  "Radon level today is {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3 which is really dangerous. Open windows and leave home immediately!"
-  done_message: Radon level today just went down to {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3 which is safer.
-  entity_id: sensor.airthings_radon_1day_avg
-  state: '> 150'
-  repeat: 2
-  can_acknowledge: false
+  name: "Radon level today high"
+  message: >-
+    Daily radon is {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3.
+    Ventilate and confirm the result with a reliable long-term measurement before arranging mitigation.
+  done_message: >-
+    {% if has_value('sensor.airthings_radon_1day_avg') %}
+      Daily radon fell to {{ states('sensor.airthings_radon_1day_avg') }} Bq/m3.
+    {% else %}
+      The Airthings radon reading became unavailable; safety cannot be confirmed.
+    {% endif %}
+  entity_id: binary_sensor.radon_1day_dangerous
+  state: 'on'
+  repeat:
+    - 5
+    - 30
+    - 120
+    - 720
+  can_acknowledge: true
   skip_first: false
   notifiers:
-    - level_important
+    - safety_silent
+
+airthings_monitor_unavailable:
+  name: "Error: Airthings monitor unavailable"
+  message: >-
+    Airthings radon or VOC telemetry has been unavailable for 5 minutes.
+    Air-quality safety alerts cannot operate until the integration is restored.
+  done_message: Airthings radon and VOC telemetry is available again.
+  entity_id: binary_sensor.airthings_monitor_unavailable
+  state: 'on'
+  repeat:
+    - 60
+    - 360
+    - 1440
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
+
+bathroom_leak_sensor_unavailable:
+  name: "Error: Bathroom leak sensor unavailable"
+  message: >-
+    The bathroom leak sensor has not reported for more than 6 hours.
+    Bathroom leak protection is not currently reliable.
+  done_message: The bathroom leak sensor is reporting again.
+  entity_id: binary_sensor.bathroom_leak_sensor_unavailable
+  state: 'on'
+  repeat:
+    - 60
+    - 360
+    - 1440
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
 
 co2_above_1000_ppm:
   name: CO2 above 1000 ppm
