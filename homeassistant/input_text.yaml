@@ -3,3 +3,15 @@ announcement:
   icon: mdi:voice
   initial: ""
   max: 255
+
+# Restored date keys prevent bedtime and wake routines from running more than
+# once for the same night, including across Home Assistant restarts.
+pawel_bedtime_night:
+  name: Pawel bedtime routine night
+  icon: mdi:bed-clock
+  max: 10
+
+pawel_wake_night:
+  name: Pawel wake routine night
+  icon: mdi:weather-sunset-up
+  max: 10

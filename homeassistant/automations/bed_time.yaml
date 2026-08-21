@@ -1,35 +1,135 @@
-# Smart Bedtime Automations (Single Resident)
+# Pawel bedtime/wake routines. Withings is primary; Oppo is a conservative
+# fallback while the physical sleep mat is unavailable.
 
-- alias: "Good Night: Secure House when in Bed"
+- id: pawel_bedtime_secure_house
+  alias: "Good Night: secure house when Pawel settles in bed"
   mode: single
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.eight_left_bed_presence
-      to: 'on'
-      for: "00:05:00" # 5 minutes to ensure you're actually settling in
-  condition:
+  triggers:
+    - trigger: state
+      id: withings
+      entity_id: binary_sensor.withings_in_bed_pawel_t
+      to: "on"
+      for: "00:10:00"
+    - trigger: template
+      id: oppo_fallback
+      value_template: >-
+        {% set minute = now().hour * 60 + now().minute %}
+        {% set confidence = states('sensor.oppofindx9ultra_sleep_confidence') | float(-1) %}
+        {{ states('binary_sensor.withings_in_bed_pawel_t') in ['unknown', 'unavailable']
+           and confidence >= 85
+           and is_state('binary_sensor.oppofindx9ultra_interactive', 'off')
+           and is_state('binary_sensor.oppofindx9ultra_is_charging', 'on')
+           and (minute >= 1200 or minute < 270) }}
+      for: "00:20:00"
+  conditions:
     - condition: state
-      entity_id: sun.sun
-      state: 'below_horizon'
-  action:
-    - service: lock.lock
+      entity_id: person.pawel
+      state: "home"
+    - condition: template
+      value_template: >-
+        {% set minute = now().hour * 60 + now().minute %}
+        {{ minute >= 1200 or minute < 270 }}
+    - condition: template
+      value_template: >-
+        {{ states('input_text.pawel_bedtime_night') !=
+           ((as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true)) }}
+  actions:
+    - variables:
+        night_key: >-
+          {{ (as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true) }}
+        shutdown_allowed: >-
+          {{ trigger.id == 'withings'
+             and states('person.misiuszka') not in ['home', 'unknown', 'unavailable'] }}
+        trigger_source: >-
+          {{ 'Withings bed sensor' if trigger.id == 'withings' else 'Oppo fallback' }}
+    # Latch first so a temporarily unreachable lock cannot cause repeat runs.
+    - action: input_text.set_value
+      target:
+        entity_id: input_text.pawel_bedtime_night
+      data:
+        value: "{{ night_key }}"
+    - action: lock.lock
       target:
         entity_id: lock.smart_lock_ultra
-    - service: script.turn_off_everything
-    - service: notify.level_info
+      continue_on_error: true
+    # Pawel going to bed must not shut down the whole house while Michalina is
+    # home or her presence is uncertain.
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ shutdown_allowed }}"
+          sequence:
+            - action: script.turn_off_everything
+              continue_on_error: true
+    - action: notify.level_info
       data:
-        title: "Good Night"
-        message: "House secured. Sleep well, Pawel!"
+        title: "Good night"
+        message: >-
+          Pawel bedtime detected via {{ trigger_source }}.
+          {% if trigger.id == 'oppo_fallback' %}
+            The Oppo fallback cannot run the whole-house shutdown; only the lock was requested.
+          {% elif shutdown_allowed %}
+            Michalina is away, so the whole-house night shutdown was requested.
+          {% else %}
+            Whole-house shutdown was skipped because Michalina is home or her presence is uncertain.
+          {% endif %}
+          {{ 'The door reports locked.' if is_state('lock.smart_lock_ultra', 'locked')
+             else 'The door lock could not be confirmed.' }}
+      continue_on_error: true
 
-- alias: "Wake Up: Comfort Mode"
-  trigger:
-    - platform: state
-      entity_id: sensor.eight_left_sleep_stage
-      from: 'light'
-      to: 'awake'
-  condition:
-    - condition: time
-      after: "06:00:00"
-      before: "11:00:00"
-  action:
-    - service: script.turn_on_heating_everywhere_except_bedroom_and_office
+- id: pawel_wake_comfort_mode
+  alias: "Wake Up: Pawel comfort mode"
+  mode: single
+  triggers:
+    # Prefer Withings out-of-bed plus a live phone signal that says awake.
+    - trigger: template
+      id: withings_confirmed
+      value_template: >-
+        {% set minute = now().hour * 60 + now().minute %}
+        {% set confidence = states('sensor.oppofindx9ultra_sleep_confidence') | float(-1) %}
+        {{ is_state('binary_sensor.withings_in_bed_pawel_t', 'off')
+           and (is_state('binary_sensor.oppofindx9ultra_interactive', 'on')
+                or (confidence >= 0 and confidence <= 25))
+           and minute >= 360 and minute < 660 }}
+      for: "00:20:00"
+    # If both phone signals disappear, trust 45 continuous minutes out of bed.
+    - trigger: template
+      id: withings_only
+      value_template: >-
+        {% set minute = now().hour * 60 + now().minute %}
+        {{ is_state('binary_sensor.withings_in_bed_pawel_t', 'off')
+           and states('binary_sensor.oppofindx9ultra_interactive') in ['unknown', 'unavailable']
+           and states('sensor.oppofindx9ultra_sleep_confidence') in ['unknown', 'unavailable']
+           and minute >= 360 and minute < 660 }}
+      for: "00:45:00"
+    # If Withings is unavailable, require two independent awake phone signals.
+    - trigger: template
+      id: oppo_fallback
+      value_template: >-
+        {% set minute = now().hour * 60 + now().minute %}
+        {% set confidence = states('sensor.oppofindx9ultra_sleep_confidence') | float(-1) %}
+        {{ states('binary_sensor.withings_in_bed_pawel_t') in ['unknown', 'unavailable']
+           and is_state('binary_sensor.oppofindx9ultra_interactive', 'on')
+           and confidence >= 0 and confidence <= 25
+           and minute >= 360 and minute < 660 }}
+      for: "00:10:00"
+  conditions:
+    - condition: state
+      entity_id: person.pawel
+      state: "home"
+    - condition: template
+      value_template: >-
+        {% set night_key = (as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true) %}
+        {{ states('input_text.pawel_bedtime_night') == night_key
+           and states('input_text.pawel_wake_night') != night_key }}
+  actions:
+    - variables:
+        night_key: >-
+          {{ (as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true) }}
+    - action: input_text.set_value
+      target:
+        entity_id: input_text.pawel_wake_night
+      data:
+        value: "{{ night_key }}"
+    - action: script.turn_on_heating_everywhere_except_bedroom_and_office
+      continue_on_error: true
