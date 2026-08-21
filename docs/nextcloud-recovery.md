@@ -63,6 +63,11 @@ The status response must report `maintenance: false`, `needsDbUpgrade: false`,
 and version `34.0.3`. CalDAV and CardDAV discovery URLs must redirect to the
 HTTPS `/remote.php/dav/` endpoint.
 
+The production migration was also validated with an authenticated WebDAV
+`PROPFIND` and file download through the public URL. The downloaded size and
+SHA-256 matched the source file. The temporary app password used for that test
+was revoked immediately, leaving no authentication token behind.
+
 Never point an older Nextcloud image at a database that has already been
 upgraded. A rollback must restore matching config, database, app code, and user
 data from one checkpoint.
