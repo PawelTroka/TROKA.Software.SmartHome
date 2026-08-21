@@ -62,6 +62,7 @@
     - service: residents
     - service: critical_residents
     - service: apps
+    - service: persistent_notification
 
 
 #### Levels ####
@@ -89,3 +90,4 @@
     - service: level_info
     - service: critical_residents
     - service: voice
+    - service: persistent_notification
