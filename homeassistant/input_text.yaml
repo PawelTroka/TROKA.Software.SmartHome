@@ -15,3 +15,8 @@ pawel_wake_night:
   name: Pawel wake routine night
   icon: mdi:weather-sunset-up
   max: 10
+
+michalina_bedtime_night:
+  name: Michalina bedtime routine night
+  icon: mdi:bed-clock
+  max: 10

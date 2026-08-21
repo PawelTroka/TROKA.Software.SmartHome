@@ -1,5 +1,6 @@
-# Pawel bedtime/wake routines. Withings is primary; Oppo is a conservative
-# fallback while the physical sleep mat is unavailable.
+# Two-resident bedtime/wake routines. Withings is Pawel's primary detector;
+# Oppo is a conservative fallback. Michalina supplies explicit Sleep Focus
+# intent from iOS, confirmed only while her phone is charging at home.
 
 - id: pawel_bedtime_secure_house
   alias: "Good Night: secure house when Pawel settles in bed"
@@ -37,9 +38,6 @@
     - variables:
         night_key: >-
           {{ (as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true) }}
-        shared_shutdown_allowed: >-
-          {{ trigger.id == 'withings'
-             and states('person.misiuszka') not in ['home', 'unknown', 'unavailable'] }}
         trigger_source: >-
           {{ 'Withings bed sensor' if trigger.id == 'withings' else 'Oppo fallback' }}
     # Latch first so a temporarily unreachable lock cannot cause repeat runs.
@@ -54,8 +52,22 @@
       continue_on_error: true
     - action: script.activate_night_mode
       data:
-        whole_house: "{{ shared_shutdown_allowed }}"
+        whole_house: >-
+          {{ trigger.id == 'withings'
+             and states('person.misiuszka') not in ['home', 'unknown', 'unavailable'] }}
       continue_on_error: true
+    # Re-evaluate Michalina only after the bedroom actions finish. A Focus-off
+    # transition during those actions must never be overridden by an old value.
+    - action: script.reconcile_house_night_mode_activation
+      continue_on_error: true
+    - variables:
+        michalina_confirmed_now: >-
+          {{ is_state('person.misiuszka', 'home')
+             and is_state('input_boolean.michalina_sleep_focus', 'on')
+             and is_state('input_boolean.michalina_sleeping', 'on')
+             and states('input_text.michalina_bedtime_night') == night_key }}
+        shared_mode_active: >-
+          {{ is_state('input_boolean.house_night_mode', 'on') }}
     - action: notify.level_info
       data:
         title: "Good night"
@@ -63,17 +75,128 @@
           Pawel bedtime detected via {{ trigger_source }}. Bedroom lights,
           screens, and music were requested off; bedroom cooling was requested
           at 18 degrees.
-          {% if trigger.id == 'oppo_fallback' %}
+          {% if shared_mode_active %}
+            {% if michalina_confirmed_now %}
+              Michalina was independently confirmed settled, so shared lights,
+              screens, and music were also requested off.
+            {% else %}
+              Michalina is away, so shared lights, screens, and music were also requested off.
+            {% endif %}
+          {% elif trigger.id == 'oppo_fallback' %}
             The conservative Oppo fallback left shared lights and media in use;
             the shared 1-percent red profile was not enabled.
-          {% elif shared_shutdown_allowed %}
-            Michalina is away, so shared lights, screens, and music were also requested off.
           {% else %}
             Shared lights and media were left in use because Michalina is home
             or her presence is uncertain; the shared 1-percent red profile was not enabled.
           {% endif %}
           {{ 'The door reports locked.' if is_state('lock.smart_lock_ultra', 'locked')
              else 'The door lock could not be confirmed.' }}
+      continue_on_error: true
+
+- id: michalina_bedtime_confirmed_by_iphone
+  alias: "Good Night: confirm Michalina from iPhone Sleep Focus"
+  mode: single
+  triggers:
+    - trigger: template
+      value_template: >-
+        {% set minute = now().hour * 60 + now().minute %}
+        {{ is_state('input_boolean.michalina_sleep_focus', 'on')
+           and is_state('person.misiuszka', 'home')
+           and states('sensor.iphone_michalina_battery_state') in ['Charging', 'Full']
+           and (minute >= 1200 or minute < 270) }}
+      for: "00:20:00"
+  conditions:
+    - condition: template
+      value_template: >-
+        {{ states('input_text.michalina_bedtime_night') !=
+           ((as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true)) }}
+  actions:
+    - variables:
+        night_key: >-
+          {{ (as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true) }}
+        pawel_is_away: >-
+          {{ states('person.pawel') not in ['home', 'unknown', 'unavailable'] }}
+        pawel_settled_at_home: >-
+          {{ is_state('person.pawel', 'home')
+             and is_state('input_boolean.bedroom_night_mode', 'on')
+             and states('input_text.pawel_bedtime_night') == night_key }}
+    # Latch before shared actions so an unavailable media player cannot cause a
+    # second shutdown attempt from the same phone state later that night.
+    - action: input_text.set_value
+      target:
+        entity_id: input_text.michalina_bedtime_night
+      data:
+        value: "{{ night_key }}"
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.michalina_sleeping
+    # Activation-only reconciliation rechecks both residents after this latch;
+    # it never starts Pawel's bedroom cooling or deactivates an existing mode.
+    - action: script.reconcile_house_night_mode_activation
+      continue_on_error: true
+    - action: notify.level_info
+      data:
+        title: "Good night"
+        message: >-
+          Michalina was confirmed settled after Sleep Focus and charging at
+          home for 20 minutes.
+          {% if pawel_is_away %}
+            Pawel is away, so shared lights, screens, and music were requested off.
+          {% elif pawel_settled_at_home %}
+            Pawel's bedroom night mode is active, so shared lights, screens,
+            and music were requested off.
+          {% else %}
+            Shared rooms were left in use because Pawel is still home and awake.
+          {% endif %}
+      continue_on_error: true
+
+- id: michalina_sleep_focus_off_cleanup
+  alias: "Wake Up: clear Michalina after Sleep Focus turns off"
+  mode: restart
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.michalina_sleep_focus
+      to: "off"
+      for: "00:05:00"
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.michalina_sleeping
+    - action: input_text.set_value
+      target:
+        entity_id: input_text.michalina_bedtime_night
+      data:
+        value: ""
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: >-
+                {{ states('person.misiuszka') in ['home', 'unknown', 'unavailable'] }}
+            - condition: state
+              entity_id: input_boolean.house_night_mode
+              state: "on"
+          sequence:
+            - action: script.deactivate_house_night_mode
+              continue_on_error: true
+
+- id: house_night_mode_reconcile_when_pawel_changes
+  alias: "Night mode: reconcile shared rooms after Pawel state changes"
+  mode: queued
+  max: 10
+  triggers:
+    - trigger: state
+      entity_id: person.pawel
+      for: "00:01:05"
+  conditions:
+    - condition: template
+      value_template: >-
+        {{ trigger.from_state is not none
+           and trigger.to_state is not none
+           and trigger.to_state.state not in ['home', 'unknown', 'unavailable'] }}
+  actions:
+    # This path exists only for a stable, positively known departure. Home and
+    # uncertain tracker recovery are owned by the arrival fail-open routine.
+    - action: script.reconcile_house_night_mode_activation
       continue_on_error: true
 
 - id: pawel_wake_comfort_mode
@@ -176,7 +299,25 @@
           {% set minute = now().hour * 60 + now().minute %}
           {% set current_night = (as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true) %}
           {{ (minute >= 660 and minute < 1200)
-             or states('input_text.pawel_bedtime_night') != current_night }}
+             or (states('input_text.pawel_bedtime_night') != current_night
+                 and states('input_text.michalina_bedtime_night') != current_night) }}
+        should_clear_michalina_state: >-
+          {% set minute = now().hour * 60 + now().minute %}
+          {% set current_night = (as_timestamp(now()) - 64800) | timestamp_custom('%Y-%m-%d', true) %}
+          {% set focus = states.input_boolean.michalina_sleep_focus %}
+          {% set focus_off_stable =
+             is_state('input_boolean.michalina_sleep_focus', 'off')
+             and (trigger.id == 'startup'
+                  or (focus is not none
+                      and as_timestamp(now()) - as_timestamp(focus.last_changed) >= 300)) %}
+          {% set bedtime_key = states('input_text.michalina_bedtime_night') %}
+          {% set has_latched_state =
+             is_state('input_boolean.michalina_sleeping', 'on')
+             or bedtime_key not in ['', 'unknown', 'unavailable'] %}
+          {{ (focus_off_stable and has_latched_state)
+             or (minute >= 660 and minute < 1080)
+             or (bedtime_key not in ['', 'unknown', 'unavailable']
+                 and bedtime_key != current_night) }}
     - choose:
         - conditions:
             - condition: template
@@ -188,6 +329,37 @@
           sequence:
             - action: script.deactivate_night_mode
               continue_on_error: true
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: >-
+                {{ should_clear_michalina_state
+                   and (is_state('input_boolean.michalina_sleep_focus', 'on')
+                        or is_state('input_boolean.michalina_sleeping', 'on')
+                        or states('input_text.michalina_bedtime_night')
+                           not in ['', 'unknown', 'unavailable']) }}
+          sequence:
+            - action: input_boolean.turn_off
+              target:
+                entity_id:
+                  - input_boolean.michalina_sleep_focus
+                  - input_boolean.michalina_sleeping
+            - action: input_text.set_value
+              target:
+                entity_id: input_text.michalina_bedtime_night
+              data:
+                value: ""
+            - choose:
+                - conditions:
+                    - condition: template
+                      value_template: >-
+                        {{ states('person.misiuszka') in ['home', 'unknown', 'unavailable'] }}
+                    - condition: state
+                      entity_id: input_boolean.house_night_mode
+                      state: "on"
+                  sequence:
+                    - action: script.deactivate_house_night_mode
+                      continue_on_error: true
     - choose:
         - conditions:
             - condition: state
@@ -216,24 +388,94 @@
                     - action: input_boolean.turn_off
                       target:
                         entity_id: input_boolean.bedroom_ac_night_cooling
-
 - id: house_night_mode_disable_when_michalina_arrives
-  alias: "Night mode: restore shared rooms when Michalina arrives"
-  mode: single
+  alias: "Night mode: restore shared rooms when a resident arrives"
+  mode: queued
+  max: 10
   triggers:
     - trigger: state
-      entity_id: person.misiuszka
+      entity_id:
+        - person.pawel
+        - person.misiuszka
       to: "home"
-  conditions:
-    - condition: state
-      entity_id: input_boolean.house_night_mode
-      state: "on"
+      for: "00:01:00"
   actions:
-    - action: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.house_night_mode
+    - variables:
+        genuine_arrival: >-
+          {{ trigger.from_state is not none
+             and trigger.to_state is not none
+             and trigger.from_state.state not in ['home', 'unknown', 'unavailable']
+             and (as_timestamp(trigger.to_state.last_changed)
+                  - as_timestamp(trigger.from_state.last_changed)) >= 300 }}
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: >-
+                {{ trigger.entity_id == 'person.misiuszka'
+                   and (genuine_arrival | bool) }}
+          sequence:
+            - action: input_boolean.turn_off
+              target:
+                entity_id:
+                  - input_boolean.michalina_sleep_focus
+                  - input_boolean.michalina_sleeping
+            - action: input_text.set_value
+              target:
+                entity_id: input_text.michalina_bedtime_night
+              data:
+                value: ""
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: >-
+                {{ trigger.entity_id == 'person.pawel'
+                   and (genuine_arrival | bool) }}
+          sequence:
+            - action: input_text.set_value
+              target:
+                entity_id: input_text.pawel_bedtime_night
+              data:
+                value: ""
+            # End Pawel's personal scope only when bedtime automation owns it;
+            # never shut down manually requested bedroom cooling on arrival.
+            - choose:
+                - conditions:
+                    - condition: or
+                      conditions:
+                        - condition: state
+                          entity_id: input_boolean.bedroom_night_mode
+                          state: "on"
+                        - condition: state
+                          entity_id: input_boolean.bedroom_ac_night_cooling
+                          state: "on"
+                  sequence:
+                    - action: climate.turn_off
+                      target:
+                        entity_id: climate.bedroom_ac
+                      continue_on_error: true
+                    - action: script.deactivate_night_mode
+                      continue_on_error: true
+                    - wait_template: "{{ is_state('climate.bedroom_ac', 'off') }}"
+                      timeout: "00:00:20"
+                      continue_on_timeout: true
+                    - choose:
+                        - conditions:
+                            - condition: state
+                              entity_id: climate.bedroom_ac
+                              state: "off"
+                            - condition: state
+                              entity_id: input_boolean.bedroom_night_mode
+                              state: "off"
+                          sequence:
+                            - action: input_boolean.turn_off
+                              target:
+                                entity_id: input_boolean.bedroom_ac_night_cooling
+    # Always release shared mode after a confirmed home transition. This is
+    # idempotent and closes races with a concurrent bedtime reconciliation.
+    - action: script.deactivate_house_night_mode
+      continue_on_error: true
     # If the door/motion event won the race with presence detection, replace
-    # the already-lit red hallway immediately instead of waiting for new motion.
+    # an already-lit red hallway instead of awaiting another motion cycle.
     - choose:
         - conditions:
             - condition: state

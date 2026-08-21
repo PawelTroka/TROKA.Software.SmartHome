@@ -63,6 +63,18 @@ house_night_mode:
   name: House night mode
   icon: mdi:home-clock
 
+# The raw helper is controlled only by Michalina's Sleep Focus shortcuts. It
+# deliberately starts off after a restart so stale phone intent cannot trigger
+# a bedtime routine. The confirmed state is restored until wake/day cleanup.
+michalina_sleep_focus:
+  name: Michalina Sleep Focus signal
+  icon: mdi:moon-waning-crescent
+  initial: false
+
+michalina_sleeping:
+  name: Michalina sleeping
+  icon: mdi:sleep
+
 bedroom_ac_night_cooling:
   name: Bedroom AC night cooling requested
   icon: mdi:snowflake-clock
