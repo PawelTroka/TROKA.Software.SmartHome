@@ -1,11 +1,18 @@
 turn_on_automatic_lights:
-  alias: Turn on automatic lights using the active day or night profile
+  alias: Turn on automatic lights without overwriting manual settings
   mode: parallel
   max: 20
   fields:
+    normal_lights:
+      name: Normal lights
+      description: Room light group to turn on without changing its saved settings
+      required: true
+      selector:
+        entity:
+          domain: light
     day_profile:
       name: Normal light profile
-      description: Script that restores the room's normal color and brightness
+      description: Script used once to recover from an applied night profile
       required: true
       selector:
         entity:
@@ -25,29 +32,167 @@ turn_on_automatic_lights:
       selector:
         entity:
           domain: input_boolean
+    night_reset_pending:
+      name: Night reset pending
+      description: Room helper recording that automatic lighting applied 1% red
+      required: true
+      selector:
+        entity:
+          domain: input_boolean
   sequence:
     - choose:
         - conditions:
             - condition: template
               value_template: "{{ is_state(night_mode, 'on') }}"
           sequence:
+            # Record ownership before changing a light. If a device fails or HA
+            # restarts midway, the next daytime trigger still repairs the room.
+            - action: input_boolean.turn_on
+              target:
+                entity_id: "{{ night_reset_pending }}"
             - action: light.turn_on
               target:
                 entity_id: "{{ night_lights }}"
               data:
                 brightness_pct: 1
                 rgb_color: [255, 0, 0]
-              continue_on_error: true
+        - conditions:
+            - condition: template
+              value_template: "{{ is_state(night_reset_pending, 'on') }}"
+          sequence:
+            # A direct script call waits and propagates errors. The marker is
+            # cleared only after a completed reset while night mode is still off.
+            - action: "{{ day_profile }}"
+            - choose:
+                - conditions:
+                    - condition: template
+                      value_template: "{{ is_state(night_mode, 'off') }}"
+                  sequence:
+                    - action: input_boolean.turn_off
+                      target:
+                        entity_id: "{{ night_reset_pending }}"
+              default:
+                # Night mode was re-enabled during the reset. Reassert the safe
+                # low-glare profile and retain the marker for tomorrow.
+                - action: input_boolean.turn_on
+                  target:
+                    entity_id: "{{ night_reset_pending }}"
+                - action: light.turn_on
+                  target:
+                    entity_id: "{{ night_lights }}"
+                  data:
+                    brightness_pct: 1
+                    rgb_color: [255, 0, 0]
       default:
-        # Restore explicit normal values; plain turn_on would retain the
-        # previous night's 1% red state on LIFX and LimitlessLED lights.
-        - action: script.turn_on
+        # If somebody already set any room light manually, leave the entire
+        # room untouched. Otherwise power it on with no color/brightness data.
+        - condition: template
+          value_template: "{{ not is_state(normal_lights, 'on') }}"
+        - action: light.turn_on
           target:
-            entity_id: "{{ day_profile }}"
-          continue_on_error: true
-        - wait_template: "{{ is_state(day_profile, 'off') }}"
-          timeout: "00:00:30"
-          continue_on_timeout: true
+            entity_id: "{{ normal_lights }}"
+        # Close the wake/bedtime transition race: if night mode became active
+        # while the power-on command was in flight, settle on 1% red and record
+        # that this room now needs its one-time normal-profile restoration.
+        - choose:
+            - conditions:
+                - condition: template
+                  value_template: "{{ is_state(night_mode, 'on') }}"
+              sequence:
+                - action: input_boolean.turn_on
+                  target:
+                    entity_id: "{{ night_reset_pending }}"
+                - action: light.turn_on
+                  target:
+                    entity_id: "{{ night_lights }}"
+                  data:
+                    brightness_pct: 1
+                    rgb_color: [255, 0, 0]
+
+turn_on_bedroom_automatic_lights:
+  alias: Turn on bedroom automatic lights
+  mode: queued
+  max: 10
+  sequence:
+    - action: script.turn_on_automatic_lights
+      data:
+        normal_lights: light.bedroom_lights
+        day_profile: script.set_bedroom_lights_to_default
+        night_lights:
+          - light.bedroom_strip
+        night_mode: input_boolean.bedroom_night_mode
+        night_reset_pending: input_boolean.bedroom_night_lighting_reset_pending
+
+turn_on_office_automatic_lights:
+  alias: Turn on office automatic lights
+  mode: queued
+  max: 10
+  sequence:
+    - action: script.turn_on_automatic_lights
+      data:
+        normal_lights: light.office_lights
+        day_profile: script.set_office_lights_to_default
+        night_lights:
+          - light.office_lights
+        night_mode: input_boolean.house_night_mode
+        night_reset_pending: input_boolean.office_night_lighting_reset_pending
+
+turn_on_hallway_automatic_lights:
+  alias: Turn on hallway automatic lights
+  mode: queued
+  max: 10
+  sequence:
+    - action: script.turn_on_automatic_lights
+      data:
+        normal_lights: light.hallway_lights
+        day_profile: script.set_hallway_lights_to_default
+        night_lights:
+          - light.hallway_strip
+        night_mode: input_boolean.house_night_mode
+        night_reset_pending: input_boolean.hallway_night_lighting_reset_pending
+
+turn_on_kitchen_automatic_lights:
+  alias: Turn on kitchen automatic lights
+  mode: queued
+  max: 10
+  sequence:
+    - action: script.turn_on_automatic_lights
+      data:
+        normal_lights: light.kitchen_lights
+        day_profile: script.set_kitchen_lights_to_default
+        night_lights:
+          - light.kitchen_cabinet_strip
+          - light.kitchen_island_strip
+        night_mode: input_boolean.house_night_mode
+        night_reset_pending: input_boolean.kitchen_night_lighting_reset_pending
+
+turn_on_toilet_automatic_lights:
+  alias: Turn on toilet automatic lights
+  mode: queued
+  max: 10
+  sequence:
+    - action: script.turn_on_automatic_lights
+      data:
+        normal_lights: light.toilet_lights
+        day_profile: script.set_toilet_lights_to_default
+        night_lights:
+          - light.toilet_strip
+        night_mode: input_boolean.house_night_mode
+        night_reset_pending: input_boolean.toilet_night_lighting_reset_pending
+
+turn_on_bathroom_automatic_lights:
+  alias: Turn on bathroom automatic lights
+  mode: queued
+  max: 10
+  sequence:
+    - action: script.turn_on_automatic_lights
+      data:
+        normal_lights: light.bathroom_lights
+        day_profile: script.set_bathroom_lights_to_default
+        night_lights:
+          - light.bathroom_strip
+        night_mode: input_boolean.house_night_mode
+        night_reset_pending: input_boolean.bathroom_night_lighting_reset_pending
 
 michalina_sleep_focus_on:
   alias: Record Michalina Sleep Focus turning on

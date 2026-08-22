@@ -13,12 +13,7 @@
         - condition: sun
           before: sunrise
   action:
-    action: script.turn_on_automatic_lights
-    data:
-      day_profile: script.set_bedroom_lights_to_default
-      night_lights:
-        - light.bedroom_strip
-      night_mode: input_boolean.bedroom_night_mode
+    action: script.turn_on_bedroom_automatic_lights
 
 
 - alias: Say welcome on bedroom door open
@@ -51,12 +46,7 @@
         - condition: sun
           before: sunrise
   action:
-    action: script.turn_on_automatic_lights
-    data:
-      day_profile: script.set_office_lights_to_default
-      night_lights:
-        - light.office_lights
-      night_mode: input_boolean.house_night_mode
+    action: script.turn_on_office_automatic_lights
 
 - alias: Say welcome on office door open
   trigger:
@@ -88,12 +78,7 @@
         - condition: sun
           before: sunrise
   action:
-    - action: script.turn_on_automatic_lights
-      data:
-        day_profile: script.set_hallway_lights_to_default
-        night_lights:
-          - light.hallway_strip
-        night_mode: input_boolean.house_night_mode
+    - action: script.turn_on_hallway_automatic_lights
     - service: script.announce_everywhere
       data:
         message: 'Front door opened'
@@ -106,12 +91,7 @@
     entity_id: binary_sensor.bathroom_door_opening_senor_window_door_is_open
     to: 'on'
   action:
-    action: script.turn_on_automatic_lights
-    data:
-      day_profile: script.set_bathroom_lights_to_default
-      night_lights:
-        - light.bathroom_strip
-      night_mode: input_boolean.house_night_mode
+    action: script.turn_on_bathroom_automatic_lights
 
 - alias: Say welcome on bathroom door open
   trigger:
@@ -159,12 +139,7 @@
     entity_id: binary_sensor.toilet_door_opening_sensor_window_door_is_open
     to: 'on'
   action:
-    action: script.turn_on_automatic_lights
-    data:
-      day_profile: script.set_toilet_lights_to_default
-      night_lights:
-        - light.toilet_strip
-      night_mode: input_boolean.house_night_mode
+    action: script.turn_on_toilet_automatic_lights
 
 
 - alias: Say welcome on toilet door open

@@ -474,8 +474,9 @@
     # idempotent and closes races with a concurrent bedtime reconciliation.
     - action: script.deactivate_house_night_mode
       continue_on_error: true
-    # If the door/motion event won the race with presence detection, replace
-    # an already-lit red hallway instead of awaiting another motion cycle.
+    # If the door/motion event won the race with presence detection, let the
+    # dirty-aware path restore an actual night override. A manually configured
+    # hallway is otherwise left untouched.
     - choose:
         - conditions:
             - condition: state
@@ -485,5 +486,5 @@
               entity_id: light.hallway_lights
               state: "on"
           sequence:
-            - action: script.set_hallway_lights_to_default
+            - action: script.turn_on_hallway_automatic_lights
               continue_on_error: true

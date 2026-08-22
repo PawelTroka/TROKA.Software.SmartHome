@@ -63,6 +63,33 @@ house_night_mode:
   name: House night mode
   icon: mdi:home-clock
 
+# Per-room write-ahead markers. They are set only when an automatic trigger
+# applies the 1% red profile and are cleared by that room's first later normal
+# automatic activation. Omitting `initial` makes them restore across restarts.
+bedroom_night_lighting_reset_pending:
+  name: Bedroom night lighting reset pending
+  icon: mdi:lightbulb-night-outline
+
+office_night_lighting_reset_pending:
+  name: Office night lighting reset pending
+  icon: mdi:lightbulb-night-outline
+
+hallway_night_lighting_reset_pending:
+  name: Hallway night lighting reset pending
+  icon: mdi:lightbulb-night-outline
+
+kitchen_night_lighting_reset_pending:
+  name: Kitchen night lighting reset pending
+  icon: mdi:lightbulb-night-outline
+
+toilet_night_lighting_reset_pending:
+  name: Toilet night lighting reset pending
+  icon: mdi:lightbulb-night-outline
+
+bathroom_night_lighting_reset_pending:
+  name: Bathroom night lighting reset pending
+  icon: mdi:lightbulb-night-outline
+
 # The raw helper is controlled only by Michalina's Sleep Focus shortcuts. It
 # deliberately starts off after a restart so stale phone intent cannot trigger
 # a bedtime routine. The confirmed state is restored until wake/day cleanup.

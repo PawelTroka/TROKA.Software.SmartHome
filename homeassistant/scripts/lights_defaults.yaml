@@ -19,6 +19,8 @@ set_all_lights_to_default:
 # Bathroom lights defaults
 
 set_bathroom_lights_to_default:
+  mode: queued
+  max: 10
   sequence:
   - service: light.turn_on
     entity_id: light.bathroom_lights
@@ -30,21 +32,38 @@ set_bathroom_lights_to_default:
     data:
       brightness: 255
       rgb_color: [72, 255, 255]
+  - if:
+      - condition: state
+        entity_id: input_boolean.house_night_mode
+        state: "off"
+    then:
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.bathroom_night_lighting_reset_pending
 
 
 # Toilet lights defaults
 
 set_toilet_lights_to_default:
+  mode: queued
+  max: 10
   sequence:
   - service: light.turn_on
     entity_id: light.toilet_lights
     data:
       brightness_pct: 100
       color_temp_kelvin: 8000
-  - service: script.turn_on
-    entity_id: script.set_toilet_strip_to_default
-  - service: script.turn_on
-    entity_id: script.set_toilet_mirror_light_to_default
+  - parallel:
+      - action: script.set_toilet_strip_to_default
+      - action: script.set_toilet_mirror_light_to_default
+  - if:
+      - condition: state
+        entity_id: input_boolean.house_night_mode
+        state: "off"
+    then:
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.toilet_night_lighting_reset_pending
 
 set_toilet_strip_to_default:
   sequence:
@@ -65,16 +84,25 @@ set_toilet_mirror_light_to_default:
 # Hallway lights default
 
 set_hallway_lights_to_default:
+  mode: queued
+  max: 10
   sequence:
   - service: light.turn_on
     entity_id: light.hallway_lights
     data:
       brightness_pct: 50
       color_temp_kelvin: 8000
-  - service: script.turn_on
-    entity_id: script.set_hallway_strip_to_default
-  - service: script.turn_on
-    entity_id: script.set_hallway_cabinet_strip_to_default
+  - parallel:
+      - action: script.set_hallway_strip_to_default
+      - action: script.set_hallway_cabinet_strip_to_default
+  - if:
+      - condition: state
+        entity_id: input_boolean.house_night_mode
+        state: "off"
+    then:
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.hallway_night_lighting_reset_pending
 
 set_hallway_strip_to_default:
   sequence:
@@ -122,6 +150,8 @@ set_living_room_dining_area_lights_to_default:
 # Kitchen lights defaults
 
 set_kitchen_lights_to_default:
+  mode: queued
+  max: 10
   sequence:
   - action: lifx.effect_stop
     target:
@@ -136,6 +166,14 @@ set_kitchen_lights_to_default:
       - action: script.set_kitchen_island_strip_to_default
   - delay: "00:00:01"
   - action: script.normalize_kitchen_lifx_strips
+  - if:
+      - condition: state
+        entity_id: input_boolean.house_night_mode
+        state: "off"
+    then:
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.kitchen_night_lighting_reset_pending
 
 set_kitchen_countertop_lights_to_default:
   sequence:
@@ -173,12 +211,22 @@ set_kitchen_island_strip_to_default:
 # Office lights defaults
 
 set_office_lights_to_default:
+  mode: queued
+  max: 10
   sequence:
   - service: light.turn_on
     entity_id: light.office_lights
     data:
       brightness_pct: 66
       color_temp_kelvin: 9000
+  - if:
+      - condition: state
+        entity_id: input_boolean.house_night_mode
+        state: "off"
+    then:
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.office_night_lighting_reset_pending
 
 
 # Bedroom lights defaults
@@ -191,13 +239,21 @@ set_bedroom_downlights_to_default:
       color_temp_kelvin: 9000
 
 set_bedroom_lights_to_default:
+  mode: queued
+  max: 10
   sequence:
-  - service: script.turn_on
-    entity_id: script.set_bedroom_downlights_to_default
-  - service: script.turn_on
-    entity_id: script.set_bedroom_cabinet_strip_to_default
-  - service: script.turn_on
-    entity_id: script.set_bedroom_strip_to_default
+  - parallel:
+      - action: script.set_bedroom_downlights_to_default
+      - action: script.set_bedroom_cabinet_strip_to_default
+      - action: script.set_bedroom_strip_to_default
+  - if:
+      - condition: state
+        entity_id: input_boolean.bedroom_night_mode
+        state: "off"
+    then:
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.bedroom_night_lighting_reset_pending
 
 set_bedroom_cabinet_strip_to_default:
   sequence:

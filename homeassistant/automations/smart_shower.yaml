@@ -50,11 +50,18 @@
                   target:
                     entity_id: light.bathroom_lights
                   continue_on_error: true
-                - action: script.turn_on_automatic_lights
-                  data:
-                    day_profile: script.set_bathroom_lights_to_default
-                    night_lights:
-                      - light.bathroom_strip
-                    night_mode: input_boolean.house_night_mode
+                - action: script.turn_on_bathroom_automatic_lights
           default:
             - action: script.set_bathroom_lights_to_default
+            # If bedtime began while the normal shower profile was running,
+            # never let its 100% task lighting win the race with night mode.
+            - if:
+                - condition: state
+                  entity_id: input_boolean.house_night_mode
+                  state: "on"
+              then:
+                - action: light.turn_off
+                  target:
+                    entity_id: light.bathroom_lights
+                  continue_on_error: true
+                - action: script.turn_on_bathroom_automatic_lights
