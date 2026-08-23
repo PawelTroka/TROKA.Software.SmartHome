@@ -4,19 +4,36 @@ do_nothing:
   sequence: []
 
 turn_off_everything:
+  mode: queued
+  max: 5
   sequence:
-    - service: switch.turn_off
-      entity_id: switch.bathroom_mirror_switch_demister
+    - action: switch.turn_off
+      target:
+        entity_id: switch.bathroom_mirror_switch_demister
       continue_on_error: true
-    - service: light.turn_off
-      entity_id: group.all_lights
+    - action: light.turn_off
+      target:
+        entity_id: group.all_lights
       continue_on_error: true
-    - service: climate.turn_off
-      entity_id: group.all_climate
+    # Media and healthy climate platforms must complete even while Tado's API
+    # is returning malformed data.
+    - action: script.turn_off_media_everywhere
       continue_on_error: true
-    - service: script.turn_on
-      entity_id: script.turn_off_media_everywhere
+    - action: script.turn_off_heating_everywhere
       continue_on_error: true
+    - parallel:
+        - action: climate.turn_off
+          target:
+            entity_id: climate.bedroom_ac
+          continue_on_error: true
+        - action: climate.turn_off
+          target:
+            entity_id: climate.office_ac
+          continue_on_error: true
+        - action: climate.turn_off
+          target:
+            entity_id: climate.living_room_ac
+          continue_on_error: true
 
 turn_off_media_and_lights_everywhere_except_bedroom:
   sequence:

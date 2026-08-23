@@ -414,12 +414,13 @@ activate_night_mode:
               continue_on_error: true
 
     # Never heat and cool the bedroom simultaneously; keep the AC display dark.
-    - action: climate.set_hvac_mode
+    - action: script.turn_on
       target:
-        entity_id: climate.bedroom
+        entity_id: script.set_tado_hvac_mode_best_effort
       data:
-        hvac_mode: "off"
-      continue_on_error: true
+        variables:
+          climate_entity: climate.bedroom
+          hvac_mode: "off"
     - action: switch.turn_off
       target:
         entity_id: switch.bedroom_ac_lights

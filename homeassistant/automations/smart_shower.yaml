@@ -1,6 +1,7 @@
 # Smart Shower Automation
 
-- alias: "Shower Mode: Start"
+- id: shower_mode_start
+  alias: "Shower Mode: Start"
   trigger:
     - platform: state
       entity_id: binary_sensor.shower_in_use
@@ -20,21 +21,23 @@
               entity_id: input_boolean.house_night_mode
               state: "off"
           sequence:
-            - action: script.shower_music
+            # Start music as an isolated child so a Sonos error cannot abort
+            # the lighting or resident notification portions of shower mode.
+            - action: script.turn_on
+              target:
+                entity_id: script.shower_music
     - service: notify.level_info
       data:
         message: "Shower mode activated. Enjoy!"
 
-- alias: "Shower Mode: End"
+- id: shower_mode_end
+  alias: "Shower Mode: End"
   trigger:
     - platform: state
       entity_id: binary_sensor.shower_in_use
       from: 'on'
       to: 'off'
   action:
-    - service: media_player.media_stop
-      target:
-        entity_id: media_player.bathroom
     - if:
         - condition: state
           entity_id: binary_sensor.bathroom_motion
@@ -65,3 +68,8 @@
                     entity_id: light.bathroom_lights
                   continue_on_error: true
                 - action: script.turn_on_bathroom_automatic_lights
+    # A Sonos failure must never prevent the safety/night-aware light recovery.
+    - action: media_player.media_stop
+      target:
+        entity_id: media_player.bathroom
+      continue_on_error: true

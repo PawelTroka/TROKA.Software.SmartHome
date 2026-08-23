@@ -1,4 +1,5 @@
-- alias: 'Turn on heating when someone gets home'
+- id: heating_on_when_someone_gets_home
+  alias: 'Turn on heating when someone gets home'
   trigger:
     - platform: state
       entity_id: group.all_persons
@@ -13,15 +14,17 @@
         entity_id: 'sensor.netatmo_indoor_temperature'
         below: 25
   action:
-    - service: script.turn_on
-      entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
-    - service: notify.level_note
+    - action: script.turn_on
+      target:
+        entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
+    - action: notify.level_note
       data:
-        message: Heating turned on because {{ trigger.to_state.name }} got home
-        title: Heating turned on!
+        message: Heating adjustment requested because {{ trigger.to_state.name }} got home.
+        title: Heating request
 
 
-- alias: 'Turn off heating when it gets too warm'
+- id: heating_off_when_too_warm
+  alias: 'Turn off heating when it gets too warm'
   trigger:
     - platform: numeric_state
       entity_id: 'sensor.netatmo_outdoor_temperature'
@@ -30,18 +33,16 @@
       entity_id: 'sensor.netatmo_indoor_temperature'
       above: 25
   action:
-    - action: climate.set_hvac_mode
-      target:
-        entity_id: group.all_heating
+    - action: script.turn_off_heating_everywhere
+      continue_on_error: true
+    - action: notify.level_note
       data:
-        hvac_mode: "off"
-    - service: notify.level_note
-      data:
-        message: Heating turned off because it got too warm
-        title: Heating turned off!
+        message: Heating shutdown requested because it got too warm.
+        title: Heating request
 
 
-- alias: 'Turn on heating when it gets too cold'
+- id: heating_on_when_too_cold
+  alias: 'Turn on heating when it gets too cold'
   trigger:
     - platform: numeric_state
       entity_id: 'sensor.netatmo_outdoor_temperature'
@@ -55,30 +56,35 @@
     state: 'home'
   action:
     - service: script.turn_on
-      entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
-    - service: notify.level_note
+      target:
+        entity_id: script.turn_on_heating_everywhere_except_bedroom_and_office
+    - action: notify.level_note
       data:
-        message: Heating turned on because it got too cold
-        title: Heating turned on!
+        message: Heating adjustment requested because it got too cold.
+        title: Heating request
 
 
-- alias: 'Turn off office heating when Pawel leaves home' # office is used exclusively by Pawel
+- id: office_heating_off_when_pawel_leaves
+  alias: 'Turn off office heating when Pawel leaves home' # office is used exclusively by Pawel
   trigger:
     - platform: state
       entity_id: person.pawel
       to: 'not_home'
   action:
-    - action: climate.set_hvac_mode
+    - action: script.turn_on
       target:
-        entity_id: climate.office
+        entity_id: script.set_tado_hvac_mode_best_effort
       data:
-        hvac_mode: "off"
-    - service: notify.level_note
+        variables:
+          climate_entity: climate.office
+          hvac_mode: "off"
+    - action: notify.level_note
       data:
-        message: Office heating turned off because Pawel left home
-        title: Office heating turned off!
+        message: Office heating shutdown requested because Pawel left home.
+        title: Office heating request
 
-- alias: 'Turn on office heating when Pawel arrives home' # office is used exclusively by Pawel
+- id: office_heating_on_when_pawel_arrives
+  alias: 'Turn on office heating when Pawel arrives home' # office is used exclusively by Pawel
   trigger:
     - platform: state
       entity_id: person.pawel
@@ -93,12 +99,14 @@
         entity_id: 'sensor.netatmo_indoor_temperature'
         below: 25
   action:
-    - service: climate.set_hvac_mode
+    - action: script.turn_on
       target:
-        entity_id: climate.office
+        entity_id: script.set_tado_hvac_mode_best_effort
       data:
-        hvac_mode: heat
-    - service: notify.level_note
+        variables:
+          climate_entity: climate.office
+          hvac_mode: heat
+    - action: notify.level_note
       data:
-        message: Office heating turned on because Pawel arrive at home
-        title: Office heating turned on!
+        message: Office heating requested because Pawel arrived home.
+        title: Office heating request

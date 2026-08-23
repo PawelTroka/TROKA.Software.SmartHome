@@ -238,6 +238,24 @@ bathroom_leak_sensor_unavailable:
   notifiers:
     - level_info
 
+tado_heating_control_unavailable:
+  name: "Error: Tado heating control unavailable"
+  message: >-
+    Tado heating data has been missing or stale for at least 15 minutes.
+    Tado radiator commands may not take effect; floor heating and bedroom AC
+    remain independently controlled.
+  done_message: Tado heating data is current again.
+  entity_id: binary_sensor.tado_heating_control_unavailable
+  state: 'on'
+  repeat:
+    - 60
+    - 360
+    - 1440
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
+
 co2_above_1000_ppm:
   name: CO2 above 1000 ppm
   title: High CO2 detected

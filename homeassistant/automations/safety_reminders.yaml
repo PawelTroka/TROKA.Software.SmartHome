@@ -51,3 +51,15 @@
               data:
                 title: "Bathroom leak monitoring unavailable"
                 message: The bathroom leak sensor is not reporting, so leak protection is unreliable.
+        - if:
+            - condition: state
+              entity_id: binary_sensor.tado_heating_control_unavailable
+              state: 'on'
+            - condition: state
+              entity_id: alert.tado_heating_control_unavailable
+              state: 'idle'
+          then:
+            - action: notify.level_info
+              data:
+                title: "Tado heating control unavailable"
+                message: Tado radiator data is stale, so heating commands may not take effect.

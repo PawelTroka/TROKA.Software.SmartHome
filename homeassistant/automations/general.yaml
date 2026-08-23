@@ -23,14 +23,32 @@
       target:
         entity_id: fan.vestfrost_air_humidifier
       continue_on_error: true
-    - action: vacuum.start
-      target:
-        entity_id: vacuum.roborock_s8_pro_ultra
-      continue_on_error: true
+    - variables:
+        roborock_was_available: >-
+          {{ has_value('vacuum.roborock_s8_pro_ultra') }}
+    - choose:
+        - conditions: "{{ roborock_was_available }}"
+          sequence:
+            - action: vacuum.start
+              target:
+                entity_id: vacuum.roborock_s8_pro_ultra
+              continue_on_error: true
+            - wait_template: >-
+                {{ is_state('vacuum.roborock_s8_pro_ultra', 'cleaning') }}
+              timeout: "00:00:20"
+              continue_on_timeout: true
     - action: notify.level_note
       data:
         title: Everything turned off
-        message: Both residents are away; the home was shut down and Roborock started.
+        message: >-
+          Both residents are away; the home shutdown was requested.
+          {% if not roborock_was_available %}
+            Roborock is unavailable and was not started.
+          {% elif is_state('vacuum.roborock_s8_pro_ultra', 'cleaning') %}
+            Roborock started cleaning.
+          {% else %}
+            Roborock was available, but cleaning could not be confirmed.
+          {% endif %}
 
 - id: household_someone_home
   alias: Household - purifier on and Roborock docked when someone arrives
@@ -49,16 +67,22 @@
         {{ is_state('person.pawel', 'home')
            or is_state('person.misiuszka', 'home') }}
   actions:
-    - action: vacuum.return_to_base
-      target:
-        entity_id: vacuum.roborock_s8_pro_ultra
-      continue_on_error: true
+    - if:
+        - condition: template
+          value_template: >-
+            {{ has_value('vacuum.roborock_s8_pro_ultra') }}
+      then:
+        - action: vacuum.return_to_base
+          target:
+            entity_id: vacuum.roborock_s8_pro_ultra
+          continue_on_error: true
     - action: fan.turn_on
       target:
         entity_id: fan.vestfrost_air_humidifier
       continue_on_error: true
 
-- alias: 'Say welcome Pawel when Pawel is back home'
+- id: welcome_pawel_home
+  alias: 'Say welcome Pawel when Pawel is back home'
   trigger:
     - platform: state
       entity_id: person.pawel
