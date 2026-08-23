@@ -709,8 +709,8 @@ services:
       PHOTOPRISM_DATABASE_DRIVER: "mysql"            # Use MariaDB (or MySQL) instead of SQLite for improved performance
       PHOTOPRISM_DATABASE_SERVER: "${DB_HOST}:${DB_PORT}" # MariaDB database server (hostname:port)
       PHOTOPRISM_DATABASE_NAME: "photoprism"         # MariaDB database schema name
-      PHOTOPRISM_DATABASE_USER: ${USER}              # MariaDB database user name
-      PHOTOPRISM_DATABASE_PASSWORD: ${MYSQL_ROOT_PASSWORD} # MariaDB database user password
+      PHOTOPRISM_DATABASE_USER: ${PHOTOPRISM_DB_USER:?required}
+      PHOTOPRISM_DATABASE_PASSWORD: ${PHOTOPRISM_DB_PASSWORD:?required}
       PHOTOPRISM_SITE_URL: "https://photos.${DOMAINNAME}"  # Public PhotoPrism URL
       PHOTOPRISM_SITE_TITLE: "TROKA.Software.SmartHome.Photos"
       PHOTOPRISM_SITE_CAPTION: "Thorough Research On Key Aspects"
