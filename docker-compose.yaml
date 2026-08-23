@@ -8,7 +8,7 @@ version: "3.7"
 ########################### ENV VARIABLES
 
 x-common-variables: &common-variables
-  OUTDOOR_LEFT_CAM_IMAGE_URL: http://10.10.10.101/cgi-bin/api.cgi?cmd=Snap&amp;channel=0&amp;rs=wuuPhkmUCeI9WG7C&amp;user=${OUTDOOR_LEFT_CAM_USER}&amp;password=${OUTDOOR_LEFT_CAM_PASSWORD}
+  OUTDOOR_LEFT_CAM_IMAGE_URL: http://10.10.10.101/cgi-bin/api.cgi?cmd=Snap&channel=0&rs=wuuPhkmUCeI9WG7C&user=${OUTDOOR_LEFT_CAM_USER}&password=${OUTDOOR_LEFT_CAM_PASSWORD}
   OUTDOOR_LEFT_CAM_STREAM_URL: rtsp://${OUTDOOR_LEFT_CAM_USER}:${OUTDOOR_LEFT_CAM_PASSWORD}@10.10.10.101:554/h264Preview_01_main
   OFFICE_CAM_STREAM_URL: rtsp://${OFFICE_CAM_USER}:${OFFICE_CAM_PASSWORD}@10.10.10.51/live
   OFFICE_CAM_COMMAND: -rtsp_transport udp -i rtsp://${OFFICE_CAM_USER}:${OFFICE_CAM_PASSWORD}@10.10.10.51/live
@@ -108,7 +108,6 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
       - "traefik.frontend.auth.basic.users=${HTTP_USERNAME}:${HTTP_PASSWORD}"
 
 # Portainer - Container Management
@@ -145,7 +144,6 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # Organizer - Unified HTPC/Home Server Web Interface
   organizr:
@@ -180,7 +178,6 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 
 ############################# SMART HOME
@@ -231,14 +228,12 @@ services:
 
  # Home Assistant - Smart Home Hub
   homeassistant:
-    image: homeassistant/home-assistant:latest
+    # Pinned to the verified live Home Assistant 2026.7.4 image.
+    image: homeassistant/home-assistant@sha256:5a531753cea96444200158fc2b0acc7ccd739291ec50414877b396de6e0bb29b3
     container_name: homeassistant
     hostname: hass
     restart: always
     network_mode: host
-    devices:
-      - /dev/ttyACM0:/dev/ttyACM0
-      #- /dev/serial/by-id/usb-Nabu_Casa_ZBT-2_94A990D185AC-if00:/dev/ttyZBT2
     volumes:
       - ${HOMESERVERDIR}/homeassistant:/config
   #    - ${HOMESERVERDIR}/hassio-addons-duckdns/ssl/:/ssl/
@@ -275,12 +270,13 @@ services:
 
   zwavejs2mqtt:
     container_name: zwavejs2mqtt
-    image: zwavejs/zwavejs2mqtt:latest
+    # Pinned to the verified live Z-Wave JS UI 11.22.3 image.
+    image: zwavejs/zwavejs2mqtt@sha256:72f88913e22d862183142b70327494bc7f6ae79fe9538383addbad9d933384c9
     restart: always
     tty: true
     stop_signal: SIGINT
     environment:
-      - SESSION_SECRET=04B25814C3EADC07365190A42F08A49E
+      - SESSION_SECRET=${ZWAVEJS_SESSION_SECRET:?required}
       - ZWAVEJS_EXTERNAL_CONFIG=/usr/src/app/store/.config-db
       # Uncomment if you want logs time and dates to match your timezone instead of UTC
       # Available at https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -296,8 +292,8 @@ services:
     volumes:
       - $HOMESERVERDIR/zwave:/usr/src/app/store
     ports:
-      - '8091:8091' # port for web interface
-      - '3123:3000' # port for Z-Wave JS websocket server
+      - '${SERVER_IP}:8091:8091' # Z-Wave JS UI, LAN only
+      - '127.0.0.1:3123:3000' # Home Assistant uses this local websocket
 
 
   shinobi:
@@ -458,19 +454,6 @@ services:
       - OVERWRITECLIURL=https://cloud.${DOMAINNAME}
 
 
-# Redis - fast semi-persistant, in-memory DB
-  redis:
-    image: redis:latest
-    container_name: redis
-    environment:
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
-      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
-    ports:
-      - "${REDIS_PORT}:6379"
-    volumes:
-      - "${HOMESERVERDIR}/redis:/data"
-
-
 ############################# DOWNLOADING
 
 # TransmissionBT - Torrent Downloader
@@ -556,7 +539,6 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # Jackett – Torrent Proxy
   jackett:
@@ -615,15 +597,17 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # Radarr - Movie management
 # Set url_base in radarr settings if using PathPrefix
   radarr:
-    image: "linuxserver/radarr:latest"
+    image: "linuxserver/radarr@sha256:a45b5ab0f850f39edb4cc9c95bbd967b52ddc3d4574a4dfb45561177db6c88f4"
     container_name: "radarr"
     hostname: radarr
     restart: unless-stopped
+    networks:
+      - default
+      - traefik_proxy
     ports:
       - "${RADARR_PORT}:7878"
     volumes:
@@ -652,7 +636,6 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # Sonarr - TV Shows management
 # Set url_base in sonarr settings if using PathPrefix
@@ -691,22 +674,24 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 ############################# MEDIA
 
 # PhotoPrism - Photos Server
   photoprism:
-    image: photoprism/photoprism:latest
+    # Pinned to the verified live 260728 PhotoPrism image.
+    image: photoprism/photoprism@sha256:95864222022316a4372f2969151d18710a7533112b43a2b0da22f509f008fbac
     container_name: photoprism
     restart: unless-stopped
+    networks:
+      - default
+      - traefik_proxy
     security_opt:
       - seccomp:unconfined
       - apparmor:unconfined
     ports:
       - 2342:2342 # [local port]:[container port]
     environment:
-      PHOTOPRISM_ADMIN_PASSWORD: "U3AG3DhfqnVwsQKuci7BEb3AqknCPsyoc8YrXt7SdY8ffWhMjjsQL778xZ8HSrNJYCagT6qdj3obTVDjeVVstASaa9SwyTagoEJKEstDYe2EaXvHpa2LASXTZQa4biQt"
       PHOTOPRISM_ORIGINALS_LIMIT: 10000              # File size limit for originals in MB (increase for high-res video)
       PHOTOPRISM_HTTP_COMPRESSION: "gzip"            # Improves transfer speed and bandwidth utilization (none or gzip)
       PHOTOPRISM_DEBUG: "false"                      # Run in debug mode (shows additional log messages)
@@ -755,7 +740,6 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 
 # Plex - Media Server
@@ -808,7 +792,6 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # Jellyfin - Media Server
   jellyfin:
@@ -852,7 +835,6 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 
 # AirSonic - Music Server
@@ -953,7 +935,6 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 
 ############################# UTILITIES
@@ -996,23 +977,22 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
 
 # Glances - System Information
   glances:
-    image: nicolargo/glances:latest-full
+    image: nicolargo/glances@sha256:c47322ae60260f6039302dde576c8250f28e67cea77f5b93a270e6cd90995665
     hostname: glances
     container_name: glances
     restart: unless-stopped
     pid: host
-    #network_mode: host
-    #networks:
-      #- traefik_proxy
+    networks:
+      - default
+      - traefik_proxy
     ports:
       - "61208:61208" 
       - "61209:61209"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock 
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       - "GLANCES_OPT=-w"
     labels:
@@ -1031,7 +1011,6 @@ services:
       - "traefik.frontend.headers.STSIncludeSubdomains=true"
       - "traefik.frontend.headers.STSPreload=true"
 #      - "traefik.frontend.headers.frameDeny: true" #customFrameOptionsValue overrides this
-      - "traefik.frontend.headers.customFrameOptionsValue: allow-from https:${DOMAINNAME}"
       - "traefik.frontend.auth.basic.users=${GLANCES_HTTP_USERNAME}:${GLANCES_HTTP_PASSWORD}"
 
 
@@ -1063,7 +1042,7 @@ services:
 # Docker-GC - Automatic Docker Garbage Collection 
 # Create docker-gc-exclude file
   dockergc:
-    image: clockworksoul/docker-gc-cron:latest
+    image: clockworksoul/docker-gc-cron@sha256:5c29b290ae4cb00a8e77232596ea0e33f174695bde816a98f21b4b3935cd6875
     container_name: docker-gc
     hostname: docker-gc
     restart: unless-stopped
@@ -1077,5 +1056,5 @@ services:
       FORCE_CONTAINER_REMOVAL: 0
       GRACE_PERIOD_SECONDS: 604800
       DRY_RUN: 0
-      CLEAN_UP_VOLUMES: 1
+      CLEAN_UP_VOLUMES: 0
       TZ: ${TZ}

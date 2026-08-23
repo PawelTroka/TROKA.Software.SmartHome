@@ -47,7 +47,7 @@ http:
   trusted_proxies:
     - 192.168.1.50
     - 127.0.0.1
-    - 172.0.0.0/8
+    - 172.16.0.0/12
   #log reported ipv4
     - 162.158.159.139
     - 172.69.55.59
@@ -110,10 +110,6 @@ nest:
 ### Voice Assistants integrations:
 alexa: !include alexa.yaml
 google_assistant: !include google_assistant.yaml
-
-google:
-  client_id: !secret google_client_id
-  client_secret: !secret google_client_secret
 
 ### include section:
 alert: !include alerts.yaml
