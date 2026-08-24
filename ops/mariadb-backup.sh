@@ -45,10 +45,17 @@ docker exec mariadb mariadb-dump \
   --default-character-set=utf8mb4 \
   | gzip -1 >"$temp"
 
-gzip -t -- "$temp"
 [[ $(stat --format '%s' "$temp") -gt 1048576 ]]
-zgrep -m 1 -- '^-- MariaDB dump' "$temp" >/dev/null
-zgrep -m 1 -- '^-- Dump completed on ' "$temp" >/dev/null
+
+# Read the compressed stream to EOF once. This simultaneously verifies gzip's
+# CRC/trailer and confirms that both the dump header and completion marker are
+# present. Do not use `zgrep -m 1`: its intentional early exit closes gzip's
+# stdout and becomes a false failure under `set -o pipefail`.
+gzip -cd -- "$temp" | awk '
+  NR <= 50 && /^-- MariaDB dump/ { header = 1 }
+  /^-- Dump completed on / { footer = 1 }
+  END { exit !(header && footer) }
+' >/dev/null
 
 chmod 0600 -- "$temp"
 mv -- "$temp" "$final"
