@@ -1,42 +1,29 @@
 [snapraid]
-; path to the snapraid executable (e.g. /bin/snapraid)
-executable = snapraid
-; path to the snapraid config to be used
-config = snapraid.conf
-; abort operation if there are more deletes than this, set to -1 to disable
-deletethreshold = 40
-; if you want touch to be ran each time
-touch = false
+# Use absolute paths. The runner does not resolve executables through PATH.
+# The installed binary must report exactly SnapRAID v11.3.
+executable = /usr/local/bin/snapraid
+config = /etc/snapraid.conf
 
-[logging]
-; logfile to write to, leave empty to disable
-file = snapraid.log
-; maximum logfile size in KiB, leave empty for infinite
-maxsize = 5000
+[safety]
+# Every invocation takes this non-blocking POSIX flock for its entire lifetime.
+lock_file = /run/lock/homeserver-snapraid.lock
 
-[email]
-; when to send an email, comma-separated list of [success, error]
-sendon = success,error
-; set to false to get full programm output via email
-short = true
-subject = [SnapRAID] Status Report:
-from =
-to =
-; maximum email size in KiB
-maxsize = 500
+# Content files must be byte-identical and reside on at least this many distinct,
+# genuine local block-backed filesystems before a read-only diff is allowed.
+minimum_content_copies = 2
 
-[smtp]
-host =
-; leave empty for default port
-port =
-; set to "true" to activate
-ssl = false
-tls = false
-user =
-password =
+# The systemd unit bounds the whole report at six hours and first sends SIGINT.
+# Keep the internal read-only diff timeout below that whole-service bound.
+diff_timeout_seconds = 18000
 
-[scrub]
-; set to true to run scrub after sync
-enabled = false
-percentage = 12
-older-than = 10
+# Fixed recovery identity. The runner rejects changes to any of these values.
+d3_name = d3
+d3_mount = /media/storagedrive3
+d3_filesystem_uuid = ad352d2c-6f7c-4c5e-99f1-3d4e6d03c8a8
+d3_luks_uuid = af36e2aa-c2be-4eef-9f3b-ae79cc64445f
+d3_mapper = /dev/mapper/storagedrive3
+d3_backing_by_uuid = /dev/disk/by-uuid/af36e2aa-c2be-4eef-9f3b-ae79cc64445f
+
+# Verified partition-level identity. The runner requires it to resolve to the
+# same backing block device as d3_backing_by_uuid.
+d3_backing_by_id = /dev/disk/by-id/ata-OOS14000G_000D87HC-part1

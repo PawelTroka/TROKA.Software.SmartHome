@@ -1,0 +1,4 @@
+# Keep the host-local key path out of Git.
+# Before installation, cryptsetup luksUUID on this by-id path must report
+# af36e2aa-c2be-4eef-9f3b-ae79cc64445f exactly.
+storagedrive3 /dev/disk/by-id/ata-OOS14000G_000D87HC-part1 __HOST_LOCAL_KEYFILE__ luks,x-systemd.device-timeout=30s

@@ -1,0 +1,28 @@
+[Unit]
+Description=Validate SnapRAID storage and produce a read-only diff report
+Documentation=file:/app/homeserver/snapraid-runner/README.md
+After=local-fs.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+UMask=0077
+ExecStart=/usr/bin/python3 /usr/local/libexec/homeserver-snapraid-runner --conf /etc/homeserver/snapraid-runner.conf report
+Nice=19
+IOSchedulingClass=idle
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX
+ReadOnlyPaths=/media
+ReadWritePaths=/run/lock /media/cachedrive/.snapraid/content.lock
+TimeoutStartSec=6h
+TimeoutStopSec=5m
+KillMode=control-group
+KillSignal=SIGINT
