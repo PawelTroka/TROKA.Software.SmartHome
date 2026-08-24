@@ -1,0 +1,316 @@
+# Private, restart-resilient reminders for Pawel's timed calendar events.
+# Add [no reminder] to a title to opt one event out. All-day entries are ignored.
+
+- id: calendar_refresh_remote_sources
+  alias: "Calendar: refresh work and personal sources"
+  mode: restart
+  triggers:
+    - trigger: time_pattern
+      minutes: "/5"
+    - trigger: homeassistant
+      event: start
+      id: startup
+  actions:
+    - if:
+        - condition: template
+          value_template: "{{ trigger.id | default('') == 'startup' }}"
+      then:
+        - delay: "00:00:30"
+    - action: homeassistant.update_entity
+      target:
+        entity_id:
+          - calendar.work
+          - calendar.personal
+      continue_on_error: true
+
+- id: calendar_meeting_native_reminders
+  alias: "Calendar: meeting reminders at 15, 5, and start"
+  mode: parallel
+  max: 20
+  trace:
+    stored_traces: 0
+  triggers:
+    - trigger: calendar
+      entity_id: calendar.work
+      event: start
+      offset: "-00:15:00"
+      id: work_fifteen
+    - trigger: calendar
+      entity_id: calendar.personal
+      event: start
+      offset: "-00:15:00"
+      id: personal_fifteen
+    - trigger: calendar
+      entity_id: calendar.work
+      event: start
+      offset: "-00:05:00"
+      id: work_five
+    - trigger: calendar
+      entity_id: calendar.personal
+      event: start
+      offset: "-00:05:00"
+      id: personal_five
+    - trigger: calendar
+      entity_id: calendar.work
+      event: start
+      offset: "00:00:00"
+      id: work_now
+    - trigger: calendar
+      entity_id: calendar.personal
+      event: start
+      offset: "00:00:00"
+      id: personal_now
+  conditions:
+    - condition: template
+      value_template: >-
+        {{ not (trigger.calendar_event.all_day | default(false))
+           and '[no reminder]' not in
+               (trigger.calendar_event.summary | default('') | lower) }}
+  actions:
+    - variables:
+        calendar_entity: >-
+          {{ 'calendar.work' if trigger.id.startswith('work_')
+             else 'calendar.personal' }}
+        reminder_stage: >-
+          {{ 'fifteen' if trigger.id.endswith('_fifteen')
+             else 'five' if trigger.id.endswith('_five')
+             else 'now' }}
+    - action: script.meeting_reminder_dispatch
+      data:
+        calendar_entity: "{{ calendar_entity }}"
+        event_summary: >-
+          {{ trigger.calendar_event.summary | default('Calendar event', true) }}
+        event_start: "{{ trigger.calendar_event.start }}"
+        event_end: "{{ trigger.calendar_event.end }}"
+        event_location: >-
+          {{ trigger.calendar_event.location | default('', true) }}
+        stage: "{{ reminder_stage }}"
+
+- id: calendar_meeting_catch_up_scan
+  alias: "Calendar: catch missed and newly-created meetings"
+  mode: single
+  trace:
+    stored_traces: 0
+  triggers:
+    - trigger: time_pattern
+      minutes: "/2"
+      seconds: "30"
+    - trigger: homeassistant
+      event: start
+      id: startup
+  actions:
+    - if:
+        - condition: template
+          value_template: "{{ trigger.id | default('') == 'startup' }}"
+      then:
+        - delay: "00:01:00"
+        - action: homeassistant.update_entity
+          target:
+            entity_id:
+              - calendar.work
+              - calendar.personal
+          continue_on_error: true
+        - delay: "00:00:10"
+    - repeat:
+        for_each:
+          - calendar_entity: calendar.work
+          - calendar_entity: calendar.personal
+        sequence:
+          - variables:
+              active_calendar: "{{ repeat.item.calendar_entity }}"
+              calendar_agenda: {}
+          # Query calendars independently: one unavailable source must never
+          # suppress catch-up reminders from the other healthy source.
+          - action: calendar.get_events
+            target:
+              entity_id: "{{ active_calendar }}"
+            data:
+              start_date_time: >-
+                {{ (now() - timedelta(minutes=10)).isoformat() }}
+              duration:
+                minutes: 30
+            response_variable: calendar_agenda
+            continue_on_error: true
+          - variables:
+              calendar_events: >-
+                {{ calendar_agenda.get(active_calendar, {}).get('events', [])
+                   if calendar_agenda is mapping else [] }}
+          - repeat:
+              for_each: "{{ calendar_events }}"
+              sequence:
+                - variables:
+                    calendar_event: "{{ repeat.item }}"
+                    event_start_text: >-
+                      {{ calendar_event.get('start', '') | string }}
+                    event_end_text: >-
+                      {{ calendar_event.get('end', event_start_text) | string }}
+                    event_summary: >-
+                      {{ calendar_event.get('summary', 'Calendar event') | string }}
+                    seconds_to_start: >-
+                      {{ as_timestamp(event_start_text, 0) - as_timestamp(now()) }}
+                    seconds_to_end: >-
+                      {{ as_timestamp(event_end_text, 0) - as_timestamp(now()) }}
+                    due_stage: >-
+                      {% if 600 < seconds_to_start <= 900 %}fifteen
+                      {% elif 60 < seconds_to_start <= 300 %}five
+                      {% elif -600 <= seconds_to_start <= 60 %}
+                        {{ 'late' if seconds_to_start < -30 else 'now' }}
+                      {% else %}none{% endif %}
+                - if:
+                    - condition: template
+                      value_template: >-
+                        {{ event_start_text | length > 10
+                           and seconds_to_end > 0
+                           and due_stage != 'none'
+                           and '[no reminder]' not in event_summary | lower }}
+                  then:
+                    - action: script.meeting_reminder_dispatch
+                      data:
+                        calendar_entity: "{{ active_calendar }}"
+                        event_summary: "{{ event_summary }}"
+                        event_start: "{{ event_start_text }}"
+                        event_end: "{{ event_end_text }}"
+                        event_location: >-
+                          {{ calendar_event.get('location', '') }}
+                        stage: "{{ due_stage }}"
+                      continue_on_error: true
+
+- id: calendar_meeting_acknowledged_from_phone
+  alias: "Calendar: acknowledge a meeting from Pawel's phone"
+  mode: queued
+  max: 20
+  trace:
+    stored_traces: 0
+  triggers:
+    - trigger: event
+      event_type: mobile_app_notification_action
+  conditions:
+    - condition: template
+      value_template: >-
+        {{ (trigger.event.data.action | default('') | string).startswith('MEETING_ACK_') }}
+  actions:
+    - variables:
+        event_key: >-
+          {{ (trigger.event.data.action | string)[12:] }}
+        acknowledged_keys: >-
+          {% set raw = states('input_text.meeting_reminder_acknowledged_keys') %}
+          {{ [] if raw in ['', 'unknown', 'unavailable'] else raw.split('|') }}
+        standard_tag: "{{ 'meeting_' ~ event_key }}"
+        urgent_tag: "{{ 'meeting_' ~ event_key ~ '_now' }}"
+    - action: input_text.set_value
+      target:
+        entity_id: input_text.meeting_reminder_acknowledged_keys
+      data:
+        value: >-
+          {{ ([event_key]
+              + (acknowledged_keys | reject('eq', event_key) | list))[:12]
+             | join('|') }}
+    - action: notify.mobile_app_oppofindx9ultra
+      data:
+        message: clear_notification
+        data:
+          tag: "{{ standard_tag }}"
+      continue_on_error: true
+    - action: notify.mobile_app_oppofindx9ultra
+      data:
+        message: clear_notification
+        data:
+          tag: "{{ urgent_tag }}"
+      continue_on_error: true
+
+- id: calendar_meeting_clear_when_event_ends
+  alias: "Calendar: clear meeting reminders when events end"
+  mode: parallel
+  max: 20
+  trace:
+    stored_traces: 0
+  triggers:
+    - trigger: calendar
+      entity_id: calendar.work
+      event: end
+      offset: "00:00:00"
+      id: work
+    - trigger: calendar
+      entity_id: calendar.personal
+      event: end
+      offset: "00:00:00"
+      id: personal
+  conditions:
+    - condition: template
+      value_template: >-
+        {{ not (trigger.calendar_event.all_day | default(false)) }}
+  actions:
+    - action: script.meeting_reminder_clear
+      data:
+        calendar_entity: >-
+          {{ 'calendar.work' if trigger.id == 'work' else 'calendar.personal' }}
+        event_summary: >-
+          {{ trigger.calendar_event.summary | default('Calendar event', true) }}
+        event_start: "{{ trigger.calendar_event.start }}"
+        event_end: "{{ trigger.calendar_event.end }}"
+
+- id: calendar_meeting_monitoring_watchdog
+  alias: "Calendar: notify Pawel when meeting monitoring is unavailable"
+  mode: restart
+  triggers:
+    - trigger: template
+      id: unavailable
+      value_template: >-
+        {{ states('calendar.work') in ['unknown', 'unavailable']
+           or states('calendar.personal') in ['unknown', 'unavailable'] }}
+      for: "00:05:00"
+    - trigger: template
+      id: recovered
+      value_template: >-
+        {{ states('calendar.work') not in ['unknown', 'unavailable']
+           and states('calendar.personal') not in ['unknown', 'unavailable'] }}
+      for: "00:02:00"
+    - trigger: homeassistant
+      event: start
+      id: startup
+  actions:
+    - if:
+        - condition: template
+          value_template: "{{ trigger.id == 'startup' }}"
+      then:
+        - delay: "00:06:00"
+    - variables:
+        monitoring_unavailable: >-
+          {{ states('calendar.work') in ['unknown', 'unavailable']
+             or states('calendar.personal') in ['unknown', 'unavailable'] }}
+    - if:
+        - condition: template
+          value_template: "{{ monitoring_unavailable }}"
+      then:
+        - action: notify.mobile_app_oppofindx9ultra
+          data:
+            title: Meeting reminders unavailable
+            message: >-
+              Work or personal calendar monitoring is offline. Open Home
+              Assistant before relying on meeting reminders.
+            data:
+              tag: calendar_meeting_monitoring
+              channel: Meeting reminders
+              importance: high
+              ttl: 0
+              priority: high
+          continue_on_error: true
+        - action: persistent_notification.create
+          data:
+            notification_id: calendar_meeting_monitoring
+            title: Meeting reminders unavailable
+            message: >-
+              At least one calendar entity is unavailable. Meeting reminders
+              cannot be considered reliable until both calendars recover.
+          continue_on_error: true
+      else:
+        - action: notify.mobile_app_oppofindx9ultra
+          data:
+            message: clear_notification
+            data:
+              tag: calendar_meeting_monitoring
+          continue_on_error: true
+        - action: persistent_notification.dismiss
+          data:
+            notification_id: calendar_meeting_monitoring
+          continue_on_error: true

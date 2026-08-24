@@ -20,3 +20,15 @@ michalina_bedtime_night:
   name: Michalina bedtime routine night
   icon: mdi:bed-clock
   max: 10
+
+# Short restored ring buffers make meeting reminders resilient to Home
+# Assistant restarts and deduplicate overlapping/native catch-up triggers.
+meeting_reminder_sent_keys:
+  name: Meeting reminder sent keys
+  icon: mdi:calendar-check
+  max: 255
+
+meeting_reminder_acknowledged_keys:
+  name: Meeting reminder acknowledged keys
+  icon: mdi:calendar-check-outline
+  max: 255

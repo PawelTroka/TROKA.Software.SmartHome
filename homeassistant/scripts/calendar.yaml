@@ -1,0 +1,207 @@
+meeting_reminder_dispatch:
+  alias: "Calendar: dispatch a private meeting reminder"
+  description: >-
+    Sends one reminder stage to Pawel, deduplicated and suppressed after the
+    meeting has been acknowledged. Calls are serialized so native calendar
+    triggers and the catch-up scan cannot send the same stage twice.
+  mode: queued
+  max: 30
+  trace:
+    stored_traces: 0
+  fields:
+    calendar_entity:
+      description: Calendar entity that owns the event.
+      required: true
+    event_summary:
+      description: Event title, used only in Pawel's private phone push.
+      required: true
+    event_start:
+      description: Event start date/time.
+      required: true
+    event_end:
+      description: Event end date/time.
+      required: true
+    event_location:
+      description: Optional event location.
+      required: false
+    stage:
+      description: One of fifteen, five, now, or late.
+      required: true
+  variables:
+    clean_summary: >-
+      {{ (event_summary | default('Calendar event', true) | string | trim)[:120] }}
+    clean_location: >-
+      {{ (event_location | default('', true) | string | trim)[:80] }}
+    start_epoch: "{{ as_timestamp(event_start, 0) | int }}"
+    end_epoch: "{{ as_timestamp(event_end, 0) | int }}"
+    event_key: >-
+      {{ ((calendar_entity ~ '|' ~ clean_summary ~ '|' ~ start_epoch)
+          | sha256)[:16] }}
+    sent_token: "{{ event_key ~ ':' ~ stage }}"
+    standard_tag: "{{ 'meeting_' ~ event_key }}"
+    urgent_tag: "{{ 'meeting_' ~ event_key ~ '_now' }}"
+    local_start: >-
+      {{ as_local(as_datetime(event_start)).strftime('%H:%M') }}
+    calendar_name: >-
+      {{ 'Work' if calendar_entity == 'calendar.work' else 'Personal' }}
+    reminder_title: >-
+      {% if stage == 'fifteen' %}Meeting in 15 minutes
+      {% elif stage == 'five' %}Meeting in 5 minutes
+      {% elif stage == 'late' %}Meeting already started
+      {% else %}Meeting starting now{% endif %}
+    reminder_message: >-
+      {{ clean_summary }} · {{ calendar_name }} · {{ local_start }}
+      {%- if clean_location %} · {{ clean_location }}{% endif %}
+    reminder_timeout: >-
+      {% set remaining = end_epoch - as_timestamp(now()) | int + 600 %}
+      {{ [remaining, 600] | max }}
+  sequence:
+    # Read restored ledgers only after the queued script has acquired its run
+    # slot. Native and catch-up calls that arrive together are then atomic.
+    - variables:
+        sent_keys: >-
+          {% set raw = states('input_text.meeting_reminder_sent_keys') %}
+          {{ [] if raw in ['', 'unknown', 'unavailable'] else raw.split('|') }}
+        acknowledged_keys: >-
+          {% set raw = states('input_text.meeting_reminder_acknowledged_keys') %}
+          {{ [] if raw in ['', 'unknown', 'unavailable'] else raw.split('|') }}
+    - condition: template
+      value_template: >-
+        {{ '[no reminder]' not in clean_summary | lower
+           and end_epoch > as_timestamp(now())
+           and event_key not in acknowledged_keys
+           and sent_token not in sent_keys }}
+
+    - if:
+        - condition: template
+          value_template: "{{ stage in ['now', 'late'] }}"
+      then:
+        # Remove the earlier normal-channel notification before raising the
+        # unacknowledged start reminder on Android's alarm stream.
+        - action: notify.mobile_app_oppofindx9ultra
+          data:
+            message: clear_notification
+            data:
+              tag: "{{ standard_tag }}"
+          continue_on_error: true
+        - action: notify.mobile_app_oppofindx9ultra
+          data:
+            title: "{{ reminder_title }}"
+            message: "{{ reminder_message }}"
+            data:
+              tag: "{{ urgent_tag }}"
+              channel: alarm_stream
+              ttl: 0
+              priority: high
+              persistent: true
+              timeout: "{{ reminder_timeout }}"
+              clickAction: "entityId:{{ calendar_entity }}"
+              actions:
+                - action: "MEETING_ACK_{{ event_key }}"
+                  title: "I'm joining"
+                - action: URI
+                  title: Open calendar
+                  uri: "entityId:{{ calendar_entity }}"
+      else:
+        - action: notify.mobile_app_oppofindx9ultra
+          data:
+            title: "{{ reminder_title }}"
+            message: "{{ reminder_message }}"
+            data:
+              tag: "{{ standard_tag }}"
+              channel: Meeting reminders
+              importance: high
+              ttl: 0
+              priority: high
+              timeout: "{{ 780 if stage == 'fifteen' else 300 }}"
+              clickAction: "entityId:{{ calendar_entity }}"
+              actions:
+                - action: "MEETING_ACK_{{ event_key }}"
+                  title: "I'm joining"
+                - action: URI
+                  title: Open calendar
+                  uri: "entityId:{{ calendar_entity }}"
+
+    # At five minutes and at an unacknowledged start, add a generic office
+    # announcement. It never speaks the private title or location.
+    - if:
+        - condition: template
+          value_template: "{{ stage in ['five', 'now', 'late'] }}"
+        - condition: state
+          entity_id: person.pawel
+          state: "home"
+        - condition: state
+          entity_id: input_boolean.bedroom_night_mode
+          state: "off"
+        - condition: state
+          entity_id: input_boolean.house_night_mode
+          state: "off"
+        - condition: time
+          after: "07:00:00"
+          before: "23:00:00"
+        - condition: template
+          value_template: >-
+            {{ states('media_player.office') not in ['unknown', 'unavailable'] }}
+      then:
+        - action: script.turn_on
+          target:
+            entity_id: script.sonos_say
+          data:
+            variables:
+              sonos_entity: media_player.office
+              volume: 0.35
+              message: >-
+                {{ 'A meeting has already started.' if stage == 'late'
+                   else 'A meeting is starting now.' if stage == 'now'
+                   else 'A meeting starts in five minutes.' }}
+          continue_on_error: true
+
+    # Record success after the phone call has returned. A failure therefore
+    # remains eligible for the next two-minute catch-up scan; a crash after a
+    # successful send can only cause a harmless duplicate, not a missed alert.
+    - action: input_text.set_value
+      target:
+        entity_id: input_text.meeting_reminder_sent_keys
+      data:
+        value: >-
+          {{ ([sent_token]
+              + (sent_keys | reject('eq', sent_token) | list))[:9]
+             | join('|') }}
+
+meeting_reminder_clear:
+  alias: "Calendar: clear a meeting reminder"
+  mode: queued
+  max: 30
+  trace:
+    stored_traces: 0
+  fields:
+    calendar_entity:
+      required: true
+    event_summary:
+      required: true
+    event_start:
+      required: true
+    event_end:
+      required: true
+  variables:
+    clean_summary: >-
+      {{ (event_summary | default('Calendar event', true) | string | trim)[:120] }}
+    start_epoch: "{{ as_timestamp(event_start, 0) | int }}"
+    event_key: >-
+      {{ ((calendar_entity ~ '|' ~ clean_summary ~ '|' ~ start_epoch)
+          | sha256)[:16] }}
+    standard_tag: "{{ 'meeting_' ~ event_key }}"
+    urgent_tag: "{{ 'meeting_' ~ event_key ~ '_now' }}"
+  sequence:
+    - action: notify.mobile_app_oppofindx9ultra
+      data:
+        message: clear_notification
+        data:
+          tag: "{{ standard_tag }}"
+      continue_on_error: true
+    - action: notify.mobile_app_oppofindx9ultra
+      data:
+        message: clear_notification
+        data:
+          tag: "{{ urgent_tag }}"
+      continue_on_error: true
