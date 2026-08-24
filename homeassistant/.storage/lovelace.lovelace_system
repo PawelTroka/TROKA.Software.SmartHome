@@ -331,15 +331,6 @@
                             "entity": "binary_sensor.troka_software_smarthome_away"
                         },
                         {
-                            "entity": "binary_sensor.fridge_freezer_info"
-                        },
-                        {
-                            "entity": "binary_sensor.fridge_freezer_failure"
-                        },
-                        {
-                            "entity": "binary_sensor.fridge_freezer_door"
-                        },
-                        {
                             "entity": "binary_sensor.front_door_open"
                         },
                         {
@@ -962,33 +953,6 @@
                         },
                         {
                             "entity": "sensor.transmission_down_speed"
-                        },
-                        {
-                            "entity": "sensor.fridge_freezer_status"
-                        },
-                        {
-                            "entity": "sensor.fridge_freezer_target_temperature_0"
-                        },
-                        {
-                            "entity": "sensor.fridge_freezer_target_temperature_1"
-                        },
-                        {
-                            "entity": "sensor.fridge_freezer_temperature_0"
-                        },
-                        {
-                            "entity": "sensor.fridge_freezer_temperature_1"
-                        },
-                        {
-                            "entity": "sensor.fridge_freezer_temperature_2"
-                        },
-                        {
-                            "entity": "sensor.fridge_freezer_remaining_time"
-                        },
-                        {
-                            "entity": "sensor.fridge_freezer_start_time"
-                        },
-                        {
-                            "entity": "sensor.fridge_freezer_elapsed_time"
                         },
                         {
                             "entity": "sensor.front_door_operator"
@@ -2592,13 +2556,6 @@
                         {
                             "entity": "media_player.kodi_android_3_local",
                             "type": "media-control"
-                        },
-                        {
-                            "entities": [
-                                "miele.fridge_freezer"
-                            ],
-                            "title": "Miele@home",
-                            "type": "entities"
                         },
                         {
                             "entities": [

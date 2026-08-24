@@ -2109,55 +2109,6 @@
               ]
             },
             {
-              "entities": [
-                {
-                  "entity": "binary_sensor.fridge_freezer_door"
-                },
-                {
-                  "entity": "binary_sensor.fridge_freezer_info"
-                },
-                {
-                  "entity": "binary_sensor.fridge_freezer_failure"
-                },
-                {
-                  "entity": "miele.fridge_freezer"
-                },
-                {
-                  "entity": "sensor.fridge_freezer_elapsed_time"
-                },
-                {
-                  "entity": "sensor.fridge_freezer_remaining_time"
-                },
-                {
-                  "entity": "sensor.fridge_freezer_start_time"
-                },
-                {
-                  "entity": "sensor.fridge_freezer_status"
-                },
-                {
-                  "entity": "sensor.fridge_freezer_program_id"
-                },
-                {
-                  "entity": "sensor.fridge_freezer_target_temperature_0"
-                },
-                {
-                  "entity": "sensor.fridge_freezer_target_temperature_1"
-                },
-                {
-                  "entity": "sensor.fridge_freezer_temperature_0"
-                },
-                {
-                  "entity": "sensor.fridge_freezer_temperature_1"
-                },
-                {
-                  "entity": "sensor.fridge_freezer_temperature_2"
-                }
-              ],
-              "show_header_toggle": false,
-              "title": "Fridge-freezer",
-              "type": "entities"
-            },
-            {
               "type": "entities",
               "entities": [
                 {

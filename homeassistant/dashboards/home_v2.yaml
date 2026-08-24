@@ -242,7 +242,7 @@ views:
             heading: Weather and calendar
             icon: mdi:weather-partly-cloudy
           - type: weather-forecast
-            entity: weather.netatmo_weather_station
+            entity: weather.openweathermap
             forecast_type: daily
             show_forecast: true
           - type: calendar
