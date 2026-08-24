@@ -998,12 +998,13 @@ services:
       - "127.0.0.1:61209:61209"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${HOMESERVERDIR}/glances/glances.conf:/glances.conf:ro
       # Expose only the host storage roots whose capacity Home Assistant needs
       # to monitor. They remain read-only inside Glances.
       - ${STORAGEDIR}:${STORAGEDIR}:ro
       - ${CACHEDIR}:${CACHEDIR}:ro
     environment:
-      - "GLANCES_OPT=-w"
+      - "GLANCES_OPT=-w -C /glances.conf"
     labels:
       - "traefik.enable=true"
       - "traefik.backend=glances"
