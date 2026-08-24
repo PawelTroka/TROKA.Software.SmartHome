@@ -27,6 +27,20 @@ ssdp:
 zeroconf:
 sun:
 system_health:
+stream:
+
+# Keep the existing storage dashboards while trialling a simpler, core-only
+# landing page. The legacy Overview remains available as an instant rollback.
+lovelace:
+  resource_mode: storage
+  dashboards:
+    home-v2:
+      mode: yaml
+      filename: dashboards/home_v2.yaml
+      title: Home V2
+      icon: mdi:home-heart
+      show_in_sidebar: true
+      require_admin: false
 
 logger:
   default: error
@@ -100,10 +114,6 @@ wake_on_lan:
 #  country_code: 48
 circadian_lighting:
   max_colortemp: 9000
-miele:
-  client_id: !secret miele_client_id
-  client_secret: !secret miele_client_secret
-  lang: en
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret

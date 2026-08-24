@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the homeserver MariaDB backup daily
+
+[Timer]
+OnCalendar=*-*-* 03:15:00
+RandomizedDelaySec=20m
+Persistent=true
+Unit=homeserver-mariadb-backup.service
+
+[Install]
+WantedBy=timers.target

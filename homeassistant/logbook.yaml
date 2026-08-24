@@ -10,7 +10,6 @@ include:
     - light
     - lock
     - media_player
-    - miele
     #- persistent_notification
     - person
     - script

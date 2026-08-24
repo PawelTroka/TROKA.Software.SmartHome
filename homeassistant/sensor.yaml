@@ -1,34 +1,5 @@
-- platform: unifigateway
-  host: localhost
-  username: !secret unifi_username
-  password: !secret unifi_password
-- platform: hddtemp
-  name: /dev/sda
-  port: 11231
-- platform: hddtemp
-  name: /dev/sdb
-  port: 11232
-- platform: hddtemp
-  name: /dev/sdc
-  port: 11233
-- platform: hddtemp
-  name: /dev/sdd
-  port: 11234
-- platform: hddtemp
-  name: /dev/sde
-  port: 11235
-- platform: hddtemp
-  name: /dev/sdf
-  port: 11236
-- platform: hddtemp
-  name: /dev/sdg
-  port: 11237
-- platform: hddtemp
-  name: /dev/sdh
-  port: 11238
-- platform: hddtemp
-  name: /dev/sdi
-  port: 11239
+# Retired UniFi Gateway and HDDTemp YAML platforms were removed because their
+# endpoints no longer exist. Host telemetry is provided by Glances instead.
 - platform: snmp
   name: 'UPS temperature'
   host: 10.10.10.90

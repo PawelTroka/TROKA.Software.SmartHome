@@ -35,11 +35,6 @@
         "id": "e5852168e6e34c1c8f7f9019b4f824ac"
       },
       {
-        "url": "/hacsfiles/button-card/button-card.js?hacstag=146194325701",
-        "type": "module",
-        "id": "15287fee4c7f413493087c720a1f92f1"
-      },
-      {
         "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js?hacstag=15128006201401",
         "type": "module",
         "id": "5c019729fd684fef94b89870be0180bf"
@@ -65,11 +60,6 @@
         "id": "fe02dde90d904578ac5e15fe86de602b"
       },
       {
-        "url": "/hacsfiles/lovelace-home-feed-card/lovelace-home-feed-card.js?hacstag=174016256065",
-        "type": "module",
-        "id": "1a3b0da4401641868f29e9686eb63902"
-      },
-      {
         "url": "/hacsfiles/vacuum-card/vacuum-card.js?hacstag=2612912952120",
         "type": "module",
         "id": "d952194538374d2b939cca4ef986c374"
@@ -78,11 +68,6 @@
         "url": "/hacsfiles/harmony-card/harmony-card.js?hacstag=2375327500143",
         "type": "module",
         "id": "5968c1a7df9f4e7095508e7edaf3a5f3"
-      },
-      {
-        "id": "4b9c8455b1354ab59c658c6b2265cb07",
-        "url": "/hacsfiles/HA-Firemote/HA-Firemote.js?hacstag=536329656419",
-        "type": "module"
       },
       {
         "id": "a761f1a26179412797cf9c56d32824fd",

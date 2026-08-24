@@ -4,42 +4,6 @@
   "key": "lovelace.lovelace",
   "data": {
     "config": {
-      "custom_header": {
-        "button_text": {
-          "options": "{{ year4d }}-{{ monthNumLZ }}-{{ dayNumLZ }} &nbsp;&nbsp; {{ hours24LZ }}:{{ minutesLZ }}  &nbsp;({{ dayNameLong }})"
-        },
-        "compact_mode": true,
-        "disable_sidebar": true,
-        "exceptions": [
-          {
-            "conditions": {
-              "user": "Pawel"
-            },
-            "config": {
-              "disable_sidebar": false,
-              "hide_config": false,
-              "hide_help": false,
-              "hide_raw": false,
-              "hide_unused": false,
-              "menu_hide": false,
-              "voice_hide": false
-            }
-          }
-        ],
-        "hide_config": true,
-        "hide_help": true,
-        "hide_raw": true,
-        "hide_unused": true,
-        "menu_hide": false,
-        "options_css": "color: white;",
-        "voice_hide": true
-      },
-      "resources": [
-        {
-          "type": "module",
-          "url": "/community_plugin/harmony-card/harmony-card.js"
-        }
-      ],
       "title": "TROKA.Software.SmartHome",
       "views": [
         {
@@ -341,7 +305,7 @@
                 {
                   "title": "Outdoor climate",
                   "type": "custom:weather-card",
-                  "entity_temperature": "sensor.neatmo_outdoor_temperature",
+                  "entity_temperature": "sensor.netatmo_outdoor_temperature",
                   "number_of_forecasts": 7,
                   "hourly_forecast": false,
                   "forecast": true,

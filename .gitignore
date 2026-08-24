@@ -7,6 +7,7 @@ __pycache__/
 !.env.example
 !.env.template
 /.codex-backups/
+/.automatic-backups/
 /.secrets/
 /zwave/
 /matter-data/

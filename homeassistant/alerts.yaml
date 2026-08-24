@@ -1,7 +1,12 @@
 front_door_left_open:
   name: "Error: Front door left open"
   message: Front door has been left open
-  done_message: Front door is finally closed
+  done_message: >-
+    {% if is_state('binary_sensor.hallway_door', 'off') %}
+      Front door is closed.
+    {% else %}
+      The front-door contact became unavailable; closure cannot be confirmed.
+    {% endif %}
   entity_id: binary_sensor.hallway_door
   state: 'on'
   repeat: 2
@@ -11,21 +16,50 @@ front_door_left_open:
     - level_important
 
 front_door_left_unlocked:
-  name: "Error: Front door left unlocked"
-  message: Front door has been left unlocked.
-  done_message: Front door is finally locked
-  entity_id: lock.smart_lock_ultra
-  state: 'unlocked'
+  name: "Error: Front door lock is not confirmed"
+  message: >-
+    The front door has not reported locked for two minutes. Current lock state:
+    {{ states('lock.smart_lock_ultra') }}.
+  done_message: >-
+    {% if is_state('lock.smart_lock_ultra', 'locked') %}
+      Front door is locked.
+    {% else %}
+      The smart-lock state became unavailable; locking cannot be confirmed.
+    {% endif %}
+  entity_id: binary_sensor.front_door_lock_not_confirmed_locked
+  state: 'on'
   repeat: 2
   can_acknowledge: true
-  skip_first: true
+  skip_first: false
+  notifiers:
+    - level_important
+
+front_door_lock_monitoring_unavailable:
+  name: "Error: Front door lock monitoring unavailable"
+  message: >-
+    The smart lock has been unavailable for five minutes. Locking cannot be
+    confirmed; check the door manually.
+  done_message: The smart lock is reporting again.
+  entity_id: binary_sensor.front_door_lock_monitoring_unavailable
+  state: 'on'
+  repeat:
+    - 15
+    - 60
+    - 360
+  can_acknowledge: true
+  skip_first: false
   notifiers:
     - level_important
 
 flood_in_kitchen:
   name: "Error: Flood in kitchen"
   message:  "Flood in kitchen!!! There is a flood in kitchen. Flood in kitchen!!!"
-  done_message: There is no longer flood in kitchen.
+  done_message: >-
+    {% if is_state('binary_sensor.kitchen_flood_sensor', 'off') %}
+      The kitchen flood sensor reports dry.
+    {% else %}
+      The kitchen flood sensor became unavailable; a dry state cannot be confirmed.
+    {% endif %}
   entity_id: binary_sensor.kitchen_flood_sensor
   state: 'on'
   repeat:
@@ -65,7 +99,12 @@ flood_in_bathroom:
 flood_in_toilet:
   name: "Error: Flood in toilet"
   message:  "Flood in toilet!!! There is a flood in toilet. Flood in toilet!!!"
-  done_message: There is no longer flood in toilet.
+  done_message: >-
+    {% if is_state('binary_sensor.toilet_flood_sensor', 'off') %}
+      The toilet flood sensor reports dry.
+    {% else %}
+      The toilet flood sensor became unavailable; a dry state cannot be confirmed.
+    {% endif %}
   entity_id: binary_sensor.toilet_flood_sensor
   state: 'on'
   repeat:
@@ -258,19 +297,133 @@ tado_heating_control_unavailable:
 
 co2_above_1000_ppm:
   name: CO2 above 1000 ppm
-  title: High CO2 detected
+  title: >-
+    {{ 'Elevated CO2 detected'
+       if is_state('binary_sensor.co2_above_1000_ppm', 'on')
+       else 'CO2 warning update' }}
   message: >-
     CO2 has been above 1000 ppm for 5 minutes.
     {{ state_attr('binary_sensor.co2_above_1000_ppm', 'readings') }}.
     Ventilate the affected room.
   done_message: >-
-    CO2 readings have remained at or below 1000 ppm for 10 minutes.
+    {% if has_value('sensor.netatmo_indoor_co2')
+          and has_value('sensor.netatmo_bedroom_co2')
+          and has_value('sensor.netatmo_office_co2') %}
+      CO2 readings have remained at or below 1000 ppm for 10 minutes.
+    {% else %}
+      CO2 telemetry became unavailable; recovery cannot be confirmed.
+    {% endif %}
   entity_id: binary_sensor.co2_above_1000_ppm
   state: "on"
   repeat:
     - 30
     - 60
     - 120
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
+
+co2_above_2000_ppm:
+  name: CO2 above 2000 ppm
+  title: >-
+    {{ 'Serious CO2 ventilation warning'
+       if is_state('binary_sensor.co2_above_2000_ppm', 'on')
+       else 'Serious CO2 warning update' }}
+  message: >-
+    CO2 has remained above 2000 ppm for 10 minutes.
+    {{ state_attr('binary_sensor.co2_above_2000_ppm', 'readings') }}.
+    Open windows and doors, leave the affected room if you feel unwell, and
+    verify that the sensor is positioned correctly.
+  done_message: >-
+    {% if has_value('sensor.netatmo_indoor_co2')
+          and has_value('sensor.netatmo_bedroom_co2')
+          and has_value('sensor.netatmo_office_co2') %}
+      CO2 readings have remained at or below 2000 ppm for 10 minutes.
+    {% else %}
+      CO2 telemetry became unavailable; recovery cannot be confirmed.
+    {% endif %}
+  entity_id: binary_sensor.co2_above_2000_ppm
+  state: "on"
+  repeat:
+    - 15
+    - 30
+    - 60
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - safety_silent
+
+co2_monitoring_unavailable:
+  name: "Error: CO2 monitoring unavailable"
+  message: >-
+    One or more expected Netatmo room CO2 readings have been unavailable for
+    five minutes, so a high reading could otherwise disappear without warning.
+  done_message: All expected Netatmo room CO2 readings are available again.
+  entity_id: binary_sensor.co2_monitoring_unavailable
+  state: "on"
+  repeat:
+    - 60
+    - 360
+    - 1440
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
+
+front_door_contact_unavailable:
+  name: "Error: Front door contact unavailable"
+  message: >-
+    The front-door contact has been unavailable for 5 minutes, so the
+    door-left-open alert cannot operate until the sensor reports again.
+  done_message: The front-door contact is reporting again.
+  entity_id: binary_sensor.front_door_contact_unavailable
+  state: "on"
+  repeat:
+    - 60
+    - 360
+    - 1440
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - level_info
+
+cooktop_unattended:
+  name: "Safety: Cooktop unattended"
+  message: >-
+    The cooktop reports active while both residents are away or shared night
+    mode is active. Check it immediately; Home Assistant will not switch it off.
+  done_message: >-
+    {% if has_value('switch.cooktop_power')
+          or has_value('sensor.cooktop_operation_state') %}
+      The cooktop no longer appears unattended. It may have been switched off,
+      a resident may be home, or shared night mode may have ended.
+    {% else %}
+      Cooktop telemetry became unavailable; a safe state cannot be confirmed.
+    {% endif %}
+  entity_id: binary_sensor.cooktop_unattended
+  state: "on"
+  repeat:
+    - 2
+    - 5
+    - 15
+  can_acknowledge: true
+  skip_first: false
+  notifiers:
+    - safety_silent
+
+cooktop_monitoring_unavailable:
+  name: "Error: Cooktop monitoring unavailable"
+  message: >-
+    Cooktop power and operating-state telemetry have both been unavailable for
+    5 minutes, so unattended-cooking detection cannot operate.
+  done_message: Cooktop monitoring is available again.
+  entity_id: binary_sensor.cooktop_monitoring_unavailable
+  state: "on"
+  repeat:
+    - 60
+    - 360
+    - 1440
   can_acknowledge: true
   skip_first: false
   notifiers:

@@ -1,16 +1,8 @@
 
-- platform: dlink_hnap
-  name: Toilet water leak sensor
-  host: 10.10.10.41
-  type: water
-  username: Admin
-  password: !secret dlink_toilet_water_sensor_pincode
-- platform: dlink_hnap
-  name: Kitchen water leak sensor
-  host: 10.10.10.42
-  type: water
-  username: Admin
-  password: !secret dlink_kitchen_water_sensor_pincode
+# The retired toilet and kitchen D-Link sensors are physically offline; their
+# working Z-Wave replacements remain binary_sensor.toilet_flood_sensor and
+# binary_sensor.kitchen_flood_sensor. Bathroom keeps its D-Link entry because
+# no live replacement exists there yet.
 - platform: dlink_hnap
   name: Bathroom water leak sensor
   host: 10.10.10.112

@@ -1,4 +1,3 @@
-- platform: tado
-  username: !secret tado_username
-  password: !secret tado_password
-  home_id: !secret tado_home_id
+# The removed legacy Tado device tracker is incompatible with current Home
+# Assistant. Resident presence comes from the current mobile-app trackers.
+[]

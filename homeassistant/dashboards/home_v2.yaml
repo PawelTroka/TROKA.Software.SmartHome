@@ -1,0 +1,306 @@
+title: Home V2
+views:
+  - title: Home
+    path: home
+    icon: mdi:home-heart
+    type: sections
+    max_columns: 4
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Safety and attention
+            icon: mdi:shield-home
+          - type: entity-filter
+            show_empty: false
+            state_filter:
+              - "on"
+              # Alert entities use `off` for acknowledged-but-still-active.
+              - "off"
+            entities:
+              - alert.front_door_left_open
+              - alert.front_door_left_unlocked
+              - alert.front_door_contact_unavailable
+              - alert.front_door_lock_monitoring_unavailable
+              - alert.flood_in_kitchen
+              - alert.flood_in_bathroom
+              - alert.flood_in_toilet
+              - alert.cooktop_unattended
+              - alert.power_outage
+              - alert.ups_telemetry_unavailable
+              - alert.radon_longterm_level_warning
+              - alert.radon_longterm_level_dangerous
+              - alert.radon_1day_level_warning
+              - alert.radon_1day_level_dangerous
+              - alert.airthings_monitor_unavailable
+              - alert.bathroom_leak_sensor_unavailable
+              - alert.tado_heating_control_unavailable
+              - alert.co2_above_1000_ppm
+              - alert.co2_above_2000_ppm
+              - alert.co2_monitoring_unavailable
+              - alert.cooktop_monitoring_unavailable
+            card:
+              type: entities
+              title: Active problems
+              state_color: true
+              show_header_toggle: false
+          - type: tile
+            entity: lock.smart_lock_ultra
+            name: Front door lock
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: none
+          - type: tile
+            entity: binary_sensor.hallway_door
+            name: Front door
+          - type: tile
+            entity: binary_sensor.kitchen_flood_sensor
+            name: Kitchen leak
+          - type: tile
+            entity: binary_sensor.bathroom_water_leak_sensor
+            name: Bathroom leak
+          - type: tile
+            entity: binary_sensor.toilet_flood_sensor
+            name: Toilet leak
+
+      - type: grid
+        cards:
+          - type: heading
+            heading: People and house mode
+            icon: mdi:account-group
+          - type: tile
+            entity: person.pawel
+          - type: tile
+            entity: person.misiuszka
+          - type: tile
+            entity: input_boolean.bedroom_night_mode
+            name: Bedroom night mode
+            tap_action:
+              action: none
+            icon_tap_action:
+              action: none
+          - type: tile
+            entity: input_boolean.house_night_mode
+            name: Shared night mode
+            tap_action:
+              action: none
+            icon_tap_action:
+              action: none
+          - type: tile
+            entity: input_boolean.michalina_sleeping
+            name: Michalina sleeping
+            tap_action:
+              action: none
+            icon_tap_action:
+              action: none
+          - type: button
+            name: All lights, media and climate off
+            icon: mdi:power
+            tap_action:
+              action: perform-action
+              perform_action: script.turn_off_everything
+              confirmation:
+                text: Turn off lights, media and climate throughout the home?
+          - type: button
+            name: Bedroom night mode
+            icon: mdi:bed-clock
+            tap_action:
+              action: perform-action
+              perform_action: script.activate_night_mode
+              confirmation:
+                text: Start Paweł's bedroom night routine now?
+          - type: button
+            name: Whole-house night mode
+            icon: mdi:home-clock
+            tap_action:
+              action: perform-action
+              perform_action: script.activate_night_mode
+              data:
+                whole_house: true
+              confirmation:
+                text: Start the full night routine and shut down shared rooms?
+
+      - type: grid
+        cards:
+          - type: heading
+            heading: Lights
+            icon: mdi:lightbulb-group
+          - type: tile
+            entity: light.living_room_lights
+            name: Living room
+          - type: tile
+            entity: light.kitchen_lights
+            name: Kitchen
+          - type: tile
+            entity: light.hallway_lights
+            name: Hallway
+          - type: tile
+            entity: light.bathroom_lights
+            name: Bathroom
+          - type: tile
+            entity: light.toilet_lights
+            name: Toilet
+          - type: tile
+            entity: light.bedroom_lights
+            name: Bedroom
+          - type: tile
+            entity: light.office_lights
+            name: Office
+          - type: heading
+            heading: Scenes
+            icon: mdi:palette
+          - type: tile
+            entity: scene.default
+          - type: tile
+            entity: scene.ambient
+          - type: tile
+            entity: scene.movie_dinner
+          - type: tile
+            entity: scene.full_bright
+
+      - type: grid
+        cards:
+          - type: heading
+            heading: Climate and air
+            icon: mdi:home-thermometer
+          - type: tile
+            entity: climate.living_room_ac
+            name: Living room AC
+          - type: tile
+            entity: climate.office_ac
+            name: Office AC
+          - type: tile
+            entity: climate.bedroom_ac
+            name: Bedroom AC
+          - type: tile
+            entity: climate.kitchen_floor
+            name: Kitchen floor
+          - type: tile
+            entity: climate.bathroom_floor
+            name: Bathroom floor
+          - type: tile
+            entity: climate.toilet_floor
+            name: Toilet floor
+          - type: tile
+            entity: sensor.netatmo_indoor_co2
+            name: Living room CO2
+          - type: tile
+            entity: sensor.netatmo_bedroom_co2
+            name: Bedroom CO2
+          - type: tile
+            entity: sensor.netatmo_office_co2
+            name: Office CO2
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: binary_sensor.tado_heating_control_unavailable
+                state: "on"
+            card:
+              type: markdown
+              content: >-
+                **Tado radiator control is offline.** Floor heating and the
+                three AC units above remain independently controllable.
+
+      - type: grid
+        cards:
+          - type: heading
+            heading: Media and cleaning
+            icon: mdi:play-circle
+          - type: tile
+            entity: media_player.living_room_bravia_tv
+            name: Living room TV
+          - type: tile
+            entity: media_player.denon_avc_x6500h_avr
+            name: Denon receiver
+          - type: tile
+            entity: media_player.living_room
+            name: Living room Sonos
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: vacuum.roborock_s8_pro_ultra
+                state_not: unavailable
+            card:
+              type: tile
+              entity: vacuum.roborock_s8_pro_ultra
+              name: Roborock
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: vacuum.roborock_s8_pro_ultra
+                state: unavailable
+            card:
+              type: markdown
+              content: >-
+                **Roborock is offline.** Reconnect it to the SmartHome network
+                before relying on away-mode cleaning.
+
+      - type: grid
+        cards:
+          - type: heading
+            heading: Weather and calendar
+            icon: mdi:weather-partly-cloudy
+          - type: weather-forecast
+            entity: weather.netatmo_weather_station
+            forecast_type: daily
+            show_forecast: true
+          - type: calendar
+            initial_view: listWeek
+            entities:
+              - calendar.work
+              - calendar.personal
+
+      - type: grid
+        cards:
+          - type: heading
+            heading: Rooms
+            icon: mdi:floor-plan
+          - type: button
+            name: Living room
+            icon: mdi:sofa
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/living_room
+          - type: button
+            name: Kitchen
+            icon: mdi:countertop
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/kitchen
+          - type: button
+            name: Hallway
+            icon: mdi:door
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/hallway
+          - type: button
+            name: Bathroom
+            icon: mdi:shower
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/bathroom
+          - type: button
+            name: Toilet
+            icon: mdi:toilet
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/toilet
+          - type: button
+            name: Bedroom
+            icon: mdi:bed-king
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/bedroom
+          - type: button
+            name: Office
+            icon: mdi:desk
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/office
+          - type: button
+            name: Outdoor
+            icon: mdi:tree
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/outdoor

@@ -63,3 +63,107 @@
               data:
                 title: "Tado heating control unavailable"
                 message: Tado radiator data is stale, so heating commands may not take effect.
+        - if:
+            - condition: state
+              entity_id: binary_sensor.front_door_contact_unavailable
+              state: 'on'
+            - condition: state
+              entity_id: alert.front_door_contact_unavailable
+              state: 'idle'
+          then:
+            - action: notify.level_info
+              data:
+                title: "Front door contact unavailable"
+                message: The door-left-open alert is blind until the contact sensor reports again.
+        - if:
+            - condition: state
+              entity_id: binary_sensor.front_door_lock_not_confirmed_locked
+              state: 'on'
+            - condition: state
+              entity_id: alert.front_door_left_unlocked
+              state: 'idle'
+          then:
+            - action: notify.level_important
+              data:
+                title: "Front door lock is not confirmed"
+                message: >-
+                  The front door is not confirmed locked. Current lock state:
+                  {{ states('lock.smart_lock_ultra') }}.
+        - if:
+            - condition: state
+              entity_id: binary_sensor.front_door_lock_monitoring_unavailable
+              state: 'on'
+            - condition: state
+              entity_id: alert.front_door_lock_monitoring_unavailable
+              state: 'idle'
+          then:
+            - action: notify.level_important
+              data:
+                title: "Front door lock monitoring unavailable"
+                message: The smart lock is unavailable; check the door manually.
+        - if:
+            - condition: state
+              entity_id: binary_sensor.co2_above_1000_ppm
+              state: 'on'
+            - condition: state
+              entity_id: alert.co2_above_1000_ppm
+              state: 'idle'
+          then:
+            - action: notify.level_info
+              data:
+                title: "Elevated CO2 detected"
+                message: >-
+                  {{ state_attr('binary_sensor.co2_above_1000_ppm', 'readings') }}.
+                  Ventilate the affected room.
+        - if:
+            - condition: state
+              entity_id: binary_sensor.co2_above_2000_ppm
+              state: 'on'
+            - condition: state
+              entity_id: alert.co2_above_2000_ppm
+              state: 'idle'
+          then:
+            - action: notify.safety_silent
+              data:
+                title: "Serious CO2 ventilation warning"
+                message: >-
+                  {{ state_attr('binary_sensor.co2_above_2000_ppm', 'readings') }}.
+                  Ventilate the affected room now.
+        - if:
+            - condition: state
+              entity_id: binary_sensor.co2_monitoring_unavailable
+              state: 'on'
+            - condition: state
+              entity_id: alert.co2_monitoring_unavailable
+              state: 'idle'
+          then:
+            - action: notify.level_info
+              data:
+                title: "CO2 monitoring unavailable"
+                message: >-
+                  One or more expected Netatmo room CO2 readings are unavailable,
+                  so ventilation alerts are incomplete.
+        - if:
+            - condition: state
+              entity_id: binary_sensor.cooktop_unattended
+              state: 'on'
+            - condition: state
+              entity_id: alert.cooktop_unattended
+              state: 'idle'
+          then:
+            - action: notify.safety_silent
+              data:
+                title: "Cooktop unattended"
+                message: The cooktop reports active while the home is away or in shared night mode.
+        - if:
+            - condition: state
+              entity_id: binary_sensor.cooktop_monitoring_unavailable
+              state: 'on'
+            - condition: state
+              entity_id: alert.cooktop_monitoring_unavailable
+              state: 'idle'
+          then:
+            - action: notify.level_info
+              data:
+                title: "Cooktop monitoring unavailable"
+                message: Unattended-cooking detection is blind until Home Connect telemetry returns.

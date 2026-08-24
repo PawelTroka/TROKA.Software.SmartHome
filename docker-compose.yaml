@@ -79,7 +79,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "${TRAEFIK_PORT}:8080"
+      - "${SERVER_IP}:${TRAEFIK_PORT}:8080"
     dns:
       - ${SERVER_IP}
       - ${ROUTER_IP}
@@ -122,7 +122,7 @@ services:
     networks:
       - traefik_proxy
     ports:
-      - "${PORTAINER_PORT}:9000"
+      - "${SERVER_IP}:${PORTAINER_PORT}:9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${HOMESERVERDIR}/portainer/data:/data
@@ -329,7 +329,7 @@ services:
     links:
       - mariadb:db
     ports:
-      - ${PHPMYADMIN_PORT}:80
+      - ${SERVER_IP}:${PHPMYADMIN_PORT}:80
     environment:
       - PMA_HOST=${DB_HOST}
       - PMA_PORT=${DB_PORT}
@@ -348,6 +348,7 @@ services:
     ports:
       - target: ${DB_PORT}
         published: ${DB_PORT}
+        host_ip: ${SERVER_IP}
         protocol: tcp
         mode: host
     restart: always
@@ -991,10 +992,16 @@ services:
       - default
       - traefik_proxy
     ports:
-      - "61208:61208" 
-      - "61209:61209"
+      # Home Assistant reaches the API through host networking; Traefik uses
+      # the Docker network. Neither Glances API port needs public host binding.
+      - "127.0.0.1:61208:61208"
+      - "127.0.0.1:61209:61209"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      # Expose only the host storage roots whose capacity Home Assistant needs
+      # to monitor. They remain read-only inside Glances.
+      - ${STORAGEDIR}:${STORAGEDIR}:ro
+      - ${CACHEDIR}:${CACHEDIR}:ro
     environment:
       - "GLANCES_OPT=-w"
     labels:

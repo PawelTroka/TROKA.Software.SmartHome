@@ -1,6 +1,7 @@
 # Hallway multisensor
 
-- alias: Turn on hallway lights on motion when dark
+- id: hallway_motion_turn_on_lights_when_dark
+  alias: Turn on hallway lights on motion when dark
   trigger:
     - platform: state
       entity_id: binary_sensor.hallway_multisensor_motion
@@ -15,10 +16,12 @@
   action:
     action: script.turn_on_hallway_automatic_lights
 
-- alias: Turn off hallway lights when motion stops
+- id: hallway_motion_turn_off_lights
+  alias: Turn off hallway lights when motion stops
   trigger:
     - platform: state
       entity_id: binary_sensor.hallway_multisensor_motion
+      from: 'on'
       to: 'off'
   action:
     service: light.turn_off
@@ -27,7 +30,8 @@
 
 # kitchen multisensor
 
-- alias: Turn on kitchen lights on motion when dark
+- id: kitchen_motion_turn_on_lights_when_dark
+  alias: Turn on kitchen lights on motion when dark
   trigger:
     - platform: state
       entity_id: binary_sensor.kitchen_multisensor_motion
@@ -42,10 +46,12 @@
   action:
     action: script.turn_on_kitchen_automatic_lights
 
-- alias: Turn off kitchen lights when motion stops
+- id: kitchen_motion_turn_off_lights
+  alias: Turn off kitchen lights when motion stops
   trigger:
     - platform: state
       entity_id: binary_sensor.kitchen_multisensor_motion
+      from: 'on'
       to: 'off'
   action:
     service: light.turn_off
@@ -54,7 +60,8 @@
 
 # Toilet multisensor
 
-- alias: Turn on toilet lights on motion
+- id: toilet_motion_turn_on_lights
+  alias: Turn on toilet lights on motion
   trigger:
     - platform: state
       entity_id: binary_sensor.toilet_multisensor_motion
@@ -62,10 +69,12 @@
   action:
     action: script.turn_on_toilet_automatic_lights
 
-- alias: Turn off toilet lights when motion stops
+- id: toilet_motion_turn_off_lights
+  alias: Turn off toilet lights when motion stops
   trigger:
     - platform: state
       entity_id: binary_sensor.toilet_multisensor_motion
+      from: 'on'
       to: 'off'
   action:
     service: light.turn_off
@@ -74,7 +83,8 @@
 
 # Bathroom multisensor
 
-- alias: Turn on bathroom lights on motion
+- id: bathroom_motion_turn_on_lights
+  alias: Turn on bathroom lights on motion
   trigger:
     - platform: state
       entity_id: binary_sensor.bathroom_motion
@@ -83,10 +93,12 @@
     action: script.turn_on_bathroom_automatic_lights
 
 
-- alias: Turn off bathroom lights when motion stops unless shower is in use
+- id: bathroom_motion_turn_off_lights_unless_showering
+  alias: Turn off bathroom lights when motion stops unless shower is in use
   trigger:
     - platform: state
       entity_id: binary_sensor.bathroom_motion
+      from: 'on'
       to: 'off'
   condition:
     - condition: state
@@ -97,7 +109,8 @@
     entity_id: light.bathroom_lights
 
 
-- alias: Turn off bathroom lights when shower is over unless there is motion
+- id: bathroom_shower_end_turn_off_lights_without_motion
+  alias: Turn off bathroom lights when shower is over unless there is motion
   trigger:
     platform: state
     entity_id: 'binary_sensor.shower_in_use'
@@ -112,7 +125,8 @@
     entity_id: light.bathroom_lights
 
 
-- alias: Turn on bathroom mirror demister when shower is in use
+- id: bathroom_shower_turn_on_demister
+  alias: Turn on bathroom mirror demister when shower is in use
   trigger:
     platform: state
     entity_id: 'binary_sensor.shower_in_use'
@@ -123,7 +137,8 @@
     entity_id: switch.bathroom_mirror_switch_demister
 
 
-- alias: Turn off bathroom mirror demister when shower is over
+- id: bathroom_shower_turn_off_demister
+  alias: Turn off bathroom mirror demister when shower is over
   trigger:
     platform: state
     entity_id: 'binary_sensor.shower_in_use'

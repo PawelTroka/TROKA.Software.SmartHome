@@ -17,7 +17,7 @@
         "icon": "mdi:cogs",
         "id": "lovelace_system",
         "mode": "storage",
-        "require_admin": false,
+        "require_admin": true,
         "show_in_sidebar": true,
         "title": "System",
         "url_path": "lovelace-system"

@@ -112,3 +112,69 @@
         {{ ns.problem }}
       delay_on: "00:05:00"
       delay_off: "00:05:00"
+
+    - name: Front door contact unavailable
+      default_entity_id: binary_sensor.front_door_contact_unavailable
+      unique_id: front_door_contact_unavailable
+      device_class: problem
+      state: >-
+        {{ states('binary_sensor.hallway_door') in ['unknown', 'unavailable'] }}
+      delay_on: "00:05:00"
+      delay_off: "00:02:00"
+
+    - name: Front door lock not confirmed locked
+      default_entity_id: binary_sensor.front_door_lock_not_confirmed_locked
+      unique_id: front_door_lock_not_confirmed_locked
+      device_class: problem
+      state: >-
+        {{ not is_state('lock.smart_lock_ultra', 'locked') }}
+      # Normal locking transitions are brief; only warn if the door remains
+      # unlocked, jammed, or otherwise unconfirmed for two minutes.
+      delay_on: "00:02:00"
+      delay_off: "00:00:10"
+
+    - name: Front door lock monitoring unavailable
+      default_entity_id: binary_sensor.front_door_lock_monitoring_unavailable
+      unique_id: front_door_lock_monitoring_unavailable
+      device_class: problem
+      state: >-
+        {{ states('lock.smart_lock_ultra') in ['unknown', 'unavailable'] }}
+      delay_on: "00:05:00"
+      delay_off: "00:02:00"
+
+    - name: Cooktop unattended
+      default_entity_id: binary_sensor.cooktop_unattended
+      unique_id: cooktop_unattended
+      device_class: safety
+      availability: >-
+        {{ has_value('switch.cooktop_power')
+           or has_value('sensor.cooktop_operation_state') }}
+      state: >-
+        {% set operation = states('sensor.cooktop_operation_state') %}
+        {% set operation_known = operation not in ['unknown', 'unavailable'] %}
+        {% set cooktop_active = operation in [
+             'run', 'pause', 'delayedstart', 'actionrequired', 'aborting', 'error'
+           ] or (not operation_known and is_state('switch.cooktop_power', 'on')) %}
+        {% set pawel_away = states('person.pawel')
+             not in ['home', 'unknown', 'unavailable'] %}
+        {% set michalina_away = states('person.misiuszka')
+             not in ['home', 'unknown', 'unavailable'] %}
+        {% set everyone_away = pawel_away and michalina_away %}
+        {{ cooktop_active
+           and (everyone_away
+                or is_state('input_boolean.house_night_mode', 'on')) }}
+      delay_on: "00:02:00"
+      delay_off: "00:01:00"
+      attributes:
+        operation_state: "{{ states('sensor.cooktop_operation_state') }}"
+        power: "{{ states('switch.cooktop_power') }}"
+
+    - name: Cooktop monitoring unavailable
+      default_entity_id: binary_sensor.cooktop_monitoring_unavailable
+      unique_id: cooktop_monitoring_unavailable
+      device_class: problem
+      state: >-
+        {{ not has_value('switch.cooktop_power')
+           and not has_value('sensor.cooktop_operation_state') }}
+      delay_on: "00:05:00"
+      delay_off: "00:05:00"

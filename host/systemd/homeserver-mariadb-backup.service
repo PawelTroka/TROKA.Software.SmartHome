@@ -1,0 +1,16 @@
+[Unit]
+Description=Create and verify a compressed homeserver MariaDB backup
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+UMask=0077
+Environment=MARIADB_BACKUP_DIR=/app/homeserver/.automatic-backups/mariadb
+Environment=MARIADB_BACKUP_RETENTION_DAYS=14
+ExecStart=/usr/bin/bash /app/homeserver/ops/mariadb-backup.sh
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
