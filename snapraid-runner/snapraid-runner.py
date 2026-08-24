@@ -39,6 +39,9 @@ EXPECTED_DATA_LAYOUT = tuple(
     ("d{}".format(index), "/media/storagedrive{}".format(index)) for index in range(1, 6)
 )
 SUPPORTED_SNAPRAID_VERSION = "11.3"
+PRESERVED_REFERENCE_ACTION_SHA256 = (
+    "c48f077652d42376eca656c53c7d52128e5b217523ad00a4be490503485ae5cb"
+)
 SNAPRAID_VERSION_PATTERN = re.compile(
     r"^snapraid v([0-9]+\.[0-9]+) by Andrea Mazzoleni, http://www\.snapraid\.it$"
 )
@@ -115,6 +118,7 @@ class ValidationSnapshot:
 @dataclasses.dataclass(frozen=True)
 class DiffSnapshot:
     semantic_digest: str
+    semantic_action_sha256: str
     raw_digest: str
     counts: dict
     actions: tuple
@@ -153,6 +157,16 @@ def sha256_file(path):
 
 def canonical_digest(value):
     payload = json.dumps(value, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return sha256_bytes(payload)
+
+
+def digest_action_lines(actions):
+    """Preserve the historical evidence digest over action records only."""
+
+    encoded = sorted(line.encode("utf-8", "surrogateescape") for line in actions)
+    payload = b"\n".join(encoded)
+    if encoded:
+        payload += b"\n"
     return sha256_bytes(payload)
 
 
@@ -830,9 +844,9 @@ def normalize_diff_output(stdout, stderr):
         raise SafetyError(
             "SnapRAID diff loaded unexpected content state: {}".format(loading_paths[0])
         )
-    if self_test_count != 1:
+    if self_test_count > 1:
         raise SafetyError(
-            "SnapRAID diff must emit exactly one Self test line; observed {}".format(
+            "SnapRAID diff may emit at most one Self test line; observed {}".format(
                 self_test_count
             )
         )
@@ -874,17 +888,21 @@ def normalize_diff_output(stdout, stderr):
             )
         )
     combined = stdout + ("\n" + stderr if stderr else "")
+    sorted_actions = sorted(
+        actions, key=lambda line: line.encode("utf-8", "surrogateescape")
+    )
     semantic = {
         "counts": counts,
-        "actions": sorted(actions),
+        "actions": sorted_actions,
         "loaded_from": loading_paths[0],
         "terminal": terminal_lines[0],
     }
     return DiffSnapshot(
         semantic_digest=canonical_digest(semantic),
+        semantic_action_sha256=digest_action_lines(actions),
         raw_digest=sha256_bytes(combined.encode("utf-8", "surrogateescape")),
         counts=counts,
-        actions=tuple(sorted(actions)),
+        actions=tuple(sorted_actions),
     )
 
 
@@ -920,6 +938,7 @@ def run_diff(settings):
     log("diff counts: {}".format(json.dumps(snapshot.counts, sort_keys=True)))
     log("diff terminal: {}".format(snapshot.terminal_result))
     log("diff semantic digest: {}".format(snapshot.semantic_digest))
+    log("diff semantic action sha256: {}".format(snapshot.semantic_action_sha256))
     log("diff raw digest: {}".format(snapshot.raw_digest))
     return snapshot
 

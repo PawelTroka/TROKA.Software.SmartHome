@@ -106,6 +106,20 @@ class DiffParsingTests(unittest.TestCase):
         self.assertEqual(first.changed_count, 4)
         self.assertNotEqual(first.raw_digest, second.raw_digest)
 
+    def test_historical_action_digest_is_byte_sorted_lf_terminated_and_multiset_safe(self):
+        self.assertEqual(
+            RUNNER.digest_action_lines(["remove z", "add a", "remove z"]),
+            "b0b5381f549cc90f13e6fc7be89fbc970aeaa306757717f992e89b9efdf1b7a9",
+        )
+        self.assertEqual(
+            RUNNER.digest_action_lines([]),
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        )
+        self.assertEqual(
+            RUNNER.PRESERVED_REFERENCE_ACTION_SHA256,
+            "c48f077652d42376eca656c53c7d52128e5b217523ad00a4be490503485ae5cb",
+        )
+
     def test_rejects_summary_action_mismatch(self):
         with self.assertRaisesRegex(RUNNER.SafetyError, "listed 1 added.*summarized 2"):
             RUNNER.normalize_diff_output(self.VALID_DIFF.replace("1 added", "2 added"), "")
@@ -144,12 +158,17 @@ class DiffParsingTests(unittest.TestCase):
         with self.assertRaisesRegex(RUNNER.SafetyError, "unrecognized.*stderr"):
             RUNNER.normalize_diff_output(self.VALID_DIFF, "unknown warning")
 
-    def test_requires_exactly_one_self_test_record(self):
+    def test_accepts_zero_or_one_self_test_record_and_rejects_duplicates(self):
         missing = self.VALID_DIFF.replace("    Self test...\n", "")
-        with self.assertRaisesRegex(RUNNER.SafetyError, "exactly one Self test.*observed 0"):
-            RUNNER.normalize_diff_output(missing, "")
+        without_progress = RUNNER.normalize_diff_output(missing, "")
+        with_progress = RUNNER.normalize_diff_output(self.VALID_DIFF, "")
+        self.assertEqual(without_progress.semantic_digest, with_progress.semantic_digest)
+        self.assertEqual(
+            without_progress.semantic_action_sha256,
+            with_progress.semantic_action_sha256,
+        )
         duplicate = self.VALID_DIFF.replace("    Self test...\n", "    Self test...\n    Self test...\n")
-        with self.assertRaisesRegex(RUNNER.SafetyError, "exactly one Self test.*observed 2"):
+        with self.assertRaisesRegex(RUNNER.SafetyError, "at most one Self test.*observed 2"):
             RUNNER.normalize_diff_output(duplicate, "")
 
     def test_requires_exact_first_content_state(self):
@@ -268,6 +287,7 @@ class CliAndCommandTests(unittest.TestCase):
         self.assertIn("diff counts:", output.getvalue())
         self.assertIn("diff terminal: No differences", output.getvalue())
         self.assertIn("diff semantic digest:", output.getvalue())
+        self.assertIn("diff semantic action sha256:", output.getvalue())
         self.assertIn("diff raw digest:", output.getvalue())
 
     def test_invalid_diff_is_rejected_before_raw_output_is_logged(self):

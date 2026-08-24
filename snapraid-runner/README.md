@@ -34,11 +34,11 @@ Every report requires all of the following:
   `/media/cachedrive/.snapraid/content.lock`.
 
 The parser recognizes only the captured/upstream SnapRAID 11.3 diff grammar:
-one `Self test...` progress record, one state-loading line, one `Comparing...`
-line, the six known action categories, all seven known summaries, one matching
-terminal result, and the known parity warning. Any other stdout/stderr line,
-category, duplicate footer, count mismatch, or return-code mismatch fails
-closed.
+zero or one `Self test...` progress record (it is suppressed for the production
+non-TTY pipe), one state-loading line, one `Comparing...` line, the six known
+action categories, all seven known summaries, one matching terminal result,
+and the known parity warning. Any other stdout/stderr line, category, duplicate
+footer, count mismatch, or return-code mismatch fails closed.
 
 The systemd unit adds a kernel-enforced boundary: `ProtectSystem=strict` and
 `ReadOnlyPaths=/media` expose the array read-only. Only `/run/lock` and the
@@ -131,8 +131,12 @@ Do this only after the live mounts and identities have been verified.
    sudo journalctl -u homeserver-snapraid-report.service --since today
    ```
 
-   The scheduled service logs only counts, the terminal result, and semantic/raw
-   SHA-256 digests. It never sends the full filename list to journald. If an
+   The scheduled service logs only counts, the terminal result, and envelope,
+   action-list, and raw SHA-256 digests. The action-list digest preserves the
+   historical algorithm: recognized action lines sorted bytewise, joined with
+   LF, and terminated with LF when nonempty. The preserved recovery capture is
+   `c48f077652d42376eca656c53c7d52128e5b217523ad00a4be490503485ae5cb`.
+   The service never sends the full filename list to journald. If an
    operator needs that list, stop the timer and use a separately reviewed,
    root-only capture outside the scheduled service; do not widen `/media` in
    this unit.
