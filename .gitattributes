@@ -1,0 +1,3 @@
+# docker-gc passes complete lines to grep; CRLF would make exclusions fail.
+docker-gc/docker-gc-exclude text eol=lf
+docker-gc/fizyka-retained-images.json text eol=lf

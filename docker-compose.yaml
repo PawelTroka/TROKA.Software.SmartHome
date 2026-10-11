@@ -1046,11 +1046,12 @@ services:
       LOG_LEVEL: debug
       SELF_UPDATE: "true"
       CLEANUP: "true"
-      IGNORE: traefik influxdb hassio_dns homeassistant hassio_supervisor addon_core_check_config addon_62c7908d_autobackup plexms
+      # Fizyka releases, tunnel and archive are managed by PhysicsForEveryone.
+      IGNORE: traefik influxdb hassio_dns homeassistant hassio_supervisor addon_core_check_config addon_62c7908d_autobackup plexms fizyka-production-web-1 fizyka-production-cloudflared-1 fizyka-legacy-reference-legacy-reference-1
       #NOTIFIERS: 'tgram://${TGRAM_BOT_TOKEN}/${TGRAM_CHAT_ID}/'
 
 # Docker-GC - Automatic Docker Garbage Collection 
-# Create docker-gc-exclude file
+# Reviewed Fizyka image exclusions: see docs/fizyka-hosting.md before applying.
   dockergc:
     image: clockworksoul/docker-gc-cron@sha256:5c29b290ae4cb00a8e77232596ea0e33f174695bde816a98f21b4b3935cd6875
     container_name: docker-gc
