@@ -1,0 +1,232 @@
+{
+  "schema": 1,
+  "recorded_utc_date": "2026-10-11",
+  "purpose": "Retain only the audited Fizyka release, connector and reference images until separately reviewed retirement. This is not authorization to roll back production.",
+  "gc_image": "clockworksoul/docker-gc-cron@sha256:5c29b290ae4cb00a8e77232596ea0e33f174695bde816a98f21b4b3935cd6875",
+  "gc_script_sha256": "55cc6862dcba27feddbd5d1f57f446d1d22cb3e92840ae02281e174e9d3c7497",
+  "images": [
+    {
+      "image": "sha256:13931a21d2c4dded6f8cd6446771b19efb4ba730bd69cd4b73bfe57199ab5e47",
+      "references": [
+        "release:20261010-editor-production"
+      ]
+    },
+    {
+      "image": "sha256:22201bd401e7649448f80baadd7825636b62f939af5f36e28e1480ade05fd905",
+      "references": [
+        "release:20261008-community-style"
+      ]
+    },
+    {
+      "image": "sha256:2b4768b19d6b955e82f6782b803ac7bcbdb99295bcb79e73cf417c64587e289c",
+      "references": [
+        "release:20261008-logo-refresh"
+      ]
+    },
+    {
+      "image": "sha256:30601a055a99ceee913182ba32773f9374553a086ae081e85d5497aecdd42aad",
+      "references": [
+        "release:20261009-article-editor"
+      ]
+    },
+    {
+      "image": "sha256:34e3f7b5c2ef2e258d1a4b98d514d0ec2c9618bc3521c723bf8fd2239bc1b23c",
+      "references": [
+        "release:20261009-compact-book-strip"
+      ]
+    },
+    {
+      "image": "sha256:3847d98d4a35e4cbab7a6183b133e19954c29ec251c2ff0abf55900016c21317",
+      "references": [
+        "release:20261010-unified-accounts"
+      ]
+    },
+    {
+      "image": "sha256:477d68f6de31c05d271f4e35682ff2823d6f57403d130d0f922da10886beadec",
+      "references": [
+        "release:git-5fd799d76a3e-38144253711"
+      ]
+    },
+    {
+      "image": "sha256:482719b419b21fbd82b6fa410a2e42a786c71333f53a4da361c3a92b03628655",
+      "references": [
+        "release:20261009-logo-superscript"
+      ]
+    },
+    {
+      "image": "sha256:49c0dc800c6d3b4f57d15cd70e9dfdc5942cc6d2915caacabef340062577aa91",
+      "references": [
+        "release:20261009-reader-copy"
+      ]
+    },
+    {
+      "image": "sha256:4d656344e3a9e2172f46b19d9273af5e2c00e4734d0a9aea600ea4cfdd68bf51",
+      "references": [
+        "release:20261009-antispam"
+      ]
+    },
+    {
+      "image": "sha256:51b6b39c0935c7b4ef60ceae5d61510dc02155db18733b2d5a500d73659a6e78",
+      "references": [
+        "release:20261010-matura-alpha-r2"
+      ]
+    },
+    {
+      "image": "sha256:583090945920e9cc08a4b5e576993b492cbd662fc01199f425da42ad39790102",
+      "references": [
+        "release:20261010-apex-cutover-r2"
+      ]
+    },
+    {
+      "image": "sha256:5abacc21bab7757f864993a3f17cd8fc12ec22e90c6b0d7aa0f7adb232920e67",
+      "references": [
+        "release:20261009-logo-glyph"
+      ]
+    },
+    {
+      "image": "sha256:6dbab5e6870a80c89215bda898b3a7200da7a80f18cefc4f33c657b5aa079696",
+      "references": [
+        "release:20261008-comments"
+      ]
+    },
+    {
+      "image": "sha256:72420f2b28c9d8d8c1bfeaefb9593e416195cd814508310b622df27e3869352e",
+      "references": [
+        "release:20261009-editor-management"
+      ]
+    },
+    {
+      "image": "sha256:7de91943694c5d0d51a3b5c4bcc584a4da9bda1e72f7b4341d473066fb67f44e",
+      "references": [
+        "release:20261009-voting-totals"
+      ]
+    },
+    {
+      "image": "sha256:82980a0d22ce6655916419b8785fa94fbdd66a82c8ed917a1706e4ca140ab0ff",
+      "references": [
+        "release:20261009-inline-corrections"
+      ]
+    },
+    {
+      "image": "sha256:8c118b108ada0499aa2e4501b0b2046aefa11c110b9770ea1bd2ac739e1016c3",
+      "references": [
+        "release:20261009-url-comment-parity"
+      ]
+    },
+    {
+      "image": "sha256:90e4c9ced15377cda54cb9312e7d55b24e9af590c772833e9142331d00bef23d",
+      "references": [
+        "release:20261009-forum-book-parity"
+      ]
+    },
+    {
+      "image": "sha256:932458a6bbec5ec5a34ee6ed992c11eeb5d31733ec857f10fa7b2fecc6f87e27",
+      "references": [
+        "release:20261010-single-ad"
+      ]
+    },
+    {
+      "image": "sha256:96cb8377fb56f0a6748231b2ae1c9b8c9f65dbd2eeecd9edac5db288aa51290a",
+      "references": [
+        "release:20261009-parity-sqlite-r2"
+      ]
+    },
+    {
+      "image": "sha256:99564db5324bdfc76aeb8c450bc290411f9b4997bd73c9730d6524a0e2203be8",
+      "references": [
+        "release:20261009-internal-links"
+      ]
+    },
+    {
+      "image": "sha256:9fc839151f13edf49144b9abca11c2723cf4081bfa15e11b7ada03014a25edd7",
+      "references": [
+        "release:20261009-comment-feeds-reports"
+      ]
+    },
+    {
+      "image": "sha256:a980e997d09279f5fab3a2aaec30113cc60799d43e46154ad5cfff765748ca2a",
+      "references": [
+        "release:20261010-logo-rounded-two"
+      ]
+    },
+    {
+      "image": "sha256:cabbf163ff09d779ddb4eef174cc0983c99fb675c7290632d92225deee392add",
+      "references": [
+        "release:20261009-article-comment-controls"
+      ]
+    },
+    {
+      "image": "sha256:cbe8543d6805b7a78660e2ea2f17dc9313c6dfe38090b4958cc1fba9fea9ac10",
+      "references": [
+        "container:fizyka-legacy-reference-legacy-reference-1"
+      ]
+    },
+    {
+      "image": "sha256:d44d7827c6a03f93155995d9e63630504697aa07c9efc061abbd8b93371c3177",
+      "references": [
+        "release:20261008-redakcja"
+      ]
+    },
+    {
+      "image": "sha256:db1c3fda7a50bdcbf0f4f1e606ed054d2802f55a41a7b9a25f1ab95dd420e8fa",
+      "references": [
+        "container:fizyka-production-cloudflared-1"
+      ]
+    },
+    {
+      "image": "sha256:ef926d784f3c6ef0e7719ec53cf5c760c85b81b894446cc60d8455d65d9e6d44",
+      "references": [
+        "release:20261009-comment-parity"
+      ]
+    },
+    {
+      "image": "sha256:ef9864d5e2f67c20d5b6933dfbd5b2cf3e4eaf342ab7db5bb2b7f4f716d20d16",
+      "references": [
+        "release:20261009-original-logo"
+      ]
+    },
+    {
+      "image": "sha256:efe1cca863638a169fe7ed505d49ae4470e03ccaddecc4b699e1adb917df61ab",
+      "references": [
+        "release:20261009-parity-restoration"
+      ]
+    },
+    {
+      "image": "sha256:f1583724a3bc982de56a6d65124d245fee7275d060f7af3dd187615acaf5d083",
+      "references": [
+        "release:20261009-text-encoding"
+      ]
+    },
+    {
+      "image": "sha256:f21f84648a9368213a0b68544f23518599d589b863c2d0404d479d6c8f0f19e1",
+      "references": [
+        "release:20261010-logo-arched-two"
+      ]
+    },
+    {
+      "image": "sha256:f4925efeea86607de450de5fd51327dc26f71619621f2403f904851744e56049",
+      "references": [
+        "release:20261009-book-scroll-controls"
+      ]
+    },
+    {
+      "image": "sha256:f53adcd84d4df5da9c6030ccd7f3fbd01a04ff9846d27c6dff8916e25e5532bb",
+      "references": [
+        "release:20261010-captcha-layout"
+      ]
+    },
+    {
+      "image": "sha256:f6c7539450c853d51d38bc7036f40a53bc266c0dfc77ea081faeb67e1e5bedbf",
+      "references": [
+        "container:fizyka-production-web-1",
+        "release:git-3110cae419ae-38146770836"
+      ]
+    },
+    {
+      "image": "sha256:f941aa99a27043faed5f342d1044b126c8bf93c4454f01ec59e8659daa49c49c",
+      "references": [
+        "release:20261010-logo-start-alpha"
+      ]
+    }
+  ]
+}
